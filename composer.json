@@ -21,8 +21,9 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "OWC\\PDCBase\\": "./src/PDCBase",
-      "OWC\\PDCBase\\Tests\\": "./tests/unit"
+      "OWC_PDC_Base\\Core\\": "./src/Core",
+      "OWC_PDC_Base\\Core\\Tests\\": "./tests"
     }
   }
 }
+
