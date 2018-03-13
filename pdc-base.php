@@ -12,6 +12,9 @@
  * Domain Path:       /languages
  */
 
+use OWC_PDC_Base\Core\Autoloader;
+use OWC_PDC_Base\Core\Plugin;
+
 /**
  * If this file is called directly, abort.
  */
@@ -23,7 +26,7 @@ if ( ! defined('WPINC')) {
  * Only manual loaded file: the autoloader.
  */
 require_once __DIR__.'/autoloader.php';
-new Autoloader();
+$autoloader = new Autoloader();
 
 /**
  * Begin execution of the plugin
