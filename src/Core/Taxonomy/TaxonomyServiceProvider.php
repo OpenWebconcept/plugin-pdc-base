@@ -19,14 +19,14 @@ class TaxonomyServiceProvider extends ServiceProvider
 	public function registerTaxonomies()
 	{
 
-		if ( function_exists('register_extended_taxonomies') ) {
+		if ( function_exists('register_extended_taxonomy') ) {
 
-			$taxonomies = apply_filters('owc_pdc_base_taxonomies', $this->plugin->config->get('taxonomies'));
+			$taxonomies = apply_filters('owc/pdc_base/before_register_taxonomies', $this->plugin->config->get('taxonomies'));
 
 			foreach ( $taxonomies as $taxonomyName => $taxonomy ) {
 
 				// Examples of registering taxonomies: http://johnbillion.com/extended-cpts/
-				register_extended_taxonomy($taxonomyName, $taxonomy['objectTypes'], $taxonomy['args'], $taxonomy['names']);
+				register_extended_taxonomy($taxonomyName, $taxonomy['object_types'], $taxonomy['args'], $taxonomy['names']);
 			}
 		}
 	}

@@ -3,74 +3,108 @@
 return [
 
 	/**
-	 * Examples of registering post types: http://johnbillion.com/extended-cpts/
+	 * Examples of registering taxonomies: http://johnbillion.com/extended-cpts/
 	 */
-	'pdc-item'        => [
-		'args'  => [
-
-			# Add the post type to the site's main RSS feed:
-			'show_in_feed'          => false,
-
-			# Show all posts on the post type archive:
-			'archive'               => [
-				'nopaging' => true
-			],
-			'supports'              => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields'],
-			'show_in_rest'          => true,
-			'rest_base'             => 'pdc-item',
-			'rest_controller_class' => 'OWC_PDC_Base\\REST_PDC_Posts_Controller',
+	'pdc-doelgroep' => [
+		'object_types' => ['pdc-item'],
+		'args'         => [
+			'meta_box' => 'simple',
+			#			'capabilities' => [
+			#				'manage_terms' => 'manage_pdc_categories',
+			#				'edit_terms'   => 'manage_pdc_categories',
+			#				'delete_terms' => 'manage_pdc_categories',
+			#				'assign_terms' => 'edit_pdc_posts'
+			#			]
 		],
-		'names' => [
+		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'PDC item',
-			'plural'   => 'PDC items',
-			'slug'     => 'pdc-item'
+			'singular' => 'Doelgroep',
+			'plural'   => 'Doelgroepen',
+			'slug'     => 'pdc-doelgroep'
 		]
 	],
-	'pdc-category'    => [
-		'args'  => [
 
-			# Add the post type to the site's main RSS feed:
-			'show_in_feed' => false,
-
-			# Show all posts on the post type archive:
-			'archive'      => [
-				'nopaging' => true
-			],
-			'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail'],
-			'show_in_rest' => true,
-			'rest_base'    => 'pdc-thema',
+	'pdc-type' => [
+		'object_types' => ['pdc-item'],
+		'args'         => [
+			'meta_box'     => 'simple',
+			'show_in_rest' => false,
+			#			'capabilities' => [
+			#				'manage_terms' => 'manage_pdc_categories',
+			#				'edit_terms'   => 'manage_pdc_categories',
+			#				'delete_terms' => 'manage_pdc_categories',
+			#				'assign_terms' => 'edit_pdc_posts'
+			#			]
 		],
-		'names' => [
+		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'PDC thema',
-			'plural'   => 'PDC themas',
-			'slug'     => 'pdc-thema'
+			'singular' => 'Type',
+			'plural'   => 'Types',
+			'slug'     => 'pdc-type'
 		]
 	],
-	'pdc-subcategory' => [
-		'args'  => [
-			# Add the post type to the site's main RSS feed:
-			'show_in_feed' => false,
 
-			# Show all posts on the post type archive:
-			'archive'      => [
-				'nopaging' => true
-			],
-			'supports' => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail', 'page-attributes'],
-			'show_in_rest' => true,
-			'hierarchical' => true,
-			'rest_base'    => 'pdc-subthema',
+	'pdc-aspect' => [
+		'object_types' => ['pdc-item'],
+		'args'         => [
+			'meta_box'     => 'simple',
+			'show_in_rest' => false,
+			#			'capabilities' => [
+			#				'manage_terms' => 'manage_pdc_categories',
+			#				'edit_terms'   => 'manage_pdc_categories',
+			#				'delete_terms' => 'manage_pdc_categories',
+			#				'assign_terms' => 'edit_pdc_posts'
+			#			]
 		],
-		'names' => [
+		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'PDC subthema',
-			'plural'   => 'PDC subthemas',
-			'slug'     => 'pdc-subthema'
+			'singular' => 'Kenmerk',
+			'plural'   => 'Kenmerken',
+			'slug'     => 'pdc-kenmerk'
+		]
+	],
+	'pdc-usage'  => [
+		'object_types' => ['pdc-item'],
+		'args'         => [
+			'meta_box'     => 'simple',
+			'show_in_rest' => false,
+			#			'capabilities' => [
+			#				'manage_terms' => 'manage_pdc_categories',
+			#				'edit_terms'   => 'manage_pdc_categories',
+			#				'delete_terms' => 'manage_pdc_categories',
+			#				'assign_terms' => 'edit_pdc_posts'
+			#			]
+		],
+		'names'        => [
 
+			# Override the base names used for labels:
+			'singular' => 'Toepassing',
+			'plural'   => 'Toepassingen',
+			'slug'     => 'pdc-toepassing'
+		]
+	],
+	'pdc-owner'  => [
+		'object_types' => ['pdc-item'],
+		'args'         => [
+			'meta_box'          => 'simple',
+			'show_in_rest'      => false,
+			#			'capabilities'      => [
+			#				'manage_terms' => 'manage_pdc_categories',
+			#				'edit_terms'   => 'manage_pdc_categories',
+			#				'delete_terms' => 'manage_pdc_categories',
+			#				'assign_terms' => 'edit_pdc_posts'
+			#			],
+			'show_admin_column' => true,
+		],
+		'names'        => [
+
+			# Override the base names used for labels:
+			'singular' => 'Eigenaar',
+			'plural'   => 'Eigenaren',
+			'slug'     => 'pdc-owner'
 		]
 	]
 ];
