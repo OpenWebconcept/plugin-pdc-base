@@ -11,7 +11,6 @@ class PostTypeServiceProvider extends ServiceProvider
 	{
 
 		$this->plugin->loader->addAction('init', $this, 'registerPostTypes');
-		$this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
 	}
 
 	/**
@@ -28,24 +27,6 @@ class PostTypeServiceProvider extends ServiceProvider
 
 				// Examples of registering post types: http://johnbillion.com/extended-cpts/
 				register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
-			}
-		}
-	}
-
-	/**
-	 * register taxonomies.
-	 */
-	public function registerTaxonomies()
-	{
-
-		if ( function_exists('register_extended_taxonomies') ) {
-
-			$taxonomies = apply_filters('owc_pdc_base_taxonomies', $this->plugin->config->get('taxonomies'));
-
-			foreach ( $taxonomies as $taxonomyName => $taxonomy ) {
-
-				// Examples of registering taxonomies: http://johnbillion.com/extended-cpts/
-				register_extended_taxonomy($taxonomyName, $taxonomy['objectTypes'], $taxonomy['args'], $taxonomy['names']);
 			}
 		}
 	}
