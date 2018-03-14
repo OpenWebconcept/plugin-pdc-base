@@ -40,6 +40,8 @@ abstract class BasePlugin
     {
         $this->rootPath = $rootPath;
 
+	    $this->loader = Loader::getInstance();
+
         $this->config = new Config($this->rootPath.'/config');
         $this->config->boot();
 
@@ -48,20 +50,10 @@ abstract class BasePlugin
         $this->addStartUpHooks();
         $this->addTearDownHooks();
 
-        $this->loader = Loader::getInstance();
-
-        if (is_network_admin()) {
-            $admin = new Network($this);
-            $admin->boot();
-        }
-
-        if (is_admin()) {
-            $admin = new Admin($this);
-            $admin->boot();
-        } else {
-            $frontend = new Frontend($this);
-            $frontend->boot();
-        }
+//        if (is_admin()) {
+//            $admin = new Admin($this);
+//            $admin->boot();
+//        }
 
         $this->loader->register();
     }
@@ -100,13 +92,13 @@ abstract class BasePlugin
         /**
          * This hook registers a plugin function to be run when the plugin is activated.
          */
-        register_activation_hook(__FILE__, [ 'OWC_PDC_Base\Modules\Hooks', 'pluginActivation' ]);
+        register_activation_hook(__FILE__, [ 'OWC_PDC_Base\Core\Hooks', 'pluginActivation' ]);
 
         /**
          * This hook is run immediately after any plugin is activated, and may be used to detect the activation of plugins.
          * If a plugin is silently activated (such as during an update), this hook does not fire.
          */
-        add_action('activated_plugin', [ 'OWC_PDC_Base\Modules\Hooks', 'pluginActivated' ], 10, 2);
+        add_action('activated_plugin', [ 'OWC_PDC_Base\Core\Hooks', 'pluginActivated' ], 10, 2);
     }
 
     /**
@@ -117,18 +109,18 @@ abstract class BasePlugin
         /**
          * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other plugins.
          */
-        add_action('deactivated_plugin', [ 'OWC_PDC_Base\Modules\Hooks', 'pluginDeactivated' ], 10, 2);
+        add_action('deactivated_plugin', [ 'OWC_PDC_Base\Core\Hooks', 'pluginDeactivated' ], 10, 2);
 
         /**
          * This hook registers a plugin function to be run when the plugin is deactivated.
          */
-        register_deactivation_hook(__FILE__, [ 'OWC_PDC_Base\Modules\Hooks', 'pluginDeactivation' ]);
+        register_deactivation_hook(__FILE__, [ 'OWC_PDC_Base\Core\Hooks', 'pluginDeactivation' ]);
 
         /**
          * Registers the uninstall hook that will be called when the user clicks on the uninstall link that calls for the plugin to uninstall itself.
          * The link won’t be active unless the plugin hooks into the action.
          */
-        register_uninstall_hook(__FILE__, [ 'OWC_PDC_Base\Modules\Hooks', 'uninstallPlugin' ]);
+        register_uninstall_hook(__FILE__, [ 'OWC_PDC_Base\Core\Hooks', 'uninstallPlugin' ]);
     }
 
     /**
