@@ -18,6 +18,11 @@
 //require $_tests_dir . '/includes/bootstrap.php';
 
 /**
+ * Load dependencies with Composer autoloader.
+ */
+require __DIR__ . '/../vendor/autoload.php';
+
+/**
  * Bootstrap WordPress Mock.
  */
 \WP_Mock::setUsePatchwork( true );
