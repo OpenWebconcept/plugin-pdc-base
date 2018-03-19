@@ -70,6 +70,9 @@ class PostsToPostsServiceProvider extends ServiceProvider
 		}
 	}
 
+	/*
+	 * method for changing default P2P behaviour. Override by adding additional filter with higher priority (=larger number)
+	 */
 	public function filterP2PConnectableArgs($args)
 	{
 		$args['orderby']      = 'title';
