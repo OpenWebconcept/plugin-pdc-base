@@ -21,7 +21,7 @@ class PostTypeServiceProvider extends ServiceProvider
 
 		if ( function_exists('register_extended_post_type') ) {
 
-			$postTypes = apply_filters('owc/pdc_base/before_register_posttypes', $this->plugin->config->get('posttypes'));
+			$postTypes = apply_filters('owc/pdc_base/config/posttypes', $this->plugin->config->get('posttypes'));
 
 			foreach ( $postTypes as $postTypeName => $postType ) {
 

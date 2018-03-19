@@ -21,7 +21,7 @@ class TaxonomyServiceProvider extends ServiceProvider
 
 		if ( function_exists('register_extended_taxonomy') ) {
 
-			$taxonomies = apply_filters('owc/pdc_base/before_register_taxonomies', $this->plugin->config->get('taxonomies'));
+			$taxonomies = apply_filters('owc/pdc_base/config/taxonomies', $this->plugin->config->get('taxonomies'));
 
 			foreach ( $taxonomies as $taxonomyName => $taxonomy ) {
 

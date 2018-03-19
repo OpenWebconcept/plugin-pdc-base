@@ -15,7 +15,7 @@ return [
 			'archive'               => [
 				'nopaging' => true
 			],
-			'supports'              => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields'],
+			'supports'              => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
 			'show_in_rest'          => true,
 			'rest_base'             => 'pdc-item',
 			'rest_controller_class' => 'OWC_PDC_Base\\REST_PDC_Posts_Controller',
