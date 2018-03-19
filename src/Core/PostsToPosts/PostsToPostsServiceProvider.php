@@ -22,6 +22,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 	{
 
 		$this->plugin->loader->addAction('init', $this, 'registerPostsToPostsConnections');
+		$this->plugin->loader->addFilter('p2p_connectable_args', $this, 'filterP2PConnectableArgs', 10);
 	}
 
 	/**
@@ -67,5 +68,14 @@ class PostsToPostsServiceProvider extends ServiceProvider
 				p2p_register_connection_type($connection_type);
 			}
 		}
+	}
+
+	public function filterP2PConnectableArgs($args)
+	{
+		$args['orderby']      = 'title';
+		$args['order']        = 'asc';
+		$args['p2p:per_page'] = 25;
+
+		return $args;
 	}
 }
