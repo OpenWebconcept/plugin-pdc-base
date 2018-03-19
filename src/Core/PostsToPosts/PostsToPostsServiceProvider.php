@@ -29,13 +29,12 @@ class PostsToPostsServiceProvider extends ServiceProvider
 	 */
 	public function registerPostsToPostsConnections()
 	{
-
 		if ( function_exists('p2p_register_connection_type') ) {
 
-			$posttypes_info          = apply_filters('owc/pdc_base/p2p_posttypes_info', $this->plugin->config->get('posttypes_info'));
+			$posttypes_info          = apply_filters('owc/pdc_base/p2p_posttypes_info', $this->plugin->config->get('p2p_connections.posttypes_info'));
 			$default_connection_args = apply_filters('owc/pdc_base/p2p_connection_defaults', $this->connectionDefaults);
 
-			$connections             = apply_filters('owc/pdc_base/before_register_p2p_connections', $this->plugin->config->get('connections'));
+			$connections             = apply_filters('owc/pdc_base/before_register_p2p_connections', $this->plugin->config->get('p2p_connections.connections'));
 
 			foreach ( $connections as $connection_args ) {
 
@@ -63,7 +62,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 					$connection_type['admin_box']   = 'from';
 				}
 
-				$connection_type = apply_filters('owc/pdc_base/before_register_p2p_connection', $connection_type, $connection_args );
+				$connection_type = apply_filters("owc/pdc_base/before_register_p2p_connection/{$posttypes_info[ $connection_args['from'] ]['id']}/{$posttypes_info[ $connection_args['to'] ]['id']}", $connection_type );
 
 				p2p_register_connection_type($connection_type);
 			}
