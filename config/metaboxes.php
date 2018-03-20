@@ -41,7 +41,7 @@ return [
 				]
 			],
 			'appointment' => [
-				'heading2' => [
+				'heading' => [
 					'type' => 'heading',
 					'name' => 'Afspraak maken',
 				],
