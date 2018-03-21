@@ -14,6 +14,7 @@ class RestApiServiceProvider extends ServiceProvider
 		//$this->plugin->loader->addFilter('config_expander_admin_defaults', $this, 'filterConfigExpanderDefaults', 10, 1);
 		//$this->plugin->loader->addFilter('config_expander_rest_endpoints_whitelist', $this,'filterEndpointsWhitelist', 10, 1);
 		$this->plugin->loader->addFilter('rest_api_init', $this, 'registerRestApiEndpointsFields', 10);
+		$this->plugin->loader->addFilter('rest_prepare_pdc-item', $this, 'filterRestPreparePdcItem', 10, 3);
 	}
 
 	/**
@@ -60,6 +61,24 @@ class RestApiServiceProvider extends ServiceProvider
 		];
 
 		return $endpoints_whitelist;
+	}
+
+	public function filterRestPreparePdcItem($response, $post, $request)
+	{
+
+		$request_attributes = $request->get_attributes();
+		$request_params     = $request->get_params();
+
+		//check for usage in list of pdc_items via check for 'get_items' callback method.
+		if ( 'get_items' == $request_attributes['callback'][1] && ! isset($request_params['slug']) ) {
+
+			$response->data['connected']['pdc-item_to_pdc-subcategory'] = [];
+			if ( ! empty($response->data['connected']['pdc-item_to_pdc-subcategory'] = $post->connected) ) {
+				$response->data['connected']['pdc-item_to_pdc-subcategory'] = $post->connected;
+			}
+		}
+
+		return $response;
 	}
 
 }
