@@ -53,18 +53,18 @@ return [
 				'schema'          => null,
 			],
 	],
-//	'pdc-subcategory' => [
-//		'has_report'      =>
-//			[
-//				'get_callback'    => 'GemBur_App\\has_report',
-//				'update_callback' => null,
-//				'schema'          => null,
-//			],
-//		'has_appointment' =>
-//			[
-//				'get_callback'    => 'GemBur_App\\has_appointment',
-//				'update_callback' => null,
-//				'schema'          => null,
-//			]
-//	]
+	'pdc-subcategory' => [
+		'has_report'      =>
+			[
+				'get_callback'    => ['\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcSubcategory', 'has_report'],
+				'update_callback' => null,
+				'schema'          => null,
+			],
+		'has_appointment' =>
+			[
+				'get_callback'    => ['\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcSubcategory', 'has_appointment'],
+				'update_callback' => null,
+				'schema'          => null,
+			]
+	]
 ];

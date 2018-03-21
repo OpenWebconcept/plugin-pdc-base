@@ -340,37 +340,17 @@ class PdcItem
 
 			$connections = apply_filters('owc/pdc_base/config/p2p_connections', $this->config->get('p2p_connections.connections'));
 
+			foreach ( $connections as $connection ) {
 
-//			foreach ( $connections as $connection ) {
-//
-//				if ( in_array('pdc-item', $connection) ) {
-//
-//				}
-//
-//				$connected_items_args = [
-//					'p2p_key'       => $connection['from'].'_to_'.'pdc-item_to_pdc-item',
-//					'item_callback' => [$this, 'getPdcItemAsArray'],
-//				];
-//			}
+				if ( in_array('pdc-item', $connection, $strict = true) ) {
 
-			$connected_items_args = [
-				'p2p_key'       => 'pdc-item_to_pdc-item',
-				'item_callback' => [$this, 'getPdcItemAsArray'],
-			];
-			$output['pdc-items']  = $this->getConnectedItems($object, $connected_items_args);
-
-			$connected_items_args = [
-				'p2p_key'       => 'pdc-item_to_pdc-category',
-				'item_callback' => [$this, 'getPdcItemAsArray'],
-			];
-			$output['themas']     = $this->getConnectedItems($object, $connected_items_args);
-
-			$connected_items_args = [
-				'p2p_key'       => 'pdc-item_to_pdc-subcategory',
-				'item_callback' => [$this, 'getPdcItemAsArray'],
-			];
-			$output['subthemas']  = $this->getConnectedItems($object, $connected_items_args);
-
+					$connected_items_args                       = [
+						'p2p_key'       => $connection['from'] . '_to_' . $connection['to'],
+						'item_callback' => [$this, 'getPdcItemAsArray'],
+					];
+					$output[ $connected_items_args['p2p_key'] ] = $this->getConnectedItems($object, $connected_items_args);
+				}
+			}
 		}
 
 		return $output;
