@@ -14,7 +14,8 @@ return [
 	    OWC_PDC_Base\Core\PostsToPosts\PostsToPostsServiceProvider::class,
 	    OWC_PDC_Base\Core\Metabox\MetaboxServiceProvider::class,
 	    OWC_PDC_Base\Core\RestApi\RestApiServiceProvider::class,
-        /**
+	    OWC_PDC_Base\Core\Settings\SettingsServiceProvider::class,
+	    /**
          * Providers specific to the admin.
          */
         'admin'    => [
