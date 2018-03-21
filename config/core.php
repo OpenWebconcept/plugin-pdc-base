@@ -13,6 +13,7 @@ return [
 	    OWC_PDC_Base\Core\Taxonomy\TaxonomyServiceProvider::class,
 	    OWC_PDC_Base\Core\PostsToPosts\PostsToPostsServiceProvider::class,
 	    OWC_PDC_Base\Core\Metabox\MetaboxServiceProvider::class,
+	    OWC_PDC_Base\Core\RestApi\RestApiServiceProvider::class,
         /**
          * Providers specific to the admin.
          */
