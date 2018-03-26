@@ -1,21 +1,40 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This README documents whatever steps are necessary to get this plugin up and running.
 
 ### How do I get set up? ###
+     
+* Unzip and/or move all files to the /wp-content/plugins/pdc-base directory
+* Log into WordPress admin and activate the ‘PDC Base’ plugin through the ‘Plugins’ menu
+* Go to the 'PDC instellingen pagina' in the left-hand menu to enter some of the required settings
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Plugin actions/filters ###
+
+owc/pdc_base/config/metaboxes
+owc/pdc_base/before_register_metaboxes
+
+
+owc/pdc_base/p2p_connection_defaults
+owc/pdc_base/config/p2p_posttypes_info
+owc/pdc_base/config/p2p_connections
+owc/pdc_base/before_register_p2p_connection/{$posttypes_from}/{$posttypes_to]}
+
+
+owc/pdc_base/config/posttypes
+owc/pdc_base/config/rest_api_fields_per_posttype
+
+owc/pdc_base/config/settings
+owc/pdc_base/config/settings_pages
+owc/pdc_base/before_register_settings
+
+
+owc/pdc_base/config/taxonomies
+
+owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids
+
+### Running tests ###
+
+
 
 ### Contribution guidelines ###
 
@@ -25,5 +44,4 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* IF you have questions about or suggestions for this plugin, please contact Holger Peters from Gemeente Buren.
