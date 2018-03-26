@@ -15,7 +15,7 @@ abstract class BasePlugin
      */
     protected $rootPath;
 
-    /**
+	/**
      * Instance of the configuration repository.
      *
      * @var \OWC_PDC_Base\Core\Config
@@ -44,10 +44,11 @@ abstract class BasePlugin
     public function __construct($rootPath)
     {
         $this->rootPath = $rootPath;
+	    $this->loadPluginTextdomain();
 
 	    $this->loader = Loader::getInstance();
 
-        $this->config = new Config($this->rootPath.'/config');
+	    $this->config = new Config($this->rootPath.'/config');
         $this->config->boot();
 
         $this->bootServiceProviders();
@@ -89,7 +90,12 @@ abstract class BasePlugin
         }
     }
 
-    /**
+	public function loadPluginTextdomain()
+	{
+		load_plugin_textdomain($this->getName(), false, $this->getName(). '/languages/');
+	}
+
+	/**
      * Startup hooks to initialize the plugin.
      */
     private function addStartUpHooks()

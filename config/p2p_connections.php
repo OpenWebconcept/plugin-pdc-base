@@ -6,22 +6,22 @@ return [
 		'pdc-item'        =>
 			[
 				'id'    => 'pdc-item',
-				'title' => __('PDC item')
+				'title' => _x('PDC item', 'P2P titel', 'pdc-base' )
 			],
 		'pdc-category'    =>
 			[
 				'id'    => 'pdc-category',
-				'title' => 'PDC thema'
+				'title' => _x('PDC thema', 'P2P titel', 'pdc-base')
 			],
 		'pdc-subcategory' =>
 			[
 				'id'    => 'pdc-subcategory',
-				'title' => 'PDC subthema'
+				'title' => _x('PDC subthema', 'P2P titel', 'pdc-base')
 			],
 		'pdc-owner'       =>
 			[
 				'id'    => 'pdc-owner',
-				'title' => 'PDC eigenaar'
+				'title' => _x('PDC eigenaar', 'P2P titel', 'pdc-base')
 			]
 	],
 	'connections'    => [

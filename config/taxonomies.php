@@ -19,8 +19,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'Doelgroep',
-			'plural'   => 'Doelgroepen',
+			'singular' => _x('Doelgroep', 'Taxonomie definitie', 'pdc-base'),
+			'plural'   => _x('Doelgroepen', 'Taxonomie definitie', 'pdc-base'),
 			'slug'     => 'pdc-doelgroep'
 		]
 	],
@@ -40,8 +40,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'Type',
-			'plural'   => 'Types',
+			'singular' => _x('Type', 'Taxonomie definitie', 'pdc-base'),
+			'plural'   => _x('Types', 'Taxonomie definitie', 'pdc-base'),
 			'slug'     => 'pdc-type'
 		]
 	],
@@ -61,8 +61,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'Kenmerk',
-			'plural'   => 'Kenmerken',
+			'singular' => _x('Kenmerk', 'Taxonomie definitie', 'pdc-base'),
+			'plural'   => _x('Kenmerken', 'Taxonomie definitie', 'pdc-base'),
 			'slug'     => 'pdc-kenmerk'
 		]
 	],
@@ -81,8 +81,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'Toepassing',
-			'plural'   => 'Toepassingen',
+			'singular' => _x('Toepassing', 'Taxonomie definitie', 'pdc-base'),
+			'plural'   => _x('Toepassingen', 'Taxonomie definitie', 'pdc-base'),
 			'slug'     => 'pdc-toepassing'
 		]
 	],
@@ -102,8 +102,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => 'Eigenaar',
-			'plural'   => 'Eigenaren',
+			'singular' => _x('Eigenaar', 'Taxonomie definitie', 'pdc-base'),
+			'plural'   => _x('Eigenaren', 'Taxonomie definitie', 'pdc-base'),
 			'slug'     => 'pdc-owner'
 		]
 	]

@@ -23,8 +23,8 @@ return [
 		'names' => [
 
 			# Override the base names used for labels:
-			'singular' => 'PDC item',
-			'plural'   => 'PDC items',
+			'singular' => _x('PDC item', 'Posttype definitie', 'pdc-base'),
+			'plural'   => _x('PDC items', 'Posttype definitie', 'pdc-base'),
 			'slug'     => 'pdc-item'
 		]
 	],
@@ -45,8 +45,8 @@ return [
 		'names' => [
 
 			# Override the base names used for labels:
-			'singular' => 'PDC thema',
-			'plural'   => 'PDC themas',
+			'singular' => _x('PDC thema', 'Posttype definitie', 'pdc-base'),
+			'plural'   => _x('PDC themas', 'Posttype definitie', 'pdc-base'),
 			'slug'     => 'pdc-thema'
 		]
 	],
@@ -67,8 +67,8 @@ return [
 		'names' => [
 
 			# Override the base names used for labels:
-			'singular' => 'PDC subthema',
-			'plural'   => 'PDC subthemas',
+			'singular' => _x('PDC subthema', 'Posttype definitie', 'pdc-base'),
+			'plural'   => _x('PDC subthemas', 'Posttype definitie', 'pdc-base'),
 			'slug'     => 'pdc-subthema'
 
 		]
