@@ -1,0 +1,321 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PDC Base\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-26 13:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: config/metaboxes.php:7
+msgid "Gegevens"
+msgstr ""
+
+#: config/metaboxes.php:17
+msgid "Algemeen"
+msgstr ""
+
+#: config/metaboxes.php:20
+msgid "Alternatieve titel"
+msgstr ""
+
+#: config/metaboxes.php:21
+msgid ""
+"Gebruik deze mogelijkheid als de website een alternatieve titel gebruikt"
+msgstr ""
+
+#: config/metaboxes.php:26
+msgid "Synoniemen"
+msgstr ""
+
+#: config/metaboxes.php:27
+msgid ""
+"Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
+"gerelateerde termen mee te geven"
+msgstr ""
+
+#: config/metaboxes.php:32 config/metaboxes.php:49
+msgid "Actief"
+msgstr ""
+
+#: config/metaboxes.php:33
+msgid "Is dit product op dit moment actief ja/nee"
+msgstr ""
+
+#: config/metaboxes.php:46
+msgid "Afspraak maken"
+msgstr ""
+
+#: config/metaboxes.php:50
+msgid "Is het nodig voor dit product een afspraak te maken ja/nee?"
+msgstr ""
+
+#: config/metaboxes.php:60
+msgid "Afspraak button titel"
+msgstr ""
+
+#: config/metaboxes.php:61
+msgid "Leeg laten als de standaard waarde gebruikt dient te worden"
+msgstr ""
+
+#: config/metaboxes.php:66
+msgid "Afspraak URL"
+msgstr ""
+
+#: config/metaboxes.php:67
+msgid ""
+"Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet "
+"worden. URL inclusief http(s)://"
+msgstr ""
+
+#: config/metaboxes.php:72
+msgid "Afspraak meta"
+msgstr ""
+
+#: config/metaboxes.php:73
+msgid ""
+"Gebruik dit veld als de afspraak knop via een hier ingevoerde gegeven werkt "
+"(bv GravityForms id, of andere vorm van koppelings data, momenteel nog niet "
+"in gebruik)"
+msgstr ""
+
+#: config/metaboxes.php:81
+msgid "Links"
+msgstr ""
+
+#: config/metaboxes.php:92
+msgid "Link titel"
+msgstr ""
+
+#: config/metaboxes.php:93
+msgid "Wordt gebruikt om de link te tonen ipv de URL"
+msgstr ""
+
+#: config/metaboxes.php:98
+msgid "Link URL"
+msgstr ""
+
+#: config/metaboxes.php:99 config/metaboxes.php:126 config/metaboxes.php:153
+#: config/settings.php:17
+msgid "URL inclusief http(s)://"
+msgstr ""
+
+#: config/metaboxes.php:108
+msgid "Downloads"
+msgstr ""
+
+#: config/metaboxes.php:119
+msgid "Download titel"
+msgstr ""
+
+#: config/metaboxes.php:120
+msgid "Wordt gebruikt om de download te tonen ipv de URL"
+msgstr ""
+
+#: config/metaboxes.php:125
+msgid "Download URL"
+msgstr ""
+
+#: config/metaboxes.php:135
+msgid "Formulieren"
+msgstr ""
+
+#: config/metaboxes.php:146
+msgid "Formulier titel"
+msgstr ""
+
+#: config/metaboxes.php:147
+msgid "Wordt gebruikt om het formulier te tonen ipv de URL"
+msgstr ""
+
+#: config/metaboxes.php:152
+msgid "Formulier URL"
+msgstr ""
+
+#: config/metaboxes.php:162
+msgid "Overheid standaard"
+msgstr ""
+
+#: config/metaboxes.php:165
+msgid "UPL naam"
+msgstr ""
+
+#: config/metaboxes.php:166
+msgid "Bijvoorbeeld: aanduiding naamgebruik"
+msgstr ""
+
+#: config/metaboxes.php:171
+msgid "UPL resource"
+msgstr ""
+
+#: config/metaboxes.php:172
+msgid ""
+"Bijvoorbeeld: http://standaarden.overheid."
+"nl/owms/tersm/aanduiding_naamgebruik"
+msgstr ""
+
+#: config/metaboxes.php:180
+msgid "Overig"
+msgstr ""
+
+#: config/metaboxes.php:183
+msgid "Vrij notitieveld"
+msgstr ""
+
+#: config/metaboxes.php:184
+msgid "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
+msgstr ""
+
+#: config/p2p_connections.php:9
+msgctxt "P2P titel"
+msgid "PDC item"
+msgstr ""
+
+#: config/p2p_connections.php:14
+msgctxt "P2P titel"
+msgid "PDC thema"
+msgstr ""
+
+#: config/p2p_connections.php:19
+msgctxt "P2P titel"
+msgid "PDC subthema"
+msgstr ""
+
+#: config/p2p_connections.php:24
+msgctxt "P2P titel"
+msgid "PDC eigenaar"
+msgstr ""
+
+#: config/posttypes.php:26
+msgctxt "Posttype definitie"
+msgid "PDC item"
+msgstr ""
+
+#: config/posttypes.php:27
+msgctxt "Posttype definitie"
+msgid "PDC items"
+msgstr ""
+
+#: config/posttypes.php:48
+msgctxt "Posttype definitie"
+msgid "PDC thema"
+msgstr ""
+
+#: config/posttypes.php:49
+msgctxt "Posttype definitie"
+msgid "PDC themas"
+msgstr ""
+
+#: config/posttypes.php:70
+msgctxt "Posttype definitie"
+msgid "PDC subthema"
+msgstr ""
+
+#: config/posttypes.php:71
+msgctxt "Posttype definitie"
+msgid "PDC subthemas"
+msgstr ""
+
+#: config/settings.php:7
+msgid "PDC basis plugin instellingen"
+msgstr ""
+
+#: config/settings.php:13
+msgid "Portal"
+msgstr ""
+
+#: config/settings.php:16
+msgid "Portal URL"
+msgstr ""
+
+#: config/settings.php:22
+msgid "PDC item slug"
+msgstr ""
+
+#: config/settings.php:23
+msgid "URL van de PDC items in de portal, bv \"onderwerp\""
+msgstr ""
+
+#: config/settings_pages.php:9
+msgid "PDC instellingen pagina"
+msgstr ""
+
+#: config/taxonomies.php:22
+msgctxt "Taxonomie definitie"
+msgid "Doelgroep"
+msgstr ""
+
+#: config/taxonomies.php:23
+msgctxt "Taxonomie definitie"
+msgid "Doelgroepen"
+msgstr ""
+
+#: config/taxonomies.php:43
+msgctxt "Taxonomie definitie"
+msgid "Type"
+msgstr ""
+
+#: config/taxonomies.php:44
+msgctxt "Taxonomie definitie"
+msgid "Types"
+msgstr ""
+
+#: config/taxonomies.php:64
+msgctxt "Taxonomie definitie"
+msgid "Kenmerk"
+msgstr ""
+
+#: config/taxonomies.php:65
+msgctxt "Taxonomie definitie"
+msgid "Kenmerken"
+msgstr ""
+
+#: config/taxonomies.php:84
+msgctxt "Taxonomie definitie"
+msgid "Toepassing"
+msgstr ""
+
+#: config/taxonomies.php:85
+msgctxt "Taxonomie definitie"
+msgid "Toepassingen"
+msgstr ""
+
+#: config/taxonomies.php:105
+msgctxt "Taxonomie definitie"
+msgid "Eigenaar"
+msgstr ""
+
+#: config/taxonomies.php:106
+msgctxt "Taxonomie definitie"
+msgid "Eigenaren"
+msgstr ""
+
+#. Name of the plugin
+msgid "PDC Base"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Plugin to act as foundation for other PDC related content plugins. This "
+"plugin implements actions to allow for other plugins to add and/or change "
+"Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://www.openwebconcept.nl/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Edwin Siebel, Ruud Laan"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.yarddigital.nl/"
+msgstr ""

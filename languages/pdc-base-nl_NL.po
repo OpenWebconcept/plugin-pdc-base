@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PDC Base\n"
+"POT-Creation-Date: 2018-03-26 14:52+0200\n"
+"PO-Revision-Date: 2018-03-26 14:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: pdc-base.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: config/metaboxes.php:7
+msgid "Gegevens"
+msgstr "Gegevens poedit"
+
+#: config/metaboxes.php:20
+msgid "Alternatieve titel"
+msgstr "Andere titel poedit"
+
+#: config/p2p_connections.php:9
+msgid "PDC item"
+msgstr ""
+
+#: src/Core/Admin/InterfaceServiceProvider.php:70
+#, php-format
+msgid "View &#8220;%s&#8221;"
+msgstr ""
+
+#: src/Core/Admin/InterfaceServiceProvider.php:71
+msgid "Bekijken in Portal"
+msgstr ""
+
+#: src/Core/RestAPI/RestPdcItemPostsController.php:67
+msgid "You need to define a search term to order by relevance."
+msgstr ""
+
+#: src/Core/RestAPI/RestPdcItemPostsController.php:72
+#, php-format
+msgid "Missing parameter(s): %s"
+msgstr ""
+
+#: vendor/10up/wp_mock/tests/FunctionMocksTest.php:65
+msgid "Test"
+msgstr ""
+
+#: vendor/10up/wp_mock/tests/FunctionMocksTest.php:75
+#: vendor/10up/wp_mock/tests/FunctionMocksTest.php:77
+msgid "Input"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "PDC Base"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.openwebconcept.nl/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Plugin to act as foundation for other PDC related content plugins. This "
+"plugin implements actions to allow for other plugins to add and/or change "
+"Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Edwin Siebel, Ruud Laan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.yarddigital.nl/"
+msgstr ""
