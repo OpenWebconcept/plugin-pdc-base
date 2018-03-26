@@ -27,6 +27,11 @@ abstract class BasePlugin
      */
     public $loader;
 
+	/**
+	 * @var array with settings, see OWC_PDC_Base\Core\Settings\SettingsServiceProvider
+	 */
+    public $settings;
+
     /**
      * Creates the base plugin functionality.
      *
@@ -50,10 +55,10 @@ abstract class BasePlugin
         $this->addStartUpHooks();
         $this->addTearDownHooks();
 
-//        if (is_admin()) {
-//            $admin = new Admin($this);
-//            $admin->boot();
-//        }
+        if (is_admin()) {
+            $admin = new Admin($this);
+            $admin->boot();
+        }
 
         $this->loader->register();
     }

@@ -19,7 +19,7 @@ return [
          * Providers specific to the admin.
          */
         'admin'    => [
-
+	        OWC_PDC_Base\Core\Admin\InterfaceServiceProvider::class
         ]
 
     ],

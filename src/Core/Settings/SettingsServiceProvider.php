@@ -17,6 +17,8 @@ class SettingsServiceProvider extends ServiceProvider
 
 		$this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage');
 		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerSettings', 10, 1);
+
+		$this->plugin->settings = get_option( $this->prefix .'pdc_base_settings');
 	}
 
 	/**
