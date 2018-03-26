@@ -24,15 +24,15 @@ class MetaboxServiceProvider extends ServiceProvider
 	public function registerMetaboxes($rwmb_metaboxes)
 	{
 
-		$config_metaboxes = (array)apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
+		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
 		$metaboxes        = [];
 
-		foreach ( $config_metaboxes as $metabox ) {
+		foreach ( $configMetaboxes as $metabox ) {
 
 			$fields = [];
-			foreach ( $metabox['fields'] as $field_group ) {
+			foreach ( $metabox['fields'] as $fieldGroup ) {
 
-				foreach ( $field_group as $field ) {
+				foreach ( $fieldGroup as $field ) {
 
 					if ( isset($field['id']) ) {
 						$field['id'] = $this->prefix . $field['id'];
@@ -47,9 +47,9 @@ class MetaboxServiceProvider extends ServiceProvider
 		$metaboxes = apply_filters("owc/pdc_base/before_register_metaboxes", $metaboxes);
 
 		foreach ( $metaboxes as $metabox ) {
-			$rwmb_metaboxes[] = $metabox;
+			$rwmbMetaboxes[] = $metabox;
 		}
 
-		return $rwmb_metaboxes;
+		return $rwmbMetaboxes;
 	}
 }

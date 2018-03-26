@@ -17,7 +17,6 @@ class SettingsServiceProvider extends ServiceProvider
 
 		$this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage');
 		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerSettings', 10, 1);
-
 	}
 
 	/**
@@ -26,34 +25,29 @@ class SettingsServiceProvider extends ServiceProvider
 	public function registerSettingsPage()
 	{
 
-		$settings_pages[] = [
-			'id'          => $this->prefix . 'pdc_base_settings',
-			'option_name' => $this->prefix . 'pdc_base_settings',
-			'menu_title'  => 'PDC instellingen pagina',
-			'parent'      => '',
-			'icon_url'    => 'dashicons-admin-settings',
-			'position'    => 9
-		];
+		$settingsPages = (array) apply_filters('owc/pdc_base/config/settings_pages', $this->plugin->config->get('settings_pages'));
 
-		return $settings_pages;
+		return $settingsPages;
 	}
 
 	/**
-	 * register settings.
+	 * @param $rwmb_metaboxes
+	 *
+	 * @return array
 	 */
 	public function registerSettings($rwmb_metaboxes)
 	{
 
 
-		$config_metaboxes = (array)apply_filters('owc/pdc_base/config/settings', $this->plugin->config->get('settings'));
+		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/settings', $this->plugin->config->get('settings'));
 		$metaboxes        = [];
 
-		foreach ( $config_metaboxes as $metabox ) {
+		foreach ( $configMetaboxes as $metabox ) {
 
 			$fields = [];
-			foreach ( $metabox['fields'] as $field_group ) {
+			foreach ( $metabox['fields'] as $fieldGroup ) {
 
-				foreach ( $field_group as $field ) {
+				foreach ( $fieldGroup as $field ) {
 
 					if ( isset($field['id']) ) {
 						$field['id'] = $this->prefix . $field['id'];
@@ -68,9 +62,9 @@ class SettingsServiceProvider extends ServiceProvider
 		$metaboxes = apply_filters("owc/pdc_base/before_register_settings", $metaboxes);
 
 		foreach ( $metaboxes as $metabox ) {
-			$rwmb_metaboxes[] = $metabox;
+			$rwmbMetaboxes[] = $metabox;
 		}
 
-		return $rwmb_metaboxes;
+		return $rwmbMetaboxes;
 	}
 }
