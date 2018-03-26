@@ -15,20 +15,21 @@ class MetaboxServiceProvider extends ServiceProvider
 	public function register()
 	{
 
-		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes');
+		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
 	}
 
 	/**
 	 * register metaboxes.
 	 */
-	public function registerMetaboxes()
+	public function registerMetaboxes($rwmb_metaboxes)
 	{
 
-		$metaboxes      = (array) apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
-		$rwmb_metaboxes = [];
+		$config_metaboxes = (array)apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
+		$metaboxes        = [];
 
-		foreach ( $metaboxes as $metabox ) {
+		foreach ( $config_metaboxes as $metabox ) {
 
+			$fields = [];
 			foreach ( $metabox['fields'] as $field_group ) {
 
 				foreach ( $field_group as $field ) {
@@ -36,14 +37,18 @@ class MetaboxServiceProvider extends ServiceProvider
 					if ( isset($field['id']) ) {
 						$field['id'] = $this->prefix . $field['id'];
 					}
-					$rwmb_fields[] = $field;
+					$fields[] = $field;
 				}
 			}
-			$metabox['fields'] = $rwmb_fields;
-			$rwmb_metaboxes[]  = $metabox;
+			$metabox['fields'] = $fields;
+			$metaboxes[]       = $metabox;
 		}
 
-		$rwmb_metaboxes = apply_filters("owc/pdc_base/before_register_metaboxes", $rwmb_metaboxes );
+		$metaboxes = apply_filters("owc/pdc_base/before_register_metaboxes", $metaboxes);
+
+		foreach ( $metaboxes as $metabox ) {
+			$rwmb_metaboxes[] = $metabox;
+		}
 
 		return $rwmb_metaboxes;
 	}
