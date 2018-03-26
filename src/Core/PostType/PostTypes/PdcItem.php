@@ -64,7 +64,7 @@ class PdcItem
 		}
 		if ( false === p2p_type($args['p2p_key']) ) {
 
-			$output['error'] = sprintf('p2p_key "%s" does not exist', $args['p2p_key']);
+			$output['error'] = sprintf(__('p2p_key "%s" does not exist', 'pdc-base'), $args['p2p_key']);
 
 			return $output;
 		}

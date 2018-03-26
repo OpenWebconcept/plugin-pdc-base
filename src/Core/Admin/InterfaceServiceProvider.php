@@ -43,7 +43,7 @@ class InterfaceServiceProvider extends ServiceProvider
 	{
 		if ( 'pdc-item' == $post->post_type ) {
 			$portal_url  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
-			$button_text = "Bekijk in Portal";
+			$button_text = _x('Bekijk in Portal', 'preview button tekst', 'pdc-base');
 			$button_html = sprintf('<a href="%s" target="_blank"><button type="button" class="button button-small" aria-label="%s">%s</button></a>', $portal_url, $button_text, $button_text);
 			$return      .= $button_html;
 		}
@@ -67,8 +67,8 @@ class InterfaceServiceProvider extends ServiceProvider
 				'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
 				$portal_url,
 				/* translators: %s: post title */
-				esc_attr(sprintf(__('View &#8220;%s&#8221;'), $post->post_title)),
-				__('Bekijken in Portal')
+				esc_attr(sprintf(__('Bekijk &#8220;%s&#8221;', 'pdc-base'), $post->post_title)),
+				_x('Bekijken in Portal', 'Preview tekst in PDC lijst', 'pdc-base')
 			);
 		}
 
