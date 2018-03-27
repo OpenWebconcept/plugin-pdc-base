@@ -26,18 +26,18 @@ class PdcItemModel
     * summarizes fields in output
     * @return array $terms
     */
-	private function getTermsAsArray($object, $taxonomy_id = '')
+	private function getTermsAsArray($object, $taxonomyId = '')
 	{
-		$terms = wp_get_post_terms($object['id'], $taxonomy_id);
+		$terms = wp_get_post_terms($object['id'], $taxonomyId);
 
 		if ( ! is_wp_error($terms) ) {
 
-			$collected_terms = [];
+			$collectedTerms = [];
 
 			foreach ( $terms as $term ) {
-				$collected_terms[] = ['ID' => $term->term_id, 'name' => $term->name, 'slug' => $term->slug];
+				$collectedTerms[] = ['ID' => $term->term_id, 'name' => $term->name, 'slug' => $term->slug];
 			}
-			$terms = $collected_terms;
+			$terms = $collectedTerms;
 		}
 
 		return $terms;
@@ -69,15 +69,15 @@ class PdcItemModel
 			return $output;
 		}
 
-		$p2p_items_name = $args['p2p_key'];
+		$p2pItemsName = $args['p2p_key'];
 
-		$connected = p2p_type($p2p_items_name)->get_connected($item['id']);
+		$connected = p2p_type($p2pItemsName)->get_connected($item['id']);
 
 		if ( ! empty($connected->posts) ) {
 
-			foreach ( $connected->posts as $connected_item ) {
+			foreach ( $connected->posts as $connectedItem ) {
 
-				$output[] = call_user_func($args['item_callback'], $connected_item, $args['item_callback_args']);
+				$output[] = call_user_func($args['item_callback'], $connectedItem, $args['item_callback_args']);
 			}
 		}
 
@@ -96,26 +96,29 @@ class PdcItemModel
 	}
 
 	/**
+	 * Retrieves links metadata from object.
+	 * Escapes output
+	 *
 	 * @param $object
 	 * @param $field_name
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public static function get_links($object, string $field_name, $request) : array
+	public function getLinks($object, $field_name, $request): array
 	{
 
-		$links      = [];
-		$meta_id    = '_owc_pdc_links_group';
-		$links_data = get_post_meta($object['id'], $meta_id, $single = true);
+		$links     = [];
+		$metaId    = '_owc_pdc_links_group';
+		$linksData = get_post_meta($object['id'], $metaId, true);
 
-		foreach ( $links_data as $link_data ) {
+		foreach ( $linksData as $linkData ) {
 
 			$title = '';
 			$url   = '';
 
-			if ( ! empty($link_data['pdc_links_url']) ) {
-				$url = esc_url($link_data['pdc_links_url']);
+			if ( ! empty($linkData['pdc_links_url']) ) {
+				$url = esc_url($linkData['pdc_links_url']);
 			}
 
 			//$url can be empty after cleaning up, no need to add links without url's
@@ -123,8 +126,8 @@ class PdcItemModel
 				continue;
 			}
 
-			if ( ! empty($link_data['pdc_links_title']) ) {
-				$title = esc_attr(strip_tags($link_data['pdc_links_title']));
+			if ( ! empty($linkData['pdc_links_title']) ) {
+				$title = esc_attr(strip_tags($linkData['pdc_links_title']));
 			}
 
 			//$title can be empty after cleaning up, no need to add links without title
@@ -138,22 +141,32 @@ class PdcItemModel
 			];
 		}
 
-		return $links;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_links', $links, $object, $field_name, $request);
 	}
 
-	public static function get_forms($object, $field_name, $request)
+	/**
+	 * Retrieves forms metadata from object.
+	 * Escapes output
+	 *
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	public static function getForms($object, $field_name, $request): array
 	{
-		$forms      = [];
-		$meta_id    = '_owc_pdc_forms_group';
-		$forms_data = get_post_meta($object['id'], $meta_id, $single = true);
+		$forms     = [];
+		$metaId    = '_owc_pdc_forms_group';
+		$formsData = get_post_meta($object['id'], $metaId, true);
 
-		foreach ( $forms_data as $form_data ) {
+		foreach ( $formsData as $formData ) {
 
 			$title = '';
 			$url   = '';
 
-			if ( ! empty($form_data['pdc_forms_url']) ) {
-				$url = esc_url($form_data['pdc_forms_url']);
+			if ( ! empty($formData['pdc_forms_url']) ) {
+				$url = esc_url($formData['pdc_forms_url']);
 			}
 
 			//$url can be empty after cleaning up, no need to add forms without url's
@@ -161,8 +174,8 @@ class PdcItemModel
 				continue;
 			}
 
-			if ( ! empty($form_data['pdc_forms_title']) ) {
-				$title = esc_attr(strip_tags($form_data['pdc_forms_title']));
+			if ( ! empty($formData['pdc_forms_title']) ) {
+				$title = esc_attr(strip_tags($formData['pdc_forms_title']));
 			}
 
 			//$title can be empty after cleaning up, no need to add forms without title
@@ -176,22 +189,32 @@ class PdcItemModel
 			];
 		}
 
-		return $forms;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_forms', $forms, $object, $field_name, $request);
 	}
 
-	public static function get_downloads($object, $field_name, $request)
+	/**
+	 * Retrieves downloads metadata from object.
+	 * Escapes output
+	 *
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	public static function getDownloads($object, $field_name, $request): array
 	{
-		$downloads      = [];
-		$meta_id        = '_owc_pdc_downloads_group';
-		$downloads_data = get_post_meta($object['id'], $meta_id, $single = true);
+		$downloads     = [];
+		$metaId        = '_owc_pdc_downloads_group';
+		$downloadsData = get_post_meta($object['id'], $metaId, true);
 
-		foreach ( $downloads_data as $download_data ) {
+		foreach ( $downloadsData as $downloadData ) {
 
 			$title = '';
 			$url   = '';
 
-			if ( ! empty($download_data['pdc_downloads_url']) ) {
-				$url = esc_url($download_data['pdc_downloads_url']);
+			if ( ! empty($downloadData['pdc_downloads_url']) ) {
+				$url = esc_url($downloadData['pdc_downloads_url']);
 			}
 
 			//$url can be empty after cleaning up, no need to add downloads without url's
@@ -199,8 +222,8 @@ class PdcItemModel
 				continue;
 			}
 
-			if ( ! empty($download_data['pdc_downloads_title']) ) {
-				$title = esc_attr(strip_tags($download_data['pdc_downloads_title']));
+			if ( ! empty($downloadData['pdc_downloads_title']) ) {
+				$title = esc_attr(strip_tags($downloadData['pdc_downloads_title']));
 			}
 
 			//$title can be empty after cleaning up, no need to add downloads without title
@@ -212,90 +235,109 @@ class PdcItemModel
 				'title' => $title,
 				'url'   => $url
 			];
-
 		}
 
-		return $downloads;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_downloads', $downloads, $object, $field_name, $request);
 	}
 
-	public static function get_title_alternative($object, $field_name, $request)
+	/**
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return string
+	 */
+	public function getTitleAlternative($object, $field_name, $request): string
 	{
 
-		$meta_id           = '_owc_pdc_titel_alternatief';
-		$title_alternative = get_post_meta($object['id'], $meta_id, $single = true);
-		$title_alternative = strip_tags($title_alternative);
-		$title_alternative = preg_replace('#[\n\r]+#s', ' ', $title_alternative);
+		$metaId           = '_owc_pdc_titel_alternatief';
+		$titleAlternative = get_post_meta($object['id'], $metaId, true);
+		$titleAlternative = strip_tags($titleAlternative);
+		$titleAlternative = preg_replace('#[\n\r]+#s', ' ', $titleAlternative);
 
-		return $title_alternative;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_title_alternative', $titleAlternative, $object, $field_name, $request);
 	}
 
-	public static function get_appointment($object, $field_name, $request)
+	/**
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	public function getAppointment($object, $field_name, $request): array
 	{
 		$appointment           = [];
 		$appointment['active'] = false;
 
-		$appointment_active = (int)get_post_meta($object['id'], '_owc_pdc_afspraak_active', $single = true);
+		$appointmentActive = (int)get_post_meta($object['id'], '_owc_pdc_afspraak_active', true);
 
-		if ( $appointment_active === 1 ) {
+		if ( $appointmentActive === 1 ) {
 
 			$appointment['title']  = '';
 			$appointment['url']    = '';
 			$appointment['meta']   = '';
 			$appointment['active'] = true;
 
-			$appointment_title = get_post_meta($object['id'], '_owc_pdc_afspraak_title', $single = true);
-			if ( ! empty($appointment_title) ) {
-				$appointment['title'] = esc_attr(strip_tags($appointment_title));
+			$appointmentTitle = get_post_meta($object['id'], '_owc_pdc_afspraak_title', true);
+			if ( ! empty($appointmentTitle) ) {
+				$appointment['title'] = esc_attr(strip_tags($appointmentTitle));
 			}
 
-			$appointment_url = get_post_meta($object['id'], '_owc_pdc_afspraak_url', $single = true);
-			if ( ! empty($appointment_url) ) {
-				$appointment['url'] = esc_url($appointment_url);
+			$appointmentUrl = get_post_meta($object['id'], '_owc_pdc_afspraak_url', true);
+			if ( ! empty($appointmentUrl) ) {
+				$appointment['url'] = esc_url($appointmentUrl);
 			}
 
-			$appointment_meta = get_post_meta($object['id'], '_owc_pdc_afspraak_meta', $single = true);
-			if ( ! empty($appointment_meta) ) {
-				$appointment['meta'] = esc_attr($appointment_meta);
+			$appointmentMeta = get_post_meta($object['id'], '_owc_pdc_afspraak_meta', true);
+			if ( ! empty($appointmentMeta) ) {
+				$appointment['meta'] = esc_attr($appointmentMeta);
 			}
 		}
 
-		return $appointment;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_appointment', $appointment, $object, $field_name, $request);
 	}
 
-	public static function get_featured_image($object, $field_name, $request)
+	public function getFeaturedImage($object, $field_name, $request): array
 	{
 
-		$featured_img_data = [];
+		$featuredImgData = [];
 
 		if ( has_post_thumbnail($object['id']) ) {
 
-			$featured_img_post = get_post($object['featured_media']);
+			$featuredImgPost = get_post($object['featured_media']);
 
-			$featured_img_data['title']       = $featured_img_post->post_title;
-			$featured_img_data['description'] = $featured_img_post->post_content;
-			$featured_img_data['caption']     = $featured_img_post->post_excerpt;
-			$featured_img_data['alt']         = get_post_meta($featured_img_post->ID, '_wp_attachment_image_alt', true);
+			$featuredImgData['title']       = $featuredImgPost->post_title;
+			$featuredImgData['description'] = $featuredImgPost->post_content;
+			$featuredImgData['caption']     = $featuredImgPost->post_excerpt;
+			$featuredImgData['alt']         = get_post_meta($featuredImgPost->ID, '_wp_attachment_image_alt', true);
 
-			$featured_img_size = 'large';
-			$featured_img      = wp_get_attachment_image($object['featured_media'], $featured_img_size);
+			$featuredImgSize = 'large';
+			$featuredImg     = wp_get_attachment_image($object['featured_media'], $featuredImgSize);
 
 			add_filter('wp_get_attachment_metadata', [
 				'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItemModel',
 				'filterWpGetAttachmentMetadata'
 			], 10, 5);
-			$featured_img_metadata = wp_get_attachment_metadata($object['featured_media'], $unfiltered = false);
-			unset($featured_img_metadata['image_meta']);
+			$featuredImgMetadata = wp_get_attachment_metadata($object['featured_media'], $unfiltered = false);
+			unset($featuredImgMetadata['image_meta']);
 
-			$featured_img_data['rendered'] = $featured_img;
-			$featured_img_data['metadata'] = $featured_img_metadata;
-			$featured_img_data['sizes']    = wp_get_attachment_image_sizes($object['featured_media'], $featured_img_size, $featured_img_metadata);
-			$featured_img_data['srcset']   = wp_get_attachment_image_srcset($object['featured_media'], $featured_img_size, $featured_img_metadata);
+			$featuredImgData['rendered'] = $featuredImg;
+			$featuredImgData['metadata'] = $featuredImgMetadata;
+			$featuredImgData['sizes']    = wp_get_attachment_image_sizes($object['featured_media'], $featuredImgSize, $featuredImgMetadata);
+			$featuredImgData['srcset']   = wp_get_attachment_image_srcset($object['featured_media'], $featuredImgSize, $featuredImgMetadata);
 		}
 
-		return $featured_img_data;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_featured_image', $featuredImgData, $object, $field_name, $request);
 	}
 
-	public static function filterWpGetAttachmentMetadata($data, $attachment_id)
+	/**
+	 * @param $data
+	 * @param $attachment_id
+	 *
+	 * @return array
+	 */
+	public static function filterWpGetAttachmentMetadata($data, $attachment_id): array
 	{
 		/**
 		 * removing filter, to prevent nesting of filter
@@ -306,44 +348,58 @@ class PdcItemModel
 		], 10);
 
 		if ( ! empty($data['sizes']) ) {
-			foreach ( $data['sizes'] as $size => $size_data ) {
+			foreach ( $data['sizes'] as $size => $sizeData ) {
 
-				$attachment_image_src          = wp_get_attachment_image_src($attachment_id, $size);
-				$data['sizes'][ $size ]['url'] = $attachment_image_src[0];
+				$attachmentImageSrc            = wp_get_attachment_image_src($attachment_id, $size);
+				$data['sizes'][ $size ]['url'] = $attachmentImageSrc[0];
 			}
 		}
 
 		return $data;
 	}
 
-	public function get_taxonomies($object, $field_name, $request)
+	/**
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	public function getTaxonomies($object, $field_name, $request): array
 	{
-		$taxonomies_result = [];
+		$taxonomiesResult = [];
 
 		$taxonomies = apply_filters('owc/pdc_base/config/taxonomies', $this->config->get('taxonomies'));
 
-		foreach ( $taxonomies as $taxonomy_id => $value ) {
-			$taxonomy_ids[] = $taxonomy_id;
+		foreach ( $taxonomies as $taxonomyId => $value ) {
+			$taxonomyIds[] = $taxonomyId;
 		}
 
-		$taxonomy_ids = apply_filters('owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids', $taxonomy_ids);
+		$taxonomyIds = apply_filters('owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids', $taxonomyIds, $object, $field_name, $request);
 
-		foreach ( $taxonomy_ids as $taxonomy_id ) {
-			$taxonomies_result[ $taxonomy_id ] = $this->getTermsAsArray($object, $taxonomy_id);
+		foreach ( $taxonomyIds as $taxonomyId ) {
+			$taxonomiesResult[ $taxonomyId ] = $this->getTermsAsArray($object, $taxonomyId);
 		}
 
-		return $taxonomies_result;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_taxonomies', $taxonomiesResult, $object, $field_name, $request);
 	}
 
-	public function get_connections($object, $field_name, $request)
+	/**
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	public function getConnections($object, $field_name, $request): array
 	{
 		$output = [];
 
-		$request_attributes = $request->get_attributes();
-		$request_params     = $request->get_params();
+		$requestAttributes = $request->get_attributes();
+		$requestParams     = $request->get_params();
 
 		//check for usage in list of pdc_items via check for 'get_items' callback method.
-		if ( 'get_item' == $request_attributes['callback'][1] || ! empty($request_params['slug']) ) {
+		if ( 'get_item' == $requestAttributes['callback'][1] || ! empty($requestParams['slug']) ) {
 
 			$connections = apply_filters('owc/pdc_base/config/p2p_connections', $this->config->get('p2p_connections.connections'));
 
@@ -351,16 +407,15 @@ class PdcItemModel
 
 				if ( in_array('pdc-item', $connection, $strict = true) ) {
 
-					$connected_items_args                       = [
+					$connectedItemsArgs                       = [
 						'p2p_key'       => $connection['from'] . '_to_' . $connection['to'],
 						'item_callback' => [$this, 'getPdcItemAsArray'],
 					];
-					$output[ $connected_items_args['p2p_key'] ] = $this->getConnectedItems($object, $connected_items_args);
+					$output[ $connectedItemsArgs['p2p_key'] ] = $this->getConnectedItems($object, $connectedItemsArgs);
 				}
 			}
 		}
 
-		return $output;
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_connections', $output, $object, $field_name, $request);
 	}
-
 }

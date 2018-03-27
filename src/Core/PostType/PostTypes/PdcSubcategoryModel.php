@@ -4,18 +4,22 @@ namespace OWC_PDC_Base\Core\PostType\PostTypes;
 
 use OWC_PDC_Base\Core\Config;
 
-class PdcSubcategory
+class PdcSubcategoryModel
 {
-
-
-	/*
+	/**
 	 * Checks to see if related pdc-items to Subthema have type taxonomy term 'melding' selected
+	 *
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return bool
 	 */
-	public static function has_report($object, $field_name, $request)
+	public function hasReport($object, $field_name, $request): bool
 	{
-		$has_report = false;
+		$hasReport = false;
 
-		$query_args = [
+		$queryArgs = [
 			'post_type'        => 'pdc-item',
 			'connected_type'   => 'pdc-item_to_pdc-subcategory',
 			'posts_per_page'   => - 1,
@@ -32,23 +36,29 @@ class PdcSubcategory
 			],
 		];
 
-		$has_report_check_query = new \WP_Query($query_args);
+		$hasReportCheckQuery = new \WP_Query($queryArgs);
 
-		if ( $has_report_check_query->post_count != 0 ) {
-			$has_report = true;
+		if ( $hasReportCheckQuery->post_count != 0 ) {
+			$hasReport = true;
 		}
 
-		return $has_report;
+		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasReport, $object, $field_name, $request);
 	}
 
-	/*
+	/**
 	 * Checks to see if related pdc-items to Subthema have '_gb_pdc_afspraak_active' enabled
+	 *
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return bool
 	 */
-	public static function has_appointment($object, $field_name, $request)
+	public function hasAppointment($object, $field_name, $request): bool
 	{
-		$has_appointment = false;
+		$hasAppointment = false;
 
-		$query_args = [
+		$queryArgs = [
 			'post_type'        => 'pdc-item',
 			'connected_type'   => 'pdc-item_to_pdc-subcategory',
 			'posts_per_page'   => - 1,
@@ -64,15 +74,15 @@ class PdcSubcategory
 			]
 		];
 
-		$has_appointment_check_query = new \WP_Query($query_args);
+		$hasAppointmentCheckQuery = new \WP_Query($queryArgs);
 
-		if ( $has_appointment_check_query->post_count != 0 ) {
-			$has_appointment = true;
+		if ( $hasAppointmentCheckQuery->post_count != 0 ) {
+			$hasAppointment = true;
 		}
 
 		wp_reset_postdata();
 
-		return $has_appointment;
+		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasAppointment, $object, $field_name, $request);
 	}
 
 }
