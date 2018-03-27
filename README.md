@@ -10,7 +10,8 @@ This README documents whatever steps are necessary to get this plugin up and run
 
 ### Plugin actions/filters ###
 
-owc/pdc_base/config/metaboxes
+*   **owc/pdc_base/config/metaboxes**  
+Filter to change
 owc/pdc_base/before_register_metaboxes
 
 
