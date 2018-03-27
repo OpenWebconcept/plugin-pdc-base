@@ -10,7 +10,7 @@ class MetaboxServiceProvider extends ServiceProvider
 	/**
 	 * @var string
 	 */
-	private $prefix = '_owc_';
+	const PREFIX = '_owc_';
 
 	public function register()
 	{
@@ -21,7 +21,7 @@ class MetaboxServiceProvider extends ServiceProvider
 	/**
 	 * register metaboxes.
 	 */
-	public function registerMetaboxes($rwmb_metaboxes)
+	public function registerMetaboxes($rwmbMetaboxes)
 	{
 
 		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
@@ -35,7 +35,7 @@ class MetaboxServiceProvider extends ServiceProvider
 				foreach ( $fieldGroup as $field ) {
 
 					if ( isset($field['id']) ) {
-						$field['id'] = $this->prefix . $field['id'];
+						$field['id'] = self::PREFIX . $field['id'];
 					}
 					$fields[] = $field;
 				}

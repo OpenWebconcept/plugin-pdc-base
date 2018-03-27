@@ -33,6 +33,8 @@ owc/pdc_base/config/taxonomies
 
 owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids
 
+owc/pdc_base/rest_api/pdcitem/field/get_links
+
 ### Running tests ###
 
 
