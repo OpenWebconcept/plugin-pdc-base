@@ -4,7 +4,7 @@ namespace OWC_PDC_Base\Core\PostType\PostTypes;
 
 use OWC_PDC_Base\Core\Config;
 
-class PdcItem
+class PdcItemModel
 {
 
 
@@ -43,7 +43,7 @@ class PdcItem
 		return $terms;
 	}
 
-	function getConnectedItems($item, $args)
+	public function getConnectedItems($item, $args)
 	{
 
 		$defaults = [
@@ -95,7 +95,14 @@ class PdcItem
 		return $output;
 	}
 
-	public static function get_links($object, $field_name, $request)
+	/**
+	 * @param $object
+	 * @param $field_name
+	 * @param $request
+	 *
+	 * @return array
+	 */
+	public static function get_links($object, string $field_name, $request) : array
 	{
 
 		$links      = [];
@@ -273,7 +280,7 @@ class PdcItem
 			$featured_img      = wp_get_attachment_image($object['featured_media'], $featured_img_size);
 
 			add_filter('wp_get_attachment_metadata', [
-				'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItem',
+				'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItemModel',
 				'filterWpGetAttachmentMetadata'
 			], 10, 5);
 			$featured_img_metadata = wp_get_attachment_metadata($object['featured_media'], $unfiltered = false);
@@ -294,7 +301,7 @@ class PdcItem
 		 * removing filter, to prevent nesting of filter
 		 */
 		remove_filter('wp_get_attachment_metadata', [
-			'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItem',
+			'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItemModel',
 			'filterWpGetAttachmentMetadata'
 		], 10);
 
