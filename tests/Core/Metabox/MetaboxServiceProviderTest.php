@@ -22,7 +22,7 @@ class MetaboxServiceProviderTest extends TestCase
 	}
 
 	/** @test */
-	public function check_config_for_metaboxes()
+	public function check_registration_of_metaboxes()
 	{
 		$config = m::mock(Config::class);
 		$plugin = m::mock(BasePlugin::class);
@@ -31,6 +31,7 @@ class MetaboxServiceProviderTest extends TestCase
 		$plugin->loader = m::mock(Loader::class);
 
 		$service = new MetaboxServiceProvider($plugin);
+
 
 		$plugin->loader->shouldReceive('addFilter')->withArgs([
 			'rwmb_meta_boxes',
@@ -42,7 +43,7 @@ class MetaboxServiceProviderTest extends TestCase
 
 		$service->register();
 
-		$config_metaboxes = [
+		$configMetaboxes = [
 			'base' => [
 				'id'     => 'metadata',
 				'fields' => [
@@ -63,7 +64,7 @@ class MetaboxServiceProviderTest extends TestCase
 
 		$prefix = MetaboxServiceProvider::PREFIX;
 
-		$expected_metaboxes = [
+		$expectedMetaboxes = [
 			0 => [
 				'id'     => 'metadata',
 				'fields' => [
@@ -80,9 +81,67 @@ class MetaboxServiceProviderTest extends TestCase
 			]
 		];
 
-		$config->shouldReceive('get')->with('metaboxes')->once()->andReturn($config_metaboxes);
+		$config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
 
-		$this->assertEquals($expected_metaboxes, $service->registerMetaboxes([]));
+		//test for filter being called
+		\WP_Mock::expectFilter('owc/pdc_base/config/metaboxes', $configMetaboxes );
+
+		//test for filter being called
+		\WP_Mock::expectFilter('owc/pdc_base/before_register_metaboxes', $expectedMetaboxes );
+
+		$this->assertEquals($expectedMetaboxes, $service->registerMetaboxes([]));
+
+		$existingMetaboxes = [
+			0 => [
+				'id'     => 'existing_metadata',
+				'fields' => [
+					[
+						'type' => 'existing_heading'
+					],
+					[
+						'id' => $prefix . 'existing_metabox_id1'
+					],
+					[
+						'id' => $prefix . 'existing_metabox_id2'
+					]
+				]
+			]
+		];
+
+		$expectedMetaboxesAfterMerge = [
+
+			0 => [
+				'id'     => 'metadata',
+				'fields' => [
+					[
+						'type' => 'heading'
+					],
+					[
+						'id' => $prefix . 'metabox_id1'
+					],
+					[
+						'id' => $prefix . 'metabox_id2'
+					]
+				]
+			],
+			1 => [
+				'id'     => 'existing_metadata',
+				'fields' => [
+					[
+						'type' => 'existing_heading'
+					],
+					[
+						'id' => $prefix . 'existing_metabox_id1'
+					],
+					[
+						'id' => $prefix . 'existing_metabox_id2'
+					]
+				]
+			]
+		];
+
+		$config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
+
+		$this->assertEquals($expectedMetaboxesAfterMerge, $service->registerMetaboxes($existingMetaboxes));
 	}
-
 }
