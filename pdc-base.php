@@ -23,10 +23,15 @@ if ( ! defined('WPINC')) {
 }
 
 /**
- * Only manual loaded file: the autoloader.
+ * manual loaded file: the autoloader.
  */
 require_once __DIR__.'/autoloader.php';
 $autoloader = new Autoloader();
+
+/**
+ * manual loaded file: Extended CPT
+ */
+require_once __DIR__.'/src/vendor/johnbillion/extended-cpts/extended-cpts.php';
 
 /**
  * Begin execution of the plugin
