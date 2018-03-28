@@ -33,7 +33,7 @@ class PostTypeServiceProvider extends ServiceProvider
 
 		if ( function_exists('register_extended_post_type') ) {
 
-			foreach ( $this->configPosttypes as $postTypeName => $postType ) {
+			foreach ( $this->configPostTypes as $postTypeName => $postType ) {
 
 				// Examples of registering post types: http://johnbillion.com/extended-cpts/
 				register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
