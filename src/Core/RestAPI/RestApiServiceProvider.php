@@ -49,28 +49,28 @@ class RestApiServiceProvider extends ServiceProvider
 		return $defaults;
 	}
 
-	public function filterEndpointsWhitelist($endpoints_whitelist)
+	public function filterEndpointsWhitelist($endpointsWhitelist)
 	{
 
 		//remove default root endpoint
-		unset($endpoints_whitelist['wp/v2']);
+		unset($endpointsWhitelist['wp/v2']);
 
-		$endpoints_whitelist['wp/v2'] = [
+		$endpointsWhitelist['wp/v2'] = [
 			'endpoint_stub' => '/wp/v2/pdc',
 			'methods'       => ['GET']
 		];
 
-		return $endpoints_whitelist;
+		return $endpointsWhitelist;
 	}
 
 	public function filterRestPreparePdcItem($response, $post, $request)
 	{
 
-		$request_attributes = $request->get_attributes();
-		$request_params     = $request->get_params();
+		$requestAttributes = $request->get_attributes();
+		$requestParams     = $request->get_params();
 
 		//check for usage in list of pdc_items via check for 'get_items' callback method.
-		if ( 'get_items' == $request_attributes['callback'][1] && ! isset($request_params['slug']) ) {
+		if ( 'get_items' == $requestAttributes['callback'][1] && ! isset($requestParams['slug']) ) {
 
 			$response->data['connected']['pdc-item_to_pdc-subcategory'] = [];
 			if ( ! empty($response->data['connected']['pdc-item_to_pdc-subcategory'] = $post->connected) ) {

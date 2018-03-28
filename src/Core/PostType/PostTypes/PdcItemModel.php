@@ -100,12 +100,12 @@ class PdcItemModel
 	 * Escapes output
 	 *
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public function getLinks($object, $field_name, $request): array
+	public function getLinks($object, $fieldName, $request): array
 	{
 
 		$links     = [];
@@ -141,7 +141,7 @@ class PdcItemModel
 			];
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_links', $links, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_links', $links, $object, $fieldName, $request);
 	}
 
 	/**
@@ -149,12 +149,12 @@ class PdcItemModel
 	 * Escapes output
 	 *
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public static function getForms($object, $field_name, $request): array
+	public static function getForms($object, $fieldName, $request): array
 	{
 		$forms     = [];
 		$metaId    = '_owc_pdc_forms_group';
@@ -189,7 +189,7 @@ class PdcItemModel
 			];
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_forms', $forms, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_forms', $forms, $object, $fieldName, $request);
 	}
 
 	/**
@@ -197,12 +197,12 @@ class PdcItemModel
 	 * Escapes output
 	 *
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public static function getDownloads($object, $field_name, $request): array
+	public static function getDownloads($object, $fieldName, $request): array
 	{
 		$downloads     = [];
 		$metaId        = '_owc_pdc_downloads_group';
@@ -236,18 +236,18 @@ class PdcItemModel
 				'url'   => $url
 			];
 		}
-
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_downloads', $downloads, $object, $field_name, $request);
+		
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_downloads', $downloads, $object, $fieldName, $request);
 	}
 
 	/**
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return string
 	 */
-	public function getTitleAlternative($object, $field_name, $request): string
+	public function getTitleAlternative($object, $fieldName, $request): string
 	{
 
 		$metaId           = '_owc_pdc_titel_alternatief';
@@ -255,17 +255,17 @@ class PdcItemModel
 		$titleAlternative = strip_tags($titleAlternative);
 		$titleAlternative = preg_replace('#[\n\r]+#s', ' ', $titleAlternative);
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_title_alternative', $titleAlternative, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_title_alternative', $titleAlternative, $object, $fieldName, $request);
 	}
 
 	/**
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public function getAppointment($object, $field_name, $request): array
+	public function getAppointment($object, $fieldName, $request): array
 	{
 		$appointment           = [];
 		$appointment['active'] = false;
@@ -295,10 +295,10 @@ class PdcItemModel
 			}
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_appointment', $appointment, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_appointment', $appointment, $object, $fieldName, $request);
 	}
 
-	public function getFeaturedImage($object, $field_name, $request): array
+	public function getFeaturedImage($object, $fieldName, $request): array
 	{
 
 		$featuredImgData = [];
@@ -328,16 +328,16 @@ class PdcItemModel
 			$featuredImgData['srcset']   = wp_get_attachment_image_srcset($object['featured_media'], $featuredImgSize, $featuredImgMetadata);
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_featured_image', $featuredImgData, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_featured_image', $featuredImgData, $object, $fieldName, $request);
 	}
 
 	/**
 	 * @param $data
-	 * @param $attachment_id
+	 * @param $attachmentId
 	 *
 	 * @return array
 	 */
-	public static function filterWpGetAttachmentMetadata($data, $attachment_id): array
+	public static function filterWpGetAttachmentMetadata($data, $attachmentId): array
 	{
 		/**
 		 * removing filter, to prevent nesting of filter
@@ -350,7 +350,7 @@ class PdcItemModel
 		if ( ! empty($data['sizes']) ) {
 			foreach ( $data['sizes'] as $size => $sizeData ) {
 
-				$attachmentImageSrc            = wp_get_attachment_image_src($attachment_id, $size);
+				$attachmentImageSrc            = wp_get_attachment_image_src($attachmentId, $size);
 				$data['sizes'][ $size ]['url'] = $attachmentImageSrc[0];
 			}
 		}
@@ -360,12 +360,12 @@ class PdcItemModel
 
 	/**
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public function getTaxonomies($object, $field_name, $request): array
+	public function getTaxonomies($object, $fieldName, $request): array
 	{
 		$taxonomiesResult = [];
 
@@ -375,23 +375,23 @@ class PdcItemModel
 			$taxonomyIds[] = $taxonomyId;
 		}
 
-		$taxonomyIds = apply_filters('owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids', $taxonomyIds, $object, $field_name, $request);
+		$taxonomyIds = apply_filters('owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids', $taxonomyIds, $object, $fieldName, $request);
 
 		foreach ( $taxonomyIds as $taxonomyId ) {
 			$taxonomiesResult[ $taxonomyId ] = $this->getTermsAsArray($object, $taxonomyId);
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_taxonomies', $taxonomiesResult, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_taxonomies', $taxonomiesResult, $object, $fieldName, $request);
 	}
 
 	/**
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return array
 	 */
-	public function getConnections($object, $field_name, $request): array
+	public function getConnections($object, $fieldName, $request): array
 	{
 		$output = [];
 
@@ -416,6 +416,6 @@ class PdcItemModel
 			}
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_connections', $output, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_connections', $output, $object, $fieldName, $request);
 	}
 }

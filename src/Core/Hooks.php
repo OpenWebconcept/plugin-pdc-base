@@ -17,7 +17,7 @@ class Hooks
      * This method is called immediately after any plugin is activated, and may be used to detect the activation of
      * plugins. If a plugin is silently activated (such as during an update), this hook does not fire.
      */
-    public static function pluginActivated($plugin, $network_activation)
+    public static function pluginActivated($plugin, $networkActivation)
     {
 
     }
@@ -26,7 +26,7 @@ class Hooks
      * This method is run immediately after any plugin is deactivated, and may be used to detect the deactivation of
      * other plugins.
      */
-    public static function pluginDeactivated($plugin, $network_activation)
+    public static function pluginDeactivated($plugin, $networkActivation)
     {
 
     }
@@ -79,7 +79,7 @@ class Hooks
         }
     }
 
-    public function activateAppOnNewBlog($blog_id, $user_id, $domain, $path, $site_id, $meta)
+    public function activateAppOnNewBlog($blogId, $userId, $domain, $path, $siteId, $meta)
     {
 
     }

@@ -32,40 +32,40 @@ class PostsToPostsServiceProvider extends ServiceProvider
 	{
 		if ( function_exists('p2p_register_connection_type') ) {
 
-			$posttypes_info          = apply_filters('owc/pdc_base/config/p2p_posttypes_info', $this->plugin->config->get('p2p_connections.posttypes_info'));
-			$default_connection_args = apply_filters('owc/pdc_base/p2p_connection_defaults', $this->connectionDefaults);
+			$posttypesInfo          = apply_filters('owc/pdc_base/config/p2p_posttypes_info', $this->plugin->config->get('p2p_connections.posttypes_info'));
+			$defaultConnectionArgs = apply_filters('owc/pdc_base/p2p_connection_defaults', $this->connectionDefaults);
 
 			$connections             = apply_filters('owc/pdc_base/config/p2p_connections', $this->plugin->config->get('p2p_connections.connections'));
 
-			foreach ( $connections as $connection_args ) {
+			foreach ( $connections as $connectionArgs ) {
 
-				$args = array_merge($default_connection_args, $connection_args);
+				$args = array_merge($defaultConnectionArgs, $connectionArgs);
 
-				$connection_type = [
-					'id'              => $posttypes_info[ $connection_args['from'] ]['id'] . '_to_' . $posttypes_info[ $connection_args['to'] ]['id'],
-					'from'            => $connection_args['from'],
-					'to'              => $connection_args['to'],
+				$connectionType = [
+					'id'              => $posttypesInfo[ $connectionArgs['from'] ]['id'] . '_to_' . $posttypesInfo[ $connectionArgs['to'] ]['id'],
+					'from'            => $connectionArgs['from'],
+					'to'              => $connectionArgs['to'],
 					'sortable'        => $args['sortable'],
 					'admin_column'    => 'any',
 					'from_labels'     => [
-						'column_title' => $posttypes_info[ $connection_args['to'] ]['title']
+						'column_title' => $posttypesInfo[ $connectionArgs['to'] ]['title']
 					],
 					'title'           => [
-						'from' => 'Koppel met een ' . $posttypes_info[ $connection_args['to'] ]['title'] . ' ',
-						'to'   => 'Koppel met een ' . $posttypes_info[ $connection_args['from'] ]['title'] . ' '
+						'from' => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['to'] ]['title'] . ' ',
+						'to'   => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['from'] ]['title'] . ' '
 					],
 					'can_create_post' => $args['can_create_post'],
 					'reciprocal'      => $args['reciprocal'],
 				];
 
-				if ( $connection_args['from'] == $connection_args['to'] ) {
-					$connection_type['title']['to'] = '';
-					$connection_type['admin_box']   = 'from';
+				if ( $connectionArgs['from'] == $connectionArgs['to'] ) {
+					$connectionType['title']['to'] = '';
+					$connectionType['admin_box']   = 'from';
 				}
 
-				$connection_type = apply_filters("owc/pdc_base/before_register_p2p_connection/{$posttypes_info[ $connection_args['from'] ]['id']}/{$posttypes_info[ $connection_args['to'] ]['id']}", $connection_type );
+				$connectionType = apply_filters("owc/pdc_base/before_register_p2p_connection/{$posttypesInfo[ $connectionArgs['from'] ]['id']}/{$posttypesInfo[ $connectionArgs['to'] ]['id']}", $connectionType );
 
-				p2p_register_connection_type($connection_type);
+				p2p_register_connection_type($connectionType);
 			}
 		}
 	}

@@ -10,12 +10,12 @@ class PdcSubcategoryModel
 	 * Checks to see if related pdc-items to Subthema have type taxonomy term 'melding' selected
 	 *
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return bool
 	 */
-	public function hasReport($object, $field_name, $request): bool
+	public function hasReport($object, $fieldName, $request): bool
 	{
 		$hasReport = false;
 
@@ -42,19 +42,19 @@ class PdcSubcategoryModel
 			$hasReport = true;
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasReport, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasReport, $object, $fieldName, $request);
 	}
 
 	/**
 	 * Checks to see if related pdc-items to Subthema have '_gb_pdc_afspraak_active' enabled
 	 *
 	 * @param $object
-	 * @param $field_name
+	 * @param $fieldName
 	 * @param $request
 	 *
 	 * @return bool
 	 */
-	public function hasAppointment($object, $field_name, $request): bool
+	public function hasAppointment($object, $fieldName, $request): bool
 	{
 		$hasAppointment = false;
 
@@ -82,7 +82,7 @@ class PdcSubcategoryModel
 
 		wp_reset_postdata();
 
-		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasAppointment, $object, $field_name, $request);
+		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasAppointment, $object, $fieldName, $request);
 	}
 
 }

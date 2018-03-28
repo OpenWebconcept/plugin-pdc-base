@@ -27,8 +27,8 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 	public function get_item($request)
 	{
 
-		$pdc_active = (bool)get_post_meta($request['id'], '_owc_pdc_active', $single = true);
-		if ( ! $pdc_active ) {
+		$pdcActive = (bool)get_post_meta($request['id'], '_owc_pdc_active', $single = true);
+		if ( ! $pdcActive ) {
 			$response = new \WP_Error('rest_post_invalid_id', 'PDC-item2 is not active.', ['status' => 404]);
 
 			return $response;
@@ -82,7 +82,7 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 		 * name equivalents (some are the same). Only values which are also
 		 * present in $registered will be set.
 		 */
-		$parameter_mappings = [
+		$parameterMappings = [
 			'author'         => 'author__in',
 			'author_exclude' => 'author__not_in',
 			'exclude'        => 'post__not_in',
@@ -103,9 +103,9 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 		 * For each known parameter which is both registered and present in the request,
 		 * set the parameter's value on the query $args.
 		 */
-		foreach ( $parameter_mappings as $api_param => $wp_param ) {
-			if ( isset($registered[ $api_param ], $request[ $api_param ]) ) {
-				$args[ $wp_param ] = $request[ $api_param ];
+		foreach ( $parameterMappings as $apiParam => $wpParam ) {
+			if ( isset($registered[ $apiparam ], $request[ $apiparam ]) ) {
+				$args[ $wpParam ] = $request[ $apiparam ];
 			}
 		}
 
@@ -128,9 +128,9 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 		}
 
 		if ( isset($registered['sticky'], $request['sticky']) ) {
-			$sticky_posts = get_option('sticky_posts', []);
-			if ( ! is_array($sticky_posts) ) {
-				$sticky_posts = [];
+			$stickyPosts = get_option('sticky_posts', []);
+			if ( ! is_array($stickyPosts) ) {
+				$stickyPosts = [];
 			}
 			if ( $request['sticky'] ) {
 				/*
@@ -138,8 +138,8 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 				 * we have to support the case where post__in was already
 				 * specified.
 				 */
-				$args['post__in'] = $args['post__in'] ? array_intersect($sticky_posts, $args['post__in']) :
-					$sticky_posts;
+				$args['post__in'] = $args['post__in'] ? array_intersect($stickyPosts, $args['post__in']) :
+					$stickyPosts;
 
 				/*
 				 * If we intersected, but there are no post ids in common,
@@ -150,13 +150,13 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 					$args['post__in'] = [0];
 				}
 			} else {
-				if ( $sticky_posts ) {
+				if ( $stickyPosts ) {
 					/*
 					 * As post___not_in will be used to only get posts that
 					 * are not sticky, we have to support the case where post__not_in
 					 * was already specified.
 					 */
-					$args['post__not_in'] = array_merge($args['post__not_in'], $sticky_posts);
+					$args['post__not_in'] = array_merge($args['post__not_in'], $stickyPosts);
 				}
 			}
 		}
@@ -177,16 +177,16 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 		 * @param WP_REST_Request $request The request used.
 		 */
 		$args       = apply_filters("rest_{$this->post_type}_query", $args, $request);
-		$query_args = $this->prepare_items_query($args, $request);
+		$queryArgs = $this->prepare_items_query($args, $request);
 
 		$taxonomies = wp_list_filter(get_object_taxonomies($this->post_type, 'objects'), ['show_in_rest' => true]);
 
 		foreach ( $taxonomies as $taxonomy ) {
 			$base        = ! empty($taxonomy->rest_base) ? $taxonomy->rest_base : $taxonomy->name;
-			$tax_exclude = $base . '_exclude';
+			$taxExclude = $base . '_exclude';
 
 			if ( ! empty($request[ $base ]) ) {
-				$query_args['tax_query'][] = [
+				$queryArgs['tax_query'][] = [
 					'taxonomy'         => $taxonomy->name,
 					'field'            => 'term_id',
 					'terms'            => $request[ $base ],
@@ -194,22 +194,22 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 				];
 			}
 
-			if ( ! empty($request[ $tax_exclude ]) ) {
-				$query_args['tax_query'][] = [
+			if ( ! empty($request[ $taxExclude ]) ) {
+				$queryArgs['tax_query'][] = [
 					'taxonomy'         => $taxonomy->name,
 					'field'            => 'term_id',
-					'terms'            => $request[ $tax_exclude ],
+					'terms'            => $request[ $taxExclude ],
 					'include_children' => false,
 					'operator'         => 'NOT IN',
 				];
 			}
 		}
 
-		$posts_query = new \WP_Query();
+		$postsQuery = new \WP_Query();
 
-		$query_result = $posts_query->query($query_args);
+		$queryResult = $postsQuery->query($queryArgs);
 
-		p2p_type('pdc-item_to_pdc-subcategory')->each_connected($query_result);
+		p2p_type('pdc-item_to_pdc-subcategory')->each_connected($queryResult);
 
 		// Allow access to all password protected posts if the context is edit.
 		if ( 'edit' === $request['context'] ) {
@@ -218,7 +218,7 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 
 		$posts = [];
 
-		foreach ( $query_result as $post ) {
+		foreach ( $queryResult as $post ) {
 			if ( ! $this->check_read_permission($post) ) {
 				continue;
 			}
@@ -232,42 +232,42 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 			remove_filter('post_password_required', '__return_false');
 		}
 
-		$page        = (int)$query_args['paged'];
-		$total_posts = $posts_query->found_posts;
+		$page        = (int)$queryArgs['paged'];
+		$totalPosts = $postsQuery->found_posts;
 
-		if ( $total_posts < 1 ) {
+		if ( $totalPosts < 1 ) {
 			// Out-of-bounds, run the query again without LIMIT for total count.
-			unset($query_args['paged']);
+			unset($queryArgs['paged']);
 
-			$count_query = new \WP_Query();
-			$count_query->query($query_args);
-			$total_posts = $count_query->found_posts;
+			$countQuery = new \WP_Query();
+			$countQuery->query($queryArgs);
+			$totalPosts = $countQuery->found_posts;
 		}
 
-		$max_pages = ceil($total_posts / (int)$posts_query->query_vars['posts_per_page']);
+		$maxPages = ceil($totalPosts / (int)$postsQuery->query_vars['posts_per_page']);
 		$response  = rest_ensure_response($posts);
 
-		$response->header('X-WP-Total', (int)$total_posts);
-		$response->header('X-WP-TotalPages', (int)$max_pages);
+		$response->header('X-WP-Total', (int)$totalPosts);
+		$response->header('X-WP-TotalPages', (int)$maxPages);
 
-		$request_params = $request->get_query_params();
-		$base           = add_query_arg($request_params, rest_url(sprintf('%s/%s', $this->namespace, $this->rest_base)));
+		$requestParams = $request->get_query_params();
+		$base           = add_query_arg($requestParams, rest_url(sprintf('%s/%s', $this->namespace, $this->rest_base)));
 
 		if ( $page > 1 ) {
-			$prev_page = $page - 1;
+			$prevPage = $page - 1;
 
-			if ( $prev_page > $max_pages ) {
-				$prev_page = $max_pages;
+			if ( $prevPage > $maxPages ) {
+				$prevPage = $maxPages;
 			}
 
-			$prev_link = add_query_arg('page', $prev_page, $base);
-			$response->link_header('prev', $prev_link);
+			$prevLink = add_query_arg('page', $prevPage, $base);
+			$response->link_header('prev', $prevLink);
 		}
-		if ( $max_pages > $page ) {
-			$next_page = $page + 1;
-			$next_link = add_query_arg('page', $next_page, $base);
+		if ( $maxPages > $page ) {
+			$nextPage = $page + 1;
+			$nextLink = add_query_arg('page', $nextPage, $base);
 
-			$response->link_header('next', $next_link);
+			$response->link_header('next', $nextLink);
 		}
 
 		return $response;

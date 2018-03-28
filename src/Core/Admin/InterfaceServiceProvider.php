@@ -21,31 +21,31 @@ class InterfaceServiceProvider extends ServiceProvider
 	 * Action to edit link to modify current 'PDC-item' with deeplink to corresponding Portal onderwerp
 	 * href-node => http://gembur.dev/wp/wp-admin/post.php?post=74&amp;action=edit
 	 *
-	 * @param $wp_admin_bar
+	 * @param $wpAdminBar
 	 */
-	function filterAdminbarMenu($wp_admin_bar)
+	function filterAdminbarMenu($wpAdminBar)
 	{
-		$view_node = $wp_admin_bar->get_node('view');
-		if ( ! empty($view_node) ) {
+		$viewNode = $wpAdminBar->get_node('view');
+		if ( ! empty($viewNode) ) {
 
 			global $post;
 
 			if ( $post->post_type == 'pdc-item' ) {
-				$portal_url       = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
-				$view_node->href  = $portal_url;
-				$view_node->title = 'Bekijk PDC item in portal';
-				$wp_admin_bar->add_node($view_node);
+				$portalUrl       = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+				$viewNode->href  = $portalUrl;
+				$viewNode->title = 'Bekijk PDC item in portal';
+				$wpAdminBar->add_node($viewNode);
 			}
 		}
 	}
 
-	function filterGetSamplePermalinkHtml($return, $post_id, $new_title, $new_slug, $post)
+	function filterGetSamplePermalinkHtml($return, $postId, $newTitle, $newSlug, $post)
 	{
 		if ( 'pdc-item' == $post->post_type ) {
-			$portal_url  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
-			$button_text = _x('Bekijk in Portal', 'preview button tekst', 'pdc-base');
-			$button_html = sprintf('<a href="%s" target="_blank"><button type="button" class="button button-small" aria-label="%s">%s</button></a>', $portal_url, $button_text, $button_text);
-			$return      .= $button_html;
+			$portalUrl  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+			$buttonText = _x('Bekijk in Portal', 'preview button tekst', 'pdc-base');
+			$buttonHtml = sprintf('<a href="%s" target="_blank"><button type="button" class="button button-small" aria-label="%s">%s</button></a>', $portalUrl, $buttonText, $buttonText);
+			$return      .= $buttonHtml;
 		}
 
 		return $return;
@@ -61,11 +61,11 @@ class InterfaceServiceProvider extends ServiceProvider
 	{
 		if ( ! empty($actions['view']) && $post->post_type == 'pdc-item' ) {
 
-			$portal_url = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+			$portalUrl = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
 
 			$actions['view'] = sprintf(
 				'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
-				$portal_url,
+				$portalUrl,
 				/* translators: %s: post title */
 				esc_attr(sprintf(__('Bekijk &#8220;%s&#8221;', 'pdc-base'), $post->post_title)),
 				_x('Bekijken in Portal', 'Preview tekst in PDC lijst', 'pdc-base')

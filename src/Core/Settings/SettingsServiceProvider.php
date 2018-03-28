@@ -37,7 +37,7 @@ class SettingsServiceProvider extends ServiceProvider
 	 *
 	 * @return array
 	 */
-	public function registerSettings($rwmb_metaboxes)
+	public function registerSettings($rwmbMetaboxes)
 	{
 
 
