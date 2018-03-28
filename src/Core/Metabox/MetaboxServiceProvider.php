@@ -2,7 +2,6 @@
 
 namespace OWC_PDC_Base\Core\Metabox;
 
-use Illuminate\Support\Collection;
 use OWC_PDC_Base\Core\Plugin\ServiceProvider;
 
 class MetaboxServiceProvider extends ServiceProvider
@@ -27,59 +26,45 @@ class MetaboxServiceProvider extends ServiceProvider
 
 		foreach ( $configMetaboxes as $metabox ) {
 
-			$fields = [];
-			foreach ( $metabox['fields'] as $fieldGroup ) {
-
-				foreach ( $fieldGroup as $field ) {
-
-					if ( isset($field['id']) ) {
-						$field['id'] = self::PREFIX . $field['id'];
-					}
-					$fields[] = $field;
-				}
-			}
-			$metabox['fields'] = $fields;
-			$metaboxes[]       = $metabox;
+			$metaboxes[] = $this->processMetabox($metabox);
 		}
 
 		return array_merge( $rwmbMetaboxes, apply_filters("owc/pdc_base/before_register_metaboxes", $metaboxes) );
 	}
 
-//	/**
-//	 * register metaboxes.
-//	 */
-//	public function registerMetaboxes($rwmbMetaboxes): array
-//	{
-//
-//		return ( new Collection(apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'))) )
-//			->map(function($metabox) {
-//				return $this->addPrefix($metabox);
-//			})
-//			->values()
-//			->pipe(function($collection) {
-//				return new Collection( apply_filters('owc/pdc_base/before_register_metaboxes', $collection->toArray()));
-//			})
-//			->merge($rwmbMetaboxes)
-//			->toArray();
-//	}
-//
-//	private function addPrefix(array $metabox)
-//	{
-//		$fields = [];
-//		foreach ( $metabox['fields'] as $fieldGroup ) {
-//
-//			foreach ( $fieldGroup as $field ) {
-//
-//				if ( isset($field['id']) ) {
-//					$field['id'] = self::PREFIX . $field['id'];
-//				}
-//				$fields[] = $field;
-//			}
-//		}
-//		$metabox['fields'] = $fields;
-//
-//		return $metabox;
-//
-//	}
+	private function processMetabox(array $metabox)
+	{
+		foreach ( $metabox['fields'] as $fieldGroup ) {
+
+			$fields = $this->processFieldGroup($fieldGroup);
+
+		}
+		$metabox['fields'] = $fields;
+
+		return $metabox;
+	}
+
+
+	private function processFieldGroup($fieldGroup)
+	{
+
+		$fields = [];
+		foreach ( $fieldGroup as $field ) {
+
+			$fields[] = $this->addPrefix($field);
+		}
+
+		return $fields;
+	}
+
+	private function addPrefix($field)
+	{
+
+		if ( isset($field['id']) ) {
+			$field['id'] = self::PREFIX . $field['id'];
+		}
+
+		return $field;
+	}
 
 }
