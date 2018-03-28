@@ -29,11 +29,11 @@ class MetaboxServiceProvider extends ServiceProvider
 			->map(function($metabox) {
 				return $this->addPrefix($metabox);
 			})
+			->values()
 			->pipe(function($collection) {
-				return new Collection(apply_filters("owc/pdc_base/before_register_metaboxes", $collection->toArray()));
+				return new Collection( apply_filters('owc/pdc_base/before_register_metaboxes', $collection->toArray()));
 			})
 			->merge($rwmbMetaboxes)
-			->values()
 			->toArray();
 	}
 

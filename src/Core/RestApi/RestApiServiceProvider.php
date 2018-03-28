@@ -18,7 +18,7 @@ class RestApiServiceProvider extends ServiceProvider
 	}
 
 	/**
-	 * register endpoint fields for use in the RestAPI.
+	 * register endpoint fields for use in the RestApi.
 	 */
 	public function registerRestApiEndpointsFields()
 	{
