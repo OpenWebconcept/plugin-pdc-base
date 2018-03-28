@@ -32,7 +32,6 @@ class MetaboxServiceProviderTest extends TestCase
 
 		$service = new MetaboxServiceProvider($plugin);
 
-
 		$plugin->loader->shouldReceive('addFilter')->withArgs([
 			'rwmb_meta_boxes',
 			$service,
@@ -111,20 +110,6 @@ class MetaboxServiceProviderTest extends TestCase
 		$expectedMetaboxesAfterMerge = [
 
 			0 => [
-				'id'     => 'metadata',
-				'fields' => [
-					[
-						'type' => 'heading'
-					],
-					[
-						'id' => $prefix . 'metabox_id1'
-					],
-					[
-						'id' => $prefix . 'metabox_id2'
-					]
-				]
-			],
-			1 => [
 				'id'     => 'existing_metadata',
 				'fields' => [
 					[
@@ -135,6 +120,20 @@ class MetaboxServiceProviderTest extends TestCase
 					],
 					[
 						'id' => $prefix . 'existing_metabox_id2'
+					]
+				]
+			],
+			1 => [
+				'id'     => 'metadata',
+				'fields' => [
+					[
+						'type' => 'heading'
+					],
+					[
+						'id' => $prefix . 'metabox_id1'
+					],
+					[
+						'id' => $prefix . 'metabox_id2'
 					]
 				]
 			]

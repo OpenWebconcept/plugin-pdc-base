@@ -8,9 +8,6 @@ use OWC_PDC_Base\Core\Plugin\ServiceProvider;
 class MetaboxServiceProvider extends ServiceProvider
 {
 
-	/**
-	 * @var string
-	 */
 	const PREFIX = '_owc_';
 
 	public function register()
@@ -22,38 +19,67 @@ class MetaboxServiceProvider extends ServiceProvider
 	/**
 	 * register metaboxes.
 	 */
-	public function registerMetaboxes($rwmbMetaboxes): array
+	public function registerMetaboxes($rwmbMetaboxes)
 	{
 
-		return ( new Collection(apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'))) )
-			->map(function($metabox) {
-				return $this->addPrefix($metabox);
-			})
-			->values()
-			->pipe(function($collection) {
-				return new Collection( apply_filters('owc/pdc_base/before_register_metaboxes', $collection->toArray()));
-			})
-			->merge($rwmbMetaboxes)
-			->toArray();
-	}
+		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
+		$metaboxes        = [];
 
-	private function addPrefix(array $metabox)
-	{
-		$fields = [];
-		foreach ( $metabox['fields'] as $fieldGroup ) {
+		foreach ( $configMetaboxes as $metabox ) {
 
-			foreach ( $fieldGroup as $field ) {
+			$fields = [];
+			foreach ( $metabox['fields'] as $fieldGroup ) {
 
-				if ( isset($field['id']) ) {
-					$field['id'] = self::PREFIX . $field['id'];
+				foreach ( $fieldGroup as $field ) {
+
+					if ( isset($field['id']) ) {
+						$field['id'] = self::PREFIX . $field['id'];
+					}
+					$fields[] = $field;
 				}
-				$fields[] = $field;
 			}
+			$metabox['fields'] = $fields;
+			$metaboxes[]       = $metabox;
 		}
-		$metabox['fields'] = $fields;
 
-		return $metabox;
-
+		return array_merge( $rwmbMetaboxes, apply_filters("owc/pdc_base/before_register_metaboxes", $metaboxes) );
 	}
+
+//	/**
+//	 * register metaboxes.
+//	 */
+//	public function registerMetaboxes($rwmbMetaboxes): array
+//	{
+//
+//		return ( new Collection(apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'))) )
+//			->map(function($metabox) {
+//				return $this->addPrefix($metabox);
+//			})
+//			->values()
+//			->pipe(function($collection) {
+//				return new Collection( apply_filters('owc/pdc_base/before_register_metaboxes', $collection->toArray()));
+//			})
+//			->merge($rwmbMetaboxes)
+//			->toArray();
+//	}
+//
+//	private function addPrefix(array $metabox)
+//	{
+//		$fields = [];
+//		foreach ( $metabox['fields'] as $fieldGroup ) {
+//
+//			foreach ( $fieldGroup as $field ) {
+//
+//				if ( isset($field['id']) ) {
+//					$field['id'] = self::PREFIX . $field['id'];
+//				}
+//				$fields[] = $field;
+//			}
+//		}
+//		$metabox['fields'] = $fields;
+//
+//		return $metabox;
+//
+//	}
 
 }
