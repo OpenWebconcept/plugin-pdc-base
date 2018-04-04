@@ -3,70 +3,53 @@
 namespace OWC_PDC_Base\Core\Settings;
 
 use OWC_PDC_Base\Core\Plugin\ServiceProvider;
+use OWC_PDC_Base\Core\Metabox\MetaboxBaseServiceProvider;
 
-class SettingsServiceProvider extends ServiceProvider
+class SettingsServiceProvider extends MetaboxBaseServiceProvider
 {
-
-	/**
-	 * @var string
-	 */
-	private $prefix = '_owc_';
 
 	public function register()
 	{
 
-		$this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage');
+		$this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage', 10, 1);
 		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerSettings', 10, 1);
-
-		$this->plugin->settings = get_option( $this->prefix .'pdc_base_settings');
+		$this->plugin->loader->addAction('admin_init', $this, 'getSettingsOption');
 	}
 
 	/**
 	 *
 	 */
-	public function registerSettingsPage()
+	public function registerSettingsPage($rwmbSettingsPages)
 	{
 
 		$settingsPages = (array) apply_filters('owc/pdc_base/config/settings_pages', $this->plugin->config->get('settings_pages'));
 
-		return $settingsPages;
+		return array_merge($rwmbSettingsPages, $settingsPages);
 	}
 
 	/**
-	 * @param $rwmb_metaboxes
+	 * register metaboxes for settings page
+	 *
+	 * @param $rwmbMetaboxes
 	 *
 	 * @return array
 	 */
 	public function registerSettings($rwmbMetaboxes)
 	{
-
-
 		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/settings', $this->plugin->config->get('settings'));
 		$metaboxes        = [];
 
 		foreach ( $configMetaboxes as $metabox ) {
 
-			$fields = [];
-			foreach ( $metabox['fields'] as $fieldGroup ) {
-
-				foreach ( $fieldGroup as $field ) {
-
-					if ( isset($field['id']) ) {
-						$field['id'] = $this->prefix . $field['id'];
-					}
-					$fields[] = $field;
-				}
-			}
-			$metabox['fields'] = $fields;
-			$metaboxes[]       = $metabox;
+			$metaboxes[] = $this->processMetabox($metabox);
 		}
 
-		$metaboxes = apply_filters("owc/pdc_base/before_register_settings", $metaboxes);
+		return array_merge($rwmbMetaboxes, apply_filters("owc/pdc_base/before_register_settings", $metaboxes));
+	}
 
-		foreach ( $metaboxes as $metabox ) {
-			$rwmbMetaboxes[] = $metabox;
-		}
-
-		return $rwmbMetaboxes;
+	public function getSettingsOption()
+	{
+		//TODO implement better way of retrieving settings (used in InterfaceServiceProvider)
+		$this->plugin->settings = get_option(self::PREFIX . 'pdc_base_settings');
 	}
 }
