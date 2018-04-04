@@ -25,6 +25,7 @@ class PostTypeServiceProvider extends ServiceProvider
 	{
 		return $this->configPostTypes;
 	}
+
 	/**
 	 * register custom posttypes.
 	 */
