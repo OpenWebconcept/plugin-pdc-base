@@ -26,7 +26,7 @@ class PdcItemModel
     * summarizes fields in output
     * @return array $terms
     */
-	private function getTermsAsArray($object, $taxonomyId = '')
+	protected function getTermsAsArray($object, $taxonomyId = '')
 	{
 		$terms = wp_get_post_terms($object['id'], $taxonomyId);
 

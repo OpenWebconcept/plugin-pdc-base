@@ -45,8 +45,8 @@ class RestApiServiceProvider extends ServiceProvider
 
 	public function filterConfigExpanderSettings($settings)
 	{
-		var_dump( $settings );
-		exit;
+//		var_dump( $settings );
+//		exit;
 		$defaults['DISABLE_REST_API'] = false;
 
 		return $defaults;
