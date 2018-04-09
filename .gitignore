@@ -91,3 +91,4 @@ bower_components
 *.map
 
 vendor
+!/src/vendor
