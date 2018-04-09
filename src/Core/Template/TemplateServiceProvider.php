@@ -16,8 +16,9 @@ class TemplateServiceProvider extends ServiceProvider
 	{
 		if ( ! ( is_admin() || wp_doing_ajax() || is_feed() ) ) {
 
-			wp_redirect('https://www.openwebconcept.nl/');
-			die;
+			if ( wp_redirect('https://www.openwebconcept.nl/') ) {
+				exit();
+			};
 		}
 	}
 }
