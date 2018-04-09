@@ -11,6 +11,7 @@ namespace OWC_PDC_Base\Core\RestApi;
  * of PDC item via '_owc_pdc_active' metakey
  * also added p2p connected items to response
  *
+ * @codeCoverageIgnore
  */
 class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 {
@@ -29,7 +30,7 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 
 		$pdcActive = (bool)get_post_meta($request['id'], '_owc_pdc_active', $single = true);
 		if ( ! $pdcActive ) {
-			$response = new \WP_Error('rest_post_invalid_id', 'PDC-item2 is not active.', ['status' => 404]);
+			$response = new \WP_Error('rest_post_invalid_id', 'PDC-item is not active.', ['status' => 404]);
 
 			return $response;
 		}

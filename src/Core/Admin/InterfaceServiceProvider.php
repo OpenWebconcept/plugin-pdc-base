@@ -12,7 +12,6 @@ class InterfaceServiceProvider extends ServiceProvider
 
 		$this->plugin->loader->addFilter('admin_bar_menu', $this, 'filterAdminbarMenu', 999);
 		$this->plugin->loader->addFilter('get_sample_permalink_html', $this, 'filterGetSamplePermalinkHtml', 10, 5);
-
 		$this->plugin->loader->addAction('page_row_actions', $this, 'actionModifyPageRowActions', 999, 2);
 	}
 
@@ -23,7 +22,7 @@ class InterfaceServiceProvider extends ServiceProvider
 	 *
 	 * @param $wpAdminBar
 	 */
-	function filterAdminbarMenu($wpAdminBar)
+	public function filterAdminbarMenu($wpAdminBar)
 	{
 		$viewNode = $wpAdminBar->get_node('view');
 		if ( ! empty($viewNode) ) {
@@ -39,7 +38,7 @@ class InterfaceServiceProvider extends ServiceProvider
 		}
 	}
 
-	function filterGetSamplePermalinkHtml($return, $postId, $newTitle, $newSlug, $post)
+	public function filterGetSamplePermalinkHtml($return, $postId, $newTitle, $newSlug, $post)
 	{
 		if ( 'pdc-item' == $post->post_type ) {
 			$portalUrl  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
@@ -57,7 +56,7 @@ class InterfaceServiceProvider extends ServiceProvider
 	 * @param $actions
 	 * @param $post
 	 */
-	function actionModifyPageRowActions($actions, $post)
+	public function actionModifyPageRowActions($actions, $post)
 	{
 		if ( ! empty($actions['view']) && $post->post_type == 'pdc-item' ) {
 

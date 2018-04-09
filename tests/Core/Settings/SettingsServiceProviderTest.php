@@ -94,8 +94,6 @@ class SettingsServiceProviderTest extends TestCase
 
 		$this->assertEquals($existingSettingsPageAfterMerge, $service->registerSettingsPage($existingSettingsPage));
 
-
-
 		$configMetaboxes = [
 			'base' => [
 				'id'             => 'metadata',
