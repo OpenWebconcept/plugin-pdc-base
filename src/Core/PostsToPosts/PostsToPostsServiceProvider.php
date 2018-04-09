@@ -32,10 +32,9 @@ class PostsToPostsServiceProvider extends ServiceProvider
 	{
 		if ( function_exists('p2p_register_connection_type') ) {
 
-			$posttypesInfo          = apply_filters('owc/pdc_base/config/p2p_posttypes_info', $this->plugin->config->get('p2p_connections.posttypes_info'));
+			$posttypesInfo         = apply_filters('owc/pdc_base/config/p2p_posttypes_info', $this->plugin->config->get('p2p_connections.posttypes_info'));
 			$defaultConnectionArgs = apply_filters('owc/pdc_base/p2p_connection_defaults', $this->connectionDefaults);
-
-			$connections             = apply_filters('owc/pdc_base/config/p2p_connections', $this->plugin->config->get('p2p_connections.connections'));
+			$connections           = apply_filters('owc/pdc_base/config/p2p_connections', $this->plugin->config->get('p2p_connections.connections'));
 
 			foreach ( $connections as $connectionArgs ) {
 
@@ -51,8 +50,8 @@ class PostsToPostsServiceProvider extends ServiceProvider
 						'column_title' => $posttypesInfo[ $connectionArgs['to'] ]['title']
 					],
 					'title'           => [
-						'from' => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['to'] ]['title'] . ' ',
-						'to'   => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['from'] ]['title'] . ' '
+						'from' => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['to'] ]['title'],
+						'to'   => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['from'] ]['title']
 					],
 					'can_create_post' => $args['can_create_post'],
 					'reciprocal'      => $args['reciprocal'],
