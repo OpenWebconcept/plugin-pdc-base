@@ -29,10 +29,10 @@ class InterfaceServiceProvider extends ServiceProvider
 
 			global $post;
 
-			if ( $post->post_type == 'pdc-item' ) {
+			if ( get_post_type($post) === 'pdc-item' ) {
 				$portalUrl       = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
 				$viewNode->href  = $portalUrl;
-				$viewNode->title = 'Bekijk PDC item in portal';
+				$viewNode->title = __('Bekijk PDC item in portal', 'pdc-base');
 				$wpAdminBar->add_node($viewNode);
 			}
 		}
