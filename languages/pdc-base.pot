@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-26 13:52+0000\n"
+"POT-Creation-Date: 2018-04-16 13:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -103,7 +103,7 @@ msgid "Link URL"
 msgstr ""
 
 #: config/metaboxes.php:99 config/metaboxes.php:126 config/metaboxes.php:153
-#: config/settings.php:17
+#: config/settings.php:14
 msgid "URL inclusief http(s)://"
 msgstr ""
 
@@ -224,27 +224,39 @@ msgid "PDC subthemas"
 msgstr ""
 
 #: config/settings.php:7
-msgid "PDC basis plugin instellingen"
-msgstr ""
-
-#: config/settings.php:13
+msgctxt "PDC instellingen subpagina"
 msgid "Portal"
 msgstr ""
 
-#: config/settings.php:16
+#: config/settings.php:13
 msgid "Portal URL"
 msgstr ""
 
-#: config/settings.php:22
-msgid "PDC item slug"
+#: config/settings.php:19
+msgid "Portal PDC item slug"
 msgstr ""
 
-#: config/settings.php:23
+#: config/settings.php:20
 msgid "URL van de PDC items in de portal, bv \"onderwerp\""
 msgstr ""
 
 #: config/settings_pages.php:9
-msgid "PDC instellingen pagina"
+msgid "PDC instellingen"
+msgstr ""
+
+#: config/settings_pages.php:11
+msgctxt "PDC instellingen subpagina"
+msgid "Basis"
+msgstr ""
+
+#: config/settings_pages.php:14
+msgctxt "PDC instellingen subpagina"
+msgid "Opslaan"
+msgstr ""
+
+#: config/settings_pages.php:16
+msgctxt "PDC instellingen tab"
+msgid "Algemeen"
 msgstr ""
 
 #: config/taxonomies.php:22
@@ -295,6 +307,31 @@ msgstr ""
 #: config/taxonomies.php:106
 msgctxt "Taxonomie definitie"
 msgid "Eigenaren"
+msgstr ""
+
+#: src/Core/Admin/InterfaceServiceProvider.php:35
+msgid "Bekijk PDC item in portal"
+msgstr ""
+
+#: src/Core/Admin/InterfaceServiceProvider.php:45
+msgctxt "preview button tekst"
+msgid "Bekijk in Portal"
+msgstr ""
+
+#. %s: post title
+#: src/Core/Admin/InterfaceServiceProvider.php:69
+#, php-format
+msgid "Bekijk &#8220;%s&#8221;"
+msgstr ""
+
+#: src/Core/Admin/InterfaceServiceProvider.php:70
+msgctxt "Preview tekst in PDC lijst"
+msgid "Bekijken in Portal"
+msgstr ""
+
+#: src/Core/PostType/PostTypes/PdcItemModel.php:67
+#, php-format
+msgid "p2p_key \"%s\" does not exist"
 msgstr ""
 
 #. Name of the plugin
