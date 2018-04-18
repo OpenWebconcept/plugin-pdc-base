@@ -83,7 +83,7 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 		 * name equivalents (some are the same). Only values which are also
 		 * present in $registered will be set.
 		 */
-		$parameterMappings = [
+		$parameter_mappings = array(
 			'author'         => 'author__in',
 			'author_exclude' => 'author__not_in',
 			'exclude'        => 'post__not_in',
@@ -98,15 +98,15 @@ class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 			'search'         => 's',
 			'slug'           => 'post_name__in',
 			'status'         => 'post_status',
-		];
+		);
 
 		/*
 		 * For each known parameter which is both registered and present in the request,
 		 * set the parameter's value on the query $args.
 		 */
-		foreach ( $parameterMappings as $apiParam => $wpParam ) {
-			if ( isset($registered[ $apiparam ], $request[ $apiparam ]) ) {
-				$args[ $wpParam ] = $request[ $apiparam ];
+		foreach ( $parameter_mappings as $api_param => $wp_param ) {
+			if ( isset( $registered[ $api_param ], $request[ $api_param ] ) ) {
+				$args[ $wp_param ] = $request[ $api_param ];
 			}
 		}
 
