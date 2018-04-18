@@ -33,6 +33,14 @@ class RestApiServiceProviderTest extends TestCase
 		$service = new RestApiServiceProvider($plugin);
 
 		$plugin->loader->shouldReceive('addFilter')->withArgs([
+			'owc/config-expander/rest-api/whitelist',
+			$service,
+			'filterEndpointsWhitelist',
+			10,
+			1
+		])->once();
+
+		$plugin->loader->shouldReceive('addFilter')->withArgs([
 			'rest_api_init',
 			$service,
 			'registerRestApiEndpointsFields',

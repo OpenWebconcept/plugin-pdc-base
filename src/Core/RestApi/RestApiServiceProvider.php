@@ -11,9 +11,7 @@ class RestApiServiceProvider extends ServiceProvider
 
 	public function register()
 	{
-		//TODO: check proper usage and timing of filter from config-expander
-		//$this->plugin->loader->addFilter('owc/config-expander/settings', $this, 'filterConfigExpanderSettings', 10, 1);
-		//$this->plugin->loader->addFilter('config_expander_rest_endpoints_whitelist', $this,'filterEndpointsWhitelist', 10, 1);
+		$this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this,'filterEndpointsWhitelist', 10, 1);
 		$this->plugin->loader->addFilter('rest_api_init', $this, 'registerRestApiEndpointsFields', 10);
 		$this->plugin->loader->addFilter('rest_prepare_pdc-item', $this, 'filterRestPreparePdcItem', 10, 3);
 	}
@@ -43,18 +41,8 @@ class RestApiServiceProvider extends ServiceProvider
 		}
 	}
 
-	public function filterConfigExpanderSettings($settings)
-	{
-//		var_dump( $settings );
-//		exit;
-		$defaults['DISABLE_REST_API'] = false;
-
-		return $defaults;
-	}
-
 	public function filterEndpointsWhitelist($endpointsWhitelist)
 	{
-
 		//remove default root endpoint
 		unset($endpointsWhitelist['wp/v2']);
 
