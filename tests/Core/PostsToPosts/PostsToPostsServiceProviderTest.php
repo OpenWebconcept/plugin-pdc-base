@@ -105,7 +105,6 @@ class PostsToPostsServiceProviderTest extends TestCase
 				]
 		];
 
-		//$connections           = apply_filters('owc/pdc_base/config/p2p_connections', $this->plugin->config->get('p2p_connections.connections'));
 		$config->shouldReceive('get')->with('p2p_connections.posttypes_info')->once()->andReturn($configPostTypesInfo);
 
 		$configConnections = [
@@ -132,9 +131,7 @@ class PostsToPostsServiceProviderTest extends TestCase
 		];
 
 		//test for filter being called
-		\WP_Mock::expectFilter('owc/pdc_base/config/p2p_posttypes_info', $configPostTypesInfo);
 		\WP_Mock::expectFilter('owc/pdc_base/p2p_connection_defaults', $connectionDefaults);
-		\WP_Mock::expectFilter('owc/pdc_base/config/p2p_connections', $configConnections);
 
 		$connectionType1 = [
 			'id'              => 'posttype1_to_posttype2',

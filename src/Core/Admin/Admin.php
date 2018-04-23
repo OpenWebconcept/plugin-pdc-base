@@ -3,7 +3,7 @@
 namespace OWC_PDC_Base\Core\Admin;
 
 use OWC_PDC_Base\Core\Plugin\ServiceProvider;
-use OWC_PDC_Base\Core\Plugin\BasePlugin;
+use OWC_PDC_Base\Core\Plugin;
 
 class Admin
 {
@@ -25,9 +25,9 @@ class Admin
     /**
      * Admin constructor.
      *
-     * @param \OWC_PDC_Base\Core\Plugin\BasePLugin $plugin
+     * @param \OWC_PDC_Base\Core\Plugin $plugin
      */
-    public function __construct(BasePlugin $plugin)
+    public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
         $this->loader = $plugin->loader;

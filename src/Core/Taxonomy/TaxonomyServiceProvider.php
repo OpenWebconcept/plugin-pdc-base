@@ -18,15 +18,6 @@ class TaxonomyServiceProvider extends ServiceProvider
 	{
 
 		$this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
-		$this->configTaxonomies = apply_filters('owc/pdc_base/config/taxonomies', $this->plugin->config->get('taxonomies'));
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getConfigTaxonomies()
-	{
-		return $this->configTaxonomies;
 	}
 
 	/**
@@ -34,9 +25,9 @@ class TaxonomyServiceProvider extends ServiceProvider
 	 */
 	public function registerTaxonomies()
 	{
-
 		if ( function_exists('register_extended_taxonomy') ) {
 
+			$this->configTaxonomies = $this->plugin->config->get('taxonomies');
 			foreach ( $this->configTaxonomies as $taxonomyName => $taxonomy ) {
 
 				// Examples of registering taxonomies: http://johnbillion.com/extended-cpts/

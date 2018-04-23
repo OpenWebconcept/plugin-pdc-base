@@ -19,7 +19,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 	 */
 	public function registerMetaboxes($rwmbMetaboxes)
 	{
-		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/metaboxes', $this->plugin->config->get('metaboxes'));
+		$configMetaboxes = $this->plugin->config->get('metaboxes');
 		$metaboxes        = [];
 
 		foreach ( $configMetaboxes as $metabox ) {

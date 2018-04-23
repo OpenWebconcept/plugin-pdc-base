@@ -92,9 +92,6 @@ class RestApiServiceProviderTest extends TestCase
 
 		$config->shouldReceive('get')->with('rest_api_fields')->once()->andReturn($configRestApiFields);
 
-		//test for filter being called
-		\WP_Mock::expectFilter('owc/pdc_base/config/rest_api_fields_per_posttype', $configRestApiFields);
-
 		\WP_Mock::userFunction('post_type_exists', [
 				'args'   => [\WP_Mock\Functions::anyOf('posttype1', 'posttype2')],
 				'times'  => '0+',

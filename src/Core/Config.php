@@ -12,6 +12,20 @@ class Config
      */
     protected $path;
 
+	/**
+	 * Plugin name
+	 *
+	 * @var string
+	 */
+	protected $pluginName;
+
+	/**
+	 * Array with all filters to be called after processing config files.
+	 *
+	 * @var array
+	 */
+	protected $filters = [];
+
     /**
      * Array with all the config values.
      *
@@ -41,6 +55,22 @@ class Config
     {
         $this->scanDirectory($this->getPath());
     }
+
+	/**
+	 * Filter distinct 'file' nodes in config-items.
+	 */
+	public function filter()
+	{
+		foreach ( $this->filters as $filter ) {
+
+			$parts = explode('/', $filter);
+
+			foreach ( $parts as $part ) {
+				$filterName = 'owc/' . $this->pluginName . '/config/' . $filter;
+				$this->items[ $part ] = apply_filters( $filterName, $this->items[ $part ]);
+			}
+		}
+	}
 
     /**
      * Retrieve a specific config value from the configuration repository.
@@ -96,9 +126,19 @@ class Config
         $this->path = $path;
     }
 
+	/**
+	 * Sets the pluginName.
+	 *
+	 * @param $pluginName
+	 */
+	public function setPluginName($pluginName)
+	{
+		$this->pluginName = $pluginName;
+	}
+
     private function scanDirectory($path)
     {
-        $files = glob($path.'/*');
+	    $files = glob($path . '/*', GLOB_NOSORT);
 
         foreach ($files as $file) {
             $fileType = filetype($file);
@@ -112,6 +152,7 @@ class Config
                 // If its in the first directory just add the file.
                 if ($path == $this->path) {
                     $this->items[$name] = $value;
+	                $this->addToFilters($name, $name);
                     continue;
                 }
 
@@ -121,6 +162,7 @@ class Config
                 // Build an array from the path.
                 $items = [];
                 $items[$name] = $value;
+	            $this->addToFilters($path . '/' . $name, $name);
                 foreach (array_reverse(explode('/', $path)) as $key) {
                     $items = [ $key => $items ];
                 }
@@ -130,5 +172,13 @@ class Config
             }
         }
     }
+
+	private function addToFilters($filter, $name)
+	{
+		//skip 'reserved' names (admin/core)
+		if ( ! in_array($name, ['admin', 'core']) ) {
+			$this->filters[] = $filter;
+		}
+	}
 
 }

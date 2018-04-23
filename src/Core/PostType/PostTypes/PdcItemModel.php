@@ -369,7 +369,7 @@ class PdcItemModel
 	{
 		$taxonomiesResult = [];
 
-		$taxonomies = apply_filters('owc/pdc_base/config/taxonomies', $this->config->get('taxonomies'));
+		$taxonomies = $this->config->get('taxonomies');
 
 		foreach ( $taxonomies as $taxonomyId => $value ) {
 			$taxonomyIds[] = $taxonomyId;
@@ -401,7 +401,7 @@ class PdcItemModel
 		//check for usage in list of pdc_items via check for 'get_items' callback method.
 		if ( 'get_item' == $requestAttributes['callback'][1] || ! empty($requestParams['slug']) ) {
 
-			$connections = apply_filters('owc/pdc_base/config/p2p_connections', $this->config->get('p2p_connections.connections'));
+			$connections = $this->config->get('p2p_connections.connections');
 
 			foreach ( $connections as $connection ) {
 

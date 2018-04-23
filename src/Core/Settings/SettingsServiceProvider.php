@@ -22,7 +22,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
 	public function registerSettingsPage($rwmbSettingsPages)
 	{
 
-		$settingsPages = (array) apply_filters('owc/pdc_base/config/settings_pages', $this->plugin->config->get('settings_pages'));
+		$settingsPages = $this->plugin->config->get('settings_pages');
 
 		return array_merge($rwmbSettingsPages, $settingsPages);
 	}
@@ -36,8 +36,8 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
 	 */
 	public function registerSettings($rwmbMetaboxes)
 	{
-		$configMetaboxes = (array)apply_filters('owc/pdc_base/config/settings', $this->plugin->config->get('settings'));
-		$metaboxes        = [];
+		$configMetaboxes = $this->plugin->config->get('settings');
+		$metaboxes       = [];
 
 		foreach ( $configMetaboxes as $metabox ) {
 

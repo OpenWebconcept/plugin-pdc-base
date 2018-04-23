@@ -65,8 +65,6 @@ class SettingsServiceProviderTest extends TestCase
 
 		$config->shouldReceive('get')->with('settings_pages')->once()->andReturn($configSettingsPage);
 
-		\WP_Mock::expectFilter('owc/pdc_base/config/settings_pages', $configSettingsPage);
-
 		$this->assertEquals($configSettingsPage, $service->registerSettingsPage([]));
 
 		$existingSettingsPage = [
@@ -89,8 +87,6 @@ class SettingsServiceProviderTest extends TestCase
 		];
 
 		$config->shouldReceive('get')->with('settings_pages')->once()->andReturn($configSettingsPage);
-
-		\WP_Mock::expectFilter('owc/pdc_base/config/settings_pages', $configSettingsPage);
 
 		$this->assertEquals($existingSettingsPageAfterMerge, $service->registerSettingsPage($existingSettingsPage));
 
@@ -135,9 +131,6 @@ class SettingsServiceProviderTest extends TestCase
 		];
 
 		$config->shouldReceive('get')->with('settings')->once()->andReturn($configMetaboxes);
-
-		//test for filter being called
-		\WP_Mock::expectFilter('owc/pdc_base/config/settings', $configMetaboxes);
 
 		//test for filter being called
 		\WP_Mock::expectFilter('owc/pdc_base/before_register_settings', $expectedMetaboxes);

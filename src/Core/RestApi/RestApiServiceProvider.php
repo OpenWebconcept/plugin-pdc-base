@@ -22,7 +22,7 @@ class RestApiServiceProvider extends ServiceProvider
 	public function registerRestApiEndpointsFields()
 	{
 
-		$restApiFieldsPerPostType = apply_filters('owc/pdc_base/config/rest_api_fields_per_posttype', $this->plugin->config->get('rest_api_fields'));
+		$restApiFieldsPerPostType = $this->plugin->config->get('rest_api_fields');
 
 		foreach ( $restApiFieldsPerPostType as $postType => $restApiFields ) {
 
