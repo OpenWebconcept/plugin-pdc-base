@@ -7,7 +7,7 @@ use OWC_PDC_Base\Core\Config;
 use OWC_PDC_Base\Core\Plugin\BasePlugin;
 use OWC_PDC_Base\Core\Plugin\Loader;
 use OWC_PDC_Base\Core\PostType\PostTypes\PdcItemModel;
-use OWC_PDC_Base\Core\Tests\TestCase;
+use OWC_PDC_Base\Core\Tests\Unit\TestCase;
 
 class PdcItemModelTest extends TestCase
 {

@@ -30,6 +30,7 @@ class Plugin extends BasePlugin
     public function boot()
     {
 	    $this->config->setPluginName(self::NAME);
+	    $this->config->setFilterExceptions(['core']);
 	    $this->config->boot();
 
 	    $this->bootServiceProviders();
