@@ -19,8 +19,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => _x('Doelgroep', 'Taxonomie definitie', 'pdc-base'),
-			'plural'   => _x('Doelgroepen', 'Taxonomie definitie', 'pdc-base'),
+			'singular' => _x('Audience', 'Taxonomy definition', 'pdc-base'),
+			'plural'   => _x('Audiences', 'Taxonomy definition', 'pdc-base'),
 			'slug'     => 'pdc-doelgroep'
 		]
 	],
@@ -40,8 +40,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => _x('Type', 'Taxonomie definitie', 'pdc-base'),
-			'plural'   => _x('Types', 'Taxonomie definitie', 'pdc-base'),
+			'singular' => _x('Type', 'Taxonomy definition', 'pdc-base'),
+			'plural'   => _x('Types', 'Taxonomy definition', 'pdc-base'),
 			'slug'     => 'pdc-type'
 		]
 	],
@@ -61,8 +61,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => _x('Kenmerk', 'Taxonomie definitie', 'pdc-base'),
-			'plural'   => _x('Kenmerken', 'Taxonomie definitie', 'pdc-base'),
+			'singular' => _x('Aspect', 'Taxonomy definition', 'pdc-base'),
+			'plural'   => _x('Aspects', 'Taxonomy definition', 'pdc-base'),
 			'slug'     => 'pdc-kenmerk'
 		]
 	],
@@ -81,8 +81,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => _x('Toepassing', 'Taxonomie definitie', 'pdc-base'),
-			'plural'   => _x('Toepassingen', 'Taxonomie definitie', 'pdc-base'),
+			'singular' => _x('Usage', 'Taxonomy definition', 'pdc-base'),
+			'plural'   => _x('Usages', 'Taxonomy definition', 'pdc-base'),
 			'slug'     => 'pdc-toepassing'
 		]
 	],
@@ -102,8 +102,8 @@ return [
 		'names'        => [
 
 			# Override the base names used for labels:
-			'singular' => _x('Eigenaar', 'Taxonomie definitie', 'pdc-base'),
-			'plural'   => _x('Eigenaren', 'Taxonomie definitie', 'pdc-base'),
+			'singular' => _x('Owner', 'Taxonomy definition', 'pdc-base'),
+			'plural'   => _x('Owners', 'Taxonomy definition', 'pdc-base'),
 			'slug'     => 'pdc-owner'
 		]
 	]

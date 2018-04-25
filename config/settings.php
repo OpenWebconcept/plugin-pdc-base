@@ -11,13 +11,13 @@ return [
 			'portal' => [
 				'portal_url'    => [
 					'name' => __('Portal URL','pdc-base'),
-					'desc' => __('URL inclusief http(s)://','pdc-base'),
+					'desc' => __('URL including http(s)://','pdc-base'),
 					'id'   => 'setting_portal_url',
 					'type' => 'text'
 				],
 				'pdc_item_slug' => [
 					'name' => __('Portal PDC item slug','pdc-base'),
-					'desc' => __('URL van de PDC items in de portal, bv "onderwerp"','pdc-base'),
+					'desc' => __('URL for PDC items in the portal, eg "onderwerp"','pdc-base'),
 					'id'   => 'setting_portal_pdc_item_slug',
 					'type' => 'text'
 				]

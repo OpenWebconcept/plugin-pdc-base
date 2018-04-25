@@ -4,7 +4,7 @@ return [
 
 	'base' => [
 		'id'         => 'pdc_metadata',
-		'title'      => __('Gegevens', 'pdc-base'),
+		'title'      => __('Data', 'pdc-base'),
 		'post_types' => ['pdc-item'],
 		'context'    => 'normal',
 		'priority'   => 'high',
@@ -14,23 +14,23 @@ return [
 			'general'     => [
 				'heading'  => [
 					'type' => 'heading',
-					'name' => __('Algemeen', 'pdc-base'),
+					'name' => __('General', 'pdc-base'),
 				],
 				'title'    => [
-					'name' => __('Alternatieve titel', 'pdc-base'),
-					'desc' => __('Gebruik deze mogelijkheid als de website een alternatieve titel gebruikt', 'pdc-base'),
+					'name' => __('Title alternative', 'pdc-base'),
+					'desc' => __('Use this option if you want to use an alternative title', 'pdc-base'),
 					'id'   => 'pdc_titel_alternatief',
 					'type' => 'text',
 				],
 				'synonyms' => [
-					'name' => __('Synoniemen', 'pdc-base'),
-					'desc' => __('Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of gerelateerde termen mee te geven', 'pdc-base'),
+					'name' => __('Synonyms', 'pdc-base'),
+					'desc' => __('Use this option to add an comma separated list of synonyms or related terms', 'pdc-base'),
 					'id'   => 'pdc_tags',
 					'type' => 'textarea',
 				],
 				'active'   => [
-					'name'    => __('Actief', 'pdc-base'),
-					'desc'    => __('Is dit product op dit moment actief ja/nee', 'pdc-base'),
+					'name'    => __('Active', 'pdc-base'),
+					'desc'    => __('Is this product active yes/no', 'pdc-base'),
 					'id'      => 'pdc_active',
 					'type'    => 'radio',
 					'options' => [
@@ -43,11 +43,11 @@ return [
 			'appointment' => [
 				'heading' => [
 					'type' => 'heading',
-					'name' => __('Afspraak maken', 'pdc-base'),
+					'name' => __('Make an appointment', 'pdc-base'),
 				],
 				'active'   => [
-					'name'    => __('Actief', 'pdc-base'),
-					'desc'    => __('Is het nodig voor dit product een afspraak te maken ja/nee?', 'pdc-base'),
+					'name'    => __('Active', 'pdc-base'),
+					'desc'    => __('Is an appointment obligatory for this product yes/no?', 'pdc-base'),
 					'id'      => 'pdc_afspraak_active',
 					'type'    => 'radio',
 					'options' => [
@@ -57,20 +57,20 @@ return [
 					'std'     => '0',
 				],
 				'title'    => [
-					'name' => __('Afspraak button titel', 'pdc-base'),
-					'desc' => __('Leeg laten als de standaard waarde gebruikt dient te worden', 'pdc-base'),
+					'name' => __('Appointment button title', 'pdc-base'),
+					'desc' => __('Leave empty for default value usage', 'pdc-base'),
 					'id'   => 'pdc_afspraak_title',
 					'type' => 'text',
 				],
 				'url'      => [
-					'name' => __('Afspraak URL', 'pdc-base'),
-					'desc' => __('Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet worden. URL inclusief http(s)://', 'pdc-base'),
+					'name' => __('Appointment URL', 'pdc-base'),
+					'desc' => __('Use this field to get a specific URL for the appointment button. URL including http(s)://', 'pdc-base'),
 					'id'   => 'pdc_afspraak_url',
 					'type' => 'text',
 				],
 				'meta'     => [
-					'name' => __('Afspraak meta', 'pdc-base'),
-					'desc' => __('Gebruik dit veld als de afspraak knop via een hier ingevoerde gegeven werkt (bv GravityForms id, of andere vorm van koppelings data, momenteel nog niet in gebruik)', 'pdc-base'),
+					'name' => __('Appointment meta', 'pdc-base'),
+					'desc' => __('Use this field if the appointment method leverages an special data attribute like eg. GravityForms-id (currently not in use)', 'pdc-base'),
 					'id'   => 'pdc_afspraak_meta',
 					'type' => 'text',
 				]
@@ -89,14 +89,14 @@ return [
 					'fields'     => [
 						[
 							'id'   => 'pdc_links_title',
-							'name' => __('Link titel', 'pdc-base'),
-							'desc' => __('Wordt gebruikt om de link te tonen ipv de URL', 'pdc-base'),
+							'name' => __('Link title', 'pdc-base'),
+							'desc' => __('Use the title to replace the URL', 'pdc-base'),
 							'type' => 'text'
 						],
 						[
 							'id'   => 'pdc_links_url',
 							'name' => __('Link URL', 'pdc-base'),
-							'desc' => __('URL inclusief http(s)://', 'pdc-base'),
+							'desc' => __('URL including http(s)://', 'pdc-base'),
 							'type' => 'text'
 						]
 					]
@@ -116,14 +116,14 @@ return [
 					'fields'     => [
 						[
 							'id'   => 'pdc_downloads_title',
-							'name' => __('Download titel', 'pdc-base'),
-							'desc' => __('Wordt gebruikt om de download te tonen ipv de URL', 'pdc-base'),
+							'name' => __('Download title', 'pdc-base'),
+							'desc' => __('Use the title to replace the URL', 'pdc-base'),
 							'type' => 'text',
 						],
 						[
 							'id'   => 'pdc_downloads_url',
 							'name' => __('Download URL', 'pdc-base'),
-							'desc' => __('URL inclusief http(s)://', 'pdc-base'),
+							'desc' => __('URL including http(s)://', 'pdc-base'),
 							'type' => 'text',
 						]
 					]
@@ -132,7 +132,7 @@ return [
 			'forms'       => [
 				'heading' => [
 					'type' => 'heading',
-					'name' => __('Formulieren', 'pdc-base'),
+					'name' => __('Forms', 'pdc-base'),
 				],
 				'forms'   => [
 					'id'         => 'pdc_forms_group',
@@ -143,14 +143,14 @@ return [
 					'fields'     => [
 						[
 							'id'   => 'pdc_forms_title',
-							'name' => __('Formulier titel', 'pdc-base'),
-							'desc' => __('Wordt gebruikt om het formulier te tonen ipv de URL', 'pdc-base'),
+							'name' => __('Form title', 'pdc-base'),
+							'desc' => __('Use the title to replace the URL', 'pdc-base'),
 							'type' => 'text',
 						],
 						[
 							'id'   => 'pdc_forms_url',
-							'name' => __('Formulier URL', 'pdc-base'),
-							'desc' => __('URL inclusief http(s)://', 'pdc-base'),
+							'name' => __('Form URL', 'pdc-base'),
+							'desc' => __('URL including http(s)://', 'pdc-base'),
 							'type' => 'text',
 						]
 					]
@@ -159,17 +159,17 @@ return [
 			'government'  => [
 				'heading'      => [
 					'type' => 'heading',
-					'name' => __('Overheid standaard', 'pdc-base'),
+					'name' => __('Government standards', 'pdc-base'),
 				],
 				'upl_name'     => [
-					'name' => __('UPL naam', 'pdc-base'),
-					'desc' => __('Bijvoorbeeld: aanduiding naamgebruik', 'pdc-base'),
+					'name' => __('UPL name', 'pdc-base'),
+					'desc' => __('Example: aanduiding naamgebruik', 'pdc-base'),
 					'id'   => 'pdc_upl_naam',
 					'type' => 'text',
 				],
 				'upl_resource' => [
 					'name' => __('UPL resource', 'pdc-base'),
-					'desc' => __('Bijvoorbeeld: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik', 'pdc-base'),
+					'desc' => __('Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik', 'pdc-base'),
 					'id'   => 'pdc_upl_resource',
 					'type' => 'text',
 				]
@@ -177,11 +177,11 @@ return [
 			'other'       => [
 				'heading' => [
 					'type' => 'heading',
-					'name' => __('Overig', 'pdc-base'),
+					'name' => __('Other', 'pdc-base'),
 				],
 				'other'   => [
-					'name' => __('Vrij notitieveld', 'pdc-base'),
-					'desc' => __('(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)', 'pdc-base'),
+					'name' => __('Notes', 'pdc-base'),
+					'desc' => __('(the law, authority, local regulations, etc.)', 'pdc-base'),
 					'id'   => 'pdc_other_meta',
 					'type' => 'textarea',
 					'cols' => 20,

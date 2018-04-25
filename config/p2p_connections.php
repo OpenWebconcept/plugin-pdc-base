@@ -11,17 +11,17 @@ return [
 		'pdc-category'    =>
 			[
 				'id'    => 'pdc-category',
-				'title' => _x('PDC thema', 'P2P titel', 'pdc-base')
+				'title' => _x('PDC theme', 'P2P titel', 'pdc-base')
 			],
 		'pdc-subcategory' =>
 			[
 				'id'    => 'pdc-subcategory',
-				'title' => _x('PDC subthema', 'P2P titel', 'pdc-base')
+				'title' => _x('PDC subtheme', 'P2P titel', 'pdc-base')
 			],
 		'pdc-owner'       =>
 			[
 				'id'    => 'pdc-owner',
-				'title' => _x('PDC eigenaar', 'P2P titel', 'pdc-base')
+				'title' => _x('PDC owner', 'P2P titel', 'pdc-base')
 			]
 	],
 	'connections'    => [

@@ -32,7 +32,7 @@ class InterfaceServiceProvider extends ServiceProvider
 			if ( get_post_type($post) === 'pdc-item' ) {
 				$portalUrl       = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
 				$viewNode->href  = $portalUrl;
-				$viewNode->title = __('Bekijk PDC item in portal', 'pdc-base');
+				$viewNode->title = __('View PDC item in portal', 'pdc-base');
 				$wpAdminBar->add_node($viewNode);
 			}
 		}
@@ -42,7 +42,7 @@ class InterfaceServiceProvider extends ServiceProvider
 	{
 		if ( 'pdc-item' == $post->post_type ) {
 			$portalUrl  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
-			$buttonText = _x('Bekijk in Portal', 'preview button tekst', 'pdc-base');
+			$buttonText = _x('View in Portal', 'preview button text', 'pdc-base');
 			$buttonHtml = sprintf('<a href="%s" target="_blank"><button type="button" class="button button-small" aria-label="%s">%s</button></a>', $portalUrl, $buttonText, $buttonText);
 			$return      .= $buttonHtml;
 		}
@@ -66,8 +66,8 @@ class InterfaceServiceProvider extends ServiceProvider
 				'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
 				$portalUrl,
 				/* translators: %s: post title */
-				esc_attr(sprintf(__('Bekijk &#8220;%s&#8221;', 'pdc-base'), $post->post_title)),
-				_x('Bekijken in Portal', 'Preview tekst in PDC lijst', 'pdc-base')
+				esc_attr(sprintf(__('View &#8220;%s&#8221;', 'pdc-base'), $post->post_title)),
+				_x('View in Portal', 'Preview text in PDC list', 'pdc-base')
 			);
 		}
 
