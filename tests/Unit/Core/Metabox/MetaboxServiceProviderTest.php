@@ -83,7 +83,7 @@ class MetaboxServiceProviderTest extends TestCase
 		$config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
 
 		//test for filter being called
-		\WP_Mock::expectFilter('owc/pdc_base/before_register_metaboxes', $expectedMetaboxes );
+		\WP_Mock::expectFilter('owc/pdc-base/before-register-metaboxes', $expectedMetaboxes );
 
 		$this->assertEquals($expectedMetaboxes, $service->registerMetaboxes([]));
 

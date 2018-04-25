@@ -133,7 +133,7 @@ class SettingsServiceProviderTest extends TestCase
 		$config->shouldReceive('get')->with('settings')->once()->andReturn($configMetaboxes);
 
 		//test for filter being called
-		\WP_Mock::expectFilter('owc/pdc_base/before_register_settings', $expectedMetaboxes);
+		\WP_Mock::expectFilter('owc/pdc-base/before-register-settings', $expectedMetaboxes);
 
 		$this->assertEquals($expectedMetaboxes, $service->registerSettings([]));
 

@@ -33,7 +33,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 		if ( function_exists('p2p_register_connection_type') ) {
 
 			$posttypesInfo         = $this->plugin->config->get('p2p_connections.posttypes_info');
-			$defaultConnectionArgs = apply_filters('owc/pdc_base/p2p_connection_defaults', $this->connectionDefaults);
+			$defaultConnectionArgs = apply_filters('owc/pdc-base/p2p-connection-defaults', $this->connectionDefaults);
 			$connections           = $this->plugin->config->get('p2p_connections.connections');
 
 			foreach ( $connections as $connectionArgs ) {

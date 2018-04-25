@@ -127,7 +127,7 @@ class PdcItemModelTest extends TestCase
 
 		$output = 'Alternative Title';
 
-		\WP_Mock::expectFilter('owc/pdc_base/rest_api/pdcitem/field/get_title_alternative', $output, $object, $fieldName, $request );
+		\WP_Mock::expectFilter('owc/pdc-base/rest-api/pdcitem/field/get-title-alternative', $output, $object, $fieldName, $request );
 
 		$this->assertEquals($output, $model->getTitleAlternative($object, $fieldName, $request));
 

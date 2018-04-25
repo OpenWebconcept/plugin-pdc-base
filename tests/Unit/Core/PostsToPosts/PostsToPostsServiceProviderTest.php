@@ -131,7 +131,7 @@ class PostsToPostsServiceProviderTest extends TestCase
 		];
 
 		//test for filter being called
-		\WP_Mock::expectFilter('owc/pdc_base/p2p_connection_defaults', $connectionDefaults);
+		\WP_Mock::expectFilter('owc/pdc-base/p2p-connection-defaults', $connectionDefaults);
 
 		$connectionType1 = [
 			'id'              => 'posttype1_to_posttype2',
@@ -168,8 +168,8 @@ class PostsToPostsServiceProviderTest extends TestCase
 			'admin_box'       => 'from'
 		];
 
-		\WP_Mock::expectFilter('owc/pdc_base/before_register_p2p_connection/posttype1/posttype2', $connectionType1);
-		\WP_Mock::expectFilter('owc/pdc_base/before_register_p2p_connection/posttype1/posttype1', $connectionType2);
+		\WP_Mock::expectFilter('owc/pdc-base/before-register-p2p-connection/posttype1/posttype2', $connectionType1);
+		\WP_Mock::expectFilter('owc/pdc-base/before-register-p2p-connection/posttype1/posttype1', $connectionType2);
 
 		$service->registerPostsToPostsConnections();
 

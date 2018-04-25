@@ -42,7 +42,7 @@ class PdcSubcategoryModel
 			$hasReport = true;
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasReport, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcsubcategory/field/has-report', $hasReport, $object, $fieldName, $request);
 	}
 
 	/**
@@ -82,7 +82,7 @@ class PdcSubcategoryModel
 
 		wp_reset_postdata();
 
-		return apply_filters('owc/pdc_base/rest_api/pdcsubcategory/field/has_report', $hasAppointment, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcsubcategory/field/has-appointment', $hasAppointment, $object, $fieldName, $request);
 	}
 
 }

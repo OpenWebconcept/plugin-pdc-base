@@ -141,7 +141,7 @@ class PdcItemModel
 			];
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_links', $links, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-links', $links, $object, $fieldName, $request);
 	}
 
 	/**
@@ -189,7 +189,7 @@ class PdcItemModel
 			];
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_forms', $forms, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-forms', $forms, $object, $fieldName, $request);
 	}
 
 	/**
@@ -237,7 +237,7 @@ class PdcItemModel
 			];
 		}
 		
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_downloads', $downloads, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-downloads', $downloads, $object, $fieldName, $request);
 	}
 
 	/**
@@ -255,7 +255,7 @@ class PdcItemModel
 		$titleAlternative = strip_tags($titleAlternative);
 		$titleAlternative = preg_replace('#[\n\r]+#s', ' ', $titleAlternative);
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_title_alternative', $titleAlternative, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-title-alternative', $titleAlternative, $object, $fieldName, $request);
 	}
 
 	/**
@@ -295,7 +295,7 @@ class PdcItemModel
 			}
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_appointment', $appointment, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-appointment', $appointment, $object, $fieldName, $request);
 	}
 
 	public function getFeaturedImage($object, $fieldName, $request): array
@@ -328,7 +328,7 @@ class PdcItemModel
 			$featuredImgData['srcset']   = wp_get_attachment_image_srcset($object['featured_media'], $featuredImgSize, $featuredImgMetadata);
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_featured_image', $featuredImgData, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-featured-image', $featuredImgData, $object, $fieldName, $request);
 	}
 
 	/**
@@ -375,13 +375,13 @@ class PdcItemModel
 			$taxonomyIds[] = $taxonomyId;
 		}
 
-		$taxonomyIds = apply_filters('owc/pdc_base/core/posttype/posttypes/pdc_item/get_taxonomies/taxonomy_ids', $taxonomyIds, $object, $fieldName, $request);
+		$taxonomyIds = apply_filters('owc/pdc-base/core/posttype/posttypes/pdcitem/get-taxonomies/taxonomy-ids', $taxonomyIds, $object, $fieldName, $request);
 
 		foreach ( $taxonomyIds as $taxonomyId ) {
 			$taxonomiesResult[ $taxonomyId ] = $this->getTermsAsArray($object, $taxonomyId);
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_taxonomies', $taxonomiesResult, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-taxonomies', $taxonomiesResult, $object, $fieldName, $request);
 	}
 
 	/**
@@ -416,6 +416,6 @@ class PdcItemModel
 			}
 		}
 
-		return apply_filters('owc/pdc_base/rest_api/pdcitem/field/get_connections', $output, $object, $fieldName, $request);
+		return apply_filters('owc/pdc-base/rest-api/pdcitem/field/get-connections', $output, $object, $fieldName, $request);
 	}
 }
