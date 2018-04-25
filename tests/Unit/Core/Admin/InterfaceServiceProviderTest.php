@@ -87,7 +87,7 @@ class InterfaceServiceProviderTest extends TestCase
 		$post->post_type = 'pdc-item';
 		$post->post_name = 'test-pdc-item';
 
-		$button = '<a href="http://owc-pdc.test/onderwerp/test-pdc-item" target="_blank"><button type="button" class="button button-small" aria-label="Bekijk in Portal">Bekijk in Portal</button></a>';
+		$button = '<a href="http://owc-pdc.test/onderwerp/test-pdc-item" target="_blank"><button type="button" class="button button-small" aria-label="View in Portal">View in Portal</button></a>';
 
 		$postId = $newTitle = $newSlug = null;
 
