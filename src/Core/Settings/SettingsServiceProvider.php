@@ -11,7 +11,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
 	public function register()
 	{
 
-		$this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage', 10, 1);
+        $this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage', 10, 1);
 		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerSettings', 10, 1);
 		$this->plugin->loader->addAction('admin_init', $this, 'getSettingsOption');
 	}
@@ -44,7 +44,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
 			$metaboxes[] = $this->processMetabox($metabox);
 		}
 
-		return array_merge($rwmbMetaboxes, apply_filters("owc/pdc_base/before_register_settings", $metaboxes));
+		return array_merge($rwmbMetaboxes, apply_filters("owc/pdc-base/before-register-settings", $metaboxes));
 	}
 
 	public function getSettingsOption()

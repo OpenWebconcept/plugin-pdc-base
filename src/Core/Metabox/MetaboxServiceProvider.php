@@ -27,6 +27,6 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 			$metaboxes[] = $this->processMetabox($metabox);
 		}
 
-		return array_merge( $rwmbMetaboxes, apply_filters("owc/pdc_base/before_register_metaboxes", $metaboxes) );
+		return array_merge( $rwmbMetaboxes, apply_filters("owc/pdc-base/before-register-metaboxes", $metaboxes) );
 	}
 }

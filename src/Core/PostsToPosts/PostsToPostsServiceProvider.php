@@ -62,7 +62,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 					$connectionType['admin_box']   = 'from';
 				}
 
-				$connectionType = apply_filters("owc/pdc_base/before_register_p2p_connection/{$posttypesInfo[ $connectionArgs['from'] ]['id']}/{$posttypesInfo[ $connectionArgs['to'] ]['id']}", $connectionType );
+				$connectionType = apply_filters("owc/pdc-base/before-register-p2p-connection/{$posttypesInfo[ $connectionArgs['from'] ]['id']}/{$posttypesInfo[ $connectionArgs['to'] ]['id']}", $connectionType );
 
 				p2p_register_connection_type($connectionType);
 			}
