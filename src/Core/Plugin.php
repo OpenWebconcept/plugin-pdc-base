@@ -40,7 +40,7 @@ class Plugin extends BasePlugin
 		    $admin->boot();
 	    }
 
-	    $this->loader->addAction( 'init', $this->config, 'filter', 9);
+	    $this->loader->addAction( 'init', $this->config, 'filter', 4);
 	    $this->loader->register();
     }
 
