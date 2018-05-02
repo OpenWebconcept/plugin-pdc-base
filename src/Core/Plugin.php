@@ -21,7 +21,7 @@ class Plugin extends BasePlugin
      *
      * @var string
      */
-    const VERSION = '0.1';
+    const VERSION = '1.0';
 
     /**
      * Boot the plugin.
@@ -29,8 +29,7 @@ class Plugin extends BasePlugin
      */
     public function boot()
     {
-	    $this->config->setPluginName(self::NAME);
-	    $this->config->setFilterExceptions(['core']);
+	    $this->config->setProtectedNodes(['core']);
 	    $this->config->boot();
 
 	    $this->bootServiceProviders();
@@ -40,8 +39,13 @@ class Plugin extends BasePlugin
 		    $admin->boot();
 	    }
 
-	    $this->loader->addAction( 'init', $this->config, 'filter', 4);
+	    $this->loader->addAction( 'init', $this, 'filterPlugin', 4);
+
 	    $this->loader->register();
+    }
+
+    public function filterPlugin() {
+	    do_action('owc/'.self::NAME.'/plugin', $this );
     }
 
 }

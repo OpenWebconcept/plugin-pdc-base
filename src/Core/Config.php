@@ -13,25 +13,11 @@ class Config
 	protected $path;
 
 	/**
-	 * Plugin name
-	 *
-	 * @var string
-	 */
-	protected $pluginName;
-
-	/**
-	 * Array with all filters to be called after processing config files.
+	 * Array with names of protected nodes in the config-items.
 	 *
 	 * @var array
 	 */
-	protected $filters = [];
-
-	/**
-	 * Array with names of exceptions to the build-in config filters.
-	 *
-	 * @var array
-	 */
-	protected $filterExceptions = [];
+	protected $protectedNodes = [];
 
 	/**
 	 * Array with all the config values.
@@ -64,28 +50,6 @@ class Config
 	}
 
 	/**
-	 * Filter distinct 'file' nodes in config-items.
-	 */
-	public function filter()
-	{
-		foreach ( $this->filters as $filter ) {
-
-			$filterName = 'owc/' . $this->pluginName . '/config/' . $filter;
-			$configKey = str_replace( '/', '.', $filter );
-
-			$parts = explode('/', $filter);
-
-			$current = $this->items;
-
-			foreach ($parts as $part) {
-				$current = $current[$part];
-			}
-
-			$this->set($this->items, $configKey, apply_filters( $filterName, $current ));
-		}
-	}
-
-	/**
 	 * Retrieve a specific config value from the configuration repository.
 	 *
 	 * @param $setting
@@ -110,25 +74,42 @@ class Config
 	}
 
 	/**
-	 * Method to directly change/set values into the config->items array
+	 * Set a given configuration value.
 	 *
-	 * @param $items
-	 * @param $key
-	 * @param $value
+	 * @param  array|string $key
+	 * @param  mixed        $value
 	 *
+	 * @return void
 	 */
-	public function set(&$items, $key, $value)
+	public function set($key, $value = null)
 	{
-		$parts = explode('.', $key);
+		$keys = is_array($key) ? $key : [$key => $value];
 
-		while(count($parts) > 1) {
-			$key = array_shift($parts);
+		$tempItems = &$this->items;
 
-			$items = &$items[$key];
+		foreach ( $keys as $key => $value ) {
+
+			if ( in_array($key, $this->protectedNodes) ) {
+				continue;
+			}
+
+			$parts = explode('.', $key);
+			while ( count($parts) > 1 ) {
+
+				$part = array_shift($parts);
+				// If the key doesn't exist at this depth, we will just create an empty array
+				// to hold the next value, allowing us to create the arrays to hold final
+				// values at the correct depth. Then we'll keep digging into the array.
+				if ( ! isset($tempItems[ $part ]) || ! is_array($tempItems[ $part ]) ) {
+					$tempItems[ $part ] = [];
+				}
+				$tempItems = &$tempItems[ $part ];
+			}
+
+			$tempItems[ array_shift($parts) ] = $value;
 		}
-
-		$items[array_shift($parts)] = $value;
 	}
+
 
 
 	/**
@@ -161,19 +142,9 @@ class Config
 		$this->path = $path;
 	}
 
-	/**
-	 * Sets the pluginName.
-	 *
-	 * @param $pluginName
-	 */
-	public function setPluginName($pluginName)
+	public function setProtectedNodes($nodes = [])
 	{
-		$this->pluginName = $pluginName;
-	}
-
-	public function setFilterExceptions($exceptions = [])
-	{
-		$this->filterExceptions = $exceptions;
+		$this->protectedNodes = $nodes;
 	}
 
 	private function scanDirectory($path)
@@ -193,7 +164,6 @@ class Config
 				// If its in the first directory just add the file.
 				if ($path == $this->path) {
 					$this->items[$name] = $value;
-					$this->addToFilters($name, $name);
 					continue;
 				}
 
@@ -203,7 +173,6 @@ class Config
 				// Build an array from the path.
 				$items = [];
 				$items[$name] = $value;
-				$this->addToFilters($path . '/' . $name, $name);
 				foreach ( array_reverse(explode('/', $path)) as $key ) {
 					$items = [$key => $items];
 				}
@@ -211,14 +180,6 @@ class Config
 				// Merge it recursively into items
 				$this->items = array_merge_recursive($this->items, $items);
 			}
-		}
-	}
-
-	private function addToFilters($filter, $name)
-	{
-		//skip filter exceptions
-		if ( ! in_array($name, $this->filterExceptions )) {
-			$this->filters[] = $filter;
 		}
 	}
 }
