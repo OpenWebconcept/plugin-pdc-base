@@ -9,7 +9,7 @@ class RepositoryTest extends TestCase
 {
 
 	/**
-	 * @var \OWC_PDC_FAQ\Core\Config
+	 * @var \OWC_PDC_Base\Core\Config
 	 */
 	protected $repository;
 
