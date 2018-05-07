@@ -8,43 +8,25 @@ This README documents whatever steps are necessary to get this plugin up and run
 * Log into WordPress admin and activate the ‘PDC Base’ plugin through the ‘Plugins’ menu
 * Go to the 'PDC instellingen pagina' in the left-hand menu to enter some of the required settings
 
-### Filters
+### Filters & Actions
 
 There are various [hooks](https://codex.wordpress.org/Plugin_API/Hooks), which allows for changing the output.
 
-##### Filters the Metaboxes config array.
+##### Action for changing main Plugin object.
 ```php
-owc/pdc-base/config/metaboxes
-```
-##### Filters the Posts to Posts config array.
-```php
-owc/pdc-base/config/p2p_connections
+'owc/pdc-base/plugin'
 ```
 
-##### Filters the Posttypes config array.
-```php
-owc/pdc-base/config/posttypes
-```
+See OWC_PDC_Base\Core\Config->set method for a way to change this plugins config.
 
-##### Filters the Rest API config array.
-```php
-owc/pdc-base/config/rest_api_fields
-```
-
-##### Filters the Settings config array.
-```php
-owc/pdc-base/config/settings
-```
-
-##### Filters the Settings pages config array.
-```php
-owc/pdc-base/config/settings_pages
-```
-
-##### Filters the Taxonomies config array.
-```php
-owc/pdc-base/config/taxonomies
-```
+Via the plugin object the following config settings can be adjusted
+- metaboxes
+- p2p_connections
+- posttypes
+- rest_api_fields
+- settings
+- settings_pages
+- taxonomies
 
 ##### Filters the Posts to Posts connection defaults.
 ```php
@@ -156,4 +138,4 @@ Create a Pull request to the OWC repository
 
 ### Who do I talk to? ###
 
-IF you have questions about or suggestions for this plugin, please contact <a src="mailto:hpeters@Buren.nl">Holger Peters</a> from Gemeente Buren.
+IF you have questions about or suggestions for this plugin, please contact <a href="mailto:hpeters@Buren.nl">Holger Peters</a> from Gemeente Buren.
