@@ -29,11 +29,6 @@ require_once __DIR__.'/autoloader.php';
 $autoloader = new Autoloader();
 
 /**
- * manual loaded file: Extended CPT
- */
-require_once __DIR__.'/src/vendor/johnbillion/extended-cpts/extended-cpts.php';
-
-/**
  * Begin execution of the plugin
  *
  * This hook is called once any activated plugins have been loaded. Is generally used for immediate filter setup, or
