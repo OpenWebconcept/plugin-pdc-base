@@ -50,6 +50,11 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
 	public function getSettingsOption()
 	{
 		//TODO implement better way of retrieving settings (used in InterfaceServiceProvider)
-		$this->plugin->settings = get_option(self::PREFIX . 'pdc_base_settings');
+		$defaultSettings = [
+			'_owc_setting_portal_url'           => '',
+			'_owc_setting_portal_pdc_item_slug' => ''
+		];
+
+		$this->plugin->settings = wp_parse_args(get_option(self::PREFIX . 'pdc_base_settings'), $defaultSettings);
 	}
 }
