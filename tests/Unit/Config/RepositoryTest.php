@@ -1,9 +1,9 @@
 <?php
 
-namespace OWC_PDC_Base\Core\Tests\Config;
+namespace OWC\PDC\Base\Tests\Config;
 
-use OWC_PDC_Base\Core\Config;
-use OWC_PDC_Base\Core\Tests\Unit\TestCase;
+use OWC\PDC\Base\Config;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class RepositoryTest extends TestCase
 {

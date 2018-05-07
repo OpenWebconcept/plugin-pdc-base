@@ -1,13 +1,13 @@
 <?php
 
-namespace OWC_PDC_Base\Core\PostType;
+namespace OWC\PDC\Base\PostType;
 
 use Mockery as m;
-use OWC_PDC_Base\Core\Config;
-use OWC_PDC_Base\Core\Plugin\BasePlugin;
-use OWC_PDC_Base\Core\Plugin\Loader;
-use OWC_PDC_Base\Core\PostType\PostTypes\PdcItemModel;
-use OWC_PDC_Base\Core\Tests\Unit\TestCase;
+use OWC\PDC\Base\Config;
+use OWC\PDC\Base\Plugin\BasePlugin;
+use OWC\PDC\Base\Plugin\Loader;
+use OWC\PDC\Base\PostType\PostTypes\PdcItemModel;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class PdcItemModelTest extends TestCase
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace OWC_PDC_Base\Core\Template;
+namespace OWC\PDC\Base\Template;
 
 use Mockery as m;
-use OWC_PDC_Base\Core\Config;
-use OWC_PDC_Base\Core\Plugin\BasePlugin;
-use OWC_PDC_Base\Core\Plugin\Loader;
-use OWC_PDC_Base\Core\Tests\Unit\TestCase;
+use OWC\PDC\Base\Config;
+use OWC\PDC\Base\Plugin\BasePlugin;
+use OWC\PDC\Base\Plugin\Loader;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class TemplateServiceProviderTest extends TestCase
 {

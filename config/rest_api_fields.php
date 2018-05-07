@@ -1,7 +1,7 @@
 <?php
 
-$pdcItemModel = new \OWC_PDC_Base\Core\PostType\PostTypes\PdcItemModel($this);
-$pdcSubcategoryModel = new \OWC_PDC_Base\Core\PostType\PostTypes\PdcSubcategoryModel($this);
+$pdcItemModel = new \OWC\PDC\Base\PostType\PostTypes\PdcItemModel($this);
+$pdcSubcategoryModel = new \OWC\PDC\Base\PostType\PostTypes\PdcSubcategoryModel($this);
 
 return [
 

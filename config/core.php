@@ -9,18 +9,18 @@ return [
         /**
          * Global providers.
          */
-	    OWC_PDC_Base\Core\Settings\SettingsServiceProvider::class,
-	    OWC_PDC_Base\Core\PostType\PostTypeServiceProvider::class,
-	    OWC_PDC_Base\Core\Taxonomy\TaxonomyServiceProvider::class,
-	    OWC_PDC_Base\Core\PostsToPosts\PostsToPostsServiceProvider::class,
-	    OWC_PDC_Base\Core\Metabox\MetaboxServiceProvider::class,
-	    OWC_PDC_Base\Core\RestApi\RestApiServiceProvider::class,
-	    OWC_PDC_Base\Core\Template\TemplateServiceProvider::class,
+	    OWC\PDC\Base\Settings\SettingsServiceProvider::class,
+	    OWC\PDC\Base\PostType\PostTypeServiceProvider::class,
+	    OWC\PDC\Base\Taxonomy\TaxonomyServiceProvider::class,
+	    OWC\PDC\Base\PostsToPosts\PostsToPostsServiceProvider::class,
+	    OWC\PDC\Base\Metabox\MetaboxServiceProvider::class,
+	    OWC\PDC\Base\RestApi\RestApiServiceProvider::class,
+	    OWC\PDC\Base\Template\TemplateServiceProvider::class,
 	    /**
          * Providers specific to the admin.
          */
         'admin'    => [
-	        OWC_PDC_Base\Core\Admin\InterfaceServiceProvider::class
+	        OWC\PDC\Base\Admin\InterfaceServiceProvider::class
         ]
 
     ],
