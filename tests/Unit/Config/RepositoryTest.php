@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\Tests\Config;
 
-use OWC\PDC\Base\Config;
+use OWC\PDC\Base\Foundation\Config;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class RepositoryTest extends TestCase

@@ -4,8 +4,8 @@ namespace OWC\PDC\Base\PostsToPosts;
 
 use Mockery as m;
 use OWC\PDC\Base\Config;
-use OWC\PDC\Base\Plugin\BasePlugin;
-use OWC\PDC\Base\Plugin\Loader;
+use OWC\PDC\Base\Foundation\Plugin;
+use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class PostsToPostsServiceProviderTest extends TestCase
@@ -25,7 +25,7 @@ class PostsToPostsServiceProviderTest extends TestCase
 	public function check_registration_of_PostsToPosts()
 	{
 		$config = m::mock(Config::class);
-		$plugin = m::mock(BasePlugin::class);
+		$plugin = m::mock(Plugin::class);
 
 		$plugin->config = $config;
 		$plugin->loader = m::mock(Loader::class);
@@ -54,7 +54,7 @@ class PostsToPostsServiceProviderTest extends TestCase
 	public function test_filter_p2p_connectable_args_method()
 	{
 		$config = m::mock(Config::class);
-		$plugin = m::mock(BasePlugin::class);
+		$plugin = m::mock(Plugin::class);
 
 		$plugin->config = $config;
 		$plugin->loader = m::mock(Loader::class);
@@ -78,7 +78,7 @@ class PostsToPostsServiceProviderTest extends TestCase
 	public function test_register_posts_to_posts_connections_method()
 	{
 		$config = m::mock(Config::class);
-		$plugin = m::mock(BasePlugin::class);
+		$plugin = m::mock(Plugin::class);
 
 		$plugin->config = $config;
 		$plugin->loader = m::mock(Loader::class);

@@ -4,8 +4,8 @@ namespace OWC\PDC\Base\PostType;
 
 use Mockery as m;
 use OWC\PDC\Base\Config;
-use OWC\PDC\Base\Plugin\BasePlugin;
-use OWC\PDC\Base\Plugin\Loader;
+use OWC\PDC\Base\Foundation\Plugin;
+use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\PostType\PostTypes\PdcItemModel;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
