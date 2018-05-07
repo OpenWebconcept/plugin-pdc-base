@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\PostsToPosts;
 
-use OWC\PDC\Base\Plugin\ServiceProvider;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 class PostsToPostsServiceProvider extends ServiceProvider
 {

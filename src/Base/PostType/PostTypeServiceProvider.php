@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\PostType;
 
-use OWC\PDC\Base\Plugin\ServiceProvider;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 class PostTypeServiceProvider extends ServiceProvider
 {

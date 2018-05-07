@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\PDC\Base\Plugin;
+namespace OWC\PDC\Base\Foundation;
 
 abstract class ServiceProvider
 {
@@ -8,11 +8,11 @@ abstract class ServiceProvider
     /**
      * Instance of the plugin.
      *
-     * @var \OWC\PDC\Base\Plugin\BasePlugin
+     * @var \OWC\PDC\Base\Foundation\Plugin
      */
     protected $plugin;
 
-    public function __construct(BasePlugin $plugin)
+    public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
     }

@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\Settings;
 
-use OWC\PDC\Base\Plugin\ServiceProvider;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 use OWC\PDC\Base\Metabox\MetaboxBaseServiceProvider;
 
 class SettingsServiceProvider extends MetaboxBaseServiceProvider

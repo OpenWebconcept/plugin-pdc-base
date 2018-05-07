@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\PDC\Base;
+namespace OWC\PDC\Base\Foundation;
 
 class Hooks
 {

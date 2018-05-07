@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\Admin;
 
-use OWC\PDC\Base\Plugin\ServiceProvider;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 class InterfaceServiceProvider extends ServiceProvider
 {

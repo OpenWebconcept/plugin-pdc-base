@@ -1,11 +1,26 @@
 <?php
 
-namespace OWC\PDC\Base\Plugin;
+namespace OWC\PDC\Base\Foundation;
 
-use OWC\PDC\Base\Config;
+use OWC\PDC\Base\Admin\Admin;
 
-abstract class BasePlugin
+class Plugin
 {
+
+    /**
+     * Name of the plugin.
+     *
+     * @var string
+     */
+    const NAME = 'pdc-base';
+
+    /**
+     * Version of the plugin.
+     * Used for setting versions of enqueue scripts and styles.
+     *
+     * @var string
+     */
+    const VERSION = '1.1';
 
     /**
      * Path to the root of the plugin.
@@ -14,7 +29,7 @@ abstract class BasePlugin
      */
     protected $rootPath;
 
-	/**
+    /**
      * Instance of the configuration repository.
      *
      * @var \OWC\PDC\Base\Config
@@ -22,35 +37,56 @@ abstract class BasePlugin
     public $config;
 
     /**
-     * Instance of the hook loader.
+     * Instance of the Hook loader.
+     *
+     * @var Loader
      */
     public $loader;
 
-	/**
-	 * @var array with settings, see OWC\PDC\Base\Settings\SettingsServiceProvider
-	 */
+    /**
+     * @see \OWC\PDC\Base\Settings\SettingsServiceProvider
+     *
+     * @var array
+     */
     public $settings;
 
-    /**
-     * Creates the base plugin functionality.
-     *
-     * Create startup hooks and tear down hooks.
-     * Boot up admin and frontend functionality.
-     * Register the actions and filters from the loader.
-     *
-     * @param string $rootPath
-     */
-    public function __construct($rootPath)
+    public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-	    $this->loadPluginTextdomain();
+        $this->loadPluginTextdomain();
 
-	    $this->loader = Loader::getInstance();
+        $this->loader = Loader::getInstance();
 
-	    $this->config = new Config($this->rootPath.'/config');
+        $this->config = new Config($this->rootPath.'/config');
 
         $this->addStartUpHooks();
         $this->addTearDownHooks();
+    }
+
+    /**
+     * Boot the plugin.
+     * Called on plugins_loaded event
+     */
+    public function boot()
+    {
+        $this->config->setProtectedNodes([ 'core' ]);
+        $this->config->boot();
+
+        $this->bootServiceProviders();
+
+        if (is_admin()) {
+            $admin = new Admin($this);
+            $admin->boot();
+        }
+
+        $this->loader->addAction('init', $this, 'filterPlugin', 4);
+
+        $this->loader->register();
+    }
+
+    public function filterPlugin()
+    {
+        do_action('owc/'.self::NAME.'/plugin', $this);
     }
 
     /**
@@ -73,18 +109,38 @@ abstract class BasePlugin
             }
 
             /**
-             * @var \OWC\PDC\Base\Plugin\ServiceProvider $service
+             * @var \OWC\PDC\Base\Foundation\ServiceProvider $service
              */
             $service->register();
         }
     }
 
-	public function loadPluginTextdomain()
-	{
-		load_plugin_textdomain($this->getName(), false, $this->getName(). '/languages/');
-	}
+    public function loadPluginTextdomain()
+    {
+        load_plugin_textdomain($this->getName(), false, $this->getName().'/languages/');
+    }
 
-	/**
+    /**
+     * Get the name of the plugin.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return self::NAME;
+    }
+
+    /**
+     * Get the version of the plugin.
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return self::VERSION;
+    }
+
+    /**
      * Startup hooks to initialize the plugin.
      */
     private function addStartUpHooks()
@@ -121,26 +177,6 @@ abstract class BasePlugin
          * The link won’t be active unless the plugin hooks into the action.
          */
         register_uninstall_hook(__FILE__, [ 'OWC\PDC\Base\Hooks', 'uninstallPlugin' ]);
-    }
-
-    /**
-     * Get the name of the plugin.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return static::NAME;
-    }
-
-    /**
-     * Get the version of the plugin.
-     *
-     * @return string
-     */
-    public function getVersion()
-    {
-        return static::VERSION;
     }
 
 }

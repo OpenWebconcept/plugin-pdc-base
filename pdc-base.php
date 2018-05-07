@@ -2,24 +2,23 @@
 /**
  * Plugin Name:       PDC Base
  * Plugin URI:        https://www.openwebconcept.nl/
- * Description:       Plugin to act as foundation for other PDC related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           1.1
- * Author:            Edwin Siebel, Ruud Laan
+ * Description:       Plugin to act as foundation for other PDC related content plugins. This plugin implements actions
+ * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
+ * Version:           1.1 Author:            Edwin Siebel, Ruud Laan
  * Author URI:        https://www.yarddigital.nl/
- * License:           GPL-3.0
- * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * License:           GPL-3.0 License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       pdc-base
  * Domain Path:       /languages
  */
 
 use OWC\PDC\Base\Autoloader;
-use OWC\PDC\Base\Plugin;
+use OWC\PDC\Base\Foundation\Plugin;
 
 /**
  * If this file is called directly, abort.
  */
 if ( ! defined('WPINC')) {
-	die;
+    die;
 }
 
 /**
@@ -37,6 +36,5 @@ $autoloader = new Autoloader();
  *
  */
 add_action('plugins_loaded', function () {
-
-	$plugin = (new Plugin(__DIR__))->boot( );
+    (new Plugin(__DIR__))->boot();
 }, 9);

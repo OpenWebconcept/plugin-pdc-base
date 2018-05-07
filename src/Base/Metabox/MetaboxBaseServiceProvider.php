@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\Metabox;
 
-use OWC\PDC\Base\Plugin\ServiceProvider;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 abstract class MetaboxBaseServiceProvider extends ServiceProvider
 {
