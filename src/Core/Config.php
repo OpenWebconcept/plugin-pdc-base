@@ -110,8 +110,6 @@ class Config
 		}
 	}
 
-
-
 	/**
 	 * Return all config values.
 	 *
@@ -142,11 +140,17 @@ class Config
 		$this->path = $path;
 	}
 
+	/**
+	 * @param array $nodes
+	 */
 	public function setProtectedNodes($nodes = [])
 	{
 		$this->protectedNodes = $nodes;
 	}
 
+	/**
+	 * @param $path
+	 */
 	private function scanDirectory($path)
 	{
 		$files = glob($path . '/*', GLOB_NOSORT);
