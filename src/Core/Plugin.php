@@ -21,7 +21,7 @@ class Plugin extends BasePlugin
      *
      * @var string
      */
-    const VERSION = '1.0';
+    const VERSION = '1.1';
 
     /**
      * Boot the plugin.
