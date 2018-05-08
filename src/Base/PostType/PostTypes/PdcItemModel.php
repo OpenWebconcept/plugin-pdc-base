@@ -2,7 +2,8 @@
 
 namespace OWC\PDC\Base\PostType\PostTypes;
 
-use OWC\PDC\Base\Config;
+
+use OWC\PDC\Base\Foundation\Config;
 
 class PdcItemModel
 {
@@ -11,15 +12,13 @@ class PdcItemModel
 	/**
 	 * Instance of the config.
 	 *
-	 * @var $config \OWC\PDC\Base\Config
+	 * @var $config \OWC\PDC\Base\Foundation\Config
 	 */
 	protected $config;
 
-	public function __construct( $config = '' )
+	public function __construct(Config $config)
 	{
-		if ( ! empty( $config ) && is_a( $config, 'OWC\PDC\Base\Config' ) ) {
-			$this->config = $config;
-		}
+        $this->config = $config;
 	}
 
 	/*
@@ -316,7 +315,7 @@ class PdcItemModel
 			$featuredImg     = wp_get_attachment_image($object['featured_media'], $featuredImgSize);
 
 			add_filter('wp_get_attachment_metadata', [
-				'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItemModel',
+				'\\OWC\\PDC\\Base\\PostType\\PostTypes\\PdcItemModel',
 				'filterWpGetAttachmentMetadata'
 			], 10, 5);
 			$featuredImgMetadata = wp_get_attachment_metadata($object['featured_media'], $unfiltered = false);
@@ -343,7 +342,7 @@ class PdcItemModel
 		 * removing filter, to prevent nesting of filter
 		 */
 		remove_filter('wp_get_attachment_metadata', [
-			'\\OWC_PDC_Base\\Core\\PostType\\PostTypes\\PdcItemModel',
+			'\\OWC\\PDC\\Base\\PostType\\PostTypes\\PdcItemModel',
 			'filterWpGetAttachmentMetadata'
 		], 10);
 

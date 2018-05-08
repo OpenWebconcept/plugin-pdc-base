@@ -18,8 +18,20 @@ return [
 			'supports'              => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
 			'show_in_rest'          => true,
 			'rest_base'             => 'pdc-item',
-			'rest_controller_class' => '\\OWC_PDC_Base\\Core\\RestApi\\RestPdcItemPostsController',
-		],
+			'rest_controller_class' => '\\OWC\\PDC\\Base\\RestApi\\RestPdcItemPostsController',
+            'admin_cols' => [
+                'type' => [
+                    'taxonomy' => 'pdc-type'
+                ]
+            ],
+
+            # Add a dropdown filter to the admin screen:
+            'admin_filters' => [
+                'type' => [
+                    'taxonomy' => 'pdc-type'
+                ]
+            ],
+        ],
 		'names' => [
 
 			# Override the base names used for labels:
