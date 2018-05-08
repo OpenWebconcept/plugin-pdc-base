@@ -18,7 +18,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '1.1';
+    const VERSION = '2.0.0';
 
     /**
      * Path to the root of the plugin.
@@ -41,13 +41,6 @@ class Plugin
      */
     public $loader;
 
-    /**
-     * @see \OWC\PDC\Base\Settings\SettingsServiceProvider
-     *
-     * @var array
-     */
-    public $settings;
-
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
@@ -67,15 +60,17 @@ class Plugin
      * Boot the plugin.
      *
      * @hook plugins_loaded
+     *
+     * @return bool
      */
-    public function boot()
+    public function boot(): bool
     {
         $dependencyChecker = new DependencyChecker($this, $this->config->get('core.dependencies'));
 
         if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
 
-            return;
+            return false;
         }
 
         // Set up service providers
@@ -91,6 +86,8 @@ class Plugin
         // Register the Hook loader.
         $this->loader->addAction('init', $this, 'filterPlugin', 4);
         $this->loader->register();
+
+        return true;
     }
 
     public function filterPlugin()
@@ -135,7 +132,7 @@ class Plugin
      */
     public function getName()
     {
-        return self::NAME;
+        return static::NAME;
     }
 
     /**
@@ -145,7 +142,7 @@ class Plugin
      */
     public function getVersion()
     {
-        return self::VERSION;
+        return static::VERSION;
     }
 
     /**
