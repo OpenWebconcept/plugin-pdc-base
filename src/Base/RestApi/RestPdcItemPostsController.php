@@ -2,17 +2,6 @@
 
 namespace OWC\PDC\Base\RestApi;
 
-
-/**
- * Class RestPdcItemPostsController
- * @package OWC\PDC\Base\RestApi
- *
- * Custom Posts_Controller class used to allow added filtering on active state
- * of PDC item via '_owc_pdc_active' metakey
- * also added p2p connected items to response
- *
- * @codeCoverageIgnore
- */
 class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 {
 	/**

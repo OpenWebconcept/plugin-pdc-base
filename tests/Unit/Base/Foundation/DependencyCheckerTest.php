@@ -28,7 +28,7 @@ class DependencyCheckerTest extends TestCase
             ]
         ];
 
-        $checker = new DependencyChecker($this->getPlugin(), $dependencies);
+        $checker = new DependencyChecker($dependencies);
 
         \WP_Mock::userFunction('is_plugin_active')
             ->withArgs([ 'test-plugin/test-plugin.php' ])
@@ -41,7 +41,7 @@ class DependencyCheckerTest extends TestCase
     /** @test */
     public function it_succeeds_when_no_dependencies_are_set()
     {
-        $checker = new DependencyChecker($this->getPlugin(), []);
+        $checker = new DependencyChecker([]);
 
         \WP_Mock::userFunction('is_plugin_active')
             ->never();
@@ -63,7 +63,7 @@ class DependencyCheckerTest extends TestCase
             ]
         ];
 
-        $checker = new DependencyChecker($this->getPlugin(), $dependencies);
+        $checker = new DependencyChecker($dependencies);
 
         \WP_Mock::userFunction('is_plugin_active')
             ->withArgs([ 'pluginstub.php' ])
@@ -87,7 +87,7 @@ class DependencyCheckerTest extends TestCase
             ]
         ];
 
-        $checker = new DependencyChecker($this->getPlugin(), $dependencies);
+        $checker = new DependencyChecker($dependencies);
 
         \WP_Mock::userFunction('is_plugin_active')
             ->withArgs([ 'pluginstub.php' ])
@@ -120,15 +120,5 @@ class DependencyCheckerTest extends TestCase
             ['1.0'],
             ['1']
         ];
-    }
-
-
-    private function getPlugin()
-    {
-        $plugin = m::mock(Plugin::class);
-        $plugin->shouldReceive('getName')
-            ->andReturn('testplugin');
-
-        return $plugin;
     }
 }

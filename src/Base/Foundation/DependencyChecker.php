@@ -6,13 +6,6 @@ class DependencyChecker
 {
 
     /**
-     * Instance of the Plugin.
-     *
-     * @var Plugin
-     */
-    private $plugin;
-
-    /**
      * Plugins that need to be checked for.
      *
      * @var array
@@ -30,12 +23,10 @@ class DependencyChecker
     /**
      * Determine which plugins need to be present.
      *
-     * @param Plugin $plugin
      * @param array  $dependencies
      */
-    public function __construct(Plugin $plugin, array $dependencies)
+    public function __construct(array $dependencies)
     {
-        $this->plugin = $plugin;
         $this->dependencies = $dependencies;
     }
 
@@ -61,7 +52,7 @@ class DependencyChecker
     {
         add_action('admin_notices', function () {
             $list = '<p>'.__('De volgende plugins zijn vereist om gebruik te maken van de PDC:',
-                    $this->plugin->getName()).'</p><ol>';
+                    'pdc-base').'</p><ol>';
 
             foreach ($this->failed as $dependency) {
                 $info = isset($dependency['message']) ? ' ('.$dependency['message'].')' : '';
@@ -83,7 +74,7 @@ class DependencyChecker
     {
         if ( ! is_plugin_active($dependency['file'])) {
             $this->failed[] = array_merge([
-                'message' => __('Inactief', $this->plugin->getName())
+                'message' => __('Inactief', 'pdc-base')
             ], $dependency);
 
             return;
@@ -93,7 +84,7 @@ class DependencyChecker
         if (isset($dependency['version'])) {
             if ( ! $this->checkVersion($dependency)) {
                 $this->failed[] = array_merge([
-                    'message' => __('Minimale versie:', $this->plugin->getName()).' <b>'.$dependency['version'].'</b>'
+                    'message' => __('Minimale versie:', 'pdc-base').' <b>'.$dependency['version'].'</b>'
                 ], $dependency);
             }
         }
