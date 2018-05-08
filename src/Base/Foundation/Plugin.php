@@ -65,7 +65,7 @@ class Plugin
      */
     public function boot(): bool
     {
-        $dependencyChecker = new DependencyChecker($this, $this->config->get('core.dependencies'));
+        $dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
 
         if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
