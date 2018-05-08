@@ -57,6 +57,7 @@ class Plugin
 
         $this->config = new Config($this->rootPath.'/config');
         $this->config->setProtectedNodes([ 'core' ]);
+        $this->config->boot();
 
         $this->addStartUpHooks();
         $this->addTearDownHooks();
@@ -76,8 +77,6 @@ class Plugin
 
             return;
         }
-
-        $this->config->boot();
 
         // Set up service providers
         $this->callServiceProviders('register');
