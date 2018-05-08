@@ -2,8 +2,6 @@
 
 namespace OWC\PDC\Base\Foundation;
 
-use OWC\PDC\Base\Admin\Admin;
-
 class Plugin
 {
 
@@ -53,11 +51,12 @@ class Plugin
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-        $this->loadPluginTextdomain();
+        load_plugin_textdomain($this->getName(), false, $this->getName().'/languages/');
 
-        $this->loader = Loader::getInstance();
+        $this->loader = new Loader;
 
         $this->config = new Config($this->rootPath.'/config');
+        $this->config->setProtectedNodes([ 'core' ]);
 
         $this->addStartUpHooks();
         $this->addTearDownHooks();
@@ -65,22 +64,33 @@ class Plugin
 
     /**
      * Boot the plugin.
-     * Called on plugins_loaded event
+     *
+     * @hook plugins_loaded
      */
     public function boot()
     {
-        $this->config->setProtectedNodes([ 'core' ]);
-        $this->config->boot();
+        $dependencyChecker = new DependencyChecker($this, $this->config->get('core.dependencies'));
 
-        $this->bootServiceProviders();
+        if ($dependencyChecker->failed()) {
+            $dependencyChecker->notify();
 
-        if (is_admin()) {
-            $admin = new Admin($this);
-            $admin->boot();
+            return;
         }
 
-        $this->loader->addAction('init', $this, 'filterPlugin', 4);
+        $this->config->boot();
 
+        // Set up service providers
+        $this->callServiceProviders('register');
+
+        if (is_admin()) {
+            $this->callServiceProviders('register', 'admin');
+            $this->callServiceProviders('boot', 'admin');
+        }
+
+        $this->callServiceProviders('boot');
+
+        // Register the Hook loader.
+        $this->loader->addAction('init', $this, 'filterPlugin', 4);
         $this->loader->register();
     }
 
@@ -90,14 +100,19 @@ class Plugin
     }
 
     /**
-     * Boot service providers
+     * Call method on service providers.
+     *
+     * @param string $method
+     * @param string $key
+     *
+     * @throws \Exception
      */
-    public function bootServiceProviders()
+    public function callServiceProviders($method, $key = '')
     {
-        $services = $this->config->get('core.providers');
+        $offset = $key ? "core.providers.{$key}" : 'core.providers';
+        $services = $this->config->get($offset);
 
         foreach ($services as $service) {
-            // Only boot global service providers here.
             if (is_array($service)) {
                 continue;
             }
@@ -105,19 +120,13 @@ class Plugin
             $service = new $service($this);
 
             if ( ! $service instanceof ServiceProvider) {
-                throw new \Exception('Provider must extend ServiceProvider.');
+                throw new \Exception('Provider must be an instance of ServiceProvider.');
             }
 
-            /**
-             * @var \OWC\PDC\Base\Foundation\ServiceProvider $service
-             */
-            $service->register();
+            if (method_exists($service, $method)) {
+                $service->$method();
+            }
         }
-    }
-
-    public function loadPluginTextdomain()
-    {
-        load_plugin_textdomain($this->getName(), false, $this->getName().'/languages/');
     }
 
     /**
@@ -148,13 +157,13 @@ class Plugin
         /**
          * This hook registers a plugin function to be run when the plugin is activated.
          */
-        register_activation_hook(__FILE__, [ 'OWC\PDC\Base\Hooks', 'pluginActivation' ]);
+        register_activation_hook(__FILE__, [ Hooks::class, 'pluginActivation' ]);
 
         /**
          * This hook is run immediately after any plugin is activated, and may be used to detect the activation of plugins.
          * If a plugin is silently activated (such as during an update), this hook does not fire.
          */
-        add_action('activated_plugin', [ 'OWC\PDC\Base\Hooks', 'pluginActivated' ], 10, 2);
+        add_action('activated_plugin', [ Hooks::class, 'pluginActivated' ], 10, 2);
     }
 
     /**
@@ -165,18 +174,18 @@ class Plugin
         /**
          * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other plugins.
          */
-        add_action('deactivated_plugin', [ 'OWC\PDC\Base\Hooks', 'pluginDeactivated' ], 10, 2);
+        add_action('deactivated_plugin', [ Hooks::class, 'pluginDeactivated' ], 10, 2);
 
         /**
          * This hook registers a plugin function to be run when the plugin is deactivated.
          */
-        register_deactivation_hook(__FILE__, [ 'OWC\PDC\Base\Hooks', 'pluginDeactivation' ]);
+        register_deactivation_hook(__FILE__, [ Hooks::class, 'pluginDeactivation' ]);
 
         /**
          * Registers the uninstall hook that will be called when the user clicks on the uninstall link that calls for the plugin to uninstall itself.
          * The link won’t be active unless the plugin hooks into the action.
          */
-        register_uninstall_hook(__FILE__, [ 'OWC\PDC\Base\Hooks', 'uninstallPlugin' ]);
+        register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
     }
 
 }
