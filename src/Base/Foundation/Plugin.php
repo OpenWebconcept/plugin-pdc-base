@@ -148,7 +148,7 @@ class Plugin
     /**
      * Startup hooks to initialize the plugin.
      */
-    private function addStartUpHooks()
+    protected function addStartUpHooks()
     {
         /**
          * This hook registers a plugin function to be run when the plugin is activated.
@@ -165,7 +165,7 @@ class Plugin
     /**
      * Teardown hooks to cleanup or uninstall the plugin.
      */
-    private function addTearDownHooks()
+    protected function addTearDownHooks()
     {
         /**
          * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other plugins.
