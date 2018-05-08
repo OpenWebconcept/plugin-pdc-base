@@ -111,8 +111,9 @@ class DependencyChecker
         $file = file_get_contents(WP_PLUGIN_DIR.'/'.$dependency['file']);
 
         preg_match('/^(?: ?\* ?Version: ?)(.*)$/m', $file, $matches);
+        $version = isset($matches[1]) ? str_replace(' ', '', $matches[1]) : '0.0.0';
 
-        return version_compare($matches[1] ?? 0, $dependency['version'], '>=');
+        return version_compare($version, $dependency['version'], '>=');
     }
 
 }

@@ -22,6 +22,8 @@
  */
 require __DIR__ . '/../../vendor/autoload.php';
 
+define('WP_PLUGIN_DIR', __DIR__);
+
 /**
  * Bootstrap WordPress Mock.
  */
