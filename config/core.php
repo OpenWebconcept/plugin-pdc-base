@@ -28,13 +28,27 @@ return [
     /**
      * Dependencies upon which the plugin relies.
      *
-     * Should contain: label, version, file.
+     * Required: type, label
+     * Optional: message
+     *
+     * Type: plugin
+     * - Required: file
+     * - Optional: version
+     *
+     * Type: class
+     * - Required: name
      */
     'dependencies' => [
         [
+            'type'    => 'plugin',
             'label'   => 'RWMB Metabox',
             'version' => '4.14.0',
             'file'    => 'meta-box/meta-box.php'
+        ],
+        [
+            'type' => 'class',
+            'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
+            'name' => 'Extended_CPTa'
         ]
     ]
 

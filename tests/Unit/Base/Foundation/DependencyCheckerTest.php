@@ -23,6 +23,7 @@ class DependencyCheckerTest extends TestCase
     {
         $dependencies = [
             [
+                'type'  => 'plugin',
                 'label' => 'Dependency #1',
                 'file'  => 'test-plugin/test-plugin.php'
             ]
@@ -57,6 +58,7 @@ class DependencyCheckerTest extends TestCase
     {
         $dependencies = [
             [
+                'type'    => 'plugin',
                 'label'   => 'Dependency #1',
                 'file'    => 'pluginstub.php', // tests/Unit/pluginstub.php
                 'version' => $version // Version in pluginstub.php is 1.1.5
@@ -81,6 +83,7 @@ class DependencyCheckerTest extends TestCase
     {
         $dependencies = [
             [
+                'type'    => 'plugin',
                 'label'   => 'Dependency #1',
                 'file'    => 'pluginstub.php', // tests/Unit/pluginstub.php
                 'version' => $version // Version in pluginstub.php is 1.1.5
@@ -96,7 +99,6 @@ class DependencyCheckerTest extends TestCase
 
         $this->assertFalse($checker->failed());
     }
-
 
     /**
      * Provides old version numbers.
@@ -116,9 +118,9 @@ class DependencyCheckerTest extends TestCase
     public function correctVersions()
     {
         return [
-            ['1.1.2'],
-            ['1.0'],
-            ['1']
+            [ '1.1.2' ],
+            [ '1.0' ],
+            [ '1' ]
         ];
     }
 }

@@ -23,7 +23,7 @@ class DependencyChecker
     /**
      * Determine which plugins need to be present.
      *
-     * @param array  $dependencies
+     * @param array $dependencies
      */
     public function __construct(array $dependencies)
     {
@@ -38,7 +38,14 @@ class DependencyChecker
     public function failed(): bool
     {
         foreach ($this->dependencies as $dependency) {
-            $this->checkPlugin($dependency);
+            switch ($dependency['type']) {
+                case 'class':
+                    $this->checkClass($dependency);
+                    break;
+                case 'plugin':
+                    $this->checkPlugin($dependency);
+                    break;
+            }
         }
 
         return count($this->failed) > 0;
@@ -66,6 +73,33 @@ class DependencyChecker
     }
 
     /**
+     * Marks a dependency as failed.
+     *
+     * @param array  $dependency
+     * @param string $defaultMessage
+     */
+    private function markFailed(array $dependency, string $defaultMessage)
+    {
+        $this->failed[] = array_merge([
+            'message' => $dependency['message'] ?? $defaultMessage
+        ], $dependency);
+    }
+
+    /**
+     *
+     *
+     * @param array $dependency
+     */
+    private function checkClass(array $dependency)
+    {
+        if ( ! class_exists($dependency['name'])) {
+            $this->markFailed($dependency, __('Class does not exist', 'pdc-base'));
+
+            return;
+        }
+    }
+
+    /**
      * Check if a plugin is enabled and has the correct version.
      *
      * @param array $dependency
@@ -73,9 +107,7 @@ class DependencyChecker
     private function checkPlugin(array $dependency)
     {
         if ( ! is_plugin_active($dependency['file'])) {
-            $this->failed[] = array_merge([
-                'message' => __('Inactief', 'pdc-base')
-            ], $dependency);
+            $this->markFailed($dependency, __('Inactive', 'pdc-base'));
 
             return;
         }
@@ -83,9 +115,7 @@ class DependencyChecker
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
             if ( ! $this->checkVersion($dependency)) {
-                $this->failed[] = array_merge([
-                    'message' => __('Minimale versie:', 'pdc-base').' <b>'.$dependency['version'].'</b>'
-                ], $dependency);
+                $this->markFailed($dependency, __('Minimal version:', 'pdc-base').' <b>'.$dependency['version'].'</b>');
             }
         }
     }
