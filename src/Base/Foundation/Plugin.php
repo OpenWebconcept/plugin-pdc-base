@@ -146,6 +146,16 @@ class Plugin
     }
 
     /**
+     * Return root path of plugin.
+     *
+     * @return string
+     */
+    public function getRootPath(): string
+    {
+        return $this->rootPath;
+    }
+
+    /**
      * Startup hooks to initialize the plugin.
      */
     protected function addStartUpHooks()
