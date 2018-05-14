@@ -69,6 +69,7 @@ class Plugin
 
         if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
+            deactivate_plugins(plugin_basename($this->rootPath.'/'.$this->getName().'.php'));
 
             return false;
         }

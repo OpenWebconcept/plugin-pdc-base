@@ -48,7 +48,7 @@ return [
         [
             'type' => 'class',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
-            'name' => 'Extended_CPTa'
+            'name' => 'Extended_CPT'
         ]
     ]
 
