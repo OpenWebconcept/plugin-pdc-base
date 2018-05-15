@@ -14,7 +14,7 @@ return [
         OWC\PDC\Base\Taxonomy\TaxonomyServiceProvider::class,
         OWC\PDC\Base\PostsToPosts\PostsToPostsServiceProvider::class,
         OWC\PDC\Base\Metabox\MetaboxServiceProvider::class,
-        OWC\PDC\Base\RestApi\RestApiServiceProvider::class,
+        OWC\PDC\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\PDC\Base\Template\TemplateServiceProvider::class,
         /**
          * Providers specific to the admin.

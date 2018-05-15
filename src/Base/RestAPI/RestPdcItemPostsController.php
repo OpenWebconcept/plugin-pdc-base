@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\PDC\Base\RestApi;
+namespace OWC\PDC\Base\RestAPI;
 
 class RestPdcItemPostsController extends \WP_REST_Posts_Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\PDC\Base\RestApi;
+namespace OWC\PDC\Base\RestAPI;
 
 use Mockery as m;
 use OWC\PDC\Base\Config;
@@ -8,7 +8,7 @@ use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
-class RestApiServiceProviderTest extends TestCase
+class RestAPIServiceProviderTest extends TestCase
 {
 
 	public function setUp()
@@ -30,7 +30,7 @@ class RestApiServiceProviderTest extends TestCase
 		$plugin->config = $config;
 		$plugin->loader = m::mock(Loader::class);
 
-		$service = new RestApiServiceProvider($plugin);
+		$service = new RestAPIServiceProvider($plugin);
 
 		$plugin->loader->shouldReceive('addFilter')->withArgs([
 			'owc/config-expander/rest-api/whitelist',
@@ -43,7 +43,7 @@ class RestApiServiceProviderTest extends TestCase
 		$plugin->loader->shouldReceive('addFilter')->withArgs([
 			'rest_api_init',
 			$service,
-			'registerRestApiEndpointsFields',
+			'registerRestAPIEndpointsFields',
 			10
 		])->once();
 
@@ -59,7 +59,7 @@ class RestApiServiceProviderTest extends TestCase
 
 		$this->assertTrue(true);
 
-		$configRestApiFields = [
+		$configRestAPIFields = [
 			'posttype1' => [
 				'endpoint_field1' =>
 					[
@@ -90,7 +90,7 @@ class RestApiServiceProviderTest extends TestCase
 			]
 		];
 
-		$config->shouldReceive('get')->with('rest_api_fields')->once()->andReturn($configRestApiFields);
+		$config->shouldReceive('get')->with('rest_api_fields')->once()->andReturn($configRestAPIFields);
 
 		\WP_Mock::userFunction('post_type_exists', [
 				'args'   => [\WP_Mock\Functions::anyOf('posttype1', 'posttype2')],
@@ -108,7 +108,7 @@ class RestApiServiceProviderTest extends TestCase
 			'times'  => '0+'
 		]);
 
-		$service->registerRestApiEndpointsFields();
+		$service->registerRestAPIEndpointsFields();
 
 		$this->assertTrue(true);
 	}
