@@ -12,8 +12,10 @@ return [
          * ]
          */
         'fields' => [
-            'taxonomies' => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
-            'connected'  => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class
+            'taxonomies'  => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
+            'connected'   => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
+            'image'       => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+            'appointment' => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class
         ]
     ]
 

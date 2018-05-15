@@ -8,7 +8,7 @@ class ConnectedField extends CreatesFields
 {
 
     /**
-     * Create an additional field on an array.
+     * Creates an array of connected posts.
      *
      * @param array $post
      *

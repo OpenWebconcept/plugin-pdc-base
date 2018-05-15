@@ -8,6 +8,8 @@ use OWC\PDC\Base\Models\ItemModel;
 class RestAPIServiceProvider extends ServiceProvider
 {
 
+    private $namespace = 'owc/pdc/v1';
+
     public function register()
     {
         $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'filterEndpointsWhitelist',
@@ -15,10 +17,24 @@ class RestAPIServiceProvider extends ServiceProvider
         $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRestAPIEndpointsFields', 10);
         $this->plugin->loader->addFilter('rest_prepare_pdc-item', $this, 'filterRestPreparePdcItem', 10, 3);
 
+        $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
+
         foreach ($this->plugin->config->get('api.item.fields') as $key => $creator) {
             ItemModel::addField($key, new $creator($this->plugin));
         }
+    }
 
+    public function registerRoutes()
+    {
+        register_rest_route($this->namespace, 'items', [
+            'methods'  => 'GET',
+            'callback' => [ new Controllers\ItemController, 'getItems' ],
+        ]);
+
+        register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
+            'methods'  => 'GET',
+            'callback' => [ new Controllers\ItemController, 'getItem' ],
+        ]);
     }
 
     /**

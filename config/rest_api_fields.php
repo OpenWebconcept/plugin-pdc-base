@@ -42,18 +42,12 @@ return [
                 'update_callback' => null,
                 'schema'          => null,
             ],
-        /**
-         * TODO: Migrate
-         */
         'pdc_appointment'   =>
             [
                 'get_callback'    => [ $pdcItemModel, 'getAppointment' ],
                 'update_callback' => null,
                 'schema'          => null,
             ],
-        /**
-         * TODO: Migrate
-         */
         'featured_image'    =>
             [
                 'get_callback'    => [ $pdcItemModel, 'getFeaturedImage' ],
@@ -66,9 +60,6 @@ return [
                 'update_callback' => null,
                 'schema'          => null,
             ],
-        /**
-         * TODO: Migrate
-         */
         'connected'         =>
             [
                 'get_callback'    => [ $pdcItemModel, 'getConnections' ],

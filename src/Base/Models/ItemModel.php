@@ -46,6 +46,27 @@ class ItemModel
     }
 
     /**
+     * Find a particular pdc item by ID.
+     *
+     * @param int $id
+     *
+     * @return array|null
+     */
+    public function find(int $id)
+    {
+        $query = (new WP_Query([
+            'p' => $id,
+            'post_type' => [ $this->posttype ]
+        ]));
+
+        if (empty($query->posts)) {
+            return null;
+        }
+
+        return $this->transform(reset($query->posts));
+    }
+
+    /**
      * Add additional query arguments.
      *
      * @param array $args
@@ -95,7 +116,7 @@ class ItemModel
      */
     protected function transform(WP_Post $post)
     {
-        $response = [
+        $result = [
             'id'      => $post->ID,
             'title'   => $post->post_title,
             'content' => $post->post_content,
@@ -104,18 +125,18 @@ class ItemModel
         ];
 
         // Make metadata present for additional fields
-        $response['meta'] = get_post_meta($post->ID);
+        $result['meta'] = get_post_meta($post->ID);
 
         foreach (static::$fields as $key => $creator) {
             if ( ! in_array($key, $this->hidden)) {
-                $response[$key] = $creator->create($response);
+                $result[$key] = $creator->create($result);
             }
         }
 
         // Remove the meta key once all additional fields are created.
-        unset($response['meta']);
+        unset($result['meta']);
 
-        return $response;
+        return $result;
     }
 
 }
