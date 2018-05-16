@@ -4,8 +4,9 @@ namespace OWC\PDC\Base\Models;
 
 use WP_Post;
 use WP_Query;
+use OWC\PDC\Base\Support\CreatesFields;
 
-class ItemModel
+class Item
 {
 
     protected $posttype = 'pdc-item';
@@ -25,11 +26,18 @@ class ItemModel
     protected $hidden = [];
 
     /**
+     * Dynamically added fields.
+     *
+     * @var array
+     */
+    protected $fields = [];
+
+    /**
      * Additional fields that needs to be added to an item.
      *
      * @var CreatesFields[]
      */
-    protected static $fields = [];
+    protected static $globalFields = [];
 
     /**
      * Get all the items from the database.
@@ -55,7 +63,7 @@ class ItemModel
     public function find(int $id)
     {
         $query = (new WP_Query([
-            'p' => $id,
+            'p'         => $id,
             'post_type' => [ $this->posttype ]
         ]));
 
@@ -95,6 +103,21 @@ class ItemModel
     }
 
     /**
+     * Dynamically add additional fields to the model.
+     *
+     * @param string        $key
+     * @param CreatesFields $creator
+     *
+     * @return $this
+     */
+    public function addField(string $key, CreatesFields $creator)
+    {
+        $this->fields[$key] = $creator;
+
+        return $this;
+    }
+
+    /**
      * Adds a new field to the
      *
      * @param string        $key
@@ -102,9 +125,9 @@ class ItemModel
      *
      * @return void
      */
-    public static function addField(string $key, CreatesFields $creator)
+    public static function addGlobalField(string $key, CreatesFields $creator)
     {
-        static::$fields[$key] = $creator;
+        static::$globalFields[$key] = $creator;
     }
 
     /**
@@ -124,17 +147,17 @@ class ItemModel
             'date'    => $post->post_date
         ];
 
-        // Make metadata present for additional fields
-        $result['meta'] = get_post_meta($post->ID);
-
-        foreach (static::$fields as $key => $creator) {
+        // Assign global fields.
+        foreach (static::$globalFields as $key => $creator) {
             if ( ! in_array($key, $this->hidden)) {
-                $result[$key] = $creator->create($result);
+                $result[$key] = $creator->create($post);
             }
         }
 
-        // Remove the meta key once all additional fields are created.
-        unset($result['meta']);
+        // Assign dynamic fields.
+        foreach ($this->fields as $key => $creator) {
+            $result[$key] = $creator->create($post);
+        }
 
         return $result;
     }

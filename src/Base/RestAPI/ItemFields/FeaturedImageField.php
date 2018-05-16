@@ -2,7 +2,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Models\CreatesFields;
+use OWC\PDC\Base\Support\CreatesFields;
+use WP_Post;
 
 class FeaturedImageField extends CreatesFields
 {
@@ -10,17 +11,17 @@ class FeaturedImageField extends CreatesFields
     /**
      * Gets the featured image of a post.
      *
-     * @param array $post
+     * @param WP_Post $post
      *
      * @return array
      */
-    public function create(array $post): array
+    public function create(WP_Post $post): array
     {
-        if ( ! has_post_thumbnail($post['id'])) {
+        if ( ! has_post_thumbnail($post->ID)) {
             return [];
         }
 
-        $id = get_post_thumbnail_id($post['id']);
+        $id = get_post_thumbnail_id($post->ID);
         $attachment = get_post($id);
         $imageSize = 'large';
 

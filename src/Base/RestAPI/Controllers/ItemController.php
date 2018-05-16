@@ -4,7 +4,7 @@ namespace OWC\PDC\Base\RestAPI\Controllers;
 
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Models\ItemModel;
+use OWC\PDC\Base\Models\Item;
 
 class ItemController
 {
@@ -14,7 +14,7 @@ class ItemController
      */
     public function getItems()
     {
-        return (new ItemModel())
+        return (new Item())
             ->hide([ 'connected' ])
             ->query(apply_filters('owc/pdc/rest-api/items/query', []))
             ->all();
@@ -31,8 +31,8 @@ class ItemController
     {
         $id = (int) $request->get_param('id');
 
-        $item = (new ItemModel)
-            ->query(apply_filters('owc/pdc/rest-api/items/single/query', []))
+        $item = (new Item)
+            ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
             ->find($id);
 
         if ( ! $item) {

@@ -2,7 +2,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Models\CreatesFields;
+use OWC\PDC\Base\Support\CreatesFields;
+use WP_Post;
 
 class TaxonomyField extends CreatesFields
 {
@@ -10,18 +11,16 @@ class TaxonomyField extends CreatesFields
     /**
      * Create an additional field on an array.
      *
-     * @param array $post
+     * @param WP_Post $post
      *
      * @return array
      */
-    public function create(array $post)
+    public function create(WP_Post $post): array
     {
-        $taxonomies = $this->plugin->config->get('taxonomies');
-
         $result = [];
 
-        foreach (array_keys($taxonomies) as $taxonomy) {
-            $result[$taxonomy] = $this->getTerms($post['id'], $taxonomy);
+        foreach (array_keys($this->plugin->config->get('taxonomies')) as $taxonomy) {
+            $result[$taxonomy] = $this->getTerms($post->ID, $taxonomy);
         }
 
         return $result;

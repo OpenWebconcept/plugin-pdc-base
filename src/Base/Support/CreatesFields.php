@@ -1,7 +1,8 @@
 <?php
 
-namespace OWC\PDC\Base\Models;
+namespace OWC\PDC\Base\Support;
 
+use WP_Post;
 use OWC\PDC\Base\Foundation\Plugin;
 
 abstract class CreatesFields
@@ -25,10 +26,10 @@ abstract class CreatesFields
     /**
      * Create an additional field on an array.
      *
-     * @param array $post
+     * @param WP_Post $post
      *
      * @return array
      */
-    abstract public function create(array $post);
+    abstract public function create(WP_Post $post): array;
 
 }

@@ -3,7 +3,7 @@
 namespace OWC\PDC\Base\RestAPI;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
-use OWC\PDC\Base\Models\ItemModel;
+use OWC\PDC\Base\Models\Item;
 
 class RestAPIServiceProvider extends ServiceProvider
 {
@@ -20,7 +20,7 @@ class RestAPIServiceProvider extends ServiceProvider
         $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
 
         foreach ($this->plugin->config->get('api.item.fields') as $key => $creator) {
-            ItemModel::addField($key, new $creator($this->plugin));
+            Item::addGlobalField($key, new $creator($this->plugin));
         }
     }
 
