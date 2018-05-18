@@ -31,7 +31,9 @@ $autoloader = new Autoloader();
 /**
  * manual loaded file: Extended CPT
  */
-require_once __DIR__.'/src/vendor/johnbillion/extended-cpts/extended-cpts.php';
+if ( !function_exists('register_extended_post_type')) {
+    require_once __DIR__ . '/src/vendor/johnbillion/extended-cpts/extended-cpts.php';
+}
 
 /**
  * Begin execution of the plugin
