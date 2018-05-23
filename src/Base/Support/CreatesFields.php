@@ -28,8 +28,8 @@ abstract class CreatesFields
      *
      * @param WP_Post $post
      *
-     * @return array
+     * @return mixed
      */
-    abstract public function create(WP_Post $post): array;
+    abstract public function create(WP_Post $post);
 
 }

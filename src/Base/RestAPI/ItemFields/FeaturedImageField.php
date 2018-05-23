@@ -49,9 +49,13 @@ class FeaturedImageField extends CreatesFields
      *
      * @return array
      */
-    private function getAttachmentMeta($id)
+    private function getAttachmentMeta($id): array
     {
         $meta = wp_get_attachment_metadata($id, false);
+
+        if (empty($meta['sizes'])) {
+            return [];
+        }
 
         foreach (array_keys($meta['sizes']) as $size) {
             $src = wp_get_attachment_image_src($id, $size);

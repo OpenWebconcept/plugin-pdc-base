@@ -12,11 +12,18 @@ class Item
     protected $posttype = 'pdc-item';
 
     /**
-     * Arguments for the WP_Query
+     * Instance of the WP_Query object.
+     *
+     * @var null|WP_Query
+     */
+    protected $query = null;
+
+    /**
+     * Arguments for the WP_Query.
      *
      * @var array
      */
-    protected $query = [];
+    protected $queryArgs = [];
 
     /**
      * Fields that need to be hidden.
@@ -46,11 +53,13 @@ class Item
      */
     public function all(): array
     {
-        $args = array_merge($this->query, [
+        $args = array_merge($this->queryArgs, [
             'post_type' => [ $this->posttype ]
         ]);
 
-        return array_map([ $this, 'transform' ], (new WP_Query($args))->posts);
+        $this->query = new WP_Query($args);
+
+        return array_map([ $this, 'transform' ], $this->getQuery()->posts);
     }
 
     /**
@@ -62,16 +71,26 @@ class Item
      */
     public function find(int $id)
     {
-        $query = (new WP_Query([
+        $this->query = new WP_Query([
             'p'         => $id,
             'post_type' => [ $this->posttype ]
-        ]));
+        ]);
 
-        if (empty($query->posts)) {
+        if (empty($this->getQuery()->posts)) {
             return null;
         }
 
-        return $this->transform(reset($query->posts));
+        return $this->transform(reset($this->getQuery()->posts));
+    }
+
+    /**
+     * Get the WP_Query object.
+     *
+     * @return null|WP_Query
+     */
+    public function getQuery()
+    {
+        return $this->query;
     }
 
     /**
@@ -83,7 +102,7 @@ class Item
      */
     public function query(array $args)
     {
-        $this->query = array_merge($this->query, $args);
+        $this->queryArgs = array_merge($this->queryArgs, $args);
 
         return $this;
     }

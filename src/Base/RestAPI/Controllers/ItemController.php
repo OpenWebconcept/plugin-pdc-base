@@ -6,18 +6,22 @@ use WP_Error;
 use WP_REST_Request;
 use OWC\PDC\Base\Models\Item;
 
-class ItemController
+class ItemController extends BaseController
 {
 
     /**
      * Get a list of all items.
      */
-    public function getItems()
+    public function getItems(WP_REST_Request $request)
     {
-        return (new Item())
+        $items = (new Item())
             ->hide([ 'connected' ])
-            ->query(apply_filters('owc/pdc/rest-api/items/query', []))
-            ->all();
+            ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)));
+
+        $data = $items->all();
+        $query = $items->getQuery();
+
+        return $this->addPaginator($data, $query);
     }
 
     /**

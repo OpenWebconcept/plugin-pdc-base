@@ -12,18 +12,20 @@ class RestAPIServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'filterEndpointsWhitelist',
-            10, 1);
-        $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRestAPIEndpointsFields', 10);
-        $this->plugin->loader->addFilter('rest_prepare_pdc-item', $this, 'filterRestPreparePdcItem', 10, 3);
-
         $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
+        $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'whitelist', 10, 1);
 
+        // Add global fields for PDC items.
         foreach ($this->plugin->config->get('api.item.fields') as $key => $creator) {
             Item::addGlobalField($key, new $creator($this->plugin));
         }
     }
 
+    /**
+     * Register routes on the rest API.
+     *
+     * @return void
+     */
     public function registerRoutes()
     {
         register_rest_route($this->namespace, 'items', [
@@ -38,59 +40,23 @@ class RestAPIServiceProvider extends ServiceProvider
     }
 
     /**
-     * register endpoint fields for use in the RestAPI.
+     * Whitelist endpoints within Config Expander.
+     *
+     * @param $whitelist
+     *
+     * @return array
      */
-    public function registerRestAPIEndpointsFields()
+    public function whitelist($whitelist): array
     {
+        // Remove default root endpoint
+        unset($whitelist['wp/v2']);
 
-        $restApiFieldsPerPostType = $this->plugin->config->get('rest_api_fields');
+        //$endpointsWhitelist['wp/v2'] = [
+        //    'endpoint_stub' => '/wp/v2/pdc',
+        //    'methods'       => [ 'GET' ]
+        //];
 
-        foreach ($restApiFieldsPerPostType as $postType => $restApiFields) {
-
-            $this->registerRestFieldByPostType($postType, $restApiFields);
-        }
-    }
-
-    private function registerRestFieldByPostType($postType, $restApiFields)
-    {
-        if (post_type_exists($postType)) {
-
-            foreach ($restApiFields as $attribute => $restApiField) {
-
-                register_rest_field($postType, $attribute, $restApiField);
-            }
-        }
-    }
-
-    public function filterEndpointsWhitelist($endpointsWhitelist)
-    {
-        //remove default root endpoint
-        unset($endpointsWhitelist['wp/v2']);
-
-        $endpointsWhitelist['wp/v2'] = [
-            'endpoint_stub' => '/wp/v2/pdc',
-            'methods'       => [ 'GET' ]
-        ];
-
-        return $endpointsWhitelist;
-    }
-
-    public function filterRestPreparePdcItem($response, $post, $request)
-    {
-
-        $requestAttributes = $request->get_attributes();
-        $requestParams = $request->get_params();
-
-        //check for usage in list of pdc_items via check for 'get_items' callback method.
-        if ('get_items' == $requestAttributes['callback'][1] && ! isset($requestParams['slug'])) {
-
-            $response->data['connected']['pdc-item_to_pdc-subcategory'] = [];
-            if ( ! empty($response->data['connected']['pdc-item_to_pdc-subcategory'] = $post->connected)) {
-                $response->data['connected']['pdc-item_to_pdc-subcategory'] = $post->connected;
-            }
-        }
-
-        return $response;
+        return $whitelist;
     }
 
 }
