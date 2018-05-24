@@ -5,24 +5,51 @@ return [
     /**
      * Service Providers.
      */
-    'providers' => [
+    'providers'    => [
         /**
          * Global providers.
          */
-	    OWC_PDC_Base\Core\Settings\SettingsServiceProvider::class,
-	    OWC_PDC_Base\Core\PostType\PostTypeServiceProvider::class,
-	    OWC_PDC_Base\Core\Taxonomy\TaxonomyServiceProvider::class,
-	    OWC_PDC_Base\Core\PostsToPosts\PostsToPostsServiceProvider::class,
-	    OWC_PDC_Base\Core\Metabox\MetaboxServiceProvider::class,
-	    OWC_PDC_Base\Core\RestApi\RestApiServiceProvider::class,
-	    OWC_PDC_Base\Core\Template\TemplateServiceProvider::class,
-	    /**
+        OWC\PDC\Base\Settings\SettingsServiceProvider::class,
+        OWC\PDC\Base\PostType\PostTypeServiceProvider::class,
+        OWC\PDC\Base\Taxonomy\TaxonomyServiceProvider::class,
+        OWC\PDC\Base\PostsToPosts\PostsToPostsServiceProvider::class,
+        OWC\PDC\Base\Metabox\MetaboxServiceProvider::class,
+        OWC\PDC\Base\RestAPI\RestAPIServiceProvider::class,
+        OWC\PDC\Base\Template\TemplateServiceProvider::class,
+        /**
          * Providers specific to the admin.
          */
-        'admin'    => [
-	        OWC_PDC_Base\Core\Admin\InterfaceServiceProvider::class
+        'admin' => [
+            OWC\PDC\Base\Admin\InterfaceServiceProvider::class
         ]
 
     ],
+
+    /**
+     * Dependencies upon which the plugin relies.
+     *
+     * Required: type, label
+     * Optional: message
+     *
+     * Type: plugin
+     * - Required: file
+     * - Optional: version
+     *
+     * Type: class
+     * - Required: name
+     */
+    'dependencies' => [
+        [
+            'type'    => 'plugin',
+            'label'   => 'RWMB Metabox',
+            'version' => '4.14.0',
+            'file'    => 'meta-box/meta-box.php'
+        ],
+        [
+            'type' => 'class',
+            'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
+            'name' => 'Extended_CPT'
+        ]
+    ]
 
 ];

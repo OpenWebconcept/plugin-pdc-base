@@ -2,9 +2,10 @@
 /**
  * Plugin Name:       PDC Base
  * Plugin URI:        https://www.openwebconcept.nl/
- * Description:       Plugin to act as foundation for other PDC related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           1.1
- * Author:            Edwin Siebel, Ruud Laan
+ * Description:       Acts as foundation for other PDC related content plugins. This plugin implements actions
+ * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
+ * Version:           2.0.0
+ * Author:            Edwin Siebel, Ruud Laan, Melvin Koopmans
  * Author URI:        https://www.yarddigital.nl/
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
@@ -12,14 +13,15 @@
  * Domain Path:       /languages
  */
 
-use OWC_PDC_Base\Core\Autoloader;
-use OWC_PDC_Base\Core\Plugin;
+use OWC\PDC\Base\Autoloader;
+use OWC\PDC\Base\Foundation\Hooks;
+use OWC\PDC\Base\Foundation\Plugin;
 
 /**
  * If this file is called directly, abort.
  */
 if ( ! defined('WPINC')) {
-	die;
+    die;
 }
 
 /**
@@ -29,11 +31,32 @@ require_once __DIR__.'/autoloader.php';
 $autoloader = new Autoloader();
 
 /**
- * manual loaded file: Extended CPT
+ * This hook registers a plugin function to be run when the plugin is activated.
  */
-if ( !function_exists('register_extended_post_type')) {
-    require_once __DIR__ . '/src/vendor/johnbillion/extended-cpts/extended-cpts.php';
-}
+register_activation_hook(__FILE__, [ Hooks::class, 'pluginActivation' ]);
+
+/**
+ * This hook is run immediately after any plugin is activated, and may be used to detect the activation of plugins.
+ * If a plugin is silently activated (such as during an update), this hook does not fire.
+ */
+add_action('activated_plugin', [ Hooks::class, 'pluginActivated' ], 10, 2);
+
+/**
+ * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other
+ * plugins.
+ */
+add_action('deactivated_plugin', [ Hooks::class, 'pluginDeactivated' ], 10, 2);
+
+/**
+ * This hook registers a plugin function to be run when the plugin is deactivated.
+ */
+register_deactivation_hook(__FILE__, [ Hooks::class, 'pluginDeactivation' ]);
+
+/**
+ * Registers the uninstall hook that will be called when the user clicks on the uninstall link that calls for the
+ * plugin to uninstall itself. The link won’t be active unless the plugin hooks into the action.
+ */
+register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
 
 /**
  * Begin execution of the plugin
@@ -43,7 +66,6 @@ if ( !function_exists('register_extended_post_type')) {
  * and wp_loaded action hooks.
  *
  */
-add_action('plugins_loaded', function () {
-
-	$plugin = (new Plugin(__DIR__))->boot( );
-}, 9);
+add_action('plugins_loaded', function () use ($plugin) {
+    (new Plugin(__DIR__))->boot();
+}, 10);

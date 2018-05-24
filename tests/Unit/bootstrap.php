@@ -21,7 +21,8 @@
  * Load dependencies with Composer autoloader.
  */
 require __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../../src/vendor/johnbillion/extended-cpts/extended-cpts.php';
+
+define('WP_PLUGIN_DIR', __DIR__);
 
 /**
  * Bootstrap WordPress Mock.

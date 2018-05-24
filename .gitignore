@@ -87,6 +87,8 @@ node_modules/
 # bower
 bower_components
 
+code-coverage
+
 # no map files
 *.map
 
