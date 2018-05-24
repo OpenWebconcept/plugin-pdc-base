@@ -2,6 +2,7 @@
 
 namespace OWC\PDC\Base\Models;
 
+use Closure;
 use WP_Post;
 use WP_Query;
 use OWC\PDC\Base\Support\CreatesFields;
@@ -142,11 +143,17 @@ class Item
      * @param string        $key
      * @param CreatesFields $creator
      *
+     * @param Closure|null  $conditional
+     *
      * @return void
      */
-    public static function addGlobalField(string $key, CreatesFields $creator)
+    public static function addGlobalField(string $key, CreatesFields $creator, Closure $conditional = null)
     {
-        static::$globalFields[$key] = $creator;
+        static::$globalFields[] = [
+            'key'         => $key,
+            'creator'     => $creator,
+            'conditional' => $conditional
+        ];
     }
 
     /**
@@ -167,9 +174,19 @@ class Item
         ];
 
         // Assign global fields.
-        foreach (static::$globalFields as $key => $creator) {
-            if ( ! in_array($key, $this->hidden)) {
-                $result[$key] = $creator->create($post);
+        foreach (static::$globalFields as $field) {
+            if (in_array($field['key'], $this->hidden)) {
+                continue;
+            }
+
+            if (is_null($field['conditional'])) {
+                // If the field has no conditional set we will add it
+                $result[$field['key']] = $field['creator']->create($post);
+            } else {
+                // Check if the conditional matches.
+                if ($field['conditional']($post)) {
+                    $result[$field['key']] = $field['creator']->create($post);
+                }
             }
         }
 
