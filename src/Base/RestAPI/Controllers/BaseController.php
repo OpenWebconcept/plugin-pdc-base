@@ -4,9 +4,22 @@ namespace OWC\PDC\Base\RestAPI\Controllers;
 
 use WP_Query;
 use WP_REST_Request;
+use OWC\PDC\Base\Foundation\Plugin;
 
 abstract class BaseController
 {
+
+    /**
+     * Instance of the plugin.
+     *
+     * @var Plugin
+     */
+    protected $plugin;
+
+    public function __construct(Plugin $plugin)
+    {
+        $this->plugin = $plugin;
+    }
 
     /**
      * Merges a paginator, based on a WP_Query, inside a data arary.
