@@ -67,10 +67,10 @@ class RestAPIServiceProvider extends ServiceProvider
         // Remove default root endpoint
         unset($whitelist['wp/v2']);
 
-        //$endpointsWhitelist['wp/v2'] = [
-        //    'endpoint_stub' => '/wp/v2/pdc',
-        //    'methods'       => [ 'GET' ]
-        //];
+        $whitelist[$this->namespace] = [
+            'endpoint_stub' => '/'. $this->namespace,
+            'methods'       => [ 'GET' ]
+        ];
 
         return $whitelist;
     }
