@@ -176,6 +176,20 @@ abstract class Model
     }
 
     /**
+     * Get all defined global fields of the Model.
+     *
+     * @return array
+     */
+    public static function getGlobalFields(): array
+    {
+        uasort(static::$globalFields, function ($a, $b) {
+            return ($a['key'] < $b['key']) ? -1 : 1;
+        });
+
+        return static::$globalFields;
+    }
+
+    /**
      * Transform a single WP_Post item.
      *
      * @param WP_Post $post
@@ -208,7 +222,7 @@ abstract class Model
     protected function assignFields(array $data, WP_Post $post)
     {
         // Assign global fields.
-        foreach (static::$globalFields as $field) {
+        foreach (static::getGlobalFields() as $field) {
             if (in_array($field['key'], $this->hidden)) {
                 continue;
             }
