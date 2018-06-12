@@ -29,6 +29,12 @@ return [
             'fields' => [
                 'items' => OWC\PDC\Base\RestAPI\ThemaFields\Items::class
             ]
+        ],
+
+        'thema' => [
+            'fields' => [
+                'items' => OWC\PDC\Base\RestAPI\ThemaFields\Items::class
+            ]
         ]
 
     ]
