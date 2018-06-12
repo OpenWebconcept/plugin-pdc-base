@@ -39,7 +39,7 @@ class ConnectedField extends CreatesFields
      *
      * @return array
      */
-    private function getConnectedItems(int $postID, string $type): array
+    protected function getConnectedItems(int $postID, string $type): array
     {
         $connection = p2p_type($type);
 
@@ -49,11 +49,13 @@ class ConnectedField extends CreatesFields
             ];
         }
 
-        return array_map(function ($post) {
+        return array_map(function (WP_Post $post) {
             return [
                 'id'    => $post->ID,
                 'title' => $post->post_title,
-                'slug'  => $post->post_name
+                'slug'  => $post->post_name,
+                'excerpt' => $post->post_excerpt,
+                'date' => $post->post_date
             ];
         }, $connection->get_connected($postID)->posts);
     }

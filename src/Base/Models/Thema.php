@@ -2,10 +2,10 @@
 
 namespace OWC\PDC\Base\Models;
 
-class Item extends Model
+class Thema extends Model
 {
 
-    protected $posttype = 'pdc-item';
+    protected $posttype = 'pdc-category';
 
     protected static $globalFields = [];
 
