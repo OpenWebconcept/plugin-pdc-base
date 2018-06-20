@@ -21,13 +21,14 @@ return [
                 'forms'             => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
                 'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
                 'links'             => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
-                'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class
+                'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
+                'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
             ]
         ],
 
         'subthema' => [
             'fields' => [
-                'items' => OWC\PDC\Base\RestAPI\ThemaFields\Items::class,
+                'items'  => OWC\PDC\Base\RestAPI\ThemaFields\Items::class,
                 'themas' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ]
         ],
