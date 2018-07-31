@@ -4,6 +4,7 @@ namespace OWC\PDC\Base\PostType;
 
 use Mockery as m;
 use OWC\PDC\Base\Foundation\Config;
+use OWC\PDC\Base\Models\Item;
 use OWC\PDC\Base\PostType\PostTypes\PdcItemModel;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
@@ -87,81 +88,6 @@ class PdcItemModelTest extends TestCase
         ];
 
         //$this->assertEquals( $output, $this->invokeMethod($model, 'getTermsAsArray', array($object, 1)));
-    }
-
-    /** @test */
-    public function check_get_title_alternative_method()
-    {
-        $config = m::mock(Config::class);
-        $pdc_item = m::mock(PdcItemModel::class);
-
-        $model = new PdcItemModel($config);
-
-        $output = [
-            [
-                'ID'   => 1,
-                'name' => 'term_name1',
-                'slug' => 'term_slug1'
-            ],
-            [
-                'ID'   => 2,
-                'name' => 'term_name2',
-                'slug' => 'term_slug2'
-            ]
-        ];
-
-        $object['id'] = 1;
-        $fieldName = 'field_name';
-        $request = null;
-
-        $title_alternative = '<h1>Alternative Title</h1>';
-
-        \WP_Mock::userFunction('get_post_meta', [
-                'args'   => [ $object['id'], '_owc_pdc_titel_alternatief', true ],
-                'times'  => '1',
-                'return' => $title_alternative
-            ]
-        );
-
-        $output = 'Alternative Title';
-
-        \WP_Mock::expectFilter('owc/pdc-base/rest-api/pdcitem/field/get-title-alternative', $output, $object,
-            $fieldName, $request);
-
-        $this->assertEquals($output, $model->getTitleAlternative($object, $fieldName, $request));
-
-        $title_alternative = 'Alternative Title';
-
-        \WP_Mock::userFunction('get_post_meta', [
-                'args'   => [ $object['id'], '_owc_pdc_titel_alternatief', true ],
-                'times'  => '1',
-                'return' => $title_alternative
-            ]
-        );
-
-        $this->assertEquals($output, $model->getTitleAlternative($object, $fieldName, $request));
-
-        $title_alternative = "Alternative\r\nTitle";
-
-        \WP_Mock::userFunction('get_post_meta', [
-                'args'   => [ $object['id'], '_owc_pdc_titel_alternatief', true ],
-                'times'  => '1',
-                'return' => $title_alternative
-            ]
-        );
-
-        $this->assertEquals($output, $model->getTitleAlternative($object, $fieldName, $request));
-
-        $title_alternative = "Alternative\n\rTitle";
-
-        \WP_Mock::userFunction('get_post_meta', [
-                'args'   => [ $object['id'], '_owc_pdc_titel_alternatief', true ],
-                'times'  => '1',
-                'return' => $title_alternative
-            ]
-        );
-
-        $this->assertEquals($output, $model->getTitleAlternative($object, $fieldName, $request));
     }
 }
 

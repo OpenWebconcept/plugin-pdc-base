@@ -30,86 +30,41 @@ class RestAPIServiceProviderTest extends TestCase
 		$plugin->config = $config;
 		$plugin->loader = m::mock(Loader::class);
 
-		$service = new RestAPIServiceProvider($plugin);
+        $service = new RestAPIServiceProvider($plugin);
+
+        $plugin->loader->shouldReceive('addFilter')->withArgs([
+            'rest_api_init',
+            $service,
+            'registerRoutes'
+        ])->once();
 
 		$plugin->loader->shouldReceive('addFilter')->withArgs([
 			'owc/config-expander/rest-api/whitelist',
 			$service,
-			'filterEndpointsWhitelist',
+			'whitelist',
 			10,
 			1
-		])->once();
+        ])->once();
 
-		$plugin->loader->shouldReceive('addFilter')->withArgs([
-			'rest_api_init',
-			$service,
-			'registerRestAPIEndpointsFields',
-			10
-		])->once();
+        $fields = [
+            'items' => [
+                'fields' => [
+                'taxonomies' => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
+                'connected' => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
+                'image' => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'appointment' => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
+                'forms' => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
+                'downloads' => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
+                'links' => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
+                'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
+                'faq' => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
+            ]
+            ]
+        ];
 
-		$plugin->loader->shouldReceive('addFilter')->withArgs([
-			'rest_prepare_pdc-item',
-			$service,
-			'filterRestPreparePdcItem',
-			10,
-			3
-		])->once();
-
-		$service->register();
-
-		$this->assertTrue(true);
-
-		$configRestAPIFields = [
-			'posttype1' => [
-				'endpoint_field1' =>
-					[
-						'get_callback'    => ['object', 'callback1'],
-						'update_callback' => null,
-						'schema'          => null,
-					],
-				'endpoint_field2' =>
-					[
-						'get_callback'    => ['object', 'callback2'],
-						'update_callback' => null,
-						'schema'          => null,
-					]
-			],
-			'posttype2' => [
-				'endpoint_field1' =>
-					[
-						'get_callback'    => ['object', 'callback1'],
-						'update_callback' => null,
-						'schema'          => null,
-					],
-				'endpoint_field2' =>
-					[
-						'get_callback'    => ['object', 'callback2'],
-						'update_callback' => null,
-						'schema'          => null,
-					]
-			]
-		];
-
-		$config->shouldReceive('get')->with('rest_api_fields')->once()->andReturn($configRestAPIFields);
-
-		\WP_Mock::userFunction('post_type_exists', [
-				'args'   => [\WP_Mock\Functions::anyOf('posttype1', 'posttype2')],
-				'times'  => '0+',
-				'return' => true
-			]
-		);
-
-		\WP_Mock::userFunction('register_rest_field', [
-			'args'   => [
-				\WP_Mock\Functions::anyOf('posttype1', 'posttype2'),
-				\WP_Mock\Functions::anyOf('endpoint_field1', 'endpoint_field2'),
-				'*'
-			],
-			'times'  => '0+'
-		]);
-
-		$service->registerRestAPIEndpointsFields();
-
-		$this->assertTrue(true);
+        $config->shouldReceive('get')->with('api.models')->once()->andReturn($fields);
+        $service->register();
+        
+        $this->assertTrue(true);
 	}
 }
