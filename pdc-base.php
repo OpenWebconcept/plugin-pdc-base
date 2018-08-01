@@ -5,8 +5,8 @@
  * Description:       Acts as foundation for other PDC related content plugins. This plugin implements actions
  * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
  * Version:           2.0.0
- * Author:            Edwin Siebel, Ruud Laan, Melvin Koopmans
- * Author URI:        https://www.yarddigital.nl/
+ * Author:            Yard Internet
+ * Author URI:        https://www.yardinternet.nl/
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       pdc-base

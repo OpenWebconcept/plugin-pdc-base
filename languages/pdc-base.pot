@@ -338,9 +338,9 @@ msgid "https://www.openwebconcept.nl/"
 msgstr ""
 
 #. Author of the plugin
-msgid "Edwin Siebel, Ruud Laan"
+msgid "Yard Internet"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://www.yarddigital.nl/"
+msgid "https://www.yardinternet.nl/"
 msgstr ""

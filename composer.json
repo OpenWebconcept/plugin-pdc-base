@@ -1,18 +1,13 @@
 {
   "name": "plugin/pdc-base",
   "description": "PDC base plugin",
-  "authors": [
-    {
-      "name": "Ruud Laan",
-      "email": "ruud@yard.nl",
-      "homepage": "https://www.yarddigital.nl"
-    },
-    {
-      "name": "Edwin Siebel",
-      "email": "edwin@yard.nl",
-      "homepage": "https://www.yarddigital.nl"
-    }
-  ],
+ "authors": [
+  {
+    "name": "Yard Internet",
+    "email": "info@yard.nl",
+    "homepage": "https://www.yardinternet.nl"
+  }
+],
   "type": "wordpress-plugin",
   "require": {
     "php": ">=7.0"
@@ -28,6 +23,15 @@
       "OWC\\PDC\\Base\\": "./src/Base",
       "OWC\\PDC\\Base\\Tests\\": "./tests"
     }
+  },
+  "scripts": {
+    "unit": "clear && ./vendor/bin/phpunit  --testsuite 'OWC PDC FAQ Plugin Unit Test Suite' --colors=always",
+    "unit-coverage": "clear && ./vendor/bin/phpunit  --testsuite 'OWC PDC FAQ Plugin Unit Test Suite' --colors=always --coverage-html ./tests/coverage",
+    "integration": "clear && ./vendor/bin/phpunit  --testsuite 'Integration Test' --colors=always",
+    "test": [
+      "@unit",
+      "@integration"
+    ]
   }
 }
 
