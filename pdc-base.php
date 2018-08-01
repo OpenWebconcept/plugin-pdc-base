@@ -21,7 +21,7 @@ use OWC\PDC\Base\Foundation\Plugin;
  * If this file is called directly, abort.
  */
 if ( ! defined('WPINC')) {
-    die;
+	die;
 }
 
 /**
@@ -67,5 +67,5 @@ register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
  */
 
 add_action('plugins_loaded', function() {
-    $plugin = (new Plugin(__DIR__))->boot();
+	$plugin = (new Plugin(__DIR__))->boot();
 }, 10);

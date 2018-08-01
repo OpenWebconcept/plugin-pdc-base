@@ -18,7 +18,7 @@ class FAQField extends CreatesFields
     public function create(WP_Post $post): array
     {
 
-        if ( ! class_exists('OWC_PDC_FAQ\Core\PostTypes\PdcItem') ) {
+        if ( ! class_exists('OWC\PDC\FAQ\PostTypes\PdcItem') ) {
             return [];
         }
 
