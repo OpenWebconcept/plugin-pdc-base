@@ -92,10 +92,13 @@ abstract class Model
      */
     public function find(int $id)
     {
-        $this->query = new WP_Query([
-            'p'         => $id,
-            'post_type' => [ $this->posttype ]
+
+        $args = array_merge($this->queryArgs, [
+            'p' => $id,
+            'post_type' => [$this->posttype]
         ]);
+
+        $this->query = new WP_Query($args);
 
         if (empty($this->getQuery()->posts)) {
             return null;

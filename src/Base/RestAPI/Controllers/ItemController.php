@@ -16,7 +16,8 @@ class ItemController extends BaseController
     {
         $items = (new Item())
             ->hide([ 'connected' ])
-            ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)));
+            ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
+            ->query($this->hideInactiveItem());
 
         $data = $items->all();
         $query = $items->getQuery();
@@ -37,6 +38,7 @@ class ItemController extends BaseController
 
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
+            ->query($this->hideInactiveItem())
             ->find($id);
 
         if ( ! $item) {
@@ -46,6 +48,20 @@ class ItemController extends BaseController
         }
 
         return $item;
+    }
+
+    /**
+     * Hide inactive item from output.
+     */
+    protected function hideInactiveItem() {
+        return [
+            'meta_query' => [
+                [
+                    'key' => '_owc_pdc_active',
+                    'value' => 1
+                ]
+            ]
+        ];
     }
 
 }

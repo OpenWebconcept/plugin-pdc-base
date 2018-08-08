@@ -32,7 +32,7 @@ class RestAPIServiceProviderTest extends TestCase
 
         $service = new RestAPIServiceProvider($plugin);
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
+        $plugin->loader->shouldReceive('addAction')->withArgs([
             'rest_api_init',
             $service,
             'registerRoutes'

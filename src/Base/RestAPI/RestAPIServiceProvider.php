@@ -11,7 +11,7 @@ class RestAPIServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
+        $this->plugin->loader->addAction('rest_api_init', $this, 'registerRoutes');
         $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'whitelist', 10, 1);
 
         $this->registerModelFields();
@@ -25,33 +25,33 @@ class RestAPIServiceProvider extends ServiceProvider
     public function registerRoutes()
     {
         register_rest_route($this->namespace, 'items', [
-            'methods'  => 'GET',
-            'callback' => [ new Controllers\ItemController($this->plugin), 'getItems' ],
+            'methods' => 'GET',
+            'callback' => [new Controllers\ItemController($this->plugin), 'getItems'],
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
-            'methods'  => 'GET',
-            'callback' => [ new Controllers\ItemController($this->plugin), 'getItem' ],
+            'methods' => 'GET',
+            'callback' => [new Controllers\ItemController($this->plugin), 'getItem'],
         ]);
 
         register_rest_route($this->namespace, 'themas', [
-            'methods'  => 'GET',
-            'callback' => [ new Controllers\ThemaController($this->plugin), 'getThemas' ],
+            'methods' => 'GET',
+            'callback' => [new Controllers\ThemaController($this->plugin), 'getThemas'],
         ]);
 
         register_rest_route($this->namespace, 'themas/(?P<id>\d+)', [
-            'methods'  => 'GET',
-            'callback' => [ new Controllers\ThemaController($this->plugin), 'getThema' ],
+            'methods' => 'GET',
+            'callback' => [new Controllers\ThemaController($this->plugin), 'getThema'],
         ]);
 
         register_rest_route($this->namespace, 'subthemas', [
-            'methods'  => 'GET',
-            'callback' => [ new Controllers\SubthemaController($this->plugin), 'getSubthemas' ],
+            'methods' => 'GET',
+            'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
         ]);
 
         register_rest_route($this->namespace, 'subthemas/(?P<id>\d+)', [
-            'methods'  => 'GET',
-            'callback' => [ new Controllers\SubthemaController($this->plugin), 'getSubthema' ],
+            'methods' => 'GET',
+            'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
         ]);
     }
 
@@ -68,8 +68,8 @@ class RestAPIServiceProvider extends ServiceProvider
         unset($whitelist['wp/v2']);
 
         $whitelist[$this->namespace] = [
-            'endpoint_stub' => '/'. $this->namespace,
-            'methods'       => [ 'GET' ]
+            'endpoint_stub' => '/' . $this->namespace,
+            'methods' => ['GET'],
         ];
 
         return $whitelist;
@@ -83,7 +83,7 @@ class RestAPIServiceProvider extends ServiceProvider
         // Add global fields for all Models.
         foreach ($this->plugin->config->get('api.models') as $posttype => $data) {
             foreach ($data['fields'] as $key => $creator) {
-                $class = '\OWC\PDC\Base\Models\\'.ucfirst($posttype);
+                $class = '\OWC\PDC\Base\Models\\' . ucfirst($posttype);
                 if (class_exists($class)) {
                     $class::addGlobalField($key, new $creator($this->plugin));
                 }
