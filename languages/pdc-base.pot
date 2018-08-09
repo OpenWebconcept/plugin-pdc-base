@@ -2,23 +2,27 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-24 13:45+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2018-08-09 12:13+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Language-Team: Yard Internet <info@yard.nl>\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-KeywordsList: __;_x;_e;_ex;_n;_nx;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
+"X-Poedit-Basepath: ..\n"
+"Last-Translator: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: tests\n"
+"X-Poedit-SearchPathExcluded-1: docs\n"
+"X-Poedit-SearchPathExcluded-2: vendor\n"
+"X-Poedit-SearchPathExcluded-3: languages\n"
 
 #: config/metaboxes.php:7
 msgid "Data"
 msgstr ""
 
-#: config/metaboxes.php:17
+#: config/metaboxes.php:17 config/settings_pages.php:16
 msgid "General"
 msgstr ""
 
@@ -35,8 +39,7 @@ msgid "Synonyms"
 msgstr ""
 
 #: config/metaboxes.php:27
-msgid ""
-"Use this option to add an comma separated list of synonyms or related terms"
+msgid "Use this option to add an comma separated list of synonyms or related terms"
 msgstr ""
 
 #: config/metaboxes.php:32 config/metaboxes.php:49
@@ -68,9 +71,7 @@ msgid "Appointment URL"
 msgstr ""
 
 #: config/metaboxes.php:67
-msgid ""
-"Use this field to get a specific URL for the appointment button. URL "
-"including http(s)://"
+msgid "Use this field to get a specific URL for the appointment button. URL including http(s)://"
 msgstr ""
 
 #: config/metaboxes.php:72
@@ -78,9 +79,7 @@ msgid "Appointment meta"
 msgstr ""
 
 #: config/metaboxes.php:73
-msgid ""
-"Use this field if the appointment method leverages an special data attribute "
-"like eg. GravityForms-id (currently not in use)"
+msgid "Use this field if the appointment method leverages an special data attribute like eg. GravityForms-id (currently not in use)"
 msgstr ""
 
 #: config/metaboxes.php:81
@@ -145,8 +144,7 @@ msgid "UPL resource"
 msgstr ""
 
 #: config/metaboxes.php:172
-msgid ""
-"Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik"
+msgid "Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik"
 msgstr ""
 
 #: config/metaboxes.php:180
@@ -161,58 +159,35 @@ msgstr ""
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
-#: config/p2p_connections.php:9
-msgctxt "P2P titel"
+#: config/p2p_connections.php:9 config/posttypes.php:35
 msgid "PDC item"
 msgstr ""
 
-#: config/p2p_connections.php:14
-msgctxt "P2P titel"
+#: config/p2p_connections.php:14 config/posttypes.php:55
 msgid "PDC theme"
 msgstr ""
 
-#: config/p2p_connections.php:19
-msgctxt "P2P titel"
+#: config/p2p_connections.php:19 config/posttypes.php:75
 msgid "PDC subtheme"
 msgstr ""
 
 #: config/p2p_connections.php:24
-msgctxt "P2P titel"
 msgid "PDC owner"
 msgstr ""
 
-#: config/posttypes.php:26
-msgctxt "Posttype definition"
-msgid "PDC item"
-msgstr ""
-
-#: config/posttypes.php:27
-msgctxt "Posttype definition"
+#: config/posttypes.php:36
 msgid "PDC items"
 msgstr ""
 
-#: config/posttypes.php:48
-msgctxt "Posttype definition"
-msgid "PDC theme"
-msgstr ""
-
-#: config/posttypes.php:49
-msgctxt "Posttype definition"
+#: config/posttypes.php:56
 msgid "PDC themes"
 msgstr ""
 
-#: config/posttypes.php:70
-msgctxt "Posttype definition"
-msgid "PDC subtheme"
-msgstr ""
-
-#: config/posttypes.php:71
-msgctxt "Posttype definition"
+#: config/posttypes.php:76
 msgid "PDC subthemes"
 msgstr ""
 
 #: config/settings.php:7
-msgctxt "PDC instellingen subpagina"
 msgid "Portal"
 msgstr ""
 
@@ -233,114 +208,84 @@ msgid "PDC settings"
 msgstr ""
 
 #: config/settings_pages.php:11
-msgctxt "PDC settings subpage"
 msgid "Base"
 msgstr ""
 
 #: config/settings_pages.php:14
-msgctxt "PDC settings subpage"
 msgid "Submit"
 msgstr ""
 
-#: config/settings_pages.php:16
-msgctxt "PDC settings tab"
-msgid "General"
-msgstr ""
-
 #: config/taxonomies.php:22
-msgctxt "Taxonomy definition"
 msgid "Audience"
 msgstr ""
 
 #: config/taxonomies.php:23
-msgctxt "Taxonomy definition"
 msgid "Audiences"
 msgstr ""
 
 #: config/taxonomies.php:43
-msgctxt "Taxonomy definition"
 msgid "Type"
 msgstr ""
 
 #: config/taxonomies.php:44
-msgctxt "Taxonomy definition"
 msgid "Types"
 msgstr ""
 
 #: config/taxonomies.php:64
-msgctxt "Taxonomy definition"
 msgid "Aspect"
 msgstr ""
 
 #: config/taxonomies.php:65
-msgctxt "Taxonomy definition"
 msgid "Aspects"
 msgstr ""
 
 #: config/taxonomies.php:84
-msgctxt "Taxonomy definition"
 msgid "Usage"
 msgstr ""
 
 #: config/taxonomies.php:85
-msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr ""
 
 #: config/taxonomies.php:105
-msgctxt "Taxonomy definition"
 msgid "Owner"
 msgstr ""
 
 #: config/taxonomies.php:106
-msgctxt "Taxonomy definition"
 msgid "Owners"
 msgstr ""
 
-#: src/Core/Admin/InterfaceServiceProvider.php:35
+#: src/Base/Admin/InterfaceServiceProvider.php:45
 msgid "View PDC item in portal"
 msgstr ""
 
-#: src/Core/Admin/InterfaceServiceProvider.php:45
-msgctxt "preview button text"
+#: src/Base/Admin/InterfaceServiceProvider.php:55
+#: src/Base/Admin/InterfaceServiceProvider.php:80
 msgid "View in Portal"
 msgstr ""
 
-#. %s: post title
-#: src/Core/Admin/InterfaceServiceProvider.php:69
+#: src/Base/Admin/InterfaceServiceProvider.php:79
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr ""
 
-#: src/Core/Admin/InterfaceServiceProvider.php:70
-msgctxt "Preview text in PDC list"
-msgid "View in Portal"
+#: src/Base/Foundation/DependencyChecker.php:61
+msgid "De volgende plugins zijn vereist om gebruik te maken van de PDC:"
 msgstr ""
 
-#: src/Core/PostType/PostTypes/PdcItemModel.php:67
+#: src/Base/Foundation/DependencyChecker.php:96
+msgid "Class does not exist"
+msgstr ""
+
+#: src/Base/Foundation/DependencyChecker.php:110
+msgid "Inactive"
+msgstr ""
+
+#: src/Base/Foundation/DependencyChecker.php:118
+msgid "Minimal version:"
+msgstr ""
+
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
 #, php-format
-msgid "p2p_key \"%s\" does not exist"
-msgstr ""
-
-#. Name of the plugin
-msgid "PDC Base"
-msgstr ""
-
-#. Description of the plugin
-msgid ""
-"Plugin to act as foundation for other PDC related content plugins. This "
-"plugin implements actions to allow for other plugins to add and/or change "
-"Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
-msgstr ""
-
-#. URI of the plugin
-msgid "https://www.openwebconcept.nl/"
-msgstr ""
-
-#. Author of the plugin
-msgid "Yard Internet"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://www.yardinternet.nl/"
+msgid "Connection type \"%s\" does not exist"
 msgstr ""

@@ -1,31 +1,30 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2018-04-24 13:45+0000\n"
-"PO-Revision-Date: 2018-04-24 14:37+0000\n"
-"Last-Translator: Minda <ruud@yard.nl>\n"
-"Language-Team: Dutch\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2018-08-09 12:13+0200\n"
+"PO-Revision-Date: 2018-08-09 12:13+0200\n"
+"Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
+"Language-Team: Yard Internet <info@yard.nl>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-KeywordsList: __;_x;_e;_ex;_n;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: pdc-base.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
-"Report-Msgid-Bugs-To: "
+"X-Poedit-SearchPathExcluded-0: tests\n"
+"X-Poedit-SearchPathExcluded-1: docs\n"
+"X-Poedit-SearchPathExcluded-2: vendor\n"
+"X-Poedit-SearchPathExcluded-3: languages\n"
 
 #: config/metaboxes.php:7
 msgid "Data"
 msgstr "Gegevens"
 
-#: config/metaboxes.php:17
+#: config/metaboxes.php:17 config/settings_pages.php:16
 msgid "General"
 msgstr "Algemeen"
 
@@ -163,8 +162,8 @@ msgstr "UPL resource"
 msgid ""
 "Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik"
 msgstr ""
-"Bijvoorbeeld: http://standaarden.overheid."
-"nl/owms/tersm/aanduiding_naamgebruik"
+"Bijvoorbeeld: http://standaarden.overheid.nl/owms/tersm/"
+"aanduiding_naamgebruik"
 
 #: config/metaboxes.php:180
 msgid "Other"
@@ -178,60 +177,37 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: config/p2p_connections.php:9
-msgctxt "P2P titel"
+#: config/p2p_connections.php:9 config/posttypes.php:35
 msgid "PDC item"
-msgstr "PDC item"
+msgstr ""
 
-#: config/p2p_connections.php:14
-msgctxt "P2P titel"
+#: config/p2p_connections.php:14 config/posttypes.php:55
 msgid "PDC theme"
-msgstr "PDC thema"
+msgstr ""
 
-#: config/p2p_connections.php:19
-msgctxt "P2P titel"
+#: config/p2p_connections.php:19 config/posttypes.php:75
 msgid "PDC subtheme"
-msgstr "PDC subthema"
+msgstr ""
 
 #: config/p2p_connections.php:24
-msgctxt "P2P titel"
 msgid "PDC owner"
-msgstr "PDC Eigenaar"
+msgstr ""
 
-#: config/posttypes.php:26
-msgctxt "Posttype definition"
-msgid "PDC item"
-msgstr "PDC item"
-
-#: config/posttypes.php:27
-msgctxt "Posttype definition"
+#: config/posttypes.php:36
 msgid "PDC items"
-msgstr "PDC items"
+msgstr ""
 
-#: config/posttypes.php:48
-msgctxt "Posttype definition"
-msgid "PDC theme"
-msgstr "PDC thema"
-
-#: config/posttypes.php:49
-msgctxt "Posttype definition"
+#: config/posttypes.php:56
 msgid "PDC themes"
-msgstr "PDC themas"
+msgstr ""
 
-#: config/posttypes.php:70
-msgctxt "Posttype definition"
-msgid "PDC subtheme"
-msgstr "PDC subthema"
-
-#: config/posttypes.php:71
-msgctxt "Posttype definition"
+#: config/posttypes.php:76
 msgid "PDC subthemes"
-msgstr "PDC subthemas"
+msgstr ""
 
 #: config/settings.php:7
-msgctxt "PDC instellingen subpagina"
 msgid "Portal"
-msgstr "Portal"
+msgstr ""
 
 #: config/settings.php:13
 msgid "Portal URL"
@@ -250,113 +226,191 @@ msgid "PDC settings"
 msgstr "PDC instellingen"
 
 #: config/settings_pages.php:11
-msgctxt "PDC settings subpage"
 msgid "Base"
-msgstr "Basis"
+msgstr ""
 
 #: config/settings_pages.php:14
-msgctxt "PDC settings subpage"
 msgid "Submit"
-msgstr "Opslaan"
-
-#: config/settings_pages.php:16
-msgctxt "PDC settings tab"
-msgid "General"
-msgstr "Algemeen"
+msgstr ""
 
 #: config/taxonomies.php:22
-msgctxt "Taxonomy definition"
 msgid "Audience"
-msgstr "Doelgroep"
+msgstr ""
 
 #: config/taxonomies.php:23
-msgctxt "Taxonomy definition"
 msgid "Audiences"
-msgstr "Doelgroepen"
+msgstr ""
 
 #: config/taxonomies.php:43
-msgctxt "Taxonomy definition"
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 #: config/taxonomies.php:44
-msgctxt "Taxonomy definition"
 msgid "Types"
-msgstr "Typen"
+msgstr ""
 
 #: config/taxonomies.php:64
-msgctxt "Taxonomy definition"
 msgid "Aspect"
-msgstr "Kenmerk"
+msgstr ""
 
 #: config/taxonomies.php:65
-msgctxt "Taxonomy definition"
 msgid "Aspects"
-msgstr "Kenmerken"
+msgstr ""
 
 #: config/taxonomies.php:84
-msgctxt "Taxonomy definition"
 msgid "Usage"
-msgstr "Toepassing"
+msgstr ""
 
 #: config/taxonomies.php:85
-msgctxt "Taxonomy definition"
 msgid "Usages"
-msgstr "Toepassingen"
+msgstr ""
 
 #: config/taxonomies.php:105
-msgctxt "Taxonomy definition"
 msgid "Owner"
-msgstr "Eigenaar"
+msgstr ""
 
 #: config/taxonomies.php:106
-msgctxt "Taxonomy definition"
 msgid "Owners"
-msgstr "Eigenaren"
+msgstr ""
 
-#: src/Core/Admin/InterfaceServiceProvider.php:35
+#: src/Base/Admin/InterfaceServiceProvider.php:45
 msgid "View PDC item in portal"
 msgstr "Bekijk PDC item in Portal"
 
-#: src/Core/Admin/InterfaceServiceProvider.php:45
-msgctxt "preview button text"
+#: src/Base/Admin/InterfaceServiceProvider.php:55
+#: src/Base/Admin/InterfaceServiceProvider.php:80
 msgid "View in Portal"
-msgstr "Bekijk in Portal"
+msgstr ""
 
-#: src/Core/Admin/InterfaceServiceProvider.php:69
+#: src/Base/Admin/InterfaceServiceProvider.php:79
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "Bekijk &#8220;%s&#8221;"
 
-#: src/Core/Admin/InterfaceServiceProvider.php:70
-msgctxt "Preview text in PDC list"
-msgid "View in Portal"
-msgstr "Bekijk in Portal"
+#: src/Base/Foundation/DependencyChecker.php:61
+msgid "De volgende plugins zijn vereist om gebruik te maken van de PDC:"
+msgstr ""
 
-#: src/Core/PostType/PostTypes/PdcItemModel.php:67
+#: src/Base/Foundation/DependencyChecker.php:96
+msgid "Class does not exist"
+msgstr ""
+
+#: src/Base/Foundation/DependencyChecker.php:110
+msgid "Inactive"
+msgstr ""
+
+#: src/Base/Foundation/DependencyChecker.php:118
+msgid "Minimal version:"
+msgstr ""
+
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
 #, php-format
-msgid "p2p_key \"%s\" does not exist"
-msgstr "p2p_key \"%s\" bestaat niet"
-
-#. Plugin Name of the plugin/theme
-msgid "PDC Base"
+msgid "Connection type \"%s\" does not exist"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"Plugin to act as foundation for other PDC related content plugins. This "
-"plugin implements actions to allow for other plugins to add and/or change "
-"Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
-msgstr ""
+#~ msgctxt "P2P titel"
+#~ msgid "PDC item"
+#~ msgstr "PDC item"
 
-#. Plugin URI of the plugin/theme
-msgid "https://www.openwebconcept.nl/"
-msgstr ""
+#~ msgctxt "P2P titel"
+#~ msgid "PDC theme"
+#~ msgstr "PDC thema"
 
-#. Author of the plugin/theme
-msgid "Yard Internet"
-msgstr ""
+#~ msgctxt "P2P titel"
+#~ msgid "PDC subtheme"
+#~ msgstr "PDC subthema"
 
-#. Author URI of the plugin/theme
-msgid "https://www.yardinternet.nl/"
-msgstr ""
+#~ msgctxt "P2P titel"
+#~ msgid "PDC owner"
+#~ msgstr "PDC Eigenaar"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "PDC item"
+#~ msgstr "PDC item"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "PDC items"
+#~ msgstr "PDC items"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "PDC theme"
+#~ msgstr "PDC thema"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "PDC themes"
+#~ msgstr "PDC themas"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "PDC subtheme"
+#~ msgstr "PDC subthema"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "PDC subthemes"
+#~ msgstr "PDC subthemas"
+
+#~ msgctxt "PDC instellingen subpagina"
+#~ msgid "Portal"
+#~ msgstr "Portal"
+
+#~ msgctxt "PDC settings subpage"
+#~ msgid "Base"
+#~ msgstr "Basis"
+
+#~ msgctxt "PDC settings subpage"
+#~ msgid "Submit"
+#~ msgstr "Opslaan"
+
+#~ msgctxt "PDC settings tab"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Audience"
+#~ msgstr "Doelgroep"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Audiences"
+#~ msgstr "Doelgroepen"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Types"
+#~ msgstr "Typen"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Aspect"
+#~ msgstr "Kenmerk"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Aspects"
+#~ msgstr "Kenmerken"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Usage"
+#~ msgstr "Toepassing"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Usages"
+#~ msgstr "Toepassingen"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Owner"
+#~ msgstr "Eigenaar"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Owners"
+#~ msgstr "Eigenaren"
+
+#~ msgctxt "preview button text"
+#~ msgid "View in Portal"
+#~ msgstr "Bekijk in Portal"
+
+#~ msgctxt "Preview text in PDC list"
+#~ msgid "View in Portal"
+#~ msgstr "Bekijk in Portal"
+
+#~ msgid "p2p_key \"%s\" does not exist"
+#~ msgstr "p2p_key \"%s\" bestaat niet"
