@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controller which handles the (requested) thema(s).
+ */
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
@@ -6,11 +9,18 @@ use WP_Error;
 use WP_REST_Request;
 use OWC\PDC\Base\Models\Thema;
 
+/**
+ * Controller which handles the (requested) thema(s).
+ */
 class ThemaController extends BaseController
 {
 
     /**
      * Get a list of all themas.
+     * 
+     * @param WP_REST_Request $request
+     * 
+     * @return void
      */
     public function getThemas(WP_REST_Request $request)
     {
@@ -27,7 +37,7 @@ class ThemaController extends BaseController
     /**
      * Get an individual thema.
      *
-     * @param $request $request
+     * @param WP_REST_Request $request
      *
      * @return array|WP_Error
      */

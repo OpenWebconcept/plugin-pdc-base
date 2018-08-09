@@ -1,10 +1,16 @@
 <?php
+/**
+ * Class for handling the thema fields.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ThemaFields;
 
 use WP_Post;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 
+/**
+ * Class for handling the thema fields.
+ */
 class ThemaField extends ConnectedField
 {
 
@@ -19,5 +25,4 @@ class ThemaField extends ConnectedField
     {
         return $this->getConnectedItems($post->ID, 'pdc-category_to_pdc-subcategory');
     }
-
 }

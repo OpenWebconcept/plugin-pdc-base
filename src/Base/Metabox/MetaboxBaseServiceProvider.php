@@ -1,12 +1,22 @@
 <?php
+/**
+ * Provider which handles the metabox registration.
+ */
 
 namespace OWC\PDC\Base\Metabox;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 
+/**
+ * Provider which handles the metabox registration.
+ */
 abstract class MetaboxBaseServiceProvider extends ServiceProvider
 {
-
+    /**
+     * Constant prefix for metabox.
+     * 
+     * @var string
+     */
 	const PREFIX = '_owc_';
 
 	protected function processMetabox(array $metabox)

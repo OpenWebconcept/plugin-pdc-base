@@ -1,27 +1,38 @@
 <?php
-
+/**
+ * Provider which handles the registration of the taxonomies.
+ */
 namespace OWC\PDC\Base\Taxonomy;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 
+/**
+ * Provider which handles the registration of the taxonomies.
+ */
 class TaxonomyServiceProvider extends ServiceProvider
 {
 
 	/**
-	 * the array of taxonomies definitions from the config
+	 * The array of taxonomies definitions from the config
 	 *
-	 * @var array
+	 * @var array $configTaxonomies
 	 */
 	protected $configTaxonomies = [];
 
+    /**
+     * Register the hooks
+     *
+     * @return void
+     */
 	public function register()
 	{
-
 		$this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
 	}
 
 	/**
 	 * Register custom taxonomies via extended_cpts
+     * 
+     * @return void
 	 */
 	public function registerTaxonomies()
 	{

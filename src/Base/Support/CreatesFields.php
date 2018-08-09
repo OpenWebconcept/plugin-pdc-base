@@ -1,20 +1,29 @@
 <?php
+/**
+ * Abstract which handles the creation of fields.
+ */
 
 namespace OWC\PDC\Base\Support;
 
 use WP_Post;
 use OWC\PDC\Base\Foundation\Plugin;
 
+/**
+ * Abstract which handles the creation of fields.
+ */
+
 abstract class CreatesFields
 {
 
     /**
      * Instance of the Plugin.
+     * 
+     * @var Plugin $plugin
      */
     protected $plugin;
 
     /**
-     * Makes sure that the plugin is .
+     * Construction of the abstract class.
      *
      * @param Plugin $plugin
      */

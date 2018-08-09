@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds the taxonomy based on the taxonomies in the config.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
+/**
+ * Adds the taxonomy based on the taxonomies in the config.
+ */
 class TaxonomyField extends CreatesFields
 {
 
@@ -44,11 +50,10 @@ class TaxonomyField extends CreatesFields
 
         return array_map(function ($term) {
             return [
-                'id'   => $term->term_id,
+                'id' => $term->term_id,
                 'name' => $term->name,
-                'slug' => $term->slug
+                'slug' => $term->slug,
             ];
         }, $terms);
     }
-
 }

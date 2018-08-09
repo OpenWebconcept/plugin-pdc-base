@@ -7,6 +7,11 @@ use OWC\PDC\Base\Foundation\ServiceProvider;
 class RestAPIServiceProvider extends ServiceProvider
 {
 
+    /**
+     * The endpoint of the base API.
+     *
+     * @var string $namespace
+     */
     private $namespace = 'owc/pdc/v1';
 
     public function register()
@@ -19,6 +24,27 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Register routes on the rest API.
+     *
+     * Main endpoint.
+     * @link https://{url}/wp-json/owc/pdc/v1
+     *
+     * Endpoint of the pdc-items.
+     * @link https://{url}/wp-json/owc/pdc/v1/items 
+     * 
+     * Endpoint of the pdc-item detail page.
+     * @link https://{url}/wp-json/owc/pdc/v1/items/{id}
+     * 
+     * Endpoint of the thema-items.
+     * @link https://{url}/wp-json/owc/pdc/v1/themas
+     * 
+     * Endpoint of the thema detail page.
+     * @link https://{url}/wp-json/owc/pdc/v1/themas/{id}
+     * 
+     * Endpoint of the subthema-items.
+     * @link https://{url}/wp-json/owc/pdc/v1/subthemas
+     * 
+     * Endpoint of the subthema detail page.
+     * @link https://{url}/wp-json/owc/pdc/v1/subthemas/{id}
      *
      * @return void
      */
@@ -58,7 +84,8 @@ class RestAPIServiceProvider extends ServiceProvider
     /**
      * Whitelist endpoints within Config Expander.
      *
-     * @param $whitelist
+     * @package OWC\ConfigExpander\DisableRestAPI\DisableRestAPI
+     * @param array $whitelist
      *
      * @return array
      */

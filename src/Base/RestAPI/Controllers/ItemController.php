@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controller which handles the (requested) pdc-item(s).
+ */
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
@@ -6,11 +9,18 @@ use WP_Error;
 use WP_REST_Request;
 use OWC\PDC\Base\Models\Item;
 
+/**
+ * Controller which handles the (requested) pdc-item(s).
+ */
 class ItemController extends BaseController
 {
 
     /**
      * Get a list of all items.
+     * 
+     * @param WP_REST_Request $request
+     * 
+     * @return array
      */
     public function getItems(WP_REST_Request $request)
     {
@@ -52,6 +62,8 @@ class ItemController extends BaseController
 
     /**
      * Hide inactive item from output.
+     * 
+     * @return array
      */
     protected function hideInactiveItem() {
         return [
@@ -63,5 +75,4 @@ class ItemController extends BaseController
             ]
         ];
     }
-
 }

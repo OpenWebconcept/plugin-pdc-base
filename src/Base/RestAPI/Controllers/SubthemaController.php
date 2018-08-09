@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controller which handles the (requested) subthema(s).
+ */
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
@@ -6,11 +9,18 @@ use OWC\PDC\Base\Models\Subthema;
 use WP_Error;
 use WP_REST_Request;
 
+/**
+ * Controller which handles the (requested) subthema(s).
+ */
 class SubthemaController extends BaseController
 {
 
     /**
      * Get a list of all subthemas.
+     * 
+     * @param WP_REST_Request $request
+     * 
+     * @return void
      */
     public function getSubthemas(WP_REST_Request $request)
     {

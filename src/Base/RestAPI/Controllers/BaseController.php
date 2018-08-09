@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controller which handels general quering, such as pagination.
+ */
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
@@ -6,9 +9,11 @@ use WP_Query;
 use WP_REST_Request;
 use OWC\PDC\Base\Foundation\Plugin;
 
+/**
+ * Controller which handels general quering, such as pagination.
+ */
 abstract class BaseController
 {
-
     /**
      * Instance of the plugin.
      *
@@ -16,6 +21,13 @@ abstract class BaseController
      */
     protected $plugin;
 
+    /**
+     * Construction, with dependency injection of the BasePlugin.
+     *
+     * @param Plugin $plugin
+     * 
+     * @return void
+     */
     public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
@@ -61,5 +73,4 @@ abstract class BaseController
             'paged'          => $request->get_param('page') ?: 0
         ];
     }
-
 }

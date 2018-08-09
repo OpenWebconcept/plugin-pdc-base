@@ -1,27 +1,37 @@
 <?php
+/**
+ * Provider which handles the registration of posttype.
+ */
 
 namespace OWC\PDC\Base\PostType;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 
+/**
+ * Provider which handles the registration of posttype.
+ */
 class PostTypeServiceProvider extends ServiceProvider
 {
 
     /**
-     * the array of posttype definitions from the config
+     * Srray of posttype definitions from the config.
      *
-     * @var array
+     * @var array $configPostTypes
      */
     protected $configPostTypes = [];
 
+    /**
+     * Register the hooks.
+     *
+     * @return void
+     */
     public function register()
     {
-
         $this->plugin->loader->addAction('init', $this, 'registerPostTypes');
     }
 
     /**
-     * register custom posttypes.
+     * Register custom posttypes.
      */
     public function registerPostTypes()
     {

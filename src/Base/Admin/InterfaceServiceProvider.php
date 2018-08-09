@@ -1,26 +1,36 @@
 <?php
+/**
+ * Provider which regsiters the admin interface.
+ */
 
 namespace OWC\PDC\Base\Admin;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 
-class InterfaceServiceProvider extends ServiceProvider
+/**
+ * Provider which regsiters the admin interface.
+ */
+ class InterfaceServiceProvider extends ServiceProvider
 {
 
+    /**
+     * Registers the hooks.
+     *
+     * @return void
+     */
 	public function register()
 	{
-
 		$this->plugin->loader->addFilter('admin_bar_menu', $this, 'filterAdminbarMenu', 999);
 		$this->plugin->loader->addFilter('get_sample_permalink_html', $this, 'filterGetSamplePermalinkHtml', 10, 5);
 		$this->plugin->loader->addAction('page_row_actions', $this, 'actionModifyPageRowActions', 999, 2);
 	}
 
 	/**
-	 *
 	 * Action to edit link to modify current 'PDC-item' with deeplink to corresponding Portal onderwerp
-	 * href-node => http://gembur.dev/wp/wp-admin/post.php?post=74&amp;action=edit
 	 *
 	 * @param $wpAdminBar
+     * 
+     * @return void
 	 */
 	public function filterAdminbarMenu($wpAdminBar)
 	{

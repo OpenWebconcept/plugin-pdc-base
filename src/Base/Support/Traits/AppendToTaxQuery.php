@@ -1,7 +1,13 @@
 <?php
+/**
+ * Trait which appends a conditional to a defined taxonomy query.
+ */
 
 namespace OWC\PDC\Base\Support\Traits;
 
+/**
+ * Trait which appends a conditional to a defined taxonomy query.
+ */
 trait AppendToTaxQuery
 {
 
