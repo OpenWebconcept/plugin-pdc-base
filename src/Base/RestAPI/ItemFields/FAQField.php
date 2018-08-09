@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds FAQ fields to the output.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
+/**
+ * Adds FAQ fields to the output.
+ */
 class FAQField extends CreatesFields
 {
 

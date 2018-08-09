@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds connected fields to item in API.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ThemaFields;
 
-use WP_Post;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
+use WP_Post;
 
+/**
+ * Adds connected fields to item in API.
+ */
 class Items extends ConnectedField
 {
 
@@ -17,7 +23,6 @@ class Items extends ConnectedField
      */
     public function create(WP_Post $post): array
     {
-        return $this->getConnectedItems($post->ID, 'pdc-item_to_'.$post->post_type);
+        return $this->getConnectedItems($post->ID, 'pdc-item_to_' . $post->post_type);
     }
-
 }

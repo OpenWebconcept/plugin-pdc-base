@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds download fields to the output.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
 
+/**
+ * Adds download fields to the output.
+ */
 class DownloadsField extends CreatesFields
 {
 

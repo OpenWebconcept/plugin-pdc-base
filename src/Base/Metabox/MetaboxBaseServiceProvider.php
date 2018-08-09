@@ -19,6 +19,13 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
      */
 	const PREFIX = '_owc_';
 
+    /**
+     * Process the metabox array for compatible output.
+     *
+     * @param array $metabox
+     * 
+     * @return void
+     */
 	protected function processMetabox(array $metabox)
 	{
 		$fields = [];
@@ -31,6 +38,13 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
 		return $metabox;
 	}
 
+    /**
+     * Processes each field group.
+     *
+     * @param array $fieldGroup
+     * 
+     * @return array
+     */
 	private function processFieldGroup($fieldGroup)
 	{
 
@@ -43,6 +57,13 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
 		return $fields;
 	}
 
+    /**
+     * Adds prefix to each field.
+     *
+     * @param array $field
+     * 
+     * @return array
+     */
 	private function addPrefix($field)
 	{
 

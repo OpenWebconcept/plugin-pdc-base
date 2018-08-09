@@ -1,6 +1,6 @@
 <?php
 /**
- * Adds the taxonomy based on the taxonomies in the config.
+ * Adds taxonomy to the output based on the taxonomies in the config.
  */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
@@ -9,7 +9,7 @@ use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
 /**
- * Adds the taxonomy based on the taxonomies in the config.
+ * Adds taxonomy to the output based on the taxonomies in the config.
  */
 class TaxonomyField extends CreatesFields
 {

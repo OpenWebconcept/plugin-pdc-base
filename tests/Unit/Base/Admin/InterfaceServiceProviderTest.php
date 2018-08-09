@@ -7,6 +7,7 @@ use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Tests\Unit\TestCase;
+use \WP_Post;
 
 class InterfaceServiceProviderTest extends TestCase
 {
@@ -83,7 +84,7 @@ class InterfaceServiceProviderTest extends TestCase
 
 		$return = '';
 
-		$post            = new \stdClass;
+		$post            = m::mock(WP_Post::class);
 		$post->post_type = 'pdc-item';
 		$post->post_name = 'test-pdc-item';
 

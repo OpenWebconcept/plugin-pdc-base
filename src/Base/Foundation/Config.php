@@ -151,6 +151,8 @@ class Config
     }
 
     /**
+     * Some nodes must not be changed by outside interference.
+     * 
      * @param array $nodes
      */
     public function setProtectedNodes($nodes = [])
@@ -159,6 +161,8 @@ class Config
     }
 
     /**
+     * Scan a given directory for certain files.
+     * 
      * @param $path
      */
     private function scanDirectory($path)

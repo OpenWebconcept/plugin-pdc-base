@@ -1,9 +1,15 @@
 <?php
+/**
+ * Model for the sub-category
+ */
 
 namespace OWC\PDC\Base\PostType\PostTypes;
 
 use OWC\PDC\Base\Config;
 
+/**
+ * Model for the sub-category
+ */
 class PdcSubcategoryModel
 {
 	/**
@@ -49,7 +55,7 @@ class PdcSubcategoryModel
 	 * Checks to see if related pdc-items to Subthema have '_gb_pdc_afspraak_active' enabled
 	 *
 	 * @param $object
-	 * @param $fieldName
+	 * @param string $fieldName
 	 * @param $request
 	 *
 	 * @return bool
@@ -84,5 +90,4 @@ class PdcSubcategoryModel
 
 		return apply_filters('owc/pdc-base/rest-api/pdcsubcategory/field/has-appointment', $hasAppointment, $object, $fieldName, $request);
 	}
-
 }
