@@ -1,6 +1,6 @@
 {
   "name": "plugin/pdc-base",
-  "description": "PDC base plugin",
+  "description": "PDC Base plugin",
  "authors": [
   {
     "name": "Yard Internet",
@@ -18,7 +18,7 @@
     "10up/wp_mock": "dev-master",
     "phpdocumentor/phpdocumentor": "2.*"
   },
-  "autoload": {
+  "autoload-dev": {
     "psr-4": {
       "OWC\\PDC\\Base\\": "./src/Base",
       "OWC\\PDC\\Base\\Tests\\": "./tests"

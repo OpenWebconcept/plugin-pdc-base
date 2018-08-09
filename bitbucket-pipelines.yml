@@ -9,9 +9,17 @@ pipelines:
           - composer
           - vendor-directory
         script:
+          - apt-get update && apt-get install -y git openssh-server
           - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
           - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
 
 definitions:
   caches:
     vendor-directory: vendor
+
+  services:
+    mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_DATABASE: 'wordpress_test'
+        MYSQL_ROOT_PASSWORD: 'root'

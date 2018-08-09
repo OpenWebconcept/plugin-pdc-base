@@ -3,7 +3,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package OWC_PDC_Base
+ * @package OWC\PDC\Base
  */
 
 //$_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -30,9 +30,9 @@ define('WP_PLUGIN_DIR', __DIR__);
 \WP_Mock::setUsePatchwork( true );
 \WP_Mock::bootstrap();
 
-$GLOBALS['pdc-base'] = array(
-	'active_plugins' => array( 'pdc-base/pdc-base.php' ),
-);
+$GLOBALS['pdc-base'] = [
+	'active_plugins' => ['pdc-base/pdc-base.php'],
+];
 
 class WP_CLI {
 	public static function add_command() {}

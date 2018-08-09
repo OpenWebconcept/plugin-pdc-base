@@ -21,7 +21,7 @@ use OWC\PDC\Base\Foundation\Plugin;
  * If this file is called directly, abort.
  */
 if ( ! defined('WPINC')) {
-	die;
+    die;
 }
 
 /**
@@ -65,7 +65,6 @@ register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
  * plugin overrides. The plugins_loaded action hook fires early, and precedes the setup_theme, after_setup_theme, init
  * and wp_loaded action hooks.
  */
-
 add_action('plugins_loaded', function() {
-	$plugin = (new Plugin(__DIR__))->boot();
+    $plugin = (new Plugin(__DIR__))->boot();
 }, 10);
