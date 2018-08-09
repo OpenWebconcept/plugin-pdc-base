@@ -17,7 +17,7 @@ There are various [hooks](https://codex.wordpress.org/Plugin_API/Hooks), which a
 'owc/pdc-base/plugin'
 ```
 
-See OWC\PDC\Base\Config->set method for a way to change this plugins config.
+See OWC\PDC\Base\Foundataion\Config->set method for a way to change this plugins config.
 
 Via the plugin object the following config settings can be adjusted
 - metaboxes
@@ -121,21 +121,20 @@ To run the Unit tests go to a command-line.
 ```bash
 cd /path/to/wordpress/htdocs/wp-content/plugins/pdc-base/
 composer install
-phpunit
+composer unit
 ```
 
 For code coverage report, generate report with command line command and view results with browser.
 ```bash
-phpunit --coverage-html ./tests/coverage
+composer unit-coverage
 ```
 
 ### Contribution guidelines ###
 
 ##### Writing tests
-Have a look at the code coverage reports to see where more coverage can be obtained. 
-Write tests
-Create a Pull request to the OWC repository
+Have a look at the code coverage reports to see where more coverage can be obtained.
+Write tests.
+Create a Pull request to the OWC repository.
 
 ### Who do I talk to? ###
-
 IF you have questions about or suggestions for this plugin, please contact <a href="mailto:hpeters@Buren.nl">Holger Peters</a> from Gemeente Buren.
