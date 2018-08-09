@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds form fields to the output.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
 
+/**
+ * Adds form fields to the output.
+ */
 class FormsField extends CreatesFields
 {
 

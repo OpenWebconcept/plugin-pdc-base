@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds featured image to the output.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
+/**
+ * Adds featured image to the output.
+ */
 class FeaturedImageField extends CreatesFields
 {
 

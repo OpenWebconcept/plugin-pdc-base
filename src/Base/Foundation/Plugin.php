@@ -1,7 +1,13 @@
 <?php
+/**
+ * BasePlugin which sets all the serviceproviders.
+ */
 
 namespace OWC\PDC\Base\Foundation;
 
+/**
+ * BasePlugin which sets all the serviceproviders.
+ */
 class Plugin
 {
 
@@ -16,21 +22,21 @@ class Plugin
      * Version of the plugin.
      * Used for setting versions of enqueue scripts and styles.
      *
-     * @var string
+     * @var string VERSION
      */
     const VERSION = '2.1.0';
 
     /**
      * Path to the root of the plugin.
      *
-     * @var string
+     * @var string $rootPath
      */
     protected $rootPath;
 
     /**
      * Instance of the configuration repository.
      *
-     * @var \OWC\PDC\Base\Config
+     * @var \OWC\PDC\Base\Config $config
      */
     public $config;
 
@@ -41,6 +47,13 @@ class Plugin
      */
     public $loader;
 
+    /**
+     * Constructor of the BasePlugin
+     *
+     * @param string $rootPath
+     * 
+     * @return void
+     */
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
@@ -91,6 +104,11 @@ class Plugin
         return true;
     }
 
+    /**
+     * Allows for hooking into the plugin name.
+     *
+     * @return void
+     */
     public function filterPlugin()
     {
         do_action('owc/'.self::NAME.'/plugin', $this);
@@ -102,6 +120,8 @@ class Plugin
      * @param string $method
      * @param string $key
      *
+     * @return void
+     * 
      * @throws \Exception
      */
     public function callServiceProviders($method, $key = '')
@@ -194,5 +214,4 @@ class Plugin
          */
         register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
     }
-
 }

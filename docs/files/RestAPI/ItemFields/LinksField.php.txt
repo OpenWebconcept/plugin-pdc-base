@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds link fields to the output.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
 
+/**
+ * Adds link fields to the output.
+ */
 class LinksField extends CreatesFields
 {
 

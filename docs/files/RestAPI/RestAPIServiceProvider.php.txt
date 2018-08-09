@@ -1,9 +1,15 @@
 <?php
+/**
+ * Provider which registers the API.
+ */
 
 namespace OWC\PDC\Base\RestAPI;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 
+/**
+ * Provider which registers the API.
+ */
 class RestAPIServiceProvider extends ServiceProvider
 {
 
@@ -14,6 +20,11 @@ class RestAPIServiceProvider extends ServiceProvider
      */
     private $namespace = 'owc/pdc/v1';
 
+    /**
+     * Registers the API.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->plugin->loader->addAction('rest_api_init', $this, 'registerRoutes');
@@ -104,6 +115,8 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Register fields for all configured posttypes.
+     * 
+     * @return void
      */
     private function registerModelFields()
     {

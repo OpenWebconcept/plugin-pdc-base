@@ -1,4 +1,7 @@
 <?php
+/**
+ * PDC item object with default quering and methods.
+ */
 
 namespace OWC\PDC\Base\Models;
 
@@ -8,9 +11,17 @@ use WP_Post;
 use WP_Query;
 use OWC\PDC\Base\Support\CreatesFields;
 
+/**
+ * PDC item object with default quering and methods.
+ */
 abstract class Model
 {
 
+    /**
+     * Posttype definition
+     *
+     * @var string $posttype
+     */
     protected $posttype;
 
     /**

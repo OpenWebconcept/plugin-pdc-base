@@ -1,10 +1,16 @@
 <?php
+/**
+ * Adds alternative title field to the output.
+ */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
+/**
+ * Adds alternative title field to the output.
+ */
 class TitleAlternativeField extends CreatesFields
 {
 

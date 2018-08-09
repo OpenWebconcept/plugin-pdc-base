@@ -1,14 +1,20 @@
 <?php
+/**
+ * Checks if dependencies are valid.
+ */
 
 namespace OWC\PDC\Base\Foundation;
 
+/**
+ * Checks if dependencies are valid.
+ */
 class DependencyChecker
 {
 
     /**
      * Plugins that need to be checked for.
      *
-     * @var array
+     * @var array $dependencies
      */
     private $dependencies;
 
@@ -16,7 +22,7 @@ class DependencyChecker
      * Build up array of failed plugins, either because
      * they have the wrong version or are inactive.
      *
-     * @var array
+     * @var array $failed
      */
     private $failed = [];
 
@@ -24,6 +30,8 @@ class DependencyChecker
      * Determine which plugins need to be present.
      *
      * @param array $dependencies
+     *
+     * @return void
      */
     public function __construct(array $dependencies)
     {
@@ -54,15 +62,17 @@ class DependencyChecker
     /**
      * Notifies the administrator which plugins need to be enabled,
      * or which plugins have the wrong version.
+     *
+     * @return void
      */
     public function notify()
     {
         add_action('admin_notices', function () {
-            $list = '<p>'.__('De volgende plugins zijn vereist om gebruik te maken van de PDC:',
-                    'pdc-base').'</p><ol>';
+            $list = '<p>' . __('De volgende plugins zijn vereist om gebruik te maken van de PDC:',
+                'pdc-base') . '</p><ol>';
 
             foreach ($this->failed as $dependency) {
-                $info = isset($dependency['message']) ? ' ('.$dependency['message'].')' : '';
+                $info = isset($dependency['message']) ? ' (' . $dependency['message'] . ')' : '';
                 $list .= sprintf('<li>%s%s</li>', $dependency['label'], $info);
             }
 
@@ -77,22 +87,26 @@ class DependencyChecker
      *
      * @param array  $dependency
      * @param string $defaultMessage
+     *
+     * @return void
      */
     private function markFailed(array $dependency, string $defaultMessage)
     {
         $this->failed[] = array_merge([
-            'message' => $dependency['message'] ?? $defaultMessage
+            'message' => $dependency['message'] ?? $defaultMessage,
         ], $dependency);
     }
 
     /**
-     *
+     * Checks if required class exists.
      *
      * @param array $dependency
+     *
+     * @return void
      */
     private function checkClass(array $dependency)
     {
-        if ( ! class_exists($dependency['name'])) {
+        if (!class_exists($dependency['name'])) {
             $this->markFailed($dependency, __('Class does not exist', 'pdc-base'));
 
             return;
@@ -103,10 +117,12 @@ class DependencyChecker
      * Check if a plugin is enabled and has the correct version.
      *
      * @param array $dependency
+     *
+     * @return void
      */
     private function checkPlugin(array $dependency)
     {
-        if ( ! is_plugin_active($dependency['file'])) {
+        if (!is_plugin_active($dependency['file'])) {
             $this->markFailed($dependency, __('Inactive', 'pdc-base'));
 
             return;
@@ -114,8 +130,8 @@ class DependencyChecker
 
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
-            if ( ! $this->checkVersion($dependency)) {
-                $this->markFailed($dependency, __('Minimal version:', 'pdc-base').' <b>'.$dependency['version'].'</b>');
+            if (!$this->checkVersion($dependency)) {
+                $this->markFailed($dependency, __('Minimal version:', 'pdc-base') . ' <b>' . $dependency['version'] . '</b>');
             }
         }
     }
@@ -129,12 +145,11 @@ class DependencyChecker
      */
     private function checkVersion(array $dependency): bool
     {
-        $file = file_get_contents(WP_PLUGIN_DIR.'/'.$dependency['file']);
+        $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
 
         preg_match('/^(?: ?\* ?Version: ?)(.*)$/m', $file, $matches);
         $version = isset($matches[1]) ? str_replace(' ', '', $matches[1]) : '0.0.0';
 
         return version_compare($version, $dependency['version'], '>=');
     }
-
 }
