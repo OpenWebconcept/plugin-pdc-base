@@ -6,6 +6,7 @@
 namespace OWC\PDC\Base\RestAPI;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
+use \WP_REST_Server;
 
 /**
  * Provider which registers the API.
@@ -40,55 +41,65 @@ class RestAPIServiceProvider extends ServiceProvider
      * @link https://{url}/wp-json/owc/pdc/v1
      *
      * Endpoint of the pdc-items.
-     * @link https://{url}/wp-json/owc/pdc/v1/items 
-     * 
+     * @link https://{url}/wp-json/owc/pdc/v1/items
+     *
      * Endpoint of the pdc-item detail page.
      * @link https://{url}/wp-json/owc/pdc/v1/items/{id}
-     * 
+     *
      * Endpoint of the thema-items.
      * @link https://{url}/wp-json/owc/pdc/v1/themas
-     * 
+     *
      * Endpoint of the thema detail page.
      * @link https://{url}/wp-json/owc/pdc/v1/themas/{id}
-     * 
+     *
      * Endpoint of the subthema-items.
      * @link https://{url}/wp-json/owc/pdc/v1/subthemas
-     * 
+     *
      * Endpoint of the subthema detail page.
      * @link https://{url}/wp-json/owc/pdc/v1/subthemas/{id}
+	 *
+     * Endpoint of searching.
+     * @link https://{url}/wp-json/owc/pdc/v1/search
      *
      * @return void
      */
     public function registerRoutes()
     {
         register_rest_route($this->namespace, 'items', [
-            'methods' => 'GET',
+            'methods' => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItems'],
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
-            'methods' => 'GET',
+            'methods' => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItem'],
         ]);
 
         register_rest_route($this->namespace, 'themas', [
-            'methods' => 'GET',
+            'methods' => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThemas'],
         ]);
 
         register_rest_route($this->namespace, 'themas/(?P<id>\d+)', [
-            'methods' => 'GET',
+            'methods' => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThema'],
         ]);
 
         register_rest_route($this->namespace, 'subthemas', [
-            'methods' => 'GET',
+            'methods' => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
         ]);
 
         register_rest_route($this->namespace, 'subthemas/(?P<id>\d+)', [
-            'methods' => 'GET',
+            'methods' => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
+        ]);
+
+		$searchController = new Controllers\SearchController($this->plugin);
+        register_rest_route($this->namespace, 'search', [
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [$searchController, 'search'],
+            'args' => $searchController->arguments(),
         ]);
     }
 
@@ -115,7 +126,7 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Register fields for all configured posttypes.
-     * 
+     *
      * @return void
      */
     private function registerModelFields()
