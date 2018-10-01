@@ -51,18 +51,18 @@ class Plugin
      * Constructor of the BasePlugin
      *
      * @param string $rootPath
-     * 
+     *
      * @return void
      */
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-        load_plugin_textdomain($this->getName(), false, $this->getName().'/languages/');
+        load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
         $this->loader = new Loader;
 
-        $this->config = new Config($this->rootPath.'/config');
-        $this->config->setProtectedNodes([ 'core' ]);
+        $this->config = new Config($this->rootPath . '/config');
+        $this->config->setProtectedNodes(['core']);
         $this->config->boot();
 
         $this->addStartUpHooks();
@@ -82,7 +82,7 @@ class Plugin
 
         if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
-            deactivate_plugins(plugin_basename($this->rootPath.'/'.$this->getName().'.php'));
+            deactivate_plugins(plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
 
             return false;
         }
@@ -111,7 +111,7 @@ class Plugin
      */
     public function filterPlugin()
     {
-        do_action('owc/'.self::NAME.'/plugin', $this);
+        do_action('owc/' . self::NAME . '/plugin', $this);
     }
 
     /**
@@ -121,12 +121,12 @@ class Plugin
      * @param string $key
      *
      * @return void
-     * 
+     *
      * @throws \Exception
      */
     public function callServiceProviders($method, $key = '')
     {
-        $offset = $key ? "core.providers.{$key}" : 'core.providers';
+        $offset   = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
 
         foreach ($services as $service) {
@@ -136,7 +136,7 @@ class Plugin
 
             $service = new $service($this);
 
-            if ( ! $service instanceof ServiceProvider) {
+            if (!$service instanceof ServiceProvider) {
                 throw new \Exception('Provider must be an instance of ServiceProvider.');
             }
 
@@ -184,13 +184,13 @@ class Plugin
         /**
          * This hook registers a plugin function to be run when the plugin is activated.
          */
-        register_activation_hook(__FILE__, [ Hooks::class, 'pluginActivation' ]);
+        register_activation_hook(__FILE__, [Hooks::class, 'pluginActivation']);
 
         /**
          * This hook is run immediately after any plugin is activated, and may be used to detect the activation of plugins.
          * If a plugin is silently activated (such as during an update), this hook does not fire.
          */
-        add_action('activated_plugin', [ Hooks::class, 'pluginActivated' ], 10, 2);
+        add_action('activated_plugin', [Hooks::class, 'pluginActivated'], 10, 2);
     }
 
     /**
@@ -201,17 +201,17 @@ class Plugin
         /**
          * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other plugins.
          */
-        add_action('deactivated_plugin', [ Hooks::class, 'pluginDeactivated' ], 10, 2);
+        add_action('deactivated_plugin', [Hooks::class, 'pluginDeactivated'], 10, 2);
 
         /**
          * This hook registers a plugin function to be run when the plugin is deactivated.
          */
-        register_deactivation_hook(__FILE__, [ Hooks::class, 'pluginDeactivation' ]);
+        register_deactivation_hook(__FILE__, [Hooks::class, 'pluginDeactivation']);
 
         /**
          * Registers the uninstall hook that will be called when the user clicks on the uninstall link that calls for the plugin to uninstall itself.
          * The link won’t be active unless the plugin hooks into the action.
          */
-        register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
+        register_uninstall_hook(__FILE__, [Hooks::class, 'uninstallPlugin']);
     }
 }

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2018-08-09 12:13+0200\n"
-"PO-Revision-Date: 2018-08-09 12:13+0200\n"
+"POT-Creation-Date: 2018-10-01 21:25+0200\n"
+"PO-Revision-Date: 2018-10-01 21:27+0200\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
 "Language-Team: Yard Internet <info@yard.nl>\n"
 "Language: nl\n"
@@ -101,6 +101,10 @@ msgstr ""
 msgid "Links"
 msgstr "Links"
 
+#: config/metaboxes.php:88
+msgid "Add new link"
+msgstr "Voeg nieuwe link toe"
+
 #: config/metaboxes.php:92
 msgid "Link title"
 msgstr "Link titel"
@@ -122,6 +126,10 @@ msgstr "URL inclusief http(s)://"
 msgid "Downloads"
 msgstr "Downloads"
 
+#: config/metaboxes.php:115
+msgid "Add new download"
+msgstr "Voeg nieuwe download toe"
+
 #: config/metaboxes.php:119
 msgid "Download title"
 msgstr "Download titel"
@@ -133,6 +141,10 @@ msgstr "Download URL"
 #: config/metaboxes.php:135
 msgid "Forms"
 msgstr "Formulieren"
+
+#: config/metaboxes.php:142
+msgid "Add new form"
+msgstr "Voeg nieuwe formulier toe"
 
 #: config/metaboxes.php:146
 msgid "Form title"
@@ -177,37 +189,98 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: config/p2p_connections.php:9 config/posttypes.php:35
+#: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
+#: config/posttypes.php:55
 msgid "PDC item"
-msgstr ""
+msgstr "PDC item"
 
-#: config/p2p_connections.php:14 config/posttypes.php:55
+#: config/p2p_connections.php:14 config/posttypes.php:75
 msgid "PDC theme"
-msgstr ""
+msgstr "PDC thema"
 
-#: config/p2p_connections.php:19 config/posttypes.php:75
+#: config/p2p_connections.php:19 config/posttypes.php:95
 msgid "PDC subtheme"
-msgstr ""
+msgstr "PDC subthema"
 
 #: config/p2p_connections.php:24
 msgid "PDC owner"
-msgstr ""
+msgstr "PDC eigenaar"
 
-#: config/posttypes.php:36
+#: config/posttypes.php:13 config/posttypes.php:14
+msgid "Add new pdc item"
+msgstr "Voeg nieuwe pdc item toe"
+
+#: config/posttypes.php:15
+msgid "Edit pdc item"
+msgstr "Bewerk pdc Item"
+
+#: config/posttypes.php:16
+msgid "New pdc item"
+msgstr "Voeg nieuwe pdc item toe"
+
+#: config/posttypes.php:17
+msgid "View pdc item"
+msgstr "Bekijk pdc item"
+
+#: config/posttypes.php:18
+msgid "View pdc items"
+msgstr "Bekijk pdc items"
+
+#: config/posttypes.php:19
+msgid "Search pdc items"
+msgstr "Zoek pdc items"
+
+#: config/posttypes.php:20
+msgid "No pdc items found."
+msgstr "Geen pdc items gevonden."
+
+#: config/posttypes.php:21
+msgid "No pdc items found in Trash."
+msgstr "Geen pdc items gevonden in prullenbak."
+
+#: config/posttypes.php:22
+msgid "All pdc items"
+msgstr "Alle pdc items"
+
+#: config/posttypes.php:23
+msgid "PDC items archives"
+msgstr "PDC items archieven"
+
+#: config/posttypes.php:24
+msgid "PDC item attributes"
+msgstr "PDC items attributen"
+
+#: config/posttypes.php:25
+msgid "Insert into pdc item"
+msgstr "Voeg in pdc Item"
+
+#: config/posttypes.php:26
+msgid "Featured image"
+msgstr "Aanbevolen afbeelding"
+
+#: config/posttypes.php:27
+msgid "Set featured image"
+msgstr "Stel aanbevolen afbeelding in"
+
+#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:56
 msgid "PDC items"
-msgstr ""
+msgstr "PDC items"
 
-#: config/posttypes.php:56
-msgid "PDC themes"
-msgstr ""
+#: config/posttypes.php:30
+msgid "Parent pdc items:"
+msgstr "Hoofd pcd items:"
 
 #: config/posttypes.php:76
+msgid "PDC themes"
+msgstr "PDC themas"
+
+#: config/posttypes.php:96
 msgid "PDC subthemes"
-msgstr ""
+msgstr "PDC subthemas"
 
 #: config/settings.php:7
 msgid "Portal"
-msgstr ""
+msgstr "Portaal"
 
 #: config/settings.php:13
 msgid "Portal URL"
@@ -227,86 +300,154 @@ msgstr "PDC instellingen"
 
 #: config/settings_pages.php:11
 msgid "Base"
-msgstr ""
+msgstr "Basis"
 
 #: config/settings_pages.php:14
 msgid "Submit"
-msgstr ""
+msgstr "Verzenden"
+
+#: config/taxonomies.php:12 config/taxonomies.php:13 config/taxonomies.php:14
+#: config/taxonomies.php:38
+msgid "Audience"
+msgstr "Doelgroep"
+
+#: config/taxonomies.php:15
+msgid "All audiences"
+msgstr "Alle doelgroepen"
+
+#: config/taxonomies.php:16
+msgid "Edit audience"
+msgstr "Bewerk doelgroep"
+
+#: config/taxonomies.php:17
+msgid "View audience"
+msgstr "Bekijk doelgroep"
+
+#: config/taxonomies.php:18
+msgid "Update audience"
+msgstr "Update doelgroep"
+
+#: config/taxonomies.php:19
+msgid "Add new audience"
+msgstr "Voeg nieuwe doelgroep toe"
+
+#: config/taxonomies.php:20
+msgid "New audience"
+msgstr "Voeg nieuwe doelgroep toe"
+
+#: config/taxonomies.php:21
+msgid "Parent audience:"
+msgstr "Hoofd doelgroep pagina:"
 
 #: config/taxonomies.php:22
-msgid "Audience"
-msgstr ""
+msgid "Search audience"
+msgstr "Zoek doelgroep"
 
 #: config/taxonomies.php:23
+msgid "Separate tags with commas"
+msgstr "Scheid tags met komma's"
+
+#: config/taxonomies.php:24
+msgid "Add or remove tags"
+msgstr "Tags toevoegen of verwijderen"
+
+#: config/taxonomies.php:25
+msgid "Choose from the most used tags"
+msgstr "Kies uit de meest gebruikte tags"
+
+#: config/taxonomies.php:26
+msgid "No audience found."
+msgstr "Geen doelgroepen gevonden."
+
+#: config/taxonomies.php:27
+msgid "← Back to tags"
+msgstr "← Terug naar tags"
+
+#: config/taxonomies.php:39
 msgid "Audiences"
-msgstr ""
+msgstr "Doelgroepen"
 
-#: config/taxonomies.php:43
+#: config/taxonomies.php:57
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
-#: config/taxonomies.php:44
+#: config/taxonomies.php:58
 msgid "Types"
-msgstr ""
+msgstr "Typen"
 
-#: config/taxonomies.php:64
+#: config/taxonomies.php:78
 msgid "Aspect"
-msgstr ""
+msgstr "Aspect"
 
-#: config/taxonomies.php:65
+#: config/taxonomies.php:79
 msgid "Aspects"
-msgstr ""
+msgstr "Aspecten"
 
-#: config/taxonomies.php:84
+#: config/taxonomies.php:98
 msgid "Usage"
-msgstr ""
+msgstr "Gebruik"
 
-#: config/taxonomies.php:85
+#: config/taxonomies.php:99
 msgid "Usages"
-msgstr ""
+msgstr "Gebruik"
 
-#: config/taxonomies.php:105
+#: config/taxonomies.php:119
 msgid "Owner"
-msgstr ""
+msgstr "Eigenaar"
 
-#: config/taxonomies.php:106
+#: config/taxonomies.php:120
 msgid "Owners"
-msgstr ""
+msgstr "Eigenaren"
 
-#: src/Base/Admin/InterfaceServiceProvider.php:45
+#: src/Base/Admin/InterfaceServiceProvider.php:46
 msgid "View PDC item in portal"
 msgstr "Bekijk PDC item in Portal"
 
-#: src/Base/Admin/InterfaceServiceProvider.php:55
-#: src/Base/Admin/InterfaceServiceProvider.php:80
+#: src/Base/Admin/InterfaceServiceProvider.php:67
+#: src/Base/Admin/InterfaceServiceProvider.php:92
 msgid "View in Portal"
-msgstr ""
+msgstr "Bekijk in Portal"
 
-#: src/Base/Admin/InterfaceServiceProvider.php:79
+#: src/Base/Admin/InterfaceServiceProvider.php:91
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr "Bekijk &#8220;%s&#8221;"
 
-#: src/Base/Foundation/DependencyChecker.php:61
-msgid "De volgende plugins zijn vereist om gebruik te maken van de PDC:"
-msgstr ""
-
-#: src/Base/Foundation/DependencyChecker.php:96
-msgid "Class does not exist"
-msgstr ""
+#: src/Base/Foundation/DependencyChecker.php:71
+msgid "The following plugins are required to use the PDC:"
+msgstr "De volgende plugins zijn vereist om gebruik te maken van de PDC:"
 
 #: src/Base/Foundation/DependencyChecker.php:110
+msgid "Class does not exist"
+msgstr "Klasse bestaat niet"
+
+#: src/Base/Foundation/DependencyChecker.php:126
 msgid "Inactive"
-msgstr ""
+msgstr "Inactief"
 
-#: src/Base/Foundation/DependencyChecker.php:118
+#: src/Base/Foundation/DependencyChecker.php:134
 msgid "Minimal version:"
-msgstr ""
+msgstr "Minimale versie:"
 
-#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
+#: src/Base/RestAPI/Controllers/SearchController.php:49
+msgid "The search term."
+msgstr "De zoek term."
+
+#: src/Base/RestAPI/Controllers/SearchController.php:54
+msgid "The limit."
+msgstr "Het limiet."
+
+#: src/Base/RestAPI/Controllers/SearchController.php:60
+msgid "Pagination"
+msgstr "Paginering"
+
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:54
 #, php-format
 msgid "Connection type \"%s\" does not exist"
-msgstr ""
+msgstr "Verbindingstype \"%s\" bestaat niet"
+
+#~ msgid "No audience found in Trash."
+#~ msgstr "Geen doelgroepen gevonden in prullenbak."
 
 #~ msgctxt "P2P titel"
 #~ msgid "PDC item"
