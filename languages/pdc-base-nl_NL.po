@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2018-10-01 21:25+0200\n"
-"PO-Revision-Date: 2018-10-01 21:27+0200\n"
+"POT-Creation-Date: 2018-10-03 13:52+0200\n"
+"PO-Revision-Date: 2018-10-03 13:55+0200\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
 "Language-Team: Yard Internet <info@yard.nl>\n"
 "Language: nl\n"
@@ -190,15 +190,18 @@ msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
-#: config/posttypes.php:55
+#: config/posttypes.php:63
 msgid "PDC item"
 msgstr "PDC item"
 
-#: config/p2p_connections.php:14 config/posttypes.php:75
+#: config/p2p_connections.php:14 config/posttypes.php:72
+#: config/posttypes.php:73 config/posttypes.php:105
 msgid "PDC theme"
 msgstr "PDC thema"
 
-#: config/p2p_connections.php:19 config/posttypes.php:95
+#: config/p2p_connections.php:19 config/posttypes.php:114
+#: config/posttypes.php:115 config/posttypes.php:131 config/posttypes.php:132
+#: config/posttypes.php:147
 msgid "PDC subtheme"
 msgstr "PDC subthema"
 
@@ -254,15 +257,15 @@ msgstr "PDC items attributen"
 msgid "Insert into pdc item"
 msgstr "Voeg in pdc Item"
 
-#: config/posttypes.php:26
+#: config/posttypes.php:26 config/posttypes.php:87 config/posttypes.php:129
 msgid "Featured image"
 msgstr "Aanbevolen afbeelding"
 
-#: config/posttypes.php:27
+#: config/posttypes.php:27 config/posttypes.php:88 config/posttypes.php:130
 msgid "Set featured image"
 msgstr "Stel aanbevolen afbeelding in"
 
-#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:56
+#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:64
 msgid "PDC items"
 msgstr "PDC items"
 
@@ -270,11 +273,123 @@ msgstr "PDC items"
 msgid "Parent pdc items:"
 msgstr "Hoofd pcd items:"
 
-#: config/posttypes.php:76
-msgid "PDC themes"
-msgstr "PDC themas"
+#: config/posttypes.php:42 config/taxonomies.php:78
+msgid "Aspect"
+msgstr "Aspect"
 
-#: config/posttypes.php:96
+#: config/posttypes.php:47 config/taxonomies.php:57
+msgid "Type"
+msgstr "Type"
+
+#: config/posttypes.php:74 config/posttypes.php:75
+msgid "Add new pdc theme"
+msgstr "Voeg nieuwe pdc thema toe"
+
+#: config/posttypes.php:76
+msgid "Edit pdc theme"
+msgstr "Bewerk pdc thema"
+
+#: config/posttypes.php:77
+msgid "New pdc theme"
+msgstr "Voeg nieuwe pdc thema toe"
+
+#: config/posttypes.php:78
+msgid "View pdc theme"
+msgstr "Bekijk pdc thema"
+
+#: config/posttypes.php:79
+msgid "View pdc themes"
+msgstr "Bekijk pdc thema's"
+
+#: config/posttypes.php:80
+msgid "Search pdc themes"
+msgstr "Zoek pdc thema's"
+
+#: config/posttypes.php:81
+msgid "No pdc themes found."
+msgstr "Geen pdc thema's gevonden."
+
+#: config/posttypes.php:82
+msgid "No pdc themes found in Trash."
+msgstr "Geen pdc thema's gevonden in prullenbak."
+
+#: config/posttypes.php:83
+msgid "All pdc themes"
+msgstr "Alle pdc thema's"
+
+#: config/posttypes.php:84
+msgid "PDC themes archives"
+msgstr "PDC thema's archieven"
+
+#: config/posttypes.php:85
+msgid "PDC theme attributes"
+msgstr "PDC thema attributen"
+
+#: config/posttypes.php:86
+msgid "Insert into pdc theme"
+msgstr "Voeg in pdc thema"
+
+#: config/posttypes.php:89 config/posttypes.php:90 config/posttypes.php:106
+msgid "PDC themes"
+msgstr "PDC thema's"
+
+#: config/posttypes.php:91
+msgid "Parent pdc themes:"
+msgstr "Hoofd pcd thema's:"
+
+#: config/posttypes.php:116 config/posttypes.php:117
+msgid "Add new pdc subtheme"
+msgstr "Voeg nieuwe pdc subthema toe"
+
+#: config/posttypes.php:118
+msgid "Edit pdc subtheme"
+msgstr "Bewerk pdc subthema"
+
+#: config/posttypes.php:119
+msgid "New pdc subtheme"
+msgstr "Voeg nieuwe pdc subthema toe"
+
+#: config/posttypes.php:120
+msgid "View pdc subtheme"
+msgstr "Bekijk pdc subthema"
+
+#: config/posttypes.php:121
+msgid "View pdc subthemes"
+msgstr "Bekijk pdc subthema's"
+
+#: config/posttypes.php:122
+msgid "Search pdc subthemes"
+msgstr "Zoek pdc subthema's"
+
+#: config/posttypes.php:123
+msgid "No pdc subthemes found."
+msgstr "Geen pdc subthema's gevonden."
+
+#: config/posttypes.php:124
+msgid "No pdc subthemes found in Trash."
+msgstr "Geen pdc subthema's gevonden in prullenbak."
+
+#: config/posttypes.php:125
+msgid "All pdc subthemes"
+msgstr "Alle pdc subthema's"
+
+#: config/posttypes.php:126
+msgid "PDC subthemes archives"
+msgstr "PDC subthema's archieven"
+
+#: config/posttypes.php:127
+msgid "PDC subtheme attributes"
+msgstr "PDC subthema attributen"
+
+#: config/posttypes.php:128
+msgid "Insert into pdc subtheme"
+msgstr "Voeg in pdc subthema"
+
+#: config/posttypes.php:133
+msgid "Parent pdc subthemes:"
+msgstr "Hoofd pdc subthema's:"
+
+#: config/posttypes.php:148
 msgid "PDC subthemes"
 msgstr "PDC subthemas"
 
@@ -367,17 +482,9 @@ msgstr "← Terug naar tags"
 msgid "Audiences"
 msgstr "Doelgroepen"
 
-#: config/taxonomies.php:57
-msgid "Type"
-msgstr "Type"
-
 #: config/taxonomies.php:58
 msgid "Types"
 msgstr "Typen"
-
-#: config/taxonomies.php:78
-msgid "Aspect"
-msgstr "Aspect"
 
 #: config/taxonomies.php:79
 msgid "Aspects"
