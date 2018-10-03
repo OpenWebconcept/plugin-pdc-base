@@ -38,9 +38,17 @@ return [
             ],
             'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
             'admin_cols'    => [
-                'type' => [
-                    'taxonomy' => 'pdc-type',
+                'aspect' => [
+                    'title'    => __('Aspect', 'pdc-base'),
+                    'taxonomy' => 'pdc-aspect',
+                    'sortable' => false,
                 ],
+                'type'   => [
+                    'title'    => __('Type', 'pdc-base'),
+                    'taxonomy' => 'pdc-type',
+                    'sortable' => false,
+                ],
+
             ],
 
             # Add a dropdown filter to the admin screen:
@@ -70,7 +78,6 @@ return [
             'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail'],
         ],
         'names' => [
-
             # Override the base names used for labels:
             'singular' => __('PDC theme', 'pdc-base'),
             'plural'   => __('PDC themes', 'pdc-base'),
@@ -90,12 +97,10 @@ return [
             'hierarchical' => true,
         ],
         'names' => [
-
             # Override the base names used for labels:
             'singular' => __('PDC subtheme', 'pdc-base'),
             'plural'   => __('PDC subthemes', 'pdc-base'),
             'slug'     => 'pdc-subthema',
-
         ],
     ],
 ];
