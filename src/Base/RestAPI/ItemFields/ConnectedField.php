@@ -30,8 +30,8 @@ class ConnectedField extends CreatesFields
         $result = [];
 
         foreach ($connections as $connection) {
-            $type = $connection['from'].'_to_'.$connection['to'];
-            $result[$type] = $this->getConnectedItems($post->ID, $type);
+            $type                      = $connection['from'] . '_to_' . $connection['to'];
+            $result[$connection['to']] = $this->getConnectedItems($post->ID, $type);
         }
 
         return $result;
@@ -49,19 +49,19 @@ class ConnectedField extends CreatesFields
     {
         $connection = p2p_type($type);
 
-        if ( ! $connection) {
+        if (!$connection) {
             return [
-                'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type)
+                'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type),
             ];
         }
 
         return array_map(function (WP_Post $post) {
             return [
-                'id'    => $post->ID,
-                'title' => $post->post_title,
-                'slug'  => $post->post_name,
+                'id'      => $post->ID,
+                'title'   => $post->post_title,
+                'slug'    => $post->post_name,
                 'excerpt' => $post->post_excerpt,
-                'date' => $post->post_date
+                'date'    => $post->post_date,
             ];
         }, $connection->get_connected($postID)->posts);
     }
