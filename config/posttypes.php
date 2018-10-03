@@ -68,6 +68,29 @@ return [
     'pdc-category'    => [
         'args'  => [
 
+            'labels'       => [
+                'name'               => __('PDC theme', 'pdc-base'),
+                'singular_name'      => __('PDC theme', 'pdc-base'),
+                'add_new'            => __('Add new pdc theme', 'pdc-base'),
+                'add_new_item'       => __('Add new pdc theme', 'pdc-base'),
+                'edit_item'          => __('Edit pdc theme', 'pdc-base'),
+                'new_item'           => __('New pdc theme', 'pdc-base'),
+                'view_item'          => __('View pdc theme', 'pdc-base'),
+                'view_items'         => __('View pdc themes', 'pdc-base'),
+                'search_items'       => __('Search pdc themes', 'pdc-base'),
+                'not_found'          => __('No pdc themes found.', 'pdc-base'),
+                'not_found_in_trash' => __('No pdc themes found in Trash.', 'pdc-base'),
+                'all_items'          => __('All pdc themes', 'pdc-base'),
+                'archives'           => __('PDC themes archives', 'pdc-base'),
+                'attributes'         => __('PDC theme attributes', 'pdc-base'),
+                'insert_into_item'   => __('Insert into pdc theme', 'pdc-base'),
+                'featured_image'     => __('Featured image', 'pdc-base'),
+                'set_featured_image' => __('Set featured image', 'pdc-base'),
+                'menu_name'          => __('PDC themes', 'pdc-base'),
+                'name_admin_bar'     => __('PDC themes', 'pdc-base'),
+                'parent_item_colon'  => __('Parent pdc themes:', 'pdc-base'),
+            ],
+
             # Add the post type to the site's main RSS feed:
             'show_in_feed' => false,
 
@@ -86,6 +109,29 @@ return [
     ],
     'pdc-subcategory' => [
         'args'  => [
+
+            'labels'       => [
+                'name'               => __('PDC subtheme', 'pdc-base'),
+                'singular_name'      => __('PDC subtheme', 'pdc-base'),
+                'add_new'            => __('Add new pdc subtheme', 'pdc-base'),
+                'add_new_item'       => __('Add new pdc subtheme', 'pdc-base'),
+                'edit_item'          => __('Edit pdc subtheme', 'pdc-base'),
+                'new_item'           => __('New pdc subtheme', 'pdc-base'),
+                'view_item'          => __('View pdc subtheme', 'pdc-base'),
+                'view_items'         => __('View pdc subthemes', 'pdc-base'),
+                'search_items'       => __('Search pdc subthemes', 'pdc-base'),
+                'not_found'          => __('No pdc subthemes found.', 'pdc-base'),
+                'not_found_in_trash' => __('No pdc subthemes found in Trash.', 'pdc-base'),
+                'all_items'          => __('All pdc subthemes', 'pdc-base'),
+                'archives'           => __('PDC subthemes archives', 'pdc-base'),
+                'attributes'         => __('PDC subtheme attributes', 'pdc-base'),
+                'insert_into_item'   => __('Insert into pdc subtheme', 'pdc-base'),
+                'featured_image'     => __('Featured image', 'pdc-base'),
+                'set_featured_image' => __('Set featured image', 'pdc-base'),
+                'menu_name'          => __('PDC subtheme', 'pdc-base'),
+                'name_admin_bar'     => __('PDC subtheme', 'pdc-base'),
+                'parent_item_colon'  => __('Parent pdc subthemes:', 'pdc-base'),
+            ],
             # Add the post type to the site's main RSS feed:
             'show_in_feed' => false,
 
