@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.1.1
+### Features:
+* Add synonyms to api output
+
 ## Version 2.1.0
 ### Features:
 * Add documentation
