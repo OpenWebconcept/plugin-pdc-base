@@ -68,8 +68,10 @@ class DependencyChecker
     public function notify()
     {
         add_action('admin_notices', function () {
-            $list = '<p>' . __('The following plugins are required to use the PDC:',
-                'pdc-base') . '</p><ol>';
+            $list = '<p>' . __(
+                'The following plugins are required to use the PDC:',
+                'pdc-base'
+            ) . '</p><ol>';
 
             foreach ($this->failed as $dependency) {
                 $info = isset($dependency['message']) ? ' (' . $dependency['message'] . ')' : '';

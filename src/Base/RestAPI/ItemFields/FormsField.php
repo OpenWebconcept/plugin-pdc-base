@@ -44,5 +44,4 @@ class FormsField extends CreatesFields
             return ! empty($form['pdc_forms_url']) && ! empty($form['pdc_forms_title']);
         });
     }
-
 }

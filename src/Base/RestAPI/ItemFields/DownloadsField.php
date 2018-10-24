@@ -44,5 +44,4 @@ class DownloadsField extends CreatesFields
             return ! empty($download['pdc_downloads_url']) && ! empty($download['pdc_downloads_title']);
         });
     }
-
 }

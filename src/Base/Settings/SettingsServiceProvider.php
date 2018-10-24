@@ -30,7 +30,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      * Registers the settings page, based on the config.
      *
      * @param array $rwmbSettingsPages
-     * 
+     *
      * @return array
      */
     public function registerSettingsPage($rwmbSettingsPages)
@@ -52,7 +52,6 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
         $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
-
             $metaboxes[] = $this->processMetabox($metabox);
         }
 
@@ -63,7 +62,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      * Get all the options of the setting page.
      *
      * @todo Implement better way of retrieving settings (used in InterfaceServiceProvider).
-     * 
+     *
      * @return void
      */
     public function getSettingsOption()

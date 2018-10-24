@@ -24,5 +24,4 @@ class Thema extends Model
      * @var array $globalFields
      */
     protected static $globalFields = [];
-
 }

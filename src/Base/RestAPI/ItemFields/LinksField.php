@@ -44,5 +44,4 @@ class LinksField extends CreatesFields
             return ! empty($link['pdc_links_url']) && ! empty($link['pdc_links_title']);
         });
     }
-
 }

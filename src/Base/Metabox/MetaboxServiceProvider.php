@@ -19,27 +19,27 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
      *
      * @return void
      */
-	public function register()
-	{
-		$this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
-	}
+    public function register()
+    {
+        $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
+    }
 
     /**
      * Register metaboxes.
-     * 
+     *
      * @param array $rwmbMetaboxes
-     * 
+     *
      * @return void
      */
-	public function registerMetaboxes($rwmbMetaboxes)
-	{
-		$configMetaboxes = $this->plugin->config->get('metaboxes');
-		$metaboxes        = [];
+    public function registerMetaboxes($rwmbMetaboxes)
+    {
+        $configMetaboxes = $this->plugin->config->get('metaboxes');
+        $metaboxes        = [];
 
-		foreach ( $configMetaboxes as $metabox ) {
-			$metaboxes[] = $this->processMetabox($metabox);
-		}
+        foreach ($configMetaboxes as $metabox) {
+            $metaboxes[] = $this->processMetabox($metabox);
+        }
 
-		return array_merge( $rwmbMetaboxes, apply_filters("owc/pdc-base/before-register-metaboxes", $metaboxes) );
-	}
+        return array_merge($rwmbMetaboxes, apply_filters("owc/pdc-base/before-register-metaboxes", $metaboxes));
+    }
 }

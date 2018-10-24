@@ -17,9 +17,9 @@ class ItemController extends BaseController
 
     /**
      * Get a list of all items.
-     * 
+     *
      * @param WP_REST_Request $request
-     * 
+     *
      * @return array
      */
     public function getItems(WP_REST_Request $request)
@@ -51,7 +51,7 @@ class ItemController extends BaseController
             ->query($this->hideInactiveItem())
             ->find($id);
 
-        if ( ! $item) {
+        if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
                 'status' => 404
             ]);
@@ -62,10 +62,11 @@ class ItemController extends BaseController
 
     /**
      * Hide inactive item from output.
-     * 
+     *
      * @return array
      */
-    protected function hideInactiveItem() {
+    protected function hideInactiveItem()
+    {
         return [
             'meta_query' => [
                 [

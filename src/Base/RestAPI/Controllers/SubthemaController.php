@@ -17,9 +17,9 @@ class SubthemaController extends BaseController
 
     /**
      * Get a list of all subthemas.
-     * 
+     *
      * @param WP_REST_Request $request
-     * 
+     *
      * @return void
      */
     public function getSubthemas(WP_REST_Request $request)
@@ -49,7 +49,7 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->find($id);
 
-        if ( ! $thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Subthema with ID "%d" not found', $id), [
                 'status' => 404
             ]);
@@ -57,5 +57,4 @@ class SubthemaController extends BaseController
 
         return $thema;
     }
-
 }

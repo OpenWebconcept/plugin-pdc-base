@@ -65,5 +65,4 @@ class ConnectedField extends CreatesFields
             ];
         }, $connection->get_connected($postID)->posts);
     }
-
 }

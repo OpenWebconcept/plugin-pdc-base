@@ -17,9 +17,9 @@ class ThemaController extends BaseController
 
     /**
      * Get a list of all themas.
-     * 
+     *
      * @param WP_REST_Request $request
-     * 
+     *
      * @return void
      */
     public function getThemas(WP_REST_Request $request)
@@ -49,7 +49,7 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->find($id);
 
-        if ( ! $thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID "%d" not found', $id), [
                 'status' => 404
             ]);
@@ -57,5 +57,5 @@ class ThemaController extends BaseController
 
         return $thema;
     }
-
 }
+
