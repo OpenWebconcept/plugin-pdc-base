@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version 2.1.2
+### Features:
+* Add filters to admin
+
+### Fixes:
+* Code cleanup
+
 ## Version 2.1.1
 ### Features:
 * Add synonyms to api output

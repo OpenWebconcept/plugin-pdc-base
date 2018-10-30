@@ -53,8 +53,11 @@ return [
 
             # Add a dropdown filter to the admin screen:
             'admin_filters' => [
-                'type' => [
+                'type'   => [
                     'taxonomy' => 'pdc-type',
+                ],
+                'aspect' => [
+                    'taxonomy' => 'pdc-aspect',
                 ],
             ],
         ],
