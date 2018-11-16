@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
+use WP_Post;
 
 /**
  * Adds form fields to the output.
@@ -24,9 +24,14 @@ class FormsField extends CreatesFields
     public function create(WP_Post $post): array
     {
         return array_map(function ($form) {
+            $url = $form['pdc_forms_url'];
+            if (empty($form['pdc_forms_url'])) {
+                $url = do_shortcode($form['pdc_forms_shortcode']);
+            }
+
             return [
                 'title' => esc_attr(strip_tags($form['pdc_forms_title'])),
-                'url'   => esc_url($form['pdc_forms_url'])
+                'url'   => esc_url($url),
             ];
         }, $this->getForms($post));
     }
@@ -41,7 +46,7 @@ class FormsField extends CreatesFields
     private function getForms(WP_Post $post)
     {
         return array_filter(get_post_meta($post->ID, '_owc_pdc_forms_group', true) ?: [], function ($form) {
-            return ! empty($form['pdc_forms_url']) && ! empty($form['pdc_forms_title']);
+            return (!empty($form['pdc_forms_url']) or !empty($form['pdc_forms_shortcode'])) && (!empty($form['pdc_forms_title']));
         });
     }
 }

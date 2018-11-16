@@ -156,7 +156,7 @@ msgid "UPL resource"
 msgstr ""
 
 #: config/metaboxes.php:172
-msgid "Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik"
+msgid "Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
 msgstr ""
 
 #: config/metaboxes.php:180

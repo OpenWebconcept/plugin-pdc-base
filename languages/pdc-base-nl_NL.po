@@ -172,10 +172,9 @@ msgstr "UPL resource"
 
 #: config/metaboxes.php:172
 msgid ""
-"Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik"
+"Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
 msgstr ""
-"Bijvoorbeeld: http://standaarden.overheid.nl/owms/tersm/"
-"aanduiding_naamgebruik"
+"Bijvoorbeeld: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
 
 #: config/metaboxes.php:180
 msgid "Other"

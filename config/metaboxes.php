@@ -151,6 +151,12 @@ return [
                             'id'   => 'pdc_forms_url',
                             'name' => __('Form URL', 'pdc-base'),
                             'desc' => __('URL including http(s)://', 'pdc-base'),
+                            'type' => 'url',
+                        ],
+                        [
+                            'id'   => 'pdc_forms_shortcode',
+                            'name' => __('Form shortcode url', 'pdc-base'),
+                            'desc' => __('Insert shortcode instead of url. This overrides url', 'pdc-base'),
                             'type' => 'text',
                         ],
                     ],
@@ -169,7 +175,7 @@ return [
                 ],
                 'upl_resource' => [
                     'name' => __('UPL resource', 'pdc-base'),
-                    'desc' => __('Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik', 'pdc-base'),
+                    'desc' => __('Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}', 'pdc-base'),
                     'id'   => 'pdc_upl_resource',
                     'type' => 'text',
                 ],
