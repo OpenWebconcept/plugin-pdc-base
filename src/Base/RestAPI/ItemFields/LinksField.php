@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
+use WP_Post;
 
 /**
  * Adds link fields to the output.
@@ -24,9 +24,14 @@ class LinksField extends CreatesFields
     public function create(WP_Post $post): array
     {
         return array_map(function ($link) {
+            $url = $link['pdc_links_url'];
+            if (empty($link['pdc_links_url'])) {
+                $url = do_shortcode($link['pdc_links_shortcode']);
+            }
+
             return [
                 'title' => esc_attr(strip_tags($link['pdc_links_title'])),
-                'url'   => esc_url($link['pdc_links_url'])
+                'url'   => esc_url($url),
             ];
         }, $this->getLinks($post));
     }
@@ -41,7 +46,7 @@ class LinksField extends CreatesFields
     private function getLinks(WP_Post $post)
     {
         return array_filter(get_post_meta($post->ID, '_owc_pdc_links_group', true) ?: [], function ($link) {
-            return ! empty($link['pdc_links_url']) && ! empty($link['pdc_links_title']);
+            return (!empty($link['pdc_links_url']) or !empty($link['pdc_links_shortcode'])) && (!empty($link['pdc_links_title']));
         });
     }
 }
