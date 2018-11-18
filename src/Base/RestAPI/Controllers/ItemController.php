@@ -24,15 +24,44 @@ class ItemController extends BaseController
      */
     public function getItems(WP_REST_Request $request)
     {
-        $items = (new Item())
+        $parameters = $this->convertParameters($request->get_params());
+        $items      = (new Item())
             ->hide(['connected'])
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
+            ->query($parameters)
             ->query($this->hideInactiveItem());
 
         $data  = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
+    }
+
+    /**
+     * Convert the parameters to the allowed ones.
+     *
+     * @param array $parametersFromRequest
+     * @return array
+     */
+    protected function convertParameters(array $parametersFromRequest): array
+    {
+        $parameters = [];
+
+        if (isset($parametersFromRequest['name'])) {
+            $parameters['name'] = esc_attr($parametersFromRequest['name']);
+        }
+
+        if (isset($parametersFromRequest['slug'])) {
+            $parameters['name'] = esc_attr($parametersFromRequest['slug']);
+            unset($parametersFromRequest['slug']);
+        }
+
+        if (isset($parametersFromRequest['id'])) {
+            $parameters['p'] = absint($parametersFromRequest['id']);
+            unset($parametersFromRequest['slug']);
+        }
+
+        return $parameters;
     }
 
     /**
