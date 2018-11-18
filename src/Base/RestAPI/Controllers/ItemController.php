@@ -5,9 +5,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Models\Item;
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Models\Item;
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -25,11 +25,11 @@ class ItemController extends BaseController
     public function getItems(WP_REST_Request $request)
     {
         $items = (new Item())
-            ->hide([ 'connected' ])
+            ->hide(['connected'])
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($this->hideInactiveItem());
 
-        $data = $items->all();
+        $data  = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -51,9 +51,9 @@ class ItemController extends BaseController
             ->query($this->hideInactiveItem())
             ->find($id);
 
-        if (! $item) {
+        if (!$item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
-                'status' => 404
+                'status' => 404,
             ]);
         }
 
@@ -70,10 +70,10 @@ class ItemController extends BaseController
         return [
             'meta_query' => [
                 [
-                    'key' => '_owc_pdc_active',
-                    'value' => 1
-                ]
-            ]
+                    'key'   => '_owc_pdc_active',
+                    'value' => 1,
+                ],
+            ],
         ];
     }
 }
