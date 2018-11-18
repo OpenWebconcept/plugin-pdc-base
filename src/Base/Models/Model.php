@@ -7,9 +7,9 @@ namespace OWC\PDC\Base\Models;
 
 use Closure;
 use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 use WP_Query;
-use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * PDC item object with default quering and methods.
@@ -88,12 +88,12 @@ abstract class Model
     public function all(): array
     {
         $args = array_merge($this->queryArgs, [
-            'post_type' => [ $this->posttype ]
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
 
-        return array_map([ $this, 'transform' ], $this->getQuery()->posts);
+        return array_map([$this, 'transform'], $this->getQuery()->posts);
     }
 
     /**
@@ -107,8 +107,8 @@ abstract class Model
     {
 
         $args = array_merge($this->queryArgs, [
-            'p' => $id,
-            'post_type' => [$this->posttype]
+            'p'         => $id,
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
@@ -139,7 +139,7 @@ abstract class Model
      */
     public function query(array $args)
     {
-        $this->queryArgs = array_merge($this->queryArgs, $args);
+        $this->queryArgs = array_merge_recursive($this->queryArgs, $args);
 
         return $this;
     }
@@ -187,7 +187,7 @@ abstract class Model
         static::$globalFields[] = [
             'key'         => $key,
             'creator'     => $creator,
-            'conditional' => $conditional
+            'conditional' => $conditional,
         ];
     }
 
@@ -219,7 +219,7 @@ abstract class Model
             'title'   => $post->post_title,
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
-            'date'    => $post->post_date
+            'date'    => $post->post_date,
         ];
 
         $data = $this->assignFields($data, $post);
