@@ -11,7 +11,7 @@ use WP_Post;
 /**
  * Adds connected fields to item in API.
  */
-class Items extends ConnectedField
+class ItemsField extends ConnectedField
 {
 
     /**

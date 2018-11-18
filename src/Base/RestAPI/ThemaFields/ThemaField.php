@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ThemaFields;
 
-use WP_Post;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
+use WP_Post;
 
 /**
  * Class for handling the thema fields.

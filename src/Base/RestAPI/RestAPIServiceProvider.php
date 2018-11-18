@@ -66,40 +66,40 @@ class RestAPIServiceProvider extends ServiceProvider
     public function registerRoutes()
     {
         register_rest_route($this->namespace, 'items', [
-            'methods' => WP_REST_Server::READABLE,
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItems'],
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
-            'methods' => WP_REST_Server::READABLE,
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItem'],
         ]);
 
-        register_rest_route($this->namespace, 'themas', [
-            'methods' => WP_REST_Server::READABLE,
+        register_rest_route($this->namespace, 'them(a|e)s', [
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThemas'],
         ]);
 
-        register_rest_route($this->namespace, 'themas/(?P<id>\d+)', [
-            'methods' => WP_REST_Server::READABLE,
+        register_rest_route($this->namespace, 'them(a|e)s/(?P<id>\d+)', [
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThema'],
         ]);
 
-        register_rest_route($this->namespace, 'subthemas', [
-            'methods' => WP_REST_Server::READABLE,
+        register_rest_route($this->namespace, 'subthem(a|e)s', [
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
         ]);
 
-        register_rest_route($this->namespace, 'subthemas/(?P<id>\d+)', [
-            'methods' => WP_REST_Server::READABLE,
+        register_rest_route($this->namespace, 'subthem(a|e)s/(?P<id>\d+)', [
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
         ]);
 
         $searchController = new Controllers\SearchController($this->plugin);
         register_rest_route($this->namespace, 'search', [
-            'methods' => WP_REST_Server::READABLE,
+            'methods'  => WP_REST_Server::READABLE,
             'callback' => [$searchController, 'search'],
-            'args' => $searchController->arguments(),
+            'args'     => $searchController->arguments(),
         ]);
     }
 
@@ -118,7 +118,7 @@ class RestAPIServiceProvider extends ServiceProvider
 
         $whitelist[$this->namespace] = [
             'endpoint_stub' => '/' . $this->namespace,
-            'methods' => ['GET'],
+            'methods'       => ['GET'],
         ];
 
         return $whitelist;

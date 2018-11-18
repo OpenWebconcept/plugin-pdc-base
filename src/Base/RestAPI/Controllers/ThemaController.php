@@ -5,9 +5,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Models\Thema;
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Models\Thema;
 
 /**
  * Controller which handles the (requested) thema(s).
@@ -25,10 +25,9 @@ class ThemaController extends BaseController
     public function getThemas(WP_REST_Request $request)
     {
         $items = (new Thema)
-            ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
-            ->hide([ 'items' ]);
+            ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)));
 
-        $data = $items->all();
+        $data  = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -49,9 +48,9 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->find($id);
 
-        if (! $thema) {
+        if (!$thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID "%d" not found', $id), [
-                'status' => 404
+                'status' => 404,
             ]);
         }
 
