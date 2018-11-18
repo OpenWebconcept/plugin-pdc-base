@@ -26,10 +26,13 @@ class ItemController extends BaseController
     {
         $parameters = $this->convertParameters($request->get_params());
         $items      = (new Item())
-            ->hide(['connected'])
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
             ->query($this->hideInactiveItem());
+
+        if (false === $parameters['include-connected']) {
+            $items->hide(['connected']);
+        }
 
         $data  = $items->all();
         $query = $items->getQuery();
@@ -50,6 +53,8 @@ class ItemController extends BaseController
         if (isset($parametersFromRequest['name'])) {
             $parameters['name'] = esc_attr($parametersFromRequest['name']);
         }
+
+        $parameters['include-connected'] = (isset($parametersFromRequest['include-connected'])) ? true : false;
 
         if (isset($parametersFromRequest['slug'])) {
             $parameters['name'] = esc_attr($parametersFromRequest['slug']);
