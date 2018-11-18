@@ -37,7 +37,6 @@ class InterfaceServiceProvider extends ServiceProvider
     {
         $viewNode = $wpAdminBar->get_node('view');
         if (!empty($viewNode)) {
-
             global $post;
 
             if (get_post_type($post) === 'pdc-item') {
@@ -81,7 +80,6 @@ class InterfaceServiceProvider extends ServiceProvider
     public function actionModifyPageRowActions($actions, WP_Post $post)
     {
         if (!empty($actions['view']) && $post->post_type == 'pdc-item') {
-
             $portalUrl = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
 
             $actions['view'] = sprintf(

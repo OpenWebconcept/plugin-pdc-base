@@ -57,7 +57,7 @@ class RestAPIServiceProvider extends ServiceProvider
      *
      * Endpoint of the subthema detail page.
      * @link https://{url}/wp-json/owc/pdc/v1/subthemas/{id}
-	 *
+     *
      * Endpoint of searching.
      * @link https://{url}/wp-json/owc/pdc/v1/search
      *
@@ -95,7 +95,7 @@ class RestAPIServiceProvider extends ServiceProvider
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
         ]);
 
-		$searchController = new Controllers\SearchController($this->plugin);
+        $searchController = new Controllers\SearchController($this->plugin);
         register_rest_route($this->namespace, 'search', [
             'methods' => WP_REST_Server::READABLE,
             'callback' => [$searchController, 'search'],
@@ -141,5 +141,4 @@ class RestAPIServiceProvider extends ServiceProvider
             }
         }
     }
-
 }

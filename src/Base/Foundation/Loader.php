@@ -38,7 +38,7 @@ class Loader
      * @param    int    $priority      Optional. he priority at which the function should be fired. Default is 10.
      * @param    int    $acceptedArgs  Optional. The number of arguments that should be passed to the $callback.
      *                                 Default is 1.
-     * 
+     *
      * @return void
      */
     public function addAction($hook, $component, $callback, $priority = 10, $acceptedArgs = 1)
@@ -57,7 +57,7 @@ class Loader
      * @param    int    $priority      Optional. he priority at which the function should be fired. Default is 10.
      * @param    int    $acceptedArgs  Optional. The number of arguments that should be passed to the $callback.
      *                                 Default is 1
-     * 
+     *
      * @return void
      */
     public function addFilter($hook, $component, $callback, $priority = 10, $acceptedArgs = 1)
@@ -92,27 +92,34 @@ class Loader
         ];
 
         return $hooks;
-
     }
 
     /**
      * Register the filters and actions with WordPress.
      *
      * @since    2.0.0
-     * 
+     *
      * @return void
      */
     public function register()
     {
 
         foreach ($this->filters as $hook) {
-            add_filter($hook['hook'], [ $hook['component'], $hook['callback'] ], $hook['priority'],
-                $hook['accepted_args']);
+            add_filter(
+                $hook['hook'],
+                [ $hook['component'], $hook['callback'] ],
+                $hook['priority'],
+                $hook['accepted_args']
+            );
         }
 
         foreach ($this->actions as $hook) {
-            add_action($hook['hook'], [ $hook['component'], $hook['callback'] ], $hook['priority'],
-                $hook['accepted_args']);
+            add_action(
+                $hook['hook'],
+                [ $hook['component'], $hook['callback'] ],
+                $hook['priority'],
+                $hook['accepted_args']
+            );
         }
     }
 }

@@ -26,3 +26,4 @@ class ThemaField extends ConnectedField
         return $this->getConnectedItems($post->ID, 'pdc-category_to_pdc-subcategory');
     }
 }
+

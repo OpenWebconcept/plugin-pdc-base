@@ -22,7 +22,7 @@ abstract class ServiceProvider
      * Construction of the service provider.
      *
      * @param Plugin $plugin
-     * 
+     *
      * @return void
      */
     public function __construct(Plugin $plugin)
@@ -33,6 +33,5 @@ abstract class ServiceProvider
     /**
      * Register the service provider.
      */
-    public abstract function register();
-
+    abstract public function register();
 }

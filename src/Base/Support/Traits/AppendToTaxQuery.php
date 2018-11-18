@@ -27,11 +27,10 @@ trait AppendToTaxQuery
             $newQuery
         ];
 
-        if ( ! empty($query)) {
+        if (! empty($query)) {
             $result[] = $query;
         }
 
         return $result;
     }
-
 }

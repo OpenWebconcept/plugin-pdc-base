@@ -24,5 +24,4 @@ class Subthema extends Model
      * @var array $globalFields
      */
     protected static $globalFields = [];
-
 }

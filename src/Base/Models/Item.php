@@ -24,5 +24,4 @@ class Item extends Model
      * @var array $globalFields
      */
     protected static $globalFields = [];
-
 }

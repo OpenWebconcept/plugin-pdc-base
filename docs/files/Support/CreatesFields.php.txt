@@ -17,7 +17,7 @@ abstract class CreatesFields
 
     /**
      * Instance of the Plugin.
-     * 
+     *
      * @var Plugin $plugin
      */
     protected $plugin;
@@ -40,5 +40,5 @@ abstract class CreatesFields
      * @return mixed
      */
     abstract public function create(WP_Post $post);
-
 }
+

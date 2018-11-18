@@ -17,7 +17,8 @@ class Hooks
      * @return void
      */
     public static function pluginActivation()
-    {}
+    {
+    }
 
     /**
      * This method is called immediately after any plugin is activated, and may be used to detect the activation of
@@ -29,7 +30,8 @@ class Hooks
      * @return void
      */
     public static function pluginActivated($plugin, $networkActivation)
-    {}
+    {
+    }
 
     /**
      * This method is run immediately after any plugin is deactivated, and may be used to detect the deactivation of
@@ -41,7 +43,8 @@ class Hooks
      * @return void
      */
     public static function pluginDeactivated($plugin, $networkDeactivation)
-    {}
+    {
+    }
 
     /**
      * This method registers a plugin function to be run when the plugin is deactivated.
@@ -49,7 +52,8 @@ class Hooks
      * @return void
      */
     public static function pluginDeactivation()
-    {}
+    {
+    }
 
     /**
      * This method is run when the plugin is activated.
@@ -59,6 +63,7 @@ class Hooks
      * @return void
      */
     public static function uninstallPlugin()
-    {}
+    {
+    }
 }
 

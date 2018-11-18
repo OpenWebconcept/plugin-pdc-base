@@ -29,5 +29,5 @@ class TitleAlternativeField extends CreatesFields
 
         return apply_filters('owc/pdc-base/rest-api/item/field/title-alternative', $title, $post);
     }
-
 }
+

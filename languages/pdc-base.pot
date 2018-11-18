@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2018-10-01 20:55+0200\n"
+"POT-Creation-Date: 2018-10-03 13:52+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,6 +86,10 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
+#: config/metaboxes.php:88
+msgid "Add new link"
+msgstr ""
+
 #: config/metaboxes.php:92
 msgid "Link title"
 msgstr ""
@@ -107,6 +111,10 @@ msgstr ""
 msgid "Downloads"
 msgstr ""
 
+#: config/metaboxes.php:115
+msgid "Add new download"
+msgstr ""
+
 #: config/metaboxes.php:119
 msgid "Download title"
 msgstr ""
@@ -117,6 +125,10 @@ msgstr ""
 
 #: config/metaboxes.php:135
 msgid "Forms"
+msgstr ""
+
+#: config/metaboxes.php:142
+msgid "Add new form"
 msgstr ""
 
 #: config/metaboxes.php:146
@@ -144,7 +156,7 @@ msgid "UPL resource"
 msgstr ""
 
 #: config/metaboxes.php:172
-msgid "Example: http://standaarden.overheid.nl/owms/tersm/aanduiding_naamgebruik"
+msgid "Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
 msgstr ""
 
 #: config/metaboxes.php:180
@@ -160,15 +172,18 @@ msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
-#: config/posttypes.php:56
+#: config/posttypes.php:63
 msgid "PDC item"
 msgstr ""
 
-#: config/p2p_connections.php:14 config/posttypes.php:76
+#: config/p2p_connections.php:14 config/posttypes.php:72
+#: config/posttypes.php:73 config/posttypes.php:105
 msgid "PDC theme"
 msgstr ""
 
-#: config/p2p_connections.php:19 config/posttypes.php:96
+#: config/p2p_connections.php:19 config/posttypes.php:114
+#: config/posttypes.php:115 config/posttypes.php:131 config/posttypes.php:132
+#: config/posttypes.php:147
 msgid "PDC subtheme"
 msgstr ""
 
@@ -224,15 +239,15 @@ msgstr ""
 msgid "Insert into pdc item"
 msgstr ""
 
-#: config/posttypes.php:26
+#: config/posttypes.php:26 config/posttypes.php:87 config/posttypes.php:129
 msgid "Featured image"
 msgstr ""
 
-#: config/posttypes.php:27
+#: config/posttypes.php:27 config/posttypes.php:88 config/posttypes.php:130
 msgid "Set featured image"
 msgstr ""
 
-#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:57
+#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:64
 msgid "PDC items"
 msgstr ""
 
@@ -240,11 +255,123 @@ msgstr ""
 msgid "Parent pdc items:"
 msgstr ""
 
+#: config/posttypes.php:42 config/taxonomies.php:78
+msgid "Aspect"
+msgstr ""
+
+#: config/posttypes.php:47 config/taxonomies.php:57
+msgid "Type"
+msgstr ""
+
+#: config/posttypes.php:74 config/posttypes.php:75
+msgid "Add new pdc theme"
+msgstr ""
+
+#: config/posttypes.php:76
+msgid "Edit pdc theme"
+msgstr ""
+
 #: config/posttypes.php:77
+msgid "New pdc theme"
+msgstr ""
+
+#: config/posttypes.php:78
+msgid "View pdc theme"
+msgstr ""
+
+#: config/posttypes.php:79
+msgid "View pdc themes"
+msgstr ""
+
+#: config/posttypes.php:80
+msgid "Search pdc themes"
+msgstr ""
+
+#: config/posttypes.php:81
+msgid "No pdc themes found."
+msgstr ""
+
+#: config/posttypes.php:82
+msgid "No pdc themes found in Trash."
+msgstr ""
+
+#: config/posttypes.php:83
+msgid "All pdc themes"
+msgstr ""
+
+#: config/posttypes.php:84
+msgid "PDC themes archives"
+msgstr ""
+
+#: config/posttypes.php:85
+msgid "PDC theme attributes"
+msgstr ""
+
+#: config/posttypes.php:86
+msgid "Insert into pdc theme"
+msgstr ""
+
+#: config/posttypes.php:89 config/posttypes.php:90 config/posttypes.php:106
 msgid "PDC themes"
 msgstr ""
 
-#: config/posttypes.php:97
+#: config/posttypes.php:91
+msgid "Parent pdc themes:"
+msgstr ""
+
+#: config/posttypes.php:116 config/posttypes.php:117
+msgid "Add new pdc subtheme"
+msgstr ""
+
+#: config/posttypes.php:118
+msgid "Edit pdc subtheme"
+msgstr ""
+
+#: config/posttypes.php:119
+msgid "New pdc subtheme"
+msgstr ""
+
+#: config/posttypes.php:120
+msgid "View pdc subtheme"
+msgstr ""
+
+#: config/posttypes.php:121
+msgid "View pdc subthemes"
+msgstr ""
+
+#: config/posttypes.php:122
+msgid "Search pdc subthemes"
+msgstr ""
+
+#: config/posttypes.php:123
+msgid "No pdc subthemes found."
+msgstr ""
+
+#: config/posttypes.php:124
+msgid "No pdc subthemes found in Trash."
+msgstr ""
+
+#: config/posttypes.php:125
+msgid "All pdc subthemes"
+msgstr ""
+
+#: config/posttypes.php:126
+msgid "PDC subthemes archives"
+msgstr ""
+
+#: config/posttypes.php:127
+msgid "PDC subtheme attributes"
+msgstr ""
+
+#: config/posttypes.php:128
+msgid "Insert into pdc subtheme"
+msgstr ""
+
+#: config/posttypes.php:133
+msgid "Parent pdc subthemes:"
+msgstr ""
+
+#: config/posttypes.php:148
 msgid "PDC subthemes"
 msgstr ""
 
@@ -277,7 +404,7 @@ msgid "Submit"
 msgstr ""
 
 #: config/taxonomies.php:12 config/taxonomies.php:13 config/taxonomies.php:14
-#: config/taxonomies.php:39
+#: config/taxonomies.php:38
 msgid "Audience"
 msgstr ""
 
@@ -333,39 +460,31 @@ msgstr ""
 msgid "← Back to tags"
 msgstr ""
 
-#: config/taxonomies.php:40
+#: config/taxonomies.php:39
 msgid "Audiences"
 msgstr ""
 
-#: config/taxonomies.php:59
-msgid "Type"
-msgstr ""
-
-#: config/taxonomies.php:60
+#: config/taxonomies.php:58
 msgid "Types"
 msgstr ""
 
-#: config/taxonomies.php:80
-msgid "Aspect"
-msgstr ""
-
-#: config/taxonomies.php:81
+#: config/taxonomies.php:79
 msgid "Aspects"
 msgstr ""
 
-#: config/taxonomies.php:100
+#: config/taxonomies.php:98
 msgid "Usage"
 msgstr ""
 
-#: config/taxonomies.php:101
+#: config/taxonomies.php:99
 msgid "Usages"
 msgstr ""
 
-#: config/taxonomies.php:121
+#: config/taxonomies.php:119
 msgid "Owner"
 msgstr ""
 
-#: config/taxonomies.php:122
+#: config/taxonomies.php:120
 msgid "Owners"
 msgstr ""
 

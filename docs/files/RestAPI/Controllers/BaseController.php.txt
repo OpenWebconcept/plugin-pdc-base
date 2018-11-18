@@ -25,7 +25,7 @@ abstract class BaseController
      * Construction, with dependency injection of the BasePlugin.
      *
      * @param Plugin $plugin
-     * 
+     *
      * @return void
      */
     public function __construct(Plugin $plugin)
@@ -74,3 +74,4 @@ abstract class BaseController
         ];
     }
 }
+

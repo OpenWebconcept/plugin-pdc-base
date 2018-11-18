@@ -27,12 +27,6 @@ return [
                 'back_to_items'              => __('← Back to tags', 'pdc-base'),
             ],
             'meta_box' => 'simple',
-            #            'capabilities' => [
-            #                'manage_terms' => 'manage_pdc_categories',
-            #                'edit_terms'   => 'manage_pdc_categories',
-            #                'delete_terms' => 'manage_pdc_categories',
-            #                'assign_terms' => 'edit_pdc_posts'
-            #            ]
         ],
         'names'        => [
             'singular' => __('Audience', 'pdc-base'),
@@ -46,12 +40,6 @@ return [
         'args'         => [
             'meta_box'     => 'simple',
             'show_in_rest' => false,
-            #            'capabilities' => [
-            #                'manage_terms' => 'manage_pdc_categories',
-            #                'edit_terms'   => 'manage_pdc_categories',
-            #                'delete_terms' => 'manage_pdc_categories',
-            #                'assign_terms' => 'edit_pdc_posts'
-            #            ]
         ],
         'names'        => [
             'singular' => __('Type', 'pdc-base'),
@@ -65,16 +53,8 @@ return [
         'args'         => [
             'meta_box'     => 'simple',
             'show_in_rest' => false,
-            #            'capabilities' => [
-            #                'manage_terms' => 'manage_pdc_categories',
-            #                'edit_terms'   => 'manage_pdc_categories',
-            #                'delete_terms' => 'manage_pdc_categories',
-            #                'assign_terms' => 'edit_pdc_posts'
-            #            ]
         ],
         'names'        => [
-
-            # Override the base names used for labels:
             'singular' => __('Aspect', 'pdc-base'),
             'plural'   => __('Aspects', 'pdc-base'),
             'slug'     => 'pdc-kenmerk',
@@ -85,16 +65,8 @@ return [
         'args'         => [
             'meta_box'     => 'simple',
             'show_in_rest' => false,
-            #            'capabilities' => [
-            #                'manage_terms' => 'manage_pdc_categories',
-            #                'edit_terms'   => 'manage_pdc_categories',
-            #                'delete_terms' => 'manage_pdc_categories',
-            #                'assign_terms' => 'edit_pdc_posts'
-            #            ]
         ],
         'names'        => [
-
-            # Override the base names used for labels:
             'singular' => __('Usage', 'pdc-base'),
             'plural'   => __('Usages', 'pdc-base'),
             'slug'     => 'pdc-toepassing',
@@ -105,17 +77,9 @@ return [
         'args'         => [
             'meta_box'          => 'simple',
             'show_in_rest'      => false,
-            #            'capabilities'      => [
-            #                'manage_terms' => 'manage_pdc_categories',
-            #                'edit_terms'   => 'manage_pdc_categories',
-            #                'delete_terms' => 'manage_pdc_categories',
-            #                'assign_terms' => 'edit_pdc_posts'
-            #            ],
             'show_admin_column' => true,
         ],
         'names'        => [
-
-            # Override the base names used for labels:
             'singular' => __('Owner', 'pdc-base'),
             'plural'   => __('Owners', 'pdc-base'),
             'slug'     => 'pdc-owner',
