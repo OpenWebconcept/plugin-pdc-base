@@ -219,6 +219,7 @@ abstract class Model
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
             'date'    => $post->post_date,
+            'slug'    => $post->post_name,
         ];
 
         $data = $this->assignFields($data, $post);
