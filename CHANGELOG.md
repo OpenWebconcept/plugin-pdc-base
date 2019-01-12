@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.1.3
+### Features:
+* Add: search restapi endpoint now uses Elasticsearch with appropriate metafields
+
 ## Version 2.1.2
 ### Features:
 * Add filters to admin
