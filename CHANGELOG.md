@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.1.4
+### Features:
+* Add: add order and orderby for themes api.
+
 ## Version 2.1.3
 ### Features:
 * Add: search restapi endpoint now uses Elasticsearch with appropriate metafields
