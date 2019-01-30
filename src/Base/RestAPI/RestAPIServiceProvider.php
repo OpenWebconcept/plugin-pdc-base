@@ -38,28 +38,28 @@ class RestAPIServiceProvider extends ServiceProvider
      * Register routes on the rest API.
      *
      * Main endpoint.
-     * @link https://{url}/wp-json/owc/pdc/v1
+     * @link https://url/wp-json/owc/pdc/v1
      *
      * Endpoint of the pdc-items.
-     * @link https://{url}/wp-json/owc/pdc/v1/items
+     * @link https://url/wp-json/owc/pdc/v1/items
      *
      * Endpoint of the pdc-item detail page.
-     * @link https://{url}/wp-json/owc/pdc/v1/items/{id}
+     * @link https://url/wp-json/owc/pdc/v1/items/{id}
      *
      * Endpoint of the thema-items.
-     * @link https://{url}/wp-json/owc/pdc/v1/themas
+     * @link https://url/wp-json/owc/pdc/v1/themas
      *
      * Endpoint of the thema detail page.
-     * @link https://{url}/wp-json/owc/pdc/v1/themas/{id}
+     * @link https://url/wp-json/owc/pdc/v1/themas/{id}
      *
      * Endpoint of the subthema-items.
-     * @link https://{url}/wp-json/owc/pdc/v1/subthemas
+     * @link https://url/wp-json/owc/pdc/v1/subthemas
      *
      * Endpoint of the subthema detail page.
-     * @link https://{url}/wp-json/owc/pdc/v1/subthemas/{id}
+     * @link https://url/wp-json/owc/pdc/v1/subthemas/{id}
      *
      * Endpoint of searching.
-     * @link https://{url}/wp-json/owc/pdc/v1/search
+     * @link https://url/wp-json/owc/pdc/v1/search
      *
      * @return void
      */
