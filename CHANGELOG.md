@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.1.5
+### Features:
+* Add: endpoint description.
+
 ## Version 2.1.4
 ### Features:
 * Add: add order and orderby for themes api.
