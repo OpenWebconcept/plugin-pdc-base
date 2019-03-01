@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.1.6
+### Features:
+* Fix: Replace posts-to-posts admin_column with extended post type.
+
 ## Version 2.1.5
 ### Features:
 * Add: endpoint description.
