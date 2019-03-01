@@ -57,7 +57,6 @@ class PostsToPostsServiceProvider extends ServiceProvider
                     'from'            => $connectionArgs['from'],
                     'to'              => $connectionArgs['to'],
                     'sortable'        => $args['sortable'],
-                    'admin_column'    => 'any',
                     'from_labels'     => [
                         'column_title' => $posttypesInfo[$connectionArgs['to']]['title'],
                     ],

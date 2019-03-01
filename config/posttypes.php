@@ -38,17 +38,31 @@ return [
             ],
             'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
             'admin_cols'    => [
-                'aspect' => [
+                'aspect'               => [
                     'title'    => __('Aspect', 'pdc-base'),
                     'taxonomy' => 'pdc-aspect',
                     'sortable' => false,
                 ],
-                'type'   => [
+                'item_to_item'         => [
+                    'connection' => 'pdc-item_to_pdc-item',
+                ],
+                'item_to_category'     => [
+                    'connection' => 'pdc-item_to_pdc-category',
+                ],
+                'item_to_sub_category' => [
+                    'connection' =>
+                    'pdc-item_to_pdc-subcategory',
+                ],
+                'type'                 => [
                     'title'    => __('Type', 'pdc-base'),
                     'taxonomy' => 'pdc-type',
                     'sortable' => false,
                 ],
-
+                'published'            => [
+                    'title'       => __('Published', 'pdc-base'),
+                    'post_field'  => 'post_date',
+                    'date_format' => get_option('date_format') . ', ' . get_option('time_format'),
+                ],
             ],
 
             # Add a dropdown filter to the admin screen:
