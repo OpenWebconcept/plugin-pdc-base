@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.1.7
+### Fix:
+* (fix): check if required file for ```is_plugin_active``` is already loaded, otherwise load it.
+
 ## Version 2.1.6
 ### Features:
 * Fix: Replace posts-to-posts admin_column with extended post type.
