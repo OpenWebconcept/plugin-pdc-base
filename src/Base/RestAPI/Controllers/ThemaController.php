@@ -24,17 +24,12 @@ class ThemaController extends BaseController
      */
     public function getThemas(WP_REST_Request $request)
     {
-        $orderBy = $request->get_param('orderby') ?? 'title';
-        $order   = $request->get_param('order') ?? 'ASC';
-        $items   = (new Thema)
+        $items = (new Thema)
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
-            ->query([
-                'order'   => $order,
-                'orderby' => $orderBy,
-            ])
+            ->query($this->getSearchArray($request))
             ->hide(['items']);
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -49,7 +44,7 @@ class ThemaController extends BaseController
      */
     public function getThema(WP_REST_Request $request)
     {
-        $id = (int) $request->get_param('id');
+        $id = (int)$request->get_param('id');
 
         $thema = (new Thema)
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))

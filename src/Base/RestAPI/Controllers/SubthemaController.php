@@ -26,6 +26,7 @@ class SubthemaController extends BaseController
     {
         $items = (new Subthema)
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
+            ->query($this->getSearchArray($request))
             ->hide([ 'items' ]);
 
         $data = $items->all();

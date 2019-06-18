@@ -27,6 +27,7 @@ class ItemController extends BaseController
         $items = (new Item())
             ->hide([ 'connected' ])
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
+            ->query($this->getSearchArray($request))
             ->query($this->hideInactiveItem());
 
         $data = $items->all();
