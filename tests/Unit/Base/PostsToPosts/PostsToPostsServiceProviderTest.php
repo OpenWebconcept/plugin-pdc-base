@@ -90,7 +90,7 @@ class PostsToPostsServiceProviderTest extends TestCase
             'args'   => null,
             'times'  => '2',
             'return' => true,
-        ]
+            ]
         );
 
         $configPostTypesInfo = [

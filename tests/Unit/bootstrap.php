@@ -8,7 +8,7 @@
 
 //$_tests_dir = getenv( 'WP_TESTS_DIR' );
 //if ( ! $_tests_dir ) {
-//	$_tests_dir = '/tmp/wordpress-tests-lib';
+//  $_tests_dir = '/tmp/wordpress-tests-lib';
 //}
 //
 //// Give access to tests_add_filter() function.
@@ -27,13 +27,16 @@ define('WP_PLUGIN_DIR', __DIR__);
 /**
  * Bootstrap WordPress Mock.
  */
-\WP_Mock::setUsePatchwork( true );
+\WP_Mock::setUsePatchwork(true);
 \WP_Mock::bootstrap();
 
 $GLOBALS['pdc-base'] = [
-	'active_plugins' => ['pdc-base/pdc-base.php'],
+    'active_plugins' => ['pdc-base/pdc-base.php'],
 ];
 
-class WP_CLI {
-	public static function add_command() {}
+class WP_CLI
+{
+    public static function add_command()
+    {
+    }
 }
