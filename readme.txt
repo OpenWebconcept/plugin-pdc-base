@@ -3,13 +3,18 @@ Contributors: Yard Internet
 Requires at least: 4.8
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 2.1.7
+Stable tag: 2.1.8
 
 Plugin to add the OpenwebConcept OpenPDC to your project.
 
 It enables the input of PDC (Producten Diensten Catalogus), and adds rest api endpoints.
 
 == Changelog ==
+
+
+= Version 2.1.8 =
+- Chore: replace docker container with our own for speed optimalisation.
+- Chore: add fields parameter for items to select which fields to return. For example: {site}/wp-json/owc/pdc/v1/items?fields=id,downloads will return only the fields id & downloads for all the PDC items.
 
 = Version 2.1.7 =
 - Fix: Check if required file for ```is_plugin_active``` is already loaded, otherwise load it.

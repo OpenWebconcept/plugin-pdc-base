@@ -226,6 +226,12 @@ abstract class Model
         return $this->getPreferredFields($data);
     }
 
+    /**
+     * Return only the preferred fields.
+     *
+     * @param array $data
+     * @return array
+     */
     protected function getPreferredFields($data)
     {
         $preferredFields = isset($_GET['fields']) ? esc_attr($_GET['fields']) : '';
