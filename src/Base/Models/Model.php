@@ -7,9 +7,9 @@ namespace OWC\PDC\Base\Models;
 
 use Closure;
 use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 use WP_Query;
-use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * PDC item object with default quering and methods.
@@ -105,7 +105,6 @@ abstract class Model
      */
     public function find(int $id)
     {
-
         $args = array_merge($this->queryArgs, [
             'p' => $id,
             'post_type' => [$this->posttype]
@@ -224,7 +223,20 @@ abstract class Model
 
         $data = $this->assignFields($data, $post);
 
-        return $data;
+        return $this->getPreferredFields($data);
+    }
+
+    protected function getPreferredFields($data)
+    {
+        $preferredFields = isset($_GET['fields']) ? esc_attr($_GET['fields']) : '';
+        if (empty($preferredFields)) {
+            return $data;
+        }
+
+        $preferredFields = explode(',', $preferredFields);
+        return array_filter($data, function ($key) use ($preferredFields) {
+            return in_array($key, $preferredFields);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**

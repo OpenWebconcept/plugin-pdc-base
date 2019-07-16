@@ -1,4 +1,4 @@
-image: oktupol/bitbucket-pipelines-php71
+image: yardinternet/php7.2-composer
 
 pipelines:
   branches:
@@ -9,7 +9,6 @@ pipelines:
           - composer
           - vendor-directory
         script:
-          - apt-get update && apt-get install -y git openssh-server
           - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
           - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
     - step:
@@ -19,28 +18,9 @@ pipelines:
           - vendor-directory
         deployment: production
         script:
-          - apt-get update && apt-get install -y git openssh-server rsync
+          - apt-get update && apt-get install -y rsync
           - ssh webdev@web11.yard.nl mkdir -p /data/www/docs.openwebconcept.nl/htdocs/plugins/base && rsync -avH ./docs/* -e "ssh" webdev@web11.yard.nl:/data/www/docs.openwebconcept.nl/htdocs/plugins/base
-
-    # - step:
-    #     name: integration test
-    #     caches:
-    #       - composer
-    #       - vendor-directory
-    #     script:
-    #       #- service mysql start
-    #       - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
-    #       #- chmod +x bin/install-wp-tests.sh
-    #       #- bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 latest
-    #       #- ./vendor/bin/phpunit --testsuite "Integration Test"
 
 definitions:
   caches:
     vendor-directory: vendor
-
-  services:
-    mysql:
-      image: mysql:5.7
-      environment:
-        MYSQL_DATABASE: 'wordpress_test'
-        MYSQL_ROOT_PASSWORD: 'root'
