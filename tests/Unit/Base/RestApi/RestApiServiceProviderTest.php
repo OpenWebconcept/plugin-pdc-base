@@ -6,6 +6,7 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
+use OWC\PDC\Base\RestAPI\RestAPIServiceProvider;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class RestAPIServiceProviderTest extends TestCase
@@ -13,6 +14,14 @@ class RestAPIServiceProviderTest extends TestCase
     protected function setUp(): void
     {
         \WP_Mock::setUp();
+
+        $this->config = m::mock(Config::class);
+        $this->plugin = m::mock(Plugin::class);
+
+        $this->plugin->config = $this->config;
+        $this->plugin->loader = m::mock(Loader::class);
+
+        $this->service = new RestAPIServiceProvider($this->plugin);
     }
 
     protected function tearDown(): void
@@ -23,23 +32,15 @@ class RestAPIServiceProviderTest extends TestCase
     /** @test */
     public function check_registration_of_rest_endpoints()
     {
-        $config = m::mock(Config::class);
-        $plugin = m::mock(Plugin::class);
-
-        $plugin->config = $config;
-        $plugin->loader = m::mock(Loader::class);
-
-        $service = new RestAPIServiceProvider($plugin);
-
-        $plugin->loader->shouldReceive('addAction')->withArgs([
+        $this->plugin->loader->shouldReceive('addAction')->withArgs([
             'rest_api_init',
-            $service,
+            $this->service,
             'registerRoutes'
         ])->once();
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
+        $this->plugin->loader->shouldReceive('addFilter')->withArgs([
             'owc/config-expander/rest-api/whitelist',
-            $service,
+            $this->service,
             'whitelist',
             10,
             1
@@ -61,9 +62,32 @@ class RestAPIServiceProviderTest extends TestCase
             ]
         ];
 
-        $config->shouldReceive('get')->with('api.models')->once()->andReturn($fields);
-        $service->register();
+        $this->config->shouldReceive('get')->with('api.models')->once()->andReturn($fields);
+        $this->service->register();
 
         $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function it_whitelists_the_namespace_correctly()
+    {
+        $actual = $this->service->whitelist([
+            'test/v1' => [
+                'endpoint_stub' => 'test',
+                'methods' => ['GET', 'POST']
+            ]
+        ]);
+        $expected = [
+            'test/v1' => [
+                'endpoint_stub' => 'test',
+                'methods' => ['GET', 'POST']
+            ],
+            'owc/pdc/v1' => [
+              'endpoint_stub' => '/owc/pdc/v1',
+              'methods' => [ 'GET' ]
+            ]
+        ];
+
+        $this->assertEquals($expected, $actual);
     }
 }
