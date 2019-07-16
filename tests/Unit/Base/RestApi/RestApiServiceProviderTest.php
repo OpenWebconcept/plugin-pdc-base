@@ -4,31 +4,30 @@ namespace OWC\PDC\Base\RestAPI;
 
 use Mockery as m;
 use OWC\PDC\Base\Config;
-use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Foundation\Loader;
+use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class RestAPIServiceProviderTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        \WP_Mock::setUp();
+    }
 
-	public function setUp()
-	{
-		\WP_Mock::setUp();
-	}
+    protected function tearDown(): void
+    {
+        \WP_Mock::tearDown();
+    }
 
-	public function tearDown()
-	{
-		\WP_Mock::tearDown();
-	}
+    /** @test */
+    public function check_registration_of_rest_endpoints()
+    {
+        $config = m::mock(Config::class);
+        $plugin = m::mock(Plugin::class);
 
-	/** @test */
-	public function check_registration_of_rest_endpoints()
-	{
-		$config = m::mock(Config::class);
-		$plugin = m::mock(Plugin::class);
-
-		$plugin->config = $config;
-		$plugin->loader = m::mock(Loader::class);
+        $plugin->config = $config;
+        $plugin->loader = m::mock(Loader::class);
 
         $service = new RestAPIServiceProvider($plugin);
 
@@ -38,12 +37,12 @@ class RestAPIServiceProviderTest extends TestCase
             'registerRoutes'
         ])->once();
 
-		$plugin->loader->shouldReceive('addFilter')->withArgs([
-			'owc/config-expander/rest-api/whitelist',
-			$service,
-			'whitelist',
-			10,
-			1
+        $plugin->loader->shouldReceive('addFilter')->withArgs([
+            'owc/config-expander/rest-api/whitelist',
+            $service,
+            'whitelist',
+            10,
+            1
         ])->once();
 
         $fields = [
@@ -64,7 +63,7 @@ class RestAPIServiceProviderTest extends TestCase
 
         $config->shouldReceive('get')->with('api.models')->once()->andReturn($fields);
         $service->register();
-        
+
         $this->assertTrue(true);
-	}
+    }
 }
