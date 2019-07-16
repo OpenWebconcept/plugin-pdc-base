@@ -10,13 +10,12 @@ use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class PdcItemModelTest extends TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         \WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         \WP_Mock::tearDown();
     }
@@ -90,6 +89,3 @@ class PdcItemModelTest extends TestCase
         //$this->assertEquals( $output, $this->invokeMethod($model, 'getTermsAsArray', array($object, 1)));
     }
 }
-
-
-

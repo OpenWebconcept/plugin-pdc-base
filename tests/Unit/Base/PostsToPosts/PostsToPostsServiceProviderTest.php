@@ -10,13 +10,12 @@ use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class PostsToPostsServiceProviderTest extends TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         \WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         \WP_Mock::tearDown();
     }
@@ -85,7 +84,9 @@ class PostsToPostsServiceProviderTest extends TestCase
 
         $service = new PostsToPostsServiceProvider($plugin);
 
-        \WP_Mock::userFunction('p2p_register_connection_type', [
+        \WP_Mock::userFunction(
+            'p2p_register_connection_type',
+            [
             'args'   => null,
             'times'  => '2',
             'return' => true,
@@ -173,5 +174,4 @@ class PostsToPostsServiceProviderTest extends TestCase
 
         $this->assertTrue(true);
     }
-
 }
