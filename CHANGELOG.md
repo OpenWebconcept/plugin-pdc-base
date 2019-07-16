@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 2.1.8
+### Fix:
+* (chore): replace docker container with our own for speed optimalisation.
+* (chore): add fields parameter for items to select which fields to return. For example: {site}/wp-json/owc/pdc/v1/items?fields=id,downloads will return only the fields id & downloads for all the PDC items.
+
 ## Version 2.1.7
 ### Fix:
 * (fix): check if required file for ```is_plugin_active``` is already loaded, otherwise load it.

@@ -224,7 +224,20 @@ abstract class Model
 
         $data = $this->assignFields($data, $post);
 
-        return $data;
+        return $this->getPreferredFields($data);
+    }
+
+    protected function getPreferredFields($data)
+    {
+        $preferredFields = isset($_GET['fields']) ? esc_attr($_GET['fields']) : '';
+        if (empty($preferredFields)) {
+            return $data;
+        }
+
+        $preferredFields = explode(',', $preferredFields);
+        return array_filter($data, function ($key) use ($preferredFields) {
+            return in_array($key, $preferredFields);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**
