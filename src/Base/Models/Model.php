@@ -216,6 +216,7 @@ abstract class Model
         $data = [
             'id'      => $post->ID,
             'title'   => $post->post_title,
+            'slug'   => $post->post_name,
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
             'date'    => $post->post_date
