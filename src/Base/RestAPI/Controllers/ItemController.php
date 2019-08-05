@@ -5,9 +5,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Models\Item;
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Models\Item;
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -24,15 +24,49 @@ class ItemController extends BaseController
      */
     public function getItems(WP_REST_Request $request)
     {
-        $items = (new Item())
-            ->hide([ 'connected' ])
+        $parameters = $this->convertParameters($request->get_params());
+        $items      = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
+            ->query($parameters)
             ->query($this->hideInactiveItem());
 
-        $data = $items->all();
+        if (false === $parameters['include-connected']) {
+            $items->hide(['connected']);
+        }
+
+        $data  = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
+    }
+
+    /**
+     * Convert the parameters to the allowed ones.
+     *
+     * @param array $parametersFromRequest
+     * @return array
+     */
+    protected function convertParameters(array $parametersFromRequest): array
+    {
+        $parameters = [];
+
+        if (isset($parametersFromRequest['name'])) {
+            $parameters['name'] = esc_attr($parametersFromRequest['name']);
+        }
+
+        $parameters['include-connected'] = (isset($parametersFromRequest['include-connected'])) ? true : false;
+
+        if (isset($parametersFromRequest['slug'])) {
+            $parameters['name'] = esc_attr($parametersFromRequest['slug']);
+            unset($parametersFromRequest['slug']);
+        }
+
+        if (isset($parametersFromRequest['id'])) {
+            $parameters['p'] = absint($parametersFromRequest['id']);
+            unset($parametersFromRequest['slug']);
+        }
+
+        return $parameters;
     }
 
     /**
@@ -51,9 +85,9 @@ class ItemController extends BaseController
             ->query($this->hideInactiveItem())
             ->find($id);
 
-        if (! $item) {
+        if (!$item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
-                'status' => 404
+                'status' => 404,
             ]);
         }
 
@@ -70,10 +104,10 @@ class ItemController extends BaseController
         return [
             'meta_query' => [
                 [
-                    'key' => '_owc_pdc_active',
-                    'value' => 1
-                ]
-            ]
+                    'key'   => '_owc_pdc_active',
+                    'value' => 1,
+                ],
+            ],
         ];
     }
 }

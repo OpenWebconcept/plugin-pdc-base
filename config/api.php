@@ -29,18 +29,16 @@ return [
 
         'subthema' => [
             'fields' => [
-                'items'  => OWC\PDC\Base\RestAPI\ThemaFields\Items::class,
-                'themas' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'items'  => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ],
         ],
 
         'thema'    => [
             'fields' => [
-                'items'     => OWC\PDC\Base\RestAPI\ThemaFields\Items::class,
-                'subthemas' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ],
         ],
-
     ],
-
 ];

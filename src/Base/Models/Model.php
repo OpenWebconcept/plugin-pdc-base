@@ -88,12 +88,12 @@ abstract class Model
     public function all(): array
     {
         $args = array_merge($this->queryArgs, [
-            'post_type' => [ $this->posttype ]
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
 
-        return array_map([ $this, 'transform' ], $this->getQuery()->posts);
+        return array_map([$this, 'transform'], $this->getQuery()->posts);
     }
 
     /**
@@ -106,8 +106,8 @@ abstract class Model
     public function find(int $id)
     {
         $args = array_merge($this->queryArgs, [
-            'p' => $id,
-            'post_type' => [$this->posttype]
+            'p'         => $id,
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
@@ -138,7 +138,7 @@ abstract class Model
      */
     public function query(array $args)
     {
-        $this->queryArgs = array_merge($this->queryArgs, $args);
+        $this->queryArgs = array_merge_recursive($this->queryArgs, $args);
 
         return $this;
     }
@@ -186,7 +186,7 @@ abstract class Model
         static::$globalFields[] = [
             'key'         => $key,
             'creator'     => $creator,
-            'conditional' => $conditional
+            'conditional' => $conditional,
         ];
     }
 
@@ -219,7 +219,8 @@ abstract class Model
             'slug'   => $post->post_name,
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
-            'date'    => $post->post_date
+            'date'    => $post->post_date,
+            'slug'    => $post->post_name,
         ];
 
         $data = $this->assignFields($data, $post);
