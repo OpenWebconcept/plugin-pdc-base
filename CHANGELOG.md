@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Version 2.1.9
+### Features:
+* (chore): add option to show connected in rest
+* (chore): add query (search) parameters
+* (chore): add slug in output
+* (chore): fix (sub)theme api
+* (chore): add shortcodes for links and downloads
+* (chore): allow shortcodes in fields
+
+### Fix:
+* (fix): fix recursive merge of args
+
 ## Version 2.1.8
 ### Fix:
 * (chore): replace docker container with our own for speed optimalisation.

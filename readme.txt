@@ -3,7 +3,7 @@ Contributors: Yard Internet
 Requires at least: 4.8
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 2.1.8
+Stable tag: 2.1.9
 
 Plugin to add the OpenwebConcept OpenPDC to your project.
 
