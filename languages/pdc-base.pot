@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2018-10-03 13:52+0200\n"
+"POT-Creation-Date: 2019-09-19 13:14+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Link title"
 msgstr ""
 
-#: config/metaboxes.php:93 config/metaboxes.php:120 config/metaboxes.php:147
+#: config/metaboxes.php:93 config/metaboxes.php:126 config/metaboxes.php:159
 msgid "Use the title to replace the URL"
 msgstr ""
 
@@ -102,88 +102,104 @@ msgstr ""
 msgid "Link URL"
 msgstr ""
 
-#: config/metaboxes.php:99 config/metaboxes.php:126 config/metaboxes.php:153
+#: config/metaboxes.php:99 config/metaboxes.php:132 config/metaboxes.php:165
 #: config/settings.php:14
 msgid "URL including http(s)://"
 msgstr ""
 
-#: config/metaboxes.php:108
+#: config/metaboxes.php:104
+msgid "Link shortcode url"
+msgstr ""
+
+#: config/metaboxes.php:105 config/metaboxes.php:138 config/metaboxes.php:171
+msgid "Insert shortcode instead of url. This overrides url"
+msgstr ""
+
+#: config/metaboxes.php:114
 msgid "Downloads"
 msgstr ""
 
-#: config/metaboxes.php:115
+#: config/metaboxes.php:121
 msgid "Add new download"
 msgstr ""
 
-#: config/metaboxes.php:119
+#: config/metaboxes.php:125
 msgid "Download title"
 msgstr ""
 
-#: config/metaboxes.php:125
+#: config/metaboxes.php:131
 msgid "Download URL"
 msgstr ""
 
-#: config/metaboxes.php:135
+#: config/metaboxes.php:137
+msgid "Download shortcode url"
+msgstr ""
+
+#: config/metaboxes.php:147
 msgid "Forms"
 msgstr ""
 
-#: config/metaboxes.php:142
+#: config/metaboxes.php:154
 msgid "Add new form"
 msgstr ""
 
-#: config/metaboxes.php:146
+#: config/metaboxes.php:158
 msgid "Form title"
 msgstr ""
 
-#: config/metaboxes.php:152
+#: config/metaboxes.php:164
 msgid "Form URL"
 msgstr ""
 
-#: config/metaboxes.php:162
-msgid "Government standards"
-msgstr ""
-
-#: config/metaboxes.php:165
-msgid "UPL name"
-msgstr ""
-
-#: config/metaboxes.php:166
-msgid "Example: aanduiding naamgebruik"
-msgstr ""
-
-#: config/metaboxes.php:171
-msgid "UPL resource"
-msgstr ""
-
-#: config/metaboxes.php:172
-msgid "Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
+#: config/metaboxes.php:170
+msgid "Form shortcode url"
 msgstr ""
 
 #: config/metaboxes.php:180
-msgid "Other"
+msgid "Government standards"
 msgstr ""
 
 #: config/metaboxes.php:183
-msgid "Notes"
+msgid "UPL name"
 msgstr ""
 
 #: config/metaboxes.php:184
+msgid "Example: aanduiding naamgebruik"
+msgstr ""
+
+#: config/metaboxes.php:189
+msgid "UPL resource"
+msgstr ""
+
+#: config/metaboxes.php:190
+msgid "Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
+msgstr ""
+
+#: config/metaboxes.php:198
+msgid "Other"
+msgstr ""
+
+#: config/metaboxes.php:201
+msgid "Notes"
+msgstr ""
+
+#: config/metaboxes.php:202
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
-#: config/posttypes.php:63
+#: config/posttypes.php:80
 msgid "PDC item"
 msgstr ""
 
-#: config/p2p_connections.php:14 config/posttypes.php:72
-#: config/posttypes.php:73 config/posttypes.php:105
+#: config/p2p_connections.php:14 config/posttypes.php:89
+#: config/posttypes.php:90 config/posttypes.php:122
 msgid "PDC theme"
 msgstr ""
 
-#: config/p2p_connections.php:19 config/posttypes.php:114
-#: config/posttypes.php:115 config/posttypes.php:131 config/posttypes.php:132
-#: config/posttypes.php:147
+#: config/p2p_connections.php:19 config/posttypes.php:131
+#: config/posttypes.php:132 config/posttypes.php:148 config/posttypes.php:149
+#: config/posttypes.php:164
 msgid "PDC subtheme"
 msgstr ""
 
@@ -239,15 +255,15 @@ msgstr ""
 msgid "Insert into pdc item"
 msgstr ""
 
-#: config/posttypes.php:26 config/posttypes.php:87 config/posttypes.php:129
+#: config/posttypes.php:26 config/posttypes.php:104 config/posttypes.php:146
 msgid "Featured image"
 msgstr ""
 
-#: config/posttypes.php:27 config/posttypes.php:88 config/posttypes.php:130
+#: config/posttypes.php:27 config/posttypes.php:105 config/posttypes.php:147
 msgid "Set featured image"
 msgstr ""
 
-#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:64
+#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:81
 msgid "PDC items"
 msgstr ""
 
@@ -255,123 +271,127 @@ msgstr ""
 msgid "Parent pdc items:"
 msgstr ""
 
-#: config/posttypes.php:42 config/taxonomies.php:78
+#: config/posttypes.php:42 config/taxonomies.php:58
 msgid "Aspect"
 msgstr ""
 
-#: config/posttypes.php:47 config/taxonomies.php:57
+#: config/posttypes.php:57 config/taxonomies.php:45
 msgid "Type"
 msgstr ""
 
-#: config/posttypes.php:74 config/posttypes.php:75
+#: config/posttypes.php:62
+msgid "Published"
+msgstr ""
+
+#: config/posttypes.php:91 config/posttypes.php:92
 msgid "Add new pdc theme"
 msgstr ""
 
-#: config/posttypes.php:76
+#: config/posttypes.php:93
 msgid "Edit pdc theme"
 msgstr ""
 
-#: config/posttypes.php:77
+#: config/posttypes.php:94
 msgid "New pdc theme"
 msgstr ""
 
-#: config/posttypes.php:78
+#: config/posttypes.php:95
 msgid "View pdc theme"
 msgstr ""
 
-#: config/posttypes.php:79
+#: config/posttypes.php:96
 msgid "View pdc themes"
 msgstr ""
 
-#: config/posttypes.php:80
+#: config/posttypes.php:97
 msgid "Search pdc themes"
 msgstr ""
 
-#: config/posttypes.php:81
+#: config/posttypes.php:98
 msgid "No pdc themes found."
 msgstr ""
 
-#: config/posttypes.php:82
+#: config/posttypes.php:99
 msgid "No pdc themes found in Trash."
 msgstr ""
 
-#: config/posttypes.php:83
+#: config/posttypes.php:100
 msgid "All pdc themes"
 msgstr ""
 
-#: config/posttypes.php:84
+#: config/posttypes.php:101
 msgid "PDC themes archives"
 msgstr ""
 
-#: config/posttypes.php:85
+#: config/posttypes.php:102
 msgid "PDC theme attributes"
 msgstr ""
 
-#: config/posttypes.php:86
+#: config/posttypes.php:103
 msgid "Insert into pdc theme"
 msgstr ""
 
-#: config/posttypes.php:89 config/posttypes.php:90 config/posttypes.php:106
+#: config/posttypes.php:106 config/posttypes.php:107 config/posttypes.php:123
 msgid "PDC themes"
 msgstr ""
 
-#: config/posttypes.php:91
+#: config/posttypes.php:108
 msgid "Parent pdc themes:"
 msgstr ""
 
-#: config/posttypes.php:116 config/posttypes.php:117
+#: config/posttypes.php:133 config/posttypes.php:134
 msgid "Add new pdc subtheme"
 msgstr ""
 
-#: config/posttypes.php:118
+#: config/posttypes.php:135
 msgid "Edit pdc subtheme"
 msgstr ""
 
-#: config/posttypes.php:119
+#: config/posttypes.php:136
 msgid "New pdc subtheme"
 msgstr ""
 
-#: config/posttypes.php:120
+#: config/posttypes.php:137
 msgid "View pdc subtheme"
 msgstr ""
 
-#: config/posttypes.php:121
+#: config/posttypes.php:138
 msgid "View pdc subthemes"
 msgstr ""
 
-#: config/posttypes.php:122
+#: config/posttypes.php:139
 msgid "Search pdc subthemes"
 msgstr ""
 
-#: config/posttypes.php:123
+#: config/posttypes.php:140
 msgid "No pdc subthemes found."
 msgstr ""
 
-#: config/posttypes.php:124
+#: config/posttypes.php:141
 msgid "No pdc subthemes found in Trash."
 msgstr ""
 
-#: config/posttypes.php:125
+#: config/posttypes.php:142
 msgid "All pdc subthemes"
 msgstr ""
 
-#: config/posttypes.php:126
+#: config/posttypes.php:143
 msgid "PDC subthemes archives"
 msgstr ""
 
-#: config/posttypes.php:127
+#: config/posttypes.php:144
 msgid "PDC subtheme attributes"
 msgstr ""
 
-#: config/posttypes.php:128
+#: config/posttypes.php:145
 msgid "Insert into pdc subtheme"
 msgstr ""
 
-#: config/posttypes.php:133
+#: config/posttypes.php:150
 msgid "Parent pdc subthemes:"
 msgstr ""
 
-#: config/posttypes.php:148
+#: config/posttypes.php:165
 msgid "PDC subthemes"
 msgstr ""
 
@@ -404,7 +424,7 @@ msgid "Submit"
 msgstr ""
 
 #: config/taxonomies.php:12 config/taxonomies.php:13 config/taxonomies.php:14
-#: config/taxonomies.php:38
+#: config/taxonomies.php:32
 msgid "Audience"
 msgstr ""
 
@@ -460,73 +480,73 @@ msgstr ""
 msgid "← Back to tags"
 msgstr ""
 
-#: config/taxonomies.php:39
+#: config/taxonomies.php:33
 msgid "Audiences"
 msgstr ""
 
-#: config/taxonomies.php:58
+#: config/taxonomies.php:46
 msgid "Types"
 msgstr ""
 
-#: config/taxonomies.php:79
+#: config/taxonomies.php:59
 msgid "Aspects"
 msgstr ""
 
-#: config/taxonomies.php:98
+#: config/taxonomies.php:70
 msgid "Usage"
 msgstr ""
 
-#: config/taxonomies.php:99
+#: config/taxonomies.php:71
 msgid "Usages"
 msgstr ""
 
-#: config/taxonomies.php:119
+#: config/taxonomies.php:83
 msgid "Owner"
 msgstr ""
 
-#: config/taxonomies.php:120
+#: config/taxonomies.php:84
 msgid "Owners"
 msgstr ""
 
-#: src/Base/Admin/InterfaceServiceProvider.php:46
+#: src/Base/Admin/InterfaceServiceProvider.php:45
 msgid "View PDC item in portal"
 msgstr ""
 
-#: src/Base/Admin/InterfaceServiceProvider.php:67
-#: src/Base/Admin/InterfaceServiceProvider.php:92
+#: src/Base/Admin/InterfaceServiceProvider.php:66
+#: src/Base/Admin/InterfaceServiceProvider.php:90
 msgid "View in Portal"
 msgstr ""
 
-#: src/Base/Admin/InterfaceServiceProvider.php:91
+#: src/Base/Admin/InterfaceServiceProvider.php:89
 #, php-format
 msgid "View &#8220;%s&#8221;"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:71
+#: src/Base/Foundation/DependencyChecker.php:72
 msgid "The following plugins are required to use the PDC:"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:110
+#: src/Base/Foundation/DependencyChecker.php:112
 msgid "Class does not exist"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:126
+#: src/Base/Foundation/DependencyChecker.php:133
 msgid "Inactive"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:134
+#: src/Base/Foundation/DependencyChecker.php:141
 msgid "Minimal version:"
 msgstr ""
 
-#: src/Base/RestAPI/Controllers/SearchController.php:49
+#: src/Base/RestAPI/Controllers/SearchController.php:67
 msgid "The search term."
 msgstr ""
 
-#: src/Base/RestAPI/Controllers/SearchController.php:54
+#: src/Base/RestAPI/Controllers/SearchController.php:72
 msgid "The limit."
 msgstr ""
 
-#: src/Base/RestAPI/Controllers/SearchController.php:60
+#: src/Base/RestAPI/Controllers/SearchController.php:78
 msgid "Pagination"
 msgstr ""
 

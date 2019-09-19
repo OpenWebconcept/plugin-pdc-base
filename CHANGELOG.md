@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 2.2.0
+### Fix:
+* (fix): use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
+
 ## Version 2.1.9
 ### Features:
 * (chore): add option to show connected in rest

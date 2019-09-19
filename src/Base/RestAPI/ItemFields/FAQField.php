@@ -23,7 +23,6 @@ class FAQField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-
         if (! class_exists('OWC\PDC\FAQ\PostTypes\PdcItem')) {
             return [];
         }
@@ -45,8 +44,8 @@ class FAQField extends CreatesFields
      */
     private function getFAQ(WP_Post $post)
     {
-        return array_filter(get_post_meta($post->ID, '_owc_pdc_faq_group', true) ?: [], function ($faq) {
+        return array_values(array_filter(get_post_meta($post->ID, '_owc_pdc_faq_group', true) ?: [], function ($faq) {
             return ! empty($faq['pdc_faq_question']) && ! empty($faq['pdc_faq_answer']);
-        });
+        }));
     }
 }
