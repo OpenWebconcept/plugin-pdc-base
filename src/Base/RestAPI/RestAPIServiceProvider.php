@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\RestAPI;
 
-use OWC\PDC\Base\Foundation\ServiceProvider;
 use \WP_REST_Server;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 /**
  * Provider which registers the API.

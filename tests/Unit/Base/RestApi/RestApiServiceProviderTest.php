@@ -6,7 +6,6 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
-use OWC\PDC\Base\RestAPI\RestAPIServiceProvider;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class RestAPIServiceProviderTest extends TestCase
@@ -49,15 +48,15 @@ class RestAPIServiceProviderTest extends TestCase
         $fields = [
             'items' => [
                 'fields' => [
-                'taxonomies' => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
-                'connected' => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
-                'image' => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'appointment' => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
-                'forms' => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
-                'downloads' => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
-                'links' => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
+                'taxonomies'        => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
+                'connected'         => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
+                'image'             => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'appointment'       => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
+                'forms'             => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
+                'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
+                'links'             => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
                 'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
-                'faq' => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
+                'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
                 ]
             ]
         ];
@@ -74,17 +73,17 @@ class RestAPIServiceProviderTest extends TestCase
         $actual = $this->service->whitelist([
             'test/v1' => [
                 'endpoint_stub' => 'test',
-                'methods' => ['GET', 'POST']
+                'methods'       => ['GET', 'POST']
             ]
         ]);
         $expected = [
             'test/v1' => [
                 'endpoint_stub' => 'test',
-                'methods' => ['GET', 'POST']
+                'methods'       => ['GET', 'POST']
             ],
             'owc/pdc/v1' => [
               'endpoint_stub' => '/owc/pdc/v1',
-              'methods' => [ 'GET' ]
+              'methods'       => [ 'GET' ]
             ]
         ];
 

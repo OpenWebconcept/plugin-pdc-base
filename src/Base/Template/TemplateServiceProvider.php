@@ -30,7 +30,7 @@ class TemplateServiceProvider extends ServiceProvider
      */
     public function redirectAllButAdmin()
     {
-        if (( is_admin() || wp_doing_ajax() || is_feed() || defined('WP_DEBUG') )) {
+        if ((is_admin() || wp_doing_ajax() || is_feed() || defined('WP_DEBUG'))) {
             return;
         }
         if (wp_redirect('https://www.openwebconcept.nl/')) {

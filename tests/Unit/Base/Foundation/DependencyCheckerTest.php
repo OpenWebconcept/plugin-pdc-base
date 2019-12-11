@@ -2,7 +2,6 @@
 
 namespace OWC\PDC\Base\Foundation;
 
-use Mockery as m;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class DependencyCheckerTest extends TestCase

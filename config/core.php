@@ -46,9 +46,9 @@ return [
             'file'    => 'meta-box/meta-box.php'
         ],
         [
-            'type' => 'class',
+            'type'  => 'class',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
-            'name' => 'Extended_CPT'
+            'name'  => 'Extended_CPT'
         ]
     ]
 

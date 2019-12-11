@@ -29,15 +29,17 @@ return [
 
         'subthema' => [
             'fields' => [
-                'items'  => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
-                'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'image'             => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'items'             => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'themes'            => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ],
         ],
 
         'thema'    => [
             'fields' => [
-                'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
-                'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'image'             => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'items'             => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'subthemes'         => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ],
         ],
     ],

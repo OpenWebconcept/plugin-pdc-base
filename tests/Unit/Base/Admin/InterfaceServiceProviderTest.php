@@ -2,12 +2,12 @@
 
 namespace OWC\PDC\Base\Admin;
 
+use \WP_Post;
 use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Tests\Unit\TestCase;
-use \WP_Post;
 
 class InterfaceServiceProviderTest extends TestCase
 {
@@ -79,7 +79,7 @@ class InterfaceServiceProviderTest extends TestCase
             'trailingslashit',
             [
                 'times'      => '2',
-                'return' => function () {
+                'return'     => function () {
                     return func_get_arg(0).'/';
                 }
             ]

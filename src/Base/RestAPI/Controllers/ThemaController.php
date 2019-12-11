@@ -24,20 +24,36 @@ class ThemaController extends BaseController
      */
     public function getThemas(WP_REST_Request $request)
     {
-        $orderBy = $request->get_param('orderby') ?? 'title';
-        $order   = $request->get_param('order') ?? 'ASC';
-        $items   = (new Thema)
+        $parameters = $this->convertParameters($request);
+        $items      = (new Thema)
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
-            ->query([
-                'order'   => $order,
-                'orderby' => $orderBy,
-            ])
-            ->hide(['items']);
+            ->query($parameters);
+
+        if (false === $parameters['include-items']) {
+            $items->hide(['items']);
+        }
 
         $data  = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
+    }
+
+    /**
+     * Convert the parameters to the allowed ones.
+     *
+     * @param Request $parametersFromRequest
+     * @return array
+     */
+    protected function convertParameters(WP_REST_Request $parametersFromRequest): array
+    {
+        $parameters = [];
+
+        $parameters['orderby']       = $parametersFromRequest->get_param('orderby') ?? 'title';
+        $parameters['order']         = $parametersFromRequest->get_param('order') ?? 'ASC';
+        $parameters['include-items'] = (isset($parametersFromRequest['include-items'])) ? true : false;
+
+        return $parameters;
     }
 
     /**

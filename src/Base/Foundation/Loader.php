@@ -82,7 +82,6 @@ class Loader
      */
     protected function add($hooks, $hook, $component, $callback, $priority, $acceptedArgs)
     {
-
         $hooks[] = [
             'hook'          => $hook,
             'component'     => $component,
@@ -103,7 +102,6 @@ class Loader
      */
     public function register()
     {
-
         foreach ($this->filters as $hook) {
             add_filter(
                 $hook['hook'],

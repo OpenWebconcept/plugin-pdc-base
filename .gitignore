@@ -96,3 +96,6 @@ vendor
 !/src/vendor
 
 tests/coverage
+
+# php cs
+.php_cs.cache

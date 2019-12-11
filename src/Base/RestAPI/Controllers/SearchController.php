@@ -26,8 +26,8 @@ class SearchController extends ItemController
             ->hide(['connected'])
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query([
-                's'            => $request->get_param('s'),
-                'ep_integrate' => true,
+                's'             => $request->get_param('s'),
+                'ep_integrate'  => true,
                 'search_fields' => [
                     'post_title^2',
                     'post_content',

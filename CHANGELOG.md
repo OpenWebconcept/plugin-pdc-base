@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version to be released
+### Features:
+* (chore): add image field to sub- and theme
+* (chore): add optional loading of items on theme
+* (chore): use php-cs-fixer to style code
+
 ## Version 2.2.0
 ### Fix:
 * (fix): use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
