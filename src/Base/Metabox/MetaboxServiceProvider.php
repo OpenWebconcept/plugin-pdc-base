@@ -5,9 +5,6 @@
 
 namespace OWC\PDC\Base\Metabox;
 
-use OWC\PDC\Base\Foundation\ServiceProvider;
-use OWC\PDC\Base\Metabox\MetaboxBaseServiceProvider;
-
 /**
  * Provider which handles the metabox registration.
  */
@@ -33,7 +30,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerMetaboxes($rwmbMetaboxes)
     {
-        $configMetaboxes = $this->plugin->config->get('metaboxes');
+        $configMetaboxes  = $this->plugin->config->get('metaboxes');
         $metaboxes        = [];
 
         foreach ($configMetaboxes as $metabox) {

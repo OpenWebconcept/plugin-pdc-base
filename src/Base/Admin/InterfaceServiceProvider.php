@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\Admin;
 
-use OWC\PDC\Base\Foundation\ServiceProvider;
 use \WP_Post;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 /**
  * Provider which regsiters the admin interface.
@@ -39,9 +39,9 @@ class InterfaceServiceProvider extends ServiceProvider
         if (!empty($viewNode)) {
             global $post;
 
-            if (get_post_type($post) === 'pdc-item') {
-                $portalUrl = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
-                $viewNode->href = $portalUrl;
+            if ('pdc-item' === get_post_type($post)) {
+                $portalUrl       = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+                $viewNode->href  = $portalUrl;
                 $viewNode->title = __('View PDC item in portal', 'pdc-base');
                 $wpAdminBar->add_node($viewNode);
             }
@@ -62,7 +62,7 @@ class InterfaceServiceProvider extends ServiceProvider
     public function filterGetSamplePermalinkHtml($return, $postId, $newTitle, $newSlug, WP_Post $post)
     {
         if ('pdc-item' == $post->post_type) {
-            $portalUrl = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+            $portalUrl  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
             $buttonText = _x('View in Portal', 'preview button text', 'pdc-base');
             $buttonHtml = sprintf('<a href="%s" target="_blank"><button type="button" class="button button-small" aria-label="%s">%s</button></a>', $portalUrl, $buttonText, $buttonText);
             $return .= $buttonHtml;
@@ -79,7 +79,7 @@ class InterfaceServiceProvider extends ServiceProvider
      */
     public function actionModifyPageRowActions($actions, WP_Post $post)
     {
-        if (!empty($actions['view']) && $post->post_type == 'pdc-item') {
+        if (!empty($actions['view']) && 'pdc-item' == $post->post_type) {
             $portalUrl = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
 
             $actions['view'] = sprintf(

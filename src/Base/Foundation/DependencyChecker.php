@@ -56,7 +56,7 @@ class DependencyChecker
             }
         }
 
-        return count($this->failed) > 0;
+        return 0 < count($this->failed);
     }
 
     /**
@@ -124,7 +124,6 @@ class DependencyChecker
      */
     private function checkPlugin(array $dependency)
     {
-
         if (!function_exists('is_plugin_active')) {
             include_once ABSPATH . 'wp-admin/includes/plugin.php';
         }

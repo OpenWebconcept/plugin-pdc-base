@@ -24,14 +24,15 @@ class LinksField extends CreatesFields
     public function create(WP_Post $post): array
     {
         return array_map(function ($link) {
-            $url = $link['pdc_links_url'];
             if (empty($link['pdc_links_url'])) {
                 $url = do_shortcode($link['pdc_links_shortcode']);
+            } else {
+                $url = isset($link['pdc_links_url']) ? esc_url_raw($link['pdc_links_url']) : '';
             }
 
             return [
                 'title' => esc_attr(strip_tags($link['pdc_links_title'])),
-                'url'   => esc_url($url),
+                'url'   => $url,
             ];
         }, $this->getLinks($post));
     }

@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\Support;
 
-use WP_Post;
 use OWC\PDC\Base\Foundation\Plugin;
+use WP_Post;
 
 /**
  * Abstract which handles the creation of fields.

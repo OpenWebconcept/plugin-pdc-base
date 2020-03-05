@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 2.2.1
+### Fix:
+* (fix): URLs with an '&' where wrongly converted to '&#038;'. This is now fixed.
+* (chore): add php-cs-fixer for more consistency.
+
 ## Version 2.2.0
 ### Fix:
 * (fix): use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink

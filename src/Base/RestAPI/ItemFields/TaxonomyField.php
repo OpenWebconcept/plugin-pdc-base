@@ -50,7 +50,7 @@ class TaxonomyField extends CreatesFields
 
         return array_map(function ($term) {
             return [
-                'id' => $term->term_id,
+                'id'   => $term->term_id,
                 'name' => $term->name,
                 'slug' => $term->slug,
             ];

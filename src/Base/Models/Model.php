@@ -72,7 +72,7 @@ abstract class Model
          * the abstract Model class.
          */
         $reflect = new \ReflectionClass(static::class);
-        if ($reflect->getProperty('globalFields')->class == __CLASS__) {
+        if (__CLASS__ == $reflect->getProperty('globalFields')->class) {
             throw new PropertyNotExistsException(sprintf(
                 'Property $globalFields must be present on derived class %s.',
                 static::class
@@ -216,7 +216,7 @@ abstract class Model
         $data = [
             'id'      => $post->ID,
             'title'   => $post->post_title,
-            'slug'   => $post->post_name,
+            'slug'    => $post->post_name,
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
             'date'    => $post->post_date,
