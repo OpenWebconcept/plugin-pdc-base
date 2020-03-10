@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Plugin Name:       PDC Base
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other PDC related content plugins. This plugin implements actions
  * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           2.2.0
+ * Version:           2.2.1
  * Author:            Yard Internet
  * Author URI:        https://www.yardinternet.nl/
  * License:           GPL-3.0

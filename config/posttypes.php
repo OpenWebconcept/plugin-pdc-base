@@ -32,6 +32,9 @@ return [
             # Add the post type to the site's main RSS feed:
             'show_in_feed'  => false,
 
+            # Show post type in rest api
+            'show_in_rest'  => true,
+
             # Show all posts on the post type archive:
             'archive'       => [
                 'nopaging' => true,

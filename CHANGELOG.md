@@ -1,62 +1,94 @@
 # CHANGELOG
 
+## Version 2.2.1
+
+### Features:
+
+-   (feat): make posttype available in rest api
+
 ## Version 2.2.0
+
 ### Fix:
-* (fix): use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
+
+-   (fix): use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
 
 ## Version 2.1.9
+
 ### Features:
-* (chore): add option to show connected in rest
-* (chore): add query (search) parameters
-* (chore): add slug in output
-* (chore): fix (sub)theme api
-* (chore): add shortcodes for links and downloads
-* (chore): allow shortcodes in fields
+
+-   (chore): add option to show connected in rest
+-   (chore): add query (search) parameters
+-   (chore): add slug in output
+-   (chore): fix (sub)theme api
+-   (chore): add shortcodes for links and downloads
+-   (chore): allow shortcodes in fields
 
 ### Fix:
-* (fix): fix recursive merge of args
+
+-   (fix): fix recursive merge of args
 
 ## Version 2.1.8
+
 ### Fix:
-* (chore): replace docker container with our own for speed optimalisation.
-* (chore): add fields parameter for items to select which fields to return. For example: {site}/wp-json/owc/pdc/v1/items?fields=id,downloads will return only the fields id & downloads for all the PDC items.
+
+-   (chore): replace docker container with our own for speed optimalisation.
+-   (chore): add fields parameter for items to select which fields to return. For example: {site}/wp-json/owc/pdc/v1/items?fields=id,downloads will return only the fields id & downloads for all the PDC items.
 
 ## Version 2.1.7
+
 ### Fix:
-* (fix): check if required file for ```is_plugin_active``` is already loaded, otherwise load it.
+
+-   (fix): check if required file for `is_plugin_active` is already loaded, otherwise load it.
 
 ## Version 2.1.6
+
 ### Features:
-* Fix: Replace posts-to-posts admin_column with extended post type.
+
+-   Fix: Replace posts-to-posts admin_column with extended post type.
 
 ## Version 2.1.5
+
 ### Features:
-* Add: endpoint description.
+
+-   Add: endpoint description.
 
 ## Version 2.1.4
+
 ### Features:
-* Add: add order and orderby for themes api.
+
+-   Add: add order and orderby for themes api.
 
 ## Version 2.1.3
+
 ### Features:
-* Add: search restapi endpoint now uses Elasticsearch with appropriate metafields
+
+-   Add: search restapi endpoint now uses Elasticsearch with appropriate metafields
 
 ## Version 2.1.2
+
 ### Features:
-* Add filters to admin
+
+-   Add filters to admin
 
 ### Fixes:
-* Code cleanup
+
+-   Code cleanup
 
 ## Version 2.1.1
+
 ### Features:
-* Add synonyms to api output
+
+-   Add synonyms to api output
 
 ## Version 2.1.0
+
 ### Features:
-* Add documentation
-* Add tests
+
+-   Add documentation
+-   Add tests
 
 ## Version 2.0.0
+
 ### Features:
-* Refactor for version 1.0
+
+-   Refactor for version 1.0
