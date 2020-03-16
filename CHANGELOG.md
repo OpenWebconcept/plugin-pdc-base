@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 2.2.2
+
+### Features:
+
+-   (feat): add file size to forms and downloads
+
 ## Version 2.2.1
 
 ### Features:

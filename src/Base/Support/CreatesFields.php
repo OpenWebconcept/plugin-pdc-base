@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Abstract which handles the creation of fields.
  */
@@ -40,4 +41,27 @@ abstract class CreatesFields
      * @return mixed
      */
     abstract public function create(WP_Post $post);
+
+    /**
+     * @param string $url
+     * @return string
+     */
+    protected function getFileSize($url): string
+    {
+        if (!defined('WP_CONTENT_DIR')) {
+            return '';
+        }
+
+        $projectRoot = str_replace('/wp-content', '', WP_CONTENT_DIR);
+        $parsedUrl = wp_parse_url($url);
+
+        if (empty($parsedUrl['path'])) {
+            return '';
+        }
+
+        $path = $parsedUrl['path'];
+        $file = $projectRoot . $path;
+
+        return file_exists($file) ? filesize($projectRoot . $path) : '';
+    }
 }

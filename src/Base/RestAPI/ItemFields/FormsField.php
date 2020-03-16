@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds form fields to the output.
  */
@@ -32,6 +33,7 @@ class FormsField extends CreatesFields
             return [
                 'title' => esc_attr(strip_tags($form['pdc_forms_title'])),
                 'url'   => esc_url($url),
+                'filesize' => $this->getFileSize($url)
             ];
         }, $this->getForms($post));
     }

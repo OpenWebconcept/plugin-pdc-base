@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which registers the API.
  */
