@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controller which handles the (requested) pdc-item(s).
  */
@@ -90,6 +91,32 @@ class ItemController extends BaseController
                 'status' => 404,
             ]);
         }
+
+        return $item;
+    }
+
+    /**
+     * Get an individual post item by slug.
+     *
+     * @param $request $request
+     *
+     * @return array|WP_Error
+     */
+    public function getItemBySlug(WP_REST_Request $request)
+    {
+        $slug = $request->get_param('slug');
+
+        $item = (new Item)
+            ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
+            ->query($this->hideInactiveItem())
+            ->findBySlug($slug);
+
+        if (!$item) {
+            return new WP_Error('no_item_found', sprintf('Item with slug "%d" not found', $slug), [
+                'status' => 404,
+            ]);
+        }
+
 
         return $item;
     }

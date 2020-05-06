@@ -76,6 +76,11 @@ class RestAPIServiceProvider extends ServiceProvider
             'callback' => [new Controllers\ItemController($this->plugin), 'getItem'],
         ]);
 
+        register_rest_route($this->namespace, 'items/(?P<slug>\S+)', [
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
+        ]);
+
         register_rest_route($this->namespace, 'them(a|e)s', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThemas'],
