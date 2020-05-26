@@ -33,8 +33,12 @@
 # ignore all files starting with .
 .*
 
+!.php_cs
+!.babelrc
+
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
+!.github/
 
 # Eslint
 !.eslintrc
@@ -45,6 +49,9 @@
 
 # track readme.md in the root (i.e. do NOT ignore it)
 !readme.md
+
+# npmrc for fontawesome
+!.npmrc.example
 
 # ignore all files that start with ~
 ~*
@@ -83,11 +90,6 @@ Thumbs.db
 
 # ignore node/grunt dependency directories
 node_modules/
-
-# bower
-bower_components
-
-code-coverage
 
 # no map files
 *.map

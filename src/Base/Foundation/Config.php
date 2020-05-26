@@ -46,7 +46,7 @@ class Config
     public function __construct($path, array $items = [])
     {
         $this->items = $items;
-        $this->path = $path;
+        $this->path  = $path;
     }
 
     /**
@@ -103,7 +103,7 @@ class Config
             }
 
             $parts = explode('.', $key);
-            while (count($parts) > 1) {
+            while (1 < count($parts)) {
                 $part = array_shift($parts);
                 // If the key doesn't exist at this depth, we will just create an empty array
                 // to hold the next value, allowing us to create the arrays to hold final
@@ -170,10 +170,10 @@ class Config
         foreach ($files as $file) {
             $fileType = filetype($file);
 
-            if ($fileType == "dir") {
+            if ("dir" == $fileType) {
                 $this->scanDirectory($file);
             } else {
-                $name = str_replace('.php', '', basename($file));
+                $name  = str_replace('.php', '', basename($file));
                 $value = include $file;
 
                 // If its in the first directory just add the file.
@@ -186,7 +186,7 @@ class Config
                 $path = str_replace($this->path.'/', '', $path);
 
                 // Build an array from the path.
-                $items = [];
+                $items        = [];
                 $items[$name] = $value;
                 foreach (array_reverse(explode('/', $path)) as $key) {
                     $items = [ $key => $items ];

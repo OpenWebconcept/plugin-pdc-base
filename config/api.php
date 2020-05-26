@@ -38,7 +38,7 @@ return [
         'thema'    => [
             'fields' => [
                 'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
-                'image'  => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ],
         ],

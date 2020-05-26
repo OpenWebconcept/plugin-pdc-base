@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2019-09-19 13:14+0200\n"
-"PO-Revision-Date: 2019-09-19 13:14+0200\n"
+"POT-Creation-Date: 2020-05-26 11:10+0200\n"
+"PO-Revision-Date: 2020-05-26 11:12+0200\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
-"Language-Team: Yard Internet <info@yard.nl>\n"
+"Language-Team: Yard Digital Agency <info@yard.nl>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,12 +123,12 @@ msgid "URL including http(s)://"
 msgstr "URL inclusief http(s)://"
 
 #: config/metaboxes.php:104
-msgid "Link shortcode url"
-msgstr ""
+msgid "Link shortcode URL"
+msgstr "Link shortcode URL"
 
-#: config/metaboxes.php:105 config/metaboxes.php:138 config/metaboxes.php:171
-msgid "Insert shortcode instead of url. This overrides url"
-msgstr ""
+#: config/metaboxes.php:105
+msgid "Insert shortcode instead of URL. This overrides Link URL."
+msgstr "Voer de shortcode in in plaats van de URL. Dit overschrijft URL."
 
 #: config/metaboxes.php:114
 msgid "Downloads"
@@ -147,10 +147,12 @@ msgid "Download URL"
 msgstr "Download URL"
 
 #: config/metaboxes.php:137
-#, fuzzy
-#| msgid "Download title"
 msgid "Download shortcode url"
-msgstr "Download titel"
+msgstr "Download short URL"
+
+#: config/metaboxes.php:138 config/metaboxes.php:171
+msgid "Insert shortcode instead of url. This overrides url"
+msgstr "Voer de shortcode in in plaats van de url. Dit overschrijft url"
 
 #: config/metaboxes.php:147
 msgid "Forms"
@@ -170,7 +172,7 @@ msgstr "Formulieren URL"
 
 #: config/metaboxes.php:170
 msgid "Form shortcode url"
-msgstr ""
+msgstr "Formulieren short URL"
 
 #: config/metaboxes.php:180
 msgid "Government standards"
@@ -208,18 +210,18 @@ msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
-#: config/posttypes.php:80
+#: config/posttypes.php:83
 msgid "PDC item"
 msgstr "PDC item"
 
-#: config/p2p_connections.php:14 config/posttypes.php:89
-#: config/posttypes.php:90 config/posttypes.php:122
+#: config/p2p_connections.php:14 config/posttypes.php:92
+#: config/posttypes.php:93 config/posttypes.php:125
 msgid "PDC theme"
 msgstr "PDC thema"
 
-#: config/p2p_connections.php:19 config/posttypes.php:131
-#: config/posttypes.php:132 config/posttypes.php:148 config/posttypes.php:149
-#: config/posttypes.php:164
+#: config/p2p_connections.php:19 config/posttypes.php:134
+#: config/posttypes.php:135 config/posttypes.php:151 config/posttypes.php:152
+#: config/posttypes.php:167
 msgid "PDC subtheme"
 msgstr "PDC subthema"
 
@@ -275,15 +277,15 @@ msgstr "PDC items attributen"
 msgid "Insert into pdc item"
 msgstr "Voeg in pdc Item"
 
-#: config/posttypes.php:26 config/posttypes.php:104 config/posttypes.php:146
+#: config/posttypes.php:26 config/posttypes.php:107 config/posttypes.php:149
 msgid "Featured image"
 msgstr "Aanbevolen afbeelding"
 
-#: config/posttypes.php:27 config/posttypes.php:105 config/posttypes.php:147
+#: config/posttypes.php:27 config/posttypes.php:108 config/posttypes.php:150
 msgid "Set featured image"
 msgstr "Stel aanbevolen afbeelding in"
 
-#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:81
+#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:84
 msgid "PDC items"
 msgstr "PDC items"
 
@@ -291,127 +293,127 @@ msgstr "PDC items"
 msgid "Parent pdc items:"
 msgstr "Hoofd pcd items:"
 
-#: config/posttypes.php:42 config/taxonomies.php:58
+#: config/posttypes.php:45 config/taxonomies.php:58
 msgid "Aspect"
 msgstr "Aspect"
 
-#: config/posttypes.php:57 config/taxonomies.php:45
+#: config/posttypes.php:60 config/taxonomies.php:45
 msgid "Type"
 msgstr "Type"
 
-#: config/posttypes.php:62
+#: config/posttypes.php:65
 msgid "Published"
-msgstr ""
+msgstr "Gepubliceerd"
 
-#: config/posttypes.php:91 config/posttypes.php:92
+#: config/posttypes.php:94 config/posttypes.php:95
 msgid "Add new pdc theme"
 msgstr "Voeg nieuwe pdc thema toe"
 
-#: config/posttypes.php:93
+#: config/posttypes.php:96
 msgid "Edit pdc theme"
 msgstr "Bewerk pdc thema"
 
-#: config/posttypes.php:94
+#: config/posttypes.php:97
 msgid "New pdc theme"
 msgstr "Voeg nieuwe pdc thema toe"
 
-#: config/posttypes.php:95
+#: config/posttypes.php:98
 msgid "View pdc theme"
 msgstr "Bekijk pdc thema"
 
-#: config/posttypes.php:96
+#: config/posttypes.php:99
 msgid "View pdc themes"
 msgstr "Bekijk pdc thema's"
 
-#: config/posttypes.php:97
+#: config/posttypes.php:100
 msgid "Search pdc themes"
 msgstr "Zoek pdc thema's"
 
-#: config/posttypes.php:98
+#: config/posttypes.php:101
 msgid "No pdc themes found."
 msgstr "Geen pdc thema's gevonden."
 
-#: config/posttypes.php:99
+#: config/posttypes.php:102
 msgid "No pdc themes found in Trash."
 msgstr "Geen pdc thema's gevonden in prullenbak."
 
-#: config/posttypes.php:100
+#: config/posttypes.php:103
 msgid "All pdc themes"
 msgstr "Alle pdc thema's"
 
-#: config/posttypes.php:101
+#: config/posttypes.php:104
 msgid "PDC themes archives"
 msgstr "PDC thema's archieven"
 
-#: config/posttypes.php:102
+#: config/posttypes.php:105
 msgid "PDC theme attributes"
 msgstr "PDC thema attributen"
 
-#: config/posttypes.php:103
+#: config/posttypes.php:106
 msgid "Insert into pdc theme"
 msgstr "Voeg in pdc thema"
 
-#: config/posttypes.php:106 config/posttypes.php:107 config/posttypes.php:123
+#: config/posttypes.php:109 config/posttypes.php:110 config/posttypes.php:126
 msgid "PDC themes"
 msgstr "PDC thema's"
 
-#: config/posttypes.php:108
+#: config/posttypes.php:111
 msgid "Parent pdc themes:"
 msgstr "Hoofd pcd thema's:"
 
-#: config/posttypes.php:133 config/posttypes.php:134
+#: config/posttypes.php:136 config/posttypes.php:137
 msgid "Add new pdc subtheme"
 msgstr "Voeg nieuwe pdc subthema toe"
 
-#: config/posttypes.php:135
+#: config/posttypes.php:138
 msgid "Edit pdc subtheme"
 msgstr "Bewerk pdc subthema"
 
-#: config/posttypes.php:136
+#: config/posttypes.php:139
 msgid "New pdc subtheme"
 msgstr "Voeg nieuwe pdc subthema toe"
 
-#: config/posttypes.php:137
+#: config/posttypes.php:140
 msgid "View pdc subtheme"
 msgstr "Bekijk pdc subthema"
 
-#: config/posttypes.php:138
+#: config/posttypes.php:141
 msgid "View pdc subthemes"
 msgstr "Bekijk pdc subthema's"
 
-#: config/posttypes.php:139
+#: config/posttypes.php:142
 msgid "Search pdc subthemes"
 msgstr "Zoek pdc subthema's"
 
-#: config/posttypes.php:140
+#: config/posttypes.php:143
 msgid "No pdc subthemes found."
 msgstr "Geen pdc subthema's gevonden."
 
-#: config/posttypes.php:141
+#: config/posttypes.php:144
 msgid "No pdc subthemes found in Trash."
 msgstr "Geen pdc subthema's gevonden in prullenbak."
 
-#: config/posttypes.php:142
+#: config/posttypes.php:145
 msgid "All pdc subthemes"
 msgstr "Alle pdc subthema's"
 
-#: config/posttypes.php:143
+#: config/posttypes.php:146
 msgid "PDC subthemes archives"
 msgstr "PDC subthema's archieven"
 
-#: config/posttypes.php:144
+#: config/posttypes.php:147
 msgid "PDC subtheme attributes"
 msgstr "PDC subthema attributen"
 
-#: config/posttypes.php:145
+#: config/posttypes.php:148
 msgid "Insert into pdc subtheme"
 msgstr "Voeg in pdc subthema"
 
-#: config/posttypes.php:150
+#: config/posttypes.php:153
 msgid "Parent pdc subthemes:"
 msgstr "Hoofd pdc subthema's:"
 
-#: config/posttypes.php:165
+#: config/posttypes.php:168
 msgid "PDC subthemes"
 msgstr "PDC subthemas"
 
@@ -550,11 +552,11 @@ msgstr "De volgende plugins zijn vereist om gebruik te maken van de PDC:"
 msgid "Class does not exist"
 msgstr "Klasse bestaat niet"
 
-#: src/Base/Foundation/DependencyChecker.php:133
+#: src/Base/Foundation/DependencyChecker.php:132
 msgid "Inactive"
 msgstr "Inactief"
 
-#: src/Base/Foundation/DependencyChecker.php:141
+#: src/Base/Foundation/DependencyChecker.php:140
 msgid "Minimal version:"
 msgstr "Minimale versie:"
 

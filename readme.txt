@@ -1,19 +1,37 @@
 === OpenPDC base ===
-Contributors: Yard Internet
+Contributors: Yard Digital Agency
 Requires at least: 4.8
-Tested up to: 5.1
+Tested up to: 5.4.1
 Requires PHP: 7.0
-Stable tag: 2.2.0
+Stable tag: 2.2.5
 
 Plugin to add the OpenwebConcept OpenPDC to your project.
 
 It enables the input of PDC (Producten Diensten Catalogus), and adds rest api endpoints.
 
 == Changelog ==
+= Version 2.2.5 =
+- Chore: Switch php_codesniffer for phpcs
+- Chore: Run phpcs
+- Chore: Use Yard Digital Agency where appropriate
+- Fix: Link shortcode url now overrides Link URL
+
+= Version 2.2.4 =
+- Chore: Add route for single pdc by slug
+
+= Version 2.2.3 =
+- Chore: add images to themes and subthemes
+
+= Version 2.2.2 =
+- Chore: add file size to forms and downloads
+
+= Version 2.2.1 =
+- Chore: make posttype available in rest api
+
 = Version 2.2.0 =
 - Fix: use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
 
-# Version 2.1.9 =
+= Version 2.1.9 =
 - Chore: add option to show connected in rest
 - Chore: add query (search) parameters
 - Chore: add slug in output

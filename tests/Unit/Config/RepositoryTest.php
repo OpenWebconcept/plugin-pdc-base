@@ -128,7 +128,7 @@ class RepositoryTest extends TestCase
                 'single_file' => true
             ],
             'directory' => [
-                'testfile' => 'test',
+                'testfile'  => 'test',
                 'multi'     => [
                     'deep' => [
                         'multi_level' => 'works'

@@ -31,8 +31,8 @@ class DownloadsField extends CreatesFields
             }
 
             return [
-                'title' => esc_attr(strip_tags($download['pdc_downloads_title'])),
-                'url'   => esc_url($url),
+                'title'    => esc_attr(strip_tags($download['pdc_downloads_title'])),
+                'url'      => esc_url($url),
                 'filesize' => $this->getFileSize($url)
             ];
         }, $this->getDownloads($post));

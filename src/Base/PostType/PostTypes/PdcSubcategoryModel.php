@@ -5,8 +5,6 @@
 
 namespace OWC\PDC\Base\PostType\PostTypes;
 
-use OWC\PDC\Base\Config;
-
 /**
  * Model for the sub-category
  */
@@ -44,7 +42,7 @@ class PdcSubcategoryModel
 
         $hasReportCheckQuery = new \WP_Query($queryArgs);
 
-        if ($hasReportCheckQuery->post_count != 0) {
+        if (0 != $hasReportCheckQuery->post_count) {
             $hasReport = true;
         }
 
@@ -82,7 +80,7 @@ class PdcSubcategoryModel
 
         $hasAppointmentCheckQuery = new \WP_Query($queryArgs);
 
-        if ($hasAppointmentCheckQuery->post_count != 0) {
+        if (0 != $hasAppointmentCheckQuery->post_count) {
             $hasAppointment = true;
         }
 

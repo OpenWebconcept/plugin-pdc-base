@@ -101,8 +101,8 @@ return [
                         ],
                         [
                             'id'   => 'pdc_links_shortcode',
-                            'name' => __('Link shortcode url', 'pdc-base'),
-                            'desc' => __('Insert shortcode instead of url. This overrides url', 'pdc-base'),
+                            'name' => __('Link shortcode URL', 'pdc-base'),
+                            'desc' => __('Insert shortcode instead of URL. This overrides Link URL.', 'pdc-base'),
                             'type' => 'text',
                         ],
                     ],

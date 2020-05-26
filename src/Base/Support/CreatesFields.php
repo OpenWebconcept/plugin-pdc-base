@@ -6,8 +6,8 @@
 
 namespace OWC\PDC\Base\Support;
 
-use WP_Post;
 use OWC\PDC\Base\Foundation\Plugin;
+use WP_Post;
 
 /**
  * Abstract which handles the creation of fields.
@@ -53,7 +53,7 @@ abstract class CreatesFields
         }
 
         $projectRoot = str_replace('/wp-content', '', WP_CONTENT_DIR);
-        $parsedUrl = wp_parse_url($url);
+        $parsedUrl   = wp_parse_url($url);
 
         if (empty($parsedUrl['path'])) {
             return '';

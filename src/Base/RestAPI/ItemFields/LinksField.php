@@ -13,7 +13,6 @@ use WP_Post;
  */
 class LinksField extends CreatesFields
 {
-
     /**
      * Generate the links field.
      *
@@ -24,14 +23,15 @@ class LinksField extends CreatesFields
     public function create(WP_Post $post): array
     {
         return array_map(function ($link) {
-            $url = $link['pdc_links_url'];
-            if (empty($link['pdc_links_url'])) {
-                $url = do_shortcode($link['pdc_links_shortcode']);
+            $shortcode = isset($link['pdc_links_shortcode']) ? do_shortcode($link['pdc_links_shortcode']) : '';
+            $url = isset($link['pdc_links_url']) ? esc_url($link['pdc_links_url']) : '';
+            if (!empty($shortcode)) {
+                $url = $shortcode;
             }
 
             return [
                 'title' => esc_attr(strip_tags($link['pdc_links_title'])),
-                'url'   => esc_url($url),
+                'url'   => $url,
             ];
         }, $this->getLinks($post));
     }
