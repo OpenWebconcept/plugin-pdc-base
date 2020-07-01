@@ -15,7 +15,7 @@ class UPLServiceProvider extends ServiceProvider
         $this->addUplCommand();
     }
 
-    public function adminEnqueueScripts($hook): void
+    public function adminEnqueueScripts(string $hook): void
     {
         global $post;
     
@@ -63,6 +63,9 @@ class UPLServiceProvider extends ServiceProvider
                             $naamUPL = str_replace('-', ' ', $naamUPL);
                             $naamUresource = str_replace(',', '', $naamUresource);
                             $naamUresource = str_replace(' ', '-', $naamUresource);
+                            if (is_array($naamUresource)) {
+                                continue;
+                            }
 
                             // update post meta
                             update_post_meta($postID, '_owc_pdc_upl_naam', $naamUPL);

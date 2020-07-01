@@ -38,6 +38,6 @@
       "@integration"
     ],
     "format": "./vendor/bin/php-cs-fixer fix",
-    "phpstan": "./vendor/bin/phpstan analyse --error-format raw --no-progress  --memory-limit 100M"
+    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M"
   }
 }

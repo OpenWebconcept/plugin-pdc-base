@@ -36,7 +36,7 @@ class Plugin
     /**
      * Instance of the configuration repository.
      *
-     * @var \OWC\PDC\Base\Config $config
+     * @var Config $config
      */
     public $config;
 
