@@ -1,60 +1,84 @@
 # CHANGELOG
 
+## Version 2.2.6
+
+### Features:
+
+-   dynamically populate upl
+
+### Fix:
+
+-   replace legacy autoloader
+-   php-cs-fixer
+-   update mockery/mockery fixes tests
+-   phpstan static code analysis
+
 ## Version 2.2.5
 
 ### Features:
-- Switch php_codesniffer for phpcs
-- Use Yard Digital Agency where appropriate
+
+-   Switch php_codesniffer for phpcs
+-   Use Yard Digital Agency where appropriate
 
 ### Tasks:
-- Run phpcs
+
+-   Run phpcs
 
 ### Fix:
-- Link shortcode url now overrides Link URL
+
+-   Link shortcode url now overrides Link URL
 
 ## Version 2.2.4
 
 ### Features:
-- Add route for single pdc by slug
+
+-   Add route for single pdc by slug
 
 ## Version 2.2.3
 
 ### Features:
-- Add images to themes and subthemes
+
+-   Add images to themes and subthemes
 
 ## Version 2.2.2
 
 ### Features:
-- Add file size to forms and downloads
+
+-   Add file size to forms and downloads
 
 ## Version 2.2.1
 
 ### Features:
-- Make posttype available in rest api
+
+-   Make posttype available in rest api
 
 ## Version 2.2.0
 
 ### Fix:
-- Use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
+
+-   Use values of FAQ. This fixes an issue if either a question or answer was inserted, but not both. Props @Jasper Heidebrink
 
 ## Version 2.1.9
 
 ### Features:
-- Add option to show connected in rest
-- Add query (search) parameters
-- Add slug in output
-- Fix (sub)theme api
-- Add shortcodes for links and downloads
-- Allow shortcodes in fields
+
+-   Add option to show connected in rest
+-   Add query (search) parameters
+-   Add slug in output
+-   Fix (sub)theme api
+-   Add shortcodes for links and downloads
+-   Allow shortcodes in fields
 
 ### Fix:
-- Fix recursive merge of args
+
+-   Fix recursive merge of args
 
 ## Version 2.1.8
 
 ### Fix:
-- replace docker container with our own for speed optimalisation.
-- add fields parameter for items to select which fields to return. For example: {site}/wp-json/owc/pdc/v1/items?fields=id,downloads will return only the fields id & downloads for all the PDC items.
+
+-   replace docker container with our own for speed optimalisation.
+-   add fields parameter for items to select which fields to return. For example: {site}/wp-json/owc/pdc/v1/items?fields=id,downloads will return only the fields id & downloads for all the PDC items.
 
 ## Version 2.1.7
 

@@ -2,14 +2,22 @@
 Contributors: Yard Digital Agency
 Requires at least: 4.8
 Tested up to: 5.4.1
-Requires PHP: 7.0
-Stable tag: 2.2.5
+Requires PHP: 7.2
+Stable tag: 2.2.6
 
 Plugin to add the OpenwebConcept OpenPDC to your project.
 
 It enables the input of PDC (Producten Diensten Catalogus), and adds rest api endpoints.
 
 == Changelog ==
+
+= Version 2.2.6 =
+-   Feat: dynamically populate upl
+-   Fix: replace legacy autoloader
+-   Fix: php-cs-fixer
+-   Fix: update mockery/mockery fixes tests
+-   Fix: phpstan static code analysis
+
 = Version 2.2.5 =
 - Chore: Switch php_codesniffer for phpcs
 - Chore: Run phpcs
