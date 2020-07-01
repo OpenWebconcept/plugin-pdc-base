@@ -175,7 +175,7 @@ class Plugin
 
     /**
      * Return root url of plugin.
-     * 
+     *
      * @return string
      */
     public function getPluginUrl(): string

@@ -5,7 +5,6 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->notPath('node_modules')
     ->notPath('vendor')
     ->in(__DIR__)
-    ->in('./config')
     ->name('*.php')
     ->notName('*.blade.php');
 
