@@ -16,11 +16,13 @@ return [
         OWC\PDC\Base\Metabox\MetaboxServiceProvider::class,
         OWC\PDC\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\PDC\Base\Template\TemplateServiceProvider::class,
+        OWC\PDC\Base\Admin\UPLServiceProvider::class,
+
         /**
          * Providers specific to the admin.
          */
         'admin' => [
-            OWC\PDC\Base\Admin\InterfaceServiceProvider::class
+            OWC\PDC\Base\Admin\InterfaceServiceProvider::class,
         ]
 
     ],
