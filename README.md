@@ -1,6 +1,15 @@
+
 # README #
 
-This README documents whatever steps are necessary to get this plugin up and running.
+### OpenPDC base
+
+Plugin to add the OpenwebConcept OpenPDC to your project.
+
+* Contributors: Yard Digital Agency
+* Requires at least: 4.8
+* Tested up to: 5.4.2
+* Requires PHP: 7.2
+* Stable tag: 2.2.6
 
 ### How do I get set up? ###
      
