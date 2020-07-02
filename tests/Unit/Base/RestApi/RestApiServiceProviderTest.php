@@ -10,7 +10,7 @@ use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class RestAPIServiceProviderTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         \WP_Mock::setUp();
 
@@ -23,7 +23,7 @@ class RestAPIServiceProviderTest extends TestCase
         $this->service = new RestAPIServiceProvider($this->plugin);
     }
 
-    protected function tearDown(): void
+    public function tearDown(): void
     {
         \WP_Mock::tearDown();
     }

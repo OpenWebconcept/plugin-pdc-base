@@ -11,18 +11,18 @@ use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class InterfaceServiceProviderTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         \WP_Mock::setUp();
     }
 
-    protected function tearDown(): void
+    public function tearDown(): void
     {
         \WP_Mock::tearDown();
     }
 
     /** @test */
-    public function check_registration_of_interface_methods()
+    public function check_registration_of_interface_methods(): void
     {
         $config = m::mock(Config::class);
         $plugin = m::mock(Plugin::class);

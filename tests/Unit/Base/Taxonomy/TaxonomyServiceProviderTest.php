@@ -10,12 +10,12 @@ use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class TaxonomyServiceProviderTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         \WP_Mock::setUp();
     }
 
-    protected function tearDown(): void
+    public function tearDown(): void
     {
         \WP_Mock::tearDown();
     }

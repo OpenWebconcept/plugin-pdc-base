@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Tests\Unit;
 
-use PHPUnit\Framework\TestCase as PHPUnit;
+use WP_Mock\Tools\TestCase as ToolsTestCase;
 
-class TestCase extends PHPUnit
+class TestCase extends ToolsTestCase
 {
     /**
      * Call protected/private method of a class.
