@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 2.2.7
+
+### Fix:
+
+- Regex for find by slug in rest api was too greedy. Now only a slug is matched, not a string with a '/'.
+
 ## Version 2.2.6
 
 ### Features:

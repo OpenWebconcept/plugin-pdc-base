@@ -12,7 +12,6 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true
     paths:
         - %currentWorkingDirectory%/src/
-        - %currentWorkingDirectory%/tests/
     bootstrapFiles:
         - autoloader.php
     ignoreErrors:

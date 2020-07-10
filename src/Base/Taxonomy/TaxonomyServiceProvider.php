@@ -40,7 +40,7 @@ class TaxonomyServiceProvider extends ServiceProvider
             $this->configTaxonomies = $this->plugin->config->get('taxonomies');
             foreach ($this->configTaxonomies as $taxonomyName => $taxonomy) {
                 // Examples of registering taxonomies: http://johnbillion.com/extended-cpts/
-                register_extended_taxonomy($taxonomyName, $taxonomy['object_types'], $taxonomy['args'], $taxonomy['names']);
+                \register_extended_taxonomy($taxonomyName, $taxonomy['object_types'], $taxonomy['args'], $taxonomy['names']);
             }
         }
     }
