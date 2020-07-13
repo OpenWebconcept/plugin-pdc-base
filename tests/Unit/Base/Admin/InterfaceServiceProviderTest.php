@@ -69,8 +69,9 @@ class InterfaceServiceProviderTest extends TestCase
         $plugin->config   = $config;
         $plugin->loader   = m::mock(Loader::class);
         $plugin->settings = [
-            '_owc_setting_portal_url'           => 'http://owc-pdc.test',
-            '_owc_setting_portal_pdc_item_slug' => 'onderwerp'
+            '_owc_setting_portal_url'                       => 'http://owc-pdc.test',
+            '_owc_setting_portal_pdc_item_slug'             => 'onderwerp',
+            '_owc_setting_include_subtheme_in_portal_url'   => 0
         ];
 
         $service = new InterfaceServiceProvider($plugin);
@@ -80,7 +81,7 @@ class InterfaceServiceProviderTest extends TestCase
             [
                 'times'      => '2',
                 'return'     => function () {
-                    return func_get_arg(0).'/';
+                    return func_get_arg(0) . '/';
                 }
             ]
         );

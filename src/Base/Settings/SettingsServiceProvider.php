@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which add settings to the admin.
  */
@@ -67,10 +68,11 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
     public function getSettingsOption()
     {
         $defaultSettings = [
-            '_owc_setting_portal_url'           => '',
-            '_owc_setting_portal_pdc_item_slug' => ''
+            '_owc_setting_portal_url'                       => '',
+            '_owc_setting_portal_pdc_item_slug'             => '',
+            '_owc_setting_include_subtheme_in_portal_url'   => 0
         ];
 
-        $this->plugin->settings = wp_parse_args(get_option(self::PREFIX.'pdc_base_settings'), $defaultSettings);
+        $this->plugin->settings = wp_parse_args(get_option(self::PREFIX . 'pdc_base_settings'), $defaultSettings);
     }
 }

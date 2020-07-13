@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which regsiters the admin interface.
  */
@@ -62,7 +63,8 @@ class InterfaceServiceProvider extends ServiceProvider
     public function filterGetSamplePermalinkHtml($return, $postId, $newTitle, $newSlug, WP_Post $post)
     {
         if ('pdc-item' == $post->post_type) {
-            $portalUrl  = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+            $connectedPdcCategory   = $this->getConnectedPdcCategory($post);
+            $portalUrl              = $this->createPortalURL($connectedPdcCategory, $post);
             $buttonText = _x('View in Portal', 'preview button text', 'pdc-base');
             $buttonHtml = sprintf('<a href="%s" target="_blank"><button type="button" class="button button-small" aria-label="%s">%s</button></a>', $portalUrl, $buttonText, $buttonText);
             $return .= $buttonHtml;
@@ -80,9 +82,9 @@ class InterfaceServiceProvider extends ServiceProvider
     public function actionModifyPageRowActions($actions, WP_Post $post)
     {
         if (!empty($actions['view']) && 'pdc-item' == $post->post_type) {
-            $portalUrl = esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
-
-            $actions['view'] = sprintf(
+            $connectedPdcCategory   = $this->getConnectedPdcCategory($post);
+            $portalUrl              = $this->createPortalURL($connectedPdcCategory, $post);
+            $actions['view']        = sprintf(
                 '<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
                 $portalUrl,
                 /* translators: %s: post title */
@@ -91,5 +93,41 @@ class InterfaceServiceProvider extends ServiceProvider
             );
         }
         return $actions;
+    }
+
+    /**
+     * Retrieve the p2p connection between 'pdc-item' & 'pdc-category'
+     *
+     * @param WP_Post $post
+     * 
+     * @return WP_Post|null
+     */
+    private function getConnectedPdcCategory($post): ?WP_Post
+    {
+        $connected = new \WP_Query(array(
+            'connected_type' => 'pdc-item_to_pdc-category',
+            'connected_items' => $post,
+            'nopaging' => true,
+        ));
+
+        return !empty($connected->post) ? $connected->post : null;
+    }
+
+    /**
+     * Create portal url, used in 'pdc items' overview
+     * When connected add 'pdc category' name and post ID to url
+     *
+     * @param WP_Post|null $connectedPdcCategory
+     * @param WP_Post $post
+     * 
+     * @return void
+     */
+    private function createPortalURL($connectedPdcCategory, $post): string
+    {
+        if (!$connectedPdcCategory || !$this->plugin->settings['_owc_setting_include_subtheme_in_portal_url']) {
+            return esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . $post->post_name);
+        }
+
+        return esc_url(trailingslashit($this->plugin->settings['_owc_setting_portal_url']) . trailingslashit($this->plugin->settings['_owc_setting_portal_pdc_item_slug']) . trailingslashit($connectedPdcCategory->post_name) . trailingslashit($post->post_name) . $post->ID);
     }
 }
