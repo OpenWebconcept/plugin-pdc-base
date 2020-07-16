@@ -415,6 +415,14 @@ msgstr ""
 msgid "URL for PDC items in the portal, eg \"onderwerp\""
 msgstr ""
 
+#: config/settings.php:25
+msgid "PDC item subtheme in "View in portal" slug"
+msgstr ""
+
+#: config/settings.php:26
+msgid "Include subtheme, of PDC item, in \"View in portal\" slug? Default only uses the theme."
+msgstr ""
+
 #: config/settings_pages.php:9
 msgid "PDC settings"
 msgstr ""

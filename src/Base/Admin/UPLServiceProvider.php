@@ -23,10 +23,10 @@ class UPLServiceProvider extends ServiceProvider
 
     public function adminEnqueueScripts(string $hook): void
     {
-        if (! ('post-new.php' === $hook || 'post.php' === $hook)) {
+        if (!('post-new.php' === $hook || 'post.php' === $hook)) {
             return;
         }
-        
+
         global $post;
         if ('pdc-item' === $post->post_type) {
             wp_enqueue_script('populate-upl', $this->plugin->getPluginUrl() . '/js/index.js', ['jquery'], $this->plugin->getVersion(), true);
@@ -41,7 +41,7 @@ class UPLServiceProvider extends ServiceProvider
             \WP_CLI::error('No PDC items found');
             return;
         }
-            
+
         foreach ($posts as $post) {
             $this->populateUplFields($post);
         }
@@ -59,8 +59,8 @@ class UPLServiceProvider extends ServiceProvider
 
     private function populateUplFields(\WP_Post $post): void
     {
-        $uplName          = $this->getUplName($post);
-        $uplResource      = $this->getUplResource($post, $uplName);
+        $uplName     = $this->getUplName($post);
+        $uplResource = $this->getUplResource($post, $uplName);
 
         $this->updatePostMeta($post->ID, '_owc_pdc_upl_naam', $uplName);
         $this->updatePostMeta($post->ID, '_owc_pdc_upl_resource', $uplResource);
@@ -77,8 +77,8 @@ class UPLServiceProvider extends ServiceProvider
 
     private function getUplName(\WP_Post $post): string
     {
-        $uplName          = get_post_meta($post->ID, '_owc_pdc_upl_naam', true);
-        
+        $uplName = get_post_meta($post->ID, '_owc_pdc_upl_naam', true);
+
         if (empty($uplName)) {
             $uplName = $post->post_title;
         }
@@ -91,12 +91,12 @@ class UPLServiceProvider extends ServiceProvider
         $uplResource      = get_post_meta($post->ID, '_owc_pdc_upl_resource', true);
 
         if (empty($uplResource)) {
-            $uplNameFormat                    = str_replace(' ', '-', $uplName);
-            $uplResource                      = 'http://standaarden.overheid.nl/owms/terms/' . $uplNameFormat;
+            $uplNameFormat  = str_replace(' ', '-', $uplName);
+            $uplResource    = 'http://standaarden.overheid.nl/owms/terms/' . $uplNameFormat;
         }
 
-        $uplResource      = str_replace([' ', ','], ['-', ''], $uplResource);
-        $uplResource      = strtolower($uplResource);
+        $uplResource = str_replace([' ', ','], ['-', ''], $uplResource);
+        $uplResource = strtolower($uplResource);
 
         return $uplResource;
     }

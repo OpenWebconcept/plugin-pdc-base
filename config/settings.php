@@ -20,6 +20,12 @@ return [
                     'desc' => __('URL for PDC items in the portal, eg "onderwerp"', 'pdc-base'),
                     'id'   => 'setting_portal_pdc_item_slug',
                     'type' => 'text'
+                ],
+                'pdc_subtheme_in_portal_url' => [
+                    'name' => __('PDC item subtheme in "View in portal" slug', 'pdc-base'),
+                    'desc' => __('Include subtheme, of PDC item, in "View in portal" slug? Default only uses the theme.', 'pdc-base'),
+                    'id'   => 'setting_include_subtheme_in_portal_url',
+                    'type' => 'checkbox',
                 ]
             ]
         ]
