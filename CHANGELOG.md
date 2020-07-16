@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 2.2.8
+
+### Fix:
+
+- Autoloader was not correctly configured, when installing the plugin manually.
+
 ## Version 2.2.7
 
 ### Fix:
