@@ -46,5 +46,8 @@ return [
             'reciprocal' => false,
         ],
     ],
+    'connections_exclude_in_active' => [
+        'pdc-item_to_pdc-subcategory',
+    ],
 
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds connected/related fields to the output.
  */
@@ -6,6 +7,7 @@
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 use WP_Post;
 
 /**
@@ -55,6 +57,12 @@ class ConnectedField extends CreatesFields
             ];
         }
 
+        // get the connections whom needs to exclude inactive items
+        $connectionsExcludeInActive = $this->plugin->config->get('p2p_connections.connections_exclude_in_active');
+
+        // add meta query when connection needs to exclude inactive items
+        $metaQuery = in_array($type, $connectionsExcludeInActive) ? ItemController::hideInactiveItem() : [];
+
         return array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,
@@ -63,6 +71,6 @@ class ConnectedField extends CreatesFields
                 'excerpt' => $post->post_excerpt,
                 'date'    => $post->post_date,
             ];
-        }, $connection->get_connected($postID)->posts);
+        }, $connection->get_connected($postID, $metaQuery)->posts);
     }
 }

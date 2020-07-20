@@ -108,7 +108,7 @@ class ItemController extends BaseController
 
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query($this->hideInactiveItem())
+            ->query(Self::hideInactiveItem())
             ->findBySlug($slug);
 
         if (!$item) {
@@ -126,7 +126,7 @@ class ItemController extends BaseController
      *
      * @return array
      */
-    protected function hideInactiveItem()
+    public static function hideInactiveItem(): array
     {
         return [
             'meta_query' => [
