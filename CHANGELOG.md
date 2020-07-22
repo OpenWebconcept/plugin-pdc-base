@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 2.2.11
+
+### Fix:
+
+-   Add valid url to viewnode in adminbar pdc-item
+
 ## Version 2.2.10
 
 ### Fix:
