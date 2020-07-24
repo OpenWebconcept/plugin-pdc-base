@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 2.2.12
+
+### Fix:
+
+-   Fix: view portal url wp admin bar node
+
 ## Version 2.2.11
 
 ### Fix:
