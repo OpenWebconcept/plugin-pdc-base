@@ -37,16 +37,22 @@ class InterfaceServiceProvider extends ServiceProvider
     public function filterAdminbarMenu($wpAdminBar)
     {
         $viewNode = $wpAdminBar->get_node('view');
+
         if (!empty($viewNode)) {
             global $post;
+
+            $wpAdminBar->remove_node('view');
 
             if ('pdc-item' === get_post_type($post)) {
                 $connectedPdcCategory   = $this->getConnectedPdcCategory($post);
                 $portalUrl              = $this->createPortalURL($connectedPdcCategory, $post);
-                $viewNode->href         = $portalUrl;
-                $viewNode->title        = __('View PDC item in portal', 'pdc-base');
-
-                $wpAdminBar->add_node($viewNode);
+                $wpAdminBar->add_node([
+                    'id'        => 'view-portal', // new id or else wp get the default node
+                    'parent'    => false,
+                    'href'      => $portalUrl,
+                    'group'     => false,
+                    'title'     => __('View PDC item in portal', 'pdc-base'),
+                ]);
             }
         }
     }
