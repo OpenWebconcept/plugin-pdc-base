@@ -16,9 +16,11 @@
 
 -   Architecture (Breaking: includes namespaces -> affects pdc-faq, pdc-locations, pdc-samenwerkende-catalogi and pdc-internal-products)
 
+## Version 2.2.13
+
 ### Fix:
 
--   Fix: rest api endpoint /wp-json/owc/pdc/v1/items/internal was not handled correctly is, as `internal` looked like a slug
+-   Fix: rest api endpoint /wp-json/owc/pdc/v1/items/internal was not handled correctly is, as `internal` looked like a slug.
 
 ## Version 2.2.12
 
