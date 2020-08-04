@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Controller which handles the (requested) thema(s).
  */
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Models\Thema;
+use OWC\PDC\Base\Repositories\Thema;
 use WP_Error;
 use WP_REST_Request;
 

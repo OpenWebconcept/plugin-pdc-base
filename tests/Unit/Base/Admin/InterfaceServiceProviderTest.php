@@ -2,12 +2,13 @@
 
 namespace OWC\PDC\Base\Admin;
 
-use \WP_Post;
 use Mockery as m;
-use OWC\PDC\Base\Config;
+use OWC\PDC\Base\Foundation\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
+use OWC\PDC\Base\Models\Item;
 use OWC\PDC\Base\Tests\Unit\TestCase;
+use \WP_Post;
 
 class InterfaceServiceProviderTest extends TestCase
 {
@@ -31,6 +32,8 @@ class InterfaceServiceProviderTest extends TestCase
         $plugin->loader = m::mock(Loader::class);
 
         $service = new InterfaceServiceProvider($plugin);
+
+        $query = m::mock(\WP_Query::class);
 
         $plugin->loader->shouldReceive('addFilter')->withArgs([
             'admin_bar_menu',
@@ -74,21 +77,20 @@ class InterfaceServiceProviderTest extends TestCase
             '_owc_setting_include_subtheme_in_portal_url'   => 0
         ];
 
-        $service = new InterfaceServiceProvider($plugin);
+        $query = m::mock(\WP_Query::class);
 
-        \WP_Mock::userFunction(
-            'trailingslashit',
-            [
-                'times'      => '2',
-                'return'     => function () {
-                    return func_get_arg(0) . '/';
-                }
-            ]
-        );
+        $service = new InterfaceServiceProvider($plugin);
 
         $return = '';
 
-        $post            = m::mock(WP_Post::class);
+        $post = m::mock(WP_Post::class, ['to_array' => []]);
+
+        $item = m::mock('overload:\OWC\PDC\Base\Models\Item');
+
+        $item->shouldReceive('getPortalURL')
+            ->once()
+            ->andReturn('http://owc-pdc.test/onderwerp/test-pdc-item');
+
         $post->post_type = 'pdc-item';
         $post->post_name = 'test-pdc-item';
 

@@ -6,8 +6,8 @@
 
 namespace OWC\PDC\Base\RestAPI;
 
-use \WP_REST_Server;
 use OWC\PDC\Base\Foundation\ServiceProvider;
+use WP_REST_Server;
 
 /**
  * Provider which registers the API.
@@ -45,7 +45,7 @@ class RestAPIServiceProvider extends ServiceProvider
      * @link https://url/wp-json/owc/pdc/v1/items
      *
      * Endpoint of the pdc-item detail page.
-     * @link https://url/wp-json/owc/pdc/v1/items/{id}
+     * @link https://url/wp-json/owc/pdc/v1/items/{id|slug}
      *
      * Endpoint of the thema-items.
      * @link https://url/wp-json/owc/pdc/v1/themas
@@ -66,43 +66,44 @@ class RestAPIServiceProvider extends ServiceProvider
      */
     public function registerRoutes()
     {
-        register_rest_route($this->namespace, 'items', [
+        \register_rest_route($this->namespace, 'items', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItems'],
         ]);
 
-        register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
+        \register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItem'],
         ]);
 
-        register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
+        /** {slug}/internal should be ignored */
+        \register_rest_route($this->namespace, 'items/(?P<slug>(?!.*internal)[\w-]+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
         ]);
 
-        register_rest_route($this->namespace, 'them(a|e)s', [
+        \register_rest_route($this->namespace, 'them(a|e)s', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThemas'],
         ]);
 
-        register_rest_route($this->namespace, 'them(a|e)s/(?P<id>\d+)', [
+        \register_rest_route($this->namespace, 'them(a|e)s/(?P<id>\d+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ThemaController($this->plugin), 'getThema'],
         ]);
 
-        register_rest_route($this->namespace, 'subthem(a|e)s', [
+        \register_rest_route($this->namespace, 'subthem(a|e)s', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
         ]);
 
-        register_rest_route($this->namespace, 'subthem(a|e)s/(?P<id>\d+)', [
+        \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<id>\d+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
         ]);
 
         $searchController = new Controllers\SearchController($this->plugin);
-        register_rest_route($this->namespace, 'search', [
+        \register_rest_route($this->namespace, 'search', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [$searchController, 'search'],
             'args'     => $searchController->arguments(),
@@ -140,7 +141,7 @@ class RestAPIServiceProvider extends ServiceProvider
         // Add global fields for all Models.
         foreach ($this->plugin->config->get('api.models') as $posttype => $data) {
             foreach ($data['fields'] as $key => $creator) {
-                $class = '\OWC\PDC\Base\Models\\' . ucfirst($posttype);
+                $class = '\OWC\PDC\Base\Repositories\\' . ucfirst($posttype);
                 if (class_exists($class)) {
                     $class::addGlobalField($key, new $creator($this->plugin));
                 }

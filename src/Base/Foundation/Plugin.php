@@ -25,7 +25,7 @@ class Plugin
      *
      * @var string VERSION
      */
-    const VERSION = '2.2.12';
+    const VERSION = '3.0.0';
 
     /**
      * Path to the root of the plugin.

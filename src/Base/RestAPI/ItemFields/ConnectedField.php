@@ -6,8 +6,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
 /**
@@ -49,7 +49,7 @@ class ConnectedField extends CreatesFields
      */
     protected function getConnectedItems(int $postID, string $type): array
     {
-        $connection = p2p_type($type);
+        $connection = \p2p_type($type);
 
         if (!$connection) {
             return [

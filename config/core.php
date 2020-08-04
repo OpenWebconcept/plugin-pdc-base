@@ -3,12 +3,12 @@
 return [
 
     /**
-     * Service Providers.
-     */
+             * Service Providers.
+         */
     'providers'    => [
         /**
-         * Global providers.
-         */
+     * Global providers.
+     */
         OWC\PDC\Base\Settings\SettingsServiceProvider::class,
         OWC\PDC\Base\PostType\PostTypeServiceProvider::class,
         OWC\PDC\Base\Taxonomy\TaxonomyServiceProvider::class,
@@ -51,7 +51,7 @@ return [
             'type'  => 'class',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
             'name'  => 'Extended_CPT'
-        ]
+        ],
     ]
 
 ];

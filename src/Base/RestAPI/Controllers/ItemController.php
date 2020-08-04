@@ -6,7 +6,7 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Models\Item;
+use OWC\PDC\Base\Repositories\Item;
 use WP_Error;
 use WP_REST_Request;
 

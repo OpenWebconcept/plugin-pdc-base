@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Controller which handles the (requested) subthema(s).
  */
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Models\Subthema;
+use OWC\PDC\Base\Repositories\Subthema;
 use WP_Error;
 use WP_REST_Request;
 

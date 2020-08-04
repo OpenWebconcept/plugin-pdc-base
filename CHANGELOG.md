@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## Version 3.0.0
+
+### Features:
+
+-   Refactor: clean-up for version 2.0.
+
+### Changed
+
+-   Architecture (Breaking: includes namespaces -> affects pdc-faq, pdc-locations, pdc-samenwerkende-catalogi and pdc-internal-products)
+
+### Fix:
+
+-   Fix: rest api endpoint /wp-json/owc/pdc/v1/items/internal was not handled correctly is, as `internal` looked like a slug
+
 ## Version 2.2.12
 
 ### Fix:

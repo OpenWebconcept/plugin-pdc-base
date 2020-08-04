@@ -4,7 +4,7 @@
  * PDC item object with default quering and methods.
  */
 
-namespace OWC\PDC\Base\Models;
+namespace OWC\PDC\Base\Repositories;
 
 use Closure;
 use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
@@ -15,9 +15,8 @@ use WP_Query;
 /**
  * PDC item object with default quering and methods.
  */
-abstract class Model
+abstract class AbstractRepository
 {
-
     /**
      * Posttype definition
      *
@@ -61,16 +60,16 @@ abstract class Model
     protected static $globalFields = [];
 
     /**
-     * Construct a new Model class.
+     * Construct a new Repository class.
      *
      * @throws PropertyNotExistsException
      */
     public function __construct()
     {
         /**
-         * In order to register globalFields for a specific model the static property
+         * In order to register globalFields for a specific repository the static property
          * "globalFields" must be present on the derived class to prevent adding fields to
-         * the abstract Model class.
+         * the abstract repository class.
          */
         $reflect = new \ReflectionClass(static::class);
         if (__CLASS__ == $reflect->getProperty('globalFields')->class) {
@@ -102,7 +101,7 @@ abstract class Model
      *
      * @param int $id
      *
-     * @return array|null
+     * @return array
      */
     public function find(int $id)
     {
@@ -182,7 +181,7 @@ abstract class Model
     }
 
     /**
-     * Dynamically add additional fields to the model.
+     * Dynamically add additional fields to the Repository.
      *
      * @param string        $key
      * @param CreatesFields $creator
@@ -215,7 +214,7 @@ abstract class Model
     }
 
     /**
-     * Get all defined global fields of the Model.
+     * Get all defined global fields of the repository.
      *
      * @return array
      */
@@ -237,6 +236,11 @@ abstract class Model
      */
     public function transform(WP_Post $post)
     {
+        $reflectionClass = new \ReflectionClass(get_called_class());
+        if ($reflectionClass->getMethod('transform')->class == get_called_class()) {
+            return call_user_func_array(array(get_called_class(), "transform"), array($post));
+        }
+
         $data = [
             'id'      => $post->ID,
             'title'   => $post->post_title,
