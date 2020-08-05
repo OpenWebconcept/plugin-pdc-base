@@ -169,4 +169,46 @@ return [
             'slug'     => 'pdc-subthema',
         ],
     ],
+    'pdc-maincategory'    => [
+        'args'  => [
+
+            'labels'       => [
+                'name'               => __('PDC maintheme', 'pdc-base'),
+                'singular_name'      => __('PDC maintheme', 'pdc-base'),
+                'add_new'            => __('Add new pdc maintheme', 'pdc-base'),
+                'add_new_item'       => __('Add new pdc maintheme', 'pdc-base'),
+                'edit_item'          => __('Edit pdc maintheme', 'pdc-base'),
+                'new_item'           => __('New pdc maintheme', 'pdc-base'),
+                'view_item'          => __('View pdc maintheme', 'pdc-base'),
+                'view_items'         => __('View pdc mainthemes', 'pdc-base'),
+                'search_items'       => __('Search pdc mainthemes', 'pdc-base'),
+                'not_found'          => __('No pdc mainthemes found.', 'pdc-base'),
+                'not_found_in_trash' => __('No pdc mainthemes found in Trash.', 'pdc-base'),
+                'all_items'          => __('All pdc mainthemes', 'pdc-base'),
+                'archives'           => __('PDC mainthemes archives', 'pdc-base'),
+                'attributes'         => __('PDC maintheme attributes', 'pdc-base'),
+                'insert_into_item'   => __('Insert into pdc maintheme', 'pdc-base'),
+                'featured_image'     => __('Featured image', 'pdc-base'),
+                'set_featured_image' => __('Set featured image', 'pdc-base'),
+                'menu_name'          => __('PDC mainthemes', 'pdc-base'),
+                'name_admin_bar'     => __('PDC mainthemes', 'pdc-base'),
+                'parent_item_colon'  => __('Parent pdc mainthemes:', 'pdc-base'),
+            ],
+
+            # Add the post type to the site's main RSS feed:
+            'show_in_feed' => false,
+
+            # Show all posts on the post type archive:
+            'archive'      => [
+                'nopaging' => true,
+            ],
+            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail'],
+        ],
+        'names' => [
+            # Override the base names used for labels:
+            'singular' => __('PDC maintheme', 'pdc-base'),
+            'plural'   => __('PDC mainthemes', 'pdc-base'),
+            'slug'     => 'pdc-hoofdthema',
+        ],
+    ],
 ];

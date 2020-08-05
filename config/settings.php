@@ -26,6 +26,12 @@ return [
                     'desc' => __('Include subtheme, of PDC item, in "View in portal" slug? Default only uses the theme.', 'pdc-base'),
                     'id'   => 'setting_include_subtheme_in_portal_url',
                     'type' => 'checkbox',
+                ],
+                'pdc_use_mainthema_cpt' => [
+                    'name' => __('Use the maintheme layer', 'pdc-base'),
+                    'desc' => __('Use the mainthema layer as parent for the theme layer, below theme layer is the subtheme layer', 'pdc-base'),
+                    'id'   => 'setting_pdc-maincategory',
+                    'type' => 'checkbox',
                 ]
             ]
         ]

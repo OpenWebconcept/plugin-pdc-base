@@ -277,11 +277,11 @@ msgstr "PDC items attributen"
 msgid "Insert into pdc item"
 msgstr "Voeg in pdc Item"
 
-#: config/posttypes.php:26 config/posttypes.php:107 config/posttypes.php:149
+#: config/posttypes.php:26 config/posttypes.php:107 config/posttypes.php:149 config/posttypes.php:191
 msgid "Featured image"
 msgstr "Aanbevolen afbeelding"
 
-#: config/posttypes.php:27 config/posttypes.php:108 config/posttypes.php:150
+#: config/posttypes.php:27 config/posttypes.php:108 config/posttypes.php:150 config/posttypes.php:192
 msgid "Set featured image"
 msgstr "Stel aanbevolen afbeelding in"
 
@@ -417,6 +417,64 @@ msgstr "Hoofd pdc subthema's:"
 msgid "PDC subthemes"
 msgstr "PDC subthemas"
 
+#: config/p2p_connections.php:29 config/posttypes.php:176 config/posttypes.php:177
+#: config/posttypes.php:125
+msgid "PDC maintheme"
+msgstr "PDC hoofdthema"
+
+#: config/posttypes.php:178 config/posttypes.php:179 config/posttypes.php:180
+#: config/posttypes.php:181 config/posttypes.php:182 config/posttypes.php:190
+msgid "pdc maintheme"
+msgstr "pdc hoofdthema"
+
+#: config/posttypes.php:178 config/posttypes.php:179
+msgid "Add new pdc maintheme"
+msgstr "Voeg pdc hoofdthema toe"
+
+#: config/posttypes.php:178 config/posttypes.php:180
+msgid "Edit pdc maintheme"
+msgstr "Wijzig pdc hoofdthema"
+
+#: config/posttypes.php:182 
+msgid "View pdc maintheme"
+msgstr "Bekijk pdc hoofdthema"
+
+#: config/posttypes.php:183 
+msgid "View pdc mainthemes"
+msgstr "Bekijk pdc hoofdthema/'s"
+
+#: config/posttypes.php:184 
+msgid "Search pdc mainthemes"
+msgstr "Zoek pdc hoofdthema"
+
+#: config/posttypes.php:185 
+msgid "No pdc mainthemes found."
+msgstr "Geen pdc hoofdthema gevonden"
+
+#: config/posttypes.php:186 
+msgid "No pdc mainthemes found in Trash."
+msgstr "Geen pdc hoofdthema gevonden in de prullenbak"
+
+#: config/posttypes.php:187 
+msgid "All pdc mainthemes"
+msgstr "Alle pdc hoofdthema/'s"
+
+#: config/posttypes.php:188 
+msgid "PDC mainthemes archives"
+msgstr "PDC hoofdthema/'s archieven"
+
+#: config/posttypes.php:189 
+msgid "PDC maintheme attributes"
+msgstr "PDC hoofdthema attributen"
+
+#: config/posttypes.php:190 
+msgid "Insert into pdc maintheme"
+msgstr "Voeg toe aan pdc hoofdthema"
+
+#: config/posttypes.php:193 config/posttypes.php:194 config/posttypes.php:210 
+msgid "PDC mainthemes"
+msgstr "PDC hoofdthemas"
+
 #: config/settings.php:7
 msgid "Portal"
 msgstr "Portaal"
@@ -434,7 +492,7 @@ msgid "URL for PDC items in the portal, eg \"onderwerp\""
 msgstr "URL voor PDC items in de portal, bv \"onderwerp\""
 
 #: config/settings.php:25
-msgid "PDC item subtheme in "View in portal" slug"
+msgid "PDC item subtheme in \"View in portal\" slug"
 msgstr "PDC item \"View in portal\" URL bevat subthema"
 
 #: config/settings.php:26

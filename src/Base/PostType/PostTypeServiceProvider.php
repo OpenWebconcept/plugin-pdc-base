@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which handles the registration of posttype.
  */
@@ -38,6 +39,13 @@ class PostTypeServiceProvider extends ServiceProvider
         if (function_exists('register_extended_post_type')) {
             $this->configPostTypes = $this->plugin->config->get('posttypes');
             foreach ($this->configPostTypes as $postTypeName => $postType) {
+                $test = get_option('_owc_pdc_base_settings')['vbfbvg'] ?? null;
+                var_dump($test);
+                die;
+                $postTypeSetting = get_option('_owc_pdc_base_settings')['_owc_setting_' . $postTypeName] ?? null;
+                if ($postTypeSetting) {
+                    break;
+                }
                 // Examples of registering post types: http://johnbillion.com/extended-cpts/
                 register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
             }

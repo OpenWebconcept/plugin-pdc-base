@@ -23,8 +23,18 @@ return [
             'id'    => 'pdc-owner',
             'title' => _x('PDC owner', 'P2P titel', 'pdc-base'),
         ],
+        'pdc-maincategory'    =>
+        [
+            'id'    => 'pdc-maincategory',
+            'title' => _x('PDC maintheme', 'P2P titel', 'pdc-base'),
+        ],
     ],
     'connections'    => [
+        [
+            'from'       => 'pdc-item',
+            'to'         => 'pdc-maincategory',
+            'reciprocal' => true,
+        ],
         [
             'from'       => 'pdc-item',
             'to'         => 'pdc-category',
@@ -33,6 +43,11 @@ return [
         [
             'from'       => 'pdc-item',
             'to'         => 'pdc-subcategory',
+            'reciprocal' => true,
+        ],
+        [
+            'from'       => 'pdc-maincategory',
+            'to'         => 'pdc-category',
             'reciprocal' => true,
         ],
         [

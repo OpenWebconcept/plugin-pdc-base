@@ -13,7 +13,6 @@ use OWC\PDC\Base\Metabox\MetaboxBaseServiceProvider;
  */
 class SettingsServiceProvider extends MetaboxBaseServiceProvider
 {
-
     /**
      * Registers the hooks
      *
@@ -65,14 +64,17 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      *
      * @return void
      */
-    public function getSettingsOption()
+    public function getSettingsOption() // options object implementeren
     {
+        // https://developer.wordpress.org/reference/functions/_doing_it_wrong/
         $defaultSettings = [
             '_owc_setting_portal_url'                       => '',
             '_owc_setting_portal_pdc_item_slug'             => '',
-            '_owc_setting_include_subtheme_in_portal_url'   => 0
+            '_owc_setting_include_subtheme_in_portal_url'   => 0,
+            '_owc_setting_pdc-maincategory'                 => 0
         ];
 
         $this->plugin->settings = wp_parse_args(get_option(self::PREFIX . 'pdc_base_settings'), $defaultSettings);
+        // $this->plugin->settings vullen met het nieuwe object, make zorgt voor default waardes
     }
 }
