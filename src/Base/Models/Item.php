@@ -269,7 +269,7 @@ class Item
         $connectedPdcCategory = $this->getConnectedPdcCategory();
 
         if (!$connectedPdcCategory || !get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url']) {
-            return esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']) . $this->getPostName());
+            return esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']) . trailingslashit($this->getPostName()))  . $this->getID();
         }
 
         return esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']) . trailingslashit($connectedPdcCategory->post_name) . trailingslashit($this->getPostName()) . $this->getID());
@@ -281,6 +281,7 @@ class Item
             'connected_type' => 'pdc-item_to_pdc-category',
             'connected_items' => $this->getID(), // id is voldoende
             'nopaging' => true,
+            'post_status' => 'publish',
         ));
 
         return !empty($connected->post) ? $connected->post : null;

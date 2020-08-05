@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.0.1
+
+### Fix
+
+-   Add ID to portal-url if there is no category connected
+
 ## Version 3.0.0
 
 ### Features:
