@@ -6,13 +6,13 @@
 
 namespace OWC\PDC\Base\Support;
 
+use Closure;
 use OWC\PDC\Base\Foundation\Plugin;
 use WP_Post;
 
 /**
  * Abstract which handles the creation of fields.
  */
-
 abstract class CreatesFields
 {
 
@@ -31,6 +31,36 @@ abstract class CreatesFields
     public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
+    }
+
+    /**
+     * The default condition is true, can be overriden.
+     *
+     * @return callable
+     */
+    protected function condition(): callable
+    {
+        return function () {
+            return \__return_true();
+        };
+    }
+
+    /**
+     * Run the current condition.
+     *
+     * @return null|Closure
+     */
+    public function executeCondition(): ?Closure
+    {
+        if ($this->condition() instanceof Closure) {
+            return $this->condition();
+        }
+
+        if (\is_callable($this->condition())) {
+            return $this->condition();
+        }
+
+        return null;
     }
 
     /**

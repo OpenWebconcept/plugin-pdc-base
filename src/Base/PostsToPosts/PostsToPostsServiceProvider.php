@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which registers the connected/posts-to-posts items.
  */
@@ -6,6 +7,7 @@
 namespace OWC\PDC\Base\PostsToPosts;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
+use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 /**
  * Provider which registers the connected/posts-to-posts items.
@@ -33,8 +35,41 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->plugin->loader->addAction('init', $this, 'extendPostsToPostsConnections');
         $this->plugin->loader->addAction('init', $this, 'registerPostsToPostsConnections');
         $this->plugin->loader->addFilter('p2p_connectable_args', $this, 'filterP2PConnectableArgs', 10);
+    }
+
+    /**
+     * Extend the P2P connections config file when CPT pdc-groups is active
+     *
+     * @return void
+     */
+    public function extendPostsToPostsConnections(): void
+    {
+        if (!SettingsPageOptions::make()->useGroupLayer()) {
+            return;
+        }
+
+        $groupConnections = [
+            [
+                'from'       => 'pdc-item',
+                'to'         => 'pdc-group',
+                'reciprocal' => true,
+            ],
+            [
+                'from'       => 'pdc-subcategory',
+                'to'         => 'pdc-group',
+                'reciprocal' => true,
+            ],
+            [
+                'from'       => 'pdc-category',
+                'to'         => 'pdc-group',
+                'reciprocal' => true,
+            ],
+        ];
+
+        $this->plugin->config->set(['p2p_connections.connections' => array_merge($this->plugin->config->get('p2p_connections.connections'), $groupConnections)]);
     }
 
     /**
@@ -42,7 +77,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerPostsToPostsConnections()
+    public function registerPostsToPostsConnections(): void
     {
         if (function_exists('p2p_register_connection_type')) {
             $posttypesInfo         = $this->plugin->config->get('p2p_connections.posttypes_info');
@@ -85,9 +120,9 @@ class PostsToPostsServiceProvider extends ServiceProvider
      *
      * @param array $args
      *
-     * @return void
+     * @return array
      */
-    public function filterP2PConnectableArgs(array $args)
+    public function filterP2PConnectableArgs(array $args): array
     {
         $args['orderby']      = 'title';
         $args['order']        = 'asc';

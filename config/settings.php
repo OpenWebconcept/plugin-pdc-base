@@ -21,16 +21,22 @@ return [
                     'id'   => 'setting_portal_pdc_item_slug',
                     'type' => 'text'
                 ],
+                'pdc_theme_in_portal_url' => [
+                    'name' => __('PDC item theme in "View in portal" slug', 'pdc-base'),
+                    'desc' => __('Include theme, of PDC item, in "View in portal" slug?', 'pdc-base'),
+                    'id'   => 'setting_include_theme_in_portal_url',
+                    'type' => 'checkbox',
+                ],
                 'pdc_subtheme_in_portal_url' => [
                     'name' => __('PDC item subtheme in "View in portal" slug', 'pdc-base'),
-                    'desc' => __('Include subtheme, of PDC item, in "View in portal" slug? Default only uses the theme.', 'pdc-base'),
+                    'desc' => __('Include subtheme, of PDC item, in "View in portal" slug?', 'pdc-base'),
                     'id'   => 'setting_include_subtheme_in_portal_url',
                     'type' => 'checkbox',
                 ],
-                'pdc_use_mainthema_cpt' => [
-                    'name' => __('Use the maintheme layer', 'pdc-base'),
-                    'desc' => __('Use the mainthema layer as parent for the theme layer, below theme layer is the subtheme layer', 'pdc-base'),
-                    'id'   => 'setting_pdc-maincategory',
+                'pdc_use_group_cpt' => [
+                    'name' => __('Use the group layer', 'pdc-base'),
+                    'desc' => __('Use the group layer as connection between a pdc-item.', 'pdc-base'),
+                    'id'   => 'setting_pdc-group',
                     'type' => 'checkbox',
                 ]
             ]

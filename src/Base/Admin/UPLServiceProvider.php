@@ -29,7 +29,7 @@ class UPLServiceProvider extends ServiceProvider
 
         global $post;
         if ('pdc-item' === $post->post_type) {
-            wp_enqueue_script('populate-upl', $this->plugin->getPluginUrl() . '/js/index.js', ['jquery'], $this->plugin->getVersion(), true);
+            wp_enqueue_script('populate-upl', $this->plugin->getPluginUrl() . '/js/populate-upl.js', ['jquery'], $this->plugin->getVersion(), true);
         }
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provider which regsiters the admin interface.
+ * Provider which registers the admin interface.
  */
 
 namespace OWC\PDC\Base\Admin;
@@ -11,11 +11,10 @@ use WP_Post;
 use OWC\PDC\Base\Models\Item;
 
 /**
- * Provider which regsiters the admin interface.
+ * Provider which registers the admin interface.
  */
 class InterfaceServiceProvider extends ServiceProvider
 {
-
     /**
      * Registers the hooks.
      *

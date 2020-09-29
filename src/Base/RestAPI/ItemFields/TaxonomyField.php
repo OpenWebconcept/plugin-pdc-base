@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds taxonomy to the output based on the taxonomies in the config.
  */

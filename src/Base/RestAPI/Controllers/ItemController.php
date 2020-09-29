@@ -105,7 +105,6 @@ class ItemController extends BaseController
     public function getItemBySlug(WP_REST_Request $request)
     {
         $slug = $request->get_param('slug');
-
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
             ->query(Self::hideInactiveItem())
@@ -132,7 +131,8 @@ class ItemController extends BaseController
             'meta_query' => [
                 [
                     'key'   => '_owc_pdc_active',
-                    'value' => 1,
+                    'value' => '1',
+                    'compare' => '=',
                 ],
             ],
         ];

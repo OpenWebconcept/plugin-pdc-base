@@ -7,6 +7,7 @@
 namespace OWC\PDC\Base\PostType;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
+use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 /**
  * Provider which handles the registration of posttype.
@@ -15,7 +16,7 @@ class PostTypeServiceProvider extends ServiceProvider
 {
 
     /**
-     * Srray of posttype definitions from the config.
+     * Array of posttype definitions from the config.
      *
      * @var array $configPostTypes
      */
@@ -38,15 +39,12 @@ class PostTypeServiceProvider extends ServiceProvider
     {
         if (function_exists('register_extended_post_type')) {
             $this->configPostTypes = $this->plugin->config->get('posttypes');
+
             foreach ($this->configPostTypes as $postTypeName => $postType) {
-                $test = get_option('_owc_pdc_base_settings')['vbfbvg'] ?? null;
-                var_dump($test);
-                die;
-                $postTypeSetting = get_option('_owc_pdc_base_settings')['_owc_setting_' . $postTypeName] ?? null;
-                if ($postTypeSetting) {
-                    break;
+                if ($postTypeName === 'pdc-group' && !$this->plugin->settings->useGroupLayer()) {
+                    continue;
                 }
-                // Examples of registering post types: http://johnbillion.com/extended-cpts/
+
                 register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
             }
         }

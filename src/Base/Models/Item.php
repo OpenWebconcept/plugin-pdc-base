@@ -260,26 +260,37 @@ class Item
 
     /**
      * Create portal url, used in 'pdc items' overview
-     * When connected add 'pdc category' name and post ID to url
+     * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url
      * 
      * @return string
      */
     private function createPortalURL(): string
     {
-        $connectedPdcCategory = $this->getConnectedPdcCategory();
+        $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']));
 
-        if (!$connectedPdcCategory || !get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url']) {
-            return esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']) . trailingslashit($this->getPostName()))  . $this->getID();
+        $connectedPdcCategory       = $this->getConnected('pdc-item_to_pdc-category');
+        $connectedPdcSubCategory    = $this->getConnected('pdc-item_to_pdc-subcategory');
+
+        // add thema to the url
+        if ($connectedPdcCategory && get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_theme_in_portal_url']) {
+            $portalURL .= trailingslashit($connectedPdcCategory->post_name);
         }
 
-        return esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']) . trailingslashit($connectedPdcCategory->post_name) . trailingslashit($this->getPostName()) . $this->getID());
+        // add subtheme to the url
+        if ($connectedPdcSubCategory && get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url']) {
+            $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
+        }
+
+        $portalURL .=  trailingslashit($this->getPostName()) . $this->getID();
+
+        return $portalURL;
     }
 
-    private function getConnectedPdcCategory(): ?\WP_Post
+    private function getConnected($connection): ?\WP_Post
     {
         $connected = new \WP_Query(array(
-            'connected_type' => 'pdc-item_to_pdc-category',
-            'connected_items' => $this->getID(), // id is voldoende
+            'connected_type' => $connection,
+            'connected_items' => $this->getID(),
             'nopaging' => true,
             'post_status' => 'publish',
         ));

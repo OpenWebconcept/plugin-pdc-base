@@ -1,16 +1,18 @@
 <?php
+
 /**
  * Provider which handles the registration of the plugin.
  */
 
 namespace OWC\PDC\Base\Foundation;
 
+use OWC\PDC\Base\Settings\SettingsPageOptions;
+
 /**
  * Provider which handles the registration of the plugin.
  */
 abstract class ServiceProvider
 {
-
     /**
      * Instance of the plugin.
      *
@@ -28,6 +30,7 @@ abstract class ServiceProvider
     public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
+        $this->plugin->settings = SettingsPageOptions::make();
     }
 
     /**

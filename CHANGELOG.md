@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.1
+
+### Fix
+
+-   Add optional cpt pdc-group
+
 ## Version 3.0.1
 
 ### Fix
