@@ -27,15 +27,15 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
         if ($post_type == 'pdc-item' && 'edit.php' != $hook) {
             wp_enqueue_script('limit-item-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-item-connections.js');
-            /**
-             * 
-             * 
-             * 
-             * Andere connecties toepassen op basis van config waarde
-             * 
-             * 
-             * 
-             */
+        }
+
+
+        if ($post_type == 'pdc-subcategory' && 'edit.php' != $hook) {
+            wp_enqueue_script('limit-subtheme-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-subtheme-connections.js');
+        }
+
+        if ($post_type == 'pdc-group' && 'edit.php' != $hook) {
+            wp_enqueue_script('limit-group-subtheme-connection', $this->plugin->getPluginUrl() . '/js/limit-group-connections.js');
         }
     }
 }

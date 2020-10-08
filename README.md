@@ -16,6 +16,14 @@ Plugin to add the OpenwebConcept OpenPDC to your project.
 -   Log into WordPress admin and activate the ‘PDC Base’ plugin through the ‘Plugins’ menu
 -   Go to the 'PDC instellingen pagina' in the left-hand menu to enter some of the required settings
 
+#### Additional Settings
+
+On the 'PDC instellingen pagina' there are 2 settings optional for extending the slug used in the 'view in portal' url.
+The 'view in portal' button can be found in de wp-admin bar on the editor pages of the pdc-items or inside the 'quick edit' blocks on the overview page of pdc-items.
+With these optional settings the theme and subtheme can be included into the 'view in portal' url.
+
+Finally, there is a possibility to use a fourth layer called 'pdc-groups'. The hierarchy, when the fourth layer setting is checked, is pdc-theme -> pdc-subtheme -> pdc-group -> pdc-item.
+
 ### Filters & Actions
 
 There are various [hooks](https://codex.wordpress.org/Plugin_API/Hooks), which allows for changing the output.

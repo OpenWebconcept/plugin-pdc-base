@@ -417,63 +417,65 @@ msgstr "Hoofd pdc subthema's:"
 msgid "PDC subthemes"
 msgstr "PDC subthemas"
 
-#: config/p2p_connections.php:29 config/posttypes.php:176 config/posttypes.php:177
-#: config/posttypes.php:125
-msgid "PDC maintheme"
-msgstr "PDC hoofdthema"
+#: config/p2p_connections.php:28 config/posttypes.php:174 config/posttypes.php:175 config/posttypes.php:207
+msgid "PDC group"
+msgstr "PDC groep"
 
-#: config/posttypes.php:178 config/posttypes.php:179 config/posttypes.php:180
-#: config/posttypes.php:181 config/posttypes.php:182 config/posttypes.php:190
-msgid "pdc maintheme"
-msgstr "pdc hoofdthema"
+#: config/posttypes.php:176 config/posttypes.php:177
+msgid "Add new pdc group"
+msgstr "Voeg nieuwe pdc groep toe"
 
-#: config/posttypes.php:178 config/posttypes.php:179
-msgid "Add new pdc maintheme"
-msgstr "Voeg pdc hoofdthema toe"
+#: config/posttypes.php:178
+msgid "Edit pdc group"
+msgstr "Wijzig pdc groep"
 
-#: config/posttypes.php:178 config/posttypes.php:180
-msgid "Edit pdc maintheme"
-msgstr "Wijzig pdc hoofdthema"
+#: config/posttypes.php:179
+msgid "New pdc group"
+msgstr "Nieuwe pdc groep"
 
-#: config/posttypes.php:182 
-msgid "View pdc maintheme"
-msgstr "Bekijk pdc hoofdthema"
+#: config/posttypes.php:180
+msgid "View pdc group"
+msgstr "Bekijk pdc groep"
 
-#: config/posttypes.php:183 
-msgid "View pdc mainthemes"
-msgstr "Bekijk pdc hoofdthema/'s"
+#: config/posttypes.php:181
+msgid "View pdc groups"
+msgstr "Bekijk pdc groepen"
 
-#: config/posttypes.php:184 
-msgid "Search pdc mainthemes"
-msgstr "Zoek pdc hoofdthema"
+#: config/posttypes.php:182
+msgid "Search pdc groups"
+msgstr "Zoek pdc groepen"
 
-#: config/posttypes.php:185 
-msgid "No pdc mainthemes found."
-msgstr "Geen pdc hoofdthema gevonden"
+#: config/posttypes.php:183
+msgid "No pdc groups found."
+msgstr "Geen pdc groepen gevonden."
 
-#: config/posttypes.php:186 
-msgid "No pdc mainthemes found in Trash."
-msgstr "Geen pdc hoofdthema gevonden in de prullenbak"
+#: config/posttypes.php:184
+msgid "No pdc groups found in Trash."
+msgstr "Geen pdc groepen gevonden in de prullenbak."
 
-#: config/posttypes.php:187 
-msgid "All pdc mainthemes"
-msgstr "Alle pdc hoofdthema/'s"
+#: config/posttypes.php:185
+msgid "All pdc groups"
+msgstr "Alle pdc groepen"
 
-#: config/posttypes.php:188 
-msgid "PDC mainthemes archives"
-msgstr "PDC hoofdthema/'s archieven"
+#: config/posttypes.php:186
+msgid "PDC groups archives"
+msgstr "PDC groepen archief"
 
-#: config/posttypes.php:189 
-msgid "PDC maintheme attributes"
-msgstr "PDC hoofdthema attributen"
+#: config/posttypes.php:187
+msgid "PDC group attributes"
+msgstr "PDC groepen attributen"
 
-#: config/posttypes.php:190 
-msgid "Insert into pdc maintheme"
-msgstr "Voeg toe aan pdc hoofdthema"
+#: config/posttypes.php:187
+msgid "Insert into pdc group"
+msgstr "Voeg toe aan pdc groep"
 
-#: config/posttypes.php:193 config/posttypes.php:194 config/posttypes.php:210 
-msgid "PDC mainthemes"
-msgstr "PDC hoofdthemas"
+#: config/posttypes.php:191 config/posttypes.php:192 config/posttypes.php:208
+msgid "PDC groups"
+msgstr "PDC groepen"
+
+#: config/posttypes.php:193
+msgid "Parent pdc groups:"
+msgstr "Parent pdc groepen:"
 
 #: config/settings.php:7
 msgid "Portal"
@@ -492,12 +494,20 @@ msgid "URL for PDC items in the portal, eg \"onderwerp\""
 msgstr "URL voor PDC items in de portal, bv \"onderwerp\""
 
 #: config/settings.php:25
+msgid "PDC item theme in \"View in portal\" slug"
+msgstr "PDC item \"View in portal\" URL bevat thema"
+
+#: config/settings.php:26
+msgid "Include theme, of PDC item, in \"View in portal\" slug?"
+msgstr "PDC item \"View in portal\" URL bevat thema?"
+
+#: config/settings.php:31
 msgid "PDC item subtheme in \"View in portal\" slug"
 msgstr "PDC item \"View in portal\" URL bevat subthema"
 
-#: config/settings.php:26
-msgid "Include subtheme, of PDC item, in \"View in portal\" slug? Default only uses the theme."
-msgstr "PDC item \"View in portal\" URL bevat subthema? Standaard wordt alleen het thema gebruikt."
+#: config/settings.php:32
+msgid "Include subtheme, of PDC item, in \"View in portal\" slug?"
+msgstr "PDC item \"View in portal\" URL bevat subthema?"
 
 #: config/settings_pages.php:9
 msgid "PDC settings"

@@ -211,6 +211,66 @@ msgstr ""
 msgid "PDC owner"
 msgstr ""
 
+#: config/p2p_connections.php:28
+msgid "PDC group"
+msgstr ""
+
+#: config/posttypes.php:174 config/posttypes.php:175 config/posttypes.php:207
+msgid "PDC group"
+msgstr ""
+
+#: config/posttypes.php:176 config/posttypes.php:177
+msgid "Add new pdc group"
+msgstr ""
+
+#: config/posttypes.php:178
+msgid "Edit pdc group"
+msgstr ""
+
+#: config/posttypes.php:179
+msgid "New pdc group"
+msgstr ""
+
+#: config/posttypes.php:180
+msgid "View pdc group"
+msgstr ""
+
+#: config/posttypes.php:181
+msgid "View pdc groups"
+msgstr ""
+
+#: config/posttypes.php:182
+msgid "Search pdc groups"
+msgstr ""
+
+#: config/posttypes.php:183
+msgid "No pdc groups found."
+msgstr ""
+
+#: config/posttypes.php:184
+msgid "No pdc groups found in Trash."
+msgstr ""
+
+#: config/posttypes.php:185
+msgid "All pdc groups"
+msgstr ""
+
+#: config/posttypes.php:186
+msgid "PDC groups archives"
+msgstr ""
+
+#: config/posttypes.php:187
+msgid "PDC group attributes"
+msgstr ""
+
+#: config/posttypes.php:187
+msgid "Insert into pdc group"
+msgstr ""
+
+#: config/posttypes.php:191 config/posttypes.php:192 config/posttypes.php:208
+msgid "PDC groups"
+msgstr ""
+
 #: config/posttypes.php:13 config/posttypes.php:14
 msgid "Add new pdc item"
 msgstr ""
@@ -416,11 +476,19 @@ msgid "URL for PDC items in the portal, eg \"onderwerp\""
 msgstr ""
 
 #: config/settings.php:25
-msgid "PDC item subtheme in "View in portal" slug"
+msgid "PDC item theme in \"View in portal\" slug"
 msgstr ""
 
 #: config/settings.php:26
-msgid "Include subtheme, of PDC item, in \"View in portal\" slug? Default only uses the theme."
+msgid "Include theme, of PDC item, in \"View in portal\" slug?"
+msgstr ""
+
+#: config/settings.php:31
+msgid "PDC item subtheme in "View in portal" slug"
+msgstr ""
+
+#: config/settings.php:32
+msgid "Include subtheme, of PDC item, in \"View in portal\" slug?"
 msgstr ""
 
 #: config/settings_pages.php:9

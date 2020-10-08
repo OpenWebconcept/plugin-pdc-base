@@ -21,7 +21,6 @@ jQuery(document).ready(function ($) {
         itemCategoryMetaboxWrapper, 
         itemSubcategoryMetaboxWrapper, 
         itemCategoryConnectionTableRow, 
-        itemCategoryMetaboxWrapper, 
         itemSubcategoryConnectionTableRow, 
         postPublishButton, 
         $
@@ -36,7 +35,6 @@ jQuery(document).ready(function ($) {
  * @param {string} itemCategoryMetaboxWrapper 
  * @param {string} itemSubcategoryMetaboxWrapper 
  * @param {string} itemCategoryConnectionTableRow 
- * @param {string} itemCategoryMetaboxWrapper 
  * @param {string} itemSubcategoryConnectionTableRow 
  * @param {string} postPublishButton 
  * @param {Object} $ 
@@ -47,7 +45,6 @@ function metaboxValidationAfterPageLoad(
     itemCategoryMetaboxWrapper, 
     itemSubcategoryMetaboxWrapper, 
     itemCategoryConnectionTableRow, 
-    itemCategoryMetaboxWrapper, 
     itemSubcategoryConnectionTableRow, 
     postPublishButton, 
     $

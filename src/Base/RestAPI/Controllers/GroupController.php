@@ -46,16 +46,16 @@ class GroupController extends BaseController
     {
         $id = (int) $request->get_param('id');
 
-        $thema = (new Group)
+        $group = (new Group)
             ->query(apply_filters('owc/pdc/rest-api/group/query/single', []))
             ->find($id);
 
-        if (!$thema) {
+        if (!$group) {
             return new WP_Error('no_item_found', sprintf('Group with ID "%d" not found', $id), [
                 'status' => 404,
             ]);
         }
 
-        return $thema;
+        return $group;
     }
 }
