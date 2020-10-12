@@ -23,7 +23,6 @@ return [
          */
         'admin' => [
             OWC\PDC\Base\Admin\InterfaceServiceProvider::class,
-            OWC\PDC\Base\Admin\PostsToPostsServiceProvider::class,
         ]
 
     ],

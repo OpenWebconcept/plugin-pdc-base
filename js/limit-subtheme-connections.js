@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
     let subCategoryCategoryMetaboxWrapper       = '#p2p-to-pdc-category_to_pdc-subcategory';
     let subCategoryCategoryMetabox              = 'div[data-p2p_type="pdc-category_to_pdc-subcategory"]';
     let subCategoryCategoryConnectionTableRow   = 'div[data-p2p_type="pdc-category_to_pdc-subcategory"] > table.p2p-connections > tbody > tr';
-    let postPublishButton                       = 'div.edit-post-header__settings > button.editor-post-publish-button';
+    let postPublishButton                   = 'div.edit-post-header__settings > button.editor-post-publish-button__button';
     
     // create a binding for when the metabox changes
     watchMetaboxOnChange(subCategoryCategoryMetabox, subCategoryCategoryMetaboxWrapper, subCategoryCategoryConnectionTableRow, postPublishButton, $);
@@ -51,7 +51,7 @@ function metaboxValidationAfterPageLoad(
             $(subCategoryCategoryMetabox + '> div.p2p-create-connections').show();
             $(subCategoryCategoryMetaboxWrapper).css("border", "1px solid red");
         }
-    }, 3000);
+    }, 1000);
 }
 
 /**

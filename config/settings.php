@@ -35,8 +35,14 @@ return [
                 ],
                 'pdc_use_group_cpt' => [
                     'name' => __('Use the group layer', 'pdc-base'),
-                    'desc' => __('Use the group layer as connection between a pdc-item.', 'pdc-base'),
+                    'desc' => __('Use the group layer as connection between a pdc-item and a pdc-group.', 'pdc-base'),
                     'id'   => 'setting_pdc-group',
+                    'type' => 'checkbox',
+                ],
+                'pdc_use_identifications' => [
+                    'name' => __('Use identifications', 'pdc-base'),
+                    'desc' => __('DigiD, eHerkenning and eIDAS.', 'pdc-base'),
+                    'id'   => 'setting_identifications',
                     'type' => 'checkbox',
                 ]
             ]

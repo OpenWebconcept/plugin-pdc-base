@@ -22,7 +22,18 @@ On the 'PDC instellingen pagina' there are 2 settings optional for extending the
 The 'view in portal' button can be found in de wp-admin bar on the editor pages of the pdc-items or inside the 'quick edit' blocks on the overview page of pdc-items.
 With these optional settings the theme and subtheme can be included into the 'view in portal' url.
 
-Finally, there is a possibility to use a fourth layer called 'pdc-groups'. The hierarchy, when the fourth layer setting is checked, is pdc-theme -> pdc-subtheme -> pdc-group -> pdc-item.
+Additionally, there is a possibility to use a fourth layer called 'pdc-groups'. The hierarchy, when the fourth layer setting is checked, is pdc-theme -> pdc-subtheme -> pdc-group -> pdc-item.
+
+Finally, pdc-items can support multiple identifications for scheduling an appointment. Currently there are meta settings for DigiD, eHerkenning and eIDAS. You can set those values in the editor of a pdc-item.
+
+### Connections
+
+Some connections between posttypes are required for the portal to work properly. The required connections and in the correct order when filling the website:
+
+1. pdc-theme -> none
+2. pdc-subtheme -> pdc-theme
+3. pdc-group -> pdc-item, pdc-theme and pdc-subtheme (pdc-groups usage is optional)
+4. pdc-item -> pdc-theme, pdc-subtheme
 
 ### Filters & Actions
 

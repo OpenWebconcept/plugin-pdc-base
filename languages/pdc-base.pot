@@ -42,7 +42,7 @@ msgstr ""
 msgid "Use this option to add an comma separated list of synonyms or related terms"
 msgstr ""
 
-#: config/metaboxes.php:32 config/metaboxes.php:49
+#: config/metaboxes.php:32 config/metaboxes.php:49 config/metaboxes.php:215 config/metaboxes.php:247 config/metaboxes.php:279
 msgid "Active"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgid "Appointment button title"
 msgstr ""
 
 #: config/metaboxes.php:61
-msgid "Leave empty for default value usage"
+msgid "Leave empty for default value usage."
 msgstr ""
 
 #: config/metaboxes.php:66
@@ -191,6 +191,54 @@ msgstr ""
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
+#: config/metaboxes.php:216
+msgid "Use DigiD for identification."
+msgstr ""
+
+#: config/metaboxes.php:226
+msgid "DigiD button title"
+msgstr ""
+
+#: config/metaboxes.php:231
+msgid "DigiD button url"
+msgstr ""
+
+#: config/metaboxes.php:236
+msgid "DigiD descriptive text"
+msgstr ""
+
+#: config/metaboxes.php:248
+msgid "Use eHerkennning for identification."
+msgstr ""
+
+#: config/metaboxes.php:258
+msgid "eHerkenning button title"
+msgstr ""
+
+#: config/metaboxes.php:263
+msgid "eHerkenning button url"
+msgstr ""
+
+#: config/metaboxes.php:268
+msgid "eHerkenning descriptive text"
+msgstr ""
+
+#: config/metaboxes.php:280
+msgid "Use eIDAS for identification."
+msgstr ""
+
+#: config/metaboxes.php:290
+msgid "eIDAS button title"
+msgstr ""
+
+#: config/metaboxes.php:295
+msgid "eIDAS button url"
+msgstr ""
+
+#: config/metaboxes.php:300
+msgid "eIDAS descriptive text"
+msgstr ""
+
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
 #: config/posttypes.php:83
 msgid "PDC item"
@@ -269,6 +317,22 @@ msgstr ""
 
 #: config/posttypes.php:191 config/posttypes.php:192 config/posttypes.php:208
 msgid "PDC groups"
+msgstr ""
+
+#: config/settings.php:37
+msgid "Use the group layer"
+msgstr ""
+
+#: config/settings.php:38
+msgid "Use the group layer as connection between a pdc-item and a pdc-group."
+msgstr ""
+
+#: config/settings.php:43
+msgid "Use identifications"
+msgstr ""
+
+#: config/settings.php:44
+msgid "DigiD, eHerkenning and eIDAS.s"
 msgstr ""
 
 #: config/posttypes.php:13 config/posttypes.php:14

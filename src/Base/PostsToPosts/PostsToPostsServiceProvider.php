@@ -37,6 +37,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
     {
         $this->plugin->loader->addAction('init', $this, 'extendPostsToPostsConnections');
         $this->plugin->loader->addAction('init', $this, 'registerPostsToPostsConnections');
+        $this->plugin->loader->addAction('admin_enqueue_scripts', $this, 'limitPostsToPostsConnections', 10);
         $this->plugin->loader->addFilter('p2p_connectable_args', $this, 'filterP2PConnectableArgs', 10);
     }
 
@@ -129,5 +130,28 @@ class PostsToPostsServiceProvider extends ServiceProvider
         $args['p2p:per_page'] = 25;
 
         return $args;
+    }
+
+    /**
+     * Limit the PostToPost connections inside of the editor for specific posttypes
+     *
+     * @param string $hook
+     * @return void
+     */
+    public function limitPostsToPostsConnections(string $hook): void
+    {
+        global $post_type;
+
+        if ($post_type == 'pdc-item' && 'edit.php' != $hook) {
+            wp_enqueue_script('limit-item-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-item-connections.js', [], false, true);
+        }
+
+        if ($post_type == 'pdc-subcategory' && 'edit.php' != $hook) {
+            wp_enqueue_script('limit-subtheme-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-subtheme-connections.js');
+        }
+
+        if ($post_type == 'pdc-group' && 'edit.php' != $hook) {
+            wp_enqueue_script('limit-group-subtheme-connection', $this->plugin->getPluginUrl() . '/js/limit-group-connections.js');
+        }
     }
 }

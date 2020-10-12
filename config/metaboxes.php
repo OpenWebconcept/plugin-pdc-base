@@ -58,7 +58,7 @@ return [
                 ],
                 'title'   => [
                     'name' => __('Appointment button title', 'pdc-base'),
-                    'desc' => __('Leave empty for default value usage', 'pdc-base'),
+                    'desc' => __('Leave empty for default value usage.', 'pdc-base'),
                     'id'   => 'pdc_afspraak_title',
                     'type' => 'text',
                 ],
@@ -204,6 +204,114 @@ return [
                     'type' => 'textarea',
                     'cols' => 20,
                     'rows' => 5,
+                ],
+            ],
+            'digid' => [
+                'heading' => [
+                    'type' => 'heading',
+                    'name' => __('DigiD', 'pdc-base'),
+                ],
+                'active'  => [
+                    'name'    => __('Active', 'pdc-base'),
+                    'desc'    => __('Use DigiD for identification.', 'pdc-base'),
+                    'id'      => 'digid_active',
+                    'type'    => 'radio',
+                    'options' => [
+                        '1' => 'Ja',
+                        '0' => 'Nee',
+                    ],
+                    'std'     => '0',
+                ],
+                'button-title'   => [
+                    'name' => __('DigiD button title', 'pdc-base'),
+                    'id'   => 'digid_button_title',
+                    'desc' => __('Leave empty for default value usage.', 'pdc-base'),
+                    'type' => 'text',
+                ],
+                'button-url'   => [
+                    'name' => __('DigiD button URL', 'pdc-base'),
+                    'id'   => 'digid_button_url',
+                    'type' => 'text',
+                ],
+                'descriptive-text'   => [
+                    'name' => __('DigiD descriptive text', 'pdc-base'),
+                    'id'   => 'digid_descriptive_text',
+                    'type' => 'wysiwyg',
+                    'options' => array(
+                        'textarea_rows' => 4,
+                    ),
+                ],
+            ],
+            'eherkenning' => [
+                'heading' => [
+                    'type' => 'heading',
+                    'name' => __('eHerkenning', 'pdc-base'),
+                ],
+                'active'  => [
+                    'name'    => __('Active', 'pdc-base'),
+                    'desc'    => __('Use eHerkenning for identification.', 'pdc-base'),
+                    'id'      => 'eherkenning_active',
+                    'type'    => 'radio',
+                    'options' => [
+                        '1' => 'Ja',
+                        '0' => 'Nee',
+                    ],
+                    'std'     => '0',
+                ],
+                'button-title'   => [
+                    'name' => __('eHerkenning button title', 'pdc-base'),
+                    'id'   => 'eherkenning_button_title',
+                    'desc' => __('Leave empty for default value usage.', 'pdc-base'),
+                    'type' => 'text',
+                ],
+                'button-url'   => [
+                    'name' => __('eHerkenning button URL', 'pdc-base'),
+                    'id'   => 'eherkenning_button_url',
+                    'type' => 'text',
+                ],
+                'descriptive-text'   => [
+                    'name' => __('eHerkenning descriptive text', 'pdc-base'),
+                    'id'   => 'eherkenning_descriptive_text',
+                    'type' => 'wysiwyg',
+                    'options' => array(
+                        'textarea_rows' => 4,
+                    ),
+                ],
+            ],
+            'eidas' => [
+                'heading' => [
+                    'type' => 'heading',
+                    'name' => __('eIDAS', 'pdc-base'),
+                ],
+                'active'  => [
+                    'name'    => __('Active', 'pdc-base'),
+                    'desc'    => __('Use eIDAS for identification.', 'pdc-base'),
+                    'id'      => 'eidas_active',
+                    'type'    => 'radio',
+                    'options' => [
+                        '1' => 'Ja',
+                        '0' => 'Nee',
+                    ],
+                    'std'     => '0',
+                ],
+                'button-title'   => [
+                    'name' => __('eIDAS button title', 'pdc-base'),
+                    'id'   => 'eidas_button_title',
+                    'desc' => __('Leave empty for default value usage.', 'pdc-base'),
+                    'type' => 'text',
+                ],
+                'button-url'   => [
+                    'name' => __('eIDAS button URL', 'pdc-base'),
+                    'id'   => 'eidas_button_url',
+                    'type' => 'text',
+                ],
+                'descriptive-text'   => [
+                    'name' => __('eIDAS descriptive text', 'pdc-base'),
+                    'id'   => 'eidas_descriptive_text',
+                    'type' => 'wysiwyg',
+                    'options' => array(
+                        'textarea_rows' => 4,
+                    ),
                 ],
             ],
         ],

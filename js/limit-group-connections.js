@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
     let groupCategoryMetaboxWrapper         = '#p2p-to-pdc-category_to_pdc-group';
     let groupCategoryMetabox                = 'div[data-p2p_type="pdc-category_to_pdc-group"]';
     let groupCategoryConnectionTableRow     = 'div[data-p2p_type="pdc-category_to_pdc-group"] > table.p2p-connections > tbody > tr';
-    let postPublishButton                   = 'div.edit-post-header__settings > button.editor-post-publish-button';
+    let postPublishButton                   = 'div.edit-post-header__settings > button.editor-post-publish-button__button';
     
     // create a binding for when the metabox changes
     watchMetaboxOnChange(groupSubcategoryMetabox, groupSubcategoryMetaboxWrapper, groupSubCategoryConnectionTableRow, groupItemConnectionTableRow, groupCategoryConnectionTableRow, postPublishButton, $);
@@ -104,7 +104,7 @@ function metaboxValidationAfterPageLoad(
         {
             $(postPublishButton).prop("disabled",false);
         }
-    }, 3000);
+    }, 1000);
 }
 
 /**

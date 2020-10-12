@@ -23,6 +23,7 @@ return [
                 'synonyms'          => OWC\PDC\Base\RestAPI\ItemFields\SynonymsField::class,
                 'taxonomies'        => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
                 'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
+                'identifications'   => OWC\PDC\Base\RestAPI\ItemFields\IdentificationsField::class,
             ],
         ],
         'subthema' => [

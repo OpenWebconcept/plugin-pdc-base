@@ -19,21 +19,21 @@ class SettingsPageOptions
     /**
      * Include theme in the URL to the portal website
      *
-     * @return string|null
+     * @return bool
      */
-    public function themeInPortalURL(): ?string
+    public function themeInPortalURL(): bool
     {
-        return $this->settings['_owc_setting_include_theme_in_portal_url'] ?? null;
+        return $this->settings['_owc_setting_include_theme_in_portal_url'] ?? false;
     }
 
     /**
      * Include subtheme in the URL to the portal website
      *
-     * @return string|null
+     * @return bool
      */
-    public function subthemeInPortalURL(): ?string
+    public function subthemeInPortalURL(): bool
     {
-        return $this->settings['_owc_setting_include_subtheme_in_portal_url'] ?? null;
+        return $this->settings['_owc_setting_include_subtheme_in_portal_url'] ?? false;
     }
 
     /**
@@ -55,22 +55,19 @@ class SettingsPageOptions
     }
 
     /**
+     * @return bool
+     */
+    public function useIdentifications(): ?bool
+    {
+        return $this->settings['_owc_setting_identifications'] ?? false;
+    }
+
+    /**
      * @return boolean
      */
     public function useGroupLayer(): bool
     {
-        return $this->getPostTypeSetting('pdc-group') === '1';
-    }
-
-    /**
-     * Get option value
-     *
-     * @param string $postTypeName
-     * @return string|null
-     */
-    public function getPostTypeSetting($postTypeName): ?string
-    {
-        return get_option('_owc_pdc_base_settings')['_owc_setting_' . $postTypeName] ?? null;
+        return get_option('_owc_pdc_base_settings')['_owc_setting_pdc-group'] ?? false;
     }
 
     public static function make(): self
@@ -80,7 +77,8 @@ class SettingsPageOptions
             '_owc_setting_portal_pdc_item_slug'             => '',
             '_owc_setting_include_theme_in_portal_url'      => 0,
             '_owc_setting_include_subtheme_in_portal_url'   => 0,
-            '_owc_setting_pdc-group'                        => 0
+            '_owc_setting_pdc-group'                        => 0,
+            '_owc_setting_identifications'                  => 0
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

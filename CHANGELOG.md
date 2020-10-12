@@ -2,6 +2,12 @@
 
 ## Version 3.1.1
 
+### Added
+
+-   Identifications meta fields in editor pdc-items
+-   Identifications can be turned on/off via setting
+-   Identifications in api results pdc-items endpoint
+
 ### Fix
 
 -   Add optional cpt pdc-group
