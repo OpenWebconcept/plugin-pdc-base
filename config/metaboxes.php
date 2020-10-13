@@ -314,6 +314,42 @@ return [
                     ),
                 ],
             ],
+            'general_identification' => [
+                'heading' => [
+                    'type' => 'heading',
+                    'name' => __('General identification', 'pdc-base'),
+                ],
+                'active'  => [
+                    'name'    => __('Active', 'pdc-base'),
+                    'desc'    => __('Use general identification.', 'pdc-base'),
+                    'id'      => 'general_identification_active',
+                    'type'    => 'radio',
+                    'options' => [
+                        '1' => 'Ja',
+                        '0' => 'Nee',
+                    ],
+                    'std'     => '0',
+                ],
+                'button-title'   => [
+                    'name' => __('General identification button title', 'pdc-base'),
+                    'id'   => 'general_identification_button_title',
+                    'desc' => __('Leave empty for default value usage.', 'pdc-base'),
+                    'type' => 'text',
+                ],
+                'button-url'   => [
+                    'name' => __('General identification button URL', 'pdc-base'),
+                    'id'   => 'general_identification_button_url',
+                    'type' => 'text',
+                ],
+                'descriptive-text'   => [
+                    'name' => __('General_identification descriptive text', 'pdc-base'),
+                    'id'   => 'general_identification_descriptive_text',
+                    'type' => 'wysiwyg',
+                    'options' => array(
+                        'textarea_rows' => 4,
+                    ),
+                ],
+            ],
         ],
     ],
 ];

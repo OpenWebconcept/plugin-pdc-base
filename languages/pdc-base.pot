@@ -239,6 +239,26 @@ msgstr ""
 msgid "eIDAS descriptive text"
 msgstr ""
 
+#: config/metaboxes.php:320
+msgid "General identification"
+msgstr ""
+
+#: config/metaboxes.php:324
+msgid "Use general identification."
+msgstr ""
+
+#: config/metaboxes.php:334
+msgid "General identification button title"
+msgstr ""
+
+#: config/metaboxes.php:340
+msgid "General identification button URL"
+msgstr ""
+
+#: config/metaboxes.php:345
+msgid "General_identification descriptive text"
+msgstr ""
+
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
 #: config/posttypes.php:83
 msgid "PDC item"

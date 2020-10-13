@@ -41,6 +41,7 @@ class IdentificationsField extends CreatesFields
         $identifications['digid']       = $this->createDigiD($post);
         $identifications['eherkenning'] = $this->createEherkenning($post);
         $identifications['eidas']       = $this->createEidas($post);
+        $identifications['algemeen']    = $this->createGeneral($post);
 
         return $identifications;
     }
@@ -96,6 +97,24 @@ class IdentificationsField extends CreatesFields
             'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_eidas_button_title', true) ?: '')),
             'url'    => esc_url(get_post_meta($post->ID, '_owc_eidas_button_url', true) ?: ''),
             'meta'   => esc_attr(get_post_meta($post->ID, '_owc_eidas_descriptive_text', true) ?: ''),
+        ];
+    }
+
+    private function createGeneral(WP_Post $post): array
+    {
+        $eidasActive = get_post_meta($post->ID, '_owc_general_identification_active', true);
+
+        if (!$eidasActive) {
+            return [
+                'active' => false
+            ];
+        }
+
+        return [
+            'active' => true,
+            'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_general_identification_button_title', true) ?: '')),
+            'url'    => esc_url(get_post_meta($post->ID, '_owc_general_identification_button_url', true) ?: ''),
+            'meta'   => esc_attr(get_post_meta($post->ID, '_owc_general_identification_descriptive_text', true) ?: ''),
         ];
     }
 }

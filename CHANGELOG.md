@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.2
+
+### Added
+
+-   General identifications meta fields in editor pdc-items
+
 ## Version 3.1.1
 
 ### Added
