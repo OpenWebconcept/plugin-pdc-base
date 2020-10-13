@@ -14,6 +14,28 @@ class RestAPIServiceProviderTest extends TestCase
     {
         \WP_Mock::setUp();
 
+        \WP_Mock::userFunction('wp_parse_args', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_pdc_item_slug'             => '',
+                '_owc_setting_include_theme_in_portal_url'      => 0,
+                '_owc_setting_include_subtheme_in_portal_url'   => 0,
+                '_owc_setting_pdc-group'                        => 0,
+                '_owc_setting_identifications'                  => 0
+            ]
+        ]);
+
+        \WP_Mock::userFunction('get_option', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_pdc_item_slug'             => '',
+                '_owc_setting_include_theme_in_portal_url'      => 0,
+                '_owc_setting_include_subtheme_in_portal_url'   => 0,
+                '_owc_setting_pdc-group'                        => 0,
+                '_owc_setting_identifications'                  => 0
+            ]
+        ]);
+
         $this->config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
@@ -48,15 +70,15 @@ class RestAPIServiceProviderTest extends TestCase
         $fields = [
             'items' => [
                 'fields' => [
-                'taxonomies'        => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
-                'connected'         => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
-                'image'             => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'appointment'       => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
-                'forms'             => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
-                'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
-                'links'             => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
-                'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
-                'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
+                    'taxonomies'        => OWC\PDC\Base\RestAPI\ItemFields\TaxonomyField::class,
+                    'connected'         => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
+                    'image'             => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                    'appointment'       => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
+                    'forms'             => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
+                    'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
+                    'links'             => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
+                    'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
+                    'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
                 ]
             ]
         ];
@@ -82,8 +104,8 @@ class RestAPIServiceProviderTest extends TestCase
                 'methods'       => ['GET', 'POST']
             ],
             'owc/pdc/v1' => [
-              'endpoint_stub' => '/owc/pdc/v1',
-              'methods'       => [ 'GET' ]
+                'endpoint_stub' => '/owc/pdc/v1',
+                'methods'       => ['GET']
             ]
         ];
 

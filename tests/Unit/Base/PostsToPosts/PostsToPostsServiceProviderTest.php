@@ -13,6 +13,28 @@ class PostsToPostsServiceProviderTest extends TestCase
     public function setUp(): void
     {
         \WP_Mock::setUp();
+
+        \WP_Mock::userFunction('wp_parse_args', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_pdc_item_slug'             => '',
+                '_owc_setting_include_theme_in_portal_url'      => 0,
+                '_owc_setting_include_subtheme_in_portal_url'   => 0,
+                '_owc_setting_pdc-group'                        => 0,
+                '_owc_setting_identifications'                  => 0
+            ]
+        ]);
+
+        \WP_Mock::userFunction('get_option', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_pdc_item_slug'             => '',
+                '_owc_setting_include_theme_in_portal_url'      => 0,
+                '_owc_setting_include_subtheme_in_portal_url'   => 0,
+                '_owc_setting_pdc-group'                        => 0,
+                '_owc_setting_identifications'                  => 0
+            ]
+        ]);
     }
 
     public function tearDown(): void
@@ -36,6 +58,20 @@ class PostsToPostsServiceProviderTest extends TestCase
             $service,
             'registerPostsToPostsConnections',
         ])->once();
+
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'init',
+            $service,
+            'extendPostsToPostsConnections',
+        ])->once();
+
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'admin_enqueue_scripts',
+            $service,
+            'limitPostsToPostsConnections',
+            10,
+        ])->once();
+
 
         $plugin->loader->shouldReceive('addFilter')->withArgs([
             'p2p_connectable_args',
@@ -87,9 +123,9 @@ class PostsToPostsServiceProviderTest extends TestCase
         \WP_Mock::userFunction(
             'p2p_register_connection_type',
             [
-            'args'   => null,
-            'times'  => '2',
-            'return' => true,
+                'args'   => null,
+                'times'  => '2',
+                'return' => true,
             ]
         );
 

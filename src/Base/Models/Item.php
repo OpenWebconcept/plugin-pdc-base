@@ -270,14 +270,16 @@ class Item
 
         $connectedPdcCategory       = $this->getConnected('pdc-item_to_pdc-category');
         $connectedPdcSubCategory    = $this->getConnected('pdc-item_to_pdc-subcategory');
+        $includeThemeSetting        = get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_theme_in_portal_url'] ?? false;
+        $includeSubThemeSetting     = get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url'] ?? false;
 
         // add thema to the url
-        if ($connectedPdcCategory && get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_theme_in_portal_url']) {
+        if ($connectedPdcCategory && $includeThemeSetting) {
             $portalURL .= trailingslashit($connectedPdcCategory->post_name);
         }
 
         // add subtheme to the url
-        if ($connectedPdcSubCategory && get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url']) {
+        if ($connectedPdcSubCategory && $includeSubThemeSetting) {
             $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
         }
 
