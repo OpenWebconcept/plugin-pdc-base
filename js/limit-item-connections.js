@@ -11,8 +11,8 @@ jQuery(document).ready(function ($) {
     let postPublishButton                   = 'div.edit-post-header__settings > button.editor-post-publish-button__button';
     
     // create a binding for when the metabox changes
-    watchMetaboxOnChange(itemCategoryMetabox, itemCategoryMetaboxWrapper, itemCategoryConnectionTableRow, itemSubcategoryConnectionTableRow, postPublishButton, $);
-    watchMetaboxOnChange(itemSubcategoryMetabox, itemSubcategoryMetaboxWrapper, itemSubcategoryConnectionTableRow, itemCategoryConnectionTableRow, postPublishButton, $);
+    watchMetaboxOnChange(itemCategoryMetabox, itemCategoryMetaboxWrapper, itemCategoryConnectionTableRow, itemSubcategoryConnectionTableRow, postPublishButton, true, $);
+    watchMetaboxOnChange(itemSubcategoryMetabox, itemSubcategoryMetaboxWrapper, itemSubcategoryConnectionTableRow, itemCategoryConnectionTableRow, postPublishButton, false, $);
 
     // wait before the dom is loaded
     metaboxValidationAfterPageLoad(
@@ -57,9 +57,8 @@ function metaboxValidationAfterPageLoad(
             $(itemCategoryMetaboxWrapper).css("border", "");
         }
 
-        if($(itemSubcategoryConnectionTableRow).length == 1)
+        if($(itemSubcategoryConnectionTableRow).length >= 1)
         {
-            $(itemSubcategoryMetabox + '> div.p2p-create-connections').hide();
             $(itemSubcategoryMetaboxWrapper).css("border", "");
         }
 
@@ -81,7 +80,7 @@ function metaboxValidationAfterPageLoad(
             return true;
         }
 
-        if($(itemCategoryConnectionTableRow).length == 1 && $(itemSubcategoryConnectionTableRow).length == 1)
+        if($(itemCategoryConnectionTableRow).length == 1 && $(itemSubcategoryConnectionTableRow).length >= 1)
         {
             $(postPublishButton).prop("disabled",false);
             return false;
@@ -99,12 +98,14 @@ function metaboxValidationAfterPageLoad(
  * @param {string} postPublishButton 
  * @param {Object} $ 
  */
-function watchMetaboxOnChange(metabox, metaboxWrapper, mainConnectionTableRow, subConnectionTableRow, postPublishButton, $)
+function watchMetaboxOnChange(metabox, metaboxWrapper, mainConnectionTableRow, subConnectionTableRow, postPublishButton, hideMainConnection, $)
 {
     $(metabox).bind("DOMSubtreeModified", function() {	
         if($(mainConnectionTableRow).length == 1)
 		{
-            $(metabox  + '> div.p2p-create-connections').hide();
+            if(hideMainConnection) {
+                $(metabox  + '> div.p2p-create-connections').hide();
+            }
             $(metaboxWrapper).css("border", "");
         }
         
@@ -119,7 +120,7 @@ function watchMetaboxOnChange(metabox, metaboxWrapper, mainConnectionTableRow, s
             $(postPublishButton).prop("disabled",true);
         }
 
-        if($(mainConnectionTableRow).length == 1 && $(subConnectionTableRow).length == 1)
+        if($(mainConnectionTableRow).length >= 1 && $(subConnectionTableRow).length >= 1)
         {
             $(postPublishButton).prop("disabled",false);
         }

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.3
+
+### Added
+
+-   Allow multiple subthemes in connection between pdc-item & subthemes
+
 ## Version 3.1.2
 
 ### Added
