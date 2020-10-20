@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.4
+
+### Added
+
+-   Allow multiple themes in connection between pdc-item & themes
+
 ## Version 3.1.3
 
 ### Added
