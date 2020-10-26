@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.5
+
+### Refactor
+
+-   Allow multiple connections between group/items and group/subthemes in group editor
+
 ## Version 3.1.4
 
 ### Added
