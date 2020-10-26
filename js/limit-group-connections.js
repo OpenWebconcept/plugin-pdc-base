@@ -63,9 +63,8 @@ function metaboxValidationAfterPageLoad(
             $(groupItemMetaboxWrapper).css("border", "");
         }
 
-        if($(groupSubCategoryConnectionTableRow).length == 1)
+        if($(groupSubCategoryConnectionTableRow).length >= 1)
         {
-            $(groupSubcategoryMetabox + '> div.p2p-create-connections').hide();
             $(groupSubcategoryMetaboxWrapper).css("border", "");
         }
 
@@ -98,7 +97,7 @@ function metaboxValidationAfterPageLoad(
             $(postPublishButton).prop("disabled",true);
         }
 
-        if($(groupSubCategoryConnectionTableRow).length == 1 && $(groupItemConnectionTableRow).length >= 1 && $(groupCategoryConnectionTableRow).length == 1)
+        if($(groupSubCategoryConnectionTableRow).length >= 1 && $(groupItemConnectionTableRow).length >= 1 && $(groupCategoryConnectionTableRow).length == 1)
         {
             $(postPublishButton).prop("disabled",false);
         }

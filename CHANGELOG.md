@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.6
+
+### Fix
+
+-   Multiple connections between group/subthemes, in group editor, on pageload
+
 ## Version 3.1.5
 
 ### Refactor
