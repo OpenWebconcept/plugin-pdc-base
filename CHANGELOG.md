@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.7
+
+### Refactor
+
+-   Add default value's to identifications button title and description
+
 ## Version 3.1.6
 
 ### Fix
