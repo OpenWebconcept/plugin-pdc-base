@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.9
+
+### Feat
+
+-   Add translations
+
 ## Version 3.1.8
 
 ### Feat
