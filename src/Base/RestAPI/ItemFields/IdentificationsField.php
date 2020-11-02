@@ -61,6 +61,7 @@ class IdentificationsField extends CreatesFields
             'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_digid_button_title', true) ?: '')),
             'url'    => esc_url(get_post_meta($post->ID, '_owc_digid_button_url', true) ?: ''),
             'meta'   => esc_attr(get_post_meta($post->ID, '_owc_digid_descriptive_text', true) ?: ''),
+            'order'   => esc_attr(get_post_meta($post->ID, '_owc_digid_order', true) ?: ''),
         ];
     }
 
@@ -79,6 +80,7 @@ class IdentificationsField extends CreatesFields
             'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_eherkenning_button_title', true) ?: '')),
             'url'    => esc_url(get_post_meta($post->ID, '_owc_eherkenning_button_url', true) ?: ''),
             'meta'   => esc_attr(get_post_meta($post->ID, '_owc_eherkenning_descriptive_text', true) ?: ''),
+            'order'   => esc_attr(get_post_meta($post->ID, '_owc_eherkenning_order', true) ?: ''),
         ];
     }
 
@@ -97,6 +99,7 @@ class IdentificationsField extends CreatesFields
             'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_eidas_button_title', true) ?: '')),
             'url'    => esc_url(get_post_meta($post->ID, '_owc_eidas_button_url', true) ?: ''),
             'meta'   => esc_attr(get_post_meta($post->ID, '_owc_eidas_descriptive_text', true) ?: ''),
+            'order'   => esc_attr(get_post_meta($post->ID, '_owc_eidas_order', true) ?: ''),
         ];
     }
 
@@ -115,6 +118,7 @@ class IdentificationsField extends CreatesFields
             'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_general_identification_button_title', true) ?: '')),
             'url'    => esc_url(get_post_meta($post->ID, '_owc_general_identification_button_url', true) ?: ''),
             'meta'   => esc_attr(get_post_meta($post->ID, '_owc_general_identification_descriptive_text', true) ?: ''),
+            'order'   => esc_attr(get_post_meta($post->ID, '_owc_general_identification_order', true) ?: ''),
         ];
     }
 }

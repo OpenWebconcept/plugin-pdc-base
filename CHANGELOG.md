@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.8
+
+### Feat
+
+-   Add order field to identifications
+
 ## Version 3.1.7
 
 ### Refactor
