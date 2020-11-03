@@ -1,14 +1,12 @@
 <?php
 
 return [
-
     'base' => [
         'id'         => 'pdc_metadata',
         'title'      => __('Data', 'pdc-base'),
         'post_types' => ['pdc-item'],
         'context'    => 'normal',
         'priority'   => 'high',
-        // Auto save: true, false (default). Optional.
         'autosave'   => true,
         'fields'     => [
             'general'     => [
@@ -206,178 +204,6 @@ return [
                     'rows' => 5,
                 ],
             ],
-            'digid' => [
-                'heading' => [
-                    'type' => 'heading',
-                    'name' => __('DigiD', 'pdc-base'),
-                ],
-                'active'  => [
-                    'name'    => __('Active', 'pdc-base'),
-                    'desc'    => __('Use DigiD for identification.', 'pdc-base'),
-                    'id'      => 'digid_active',
-                    'type'    => 'radio',
-                    'options' => [
-                        '1' => 'Ja',
-                        '0' => 'Nee',
-                    ],
-                    'std'     => '0',
-                ],
-                'button-title'   => [
-                    'name' => __('DigiD button title', 'pdc-base'),
-                    'id'   => 'digid_button_title',
-                    'type' => 'text',
-                    'std'  => 'Aanvragen',
-                ],
-                'button-url'   => [
-                    'name' => __('DigiD button URL', 'pdc-base'),
-                    'id'   => 'digid_button_url',
-                    'type' => 'text',
-                ],
-                'descriptive-text'   => [
-                    'name' => __('DigiD descriptive text', 'pdc-base'),
-                    'id'   => 'digid_descriptive_text',
-                    'type' => 'wysiwyg',
-                    'options' => array(
-                        'textarea_rows' => 4,
-                    ),
-                    'std' => 'Log in met DigiD en uw persoonsgegevens zijn al ingevuld. <a href="/online-zaken-regelen-met-digid/">Lees meer over DigiD</a>.',
-                ],
-                'order' => [
-                    'name' => __('Order', 'pdc-base'),
-                    'id'   => 'digid_order',
-                    'type' => 'number',
-                    'desc' => __('Order in which the identification buttons will be displayed in.', 'pdc-base')
-                ]
-            ],
-            'eherkenning' => [
-                'heading' => [
-                    'type' => 'heading',
-                    'name' => __('eHerkenning', 'pdc-base'),
-                ],
-                'active'  => [
-                    'name'    => __('Active', 'pdc-base'),
-                    'desc'    => __('Use eHerkenning for identification.', 'pdc-base'),
-                    'id'      => 'eherkenning_active',
-                    'type'    => 'radio',
-                    'options' => [
-                        '1' => 'Ja',
-                        '0' => 'Nee',
-                    ],
-                    'std'     => '0',
-                ],
-                'button-title'   => [
-                    'name' => __('eHerkenning button title', 'pdc-base'),
-                    'id'   => 'eherkenning_button_title',
-                    'type' => 'text',
-                    'std'  => 'Aanvragen',
-                ],
-                'button-url'   => [
-                    'name' => __('eHerkenning button URL', 'pdc-base'),
-                    'id'   => 'eherkenning_button_url',
-                    'type' => 'text',
-                ],
-                'descriptive-text'   => [
-                    'name' => __('eHerkenning descriptive text', 'pdc-base'),
-                    'id'   => 'eherkenning_descriptive_text',
-                    'type' => 'wysiwyg',
-                    'options' => array(
-                        'textarea_rows' => 4,
-                    ),
-                    'std' => 'Log in met eHerkenning en uw organisatiegegevens zijn al ingevuld. <a href="/online-zaken-regelen-met-eherkenning/">Lees meer over eHerkenning</a>.',
-                ],
-                'order' => [
-                    'name' => __('Order', 'pdc-base'),
-                    'id'   => 'eherkenning_order',
-                    'type' => 'number',
-                    'desc' => __('Order in which the identification buttons will be displayed in.', 'pdc-base')
-                ]
-            ],
-            'eidas' => [
-                'heading' => [
-                    'type' => 'heading',
-                    'name' => __('eIDAS', 'pdc-base'),
-                ],
-                'active'  => [
-                    'name'    => __('Active', 'pdc-base'),
-                    'desc'    => __('Use eIDAS for identification.', 'pdc-base'),
-                    'id'      => 'eidas_active',
-                    'type'    => 'radio',
-                    'options' => [
-                        '1' => 'Ja',
-                        '0' => 'Nee',
-                    ],
-                    'std'     => '0',
-                ],
-                'button-title'   => [
-                    'name' => __('eIDAS button title', 'pdc-base'),
-                    'id'   => 'eidas_button_title',
-                    'type' => 'text',
-                    'std'  => 'Aanvragen',
-                ],
-                'button-url'   => [
-                    'name' => __('eIDAS button URL', 'pdc-base'),
-                    'id'   => 'eidas_button_url',
-                    'type' => 'text',
-                ],
-                'descriptive-text'   => [
-                    'name' => __('eIDAS descriptive text', 'pdc-base'),
-                    'id'   => 'eidas_descriptive_text',
-                    'type' => 'wysiwyg',
-                    'options' => array(
-                        'textarea_rows' => 4,
-                    ),
-                    'std' => 'Login with your European approved digital identity. More information on <a href="https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/identiteit/eidas/">eIDAS</a>.',
-                ],
-                'order' => [
-                    'name' => __('Order', 'pdc-base'),
-                    'id'   => 'eidas_order',
-                    'type' => 'number',
-                    'desc' => __('Order in which the identification buttons will be displayed in.', 'pdc-base')
-                ]
-            ],
-            'general_identification' => [
-                'heading' => [
-                    'type' => 'heading',
-                    'name' => __('General identification', 'pdc-base'),
-                ],
-                'active'  => [
-                    'name'    => __('Active', 'pdc-base'),
-                    'desc'    => __('Use general identification.', 'pdc-base'),
-                    'id'      => 'general_identification_active',
-                    'type'    => 'radio',
-                    'options' => [
-                        '1' => 'Ja',
-                        '0' => 'Nee',
-                    ],
-                    'std'     => '0',
-                ],
-                'button-title'   => [
-                    'name' => __('General identification button title', 'pdc-base'),
-                    'id'   => 'general_identification_button_title',
-                    'type' => 'text',
-                    'std'  => 'Aanvragen',
-                ],
-                'button-url'   => [
-                    'name' => __('General identification button URL', 'pdc-base'),
-                    'id'   => 'general_identification_button_url',
-                    'type' => 'text',
-                ],
-                'descriptive-text'   => [
-                    'name' => __('General_identification descriptive text', 'pdc-base'),
-                    'id'   => 'general_identification_descriptive_text',
-                    'type' => 'wysiwyg',
-                    'options' => array(
-                        'textarea_rows' => 4,
-                    ),
-                    'std' => 'Ga verder zonder in te loggen en vul uw gegevens in.',
-                ],
-                'order' => [
-                    'name' => __('Order', 'pdc-base'),
-                    'id'   => 'general_identification_order',
-                    'type' => 'number',
-                    'desc' => __('Order in which the identification buttons will be displayed in.', 'pdc-base')
-                ]
-            ],
         ],
-    ],
+    ]
 ];

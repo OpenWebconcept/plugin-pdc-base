@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which handles the metabox registration.
  */
@@ -30,8 +31,15 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerMetaboxes($rwmbMetaboxes)
     {
-        $configMetaboxes  = $this->plugin->config->get('metaboxes');
-        $metaboxes        = [];
+
+        $configMetaboxes           = $this->plugin->config->get('metaboxes');
+        $identificationsMetaboxes  = $this->plugin->config->get('identifications_metaboxes');
+
+        if ($this->plugin->settings->useIdentifications()) {
+            $configMetaboxes = array_merge($configMetaboxes, $identificationsMetaboxes);
+        }
+
+        $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
             $metaboxes[] = $this->processMetabox($metabox);

@@ -209,81 +209,101 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: config/metaboxes.php:216
+#: config/identifications_metaboxes.php:27
 msgid "Use DigiD for identification."
 msgstr "Gebruik DigiD voor identificatie."
 
-#: config/metaboxes.php:226
+#: config/identifications_metaboxes.php:29 config/identifications_metaboxes.php:80 config/identifications_metaboxes.php:131 config/identifications_metaboxes.php:182
+msgid "Yes"
+msgstr "Ja"
+
+#: config/identifications_metaboxes.php:30 config/identifications_metaboxes.php:81 config/identifications_metaboxes.php:132 config/identifications_metaboxes.php:183
+msgid "No"
+msgstr "Nee"
+
+#: config/identifications_metaboxes.php:37
 msgid "DigiD button title"
 msgstr "DigiD knop titel"
 
-#: config/metaboxes.php:231
+#: config/identifications_metaboxes.php:38 config/identifications_metaboxes.php:89 config/identifications_metaboxes.php:140 config/identifications_metaboxes.php:191
+msgid "Request"
+msgstr "Aanvragen"
+
+#: config/identifications_metaboxes.php:43
 msgid "DigiD button URL"
 msgstr "DigiD knop URL"
 
-#: config/metaboxes.php:236
+#: config/identifications_metaboxes.php:48
 msgid "DigiD descriptive text"
 msgstr "DigiD begeleidende tekst"
 
-#: config/metaboxes.php:246 #: config/metaboxes.php:289 #: config/metaboxes.php:332 #: config/metaboxes.php:375
+#: config/identifications_metaboxes.php:57 config/identifications_metaboxes.php:109 config/identifications_metaboxes.php:161 config/identifications_metaboxes.php:213
 msgid "Order"
 msgstr "Volgorde"
 
-#: config/metaboxes.php:248
+#: config/identifications_metaboxes.php:79
 msgid "Use eHerkenning for identification."
 msgstr "Gebruik eHerkennning voor identificatie."
 
-#: config/metaboxes.php:249 config/metaboxes.php:292 config/metaboxes.php:335 config/metaboxes.php:378
+#: config/identifications_metaboxes.php:60 config/identifications_metaboxes.php:112 config/identifications_metaboxes.php:164 config/identifications_metaboxes.php:216
 msgid "Order in which the identification buttons will be displayed in."
 msgstr "Volgorde waarin de identificatie knoppen weergegeven zullen worden."
 
-#: config/metaboxes.php:269
+#: config/identifications_metaboxes.php:89
 msgid "eHerkenning button title"
 msgstr "eHerkenning knop titel"
 
-#: config/metaboxes.php:275
+#: config/identifications_metaboxes.php:95
 msgid "eHerkenning button URL"
 msgstr "eHerkenning knop URL"
 
-#: config/metaboxes.php:280
+#: config/identifications_metaboxes.php:100
 msgid "eHerkenning descriptive text"
 msgstr "eHerkenning begeleidende tekst"
 
-#: config/metaboxes.php:302
+#: config/identifications_metaboxes.php:131
 msgid "Use eIDAS for identification."
 msgstr "Gebruik eIDAS voor identificatie."
 
-#: config/metaboxes.php:312
+#: config/identifications_metaboxes.php:141
 msgid "eIDAS button title"
 msgstr "eIDAS knop titel"
 
-#: config/metaboxes.php:318
+#: config/identifications_metaboxes.php:147
 msgid "eIDAS button URL"
 msgstr "eIDAS knop URL"
 
-#: config/metaboxes.php:323
+#: config/identifications_metaboxes.php:152
 msgid "eIDAS descriptive text"
 msgstr "eIDAS begeleidende tekst"
 
-#: config/metaboxes.php:341
+#: config/identifications_metaboxes.php:179
 msgid "General identification"
 msgstr "Algemene identificatie"
 
-#: config/metaboxes.php:345
+#: config/identifications_metaboxes.php:183
 msgid "Use general identification."
 msgstr "Gebruik algemene identificatie."
 
-#: config/metaboxes.php:355
+#: config/identifications_metaboxes.php:193
 msgid "General identification button title"
 msgstr "Algemene identificatie knop titel"
 
-#: config/metaboxes.php:361
+#: config/identifications_metaboxes.php:199
 msgid "General identification button URL"
 msgstr "Algemene identificatie knop URL"
 
-#: config/metaboxes.php:366
+#: config/identifications_metaboxes.php:204
 msgid "General_identification descriptive text"
 msgstr "Algemene identificatie begeleidende tekst"
+
+#: config/identifications_metaboxes.php:6
+msgid "Identifications"
+msgstr "Identificaties"
+
+#: config/identifications_metaboxes.php:19 config/identifications_metaboxes.php:71 config/identifications_metaboxes.php:123 config/identifications_metaboxes.php:175
+msgid "Add new group"
+msgstr "Voeg nieuwe groep toe"
 
 #: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
 #: config/posttypes.php:83

@@ -28,7 +28,7 @@ class IdentificationsField extends CreatesFields
     }
 
     /**
-     * Create the appointment field for a given post.
+     * Create the identifications field for a given post.
      *
      * @param WP_Post $post
      *
@@ -38,87 +38,61 @@ class IdentificationsField extends CreatesFields
     {
         $identifications = [];
 
-        $identifications['digid']       = $this->createDigiD($post);
-        $identifications['eherkenning'] = $this->createEherkenning($post);
-        $identifications['eidas']       = $this->createEidas($post);
-        $identifications['algemeen']    = $this->createGeneral($post);
+        $identifications['digid']       = $this->createField($post, '_owc_digid-group', 'digid_');
+        $identifications['eherkenning'] = $this->createField($post, '_owc_eherkenning-group', 'eherkenning_');
+        $identifications['eidas']       = $this->createField($post, '_owc_eidas-group', 'eidas_');
+        $identifications['general']     = $this->createField($post, '_owc_general_identification-group', 'general_identification_');
 
         return $identifications;
     }
 
-    private function createDigiD(WP_Post $post): array
+    /**
+     * Create API field
+     *
+     * @param WP_Post $post
+     * @param string $groupIdentifier
+     * @param string $identifier
+     * @return array
+     */
+    private function createField(WP_Post $post, string $groupIdentifier, string $identifier): array
     {
-        $digidActive = get_post_meta($post->ID, '_owc_digid_active', true);
+        $group = get_post_meta($post->ID, $groupIdentifier);
 
-        if (!$digidActive) {
-            return [
-                'active' => false
-            ];
+        if (empty($group)) {
+            return [];
         }
 
-        return [
-            'active' => true,
-            'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_digid_button_title', true) ?: '')),
-            'url'    => esc_url(get_post_meta($post->ID, '_owc_digid_button_url', true) ?: ''),
-            'meta'   => esc_attr(get_post_meta($post->ID, '_owc_digid_descriptive_text', true) ?: ''),
-            'order'   => esc_attr(get_post_meta($post->ID, '_owc_digid_order', true) ?: ''),
-        ];
+        return $this->createData($group, $identifier);
     }
 
-    private function createEherkenning(WP_Post $post): array
+    /**
+     * Create data for API field
+     *
+     * @param array $group
+     * @param string $identifier
+     * @return array
+     */
+    private function createData(array $group, string $identifier): array
     {
-        $eherkenningActive = get_post_meta($post->ID, '_owc_eherkenning_active', true);
+        $identifications = [];
 
-        if (!$eherkenningActive) {
-            return [
-                'active' => false
-            ];
+        foreach ($group[0] as $groupItem) {
+            if (empty($groupItem)) {
+                continue;
+            }
+
+            $identification = new \OWC\PDC\Base\Models\Identification($identifier, $groupItem);
+
+            if ($identification->isActive()) {
+                $identifications[] = [
+                    'title'       => $identification->getButtonTitle(),
+                    'url'         => $identification->getButtonURL(),
+                    'description' => $identification->getDescription(),
+                    'order'       => $identification->getOrder(),
+                ];
+            }
         }
 
-        return [
-            'active' => true,
-            'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_eherkenning_button_title', true) ?: '')),
-            'url'    => esc_url(get_post_meta($post->ID, '_owc_eherkenning_button_url', true) ?: ''),
-            'meta'   => esc_attr(get_post_meta($post->ID, '_owc_eherkenning_descriptive_text', true) ?: ''),
-            'order'   => esc_attr(get_post_meta($post->ID, '_owc_eherkenning_order', true) ?: ''),
-        ];
-    }
-
-    private function createEidas(WP_Post $post): array
-    {
-        $eidasActive = get_post_meta($post->ID, '_owc_eidas_active', true);
-
-        if (!$eidasActive) {
-            return [
-                'active' => false
-            ];
-        }
-
-        return [
-            'active' => true,
-            'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_eidas_button_title', true) ?: '')),
-            'url'    => esc_url(get_post_meta($post->ID, '_owc_eidas_button_url', true) ?: ''),
-            'meta'   => esc_attr(get_post_meta($post->ID, '_owc_eidas_descriptive_text', true) ?: ''),
-            'order'   => esc_attr(get_post_meta($post->ID, '_owc_eidas_order', true) ?: ''),
-        ];
-    }
-
-    private function createGeneral(WP_Post $post): array
-    {
-        $eidasActive = get_post_meta($post->ID, '_owc_general_identification_active', true);
-
-        if (!$eidasActive) {
-            return [
-                'active' => false
-            ];
-        }
-
-        return [
-            'active' => true,
-            'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_general_identification_button_title', true) ?: '')),
-            'url'    => esc_url(get_post_meta($post->ID, '_owc_general_identification_button_url', true) ?: ''),
-            'meta'   => esc_attr(get_post_meta($post->ID, '_owc_general_identification_descriptive_text', true) ?: ''),
-            'order'   => esc_attr(get_post_meta($post->ID, '_owc_general_identification_order', true) ?: ''),
-        ];
+        return $identifications;
     }
 }

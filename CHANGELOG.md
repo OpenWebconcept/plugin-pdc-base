@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Version 3.1.10
+
+### Feat
+
+-   Cloneable identification groups
+
+### Refactor
+
+-   Display identification meta fields, in the editor, when setting has been checked
+-   Clean-up
+
 ## Version 3.1.9
 
 ### Feat
