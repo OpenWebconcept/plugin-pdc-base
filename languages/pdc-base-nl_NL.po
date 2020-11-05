@@ -209,6 +209,30 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
+#: config/metaboxes.php:210
+msgid "Language"
+msgstr "Taal"
+
+#: config/metaboxes.php:214
+msgid "Select a language that is not Dutch. This is nessecary for the web accessibility."
+msgstr "Selecteer een taal als de pagina niet Nederlands is. Dit is noodzakelijk voor webtoegankelijkheid."
+
+#: config/metaboxes.php:217
+msgid "Dutch (default)"
+msgstr "Nederland (standaard)"
+
+#: config/metaboxes.php:219
+msgid "English"
+msgstr "Engels"
+
+#: config/metaboxes.php:220
+msgid "German"
+msgstr "Duits"
+
+#: config/metaboxes.php:221
+msgid "Turkish"
+msgstr "Turks"
+
 #: config/identifications_metaboxes.php:27
 msgid "Use DigiD for identification."
 msgstr "Gebruik DigiD voor identificatie."

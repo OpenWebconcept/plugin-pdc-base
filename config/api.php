@@ -13,6 +13,7 @@ return [
              * ]
              */
             'fields' => [
+                'language'          => OWC\PDC\Base\RestAPI\ItemFields\LanguageField::class,
                 'appointment'       => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
                 'connected'         => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
                 'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,

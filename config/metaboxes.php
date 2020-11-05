@@ -204,6 +204,24 @@ return [
                     'rows' => 5,
                 ],
             ],
+            'language' => [
+                'heading' => [
+                    'type' => 'heading',
+                    'name' => __('Language', 'pdc-base'),
+                ],
+                'language' => [
+                    'name' => __('Taal', 'pdc-base'),
+                    'desc' => __('Select a language that is not Dutch. This is nessecary for the web accessibility.', 'pdc-base'),
+                    'id'   => 'pdc-item-language',
+                    'type' => 'select',
+                    'placeholder'     => __('Dutch (default)', 'pdc-base'),
+                    'options'         => [
+                        'en'    => __('English', 'pdc-base'),
+                        'de'    => __('German', 'pdc-base'),
+                        'tr'    => __('Turkish', 'pdc-base'),
+                    ],
+                ]
+            ],
         ],
     ]
 ];

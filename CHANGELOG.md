@@ -5,6 +5,8 @@
 ### Feat
 
 -   Cloneable identification groups
+-   Add language meta setting
+-   Add language value in api
 
 ### Refactor
 

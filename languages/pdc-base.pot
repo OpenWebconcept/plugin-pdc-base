@@ -191,6 +191,30 @@ msgstr ""
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
+#: config/metaboxes.php:210
+msgid "Language"
+msgstr ""
+
+#: config/metaboxes.php:214
+msgid "Select a language that is not Dutch. This is nessecary for the web accessibility."
+msgstr ""
+
+#: config/metaboxes.php:217
+msgid "Dutch (default)"
+msgstr ""
+
+#: config/metaboxes.php:219
+msgid "English"
+msgstr ""
+
+#: config/metaboxes.php:220
+msgid "German"
+msgstr ""
+
+#: config/metaboxes.php:221
+msgid "Turkish"
+msgstr ""
+
 #: config/identifications_metaboxes.php:27
 msgid "Use DigiD for identification."
 msgstr ""
