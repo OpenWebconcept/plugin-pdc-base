@@ -26,7 +26,7 @@ class SubthemaController extends BaseController
     public function getSubthemas(WP_REST_Request $request)
     {
         $items = (new Subthema)
-            ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
+            ->query(\apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
             ->query(['orderby' => 'name', 'order' => 'ASC']);
 
         $data  = $items->all();
@@ -47,7 +47,7 @@ class SubthemaController extends BaseController
         $id = (int) $request->get_param('id');
 
         $thema = (new Subthema)
-            ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
+            ->query(\apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->find($id);
 
         if (!$thema) {
@@ -57,5 +57,29 @@ class SubthemaController extends BaseController
         }
 
         return $thema;
+    }
+
+    /**
+     * Get an individual subtheme item by slug.
+     *
+     * @param WP_REST_Request $request
+     *
+     * @return array|WP_Error
+     */
+    public function getSubthemaBySlug(WP_REST_Request $request)
+    {
+        $slug = $request->get_param('slug');
+        $item = (new Subthema)
+            ->query(\apply_filters('owc/pdc/rest-api/items/query/single', []))
+            ->findBySlug($slug);
+
+        if (!$item) {
+            return new WP_Error('no_item_found', sprintf('Subthema with slug "%d" not found', $slug), [
+                'status' => 404,
+            ]);
+        }
+
+
+        return $item;
     }
 }

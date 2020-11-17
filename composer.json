@@ -17,7 +17,8 @@
     "phpunit/phpunit": "~8.0",
     "10up/wp_mock": "dev-master",
     "friendsofphp/php-cs-fixer": "^2.0",
-    "szepeviktor/phpstan-wordpress": "^0.6.0"
+    "szepeviktor/phpstan-wordpress": "^0.6.0",
+    "zircote/swagger-php": "^3.1"
   },
   "autoload": {
     "psr-4": {
@@ -30,14 +31,14 @@
     }
   },
   "scripts": {
-    "unit": "clear && ./vendor/bin/phpunit --testdox --stderr --testsuite 'Unit Test Suite' --colors=always",
-    "unit-coverage": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --prepend tests/xdebug-filter.php --colors=always --coverage-html ./tests/coverage",
-    "integration": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Integration Test Suite' --colors=always",
-    "test": [
-      "@unit",
-      "@integration"
-    ],
+    "create-api-docs": "clear && php ./docs/api/openapi-create.php > ./docs/api/specs/openapi.yaml",
+    "build-api-docs": "npm run doc-build",
     "format": "./vendor/bin/php-cs-fixer fix",
-    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M"
+    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M",
+    "test": [
+        "@unit"
+    ],
+    "unit": "clear && ./vendor/bin/phpunit --testdox --stderr --testsuite 'Unit Test Suite' --colors=always",
+    "unit-coverage": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --prepend tests/xdebug-filter.php --colors=always --coverage-html ./tests/coverage"
   }
 }

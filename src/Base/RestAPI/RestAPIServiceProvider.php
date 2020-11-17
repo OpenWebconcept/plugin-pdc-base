@@ -10,7 +10,36 @@ use OWC\PDC\Base\Foundation\ServiceProvider;
 use WP_REST_Server;
 
 /**
- * Provider which registers the API.
+ *  @OA\Server(
+ *    url="https://{site}/wp-json/owc/openpdc/v1",
+ *    description=""
+ *  ).
+ *  @OA\Info(
+ *    title="Yard | Digital Agency, OpenPdc API",
+ *    version="3.0.3",
+ *    termsOfService="https://www.yard.nl/",
+ *    @OA\Contact(
+ *      name="Yard | Digital Agency",
+ *      url="https://www.yard.nl/",
+ *      email="info@yard.nl"
+ *    ),
+ *    x={
+ *      "logo": {
+ *         "url": "https://www.yard.nl/wp-content/themes/theme-fusion/assets/img/logo-yard-da.svg"
+ *      },
+ *      "description": {
+ *         "$ref"="../chapters/description.md"
+ *      },
+ *      "externalDocs": {
+ *         "description": "Find out how to create Github repo for your OpenAPI spec.",
+ *         "url": "https://openwebconcept.bitbucket.io/openpdc/"
+ *       }
+ *    },
+ *    @OA\License(
+ *      name="OpenWebConcept",
+ *      url="https://www.openwebconcept.nl/"
+ *    )
+ * )
  */
 class RestAPIServiceProvider extends ServiceProvider
 {
@@ -97,6 +126,12 @@ class RestAPIServiceProvider extends ServiceProvider
             'permission_callback' => '__return_true',
         ]);
 
+        \register_rest_route($this->namespace, 'them(a|e)s/(?P<slug>(?!.*internal)[\w-]+)', [
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ThemaController($this->plugin), 'getThemaBySlug'],
+            'permission_callback' => '__return_true',
+        ]);
+
         \register_rest_route($this->namespace, 'subthem(a|e)s', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
@@ -106,6 +141,12 @@ class RestAPIServiceProvider extends ServiceProvider
         \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<id>\d+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<slug>(?!.*internal)[\w-]+)', [
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubThemaBySlug'],
             'permission_callback' => '__return_true',
         ]);
 

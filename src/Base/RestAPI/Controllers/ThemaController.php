@@ -64,4 +64,28 @@ class ThemaController extends BaseController
 
         return $thema;
     }
+
+    /**
+     * Get an individual theme item by slug.
+     *
+     * @param WP_REST_Request $request
+     *
+     * @return array|WP_Error
+     */
+    public function getThemaBySlug(WP_REST_Request $request)
+    {
+        $slug = $request->get_param('slug');
+        $item = (new Thema)
+            ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
+            ->findBySlug($slug);
+
+        if (!$item) {
+            return new WP_Error('no_item_found', sprintf('Thema with slug "%d" not found', $slug), [
+                'status' => 404,
+            ]);
+        }
+
+
+        return $item;
+    }
 }
