@@ -46,7 +46,8 @@ return [
             'fields' => [
                 'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
                 'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'subthemes' => OWC\PDC\Base\RestAPI\GroupFields\SubThemaField::class,
             ],
         ],
     ],

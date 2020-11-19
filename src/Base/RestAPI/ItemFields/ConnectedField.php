@@ -7,6 +7,7 @@
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use OWC\PDC\Base\Settings\SettingsPageOptions;
 use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
@@ -64,13 +65,40 @@ class ConnectedField extends CreatesFields
         $metaQuery = in_array($type, $connectionsExcludeInActive) ? ItemController::hideInactiveItem() : [];
 
         return array_map(function (WP_Post $post) {
-            return [
+            $data = [
                 'id'      => $post->ID,
                 'title'   => $post->post_title,
                 'slug'    => $post->post_name,
                 'excerpt' => $post->post_excerpt,
                 'date'    => $post->post_date,
+                'themes' => array_map(function($theme) {
+                        return [
+                            'id' => $theme->ID,
+                            'title' => $theme->post_title,
+                            'slug'    => $theme->post_name,
+                            'excerpt' => $theme->post_excerpt,
+                        ];
+                    }, \p2p_type('pdc-item_to_pdc-category')->get_related( $post->ID )->posts ?? []),
+                'subthemes' => array_map(function($subtheme) {
+                        return [
+                            'id' => $subtheme->ID,
+                            'title' => $subtheme->post_title,
+                            'slug'    => $subtheme->post_name,
+                            'excerpt' => $subtheme->post_excerpt,
+                        ];
+                    }, \p2p_type('pdc-item_to_pdc-subcategory')->get_related( $post->ID )->posts ?? []),
             ];
-        }, $connection->get_connected($postID, $metaQuery)->posts);
+            if (SettingsPageOptions::make()->useGroupLayer()) {
+                $data['groups'] = array_map(function($group) {
+                        return [
+                            'id' => $group->ID,
+                            'title' => $group->post_title,
+                            'slug'    => $group->post_name,
+                            'excerpt' => $group->post_excerpt,
+                        ];
+                    }, \p2p_type('pdc-item_to_pdc-group')->get_related( $post->ID )->posts ?? []);
+            }
+            return $data;
+        }, $connection->get_related($postID, $metaQuery)->posts);
     }
 }
