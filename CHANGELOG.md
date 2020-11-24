@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.11
+
+### Feat
+
+-   Add image to groups in api output
+
 ## Version 3.1.10
 
 ### Feat

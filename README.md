@@ -8,7 +8,7 @@ Plugin to add the OpenwebConcept OpenPDC to your project.
 -   Requires at least: 4.8
 -   Tested up to: 5.4.2
 -   Requires PHP: 7.2
--   Stable tag: 3.1.10
+-   Stable tag: 3.1.11
 
 ### How do I get set up?
 
