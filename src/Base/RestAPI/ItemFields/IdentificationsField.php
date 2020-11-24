@@ -14,7 +14,6 @@ use WP_Post;
  */
 class IdentificationsField extends CreatesFields
 {
-
     /**
      * The condition for the creator.
      *

@@ -15,6 +15,8 @@ return [
             'fields' => [
                 'language'          => OWC\PDC\Base\RestAPI\ItemFields\LanguageField::class,
                 'appointment'       => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
+                'portal_url'        => OWC\PDC\Base\RestAPI\ItemFields\PortalURL::class,
+                'date_modified'     => OWC\PDC\Base\RestAPI\ItemFields\DateModified::class,
                 'connected'         => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
                 'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
                 'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class,

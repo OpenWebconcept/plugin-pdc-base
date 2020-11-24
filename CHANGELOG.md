@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version 3.1.12
+
+### Feat
+
+-   Add portal_url to api output
+-   Add date_modified to api output
+
 ## Version 3.1.11
 
 ### Feat

@@ -44,6 +44,12 @@ return [
                     'desc' => __('DigiD, eHerkenning and eIDAS.', 'pdc-base'),
                     'id'   => 'setting_identifications',
                     'type' => 'checkbox',
+                ],
+                'pdc_use_portal_url' => [
+                    'name' => __('Portal url', 'pdc-base'),
+                    'desc' => __('Use portal url in api.', 'pdc-base'),
+                    'id'   => 'setting_use_portal_url',
+                    'type' => 'checkbox',
                 ]
             ]
         ]

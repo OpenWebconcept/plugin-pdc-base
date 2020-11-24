@@ -17,7 +17,7 @@ class SettingsPageOptions
     }
 
     /**
-     * Include theme in the URL to the portal website
+     * Include theme in the URL to the portal website.
      *
      * @return bool
      */
@@ -27,7 +27,7 @@ class SettingsPageOptions
     }
 
     /**
-     * Include subtheme in the URL to the portal website
+     * Include subtheme in the URL to the portal website.
      *
      * @return bool
      */
@@ -37,7 +37,7 @@ class SettingsPageOptions
     }
 
     /**
-     * URL to the portal website
+     * URL to the portal website.
      *
      * @return string|null
      */
@@ -68,6 +68,16 @@ class SettingsPageOptions
     public function useGroupLayer(): bool
     {
         return get_option('_owc_pdc_base_settings')['_owc_setting_pdc-group'] ?? false;
+    }
+
+    /**
+     * Use portal url in items endpoint.
+     * 
+     * @return boolean
+     */
+    public function usePortalURL(): bool
+    {
+        return get_option('_owc_pdc_base_settings')['_owc_setting_use_portal_url'] ?? false;
     }
 
     public static function make(): self
