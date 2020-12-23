@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.13
+
+### Feat
+
+-   Limit connection between pdc-item and pdc-group to maximum 1
+
 ## Version 3.1.12
 
 ### Feat
