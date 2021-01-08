@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.1.14
+
+### Fix
+
+-   Connection between pdc-item and pdc-group are allowed to be empty.
+
 ## Version 3.1.13
 
 ### Feat
