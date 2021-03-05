@@ -11,11 +11,11 @@ return [
         'fields'     => [
             'digid-group' => [
                 'group' => [
-                    'id' => 'digid-group',
-                    'type' => 'group',
-                    'clone' => true,
+                    'id'         => 'digid-group',
+                    'type'       => 'group',
+                    'clone'      => true,
                     'add_button' => __('Add new group', 'pdc-base'),
-                    'fields' => [
+                    'fields'     => [
                         [
                             'type' => 'heading',
                             'name' => __('DigiD', 'pdc-base'),
@@ -43,12 +43,12 @@ return [
                             'type' => 'text',
                         ],
                         [
-                            'name' => __('DigiD descriptive text', 'pdc-base'),
-                            'id'   => 'digid_descriptive_text',
-                            'type' => 'wysiwyg',
-                            'options' => array(
+                            'name'    => __('DigiD descriptive text', 'pdc-base'),
+                            'id'      => 'digid_descriptive_text',
+                            'type'    => 'wysiwyg',
+                            'options' => [
                                 'textarea_rows' => 4,
-                            ),
+                            ],
                             'std' => 'Log in met DigiD en uw persoonsgegevens zijn al ingevuld. <a href="/online-zaken-regelen-met-digid/">Lees meer over DigiD</a>.',
                         ],
                         [
@@ -63,11 +63,11 @@ return [
             ],
             'eherkenning-group' => [
                 'group' => [
-                    'id' => 'eherkenning-group',
-                    'type' => 'group',
-                    'clone' => true,
+                    'id'         => 'eherkenning-group',
+                    'type'       => 'group',
+                    'clone'      => true,
                     'add_button' => __('Add new group', 'pdc-base'),
-                    'fields' => [
+                    'fields'     => [
                         [
                             'type' => 'heading',
                             'name' => __('eHerkenning', 'pdc-base'),
@@ -95,12 +95,12 @@ return [
                             'type' => 'text',
                         ],
                         [
-                            'name' => __('eHerkenning descriptive text', 'pdc-base'),
-                            'id'   => 'eherkenning_descriptive_text',
-                            'type' => 'wysiwyg',
-                            'options' => array(
+                            'name'    => __('eHerkenning descriptive text', 'pdc-base'),
+                            'id'      => 'eherkenning_descriptive_text',
+                            'type'    => 'wysiwyg',
+                            'options' => [
                                 'textarea_rows' => 4,
-                            ),
+                            ],
                             'std' => 'Log in met eHerkenning en uw organisatiegegevens zijn al ingevuld. <a href="/online-zaken-regelen-met-eherkenning/">Lees meer over eHerkenning</a>.',
                         ],
                         [
@@ -115,11 +115,11 @@ return [
             ],
             'eidas-group' => [
                 'group' => [
-                    'id' => 'eidas-group',
-                    'type' => 'group',
-                    'clone' => true,
+                    'id'         => 'eidas-group',
+                    'type'       => 'group',
+                    'clone'      => true,
                     'add_button' => __('Add new group', 'pdc-base'),
-                    'fields' => [
+                    'fields'     => [
                         [
                             'type' => 'heading',
                             'name' => __('eIDAS', 'pdc-base'),
@@ -147,12 +147,12 @@ return [
                             'type' => 'text',
                         ],
                         [
-                            'name' => __('eIDAS descriptive text', 'pdc-base'),
-                            'id'   => 'eidas_descriptive_text',
-                            'type' => 'wysiwyg',
-                            'options' => array(
+                            'name'    => __('eIDAS descriptive text', 'pdc-base'),
+                            'id'      => 'eidas_descriptive_text',
+                            'type'    => 'wysiwyg',
+                            'options' => [
                                 'textarea_rows' => 4,
-                            ),
+                            ],
                             'std' => 'Login with your European approved digital identity. More information on <a href="https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/identiteit/eidas/">eIDAS</a>.',
                         ],
                         [
@@ -167,11 +167,11 @@ return [
             ],
             'general_identification-group' => [
                 'group' => [
-                    'id' => 'general_identification-group',
-                    'type' => 'group',
-                    'clone' => true,
+                    'id'         => 'general_identification-group',
+                    'type'       => 'group',
+                    'clone'      => true,
                     'add_button' => __('Add new group', 'pdc-base'),
-                    'fields' => [
+                    'fields'     => [
                         [
                             'type' => 'heading',
                             'name' => __('General identification', 'pdc-base'),
@@ -199,12 +199,12 @@ return [
                             'type' => 'text',
                         ],
                         [
-                            'name' => __('General_identification descriptive text', 'pdc-base'),
-                            'id'   => 'general_identification_descriptive_text',
-                            'type' => 'wysiwyg',
-                            'options' => array(
+                            'name'    => __('General_identification descriptive text', 'pdc-base'),
+                            'id'      => 'general_identification_descriptive_text',
+                            'type'    => 'wysiwyg',
+                            'options' => [
                                 'textarea_rows' => 4,
-                            ),
+                            ],
                             'std' => 'Ga verder zonder in te loggen en vul uw gegevens in.',
                         ],
                         [

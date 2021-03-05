@@ -78,7 +78,6 @@ class RestAPIServiceProviderTest extends TestCase
                     'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
                     'links'             => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
                     'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
-                    'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class
                 ]
             ]
         ];

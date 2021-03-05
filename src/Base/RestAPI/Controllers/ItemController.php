@@ -130,8 +130,8 @@ class ItemController extends BaseController
         return [
             'meta_query' => [
                 [
-                    'key'   => '_owc_pdc_active',
-                    'value' => '1',
+                    'key'     => '_owc_pdc_active',
+                    'value'   => '1',
                     'compare' => '=',
                 ],
             ],

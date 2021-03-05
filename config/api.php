@@ -19,7 +19,6 @@ return [
                 'date_modified'     => OWC\PDC\Base\RestAPI\ItemFields\DateModified::class,
                 'connected'         => OWC\PDC\Base\RestAPI\ItemFields\ConnectedField::class,
                 'downloads'         => OWC\PDC\Base\RestAPI\ItemFields\DownloadsField::class,
-                'faq'               => OWC\PDC\Base\RestAPI\ItemFields\FAQField::class,
                 'forms'             => OWC\PDC\Base\RestAPI\ItemFields\FormsField::class,
                 'image'             => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'links'             => OWC\PDC\Base\RestAPI\ItemFields\LinksField::class,
@@ -39,9 +38,9 @@ return [
         ],
         'group' => [
             'fields' => [
-                'items'  => OWC\PDC\Base\RestAPI\GroupFields\ItemsField::class,
-                'image'  => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'themes' => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
+                'items'     => OWC\PDC\Base\RestAPI\GroupFields\ItemsField::class,
+                'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'themes'    => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\GroupFields\SubThemaField::class,
             ],
         ],

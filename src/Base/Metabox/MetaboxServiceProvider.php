@@ -31,7 +31,6 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerMetaboxes($rwmbMetaboxes)
     {
-
         $configMetaboxes           = $this->plugin->config->get('metaboxes');
         $identificationsMetaboxes  = $this->plugin->config->get('identifications_metaboxes');
 
