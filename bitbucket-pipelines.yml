@@ -11,16 +11,15 @@ pipelines:
           script:
             - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
             - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
-  branches:
-    "{master,develop}":
-      - step:
-          name: unit test
-          caches:
-            - composer
-            - vendor-directory
-          script:
-            - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
-            - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
+  default:
+    - step:
+        name: unit test
+        caches:
+          - composer
+          - vendor-directory
+        script:
+          - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
+          - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
 
 definitions:
   caches:
