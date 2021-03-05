@@ -101,6 +101,8 @@ class MetaboxServiceProviderTest extends TestCase
             ]
         ];
 
+        $config->shouldReceive('get')->with('identifications_metaboxes')->twice();
+
         $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
 
         //test for filter being called
