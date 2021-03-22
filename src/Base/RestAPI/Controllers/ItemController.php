@@ -86,6 +86,14 @@ class ItemController extends BaseController
             ->query($this->hideInactiveItem())
             ->find($id);
 
+        if ($this->needsAuthorization($item)) {
+            return new WP_Error(
+                'unnauthorized_request',
+                sprintf('Unnauthorized request for "%d"', $id),
+                ['status' => 401]
+            );
+        }
+
         if (!$item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
                 'status' => 404,
@@ -110,12 +118,21 @@ class ItemController extends BaseController
             ->query(Self::hideInactiveItem())
             ->findBySlug($slug);
 
-        if (!$item) {
-            return new WP_Error('no_item_found', sprintf('Item with slug "%d" not found', $slug), [
-                'status' => 404,
-            ]);
+        if ($this->needsAuthorization($item)) {
+            return new WP_Error(
+                'unnauthorized_request',
+                sprintf('Unnauthorized request for "%s"', $slug),
+                ['status' => 401]
+            );
         }
-
+        
+        if (!$item) {
+            return new WP_Error(
+                'no_item_found',
+                sprintf('Item with slug "%s" not found', $slug),
+                ['status' => 404]
+            );
+        }
 
         return $item;
     }
@@ -130,11 +147,30 @@ class ItemController extends BaseController
         return [
             'meta_query' => [
                 [
-                    'key'   => '_owc_pdc_active',
-                    'value' => '1',
+                    'key'     => '_owc_pdc_active',
+                    'value'   => '1',
                     'compare' => '=',
                 ],
             ],
         ];
+    }
+
+    private function needsAuthorization(array $item): bool
+    {
+        $types = $item['taxonomies']['pdc-type'] ?? '';
+
+        $neesAuthorization = true;
+
+        if (empty($types)) {
+            return $neesAuthorization;
+        }
+
+        foreach ($types as $type) {
+            if ('external' === $type['slug']) {
+                $neesAuthorization = false;
+            }
+        }
+
+        return $neesAuthorization;
     }
 }
