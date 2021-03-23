@@ -5,6 +5,7 @@
 
 namespace OWC\PDC\Base\RestAPI\ThemaFields;
 
+use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 use WP_Post;
 
@@ -13,7 +14,6 @@ use WP_Post;
  */
 class ItemsField extends ConnectedField
 {
-
     /**
      * Creates an array of connected posts.
      *
@@ -23,6 +23,8 @@ class ItemsField extends ConnectedField
      */
     public function create(WP_Post $post): array
     {
+        $this->query['tax_query'] = ItemController::showExternalOnly();
+
         return $this->getConnectedItems($post->ID, 'pdc-item_to_' . $post->post_type);
     }
 }

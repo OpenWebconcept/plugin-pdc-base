@@ -15,7 +15,6 @@ use WP_REST_Request;
  */
 class ItemController extends BaseController
 {
-
     /**
      * Get a list of all items.
      *
@@ -45,6 +44,7 @@ class ItemController extends BaseController
      * Convert the parameters to the allowed ones.
      *
      * @param array $parametersFromRequest
+     *
      * @return array
      */
     protected function convertParameters(array $parametersFromRequest): array
@@ -94,7 +94,7 @@ class ItemController extends BaseController
             );
         }
 
-        if (!$item) {
+        if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
                 'status' => 404,
             ]);
@@ -126,7 +126,7 @@ class ItemController extends BaseController
             );
         }
         
-        if (!$item) {
+        if (! $item) {
             return new WP_Error(
                 'no_item_found',
                 sprintf('Item with slug "%s" not found', $slug),
@@ -145,12 +145,21 @@ class ItemController extends BaseController
     public static function hideInactiveItem(): array
     {
         return [
-            'meta_query' => [
-                [
-                    'key'     => '_owc_pdc_active',
-                    'value'   => '1',
-                    'compare' => '=',
-                ],
+            [
+                'key'     => '_owc_pdc_active',
+                'value'   => '1',
+                'compare' => '=',
+            ],
+        ];
+    }
+
+    public static function showExternalOnly(): array
+    {
+        return [
+            [
+                'taxonomy'     => 'pdc-type',
+                'field'        => 'slug',
+                'terms'        => 'external',
             ],
         ];
     }
