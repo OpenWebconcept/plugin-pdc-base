@@ -7,6 +7,7 @@
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
 use OWC\PDC\Base\Repositories\Item;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use WP_Error;
 use WP_REST_Request;
 
@@ -15,6 +16,8 @@ use WP_REST_Request;
  */
 class ItemController extends BaseController
 {
+    use CheckPluginActive;
+
     /**
      * Get a list of all items.
      *
@@ -166,6 +169,10 @@ class ItemController extends BaseController
 
     private function needsAuthorization(array $item): bool
     {
+        if (! $this->isPluginPDCInternalProductsActive()) {
+            return false;
+        };
+
         $types = $item['taxonomies']['pdc-type'] ?? '';
 
         $neesAuthorization = true;

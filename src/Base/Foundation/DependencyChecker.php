@@ -5,11 +5,14 @@
 
 namespace OWC\PDC\Base\Foundation;
 
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+
 /**
  * Checks if dependencies are valid.
  */
 class DependencyChecker
 {
+    use CheckPluginActive;
 
     /**
      * Plugins that need to be checked for.
@@ -124,11 +127,7 @@ class DependencyChecker
      */
     private function checkPlugin(array $dependency)
     {
-        if (!function_exists('is_plugin_active')) {
-            include_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        if (!is_plugin_active($dependency['file'])) {
+        if (! $this->isPluginActive($dependency['file'])) {
             $this->markFailed($dependency, __('Inactive', 'pdc-base'));
 
             return;
