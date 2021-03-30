@@ -173,20 +173,20 @@ class ItemController extends BaseController
             return false;
         };
 
-        $types = $item['taxonomies']['pdc-type'] ?? '';
+        $types = $item['taxonomies']['pdc-type'] ?? [];
 
-        $neesAuthorization = true;
+        $needsAuthorization = true;
 
         if (empty($types)) {
-            return $neesAuthorization;
+            return $needsAuthorization;
         }
 
         foreach ($types as $type) {
             if ('external' === $type['slug']) {
-                $neesAuthorization = false;
+                $needsAuthorization = false;
             }
         }
 
-        return $neesAuthorization;
+        return $needsAuthorization;
     }
 }
