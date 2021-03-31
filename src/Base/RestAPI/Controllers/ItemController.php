@@ -142,8 +142,6 @@ class ItemController extends BaseController
 
     /**
      * Hide inactive item from output.
-     *
-     * @return array
      */
     public static function hideInactiveItem(): array
     {
@@ -156,6 +154,9 @@ class ItemController extends BaseController
         ];
     }
 
+    /**
+     * Hide internal items from output
+     */
     public static function showExternalOnly(): array
     {
         return [
@@ -175,18 +176,16 @@ class ItemController extends BaseController
 
         $types = $item['taxonomies']['pdc-type'] ?? [];
 
-        $needsAuthorization = true;
-
         if (empty($types)) {
-            return $needsAuthorization;
+            return true;
         }
 
         foreach ($types as $type) {
             if ('external' === $type['slug']) {
-                $needsAuthorization = false;
+                return false;
             }
         }
 
-        return $needsAuthorization;
+        return true;
     }
 }
