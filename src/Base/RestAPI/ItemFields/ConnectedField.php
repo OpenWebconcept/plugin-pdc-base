@@ -8,6 +8,7 @@ namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use WP_Post;
 
 /**
@@ -15,6 +16,7 @@ use WP_Post;
  */
 class ConnectedField extends CreatesFields
 {
+    use CheckPluginActive;
 
     /** @var array */
     protected $query = [];
@@ -35,6 +37,12 @@ class ConnectedField extends CreatesFields
         $result = [];
 
         foreach ($connections as $connection) {
+            if ($this->isPluginPDCInternalProductsActive()) {
+                if ("pdc-item" === $connection['from'] && "pdc-item" === $connection['to']) {
+                    $this->query['tax_query'] = ItemController::showExternalOnly();
+                }
+            }
+
             $type                      = $connection['from'] . '_to_' . $connection['to'];
             $result[$connection['to']] = $this->getConnectedItems($post->ID, $type);
         }
