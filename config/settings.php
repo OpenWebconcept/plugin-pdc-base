@@ -50,6 +50,12 @@ return [
                     'desc' => __('Use portal url in api.', 'pdc-base'),
                     'id'   => 'setting_use_portal_url',
                     'type' => 'checkbox',
+                ],
+                'pdc_use_escape_element' => [
+                    'name' => __('Escape element', 'pdc-base'),
+                    'desc' => __('Enable escape element.', 'pdc-base'),
+                    'id'   => 'setting_use_escape_element',
+                    'type' => 'checkbox',
                 ]
             ]
         ]

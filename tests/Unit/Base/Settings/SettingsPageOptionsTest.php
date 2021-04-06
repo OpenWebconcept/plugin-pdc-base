@@ -20,13 +20,23 @@ class SettingsPageOptionsTest extends TestCase
             '_owc_setting_portal_pdc_item_slug'             => 'direct/regelen',
             '_owc_setting_include_theme_in_portal_url'      => 0,
             '_owc_setting_include_subtheme_in_portal_url'   => 1,
-            '_owc_setting_identifications'                  => 1
+            '_owc_setting_identifications'                  => 1,
+            '_owc_setting_use_escape_element'               => 0
         ]);
     }
 
     public function tearDown(): void
     {
         \WP_Mock::tearDown();
+    }
+
+    /** @test */
+    public function do_not_use_emergency_button_setting(): void
+    {
+        $expectedResult = false;
+        $result         = $this->settingsPageOptions->useEscapeElement();
+
+        $this->assertEquals($expectedResult, $result);
     }
 
     /** @test */

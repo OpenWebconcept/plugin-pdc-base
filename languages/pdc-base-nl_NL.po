@@ -20,6 +20,18 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-2: vendor\n"
 "X-Poedit-SearchPathExcluded-3: languages\n"
 
+#: config/emergency_button_metabox.php:6 config/settings.php:55
+msgid "Escape element"
+msgstr "Ontsnap element"
+
+#: config/emergency_button_metabox.php:14 
+msgid "Enable escape element"
+msgstr "Gebruik ontsnap element"
+
+#: config/emergency_button_metabox.php:15
+msgid "Show escape element on portal page."
+msgstr "Ontsnap element weergeven op portaal pagina."
+
 #: config/metaboxes.php:7
 msgid "Data"
 msgstr "Gegevens"
@@ -183,8 +195,8 @@ msgid "UPL name"
 msgstr "UPL naam"
 
 #: config/metaboxes.php:184
-msgid "Example: aanduiding naamgebruik"
-msgstr "Bijvoorbeeld: aanduiding naamgebruik"
+msgid "Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain"
+msgstr "Alle beschikbare waarden kunnen gevonden worden op: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain"
 
 #: config/metaboxes.php:189
 msgid "UPL resource"
@@ -615,7 +627,11 @@ msgstr "Portaal url"
 
 #: config/settings.php:50
 msgid "Use portal url in api."
-msgstr "Gebruik portaal url in de api"
+msgstr "Gebruik portaal url in de api."
+
+#: config/settings.php:56
+msgid "Enable escape element."
+msgstr "Gebruik ontsnap element."
 
 #: config/posttypes.php:193
 msgid "Parent pdc groups:"

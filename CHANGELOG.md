@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version 3.1.15
+
+### Feat
+
+-   Add escape element setting to pdc-settings.
+-   Add escape element setting in editor of pdc-item.
+
 ## Version 3.1.14
 
 ### Fix

@@ -67,7 +67,7 @@ class SettingsPageOptions
      */
     public function useGroupLayer(): bool
     {
-        return get_option('_owc_pdc_base_settings')['_owc_setting_pdc-group'] ?? false;
+        return $this->settings['_owc_setting_pdc-group'] ?? false;
     }
 
     /**
@@ -77,7 +77,17 @@ class SettingsPageOptions
      */
     public function usePortalURL(): bool
     {
-        return get_option('_owc_pdc_base_settings')['_owc_setting_use_portal_url'] ?? false;
+        return $this->settings['_owc_setting_use_portal_url'] ?? false;
+    }
+
+    /**
+     * Use escape element value in items endpoint.
+     *
+     * @return boolean
+     */
+    public function useEscapeElement(): bool
+    {
+        return $this->settings['_owc_setting_use_escape_element'] ?? false;
     }
 
     public static function make(): self
@@ -88,7 +98,9 @@ class SettingsPageOptions
             '_owc_setting_include_theme_in_portal_url'      => 0,
             '_owc_setting_include_subtheme_in_portal_url'   => 0,
             '_owc_setting_pdc-group'                        => 0,
-            '_owc_setting_identifications'                  => 0
+            '_owc_setting_use_portal_url'                   => 0,
+            '_owc_setting_identifications'                  => 0,
+            '_owc_setting_use_escape_element'               => 0
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

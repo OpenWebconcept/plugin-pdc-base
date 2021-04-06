@@ -21,7 +21,8 @@ class MetaboxServiceProviderTest extends TestCase
                 '_owc_setting_include_theme_in_portal_url'      => 0,
                 '_owc_setting_include_subtheme_in_portal_url'   => 0,
                 '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0,
+                '_owc_setting_identifications'                  => 1,
+                '_owc_setting_use_escape_element'               => 1
             ]
         ]);
 
@@ -32,7 +33,8 @@ class MetaboxServiceProviderTest extends TestCase
                 '_owc_setting_include_theme_in_portal_url'      => 0,
                 '_owc_setting_include_subtheme_in_portal_url'   => 0,
                 '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_identifications'                  => 1,
+                '_owc_setting_use_escape_element'               => 1
             ]
         ]);
     }
@@ -79,6 +81,38 @@ class MetaboxServiceProviderTest extends TestCase
                         ]
                     ]
                 ]
+            ],
+            'identifications' => [
+                'id'     => 'identifications',
+                'fields' => [
+                    'general' => [
+                        'testfield_noid' => [
+                            'type' => 'heading'
+                        ],
+                        'testfield1'     => [
+                            'id' => 'metabox_id1'
+                        ],
+                        'testfield2'     => [
+                            'id' => 'metabox_id2'
+                        ]
+                    ]
+                ]
+            ],
+            'escape_element' => [
+                'id'     => 'escape_element',
+                'fields' => [
+                    'general' => [
+                        'testfield_noid' => [
+                            'type' => 'heading'
+                        ],
+                        'testfield1'     => [
+                            'id' => 'metabox_id1'
+                        ],
+                        'testfield2'     => [
+                            'id' => 'metabox_id2'
+                        ]
+                    ]
+                ]
             ]
         ];
 
@@ -98,10 +132,40 @@ class MetaboxServiceProviderTest extends TestCase
                         'id' => $prefix . 'metabox_id2'
                     ]
                 ]
+            ],
+            1 => [
+                'id'     => 'identifications',
+                'fields' => [
+                    [
+                        'type' => 'heading'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id1'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id2'
+                    ]
+                ]
+            ],
+            2 => [
+                'id'     => 'escape_element',
+                'fields' => [
+                    [
+                        'type' => 'heading'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id1'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id2'
+                    ]
+                ]
             ]
         ];
 
         $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('identifications_metaboxes')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
 
         //test for filter being called
         \WP_Mock::expectFilter('owc/pdc-base/before-register-metaboxes', $expectedMetaboxes);
@@ -126,7 +190,6 @@ class MetaboxServiceProviderTest extends TestCase
         ];
 
         $expectedMetaboxesAfterMerge = [
-
             0 => [
                 'id'     => 'existing_metadata',
                 'fields' => [
@@ -154,10 +217,40 @@ class MetaboxServiceProviderTest extends TestCase
                         'id' => $prefix . 'metabox_id2'
                     ]
                 ]
+            ],
+            2 => [
+                'id'     => 'identifications',
+                'fields' => [
+                    [
+                        'type' => 'heading'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id1'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id2'
+                    ]
+                ]
+            ],
+            3 => [
+                'id'     => 'escape_element',
+                'fields' => [
+                    [
+                        'type' => 'heading'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id1'
+                    ],
+                    [
+                        'id' => $prefix . 'metabox_id2'
+                    ]
+                ]
             ]
         ];
 
         $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('identifications_metaboxes')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
 
         $this->assertEquals($expectedMetaboxesAfterMerge, $service->registerMetaboxes($existingMetaboxes));
     }

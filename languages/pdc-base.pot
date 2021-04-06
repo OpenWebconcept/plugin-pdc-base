@@ -18,6 +18,18 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-2: vendor\n"
 "X-Poedit-SearchPathExcluded-3: languages\n"
 
+#: config/emergency_button_metabox.php:6 config/settings.php:55
+msgid "Escape element"
+msgstr ""
+
+#: config/emergency_button_metabox.php:14 
+msgid "Enable escape element"
+msgstr ""
+
+#: config/emergency_button_metabox.php:15
+msgid "Show escape element on portal page."
+msgstr ""
+
 #: config/metaboxes.php:7
 msgid "Data"
 msgstr ""
@@ -168,7 +180,7 @@ msgid "UPL name"
 msgstr ""
 
 #: config/metaboxes.php:184
-msgid "Example: aanduiding naamgebruik"
+msgid "Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain"
 msgstr ""
 
 #: config/metaboxes.php:189
@@ -413,6 +425,10 @@ msgstr ""
 
 #: config/settings.php:50
 msgid "Use portal url in api."
+msgstr ""
+
+#: config/settings.php:56
+msgid "Enable escape element."
 msgstr ""
 
 #: config/posttypes.php:13 config/posttypes.php:14
