@@ -39,8 +39,11 @@ return [
             'archive'       => [
                 'nopaging' => true,
             ],
-            'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
+            'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'author'],
             'admin_cols'    => [
+                'author' => [
+                    'title'      => __('Author', 'pdc-base'),
+                ],
                 'aspect'               => [
                     'title'    => __('Aspect', 'pdc-base'),
                     'taxonomy' => 'pdc-aspect',
