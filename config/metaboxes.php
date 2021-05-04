@@ -210,10 +210,10 @@ return [
                     'name' => __('Language', 'pdc-base'),
                 ],
                 'language' => [
-                    'name' => __('Taal', 'pdc-base'),
-                    'desc' => __('Select a language that is not Dutch. This is nessecary for the web accessibility.', 'pdc-base'),
-                    'id'   => 'pdc-item-language',
-                    'type' => 'select',
+                    'name'            => __('Language', 'pdc-base'),
+                    'desc'            => __('Select a language that is not Dutch. This is necessary for the web accessibility.', 'pdc-base'),
+                    'id'              => 'pdc-item-language',
+                    'type'            => 'select',
                     'placeholder'     => __('Dutch (default)', 'pdc-base'),
                     'options'         => [
                         'en'    => __('English', 'pdc-base'),
@@ -223,5 +223,22 @@ return [
                 ]
             ],
         ],
+    ],
+    'pdc-category' => [
+        'id'         => 'pdc_category_metadata',
+        'title'      => __('Icon', 'pdc-base'),
+        'post_types' => ['pdc-category'],
+        'context'    => 'side',
+        'priority'   => 'high',
+        'fields'     => [
+            'general'     => [
+                'title'    => [
+                    'name' => __('Icon', 'pdc-base'),
+                    'desc' => __('Use this option to add an icon to a theme.', 'pdc-base'),
+                    'id'   => 'pdc_category_icon',
+                    'type' => 'text',
+                ],
+            ]
+        ]
     ]
 ];

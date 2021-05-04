@@ -40,14 +40,15 @@ return [
         ],
         'group' => [
             'fields' => [
-                'items'  => OWC\PDC\Base\RestAPI\GroupFields\ItemsField::class,
-                'image'  => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'themes' => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
+                'items'     => OWC\PDC\Base\RestAPI\GroupFields\ItemsField::class,
+                'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'themes'    => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\GroupFields\SubThemaField::class,
             ],
         ],
         'thema'    => [
             'fields' => [
+                'icon'      => OWC\PDC\Base\RestAPI\ThemaFields\IconField::class,
                 'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
                 'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,

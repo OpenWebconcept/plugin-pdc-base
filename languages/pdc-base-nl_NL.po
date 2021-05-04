@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PDC Base\n"
-"POT-Creation-Date: 2020-05-26 11:10+0200\n"
-"PO-Revision-Date: 2020-05-26 11:12+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdc-base\n"
+"POT-Creation-Date: 2021-05-04T14:33:06+00:00\n"
+"PO-Revision-Date: 2021-05-04 16:37+0200\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
 "Language-Team: Yard Digital Agency <info@yard.nl>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-KeywordsList: __;_x;_e;_ex;_n;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
 "esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
 "X-Poedit-Basepath: ..\n"
@@ -20,75 +21,229 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-2: vendor\n"
 "X-Poedit-SearchPathExcluded-3: languages\n"
 
-#: config/emergency_button_metabox.php:6 config/settings.php:55
+#. Plugin Name of the plugin
+msgid "Yard | PDC Base"
+msgstr "Yard | PDC Base"
+
+#. Plugin URI of the plugin
+msgid "https://www.openwebconcept.nl/"
+msgstr "https://www.openwebconcept.nl/"
+
+#. Description of the plugin
+msgid ""
+"Acts as foundation for other PDC related content plugins. This plugin "
+"implements actions"
+msgstr ""
+"Vormt de basis voor andere PDC gerelateerde plugins. Deze plugin "
+"implementeert actions."
+
+#. Author of the plugin
+msgid "Yard | Digital Agency"
+msgstr "Yard | Digital Agency"
+
+#. Author URI of the plugin
+msgid "https://www.yard.nl/"
+msgstr "https://www.yard.nl/"
+
+#: config/escape_element_metabox.php:6 config/settings.php:55
 msgid "Escape element"
 msgstr "Ontsnap element"
 
-#: config/emergency_button_metabox.php:14 
+#: config/escape_element_metabox.php:14
 msgid "Enable escape element"
 msgstr "Gebruik ontsnap element"
 
-#: config/emergency_button_metabox.php:15
+#: config/escape_element_metabox.php:15
 msgid "Show escape element on portal page."
 msgstr "Ontsnap element weergeven op portaal pagina."
 
-#: config/metaboxes.php:7
+#: config/escape_element_metabox.php:19 config/identifications_metaboxes.php:29
+#: config/identifications_metaboxes.php:81
+#: config/identifications_metaboxes.php:133
+#: config/identifications_metaboxes.php:185
+msgid "Yes"
+msgstr "Ja"
+
+#: config/escape_element_metabox.php:20 config/identifications_metaboxes.php:30
+#: config/identifications_metaboxes.php:82
+#: config/identifications_metaboxes.php:134
+#: config/identifications_metaboxes.php:186
+msgid "No"
+msgstr "Nee"
+
+#: config/identifications_metaboxes.php:6
+msgid "Identifications"
+msgstr "Identificaties"
+
+#: config/identifications_metaboxes.php:17
+#: config/identifications_metaboxes.php:69
+#: config/identifications_metaboxes.php:121
+#: config/identifications_metaboxes.php:173
+msgid "Add new group"
+msgstr "Voeg nieuwe groep toe"
+
+#: config/identifications_metaboxes.php:21
+msgid "DigiD"
+msgstr "DigiD"
+
+#: config/identifications_metaboxes.php:24
+#: config/identifications_metaboxes.php:76
+#: config/identifications_metaboxes.php:128
+#: config/identifications_metaboxes.php:180 config/metaboxes.php:30
+#: config/metaboxes.php:47
+msgid "Active"
+msgstr "Actief"
+
+#: config/identifications_metaboxes.php:25
+msgid "Use DigiD for identification."
+msgstr "Gebruik DigiD voor identificatie."
+
+#: config/identifications_metaboxes.php:35
+msgid "DigiD button title"
+msgstr "DigiD knop titel"
+
+#: config/identifications_metaboxes.php:38
+#: config/identifications_metaboxes.php:90
+#: config/identifications_metaboxes.php:142
+#: config/identifications_metaboxes.php:194
+msgid "Request"
+msgstr "Aanvragen"
+
+#: config/identifications_metaboxes.php:41
+msgid "DigiD button URL"
+msgstr "DigiD knop URL"
+
+#: config/identifications_metaboxes.php:46
+msgid "DigiD descriptive text"
+msgstr "DigiD begeleidende tekst"
+
+#: config/identifications_metaboxes.php:55
+#: config/identifications_metaboxes.php:107
+#: config/identifications_metaboxes.php:159
+#: config/identifications_metaboxes.php:211
+msgid "Order"
+msgstr "Volgorde"
+
+#: config/identifications_metaboxes.php:59
+#: config/identifications_metaboxes.php:111
+#: config/identifications_metaboxes.php:163
+#: config/identifications_metaboxes.php:215
+msgid "Order in which the identification buttons will be displayed in."
+msgstr "Volgorde waarin de identificatie knoppen weergegeven zullen worden."
+
+#: config/identifications_metaboxes.php:73
+msgid "eHerkenning"
+msgstr "eHerkenning"
+
+#: config/identifications_metaboxes.php:77
+msgid "Use eHerkenning for identification."
+msgstr "Gebruik eHerkennning voor identificatie."
+
+#: config/identifications_metaboxes.php:87
+msgid "eHerkenning button title"
+msgstr "eHerkenning knop titel"
+
+#: config/identifications_metaboxes.php:93
+msgid "eHerkenning button URL"
+msgstr "eHerkenning knop URL"
+
+#: config/identifications_metaboxes.php:98
+msgid "eHerkenning descriptive text"
+msgstr "eHerkenning begeleidende tekst"
+
+#: config/identifications_metaboxes.php:125
+msgid "eIDAS"
+msgstr "eIDAS"
+
+#: config/identifications_metaboxes.php:129
+msgid "Use eIDAS for identification."
+msgstr "Gebruik eIDAS voor identificatie."
+
+#: config/identifications_metaboxes.php:139
+msgid "eIDAS button title"
+msgstr "eIDAS knop titel"
+
+#: config/identifications_metaboxes.php:145
+msgid "eIDAS button URL"
+msgstr "eIDAS knop URL"
+
+#: config/identifications_metaboxes.php:150
+msgid "eIDAS descriptive text"
+msgstr "eIDAS begeleidende tekst"
+
+#: config/identifications_metaboxes.php:177
+msgid "General identification"
+msgstr "Algemene identificatie"
+
+#: config/identifications_metaboxes.php:181
+msgid "Use general identification."
+msgstr "Gebruik algemene identificatie."
+
+#: config/identifications_metaboxes.php:191
+msgid "General identification button title"
+msgstr "Algemene identificatie knop titel"
+
+#: config/identifications_metaboxes.php:197
+msgid "General identification button URL"
+msgstr "Algemene identificatie knop URL"
+
+#: config/identifications_metaboxes.php:202
+msgid "General_identification descriptive text"
+msgstr "Algemene identificatie begeleidende tekst"
+
+#: config/metaboxes.php:6
 msgid "Data"
 msgstr "Gegevens"
 
-#: config/metaboxes.php:17 config/settings_pages.php:16
+#: config/metaboxes.php:15
 msgid "General"
 msgstr "Algemeen"
 
-#: config/metaboxes.php:20
+#: config/metaboxes.php:18
 msgid "Title alternative"
 msgstr "Alternatieve titel"
 
-#: config/metaboxes.php:21
+#: config/metaboxes.php:19
 msgid "Use this option if you want to use an alternative title"
 msgstr ""
 "Gebruik deze mogelijkheid als de website een alternatieve titel gebruikt"
 
-#: config/metaboxes.php:26
+#: config/metaboxes.php:24
 msgid "Synonyms"
 msgstr "Synoniemen"
 
-#: config/metaboxes.php:27
+#: config/metaboxes.php:25
 msgid ""
 "Use this option to add an comma separated list of synonyms or related terms"
 msgstr ""
 "Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
 "gerelateerde termen mee te geven "
 
-#: config/metaboxes.php:32 config/metaboxes.php:49 config/metaboxes.php:215 config/metaboxes.php:247 config/metaboxes.php:279
-msgid "Active"
-msgstr "Actief"
-
-#: config/metaboxes.php:33
+#: config/metaboxes.php:31
 msgid "Is this product active yes/no"
 msgstr "Is dit product op dit moment actief ja/nee"
 
-#: config/metaboxes.php:46
+#: config/metaboxes.php:44
 msgid "Make an appointment"
 msgstr "Afspraak maken"
 
-#: config/metaboxes.php:50
+#: config/metaboxes.php:48
 msgid "Is an appointment obligatory for this product yes/no?"
 msgstr "Is het nodig voor dit product een afspraak te maken ja/nee?"
 
-#: config/metaboxes.php:60
+#: config/metaboxes.php:58
 msgid "Appointment button title"
 msgstr "Afspraak button titel"
 
-#: config/metaboxes.php:61
+#: config/metaboxes.php:59
 msgid "Leave empty for default value usage."
 msgstr "Leeg laten als de standaard waarde gebruikt dient te worden."
 
-#: config/metaboxes.php:66
+#: config/metaboxes.php:64
 msgid "Appointment URL"
 msgstr "Afspraak URL"
 
-#: config/metaboxes.php:67
+#: config/metaboxes.php:65
 msgid ""
 "Use this field to get a specific URL for the appointment button. URL "
 "including http(s)://"
@@ -96,11 +251,11 @@ msgstr ""
 "Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet "
 "worden. URL inclusief http(s)://"
 
-#: config/metaboxes.php:72
+#: config/metaboxes.php:70
 msgid "Appointment meta"
 msgstr "Afspraak meta"
 
-#: config/metaboxes.php:73
+#: config/metaboxes.php:71
 msgid ""
 "Use this field if the appointment method leverages an special data attribute "
 "like eg. GravityForms-id (currently not in use)"
@@ -109,125 +264,137 @@ msgstr ""
 "(bv GravityForms id, of andere vorm van koppelings data, momenteel nog niet "
 "in gebruik)"
 
-#: config/metaboxes.php:81
+#: config/metaboxes.php:79
 msgid "Links"
 msgstr "Links"
 
-#: config/metaboxes.php:88
+#: config/metaboxes.php:86
 msgid "Add new link"
 msgstr "Voeg nieuwe link toe"
 
-#: config/metaboxes.php:92
+#: config/metaboxes.php:90
 msgid "Link title"
 msgstr "Link titel"
 
-#: config/metaboxes.php:93 config/metaboxes.php:126 config/metaboxes.php:159
+#: config/metaboxes.php:91 config/metaboxes.php:124 config/metaboxes.php:157
 msgid "Use the title to replace the URL"
 msgstr "Wordt gebruikt om de link te tonen ipv de URL"
 
-#: config/metaboxes.php:98
+#: config/metaboxes.php:96
 msgid "Link URL"
 msgstr "Link URL"
 
-#: config/metaboxes.php:99 config/metaboxes.php:132 config/metaboxes.php:165
+#: config/metaboxes.php:97 config/metaboxes.php:130 config/metaboxes.php:163
 #: config/settings.php:14
 msgid "URL including http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/metaboxes.php:104
+#: config/metaboxes.php:102
 msgid "Link shortcode URL"
 msgstr "Link shortcode URL"
 
-#: config/metaboxes.php:105
+#: config/metaboxes.php:103
 msgid "Insert shortcode instead of URL. This overrides Link URL."
 msgstr "Voer de shortcode in in plaats van de URL. Dit overschrijft URL."
 
-#: config/metaboxes.php:114
+#: config/metaboxes.php:112
 msgid "Downloads"
 msgstr "Downloads"
 
-#: config/metaboxes.php:121
+#: config/metaboxes.php:119
 msgid "Add new download"
 msgstr "Voeg nieuwe download toe"
 
-#: config/metaboxes.php:125
+#: config/metaboxes.php:123
 msgid "Download title"
 msgstr "Download titel"
 
-#: config/metaboxes.php:131
+#: config/metaboxes.php:129
 msgid "Download URL"
 msgstr "Download URL"
 
-#: config/metaboxes.php:137
+#: config/metaboxes.php:135
 msgid "Download shortcode url"
 msgstr "Download short URL"
 
-#: config/metaboxes.php:138 config/metaboxes.php:171
+#: config/metaboxes.php:136 config/metaboxes.php:169
 msgid "Insert shortcode instead of url. This overrides url"
 msgstr "Voer de shortcode in in plaats van de url. Dit overschrijft url"
 
-#: config/metaboxes.php:147
+#: config/metaboxes.php:145
 msgid "Forms"
 msgstr "Formulieren"
 
-#: config/metaboxes.php:154
+#: config/metaboxes.php:152
 msgid "Add new form"
 msgstr "Voeg nieuwe formulier toe"
 
-#: config/metaboxes.php:158
+#: config/metaboxes.php:156
 msgid "Form title"
 msgstr "Formulieren titel"
 
-#: config/metaboxes.php:164
+#: config/metaboxes.php:162
 msgid "Form URL"
 msgstr "Formulieren URL"
 
-#: config/metaboxes.php:170
+#: config/metaboxes.php:168
 msgid "Form shortcode url"
 msgstr "Formulieren short URL"
 
-#: config/metaboxes.php:180
+#: config/metaboxes.php:178
 msgid "Government standards"
 msgstr "Overheid standaard"
 
-#: config/metaboxes.php:183
+#: config/metaboxes.php:181
 msgid "UPL name"
 msgstr "UPL naam"
 
-#: config/metaboxes.php:184
-msgid "Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain"
-msgstr "Alle beschikbare waarden kunnen gevonden worden op: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain"
+#: config/metaboxes.php:182
+msgid ""
+"Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/"
+"UPL-actueel.plain"
+msgstr ""
+"Alle beschikbare waarden kunnen gevonden worden op: https://standaarden."
+"overheid.nl/owms/oquery/UPL-actueel.plain"
 
-#: config/metaboxes.php:189
+#: config/metaboxes.php:187
 msgid "UPL resource"
 msgstr "UPL resource"
 
-#: config/metaboxes.php:190
+#: config/metaboxes.php:188
 msgid ""
 "Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
 msgstr ""
 "Bijvoorbeeld: http://standaarden.overheid.nl/owms/terms/"
 "{aanduiding_naamgebruik}"
 
-#: config/metaboxes.php:198
+#: config/metaboxes.php:196
 msgid "Other"
 msgstr "Overig"
 
-#: config/metaboxes.php:201
+#: config/metaboxes.php:199
 msgid "Notes"
 msgstr "Vrij notitieveld"
 
-#: config/metaboxes.php:202
+#: config/metaboxes.php:200
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: config/metaboxes.php:210
+#: config/metaboxes.php:210 config/metaboxes.php:213
 msgid "Language"
 msgstr "Taal"
 
 #: config/metaboxes.php:214
-msgid "Select a language that is not Dutch. This is nessecary for the web accessibility."
-msgstr "Selecteer een taal als de pagina niet Nederlands is. Dit is noodzakelijk voor webtoegankelijkheid."
+#, fuzzy
+#| msgid ""
+#| "Select a language that is not Dutch. This is nessecary for the web "
+#| "accessibility."
+msgid ""
+"Select a language that is not Dutch. This is necessary for the web "
+"accessibility."
+msgstr ""
+"Selecteer een taal als de pagina niet Nederlands is. Dit is noodzakelijk "
+"voor webtoegankelijkheid."
 
 #: config/metaboxes.php:217
 msgid "Dutch (default)"
@@ -245,121 +412,44 @@ msgstr "Duits"
 msgid "Turkish"
 msgstr "Turks"
 
-#: config/identifications_metaboxes.php:27
-msgid "Use DigiD for identification."
-msgstr "Gebruik DigiD voor identificatie."
+#: config/metaboxes.php:229 config/metaboxes.php:236
+msgid "Icon"
+msgstr "Icoon"
 
-#: config/identifications_metaboxes.php:29 config/identifications_metaboxes.php:80 config/identifications_metaboxes.php:131 config/identifications_metaboxes.php:182
-msgid "Yes"
-msgstr "Ja"
+#: config/metaboxes.php:237
+msgid "Use this option to add an icon to a theme."
+msgstr "Gebruik dit veld om een icoon toe te voegen aan het thema."
 
-#: config/identifications_metaboxes.php:30 config/identifications_metaboxes.php:81 config/identifications_metaboxes.php:132 config/identifications_metaboxes.php:183
-msgid "No"
-msgstr "Nee"
-
-#: config/identifications_metaboxes.php:37
-msgid "DigiD button title"
-msgstr "DigiD knop titel"
-
-#: config/identifications_metaboxes.php:38 config/identifications_metaboxes.php:89 config/identifications_metaboxes.php:140 config/identifications_metaboxes.php:191
-msgid "Request"
-msgstr "Aanvragen"
-
-#: config/identifications_metaboxes.php:43
-msgid "DigiD button URL"
-msgstr "DigiD knop URL"
-
-#: config/identifications_metaboxes.php:48
-msgid "DigiD descriptive text"
-msgstr "DigiD begeleidende tekst"
-
-#: config/identifications_metaboxes.php:57 config/identifications_metaboxes.php:109 config/identifications_metaboxes.php:161 config/identifications_metaboxes.php:213
-msgid "Order"
-msgstr "Volgorde"
-
-#: config/identifications_metaboxes.php:79
-msgid "Use eHerkenning for identification."
-msgstr "Gebruik eHerkennning voor identificatie."
-
-#: config/identifications_metaboxes.php:60 config/identifications_metaboxes.php:112 config/identifications_metaboxes.php:164 config/identifications_metaboxes.php:216
-msgid "Order in which the identification buttons will be displayed in."
-msgstr "Volgorde waarin de identificatie knoppen weergegeven zullen worden."
-
-#: config/identifications_metaboxes.php:89
-msgid "eHerkenning button title"
-msgstr "eHerkenning knop titel"
-
-#: config/identifications_metaboxes.php:95
-msgid "eHerkenning button URL"
-msgstr "eHerkenning knop URL"
-
-#: config/identifications_metaboxes.php:100
-msgid "eHerkenning descriptive text"
-msgstr "eHerkenning begeleidende tekst"
-
-#: config/identifications_metaboxes.php:131
-msgid "Use eIDAS for identification."
-msgstr "Gebruik eIDAS voor identificatie."
-
-#: config/identifications_metaboxes.php:141
-msgid "eIDAS button title"
-msgstr "eIDAS knop titel"
-
-#: config/identifications_metaboxes.php:147
-msgid "eIDAS button URL"
-msgstr "eIDAS knop URL"
-
-#: config/identifications_metaboxes.php:152
-msgid "eIDAS descriptive text"
-msgstr "eIDAS begeleidende tekst"
-
-#: config/identifications_metaboxes.php:179
-msgid "General identification"
-msgstr "Algemene identificatie"
-
-#: config/identifications_metaboxes.php:183
-msgid "Use general identification."
-msgstr "Gebruik algemene identificatie."
-
-#: config/identifications_metaboxes.php:193
-msgid "General identification button title"
-msgstr "Algemene identificatie knop titel"
-
-#: config/identifications_metaboxes.php:199
-msgid "General identification button URL"
-msgstr "Algemene identificatie knop URL"
-
-#: config/identifications_metaboxes.php:204
-msgid "General_identification descriptive text"
-msgstr "Algemene identificatie begeleidende tekst"
-
-#: config/identifications_metaboxes.php:6
-msgid "Identifications"
-msgstr "Identificaties"
-
-#: config/identifications_metaboxes.php:19 config/identifications_metaboxes.php:71 config/identifications_metaboxes.php:123 config/identifications_metaboxes.php:175
-msgid "Add new group"
-msgstr "Voeg nieuwe groep toe"
-
-#: config/p2p_connections.php:9 config/posttypes.php:11 config/posttypes.php:12
-#: config/posttypes.php:83
+#: config/p2p_connections.php:8
+msgctxt "P2P titel"
 msgid "PDC item"
 msgstr "PDC item"
 
-#: config/p2p_connections.php:14 config/posttypes.php:92
-#: config/posttypes.php:93 config/posttypes.php:125
+#: config/p2p_connections.php:13
+msgctxt "P2P titel"
 msgid "PDC theme"
 msgstr "PDC thema"
 
-#: config/p2p_connections.php:19 config/posttypes.php:134
-#: config/posttypes.php:135 config/posttypes.php:151 config/posttypes.php:152
-#: config/posttypes.php:167
+#: config/p2p_connections.php:18
+msgctxt "P2P titel"
 msgid "PDC subtheme"
 msgstr "PDC subthema"
 
-#: config/p2p_connections.php:24
+#: config/p2p_connections.php:23
+msgctxt "P2P titel"
 msgid "PDC owner"
-msgstr "PDC eigenaar"
+msgstr "PDC Eigenaar"
+
+#: config/p2p_connections.php:28
+#, fuzzy
+#| msgid "PDC group"
+msgctxt "P2P titel"
+msgid "PDC group"
+msgstr "PDC groep"
+
+#: config/posttypes.php:11 config/posttypes.php:12 config/posttypes.php:83
+msgid "PDC item"
+msgstr "PDC item"
 
 #: config/posttypes.php:13 config/posttypes.php:14
 msgid "Add new pdc item"
@@ -409,11 +499,13 @@ msgstr "PDC items attributen"
 msgid "Insert into pdc item"
 msgstr "Voeg in pdc Item"
 
-#: config/posttypes.php:26 config/posttypes.php:107 config/posttypes.php:149 config/posttypes.php:191
+#: config/posttypes.php:26 config/posttypes.php:107 config/posttypes.php:151
+#: config/posttypes.php:195
 msgid "Featured image"
 msgstr "Aanbevolen afbeelding"
 
-#: config/posttypes.php:27 config/posttypes.php:108 config/posttypes.php:150 config/posttypes.php:192
+#: config/posttypes.php:27 config/posttypes.php:108 config/posttypes.php:152
+#: config/posttypes.php:196
 msgid "Set featured image"
 msgstr "Stel aanbevolen afbeelding in"
 
@@ -436,6 +528,10 @@ msgstr "Type"
 #: config/posttypes.php:65
 msgid "Published"
 msgstr "Gepubliceerd"
+
+#: config/posttypes.php:92 config/posttypes.php:93 config/posttypes.php:128
+msgid "PDC theme"
+msgstr "PDC thema"
 
 #: config/posttypes.php:94 config/posttypes.php:95
 msgid "Add new pdc theme"
@@ -485,7 +581,7 @@ msgstr "PDC thema attributen"
 msgid "Insert into pdc theme"
 msgstr "Voeg in pdc thema"
 
-#: config/posttypes.php:109 config/posttypes.php:110 config/posttypes.php:126
+#: config/posttypes.php:109 config/posttypes.php:110 config/posttypes.php:129
 msgid "PDC themes"
 msgstr "PDC thema's"
 
@@ -493,153 +589,131 @@ msgstr "PDC thema's"
 msgid "Parent pdc themes:"
 msgstr "Hoofd pcd thema's:"
 
-#: config/posttypes.php:136 config/posttypes.php:137
+#: config/posttypes.php:136 config/posttypes.php:137 config/posttypes.php:153
+#: config/posttypes.php:154 config/posttypes.php:172
+msgid "PDC subtheme"
+msgstr "PDC subthema"
+
+#: config/posttypes.php:138 config/posttypes.php:139
 msgid "Add new pdc subtheme"
 msgstr "Voeg nieuwe pdc subthema toe"
 
-#: config/posttypes.php:138
+#: config/posttypes.php:140
 msgid "Edit pdc subtheme"
 msgstr "Bewerk pdc subthema"
 
-#: config/posttypes.php:139
+#: config/posttypes.php:141
 msgid "New pdc subtheme"
 msgstr "Voeg nieuwe pdc subthema toe"
 
-#: config/posttypes.php:140
+#: config/posttypes.php:142
 msgid "View pdc subtheme"
 msgstr "Bekijk pdc subthema"
 
-#: config/posttypes.php:141
+#: config/posttypes.php:143
 msgid "View pdc subthemes"
 msgstr "Bekijk pdc subthema's"
 
-#: config/posttypes.php:142
+#: config/posttypes.php:144
 msgid "Search pdc subthemes"
 msgstr "Zoek pdc subthema's"
 
-#: config/posttypes.php:143
+#: config/posttypes.php:145
 msgid "No pdc subthemes found."
 msgstr "Geen pdc subthema's gevonden."
 
-#: config/posttypes.php:144
+#: config/posttypes.php:146
 msgid "No pdc subthemes found in Trash."
 msgstr "Geen pdc subthema's gevonden in prullenbak."
 
-#: config/posttypes.php:145
+#: config/posttypes.php:147
 msgid "All pdc subthemes"
 msgstr "Alle pdc subthema's"
 
-#: config/posttypes.php:146
+#: config/posttypes.php:148
 msgid "PDC subthemes archives"
 msgstr "PDC subthema's archieven"
 
-#: config/posttypes.php:147
+#: config/posttypes.php:149
 msgid "PDC subtheme attributes"
 msgstr "PDC subthema attributen"
 
-#: config/posttypes.php:148
+#: config/posttypes.php:150
 msgid "Insert into pdc subtheme"
 msgstr "Voeg in pdc subthema"
 
-#: config/posttypes.php:153
+#: config/posttypes.php:155
 msgid "Parent pdc subthemes:"
 msgstr "Hoofd pdc subthema's:"
 
-#: config/posttypes.php:168
+#: config/posttypes.php:173
 msgid "PDC subthemes"
 msgstr "PDC subthemas"
 
-#: config/p2p_connections.php:28 config/posttypes.php:174 config/posttypes.php:175 config/posttypes.php:207
+#: config/posttypes.php:180 config/posttypes.php:181 config/posttypes.php:216
 msgid "PDC group"
 msgstr "PDC groep"
 
-#: config/posttypes.php:176 config/posttypes.php:177
+#: config/posttypes.php:182 config/posttypes.php:183
 msgid "Add new pdc group"
 msgstr "Voeg nieuwe pdc groep toe"
 
-#: config/posttypes.php:178
+#: config/posttypes.php:184
 msgid "Edit pdc group"
 msgstr "Wijzig pdc groep"
 
-#: config/posttypes.php:179
+#: config/posttypes.php:185
 msgid "New pdc group"
 msgstr "Nieuwe pdc groep"
 
-#: config/posttypes.php:180
+#: config/posttypes.php:186
 msgid "View pdc group"
 msgstr "Bekijk pdc groep"
 
-#: config/posttypes.php:181
+#: config/posttypes.php:187
 msgid "View pdc groups"
 msgstr "Bekijk pdc groepen"
 
-#: config/posttypes.php:182
+#: config/posttypes.php:188
 msgid "Search pdc groups"
 msgstr "Zoek pdc groepen"
 
-#: config/posttypes.php:183
+#: config/posttypes.php:189
 msgid "No pdc groups found."
 msgstr "Geen pdc groepen gevonden."
 
-#: config/posttypes.php:184
+#: config/posttypes.php:190
 msgid "No pdc groups found in Trash."
 msgstr "Geen pdc groepen gevonden in de prullenbak."
 
-#: config/posttypes.php:185
+#: config/posttypes.php:191
 msgid "All pdc groups"
 msgstr "Alle pdc groepen"
 
-#: config/posttypes.php:186
+#: config/posttypes.php:192
 msgid "PDC groups archives"
 msgstr "PDC groepen archief"
 
-#: config/posttypes.php:187
+#: config/posttypes.php:193
 msgid "PDC group attributes"
 msgstr "PDC groepen attributen"
 
-#: config/posttypes.php:187
+#: config/posttypes.php:194
 msgid "Insert into pdc group"
 msgstr "Voeg toe aan pdc groep"
 
-#: config/posttypes.php:191 config/posttypes.php:192 config/posttypes.php:208
+#: config/posttypes.php:197 config/posttypes.php:198 config/posttypes.php:217
 msgid "PDC groups"
 msgstr "PDC groepen"
 
-#: config/settings.php:37
-msgid "Use the group layer"
-msgstr "Gebruik de groepen laag"
-
-#: config/settings.php:38
-msgid "Use the group layer as connection between a pdc-item and a pdc-group."
-msgstr "Gebruik de groepen laag als verbinding tussen een pdc-item en een pdc-groep"
-
-#: config/settings.php:43
-msgid "Use identifications"
-msgstr "Gebruik identificaties"
-
-#: config/settings.php:44
-msgid "DigiD, eHerkenning and eIDAS."
-msgstr "DigiD, eHerkenning en eIDAS."
-
-#: config/settings.php:49
-msgid "Portal url"
-msgstr "Portaal url"
-
-#: config/settings.php:50
-msgid "Use portal url in api."
-msgstr "Gebruik portaal url in de api."
-
-#: config/settings.php:56
-msgid "Enable escape element."
-msgstr "Gebruik ontsnap element."
-
-#: config/posttypes.php:193
+#: config/posttypes.php:199
 msgid "Parent pdc groups:"
 msgstr "Parent pdc groepen:"
 
 #: config/settings.php:7
+msgctxt "PDC instellingen subpagina"
 msgid "Portal"
-msgstr "Portaal"
+msgstr "Portal"
 
 #: config/settings.php:13
 msgid "Portal URL"
@@ -669,17 +743,53 @@ msgstr "PDC item \"View in portal\" URL bevat subthema"
 msgid "Include subtheme, of PDC item, in \"View in portal\" slug?"
 msgstr "PDC item \"View in portal\" URL bevat subthema?"
 
+#: config/settings.php:37
+msgid "Use the group layer"
+msgstr "Gebruik de groepen laag"
+
+#: config/settings.php:38
+msgid "Use the group layer as connection between a pdc-item and a pdc-group."
+msgstr ""
+"Gebruik de groepen laag als verbinding tussen een pdc-item en een pdc-groep"
+
+#: config/settings.php:43
+msgid "Use identifications"
+msgstr "Gebruik identificaties"
+
+#: config/settings.php:44
+msgid "DigiD, eHerkenning and eIDAS."
+msgstr "DigiD, eHerkenning en eIDAS."
+
+#: config/settings.php:49
+msgid "Portal url"
+msgstr "Portaal url"
+
+#: config/settings.php:50
+msgid "Use portal url in api."
+msgstr "Gebruik portaal url in de api."
+
+#: config/settings.php:56
+msgid "Enable escape element."
+msgstr "Gebruik ontsnap element."
+
 #: config/settings_pages.php:9
 msgid "PDC settings"
 msgstr "PDC instellingen"
 
 #: config/settings_pages.php:11
+msgctxt "PDC settings subpage"
 msgid "Base"
 msgstr "Basis"
 
 #: config/settings_pages.php:14
+msgctxt "PDC settings subpage"
 msgid "Submit"
-msgstr "Verzenden"
+msgstr "Opslaan"
+
+#: config/settings_pages.php:16
+msgctxt "PDC settings tab"
+msgid "General"
+msgstr "Algemeen"
 
 #: config/taxonomies.php:12 config/taxonomies.php:13 config/taxonomies.php:14
 #: config/taxonomies.php:32
@@ -766,21 +876,26 @@ msgstr "Eigenaar"
 msgid "Owners"
 msgstr "Eigenaren"
 
-#: src/Base/Admin/InterfaceServiceProvider.php:45
+#: src/Base/Admin/InterfaceServiceProvider.php:54
 msgid "View PDC item in portal"
 msgstr "Bekijk PDC item in Portal"
 
-#: src/Base/Admin/InterfaceServiceProvider.php:66
-#: src/Base/Admin/InterfaceServiceProvider.php:90
+#: src/Base/Admin/InterfaceServiceProvider.php:76
+msgctxt "preview button text"
 msgid "View in Portal"
 msgstr "Bekijk in Portal"
 
-#: src/Base/Admin/InterfaceServiceProvider.php:89
-#, php-format
+#. translators: %s: post title
+#: src/Base/Admin/InterfaceServiceProvider.php:99
 msgid "View &#8220;%s&#8221;"
 msgstr "Bekijk &#8220;%s&#8221;"
 
-#: src/Base/Foundation/DependencyChecker.php:72
+#: src/Base/Admin/InterfaceServiceProvider.php:100
+msgctxt "Preview text in PDC list"
+msgid "View in Portal"
+msgstr "Bekijk in Portal"
+
+#: src/Base/Foundation/DependencyChecker.php:71
 msgid "The following plugins are required to use the PDC:"
 msgstr "De volgende plugins zijn vereist om gebruik te maken van de PDC:"
 
@@ -796,41 +911,39 @@ msgstr "Inactief"
 msgid "Minimal version:"
 msgstr "Minimale versie:"
 
-#: src/Base/RestAPI/Controllers/SearchController.php:67
+#: src/Base/RestAPI/Controllers/SearchController.php:68
 msgid "The search term."
 msgstr "De zoek term."
 
-#: src/Base/RestAPI/Controllers/SearchController.php:72
+#: src/Base/RestAPI/Controllers/SearchController.php:73
 msgid "The limit."
 msgstr "Het limiet."
 
-#: src/Base/RestAPI/Controllers/SearchController.php:78
+#: src/Base/RestAPI/Controllers/SearchController.php:79
 msgid "Pagination"
 msgstr "Paginering"
 
-#: src/Base/RestAPI/ItemFields/ConnectedField.php:54
-#, php-format
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:56
 msgid "Connection type \"%s\" does not exist"
 msgstr "Verbindingstype \"%s\" bestaat niet"
 
+#~ msgid "PDC owner"
+#~ msgstr "PDC eigenaar"
+
+#~ msgid "Portal"
+#~ msgstr "Portaal"
+
+#~ msgid "Base"
+#~ msgstr "Basis"
+
+#~ msgid "Submit"
+#~ msgstr "Verzenden"
+
+#~ msgid "View in Portal"
+#~ msgstr "Bekijk in Portal"
+
 #~ msgid "No audience found in Trash."
 #~ msgstr "Geen doelgroepen gevonden in prullenbak."
-
-#~ msgctxt "P2P titel"
-#~ msgid "PDC item"
-#~ msgstr "PDC item"
-
-#~ msgctxt "P2P titel"
-#~ msgid "PDC theme"
-#~ msgstr "PDC thema"
-
-#~ msgctxt "P2P titel"
-#~ msgid "PDC subtheme"
-#~ msgstr "PDC subthema"
-
-#~ msgctxt "P2P titel"
-#~ msgid "PDC owner"
-#~ msgstr "PDC Eigenaar"
 
 #~ msgctxt "Posttype definition"
 #~ msgid "PDC item"
@@ -855,22 +968,6 @@ msgstr "Verbindingstype \"%s\" bestaat niet"
 #~ msgctxt "Posttype definition"
 #~ msgid "PDC subthemes"
 #~ msgstr "PDC subthemas"
-
-#~ msgctxt "PDC instellingen subpagina"
-#~ msgid "Portal"
-#~ msgstr "Portal"
-
-#~ msgctxt "PDC settings subpage"
-#~ msgid "Base"
-#~ msgstr "Basis"
-
-#~ msgctxt "PDC settings subpage"
-#~ msgid "Submit"
-#~ msgstr "Opslaan"
-
-#~ msgctxt "PDC settings tab"
-#~ msgid "General"
-#~ msgstr "Algemeen"
 
 #~ msgctxt "Taxonomy definition"
 #~ msgid "Audience"
@@ -911,14 +1008,6 @@ msgstr "Verbindingstype \"%s\" bestaat niet"
 #~ msgctxt "Taxonomy definition"
 #~ msgid "Owners"
 #~ msgstr "Eigenaren"
-
-#~ msgctxt "preview button text"
-#~ msgid "View in Portal"
-#~ msgstr "Bekijk in Portal"
-
-#~ msgctxt "Preview text in PDC list"
-#~ msgid "View in Portal"
-#~ msgstr "Bekijk in Portal"
 
 #~ msgid "p2p_key \"%s\" does not exist"
 #~ msgstr "p2p_key \"%s\" bestaat niet"
