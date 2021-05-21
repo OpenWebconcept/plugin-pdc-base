@@ -142,15 +142,15 @@ class PostsToPostsServiceProvider extends ServiceProvider
     {
         global $post_type;
 
-        if ($post_type == 'pdc-item' && 'edit.php' != $hook) {
+        if ('pdc-item' == $post_type && 'edit.php' != $hook) {
             wp_enqueue_script('limit-item-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-item-connections.js', [], false, true);
         }
 
-        if ($post_type == 'pdc-subcategory' && 'edit.php' != $hook) {
+        if ('pdc-subcategory' == $post_type && 'edit.php' != $hook) {
             wp_enqueue_script('limit-subtheme-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-subtheme-connections.js');
         }
 
-        if ($post_type == 'pdc-group' && 'edit.php' != $hook) {
+        if ('pdc-group' == $post_type && 'edit.php' != $hook) {
             wp_enqueue_script('limit-group-subtheme-connection', $this->plugin->getPluginUrl() . '/js/limit-group-connections.js');
         }
     }

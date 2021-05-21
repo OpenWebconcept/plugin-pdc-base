@@ -7,7 +7,6 @@
 namespace OWC\PDC\Base\PostType;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
-use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 /**
  * Provider which handles the registration of posttype.
@@ -41,7 +40,7 @@ class PostTypeServiceProvider extends ServiceProvider
             $this->configPostTypes = $this->plugin->config->get('posttypes');
 
             foreach ($this->configPostTypes as $postTypeName => $postType) {
-                if ($postTypeName === 'pdc-group' && !$this->plugin->settings->useGroupLayer()) {
+                if ('pdc-group' === $postTypeName && !$this->plugin->settings->useGroupLayer()) {
                     continue;
                 }
 

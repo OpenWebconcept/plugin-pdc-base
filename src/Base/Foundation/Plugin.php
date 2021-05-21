@@ -25,7 +25,7 @@ class Plugin
      *
      * @var string VERSION
      */
-    const VERSION = '3.2.3';
+    const VERSION = '3.2.4';
 
     /**
      * Path to the root of the plugin.
@@ -58,7 +58,7 @@ class Plugin
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-        load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
+        \load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
         $this->loader = new Loader;
 
@@ -80,7 +80,7 @@ class Plugin
 
         if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
-            deactivate_plugins(plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
+            \deactivate_plugins(\plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
 
             return false;
         }
@@ -88,7 +88,7 @@ class Plugin
         // Set up service providers
         $this->callServiceProviders('register');
 
-        if (is_admin()) {
+        if (\is_admin()) {
             $this->callServiceProviders('register', 'admin');
             $this->callServiceProviders('boot', 'admin');
         }
@@ -109,7 +109,7 @@ class Plugin
      */
     public function filterPlugin()
     {
-        do_action('owc/' . self::NAME . '/plugin', $this);
+        \do_action('owc/' . self::NAME . '/plugin', $this);
     }
 
     /**
@@ -181,6 +181,6 @@ class Plugin
      */
     public function getPluginUrl(): string
     {
-        return plugins_url($this->getName());
+        return \plugins_url($this->getName());
     }
 }

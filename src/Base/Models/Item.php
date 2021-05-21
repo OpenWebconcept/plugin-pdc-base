@@ -266,7 +266,7 @@ class Item
     /**
      * Create portal url, used in 'pdc items' overview
      * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url
-     * 
+     *
      * @return string
      */
     private function createPortalURL(): string
@@ -288,26 +288,26 @@ class Item
             $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
         }
 
-        $portalURL .=  trailingslashit($this->getPostName()) . $this->getID();
+        $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
 
         return $portalURL;
     }
 
     private function getConnected($connection): ?\WP_Post
     {
-        $connected = new \WP_Query(array(
-            'connected_type' => $connection,
+        $connected = new \WP_Query([
+            'connected_type'  => $connection,
             'connected_items' => $this->getID(),
-            'nopaging' => true,
-            'post_status' => 'publish',
-        ));
+            'nopaging'        => true,
+            'post_status'     => 'publish',
+        ]);
 
         return !empty($connected->post) ? $connected->post : null;
     }
 
     /**
      * @param array $array
-     * 
+     *
      * @return array
      */
     public function arrayUnique($array): array

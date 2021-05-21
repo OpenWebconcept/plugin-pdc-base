@@ -1,17 +1,18 @@
 # Copyright (C) 2021 Yard | Digital Agency
 # This file is distributed under the same license as the Yard | PDC Base plugin.
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Yard | PDC Base 3.1.15\n"
+"Project-Id-Version: Yard | PDC Base\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdc-base\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Yard | Digital Agency <info@yard.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-04T14:33:06+00:00\n"
+"POT-Creation-Date: 2021-06-16 08:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: Poedit 2.3\n"
 "X-Domain: pdc-base\n"
 
 #. Plugin Name of the plugin
@@ -34,8 +35,7 @@ msgstr ""
 msgid "https://www.yard.nl/"
 msgstr ""
 
-#: config/escape_element_metabox.php:6
-#: config/settings.php:55
+#: config/escape_element_metabox.php:6 config/settings.php:55
 msgid "Escape element"
 msgstr ""
 
@@ -47,16 +47,14 @@ msgstr ""
 msgid "Show escape element on portal page."
 msgstr ""
 
-#: config/escape_element_metabox.php:19
-#: config/identifications_metaboxes.php:29
+#: config/escape_element_metabox.php:19 config/identifications_metaboxes.php:29
 #: config/identifications_metaboxes.php:81
 #: config/identifications_metaboxes.php:133
 #: config/identifications_metaboxes.php:185
 msgid "Yes"
 msgstr ""
 
-#: config/escape_element_metabox.php:20
-#: config/identifications_metaboxes.php:30
+#: config/escape_element_metabox.php:20 config/identifications_metaboxes.php:30
 #: config/identifications_metaboxes.php:82
 #: config/identifications_metaboxes.php:134
 #: config/identifications_metaboxes.php:186
@@ -81,8 +79,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:24
 #: config/identifications_metaboxes.php:76
 #: config/identifications_metaboxes.php:128
-#: config/identifications_metaboxes.php:180
-#: config/metaboxes.php:30
+#: config/identifications_metaboxes.php:180 config/metaboxes.php:30
 #: config/metaboxes.php:47
 msgid "Active"
 msgstr ""
@@ -256,9 +253,7 @@ msgstr ""
 msgid "Link title"
 msgstr ""
 
-#: config/metaboxes.php:91
-#: config/metaboxes.php:124
-#: config/metaboxes.php:157
+#: config/metaboxes.php:91 config/metaboxes.php:124 config/metaboxes.php:157
 msgid "Use the title to replace the URL"
 msgstr ""
 
@@ -266,9 +261,7 @@ msgstr ""
 msgid "Link URL"
 msgstr ""
 
-#: config/metaboxes.php:97
-#: config/metaboxes.php:130
-#: config/metaboxes.php:163
+#: config/metaboxes.php:97 config/metaboxes.php:130 config/metaboxes.php:163
 #: config/settings.php:14
 msgid "URL including http(s)://"
 msgstr ""
@@ -301,8 +294,7 @@ msgstr ""
 msgid "Download shortcode url"
 msgstr ""
 
-#: config/metaboxes.php:136
-#: config/metaboxes.php:169
+#: config/metaboxes.php:136 config/metaboxes.php:169
 msgid "Insert shortcode instead of url. This overrides url"
 msgstr ""
 
@@ -358,8 +350,7 @@ msgstr ""
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
-#: config/metaboxes.php:210
-#: config/metaboxes.php:213
+#: config/metaboxes.php:210 config/metaboxes.php:213
 msgid "Language"
 msgstr ""
 
@@ -383,8 +374,7 @@ msgstr ""
 msgid "Turkish"
 msgstr ""
 
-#: config/metaboxes.php:229
-#: config/metaboxes.php:236
+#: config/metaboxes.php:229 config/metaboxes.php:236
 msgid "Icon"
 msgstr ""
 
@@ -417,14 +407,11 @@ msgctxt "P2P titel"
 msgid "PDC group"
 msgstr ""
 
-#: config/posttypes.php:11
-#: config/posttypes.php:12
-#: config/posttypes.php:83
+#: config/posttypes.php:11 config/posttypes.php:12 config/posttypes.php:83
 msgid "PDC item"
 msgstr ""
 
-#: config/posttypes.php:13
-#: config/posttypes.php:14
+#: config/posttypes.php:13 config/posttypes.php:14
 msgid "Add new pdc item"
 msgstr ""
 
@@ -472,23 +459,17 @@ msgstr ""
 msgid "Insert into pdc item"
 msgstr ""
 
-#: config/posttypes.php:26
-#: config/posttypes.php:107
-#: config/posttypes.php:151
+#: config/posttypes.php:26 config/posttypes.php:107 config/posttypes.php:151
 #: config/posttypes.php:195
 msgid "Featured image"
 msgstr ""
 
-#: config/posttypes.php:27
-#: config/posttypes.php:108
-#: config/posttypes.php:152
+#: config/posttypes.php:27 config/posttypes.php:108 config/posttypes.php:152
 #: config/posttypes.php:196
 msgid "Set featured image"
 msgstr ""
 
-#: config/posttypes.php:28
-#: config/posttypes.php:29
-#: config/posttypes.php:84
+#: config/posttypes.php:28 config/posttypes.php:29 config/posttypes.php:84
 msgid "PDC items"
 msgstr ""
 
@@ -496,13 +477,11 @@ msgstr ""
 msgid "Parent pdc items:"
 msgstr ""
 
-#: config/posttypes.php:45
-#: config/taxonomies.php:58
+#: config/posttypes.php:45 config/taxonomies.php:58
 msgid "Aspect"
 msgstr ""
 
-#: config/posttypes.php:60
-#: config/taxonomies.php:45
+#: config/posttypes.php:60 config/taxonomies.php:45
 msgid "Type"
 msgstr ""
 
@@ -510,14 +489,11 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-#: config/posttypes.php:92
-#: config/posttypes.php:93
-#: config/posttypes.php:128
+#: config/posttypes.php:92 config/posttypes.php:93 config/posttypes.php:128
 msgid "PDC theme"
 msgstr ""
 
-#: config/posttypes.php:94
-#: config/posttypes.php:95
+#: config/posttypes.php:94 config/posttypes.php:95
 msgid "Add new pdc theme"
 msgstr ""
 
@@ -565,9 +541,7 @@ msgstr ""
 msgid "Insert into pdc theme"
 msgstr ""
 
-#: config/posttypes.php:109
-#: config/posttypes.php:110
-#: config/posttypes.php:129
+#: config/posttypes.php:109 config/posttypes.php:110 config/posttypes.php:129
 msgid "PDC themes"
 msgstr ""
 
@@ -575,16 +549,12 @@ msgstr ""
 msgid "Parent pdc themes:"
 msgstr ""
 
-#: config/posttypes.php:136
-#: config/posttypes.php:137
-#: config/posttypes.php:153
-#: config/posttypes.php:154
-#: config/posttypes.php:172
+#: config/posttypes.php:136 config/posttypes.php:137 config/posttypes.php:153
+#: config/posttypes.php:154 config/posttypes.php:172
 msgid "PDC subtheme"
 msgstr ""
 
-#: config/posttypes.php:138
-#: config/posttypes.php:139
+#: config/posttypes.php:138 config/posttypes.php:139
 msgid "Add new pdc subtheme"
 msgstr ""
 
@@ -640,14 +610,11 @@ msgstr ""
 msgid "PDC subthemes"
 msgstr ""
 
-#: config/posttypes.php:180
-#: config/posttypes.php:181
-#: config/posttypes.php:216
+#: config/posttypes.php:180 config/posttypes.php:181 config/posttypes.php:216
 msgid "PDC group"
 msgstr ""
 
-#: config/posttypes.php:182
-#: config/posttypes.php:183
+#: config/posttypes.php:182 config/posttypes.php:183
 msgid "Add new pdc group"
 msgstr ""
 
@@ -695,9 +662,7 @@ msgstr ""
 msgid "Insert into pdc group"
 msgstr ""
 
-#: config/posttypes.php:197
-#: config/posttypes.php:198
-#: config/posttypes.php:217
+#: config/posttypes.php:197 config/posttypes.php:198 config/posttypes.php:217
 msgid "PDC groups"
 msgstr ""
 
@@ -785,9 +750,7 @@ msgctxt "PDC settings tab"
 msgid "General"
 msgstr ""
 
-#: config/taxonomies.php:12
-#: config/taxonomies.php:13
-#: config/taxonomies.php:14
+#: config/taxonomies.php:12 config/taxonomies.php:13 config/taxonomies.php:14
 #: config/taxonomies.php:32
 msgid "Audience"
 msgstr ""

@@ -46,8 +46,8 @@ class InterfaceServiceProviderTest extends TestCase
     /** @test */
     public function check_registration_of_interface_methods(): void
     {
-        $config = m::mock(Config::class);
-        $plugin = m::mock(Plugin::class);
+        $config  = m::mock(Config::class);
+        $plugin  = m::mock(Plugin::class);
         $service = m::mock(InterfaceServiceProvider::class);
 
         $plugin->config = $config;

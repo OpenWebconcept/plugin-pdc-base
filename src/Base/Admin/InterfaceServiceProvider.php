@@ -7,8 +7,8 @@
 namespace OWC\PDC\Base\Admin;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
-use WP_Post;
 use OWC\PDC\Base\Models\Item;
+use WP_Post;
 
 /**
  * Provider which registers the admin interface.

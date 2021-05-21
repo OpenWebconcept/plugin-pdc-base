@@ -31,7 +31,7 @@ class ItemController extends BaseController
         $items      = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
-            ->query($this->hideInactiveItem());
+            ->query(self::hideInactiveItem());
 
         if (false === $parameters['include-connected']) {
             $items->hide(['connected']);
@@ -86,16 +86,15 @@ class ItemController extends BaseController
 
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query($this->hideInactiveItem())
+            ->query(self::hideInactiveItem())
             ->find($id);
 
-            
         if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
                     'status' => 404,
                     ]);
         }
-                
+
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
                 'unnauthorized_request',
@@ -119,10 +118,10 @@ class ItemController extends BaseController
         $slug = $request->get_param('slug');
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query(Self::hideInactiveItem())
+            ->query(self::hideInactiveItem())
             ->findBySlug($slug);
 
-            
+
         if (! $item) {
             return new WP_Error(
                 'no_item_found',
@@ -130,7 +129,7 @@ class ItemController extends BaseController
                 ['status' => 404]
             );
         }
-      
+
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
                 'unnauthorized_request',
@@ -148,11 +147,13 @@ class ItemController extends BaseController
     public static function hideInactiveItem(): array
     {
         return [
-            [
-                'key'     => '_owc_pdc_active',
-                'value'   => '1',
-                'compare' => '=',
-            ],
+            'meta_query' => [
+                [
+                    'key'     => '_owc_pdc_active',
+                    'value'   => '1',
+                    'compare' => '=',
+                ],
+            ]
         ];
     }
 

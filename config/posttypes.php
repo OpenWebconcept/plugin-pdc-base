@@ -39,7 +39,7 @@ return [
             'archive'       => [
                 'nopaging' => true,
             ],
-            'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'author'],
+            'supports'      => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'author', 'custom-fields'],
             'admin_cols'    => [
                 'author' => [
                     'title'      => __('Author', 'pdc-base'),
@@ -90,7 +90,6 @@ return [
     ],
     'pdc-category'    => [
         'args'  => [
-
             'labels'       => [
                 'name'               => __('PDC theme', 'pdc-base'),
                 'singular_name'      => __('PDC theme', 'pdc-base'),
@@ -124,7 +123,7 @@ return [
             'archive'      => [
                 'nopaging' => true,
             ],
-            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail'],
+            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields'],
         ],
         'names' => [
             # Override the base names used for labels:
@@ -167,7 +166,7 @@ return [
             'archive'      => [
                 'nopaging' => true,
             ],
-            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail', 'page-attributes'],
+            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields'],
             'hierarchical' => true,
         ],
         'names' => [
@@ -212,7 +211,7 @@ return [
             'archive'      => [
                 'nopaging' => true,
             ],
-            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail'],
+            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields'],
         ],
         'names' => [
             # Override the base names used for labels:

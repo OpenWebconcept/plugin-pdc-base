@@ -2,8 +2,6 @@
 
 namespace OWC\PDC\Base\Settings;
 
-use Mockery as m;
-use OWC\PDC\Base\Settings\SettingsPageOptions;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class SettingsPageOptionsTest extends TestCase

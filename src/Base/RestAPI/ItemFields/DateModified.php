@@ -6,9 +6,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use WP_Post;
-use OWC\PDC\Base\Models\Item;
 use OWC\PDC\Base\Support\CreatesFields;
+use WP_Post;
 
 class DateModified extends CreatesFields
 {

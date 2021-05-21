@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.2.4 (2021-06-06)
+
+### Change
+
+- Add 'custom-fields' to support for the registered posttype.
+
 ## Version 3.2.3
 
 ### Feat
@@ -10,7 +16,7 @@
 
 ### Feat
 
--   Allow additional actions before and after the creation of a featured image.
+- Allow additional actions before and after the creation of a featured image.
 
 ## Version 3.2.1
 
@@ -23,6 +29,12 @@
 ### Feat
 
 -   Internal products need authorization.
+
+## Version 3.1.16
+
+### Feat
+
+-    Add icon field to theme.
 
 ## Version 3.1.15
 

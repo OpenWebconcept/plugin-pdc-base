@@ -73,9 +73,9 @@ class ConnectedField extends CreatesFields
 
         // add meta query when connection needs to exclude inactive items
         if (in_array($type, $connectionsExcludeInActive)) {
-            $this->query['meta_query'] = ItemController::hideInactiveItem();
+            $this->query = array_merge($this->query, ItemController::hideInactiveItem());
         }
-        
+
         return array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,

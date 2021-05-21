@@ -238,7 +238,7 @@ abstract class AbstractRepository
     {
         $reflectionClass = new \ReflectionClass(get_called_class());
         if ($reflectionClass->getMethod('transform')->class == get_called_class()) {
-            return call_user_func_array(array(get_called_class(), "transform"), array($post));
+            return call_user_func_array([get_called_class(), "transform"], [$post]);
         }
 
         $data = [

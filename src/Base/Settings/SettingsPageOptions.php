@@ -72,7 +72,7 @@ class SettingsPageOptions
 
     /**
      * Use portal url in items endpoint.
-     * 
+     *
      * @return boolean
      */
     public function usePortalURL(): bool
