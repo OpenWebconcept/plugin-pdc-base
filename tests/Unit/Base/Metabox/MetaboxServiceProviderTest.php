@@ -163,8 +163,6 @@ class MetaboxServiceProviderTest extends TestCase
             ]
         ];
 
-        $config->shouldReceive('get')->with('identifications_metaboxes')->twice();
-
         $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
         $config->shouldReceive('get')->with('identifications_metaboxes')->once()->andReturn($configMetaboxes);
         $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
