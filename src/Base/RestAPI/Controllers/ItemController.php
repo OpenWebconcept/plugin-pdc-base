@@ -89,18 +89,19 @@ class ItemController extends BaseController
             ->query($this->hideInactiveItem())
             ->find($id);
 
+            
+        if (! $item) {
+            return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
+                    'status' => 404,
+                    ]);
+        }
+                
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
                 'unnauthorized_request',
                 sprintf('Unnauthorized request for "%d"', $id),
                 ['status' => 401]
             );
-        }
-
-        if (! $item) {
-            return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
-                'status' => 404,
-            ]);
         }
 
         return $item;
@@ -121,19 +122,20 @@ class ItemController extends BaseController
             ->query(Self::hideInactiveItem())
             ->findBySlug($slug);
 
-        if ($this->needsAuthorization($item)) {
-            return new WP_Error(
-                'unnauthorized_request',
-                sprintf('Unnauthorized request for "%s"', $slug),
-                ['status' => 401]
-            );
-        }
-        
+            
         if (! $item) {
             return new WP_Error(
                 'no_item_found',
                 sprintf('Item with slug "%s" not found', $slug),
                 ['status' => 404]
+            );
+        }
+      
+        if ($this->needsAuthorization($item)) {
+            return new WP_Error(
+                'unnauthorized_request',
+                sprintf('Unnauthorized request for "%s"', $slug),
+                ['status' => 401]
             );
         }
 
