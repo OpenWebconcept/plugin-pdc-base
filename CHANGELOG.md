@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.2.0
+
+### Feat
+
+- Internal products need authorization
+
 ## Version 3.1.15
 
 ### Feat
