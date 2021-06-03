@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds featured image to the output.
  */
@@ -13,7 +14,6 @@ use WP_Post;
  */
 class FeaturedImageField extends CreatesFields
 {
-
     /**
      * Gets the featured image of a post.
      *
@@ -23,27 +23,38 @@ class FeaturedImageField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        if (! has_post_thumbnail($post->ID)) {
+        if (!has_post_thumbnail($post->ID)) {
             return [];
         }
 
-        $id         = get_post_thumbnail_id($post->ID);
-        $attachment = get_post($id);
-        $imageSize  = 'large';
+        $attachmentID = get_post_thumbnail_id($post->ID);
 
-        $result = [];
+        // Allow additional actions before creation of featured image.
+        do_action('owc/pdc-base/rest-api/shared-items/field/before-creation-featured-image', $post);
+
+        $attachment = get_post($attachmentID);
+
+        if (!$attachment instanceof \WP_Post) {
+            return [];
+        }
+
+        $imageSize = 'large';
+        $result    = [];
 
         $result['title']       = $attachment->post_title;
         $result['description'] = $attachment->post_content;
         $result['caption']     = $attachment->post_excerpt;
         $result['alt']         = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
 
-        $meta = $this->getAttachmentMeta($id);
+        $meta = $this->getAttachmentMeta($attachmentID);
 
-        $result['rendered'] = wp_get_attachment_image($id, $imageSize);
-        $result['sizes']    = wp_get_attachment_image_sizes($id, $imageSize, $meta);
-        $result['srcset']   = wp_get_attachment_image_srcset($id, $imageSize, $meta);
+        $result['rendered'] = wp_get_attachment_image($attachmentID, $imageSize);
+        $result['sizes']    = wp_get_attachment_image_sizes($attachmentID, $imageSize, $meta);
+        $result['srcset']   = wp_get_attachment_image_srcset($attachmentID, $imageSize, $meta);
         $result['meta']     = $meta;
+
+        // Allow additional actions after creation of featured image.
+        do_action('owc/pdc-base/rest-api/shared-items/field/after-creation-featured-image', $post);
 
         return $result;
     }

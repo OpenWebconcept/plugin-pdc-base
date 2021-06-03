@@ -136,10 +136,17 @@ owc/pdc-base/rest-api/pdcsubcategory/field/has-appointment
 owc/pdc-base/before-register-metaboxes
 ```
 
-##### Filters the settings to be registered just before registration..
+##### Filters the settings to be registered just before registration.
 
 ```php
 owc/pdc-base/before-register-settings
+```
+
+#### Allow additional actions before and after the creation of a featured image.
+
+```php
+owc/pdc-base/rest-api/shared-items/field/before-creation-featured-image
+owc/pdc-base/rest-api/shared-items/field/after-creation-featured-image
 ```
 
 ### Translations

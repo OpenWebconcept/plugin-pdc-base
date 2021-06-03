@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.2.2
+
+### Feat
+
+-   Allow additional actions before and after the creation of a featured image.
+
 ## Version 3.2.1
 
 ### Refactor
