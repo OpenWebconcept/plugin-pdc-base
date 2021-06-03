@@ -1,10 +1,16 @@
 # CHANGELOG
 
+## Version 3.2.1
+
+### Refactor
+
+-   Remove redundant ItemsFields.php files and create one shared file.
+
 ## Version 3.2.0
 
 ### Feat
 
-- Internal products need authorization
+-   Internal products need authorization.
 
 ## Version 3.1.15
 

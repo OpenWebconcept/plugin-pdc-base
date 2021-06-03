@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'models' => [
         'item' => [
             /**
@@ -32,7 +31,7 @@ return [
         ],
         'subthema' => [
             'fields' => [
-                'items'  => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'items'  => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image'  => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
                 'groups' => OWC\PDC\Base\RestAPI\SubThemaFields\GroupField::class,
@@ -40,16 +39,16 @@ return [
         ],
         'group' => [
             'fields' => [
-                'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'items'     => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'themes'    => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\GroupFields\SubThemaField::class,
             ],
         ],
-        'thema'    => [
+        'thema' => [
             'fields' => [
                 'icon'      => OWC\PDC\Base\RestAPI\ThemaFields\IconField::class,
-                'items'     => OWC\PDC\Base\RestAPI\ThemaFields\ItemsField::class,
+                'items'     => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
             ],
