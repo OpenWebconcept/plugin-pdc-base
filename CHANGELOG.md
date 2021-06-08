@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.2.3
+
+### Feat
+
+- Allow items with no type specified in the api
+
 ## Version 3.2.2
 
 ### Feat

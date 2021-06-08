@@ -179,7 +179,7 @@ class ItemController extends BaseController
         $types = $item['taxonomies']['pdc-type'] ?? [];
 
         if (empty($types)) {
-            return true;
+            return false;
         }
 
         foreach ($types as $type) {
