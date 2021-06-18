@@ -36,36 +36,36 @@ class ItemControllerTest extends TestCase
         ->withArgs([ 'pdc-internal-products/pdc-internal-products.php' ])
         ->once()
         ->andReturn(false);
-        
+
         $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', [[]]);
 
         $this->assertFalse($actual);
     }
 
     /** @test */
-    public function it_needs_authorization_if_pdc_internal_products_plugin_is_active(): void
+    public function it_fails_if_pdc_internal_products_plugin_is_not_active(): void
     {
         \WP_Mock::userFunction('is_plugin_active')
          ->withArgs([ 'pdc-internal-products/pdc-internal-products.php' ])
          ->once()
-         ->andReturn(true);
-         
+         ->andReturn(false);
+
         $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', [[]]);
- 
-        $this->assertTrue($actual);
+
+        $this->assertFalse($actual);
     }
 
     /** @test */
-    public function it_needs_authorization_if_requested_item_has_no_type_taxonomy(): void
+    public function it_needs_no_authorization_if_requested_item_has_no_type_taxonomy(): void
     {
         \WP_Mock::userFunction('is_plugin_active')
          ->withArgs([ 'pdc-internal-products/pdc-internal-products.php' ])
          ->once()
          ->andReturn(true);
-         
+
         $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', [[]]);
- 
-        $this->assertTrue($actual);
+
+        $this->assertFalse($actual);
     }
 
     /** @test */
@@ -73,16 +73,19 @@ class ItemControllerTest extends TestCase
     {
         $item = [
             'taxonomies' => [
-                'pdc-type' => ['internal'],
+                'pdc-type' => [
+                    ['slug' => 'internal'],
+                ]
             ],
         ];
+
         \WP_Mock::userFunction('is_plugin_active')
              ->withArgs([ 'pdc-internal-products/pdc-internal-products.php' ])
              ->once()
              ->andReturn(true);
-             
-        $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', $item);
-     
+
+        $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', [$item]);
+
         $this->assertTrue($actual);
     }
 
@@ -98,9 +101,9 @@ class ItemControllerTest extends TestCase
                 ->withArgs([ 'pdc-internal-products/pdc-internal-products.php' ])
                 ->once()
                 ->andReturn(true);
-                
+
         $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', [$item]);
-        
+
         $this->assertFalse($actual);
     }
 
@@ -115,14 +118,14 @@ class ItemControllerTest extends TestCase
                 ],
             ],
         ];
-        
+
         \WP_Mock::userFunction('is_plugin_active')
                  ->withArgs([ 'pdc-internal-products/pdc-internal-products.php' ])
                  ->once()
                  ->andReturn(true);
-                 
+
         $actual = $this->invokeMethod($this->itemController, 'needsAuthorization', [$item]);
-         
+
         $this->assertFalse($actual);
     }
 }

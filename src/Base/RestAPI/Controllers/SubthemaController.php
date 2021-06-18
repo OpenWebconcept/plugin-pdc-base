@@ -51,7 +51,7 @@ class SubthemaController extends BaseController
             ->find($id);
 
         if (!$thema) {
-            return new WP_Error('no_item_found', sprintf('Subthema with ID "%d" not found', $id), [
+            return new WP_Error('no_item_found', sprintf('Subthema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
         }

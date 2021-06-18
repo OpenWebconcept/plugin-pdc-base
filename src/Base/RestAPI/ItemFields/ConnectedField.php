@@ -39,7 +39,7 @@ class ConnectedField extends CreatesFields
         foreach ($connections as $connection) {
             if ($this->isPluginPDCInternalProductsActive()) {
                 if ("pdc-item" === $connection['from'] && "pdc-item" === $connection['to']) {
-                    $this->query['tax_query'] = ItemController::showExternalOnly();
+                    $this->query = array_merge($this->query, ItemController::showExternalOnly());
                 }
             }
 

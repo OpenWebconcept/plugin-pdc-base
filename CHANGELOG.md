@@ -1,10 +1,14 @@
 # CHANGELOG
 
-## Version 3.2.4 (2021-06-06)
+## Version 3.2.4 (2021-06-18)
 
 ### Change
 
 - Add 'custom-fields' to support for the registered posttype.
+
+### Fix
+
+- Typo in rest output.
 
 ## Version 3.2.3
 

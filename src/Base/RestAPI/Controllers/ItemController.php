@@ -90,15 +90,15 @@ class ItemController extends BaseController
             ->find($id);
 
         if (! $item) {
-            return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
-                    'status' => 404,
-                    ]);
+            return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
+                'status' => 404,
+            ]);
         }
 
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
-                'unnauthorized_request',
-                sprintf('Unnauthorized request for "%d"', $id),
+                'unauthorized_request',
+                sprintf('Unauthorized request for [%d]', $id),
                 ['status' => 401]
             );
         }
@@ -125,15 +125,15 @@ class ItemController extends BaseController
         if (! $item) {
             return new WP_Error(
                 'no_item_found',
-                sprintf('Item with slug "%s" not found', $slug),
+                sprintf('Item with slug [%s] not found', $slug),
                 ['status' => 404]
             );
         }
 
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
-                'unnauthorized_request',
-                sprintf('Unnauthorized request for "%s"', $slug),
+                'unauthorized_request',
+                sprintf('Unauthorized request for [%s]', $slug),
                 ['status' => 401]
             );
         }
@@ -163,11 +163,13 @@ class ItemController extends BaseController
     public static function showExternalOnly(): array
     {
         return [
-            [
-                'taxonomy'     => 'pdc-type',
-                'field'        => 'slug',
-                'terms'        => 'external',
-            ],
+            'tax_query' => [
+                [
+                    'taxonomy'     => 'pdc-type',
+                    'field'        => 'slug',
+                    'terms'        => 'external',
+                ],
+            ]
         ];
     }
 
@@ -175,7 +177,7 @@ class ItemController extends BaseController
     {
         if (! $this->isPluginPDCInternalProductsActive()) {
             return false;
-        };
+        }
 
         $types = $item['taxonomies']['pdc-type'] ?? [];
 

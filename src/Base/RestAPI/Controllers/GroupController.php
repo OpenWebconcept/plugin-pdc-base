@@ -51,7 +51,7 @@ class GroupController extends BaseController
             ->find($id);
 
         if (!$group) {
-            return new WP_Error('no_item_found', sprintf('Group with ID "%d" not found', $id), [
+            return new WP_Error('no_item_found', sprintf('Group with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
         }

@@ -57,7 +57,7 @@ class ThemaController extends BaseController
             ->find($id);
 
         if (!$thema) {
-            return new WP_Error('no_item_found', sprintf('Thema with ID "%d" not found', $id), [
+            return new WP_Error('no_item_found', sprintf('Thema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
         }

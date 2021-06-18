@@ -24,7 +24,7 @@ class ItemsField extends ConnectedField
     public function create(WP_Post $post): array
     {
         if ($this->isPluginPDCInternalProductsActive()) {
-            $this->query['tax_query'] = ItemController::showExternalOnly();
+            $this->query = array_merge($this->query, ItemController::showExternalOnly());
         }
 
         return $this->getConnectedItems($post->ID, 'pdc-item_to_' . $post->post_type);
