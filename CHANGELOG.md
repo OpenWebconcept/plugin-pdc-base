@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.2.5
+
+### Fix
+
+- Allow connected items with no type specified
+
 ## Version 3.2.4 (2021-06-18)
 
 ### Change

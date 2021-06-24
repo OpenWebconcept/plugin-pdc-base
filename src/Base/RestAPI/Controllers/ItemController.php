@@ -164,10 +164,16 @@ class ItemController extends BaseController
     {
         return [
             'tax_query' => [
+                'relation' => 'OR',
                 [
                     'taxonomy'     => 'pdc-type',
                     'field'        => 'slug',
                     'terms'        => 'external',
+                ],
+                [
+                    'taxonomy'        => 'pdc-type',
+                    'field'           => 'id',
+                    'operator'        => 'NOT EXISTS',
                 ],
             ]
         ];
