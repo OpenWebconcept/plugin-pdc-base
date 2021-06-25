@@ -76,6 +76,8 @@ class ConnectedField extends CreatesFields
             $this->query = array_merge($this->query, ItemController::hideInactiveItem());
         }
 
+        $this->query['connected_query'] = ['post_status' => ['publish', 'draft']];
+
         return array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,

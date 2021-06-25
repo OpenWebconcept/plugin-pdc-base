@@ -53,6 +53,13 @@ abstract class AbstractRepository
     protected $fields = [];
 
     /**
+     * Password of protected post
+     *
+     * @var string
+     */
+    protected $password = '';
+
+    /**
      * Additional fields that needs to be added to an item.
      *
      * @var CreatesFields[]
@@ -242,18 +249,43 @@ abstract class AbstractRepository
         }
 
         $data = [
-            'id'      => $post->ID,
-            'title'   => $post->post_title,
-            'slug'    => $post->post_name,
-            'content' => apply_filters('the_content', $post->post_content),
-            'excerpt' => $post->post_excerpt,
-            'date'    => $post->post_date,
-            'slug'    => $post->post_name,
+            'id'          => $post->ID,
+            'title'       => $post->post_title,
+            'slug'        => $post->post_name,
+            'content'     => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
+            'excerpt'     => $this->isAllowed($post) ? $post->post_excerpt : "",
+            'date'        => $post->post_date,
+            'slug'        => $post->post_name,
+            'post_status' => $post->post_status,
+            'protected'   => !$this->isAllowed($post)
         ];
 
         $data = $this->assignFields($data, $post);
 
         return $this->getPreferredFields($data);
+    }
+
+    private function isAllowed(\WP_Post $post): bool
+    {
+        if (! $this->isPasswordProtected($post)) {
+            return true;
+        }
+
+        if ($this->isPasswordValid($post)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function isPasswordProtected(\WP_Post $post): bool
+    {
+        return !empty($post->post_password);
+    }
+
+    private function isPasswordValid(\WP_post $post): bool
+    {
+        return $this->getPassword() === $post->post_password;
     }
 
     /**
@@ -308,5 +340,17 @@ abstract class AbstractRepository
         }
 
         return $data;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    private function getPassword(): string
+    {
+        return $this->password;
     }
 }

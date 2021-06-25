@@ -76,29 +76,26 @@ class ItemController extends BaseController
     /**
      * Get an individual post item.
      *
-     * @param $request $request
+     * @param WP_Rest_Request $request
      *
      * @return array|WP_Error
      */
     public function getItem(WP_REST_Request $request)
     {
-        $id = (int) $request->get_param('id');
-
-        $item = (new Item)
-            ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query(self::hideInactiveItem())
-            ->find($id);
-
+        $id            = (int) $request->get_param('id');
+        $item          = $this->buildQueryFromRequest($request);
+        $item          = $item->find($id);
+            
         if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
-                'status' => 404,
-            ]);
+                    'status' => 404,
+                    ]);
         }
 
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
                 'unauthorized_request',
-                sprintf('Unauthorized request for [%d]', $id),
+                sprintf('Unauthorized request for item with ID [%d]', $id),
                 ['status' => 401]
             );
         }
@@ -109,19 +106,16 @@ class ItemController extends BaseController
     /**
      * Get an individual post item by slug.
      *
-     * @param $request $request
+     * @param WP_Rest_Request $request
      *
      * @return array|WP_Error
      */
     public function getItemBySlug(WP_REST_Request $request)
     {
         $slug = $request->get_param('slug');
-        $item = (new Item)
-            ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query(self::hideInactiveItem())
-            ->findBySlug($slug);
-
-
+        $item = $this->buildQueryFromRequest($request);
+        $item = $item->findBySlug($slug);
+        
         if (! $item) {
             return new WP_Error(
                 'no_item_found',
@@ -133,9 +127,28 @@ class ItemController extends BaseController
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
                 'unauthorized_request',
-                sprintf('Unauthorized request for [%s]', $slug),
+                sprintf('Unauthorized request for item with slug [%s]', $slug),
                 ['status' => 401]
             );
+        }
+
+        return $item;
+    }
+
+    public function buildQueryFromRequest(WP_REST_Request $request): Item
+    {
+        $item = (new Item)
+            ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
+            ->query($this->hideInactiveItem());
+        
+        $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
+        if (true === $preview) {
+            $item->query(['post_status' => ['publish', 'draft']]);
+        }
+        
+        $password = esc_attr($request->get_param('password'));
+        if (!empty($password)) {
+            $item->setPassword($password);
         }
 
         return $item;

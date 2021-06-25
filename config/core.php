@@ -3,12 +3,9 @@
 return [
 
     /**
-             * Service Providers.
-         */
+    * Service Providers.
+    */
     'providers'    => [
-        /**
-     * Global providers.
-     */
         OWC\PDC\Base\Settings\SettingsServiceProvider::class,
         OWC\PDC\Base\PostType\PostTypeServiceProvider::class,
         OWC\PDC\Base\Taxonomy\TaxonomyServiceProvider::class,
@@ -17,14 +14,8 @@ return [
         OWC\PDC\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\PDC\Base\Template\TemplateServiceProvider::class,
         OWC\PDC\Base\Admin\UPLServiceProvider::class,
-
-        /**
-         * Providers specific to the admin.
-         */
-        'admin' => [
-            OWC\PDC\Base\Admin\InterfaceServiceProvider::class,
-        ]
-
+        OWC\PDC\Base\Admin\InterfaceServiceProvider::class,
+        OWC\PDC\Base\Varnish\VarnishServiceProvider::class,
     ],
 
     /**

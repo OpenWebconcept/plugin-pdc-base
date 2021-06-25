@@ -271,7 +271,7 @@ class Item
      */
     private function createPortalURL(): string
     {
-        $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug']));
+        $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url'] ?? '') . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug'] ?? ''));
 
         $connectedPdcCategory       = $this->getConnected('pdc-item_to_pdc-category');
         $connectedPdcSubCategory    = $this->getConnected('pdc-item_to_pdc-subcategory');

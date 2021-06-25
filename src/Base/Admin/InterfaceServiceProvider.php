@@ -25,6 +25,30 @@ class InterfaceServiceProvider extends ServiceProvider
         $this->plugin->loader->addFilter('admin_bar_menu', $this, 'filterAdminbarMenu', 999);
         $this->plugin->loader->addFilter('get_sample_permalink_html', $this, 'filterGetSamplePermalinkHtml', 10, 5);
         $this->plugin->loader->addAction('page_row_actions', $this, 'actionModifyPageRowActions', 999, 2);
+        $this->plugin->loader->addAction('rest_prepare_pdc-item', $this, 'restPrepareResponseLink', 10, 2);
+        $this->plugin->loader->addAction('preview_post_link', $this, 'filterPostLink', 10, 2);
+    }
+
+    /**
+     * Changes the url user for live preview to the portal url.
+     * Works in the old editor (not gutenberg)
+     */
+    public function filterPostLink($link, \WP_Post $post): string
+    {
+        $itemModel              = new Item($post->to_array());
+        return $itemModel->getPortalURL() . "?preview=true";
+    }
+    
+    /**
+     * Changes the url used for live preview to the portal url.
+     * Works in the gutenberg editor.
+     */
+    public function restPrepareResponseLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
+    {
+        $itemModel              = new Item($post->to_array());
+        $response->data['link'] = $itemModel->getPortalURL();
+        
+        return $response;
     }
 
     /**

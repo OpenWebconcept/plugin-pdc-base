@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version 3.2.6
+
+### Feat
+
+- Add preview parameter for retrieving drafts
+- Add password parameter for protected posts
+- Purge Varnish on save_post
+
 ## Version 3.2.5
 
 ### Fix
