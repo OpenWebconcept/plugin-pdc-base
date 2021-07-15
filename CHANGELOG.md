@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.2.7
+
+### Fix
+
+- Register admin serviceproviders
+
 ## Version 3.2.6
 
 ### Feat

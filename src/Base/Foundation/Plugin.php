@@ -25,7 +25,7 @@ class Plugin
      *
      * @var string VERSION
      */
-    const VERSION = '3.2.6';
+    const VERSION = '3.2.7';
 
     /**
      * Path to the root of the plugin.
@@ -87,6 +87,12 @@ class Plugin
 
         // Set up service providers
         $this->callServiceProviders('register');
+
+        if (\is_admin()) {
+            $this->callServiceProviders('register', 'admin');
+            $this->callServiceProviders('boot', 'admin');
+        }
+
         $this->callServiceProviders('boot');
 
         // Register the Hook loader.
@@ -116,9 +122,10 @@ class Plugin
      *
      * @throws \Exception
      */
-    public function callServiceProviders($method)
+    public function callServiceProviders($method, $key = '')
     {
-        $services = $this->config->get('core.providers');
+        $offset   = $key ? "core.providers.{$key}" : 'core.providers';
+        $services = $this->config->get($offset);
 
         foreach ($services as $service) {
             if (is_array($service)) {

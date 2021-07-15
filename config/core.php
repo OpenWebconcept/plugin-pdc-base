@@ -6,6 +6,7 @@ return [
     * Service Providers.
     */
     'providers'    => [
+        /** Global providers */
         OWC\PDC\Base\Settings\SettingsServiceProvider::class,
         OWC\PDC\Base\PostType\PostTypeServiceProvider::class,
         OWC\PDC\Base\Taxonomy\TaxonomyServiceProvider::class,
@@ -16,6 +17,9 @@ return [
         OWC\PDC\Base\Admin\UPLServiceProvider::class,
         OWC\PDC\Base\Admin\InterfaceServiceProvider::class,
         OWC\PDC\Base\Varnish\VarnishServiceProvider::class,
+
+        /** Providers specific to the admin */
+        'admin' => []
     ],
 
     /**
