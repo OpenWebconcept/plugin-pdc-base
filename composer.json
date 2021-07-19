@@ -11,7 +11,7 @@
   "type": "wordpress-plugin",
   "require": {
     "php": ">=7.0",
-    "johnbillion/extended-cpts": "^4.0"
+    "johnbillion/extended-cpts": "^4.5"
   },
   "require-dev": {
     "mockery/mockery": "*",
