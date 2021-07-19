@@ -181,13 +181,8 @@ return [
                     'name' => __('UPL name', 'pdc-base'),
                     'desc' => __('Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain', 'pdc-base'),
                     'id'   => 'pdc_upl_naam',
-                    'type' => 'text',
-                ],
-                'upl_resource' => [
-                    'name' => __('UPL resource', 'pdc-base'),
-                    'desc' => __('Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}', 'pdc-base'),
-                    'id'   => 'pdc_upl_resource',
-                    'type' => 'text',
+                    'type' => 'select_advanced',
+                    'options' => [],
                 ],
             ],
             'other'       => [

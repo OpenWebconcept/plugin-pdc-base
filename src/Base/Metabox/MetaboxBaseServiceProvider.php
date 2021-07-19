@@ -1,7 +1,4 @@
 <?php
-/**
- * Provider which handles the metabox registration.
- */
 
 namespace OWC\PDC\Base\Metabox;
 

@@ -3,8 +3,8 @@
 return [
 
     /**
-    * Service Providers.
-    */
+     * Service Providers.
+     */
     'providers'    => [
         /** Global providers */
         OWC\PDC\Base\Settings\SettingsServiceProvider::class,

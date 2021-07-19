@@ -1,16 +1,14 @@
 <?php
 
-/**
- * Provider which handles the metabox registration.
- */
-
 namespace OWC\PDC\Base\Metabox;
 
-/**
- * Provider which handles the metabox registration.
- */
+use OWC\PDC\Base\Support\Traits\RequestUPL;
+use OWC\PDC\Base\Metabox\Controllers\UPLNameController;
+use OWC\PDC\Base\Metabox\Controllers\UPLResourceController;
+
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
+    use RequestUPL;
 
     /**
      * Register the hooks.
@@ -20,6 +18,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     public function register()
     {
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
+        $this->plugin->loader->addAction('updated_post_meta', new UPLResourceController(), 'handleUpdatedMeta', 10, 4);
     }
 
     /**
@@ -32,6 +31,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     public function registerMetaboxes($rwmbMetaboxes): array
     {
         $configMetaboxes = $this->plugin->config->get('metaboxes');
+        $configMetaboxes = $this->addOptionsUPL($configMetaboxes);
 
         if ($this->plugin->settings->useIdentifications()) {
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes'));
@@ -48,5 +48,19 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         }
 
         return array_merge($rwmbMetaboxes, apply_filters("owc/pdc-base/before-register-metaboxes", $metaboxes));
+    }
+
+    /**
+     * Add UPL options, from remote, to UPL metaboxes.
+     *
+     * @param array $configMetaboxes
+     * 
+     * @return array
+     */
+    private function addOptionsUPL(array $configMetaboxes): array
+    {
+        $configMetaboxes['base']['fields']['government']['upl_name']['options'] = (new UPLNameController($this->getOptionsUPL()))->getOptions();
+
+        return $configMetaboxes;
     }
 }
