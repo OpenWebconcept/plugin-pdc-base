@@ -14,7 +14,6 @@
  * Domain Path:       /languages
  */
 
-use OWC\PDC\Base\Autoloader;
 use OWC\PDC\Base\Foundation\Plugin;
 
 /**
@@ -25,10 +24,11 @@ if (!defined('WPINC')) {
 }
 
 /**
- * manual loaded file: the autoloader.
+ * Load the Composer autoloader which takes care of all autoloading.
  */
-require_once __DIR__ . '/autoloader.php';
-$autoloader = new Autoloader();
+if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
+    require_once(dirname(__FILE__) . '/vendor/autoload.php');
+}
 
 /**
  * Begin execution of the plugin
