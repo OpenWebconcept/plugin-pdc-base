@@ -51,7 +51,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     }
 
     /**
-     * Add UPL options, from remote, to UPL metaboxes.
+     * Add UPL options, from remote, to UPL metabox.
      *
      * @param array $configMetaboxes
      * 

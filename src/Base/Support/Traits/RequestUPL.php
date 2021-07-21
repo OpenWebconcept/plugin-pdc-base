@@ -23,7 +23,7 @@ trait RequestUPL
         return $body->getData();
     }
 
-    public function getOptionsUPL()
+    public function getOptionsUPL(): array
     {
         $cachedOptions = get_transient('uplOptions');
 

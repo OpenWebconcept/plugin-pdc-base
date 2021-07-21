@@ -1,78 +1,85 @@
 # CHANGELOG
 
+## Version 3.3.3
+
+### Feat
+
+-   Add autocomplete for upl name.
+-   Based on upl name, fetch upl resource url and save as meta.
+
 ## Version 3.3.2 (2021-10-28)
 
 ### Feat
 
-- Preview draft without connected posts
+-   Preview draft without connected posts
 
 ## Version 3.3.1 (2021-08-06)
 
 ### Fix
 
-- New draft post portal url
+-   New draft post portal url
 
 ## Version 3.3.0 (2021-08-02)
 
 ### Feat
 
-- Add find by (sub)theme slug in API: `them(a|e)s/{slug}` or `subthem(a|e)s/{slug}`. Thanks @coenjacobs!
-- Add Posts 2 Posts as dependency
-- Some additional code cleanup
+-   Add find by (sub)theme slug in API: `them(a|e)s/{slug}` or `subthem(a|e)s/{slug}`. Thanks @coenjacobs!
+-   Add Posts 2 Posts as dependency
+-   Some additional code cleanup
 
 ## Version 3.2.9
 
 ### Feat
 
-- Ignore p2p on rewrite republish post
+-   Ignore p2p on rewrite republish post
 
 ## Version 3.2.8
 
 ### Fix
 
-- Extra connected query arguments
+-   Extra connected query arguments
 
 ## Version 3.2.7
 
 ### Fix
 
-- Register admin serviceproviders
+-   Register admin serviceproviders
 
 ## Version 3.2.6
 
 ### Feat
 
-- Add preview parameter for retrieving drafts
-- Add password parameter for protected posts
-- Purge Varnish on save_post
+-   Add preview parameter for retrieving drafts
+-   Add password parameter for protected posts
+-   Purge Varnish on save_post
 
 ## Version 3.2.5
 
 ### Fix
 
-- Allow connected items with no type specified
+-   Allow connected items with no type specified
 
 ## Version 3.2.4 (2021-06-18)
 
 ### Change
 
-- Add 'custom-fields' to support for the registered posttype.
+-   Add 'custom-fields' to support for the registered posttype.
 
 ### Fix
 
-- Typo in rest output.
+-   Typo in rest output.
 
 ## Version 3.2.3
 
 ### Feat
 
-- Allow items with no type specified in the api
+-   Allow items with no type specified in the api
 
 ## Version 3.2.2
 
 ### Feat
 
-- Allow additional actions before and after the creation of a featured image.
+-   Allow additional actions before and after the creation of a featured image.
 
 ## Version 3.2.1
 
@@ -90,7 +97,7 @@
 
 ### Feat
 
--    Add icon field to theme.
+-   Add icon field to theme.
 
 ## Version 3.1.15
 
