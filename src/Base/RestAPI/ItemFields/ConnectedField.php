@@ -67,10 +67,10 @@ class ConnectedField extends CreatesFields
                 'excerpt' => $post->post_excerpt,
                 'date'    => $post->post_date,
             ];
-        }, $connection->get_connected($postID, $this->connectedQuery($type))->posts);
+        }, $connection->get_connected($postID, $this->extraQueryArgs($type))->posts);
     }
 
-    protected function connectedQuery($type): array
+    protected function extraQueryArgs(string $type): array
     {
         $query = [];
 
