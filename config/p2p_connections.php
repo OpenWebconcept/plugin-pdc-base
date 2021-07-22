@@ -50,8 +50,10 @@ return [
             'reciprocal' => false,
         ],
     ],
-    'connections_exclude_in_active' => [
+    'connections_exclude_inactive' => [
         'pdc-item_to_pdc-item',
     ],
-
+    'connections_exclude_internal' => [
+        'pdc-item_to_pdc-item',
+    ],
 ];

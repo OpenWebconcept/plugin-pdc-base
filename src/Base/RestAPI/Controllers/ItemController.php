@@ -31,7 +31,7 @@ class ItemController extends BaseController
         $items      = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
-            ->query(self::hideInactiveItem());
+            ->query(self::excludeInactiveItems());
 
         if (false === $parameters['include-connected']) {
             $items->hide(['connected']);
@@ -139,7 +139,7 @@ class ItemController extends BaseController
     {
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query($this->hideInactiveItem());
+            ->query($this->excludeInactiveItems());
         
         $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
         if (true === $preview) {
@@ -154,10 +154,7 @@ class ItemController extends BaseController
         return $item;
     }
 
-    /**
-     * Hide inactive item from output.
-     */
-    public static function hideInactiveItem(): array
+    public static function excludeInactiveItems(): array
     {
         return [
             'meta_query' => [
@@ -170,10 +167,8 @@ class ItemController extends BaseController
         ];
     }
 
-    /**
-     * Hide internal items from output
-     */
-    public static function showExternalOnly(): array
+
+    public static function excludeInternalItems(): array
     {
         return [
             'tax_query' => [

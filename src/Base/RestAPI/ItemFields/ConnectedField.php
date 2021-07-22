@@ -18,9 +18,6 @@ class ConnectedField extends CreatesFields
 {
     use CheckPluginActive;
 
-    /** @var array */
-    protected $query = [];
-
     /**
      * Creates an array of connected posts.
      *
@@ -37,12 +34,6 @@ class ConnectedField extends CreatesFields
         $result = [];
 
         foreach ($connections as $connection) {
-            if ($this->isPluginPDCInternalProductsActive()) {
-                if ("pdc-item" === $connection['from'] && "pdc-item" === $connection['to']) {
-                    $this->query = array_merge($this->query, ItemController::showExternalOnly());
-                }
-            }
-
             $type                      = $connection['from'] . '_to_' . $connection['to'];
             $result[$connection['to']] = $this->getConnectedItems($post->ID, $type);
         }
@@ -68,16 +59,6 @@ class ConnectedField extends CreatesFields
             ];
         }
 
-        // get the connections whom needs to exclude inactive items
-        $connectionsExcludeInActive = $this->plugin->config->get('p2p_connections.connections_exclude_in_active');
-
-        // add meta query when connection needs to exclude inactive items
-        if (in_array($type, $connectionsExcludeInActive)) {
-            $this->query = array_merge($this->query, ItemController::hideInactiveItem());
-        }
-
-        $this->query['connected_query'] = ['post_status' => ['publish', 'draft']];
-
         return array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,
@@ -86,6 +67,29 @@ class ConnectedField extends CreatesFields
                 'excerpt' => $post->post_excerpt,
                 'date'    => $post->post_date,
             ];
-        }, $connection->get_connected($postID, $this->query)->posts);
+        }, $connection->get_connected($postID, $this->connectedQuery($type))->posts);
+    }
+
+    protected function connectedQuery($type): array
+    {
+        $query = [];
+
+        $connectionsExcludeInActive = $this->plugin->config->get('p2p_connections.connections_exclude_inactive');
+
+        if (in_array($type, $connectionsExcludeInActive)) {
+            $query = array_merge_recursive($query, ItemController::excludeInactiveItems());
+        }
+        
+        if ($this->isPluginPDCInternalProductsActive()) {
+            $connectionsExcludeInternal = $this->plugin->config->get('p2p_connections.connections_exclude_internal');
+
+            if (in_array($type, $connectionsExcludeInternal)) {
+                $query = array_merge_recursive($query, ItemController::excludeInternalItems());
+            }
+        }
+
+        $query['connected_query'] = ['post_status' => ['publish', 'draft']];
+
+        return $query;
     }
 }
