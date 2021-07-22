@@ -139,7 +139,7 @@ class ItemController extends BaseController
     {
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query($this->excludeInactiveItems());
+            ->query(self::excludeInactiveItems());
         
         $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
         if (true === $preview) {
@@ -166,7 +166,6 @@ class ItemController extends BaseController
             ]
         ];
     }
-
 
     public static function excludeInternalItems(): array
     {

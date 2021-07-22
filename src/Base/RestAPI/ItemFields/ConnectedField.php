@@ -35,7 +35,7 @@ class ConnectedField extends CreatesFields
 
         foreach ($connections as $connection) {
             $type                      = $connection['from'] . '_to_' . $connection['to'];
-            $result[$connection['to']] = $this->getConnectedItems($post->ID, $type);
+            $result[$connection['to']] = $this->getConnectedItems($post->ID, $type, $this->extraQueryArgs($type));
         }
 
         return $result;
@@ -49,7 +49,7 @@ class ConnectedField extends CreatesFields
      *
      * @return array
      */
-    protected function getConnectedItems(int $postID, string $type): array
+    protected function getConnectedItems(int $postID, string $type, array $extraQueryArgs = []): array
     {
         $connection = \p2p_type($type);
 
@@ -67,7 +67,7 @@ class ConnectedField extends CreatesFields
                 'excerpt' => $post->post_excerpt,
                 'date'    => $post->post_date,
             ];
-        }, $connection->get_connected($postID, $this->extraQueryArgs($type))->posts);
+        }, $connection->get_connected($postID, $extraQueryArgs)->posts);
     }
 
     protected function extraQueryArgs(string $type): array

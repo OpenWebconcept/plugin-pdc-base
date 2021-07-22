@@ -1,5 +1,12 @@
 # CHANGELOG
 
+
+## Version 3.2.8
+
+### Fix
+
+- Extra connected query arguments
+
 ## Version 3.2.7
 
 ### Fix

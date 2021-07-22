@@ -23,10 +23,23 @@ class ItemsField extends ConnectedField
      */
     public function create(WP_Post $post): array
     {
+        $connectionType = 'pdc-item_to_' . $post->post_type;
+
+        return $this->getConnectedItems($post->ID, $connectionType, $this->extraQueryArgs($connectionType));
+    }
+
+    protected function extraQueryArgs(string $type): array
+    {
+        $query = [];
+
+        $query = array_merge_recursive($query, ItemController::excludeInactiveItems());
+        
         if ($this->isPluginPDCInternalProductsActive()) {
-            $this->query = array_merge($this->query, ItemController::excludeInternalItems());
+            $query = array_merge_recursive($query, ItemController::excludeInternalItems());
         }
 
-        return $this->getConnectedItems($post->ID, 'pdc-item_to_' . $post->post_type);
+        $query['connected_query'] = ['post_status' => ['publish', 'draft']];
+
+        return $query;
     }
 }
