@@ -90,6 +90,16 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_use_escape_element'] ?? false;
     }
 
+    /**
+     * URL used for retrieving UPL terms.
+     *
+     * @return string
+     */
+    public function getURLTermsUPL(): string
+    {
+        return $this->settings['_owc_upl_terms_url'] ?? '';
+    }
+
     public static function make(): self
     {
         $defaultSettings = [
@@ -100,7 +110,8 @@ class SettingsPageOptions
             '_owc_setting_pdc-group'                        => 0,
             '_owc_setting_use_portal_url'                   => 0,
             '_owc_setting_identifications'                  => 0,
-            '_owc_setting_use_escape_element'               => 0
+            '_owc_setting_use_escape_element'               => 0,
+            '_owc_upl_terms_url'                            => ''
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

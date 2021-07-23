@@ -56,7 +56,17 @@ return [
                     'desc' => __('Enable escape element.', 'pdc-base'),
                     'id'   => 'setting_use_escape_element',
                     'type' => 'checkbox',
-                ]
+                ],
+                'upl_heading' => [
+                    'type' => 'heading',
+                    'name' => __('The Uniform Product list of names (upl)', 'pdc-base'),
+                ],
+                'upl_terms_url'  => [
+                    'name' => __('URL', 'pdc-base'),
+                    'desc' => __('URL used for retrieving UPL terms.', 'pdc-base'),
+                    'id'   => 'upl_terms_url',
+                    'type' => 'text'
+                ],
             ]
         ]
     ]

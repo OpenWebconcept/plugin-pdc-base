@@ -14,9 +14,9 @@ return [
         OWC\PDC\Base\Metabox\MetaboxServiceProvider::class,
         OWC\PDC\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\PDC\Base\Template\TemplateServiceProvider::class,
-        OWC\PDC\Base\Admin\UPLServiceProvider::class,
         OWC\PDC\Base\Admin\AdminServiceProvider::class,
         OWC\PDC\Base\Varnish\VarnishServiceProvider::class,
+        OWC\PDC\Base\UPL\UPLServiceProvider::class,
 
         /** Providers specific to the admin */
         'admin' => []

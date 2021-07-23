@@ -26,7 +26,7 @@ class UPLNameHandler
             return !empty($item);
         });
 
-        // Return prepard options.
+        // Return prepared options.
         return array_map(function ($item) {
             return ['value' => $item, 'label' => ucfirst($item)];
         }, $options);

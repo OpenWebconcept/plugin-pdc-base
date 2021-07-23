@@ -677,15 +677,15 @@ msgstr "Portaal"
 
 #: config/settings.php:13
 msgid "Portal URL"
-msgstr "Portal URL"
+msgstr "Portaal URL"
 
 #: config/settings.php:19
 msgid "Portal PDC item slug"
-msgstr "Portal PDC item slug"
+msgstr "Portaal PDC item slug"
 
 #: config/settings.php:20
 msgid "URL for PDC items in the portal, eg \"onderwerp\""
-msgstr "URL voor PDC items in de portal, bv \"onderwerp\""
+msgstr "URL voor PDC items in het portaal, bv \"onderwerp\""
 
 #: config/settings.php:25
 msgid "PDC item theme in \"View in portal\" slug"
@@ -731,6 +731,14 @@ msgstr "Gebruik portaal url in de api."
 #: config/settings.php:56
 msgid "Enable escape element."
 msgstr "Gebruik ontsnap element."
+
+#: config/settings.php:62
+msgid "The Uniform Product list of names (upl)"
+msgstr "De Uniforme Productnamenlijst (UPL)"
+
+#: config/settings.php:66
+msgid "URL used for retrieving UPL terms."
+msgstr "URL om de UPL termen op te halen."
 
 #: config/settings_pages.php:9
 msgid "PDC settings"

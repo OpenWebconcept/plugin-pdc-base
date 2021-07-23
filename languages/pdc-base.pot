@@ -731,6 +731,14 @@ msgstr ""
 msgid "Enable escape element."
 msgstr ""
 
+#: config/settings.php:62
+msgid "The Uniform Product list of names (upl)"
+msgstr ""
+
+#: config/settings.php:66
+msgid "URL used for retrieving UPL terms."
+msgstr ""
+
 #: config/settings_pages.php:9
 msgid "PDC settings"
 msgstr ""
