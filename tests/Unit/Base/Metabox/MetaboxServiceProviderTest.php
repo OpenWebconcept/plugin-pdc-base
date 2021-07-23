@@ -7,6 +7,7 @@ use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Tests\Unit\TestCase;
+use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
 
 class MetaboxServiceProviderTest extends TestCase
 {
@@ -53,7 +54,8 @@ class MetaboxServiceProviderTest extends TestCase
         $plugin->config = $config;
         $plugin->loader = m::mock(Loader::class);
 
-        $service = new MetaboxServiceProvider($plugin);
+        $service         = new MetaboxServiceProvider($plugin);
+        $resourceHandler = UPLResourceHandler::class;
 
         $plugin->loader->shouldReceive('addFilter')->withArgs([
             'rwmb_meta_boxes',
@@ -62,6 +64,101 @@ class MetaboxServiceProviderTest extends TestCase
             10,
             1
         ])->once();
+
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'updated_post_meta',
+            $resourceHandler,
+            'handleUpdatedMeta',
+            10,
+            4
+        ])->once();
+
+        \WP_Mock::userFunction('get_transient')
+            ->withArgs(['uplOptions'])
+            ->twice()
+            ->andReturn(false);
+
+        \WP_Mock::userFunction('wp_remote_get')
+            ->withArgs(['https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'])
+            ->twice()
+            ->andReturn(['{
+                "head" : {
+                  "vars" : [
+                    "UniformeProductnaam",
+                    "URI",
+                    "Burger",
+                    "Bedrijf",
+                    "Dienstenwet",
+                    "SDG",
+                    "Grondslaglabel",
+                    "Grondslaglink"
+                  ]
+                },
+                "results" : {
+                  "bindings" : [
+                    {
+                      "UniformeProductnaam" : {
+                        "xml:lang" : "nl",
+                        "type" : "literal",
+                        "value" : "UPL-naam nog niet beschikbaar"
+                      },
+                      "URI" : {
+                        "type" : "uri",
+                        "value" : "http://standaarden.overheid.nl/owms/terms/UPL-naam_nog_niet_beschikbaar"
+                      }
+                    },
+                    {
+                      "Burger" : {
+                        "type" : "literal",
+                        "value" : "X"
+                      },
+                      "UniformeProductnaam" : {
+                        "xml:lang" : "nl",
+                        "type" : "literal",
+                        "value" : "aanleunwoning"
+                      },
+                      "URI" : {
+                        "type" : "uri",
+                        "value" : "http://standaarden.overheid.nl/owms/terms/aanleunwoning"
+                      }
+                    },
+                    {
+                      "Burger" : {
+                        "type" : "literal",
+                        "value" : "X"
+                      },
+                      "Grondslaglink" : {
+                        "type" : "uri",
+                        "value" : "https://wetten.overheid.nl/jci1.3:c:BWBR0005645&titeldeel=III&hoofdstuk=VIII&Paragraaf=4&artikel=122"
+                      },
+                      "UniformeProductnaam" : {
+                        "xml:lang" : "nl",
+                        "type" : "literal",
+                        "value" : "aanschrijving"
+                      },
+                      "Grondslaglabel" : {
+                        "xml:lang" : "nl",
+                        "type" : "literal",
+                        "value" : "Artikel 122 Provinciewet"
+                      },
+                      "URI" : {
+                        "type" : "uri",
+                        "value" : "http://standaarden.overheid.nl/owms/terms/aanschrijving"
+                      },
+                      "Bedrijf" : {
+                        "type" : "literal",
+                        "value" : "X"
+                      }
+                    }]}}']);
+
+        \WP_Mock::userFunction('is_wp_error')
+            ->twice()
+            ->andReturn(false);
+
+        \WP_Mock::userFunction('set_transient')
+            ->withArgs(['uplOptions', [], 86400])
+            ->twice()
+            ->andReturn();
 
         $service->register();
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace OWC\PDC\Base\Metabox\Controllers;
+namespace OWC\PDC\Base\Metabox\Handlers;
 
-class UPLNameController
+class UPLNameHandler
 {
     public function __construct(array $options)
     {
@@ -22,8 +22,13 @@ class UPLNameController
         }, $options);
 
         // Remove empty elements.
+        $options = array_filter(array_unique($options), function ($item) {
+            return !empty($item);
+        });
+
+        // Return prepard options.
         return array_map(function ($item) {
             return ['value' => $item, 'label' => ucfirst($item)];
-        }, array_unique($options));
+        }, $options);
     }
 }

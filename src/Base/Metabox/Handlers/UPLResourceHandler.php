@@ -1,24 +1,19 @@
 <?php
 
-namespace OWC\PDC\Base\Metabox\Controllers;
+namespace OWC\PDC\Base\Metabox\Handlers;
 
 use OWC\PDC\Base\Support\Traits\RequestUPL;
 
-class UPLResourceController
+class UPLResourceHandler
 {
     use RequestUPL;
 
     /**
      * Update resourceURL meta based on uplName meta.
      *
-     * @param int $metaId
-     * @param int $postID
-     * @param string $metaKey
      * @param mixed $metaValue
-     * 
-     * @return void
      */
-    public function handleUpdatedMeta($metaId, $postID, $metaKey, $metaValue): void
+    public function handleUpdatedMeta(int $metaId, int $postID, string $metaKey, $metaValue): void
     {
         if (!$this->objectIsPDC($postID)) {
             return;
@@ -31,7 +26,7 @@ class UPLResourceController
         }
 
         $options     = $this->getOptionsUPL();
-        $resourceURL = $this->getResourceUPL($options, $uplName);
+        $resourceURL = $this->getResourceURL($options, $uplName);
 
         if (empty($resourceURL)) {
             return;
@@ -42,29 +37,29 @@ class UPLResourceController
 
     /**
      * Based on the uplName fetch the resource URL from options.
-     *
-     * @param array $options
-     * @param string $uplName
-     * 
-     * @return string
      */
-    public function getResourceUPL(array $options, string $uplName): string
+    protected function getResourceURL(array $options, string $uplName): string
     {
-        $match = array_filter($options, function ($option) use ($uplName) {
+        $matches = array_filter($options, function ($option) use ($uplName) {
             return $option['UniformeProductnaam']['value'] === $uplName;
         });
 
         // Reset array keys.
-        $match = array_values($match);
+        $matches = array_values($matches);
 
-        if (empty($match[0]['URI']['value'])) {
+        return $this->getURLFromMatch($matches);
+    }
+
+    protected function getURLFromMatch(array $matches): string
+    {
+        if (empty($matches[0]['URI']['value'])) {
             return '';
         }
 
-        return $match[0]['URI']['value'];
+        return $matches[0]['URI']['value'];
     }
 
-    protected function objectIsPDC(int $postID): bool
+    public function objectIsPDC(int $postID): bool
     {
         $post = get_post($postID);
 
