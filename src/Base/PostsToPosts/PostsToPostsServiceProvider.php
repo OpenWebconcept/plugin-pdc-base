@@ -35,10 +35,33 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if ($this->isPostRewriteRepublishCopy()){
+            return;
+        }
+
         $this->plugin->loader->addAction('init', $this, 'extendPostsToPostsConnections');
         $this->plugin->loader->addAction('init', $this, 'registerPostsToPostsConnections');
         $this->plugin->loader->addAction('admin_enqueue_scripts', $this, 'limitPostsToPostsConnections', 10);
         $this->plugin->loader->addFilter('p2p_connectable_args', $this, 'filterP2PConnectableArgs', 10);
+    }
+
+    private function isPostRewriteRepublishCopy(): bool
+    {
+        if ( !is_admin() ){
+            return false;
+        }
+
+        $postID = sanitize_text_field($_GET['post'] ?? '');
+        $action = sanitize_text_field($_GET['action'] ?? '');
+
+        if (empty($postID) || empty($action) || 'edit' !== $action) {
+            return false;
+        }
+
+        $rewriteRepublish = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
+        $postIsRewritePublishCopy = filter_var($rewriteRepublish, FILTER_VALIDATE_BOOLEAN);
+
+        return $postIsRewritePublishCopy;
     }
 
     /**

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 3.2.9
+
+### Feat
+
+- Ignore p2p on rewrite republish post
 
 ## Version 3.2.8
 
