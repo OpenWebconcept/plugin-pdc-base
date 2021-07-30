@@ -35,6 +35,12 @@ class PostsToPostsServiceProviderTest extends TestCase
                 '_owc_setting_identifications'                  => 0
             ]
         ]);
+
+        \WP_Mock::userFunction('is_admin', [
+            'return' => true
+        ]);
+
+        \WP_Mock::userFunction('sanitize_text_field');
     }
 
     public function tearDown(): void
