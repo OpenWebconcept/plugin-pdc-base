@@ -1,14 +1,7 @@
 <?php
 
-/**
- * BasePlugin which sets all the serviceproviders.
- */
-
 namespace OWC\PDC\Base\Foundation;
 
-/**
- * BasePlugin which sets all the serviceproviders.
- */
 class Plugin
 {
 
@@ -23,14 +16,14 @@ class Plugin
      * Version of the plugin.
      * Used for setting versions of enqueue scripts and styles.
      *
-     * @var string VERSION
+     * @var string
      */
-    const VERSION = '3.2.9';
+    const VERSION = '3.3.0';
 
     /**
      * Path to the root of the plugin.
      *
-     * @var string $rootPath
+     * @var string
      */
     protected $rootPath;
 
@@ -48,13 +41,6 @@ class Plugin
      */
     public $loader;
 
-    /**
-     * Constructor of the BasePlugin
-     *
-     * @param string $rootPath
-     *
-     * @return void
-     */
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
@@ -71,8 +57,6 @@ class Plugin
      * Boot the plugin.
      *
      * @hook plugins_loaded
-     *
-     * @return bool
      */
     public function boot(): bool
     {
@@ -104,10 +88,8 @@ class Plugin
 
     /**
      * Allows for hooking into the plugin name.
-     *
-     * @return void
      */
-    public function filterPlugin()
+    public function filterPlugin(): void
     {
         \do_action('owc/' . self::NAME . '/plugin', $this);
     }
@@ -115,14 +97,9 @@ class Plugin
     /**
      * Call method on service providers.
      *
-     * @param string $method
-     * @param string $key
-     *
-     * @return void
-     *
      * @throws \Exception
      */
-    public function callServiceProviders($method, $key = '')
+    public function callServiceProviders(string $method, string $key = ''): void
     {
         $offset   = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
@@ -146,28 +123,22 @@ class Plugin
 
     /**
      * Get the name of the plugin.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
 
     /**
      * Get the version of the plugin.
-     *
-     * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return static::VERSION;
     }
 
     /**
      * Return root path of plugin.
-     *
-     * @return string
      */
     public function getRootPath(): string
     {
@@ -176,8 +147,6 @@ class Plugin
 
     /**
      * Return root url of plugin.
-     *
-     * @return string
      */
     public function getPluginUrl(): string
     {

@@ -14,10 +14,10 @@
     "johnbillion/extended-cpts": "^4.0"
   },
   "require-dev": {
-    "mockery/mockery": "*",
-    "phpunit/phpunit": "~8.0",
     "10up/wp_mock": "dev-master",
     "friendsofphp/php-cs-fixer": "^2.0",
+    "mockery/mockery": "*",
+    "phpunit/phpunit": "~8.0",
     "szepeviktor/phpstan-wordpress": "^0.7.0"
   },
   "autoload": {
@@ -31,14 +31,12 @@
     }
   },
   "scripts": {
-    "unit": "clear && ./vendor/bin/phpunit --testdox --stderr --testsuite 'Unit Test Suite' --colors=always",
-    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --prepend tests/xdebug-filter.php --colors=always --coverage-html ./tests/coverage",
-    "integration": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Integration Test Suite' --colors=always",
-    "test": [
-      "@unit",
-      "@integration"
-    ],
     "format": "./vendor/bin/php-cs-fixer fix",
-    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M"
+    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M",
+    "test": [
+      "@unit"
+    ],
+    "unit": "clear && ./vendor/bin/phpunit --testdox --stderr --testsuite 'Unit Test Suite' --colors=always",
+    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --prepend tests/xdebug-filter.php --colors=always --coverage-html ./tests/coverage"
   }
 }

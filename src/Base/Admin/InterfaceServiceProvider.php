@@ -33,12 +33,12 @@ class InterfaceServiceProvider extends ServiceProvider
      * Changes the url user for live preview to the portal url.
      * Works in the old editor (not gutenberg)
      */
-    public function filterPostLink($link, \WP_Post $post): string
+    public function filterPostLink(string $link, \WP_Post $post): string
     {
         $itemModel              = new Item($post->to_array());
         return $itemModel->getPortalURL() . "?preview=true";
     }
-    
+
     /**
      * Changes the url used for live preview to the portal url.
      * Works in the gutenberg editor.
@@ -47,7 +47,7 @@ class InterfaceServiceProvider extends ServiceProvider
     {
         $itemModel              = new Item($post->to_array());
         $response->data['link'] = $itemModel->getPortalURL();
-        
+
         return $response;
     }
 

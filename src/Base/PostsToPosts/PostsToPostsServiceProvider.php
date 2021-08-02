@@ -35,7 +35,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->isPostRewriteRepublishCopy()){
+        if ($this->isPostRewriteRepublishCopy()) {
             return;
         }
 
@@ -47,7 +47,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     private function isPostRewriteRepublishCopy(): bool
     {
-        if ( !is_admin() ){
+        if (!is_admin()) {
             return false;
         }
 
@@ -58,7 +58,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
             return false;
         }
 
-        $rewriteRepublish = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
+        $rewriteRepublish         = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
         $postIsRewritePublishCopy = filter_var($rewriteRepublish, FILTER_VALIDATE_BOOLEAN);
 
         return $postIsRewritePublishCopy;

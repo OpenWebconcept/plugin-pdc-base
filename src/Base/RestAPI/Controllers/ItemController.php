@@ -85,7 +85,7 @@ class ItemController extends BaseController
         $id            = (int) $request->get_param('id');
         $item          = $this->buildQueryFromRequest($request);
         $item          = $item->find($id);
-            
+
         if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
                     'status' => 404,
@@ -115,7 +115,7 @@ class ItemController extends BaseController
         $slug = $request->get_param('slug');
         $item = $this->buildQueryFromRequest($request);
         $item = $item->findBySlug($slug);
-        
+
         if (! $item) {
             return new WP_Error(
                 'no_item_found',
@@ -140,12 +140,12 @@ class ItemController extends BaseController
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
             ->query(self::excludeInactiveItems());
-        
+
         $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
         if (true === $preview) {
             $item->query(['post_status' => ['publish', 'draft']]);
         }
-        
+
         $password = esc_attr($request->get_param('password'));
         if (!empty($password)) {
             $item->setPassword($password);

@@ -79,7 +79,7 @@ class ConnectedField extends CreatesFields
         if (in_array($type, $connectionsExcludeInActive)) {
             $query = array_merge_recursive($query, ItemController::excludeInactiveItems());
         }
-        
+
         if ($this->isPluginPDCInternalProductsActive()) {
             $connectionsExcludeInternal = $this->plugin->config->get('p2p_connections.connections_exclude_internal');
 

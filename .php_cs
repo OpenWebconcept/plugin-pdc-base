@@ -28,6 +28,6 @@ return PhpCsFixer\Config::create()
             'equal'                => true,
             'identical'            => true,
             'less_and_greater'     => true,
-        ],
+        ]
     ])
     ->setFinder($finder);

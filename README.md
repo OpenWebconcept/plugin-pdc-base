@@ -4,7 +4,7 @@
 
 Plugin to add the OpenwebConcept OpenPDC to your project.
 
--   Contributors: Yard Digital Agency
+-   Contributors: Yard | Digital Agency
 -   Requires at least: 4.8
 -   Tested up to: 5.4.2
 -   Requires PHP: 7.2
@@ -192,4 +192,4 @@ Create a Pull request to the OWC repository.
 
 ### Who do I talk to?
 
-IF you have questions about or suggestions for this plugin, please contact <a href="mailto:hpeters@Buren.nl">Holger Peters</a> from Gemeente Buren.
+IF you have questions about or suggestions for this plugin, please contact <a href="mailto:hpeters@buren.nl">Holger Peters</a> from Gemeente Buren.

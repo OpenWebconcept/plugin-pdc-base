@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version 3.3.0 (2021-08-02)
+
+### Feat
+
+- Add find by (sub)theme slug in API: `them(a|e)s/{slug}` or `subthem(a|e)s/{slug}`. Thanks @coenjacobs!
+- Add Posts 2 Posts as dependency
+- Some additional code cleanup
+
 ## Version 3.2.9
 
 ### Feat

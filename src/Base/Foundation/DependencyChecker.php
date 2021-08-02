@@ -17,7 +17,7 @@ class DependencyChecker
     /**
      * Plugins that need to be checked for.
      *
-     * @var array $dependencies
+     * @var array
      */
     private $dependencies;
 
@@ -25,16 +25,12 @@ class DependencyChecker
      * Build up array of failed plugins, either because
      * they have the wrong version or are inactive.
      *
-     * @var array $failed
+     * @var array
      */
     private $failed = [];
 
     /**
      * Determine which plugins need to be present.
-     *
-     * @param array $dependencies
-     *
-     * @return void
      */
     public function __construct(array $dependencies)
     {
@@ -143,16 +139,12 @@ class DependencyChecker
 
     /**
      * Checks the installed version of the plugin.
-     *
-     * @param array $dependency
-     *
-     * @return bool
      */
     private function checkVersion(array $dependency): bool
     {
         $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
 
-        preg_match('/^(?: ?\* ?Version: ?)(.*)$/m', $file, $matches);
+        preg_match('/^(?:(?: ?\* ?)?Version: ?)(.*)$$/m', $file, $matches);
         $version = isset($matches[1]) ? str_replace(' ', '', $matches[1]) : '0.0.0';
 
         return version_compare($version, $dependency['version'], '>=');

@@ -7,7 +7,7 @@ use OWC\PDC\Base\Foundation\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Tests\Unit\TestCase;
-use \WP_Post;
+use WP_Post;
 
 class InterfaceServiceProviderTest extends TestCase
 {
