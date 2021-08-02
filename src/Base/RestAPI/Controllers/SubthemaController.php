@@ -70,14 +70,12 @@ class SubthemaController extends BaseController
     {
         $slug = $request->get_param('slug');
 
-        $items   = (new Subthema)
-            ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
-            ->query([
-                'name'   => $slug,
-            ])
-            ->all();
+        $subtheme = (new Subthema)
+            ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
+            ->findBySlug($slug);
 
-        if (! $items) {
+
+        if (! $subtheme) {
             return new WP_Error(
                 'no_subtheme_found',
                 sprintf('Subheme with slug [%s] not found', $slug),
@@ -85,6 +83,6 @@ class SubthemaController extends BaseController
             );
         }
 
-        return $items;
+        return $subtheme;
     }
 }

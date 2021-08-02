@@ -76,14 +76,11 @@ class ThemaController extends BaseController
     {
         $slug = $request->get_param('slug');
 
-        $items   = (new Thema)
-            ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
-            ->query([
-                'name'   => $slug,
-            ])
-            ->all();
+        $theme = (new Thema)
+            ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
+            ->findBySlug($slug);
 
-        if (! $items) {
+        if (! $theme) {
             return new WP_Error(
                 'no_theme_found',
                 sprintf('Theme with slug [%s] not found', $slug),
@@ -91,6 +88,6 @@ class ThemaController extends BaseController
             );
         }
 
-        return $items;
+        return $theme;
     }
 }
