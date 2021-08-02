@@ -97,6 +97,12 @@ class RestAPIServiceProvider extends ServiceProvider
             'permission_callback' => '__return_true',
         ]);
 
+        \register_rest_route($this->namespace, 'them(a|e)s/(?P<slug>[\w-]+)', [
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new Controllers\ThemaController($this->plugin), 'getThemeBySlug'],
+            'permission_callback' => '__return_true',
+        ]);
+
         \register_rest_route($this->namespace, 'subthem(a|e)s', [
             'methods'             => WP_REST_Server::READABLE,
             'callback'            => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
@@ -106,6 +112,12 @@ class RestAPIServiceProvider extends ServiceProvider
         \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<id>\d+)', [
             'methods'             => WP_REST_Server::READABLE,
             'callback'            => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<slug>[\w-]+)', [
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new Controllers\SubthemaController($this->plugin), 'getSubthemeBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
