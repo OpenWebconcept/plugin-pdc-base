@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.3.1 (2021-08-06)
+
+### Fix
+
+- New draft post portal url
+
 ## Version 3.3.0 (2021-08-02)
 
 ### Feat

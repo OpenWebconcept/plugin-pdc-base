@@ -288,7 +288,13 @@ class Item
             $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
         }
 
-        $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
+        if (!empty($this->getPostName())) {
+            $portalURL .= trailingslashit($this->getPostName());    
+        } else {
+            $portalURL .= trailingslashit(sanitize_title($this->getTitle(), 'untitled-draft'));
+        }
+        
+        $portalURL .= $this->getID();
 
         return $portalURL;
     }
