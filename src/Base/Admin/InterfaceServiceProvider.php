@@ -25,30 +25,36 @@ class InterfaceServiceProvider extends ServiceProvider
         $this->plugin->loader->addFilter('admin_bar_menu', $this, 'filterAdminbarMenu', 999);
         $this->plugin->loader->addFilter('get_sample_permalink_html', $this, 'filterGetSamplePermalinkHtml', 10, 5);
         $this->plugin->loader->addAction('page_row_actions', $this, 'actionModifyPageRowActions', 999, 2);
-        $this->plugin->loader->addAction('rest_prepare_pdc-item', $this, 'restPrepareResponseLink', 10, 2);
-        $this->plugin->loader->addAction('preview_post_link', $this, 'filterPostLink', 10, 2);
+        $this->plugin->loader->addAction('preview_post_link', $this, 'filterPreviewLink', 10, 2);
+        $this->plugin->loader->addFilter('post_type_link', $this, 'filterPostLink', 10, 2);
     }
 
     /**
      * Changes the url user for live preview to the portal url.
-     * Works in the old editor (not gutenberg)
      */
     public function filterPostLink(string $link, \WP_Post $post): string
     {
-        $itemModel              = new Item($post->to_array());
-        return $itemModel->getPortalURL() . "?preview=true";
+        if ($post->post_type !== 'pdc-item') {
+            return $link;
+        }
+
+        $itemModel              = Item::makeFrom($post);
+
+        return $itemModel->getPortalURL();
     }
 
     /**
-     * Changes the url used for live preview to the portal url.
-     * Works in the gutenberg editor.
+     * Changes the url user for live preview to the portal url.
      */
-    public function restPrepareResponseLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
+    public function filterPreviewLink(string $link, \WP_Post $post): string
     {
-        $itemModel              = new Item($post->to_array());
-        $response->data['link'] = $itemModel->getPortalURL();
+        if ($post->post_type !== 'pdc-item') {
+            return $link;
+        }
 
-        return $response;
+        $itemModel              = Item::makeFrom($post);
+
+        return $itemModel->getPortalURL() . "?preview=true";
     }
 
     /**

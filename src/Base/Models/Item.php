@@ -279,13 +279,21 @@ class Item
         $includeSubThemeSetting     = get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url'] ?? false;
 
         // add thema to the url
-        if ($connectedPdcCategory && $includeThemeSetting) {
-            $portalURL .= trailingslashit($connectedPdcCategory->post_name);
+        if ($includeThemeSetting) {
+            if ($connectedPdcCategory) {
+                $portalURL .= trailingslashit($connectedPdcCategory->post_name);
+            } else {
+                $portalURL .= trailingslashit("thema");
+            }
         }
 
         // add subtheme to the url
-        if ($connectedPdcSubCategory && $includeSubThemeSetting) {
-            $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
+        if ( $includeSubThemeSetting) {
+            if ($connectedPdcSubCategory ) {
+                $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
+            } else {
+                $portalURL  .= trailingslashit("subthema");
+            }
         }
 
         if (!empty($this->getPostName())) {
@@ -306,6 +314,7 @@ class Item
             'connected_items' => $this->getID(),
             'nopaging'        => true,
             'post_status'     => 'publish',
+            'connected_query' => ['post_status' => ['publish', 'draft']]
         ]);
 
         return !empty($connected->post) ? $connected->post : null;
