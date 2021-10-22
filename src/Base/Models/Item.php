@@ -275,8 +275,8 @@ class Item
 
         $connectedPdcCategory       = $this->getConnected('pdc-item_to_pdc-category');
         $connectedPdcSubCategory    = $this->getConnected('pdc-item_to_pdc-subcategory');
-        $includeThemeSetting        = get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_theme_in_portal_url'] ?? false;
-        $includeSubThemeSetting     = get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url'] ?? false;
+        $includeThemeSetting        = \get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_theme_in_portal_url'] ?? false;
+        $includeSubThemeSetting     = \get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url'] ?? false;
 
         // add thema to the url
         if ($includeThemeSetting) {
@@ -296,15 +296,21 @@ class Item
             }
         }
 
-        if (!empty($this->getPostName())) {
-            $portalURL .= trailingslashit($this->getPostName());    
-        } else {
-            $portalURL .= trailingslashit(sanitize_title($this->getTitle(), 'untitled-draft'));
-        }
+        $portalURL .= $this->createPostSlug();
         
         $portalURL .= $this->getID();
 
         return $portalURL;
+    }
+
+    private function createPostSlug(): string
+    {
+        if (!empty($this->getPostName())) {
+            return trailingslashit($this->getPostName());
+        }
+
+        // Drafts do not have a post_name so use the sanitized title instead.
+        return trailingslashit(sanitize_title($this->getTitle(), 'untitled-draft'));
     }
 
     private function getConnected($connection): ?\WP_Post

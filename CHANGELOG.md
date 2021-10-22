@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.3.2 (2021-10-28)
+
+### Feat
+
+- Preview draft without connected posts
+
 ## Version 3.3.1 (2021-08-06)
 
 ### Fix

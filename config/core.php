@@ -15,7 +15,7 @@ return [
         OWC\PDC\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\PDC\Base\Template\TemplateServiceProvider::class,
         OWC\PDC\Base\Admin\UPLServiceProvider::class,
-        OWC\PDC\Base\Admin\InterfaceServiceProvider::class,
+        OWC\PDC\Base\Admin\AdminServiceProvider::class,
         OWC\PDC\Base\Varnish\VarnishServiceProvider::class,
 
         /** Providers specific to the admin */
