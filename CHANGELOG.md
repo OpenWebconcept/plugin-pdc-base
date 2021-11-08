@@ -6,6 +6,7 @@
 
 -   Add autocomplete for upl name.
 -   Based on upl name, fetch upl resource url and save as meta.
+-   Overview pages of pdc-items with correct and inccorect upl-values.
 
 ## Version 3.3.2 (2021-10-28)
 

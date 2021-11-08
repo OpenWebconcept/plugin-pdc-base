@@ -13,7 +13,7 @@ class CorrectItems extends UPL
         require_once 'views/generate-upl-success-list.php';
     }
 
-    protected function compareCorrectItems(): array
+    public function compareCorrectItems(): array
     {
         return array_filter($this->items, function ($item) {
             return $this->compareCorrectItem($item);

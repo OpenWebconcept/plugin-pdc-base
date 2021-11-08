@@ -23,7 +23,8 @@ class MetaboxServiceProviderTest extends TestCase
                 '_owc_setting_include_subtheme_in_portal_url'   => 0,
                 '_owc_setting_pdc-group'                        => 0,
                 '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1
+                '_owc_setting_use_escape_element'               => 1,
+                '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
 
@@ -35,7 +36,8 @@ class MetaboxServiceProviderTest extends TestCase
                 '_owc_setting_include_subtheme_in_portal_url'   => 0,
                 '_owc_setting_pdc-group'                        => 0,
                 '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1
+                '_owc_setting_use_escape_element'               => 1,
+                '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
     }

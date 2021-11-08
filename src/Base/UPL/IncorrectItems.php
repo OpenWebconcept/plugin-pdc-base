@@ -13,7 +13,7 @@ class IncorrectItems extends UPL
         require_once 'views/generate-upl-error-list.php';
     }
 
-    protected function compareIncorrectItems(): array
+    public function compareIncorrectItems(): array
     {
         return array_filter($this->items, function ($item) {
             return $this->compareIncorrectItem($item);

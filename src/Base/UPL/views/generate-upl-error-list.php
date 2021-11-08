@@ -1,7 +1,11 @@
 <div class="wrap">
     <h1>Items met foutieve UPL-namen</h1>
     <?php if (!empty($incorrectItems) && is_array($incorrectItems)) : ?>
-        <p>De items in de tabel hieronder zijn gekoppeld aan foutive UPL-namen. Gelieve deze aan te passen.</p>
+        <p>
+            De items in de tabel hieronder zijn gekoppeld aan foutieve UPL-namen. Gelieve deze aan te passen.
+            Als er een item in dit overzicht staat waarbij de 'upl naam' klopt dan is de 'resource url' foutief ingevuld.
+            Sla het betreffende pdc-item nogmaals op. Na het opslaan wordt de 'resource url' automatisch goed neergezet.
+        </p>
         <table>
             <tr>
                 <th style="text-align:left">Item</th>
