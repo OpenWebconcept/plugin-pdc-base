@@ -8,7 +8,7 @@
     </p>
     <h2>Navigeer naar</h2>
     <ul>
-        <li><a class="button-primary" href="/wp-admin/admin.php?page=upl-foutieve-items">Verkeerde ingestelde items</a></li>
+        <li><a class="button-primary" href="/wp-admin/admin.php?page=upl-foutieve-items">Verkeerd ingestelde items</a></li>
         <li><a class="button-secondary" href="/wp-admin/admin.php?page=upl-correcte-items">Juist ingestelde items</a></li>
     </ul>
 </div>

@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Version 3.3.3
+## Version 3.4.0 (2021-11-09)
 
 ### Feat
 

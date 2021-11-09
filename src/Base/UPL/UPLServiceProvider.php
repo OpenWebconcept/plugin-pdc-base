@@ -64,7 +64,7 @@ class UPLServiceProvider extends ServiceProvider
     {
         $args = [
             'post_type' => 'pdc-item',
-            'post_status' => ['publish', 'draft'] // dp-rewrite-republish?
+            'post_status' => ['publish', 'draft']
         ];
 
         $query = new \WP_Query($args);
