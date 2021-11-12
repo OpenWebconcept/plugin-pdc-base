@@ -141,7 +141,8 @@ class ItemController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
             ->query(self::excludeInactiveItems());
 
-        $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
+        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
+        
         if (true === $preview) {
             $item->query(['post_status' => ['publish', 'draft']]);
         }

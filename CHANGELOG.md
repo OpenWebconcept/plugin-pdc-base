@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.4.1 (2021-11-12)
+
+### Feat
+
+-   Change 'preview' parameter into 'draft-preview'
+
 ## Version 3.4.0 (2021-11-09)
 
 ### Feat
