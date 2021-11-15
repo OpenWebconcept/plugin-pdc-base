@@ -19,7 +19,7 @@ class UPLServiceProvider extends ServiceProvider
         add_menu_page(
             __('UPL', 'pdc-base'),
             'UPL',
-            'manage_options',
+            'edit_posts',
             'upl.php',
             [$this, 'UPLPage'],
             'dashicons-admin-tools',
@@ -30,7 +30,7 @@ class UPLServiceProvider extends ServiceProvider
             'upl.php',
             __('Correcte items', 'pdc-base'),
             __('Correcte items', 'pdc-base'),
-            'manage_options',
+            'edit_posts',
             'upl-correcte-items',
             [$this, 'correctItemsPage']
         );
@@ -39,7 +39,7 @@ class UPLServiceProvider extends ServiceProvider
             'upl.php',
             __('Foutieve items', 'pdc-base'),
             __('Foutieve items', 'pdc-base'),
-            'manage_options',
+            'edit_posts',
             'upl-foutieve-items',
             [$this, 'incorrectItemsPage']
         );

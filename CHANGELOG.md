@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 3.4.2 (2021-11-15)
+
+-   UPL pages available with cap 'edit_posts'.
+
 ## Version 3.4.1 (2021-11-12)
 
 ### Feat
