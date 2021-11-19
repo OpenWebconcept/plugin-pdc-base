@@ -74,6 +74,14 @@ class AdminServiceProviderTest extends TestCase
             2
         ])->once();
 
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'rest_prepare_pdc-item',
+            $service,
+            'filterPreviewInNewTabLink',
+            10,
+            2
+        ])->once();
+
         $service->register();
 
         $this->assertTrue(true);

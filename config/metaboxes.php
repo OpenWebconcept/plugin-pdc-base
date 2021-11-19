@@ -179,7 +179,7 @@ return [
                 ],
                 'upl_name'     => [
                     'name' => __('UPL name', 'pdc-base'),
-                    'desc' => __('Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain', 'pdc-base'),
+                    'desc' => __('Available terms can be found at: \'https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain\'. For more information please visit \'https://standaarden.overheid.nl/upl\'.', 'pdc-base'),
                     'id'   => 'pdc_upl_naam',
                     'type' => 'select_advanced',
                     'options' => [],

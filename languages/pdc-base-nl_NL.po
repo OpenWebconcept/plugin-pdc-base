@@ -326,23 +326,16 @@ msgid "UPL name"
 msgstr "UPL naam"
 
 #: config/metaboxes.php:182
-msgid ""
-"Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/"
-"UPL-actueel.plain"
-msgstr ""
-"Alle beschikbare waarden kunnen gevonden worden op: https://standaarden."
-"overheid.nl/owms/oquery/UPL-actueel.plain"
+msgid "Available terms can be found at: 'https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain'. For more information please visit 'https://standaarden.overheid.nl/upl'."
+msgstr "Alle beschikbare waarden kunnen gevonden worden op: 'https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain'. Voor meer informatie kunt u terecht op 'https://standaarden.overheid.nl/upl'."
 
 #: config/metaboxes.php:187
 msgid "UPL resource"
 msgstr "UPL resource"
 
 #: config/metaboxes.php:188
-msgid ""
-"Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
-msgstr ""
-"Bijvoorbeeld: http://standaarden.overheid.nl/owms/terms/"
-"{aanduiding_naamgebruik}"
+msgid "Example: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
+msgstr "Bijvoorbeeld: http://standaarden.overheid.nl/owms/terms/{aanduiding_naamgebruik}"
 
 #: config/metaboxes.php:196
 msgid "Other"

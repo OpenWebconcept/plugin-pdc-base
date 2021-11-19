@@ -10,11 +10,12 @@
             <tr>
                 <th style="text-align:left">Item</th>
                 <th style="text-align:left">UPL-naam</th>
+                <th style="text-align:left">Doelgroepen</th>
                 <th style="text-align:left">Actie</th>
             </tr>
             <?php
             foreach ($incorrectItems as $item) {
-                echo '<tr><td>' . $item['title'] . '</td><td>' . $item['uplName'] . '</td><td><a href="' . $item['editLink'] . '" class="button-primary">Wijzigen</a></td></tr>';
+                echo '<tr><td>' . $item['title'] . '</td><td>' . $item['uplName'] . '</td><td>' . $item['doelgroepen'] . '</td><td><a href="' . $item['editLink'] . '" class="button-primary">Wijzigen</a></td></tr>';
             }
             ?>
         </table>

@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Version 3.4.3 (2021-11-19)
+
+### Refactor
+
+-   Improve description UPL name metabox.
+
+### Feat
+
+-   Add 'doelgroepen' to overview page of pdc-items with incorrect upl-values.
+-   Add missing part of test for action 'rest_prepare_pdc-item' in AdminServiceProviderTest.
+
 ## Version 3.4.2 (2021-11-15)
 
 -   UPL pages available with cap 'edit_posts'.
@@ -16,7 +27,7 @@
 
 -   Add autocomplete for upl name.
 -   Based on upl name, fetch upl resource url and save as meta.
--   Overview pages of pdc-items with correct and inccorect upl-values.
+-   Overview pages of pdc-items with correct and incorrect upl-values.
 
 ## Version 3.3.2 (2021-10-28)
 

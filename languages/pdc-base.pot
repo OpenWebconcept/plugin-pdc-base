@@ -327,8 +327,9 @@ msgid "UPL name"
 msgstr ""
 
 #: config/metaboxes.php:182
-msgid "Available terms can be found at: https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain"
+msgid "Available terms can be found at: 'https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain'. For more information please visit 'https://standaarden.overheid.nl/upl'."
 msgstr ""
+
 
 #: config/metaboxes.php:187
 msgid "UPL resource"
