@@ -183,6 +183,7 @@ return [
                     'id'   => 'pdc_upl_naam',
                     'type' => 'select_advanced',
                     'options' => [],
+                    'multiple' => true
                 ],
             ],
             'other'       => [

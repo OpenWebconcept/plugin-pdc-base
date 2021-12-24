@@ -13,35 +13,55 @@ class UPL
     protected function validateUPLNames(): void
     {
         foreach ($this->items as $item) {
-            $uplName = get_post_meta($item->ID, '_owc_pdc_upl_naam', true);
+            $uplNames = get_post_meta($item->ID, '_owc_pdc_upl_naam', false);
+            $uplNames = is_array($uplNames[0] ?? '') ? array_filter($uplNames[0]) : array_filter($uplNames);
 
-            if (empty($uplName) || ctype_lower($uplName)) {
+            if (empty($uplNames)) {
                 continue;
             }
 
-            $this->UPLNameToLowerCase($item, $uplName);
+            if (is_string($uplNames)) {
+                $uplNames = [$uplNames];
+            }
+
+            $transformed = $this->handleUplNames($uplNames);
+
+            if (empty($transformed)) {
+                continue;
+            }
+
+            delete_post_meta($item->ID, '_owc_pdc_upl_naam');
+
+            foreach ($transformed as $upl) {
+                add_post_meta($item->ID, '_owc_pdc_upl_naam', strtolower($upl));
+            }
         }
     }
 
     /**
-     * Update post meta when value is not in lowercase.
      * Post meta should be in lowercase so let's fix this in advance.
      */
-    protected function UPLNameToLowerCase(\WP_Post $item, string $uplName): string
+    protected function handleUplNames(array $uplNames)
     {
-        $result = update_post_meta($item->ID, '_owc_pdc_upl_naam', strtolower($uplName));
+        $transformed = [];
 
-        if (!$result) {
-            return $uplName;
+        foreach ($uplNames as $uplName) {
+            if (empty($uplName)) {
+                continue;
+            }
+
+            $transformed[] = strtolower($uplName);
         }
 
-        return strtolower($uplName);
+        return $transformed;
     }
 
     protected function prepareItems(): void
     {
         $this->items = array_map(function ($item) {
-            $uplName = get_post_meta($item->ID, '_owc_pdc_upl_naam', true);
+            $uplNames = get_post_meta($item->ID, '_owc_pdc_upl_naam', false);
+            $uplNames = is_array($uplNames[0] ?? '') ? array_filter($uplNames[0]) : array_filter($uplNames);
+
             $uplUrl  = get_post_meta($item->ID, '_owc_pdc_upl_resource', true);
             $doelgroepen = get_the_terms($item->ID, 'pdc-doelgroep');
 
@@ -49,7 +69,7 @@ class UPL
                 $doelgroepen = [];
             }
 
-            return ['id' => $item->ID, 'title' => $item->post_title, 'uplName' => !empty($uplName) ? $uplName : 'Geen waarde', 'uplUrl' => !empty($uplUrl) ? $uplUrl : '', 'editLink' => get_edit_post_link($item->ID), 'doelgroepen' => $this->prepareTerms($doelgroepen)];
+            return ['id' => $item->ID, 'title' => $item->post_title, 'uplNames' => !empty($uplNames) ? $uplNames : ['Geen waarde'], 'uplUrl' => !empty($uplUrl) ? $uplUrl : [''], 'editLink' => get_edit_post_link($item->ID), 'doelgroepen' => $this->prepareTerms($doelgroepen)];
         }, $this->items);
     }
 

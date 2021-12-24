@@ -15,24 +15,32 @@ class UPLResourceHandler
      */
     public function handleUpdatedMeta(int $metaId, int $postID, string $metaKey, $metaValue): void
     {
-        if (!$this->objectIsPDC($postID)) {
+        if (!$this->objectIsPDC($postID) || $metaKey !== '_owc_pdc_upl_naam') {
             return;
         }
 
-        $uplName = get_post_meta($postID, '_owc_pdc_upl_naam', true);
+        $uplNames = get_post_meta($postID, '_owc_pdc_upl_naam', false);
+        $uplNames = is_array($uplNames[0]) ? array_filter($uplNames[0]) : array_filter($uplNames);
 
-        if (empty($uplName)) {
+        if (empty($uplNames)) {
             return;
         }
 
-        $options     = $this->getOptionsUPL();
-        $resourceURL = $this->getResourceURL($options, $uplName);
+        $options = $this->getOptionsUPL();
 
-        if (empty($resourceURL)) {
+        foreach ($uplNames as $uplName) {
+            $resourceURLs[] = $this->getResourceURL($options, $uplName);
+        }
+
+        delete_post_meta($postID, '_owc_pdc_upl_resource');
+
+        if (empty($resourceURLs)) {
             return;
         }
 
-        update_post_meta($postID, '_owc_pdc_upl_resource', $resourceURL);
+        foreach ($resourceURLs as $resourceURL) {
+            add_post_meta($postID, '_owc_pdc_upl_resource', $resourceURL);
+        }
     }
 
     /**

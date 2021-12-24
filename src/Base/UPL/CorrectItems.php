@@ -16,20 +16,33 @@ class CorrectItems extends UPL
     public function compareCorrectItems(): array
     {
         return array_filter($this->items, function ($item) {
+            if (empty($item['uplNames'])) {
+                return false;
+            }
+
             return $this->compareCorrectItem($item);
         });
     }
 
     protected function compareCorrectItem($item): bool
     {
-        foreach ($this->uplOptions as $option) {
-            if ($item['uplName'] !== strtolower($option['UniformeProductnaam']['value']) || strtolower($item['uplUrl']) !== strtolower($option['URI']['value'])) {
-                continue;
-            }
+        $total = count($item['uplNames']);
+        $counter = 0;
+        foreach ($item['uplNames'] as $uplName) {
+            foreach ($this->uplOptions as $option) {
+                if ($uplName !== strtolower($option['UniformeProductnaam']['value'])) {
+                    continue;
+                }
 
-            return true;
+                $counter = $counter + 1;
+                break;
+            }
         }
 
-        return false;
+        if ($total !== $counter) {
+            return false;
+        }
+
+        return true;
     }
 }

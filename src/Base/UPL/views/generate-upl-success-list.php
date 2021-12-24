@@ -9,7 +9,7 @@
             </tr>
             <?php
             foreach ($correctItems as $item) {
-                echo '<tr><td>' . $item['title'] . '</td><td>' . $item['uplName'] . '</td><td><a href="' . $item['editLink'] . '" class="button-primary">Bekijken</a></td></tr>';
+                echo '<tr><td>' . $item['title'] . '</td><td>' . implode(', ', $item['uplNames']) . '</td><td><a href="' . $item['editLink'] . '" class="button-primary">Bekijken</a></td></tr>';
             }
             ?>
         </table>

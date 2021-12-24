@@ -22,10 +22,20 @@ class IncorrectItems extends UPL
 
     protected function compareIncorrectItem($item): bool
     {
-        foreach ($this->uplOptions as $option) {
-            if ($item['uplName'] === strtolower($option['UniformeProductnaam']['value']) && strtolower($item['uplUrl']) === strtolower($option['URI']['value'])) {
-                return false;
+        $total = count($item['uplNames']);
+        $counter = 0;
+
+        foreach ($item['uplNames'] as $uplName) {
+            foreach ($this->uplOptions as $option) {
+                if ($uplName === strtolower($option['UniformeProductnaam']['value'])) {
+                    $counter = $counter + 1;
+                    break;
+                }
             }
+        }
+
+        if ($total === $counter) {
+            return false;
         }
 
         return true;
