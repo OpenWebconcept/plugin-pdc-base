@@ -54,6 +54,11 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_portal_pdc_item_slug'] ?? null;
     }
 
+    public function isPortalSlugValid(): bool
+    {
+        return !empty($this->getPortalURL()) && !empty($this->getPortalItemSlug());
+    }
+
     /**
      * @return bool
      */

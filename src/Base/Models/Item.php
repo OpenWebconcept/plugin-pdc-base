@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Model for the item
- */
-
 namespace OWC\PDC\Base\Models;
 
 /**
@@ -258,62 +254,24 @@ class Item
         return $this->getMeta('escape_element_active', '0', true, '_owc_');
     }
 
-    public function getPortalURL(): string
+    /**
+     * URL contains ONLY a connected theme and subtheme.
+     * Is used in 'post_type_link' filter registered in '\OWC\PDC\Base\Admin\AdminServiceProvider::class'.
+     */
+    public function getBasePortalURL(): string
     {
-        return $this->createPortalURL();
+        return PortalLinkGenerator::make($this)->generateBasePortalLink();
     }
 
     /**
-     * Create portal url, used in 'pdc items' overview
-     * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url
-     *
-     * @return string
+     * URL contains connected theme, connected subtheme, post slug and ID.
      */
-    private function createPortalURL(): string
+    public function getPortalURL(): string
     {
-        $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_url'] ?? '') . trailingslashit(get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_portal_pdc_item_slug'] ?? ''));
-
-        $connectedPdcCategory       = $this->getConnected('pdc-item_to_pdc-category');
-        $connectedPdcSubCategory    = $this->getConnected('pdc-item_to_pdc-subcategory');
-        $includeThemeSetting        = \get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_theme_in_portal_url'] ?? false;
-        $includeSubThemeSetting     = \get_option(self::PREFIX . 'pdc_base_settings')[self::PREFIX . 'setting_include_subtheme_in_portal_url'] ?? false;
-
-        // add thema to the url
-        if ($includeThemeSetting) {
-            if ($connectedPdcCategory) {
-                $portalURL .= trailingslashit($connectedPdcCategory->post_name);
-            } else {
-                $portalURL .= trailingslashit("thema");
-            }
-        }
-
-        // add subtheme to the url
-        if ( $includeSubThemeSetting) {
-            if ($connectedPdcSubCategory ) {
-                $portalURL .= trailingslashit($connectedPdcSubCategory->post_name);
-            } else {
-                $portalURL  .= trailingslashit("subthema");
-            }
-        }
-
-        $portalURL .= $this->createPostSlug();
-        
-        $portalURL .= $this->getID();
-
-        return $portalURL;
+        return PortalLinkGenerator::make($this)->generateFullPortalLink();
     }
 
-    private function createPostSlug(): string
-    {
-        if (!empty($this->getPostName())) {
-            return trailingslashit($this->getPostName());
-        }
-
-        // Drafts do not have a post_name so use the sanitized title instead.
-        return trailingslashit(sanitize_title($this->getTitle(), 'untitled-draft'));
-    }
-
-    private function getConnected($connection): ?\WP_Post
+    public function getConnected($connection): ?\WP_Post
     {
         $connected = new \WP_Query([
             'connected_type'  => $connection,

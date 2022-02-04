@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## Version 3.4.4 (2022-02-04)
+
+### Refactor
+
+-   Generating portal url.
+
+### Fix 
+
+-   Return value in filter 'post_type_link' registered in '\OWC\PDC\Base\Admin\AdminServiceProvider::class.
+
 ## Version 3.4.3 (2021-11-19)
 
 ### Refactor

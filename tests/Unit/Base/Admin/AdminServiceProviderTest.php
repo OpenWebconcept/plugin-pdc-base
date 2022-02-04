@@ -7,7 +7,6 @@ use OWC\PDC\Base\Foundation\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
 use OWC\PDC\Base\Tests\Unit\TestCase;
-use WP_Post;
 
 class AdminServiceProviderTest extends TestCase
 {
@@ -71,7 +70,7 @@ class AdminServiceProviderTest extends TestCase
             $service,
             'filterPostLink',
             10,
-            2
+            4
         ])->once();
 
         $plugin->loader->shouldReceive('addAction')->withArgs([
