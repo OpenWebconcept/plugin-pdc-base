@@ -16,11 +16,8 @@ sudo /opt/lampp/lampp start
 ```
 ![](./images/xampp-start.png)
 
-Type in the following URL at your favourite web browser:
-```
-http://localhost/dashboard
-```
 We see the XAMPP start page, as shown below.
+
 ![](./images/xampp-dashboard.png)
 
 Then WordPress was downloaded and extracted in the htdocs subdirectory where XAMPP is installed.
@@ -37,12 +34,13 @@ After all, WordPress is installed via the installer that appears on the very fir
 
 ### OpenPDC plugin
 
-To install the OpenPDC plugin, the repository was cloned first.
+To install the OpenPDC plugin, this repository was cloned first.
 After that, the entire plugin-pdc-base was copied to the plugin folder of the local WordPress installation.
 
 ![](./images/pdc-base.png)
 
 When activating the plugin, a few things still go wrong. Plugins required to use the PDC are missing
+
 * RWMB Metabox (Inactive)
 * Posts 2 Posts (Inactive)
 * Extended CPT library (Class does not exist)
