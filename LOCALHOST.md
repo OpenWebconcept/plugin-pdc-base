@@ -4,7 +4,7 @@
 
 To be able to test with OpenPDC, we install a locally hosted WordPress. Below is the route followed with the result. The aim is to get a working version with which we can (help) develop a plugin for combining OpenPDC with the business rules that form the basis of the decisions and calculations for those products.
 
-Those business rules are already available for demo purposes for one product. That product is: Individual Income Allowance. Further details can be found here.
+Those business rules are already available for demo purposes for one product. That product is: Individual Income Allowance. Further details can be found [here](https://commonground.gitlab.io/virtueel-inkomstenloket/regels/).
 
 ### Locally hosted WP
 
