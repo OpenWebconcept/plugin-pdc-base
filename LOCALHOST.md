@@ -43,8 +43,8 @@ After that, the entire plugin-pdc-base was copied to the plugin folder of the lo
 ![](./images/pdc-base.png)
 
 When activating the plugin, a few things still go wrong. Plugins required to use the PDC are missing
-- RWMB Metabox (Inactive)
-- Posts 2 Posts (Inactive)
-- Extended CPT library (Class does not exist)
+* RWMB Metabox (Inactive)
+* Posts 2 Posts (Inactive)
+* Extended CPT library (Class does not exist)
 
 ![](./images/plugins-missing.png)
