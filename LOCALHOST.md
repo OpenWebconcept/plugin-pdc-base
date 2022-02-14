@@ -94,3 +94,11 @@ Installing with composer didn't quite go well though.
 Second attempted but still quite a few issues to fix
 
 ![](./images/extended-cpts-intall-failed-2.png)
+
+Replaced composer with the Ubuntu packaged version via
+```
+$ sudo apt install composer
+```
+and tried again
+
+![](./images/extended-cpts-install-failed-3.png)
