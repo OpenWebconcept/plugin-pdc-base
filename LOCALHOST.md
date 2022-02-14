@@ -79,3 +79,18 @@ Works like a charm.
 
 ![](./images/posts2postsinstalled.png)
 
+#### Extended CPTs
+
+Extended CPTs is a library which provides extended functionality to WordPress custom post types and taxonomies. This allows developers to quickly build post types and taxonomies without having to write the same code again and again.
+
+See [here](https://github.com/johnbillion/extended-cpts) for further details.
+
+Extended CPTs is a developer library, not a plugin, which means you need to include it as a dependency in your project.
+
+Installing with composer didn't quite go well though.
+
+![](./images/extended-cpts-install-failed.png)
+
+Second attempted but still quite a few issues to fix
+
+![](./images/extended-cpts-intall-failed-2.png)
