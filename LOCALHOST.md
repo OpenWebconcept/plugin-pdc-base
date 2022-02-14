@@ -46,3 +46,30 @@ When activating the plugin, a few things still go wrong. Plugins required to use
 * Extended CPT library (Class does not exist)
 
 ![](./images/plugins-missing.png)
+
+### Fixing missing plugins
+
+#### RWMB Metabox
+
+Downloaded latest version in zip file to uploaded from [here](https://wordpress.org/plugins/meta-box/).
+
+However, the installation requires FTP credentials which apparently differ from the login credentials.
+
+![](./images/ftp-credentials-missing.png)
+
+A possible solution that you may try to solve this “WordPress asking for FTP credentials on localhost” problem is changing the directory permission.
+
+First, move to your installation folder. Now we’re going to modify your htdocs directory:
+```
+steven@steven-Surface-Laptop-3:/opt/lampp$ sudo chown -R daemon htdocs
+[sudo] password for steven: 
+steven@steven-Surface-Laptop-3:/opt/lampp$ sudo chmod -R g+w htdocs
+steven@steven-Surface-Laptop-3:/opt/lampp$ ls -l
+```
+
+That apparently works for this localhost install.
+
+![](./images/metaboxinstalled.png)
+
+
+
