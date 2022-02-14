@@ -142,4 +142,4 @@ Final result...
 
 Unfortunately, the Extended CPT library is still missing (and Yes, Apache has been stopped & started).
 
-![](./images/Extended CPT still missing.png)
+![](./images/Extended-CPT-still-missing.png)
