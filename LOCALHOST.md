@@ -102,3 +102,24 @@ $ sudo apt install composer
 and tried again
 
 ![](./images/extended-cpts-install-failed-3.png)
+
+Problem 1 was fixed by installing the php7.x-mysql according to the version of the installed php.
+```
+$ sudo apt install php7.4-mysql
+```
+Problem 2 was solved in the same way.
+```
+$ sudo apt install php7.4-xml
+```
+And yes, the same turned out to be the solution for problem 3
+```
+$ sudo apt install php7.4-curl
+```
+New composer attempt shows that apparently the ext-zip also appears to be missing. So also installed.
+```
+$ sudo apt install php7.4-zip
+```
+Getting there. We're here now.
+
+![](./images/extended-cpts-failed-4.png)
+
