@@ -143,3 +143,7 @@ Final result...
 Unfortunately, the Extended CPT library is still missing (and Yes, Apache has been stopped & started).
 
 ![](./images/Extended-CPT-still-missing.png)
+
+And changing permissions didn't went well with phpMyAdmin apparently.
+
+![](./images/phpconfigwrong.png)
