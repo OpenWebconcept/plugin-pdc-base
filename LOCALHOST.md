@@ -123,3 +123,7 @@ Getting there. We're here now.
 
 ![](./images/extended-cpts-failed-4.png)
 
+After upgrading composer by the [install script](https://getcomposer.org/download/).
+
+![](./images/extended-cpts-install-failed-5.png)
+
