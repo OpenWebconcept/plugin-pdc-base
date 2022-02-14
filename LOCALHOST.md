@@ -127,3 +127,15 @@ After upgrading composer by the [install script](https://getcomposer.org/downloa
 
 ![](./images/extended-cpts-install-failed-5.png)
 
+Changed owner of composer.lock file by
+```
+$ sudo chown -R steven composer.lock
+```
+There were still permissions missing. Fixed those as well.
+```
+$ chmod -R 777 /opt/lampp/phpmyadmin/
+$ composer require johnbillion/extended-cpts
+```
+Final result...
+
+![](./images/extended-cpts-installed.png)
