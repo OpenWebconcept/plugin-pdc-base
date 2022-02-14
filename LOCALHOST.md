@@ -71,5 +71,11 @@ That apparently works for this localhost install.
 
 ![](./images/metaboxinstalled.png)
 
+#### Posts 2 Posts
 
+Downloaded latest version in zip file to upload from [here](https://wordpress.org/plugins/posts-to-posts/)
+
+Works like a charm.
+
+![](./images/posts2postsinstalled.png)
 
