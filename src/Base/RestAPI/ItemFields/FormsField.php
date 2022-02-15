@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Adds form fields to the output.
@@ -48,7 +48,7 @@ class FormsField extends CreatesFields
     private function getForms(WP_Post $post)
     {
         return array_filter(get_post_meta($post->ID, '_owc_pdc_forms_group', true) ?: [], function ($form) {
-            return (!empty($form['pdc_forms_url']) or !empty($form['pdc_forms_shortcode'])) && (!empty($form['pdc_forms_title']));
+            return (! empty($form['pdc_forms_url']) or ! empty($form['pdc_forms_shortcode'])) && (! empty($form['pdc_forms_title']));
         });
     }
 }

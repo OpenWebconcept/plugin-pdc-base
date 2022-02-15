@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Provider which registers the API.
@@ -18,7 +18,7 @@ class RestAPIServiceProvider extends ServiceProvider
     /**
      * The endpoint of the base API.
      *
-     * @var string $namespace
+     * @var string
      */
     private $namespace = 'owc/pdc/v1';
 
@@ -39,6 +39,7 @@ class RestAPIServiceProvider extends ServiceProvider
      * Register routes on the rest API.
      *
      * Main endpoint.
+     *
      * @link https://url/wp-json/owc/pdc/v1
      *
      * Endpoint of the pdc-items.
@@ -150,6 +151,7 @@ class RestAPIServiceProvider extends ServiceProvider
      * Whitelist endpoints within Config Expander.
      *
      * @package OWC\ConfigExpander\DisableRestAPI\DisableRestAPI
+     *
      * @param array $whitelist
      *
      * @return array

@@ -9,8 +9,8 @@ pipelines:
             - composer
             - vendor-directory
           script:
-            - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
-            - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
+            - composer update  --no-interaction --no-progress --prefer-dist --no-scripts
+            - ./vendor/bin/phpunit --testsuite "Unit Test"
   branches:
     "{master,develop}":
       - step:
@@ -19,8 +19,8 @@ pipelines:
             - composer
             - vendor-directory
           script:
-            - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
-            - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
+            - composer update  --no-interaction --no-progress --prefer-dist --no-scripts
+            - ./vendor/bin/phpunit --testsuite "Unit Test"
 
 definitions:
   caches:

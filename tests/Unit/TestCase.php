@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Tests\Unit;
 
@@ -18,7 +18,7 @@ class TestCase extends ToolsTestCase
     public function invokeMethod(object $object, string $methodName, array $parameters = [])
     {
         $reflection = new \ReflectionClass(get_class($object));
-        $method     = $reflection->getMethod($methodName);
+        $method = $reflection->getMethod($methodName);
         $method->setAccessible(true);
 
         return $method->invokeArgs($object, $parameters);

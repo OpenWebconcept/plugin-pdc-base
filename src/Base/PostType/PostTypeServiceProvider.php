@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Provider which handles the registration of posttype.
@@ -17,7 +17,7 @@ class PostTypeServiceProvider extends ServiceProvider
     /**
      * Array of posttype definitions from the config.
      *
-     * @var array $configPostTypes
+     * @var array
      */
     protected $configPostTypes = [];
 
@@ -40,7 +40,7 @@ class PostTypeServiceProvider extends ServiceProvider
             $this->configPostTypes = $this->plugin->config->get('posttypes');
 
             foreach ($this->configPostTypes as $postTypeName => $postType) {
-                if ('pdc-group' === $postTypeName && !$this->plugin->settings->useGroupLayer()) {
+                if ('pdc-group' === $postTypeName && ! $this->plugin->settings->useGroupLayer()) {
                     continue;
                 }
 

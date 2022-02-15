@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
@@ -18,7 +18,7 @@ class LanguageField extends CreatesFields
     {
         $language = get_post_meta($post->ID, '_owc_pdc-item-language', true);
 
-        if (!$language) {
+        if (! $language) {
             return 'nl';
         }
 

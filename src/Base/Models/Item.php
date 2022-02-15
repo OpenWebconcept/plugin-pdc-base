@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Models;
 
@@ -12,7 +12,7 @@ class Item
     /**
      * Type of model.
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype = 'pdc-item';
 
@@ -46,6 +46,7 @@ class Item
      * Make Post model from WP_Post object
      *
      * @param \WP_Post $post
+     *
      * @return Post
      */
     public static function makeFrom(\WP_Post $post)
@@ -190,7 +191,7 @@ class Item
      */
     public function hasContent(): bool
     {
-        return !empty($this->getKey('post_content'));
+        return ! empty($this->getKey('post_content'));
     }
 
     /**
@@ -281,7 +282,7 @@ class Item
             'connected_query' => ['post_status' => ['publish', 'draft']]
         ]);
 
-        return !empty($connected->post) ? $connected->post : null;
+        return ! empty($connected->post) ? $connected->post : null;
     }
 
     /**

@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Provider which handles the registration of the taxonomies.
  */
+
 namespace OWC\PDC\Base\Taxonomy;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
@@ -15,7 +16,7 @@ class TaxonomyServiceProvider extends ServiceProvider
     /**
      * The array of taxonomies definitions from the config
      *
-     * @var array $configTaxonomies
+     * @var array
      */
     protected $configTaxonomies = [];
 

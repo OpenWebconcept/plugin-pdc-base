@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Provider which registers the connected/posts-to-posts items.
@@ -18,7 +18,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
     /**
      * Default connection arguments.
      *
-     * @var array $connectionDefaults
+     * @var array
      */
     private $connectionDefaults = [
         'can_create_post'       => false,
@@ -47,7 +47,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     private function isPostRewriteRepublishCopy(): bool
     {
-        if (!is_admin()) {
+        if (! is_admin()) {
             return false;
         }
 
@@ -58,7 +58,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
             return false;
         }
 
-        $rewriteRepublish         = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
+        $rewriteRepublish = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
         $postIsRewritePublishCopy = filter_var($rewriteRepublish, FILTER_VALIDATE_BOOLEAN);
 
         return $postIsRewritePublishCopy;
@@ -71,7 +71,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function extendPostsToPostsConnections(): void
     {
-        if (!SettingsPageOptions::make()->useGroupLayer()) {
+        if (! SettingsPageOptions::make()->useGroupLayer()) {
             return;
         }
 
@@ -104,9 +104,9 @@ class PostsToPostsServiceProvider extends ServiceProvider
     public function registerPostsToPostsConnections(): void
     {
         if (function_exists('p2p_register_connection_type')) {
-            $posttypesInfo         = $this->plugin->config->get('p2p_connections.posttypes_info');
+            $posttypesInfo = $this->plugin->config->get('p2p_connections.posttypes_info');
             $defaultConnectionArgs = apply_filters('owc/pdc-base/p2p-connection-defaults', $this->connectionDefaults);
-            $connections           = $this->plugin->config->get('p2p_connections.connections');
+            $connections = $this->plugin->config->get('p2p_connections.connections');
 
             foreach ($connections as $connectionArgs) {
                 $args = array_merge($defaultConnectionArgs, $connectionArgs);
@@ -129,7 +129,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
                 if ($connectionArgs['from'] == $connectionArgs['to']) {
                     $connectionType['title']['to'] = '';
-                    $connectionType['admin_box']   = 'from';
+                    $connectionType['admin_box'] = 'from';
                 }
 
                 $connectionType = apply_filters("owc/pdc-base/before-register-p2p-connection/{$posttypesInfo[$connectionArgs['from']]['id']}/{$posttypesInfo[$connectionArgs['to']]['id']}", $connectionType);
@@ -148,8 +148,8 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function filterP2PConnectableArgs(array $args): array
     {
-        $args['orderby']      = 'title';
-        $args['order']        = 'asc';
+        $args['orderby'] = 'title';
+        $args['order'] = 'asc';
         $args['p2p:per_page'] = 25;
 
         return $args;
@@ -159,6 +159,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
      * Limit the PostToPost connections inside of the editor for specific posttypes
      *
      * @param string $hook
+     *
      * @return void
      */
     public function limitPostsToPostsConnections(string $hook): void

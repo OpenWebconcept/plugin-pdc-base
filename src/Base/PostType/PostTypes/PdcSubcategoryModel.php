@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Model for the sub-category
  */
@@ -26,7 +26,7 @@ class PdcSubcategoryModel
         $queryArgs = [
             'post_type'        => 'pdc-item',
             'connected_type'   => 'pdc-item_to_pdc-subcategory',
-            'posts_per_page'   => - 1,
+            'posts_per_page'   => -1,
             'post_status'      => 'publish',
             'suppress_filters' => false,
             'nopaging'         => true,
@@ -65,7 +65,7 @@ class PdcSubcategoryModel
         $queryArgs = [
             'post_type'        => 'pdc-item',
             'connected_type'   => 'pdc-item_to_pdc-subcategory',
-            'posts_per_page'   => - 1,
+            'posts_per_page'   => -1,
             'post_status'      => 'publish',
             'suppress_filters' => false,
             'nopaging'         => true,

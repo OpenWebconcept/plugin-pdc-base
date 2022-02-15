@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\PostsToPosts;
 
@@ -102,14 +102,14 @@ class PostsToPostsServiceProviderTest extends TestCase
 
         $service = new PostsToPostsServiceProvider($plugin);
 
-        $inputArgs                 = [];
-        $inputArgs['orderby']      = 'date';
-        $inputArgs['order']        = 'desc';
+        $inputArgs = [];
+        $inputArgs['orderby'] = 'date';
+        $inputArgs['order'] = 'desc';
         $inputArgs['p2p:per_page'] = 10;
 
-        $outputArgs                 = [];
-        $outputArgs['orderby']      = 'title';
-        $outputArgs['order']        = 'asc';
+        $outputArgs = [];
+        $outputArgs['orderby'] = 'title';
+        $outputArgs['order'] = 'asc';
         $outputArgs['p2p:per_page'] = 25;
 
         $this->assertEquals($outputArgs, $service->filterP2PConnectableArgs($inputArgs));

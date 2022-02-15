@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Admin;
 
@@ -46,8 +46,8 @@ class AdminServiceProviderTest extends TestCase
     /** @test */
     public function check_registration_of_interface_methods(): void
     {
-        $config  = m::mock(Config::class);
-        $plugin  = m::mock(Plugin::class);
+        $config = m::mock(Config::class);
+        $plugin = m::mock(Plugin::class);
         $service = m::mock(AdminServiceProvider::class);
 
         $plugin->config = $config;

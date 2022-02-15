@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Repositories;
 
@@ -11,14 +11,14 @@ class Thema extends AbstractRepository
     /**
      * Type of repository.
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype = 'pdc-category';
 
     /**
      * Container with fields, associated with this repository.
      *
-     * @var array $globalFields
+     * @var array
      */
     protected static $globalFields = [];
 }

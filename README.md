@@ -1,22 +1,47 @@
-# README
+# Yard | OpenPDC base
 
-### OpenPDC base
+Plugin to add the Yard | OpenPDC to your project.
 
-Plugin to add the OpenwebConcept OpenPDC to your project.
+* Contributors: Yard | Digital Agency
+* Requires at least: 4.8
+* Tested up to: 5.9.0
+* Requires PHP: 7.2
+* Stable tag: 3.5.0
 
--   Contributors: Yard | Digital Agency
--   Requires at least: 4.8
--   Tested up to: 5.4.2
--   Requires PHP: 7.2
--   Stable tag: 3.2.4
+## Changelog
 
-### How do I get set up?
+See [CHANGELOG](CHANGELOG.md).
 
--   Unzip and/or move all files to the /wp-content/plugins/pdc-base directory
--   Log into WordPress admin and activate the ‘PDC Base’ plugin through the ‘Plugins’ menu
--   Go to the 'PDC instellingen pagina' in the left-hand menu to enter some of the required settings
+## Installation
 
-#### Additional Settings
+* Recommended way of installation is with [Composer](https://getcomposer.org/):
+
+    You can install the package via composer.
+    First, add the the Bitbucket repository to your `composer.json` file.
+
+    ```bash
+    "repositories": [
+        {
+        "type": "vcs",
+        "url": "git@bitbucket.org:openwebconcept/plugin-pdc-base.git"
+        }
+    ]
+    ```
+
+    Then, from the command-line, execute the following command:
+
+    ```bash
+    composer require plugin/pdc-base
+    ```
+
+* If you do not want to or can use composer:
+
+    1. Unzip and/or move all files to the /wp-content/plugins/pdc-base directory
+    2. Log into WordPress admin and activate the `PDC Base` plugin through the `Plugins` menu
+    3. The plugin will show what other dependencies are required. Install thoses too.
+    4. Go to the 'PDC instellingen pagina' in the left-hand menu to enter some of the required settings
+
+## Usage
 
 On the 'PDC instellingen pagina' there are 2 settings optional for extending the slug used in the 'view in portal' url.
 The 'view in portal' button can be found in de wp-admin bar on the editor pages of the pdc-items or inside the 'quick edit' blocks on the overview page of pdc-items.
@@ -28,143 +53,15 @@ Finally, pdc-items can support multiple identifications for scheduling an appoin
 
 ### Connections
 
-Some connections between posttypes are required for the portal to work properly. The required connections and in the correct order when filling the website:
+See [Connections](/docs/connections.md).
 
-1. pdc-theme -> none
-2. pdc-subtheme -> pdc-theme
-3. pdc-group -> pdc-item, pdc-theme and pdc-subtheme (pdc-groups usage is optional)
-4. pdc-item -> pdc-theme, pdc-subtheme
+### Hooks
 
-### Filters & Actions
-
-There are various [hooks](https://codex.wordpress.org/Plugin_API/Hooks), which allows for changing the output.
-
-##### Action for changing main Plugin object.
-
-```php
-'owc/pdc-base/plugin'
-```
-
-See OWC\PDC\Base\Foundataion\Config->set method for a way to change this plugins config.
-
-Via the plugin object the following config settings can be adjusted
-
--   metaboxes
--   p2p_connections
--   posttypes
--   rest_api_fields
--   settings
--   settings_pages
--   taxonomies
-
-##### Filters the Posts to Posts connection defaults.
-
-```php
-owc/pdc-base/p2p-connection-defaults
-```
-
-##### Filters the per Posts to Posts connection, connection type args.
-
-```php
-owc/pdc-base/before-register-p2p-connection/{$posttypes_from}/{$posttypes_to]}
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-links
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-forms
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-downloads
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-title-alternative
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-appointment
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-featured_image
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-taxonomies
-owc/pdc-base/core/posttype/posttypes/pdc_item/get-taxonomies/taxonomy-ids
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcitem/field/get-connections
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcsubcategory/field/has-report
-```
-
-##### Filters the data retrieved for this Rest API field.
-
-```php
-owc/pdc-base/rest-api/pdcsubcategory/field/has-appointment
-```
-
-##### Filters the metaboxes to be registered just before registration.
-
-```php
-owc/pdc-base/before-register-metaboxes
-```
-
-##### Filters the settings to be registered just before registration.
-
-```php
-owc/pdc-base/before-register-settings
-```
-
-#### Allow additional actions before and after the creation of a featured image.
-
-```php
-owc/pdc-base/rest-api/shared-items/field/before-creation-featured-image
-owc/pdc-base/rest-api/shared-items/field/after-creation-featured-image
-```
+See [Hooks](/docs/hooks.md).
 
 ### Translations
 
-If you want to use your own set of labels/names/descriptions and so on you can do so.
-All text output in this plugin is controlled via the gettext methods.
-
-Please use your preferred way to make your own translations from the /wp-content/plugins/pdc-base/languages/pdc-base.pot file
-
-Be careful not to put the translation files in a location which can be overwritten by a subsequent update of the plugin, theme or WordPress core.
-
-We recommend using the 'Loco Translate' plugin.
-https://wordpress.org/plugins/loco-translate/
-
-This plugin provides an easy interface for custom translations and a way to store these files without them getting overwritten by updates.
-
-For instructions how to use the 'Loco Translate' plugin, we advice you to read the Beginners's guide page on their website: https://localise.biz/wordpress/plugin/beginners
-or start at the homepage: https://localise.biz/wordpress/plugin
+See [Translations](/docs/translations.md).
 
 ### Running tests
 
@@ -184,12 +81,12 @@ composer unit-coverage
 
 ### Contribution guidelines
 
-##### Writing tests
+#### Writing tests
 
 Have a look at the code coverage reports to see where more coverage can be obtained.
 Write tests.
 Create a Pull request to the OWC repository.
 
-### Who do I talk to?
+#### Who do I talk to?
 
-IF you have questions about or suggestions for this plugin, please contact <a href="mailto:hpeters@buren.nl">Holger Peters</a> from Gemeente Buren.
+IF you have questions about or suggestions for this plugin, please contact [Holger Peters](mailto:hpeters@buren.nl) from Gemeente Buren.

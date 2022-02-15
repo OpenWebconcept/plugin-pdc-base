@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Adds download fields to the output.
@@ -37,10 +37,10 @@ class IdentificationsField extends CreatesFields
     {
         $identifications = [];
 
-        $identifications['digid']       = $this->createField($post, '_owc_digid-group', 'digid_');
+        $identifications['digid'] = $this->createField($post, '_owc_digid-group', 'digid_');
         $identifications['eherkenning'] = $this->createField($post, '_owc_eherkenning-group', 'eherkenning_');
-        $identifications['eidas']       = $this->createField($post, '_owc_eidas-group', 'eidas_');
-        $identifications['general']     = $this->createField($post, '_owc_general_identification-group', 'general_identification_');
+        $identifications['eidas'] = $this->createField($post, '_owc_eidas-group', 'eidas_');
+        $identifications['general'] = $this->createField($post, '_owc_general_identification-group', 'general_identification_');
 
         return $identifications;
     }
@@ -51,6 +51,7 @@ class IdentificationsField extends CreatesFields
      * @param WP_Post $post
      * @param string $groupIdentifier
      * @param string $identifier
+     *
      * @return array
      */
     private function createField(WP_Post $post, string $groupIdentifier, string $identifier): array
@@ -69,6 +70,7 @@ class IdentificationsField extends CreatesFields
      *
      * @param array $group
      * @param string $identifier
+     *
      * @return array
      */
     private function createData(array $group, string $identifier): array

@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Metabox\Handler;
 
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 use stdClass;
 
 class UPLResourceHandlerTest extends TestCase
@@ -12,7 +12,7 @@ class UPLResourceHandlerTest extends TestCase
     {
         \WP_Mock::setUp();
 
-        $this->post            = new stdClass();
+        $this->post = new stdClass();
         $this->resourceHandler = new UPLResourceHandler();
     }
 
@@ -31,7 +31,7 @@ class UPLResourceHandlerTest extends TestCase
             ->once()
             ->andReturn($this->post);
 
-        $actual   = $this->resourceHandler->objectIsPDC(1);
+        $actual = $this->resourceHandler->objectIsPDC(1);
         $expected = true;
 
         $this->assertEquals($expected, $actual);
@@ -47,7 +47,7 @@ class UPLResourceHandlerTest extends TestCase
             ->once()
             ->andReturn($this->post);
 
-        $actual   = $this->resourceHandler->objectIsPDC(1);
+        $actual = $this->resourceHandler->objectIsPDC(1);
         $expected = false;
 
         $this->assertEquals($expected, $actual);

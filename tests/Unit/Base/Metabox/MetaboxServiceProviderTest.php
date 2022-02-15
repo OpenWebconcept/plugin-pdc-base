@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Metabox;
 
@@ -6,8 +6,8 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class MetaboxServiceProviderTest extends TestCase
 {
@@ -19,11 +19,11 @@ class MetaboxServiceProviderTest extends TestCase
             'return' => [
                 '_owc_setting_portal_url'                       => '',
                 '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1,
+                '_owc_setting_include_theme_in_portal_url'      => false,
+                '_owc_setting_include_subtheme_in_portal_url'   => false,
+                '_owc_setting_pdc-group'                        => false,
+                '_owc_setting_identifications'                  => true,
+                '_owc_setting_use_escape_element'               => true,
                 '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
@@ -56,7 +56,7 @@ class MetaboxServiceProviderTest extends TestCase
         $plugin->config = $config;
         $plugin->loader = m::mock(Loader::class);
 
-        $service         = new MetaboxServiceProvider($plugin);
+        $service = new MetaboxServiceProvider($plugin);
         $resourceHandler = UPLResourceHandler::class;
 
         $plugin->loader->shouldReceive('addFilter')->withArgs([

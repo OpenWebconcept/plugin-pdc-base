@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Metabox;
 
-use OWC\PDC\Base\Support\Traits\RequestUPL;
 use OWC\PDC\Base\Metabox\Handlers\UPLNameHandler;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Support\Traits\RequestUPL;
 
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {

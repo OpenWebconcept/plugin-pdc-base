@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -28,7 +28,7 @@ class ItemController extends BaseController
     public function getItems(WP_REST_Request $request)
     {
         $parameters = $this->convertParameters($request->get_params());
-        $items      = (new Item())
+        $items = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
             ->query(self::excludeInactiveItems());
@@ -37,7 +37,7 @@ class ItemController extends BaseController
             $items->hide(['connected']);
         }
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -82,14 +82,14 @@ class ItemController extends BaseController
      */
     public function getItem(WP_REST_Request $request)
     {
-        $id            = (int) $request->get_param('id');
-        $item          = $this->buildQueryFromRequest($request);
-        $item          = $item->find($id);
+        $id = (int) $request->get_param('id');
+        $item = $this->buildQueryFromRequest($request);
+        $item = $item->find($id);
 
         if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
-                    'status' => 404,
-                    ]);
+                'status' => 404,
+            ]);
         }
 
         if ($this->needsAuthorization($item)) {
@@ -148,7 +148,7 @@ class ItemController extends BaseController
         }
 
         $password = esc_attr($request->get_param('password'));
-        if (!empty($password)) {
+        if (! empty($password)) {
             $item->setPassword($password);
         }
 

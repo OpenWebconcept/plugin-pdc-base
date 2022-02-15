@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Abstract which handles the creation of fields.
@@ -19,7 +19,7 @@ abstract class CreatesFields
     /**
      * Instance of the Plugin.
      *
-     * @var Plugin $plugin
+     * @var Plugin
      */
     protected $plugin;
 
@@ -74,16 +74,17 @@ abstract class CreatesFields
 
     /**
      * @param string $url
+     *
      * @return string
      */
     protected function getFileSize($url): string
     {
-        if (!defined('WP_CONTENT_DIR')) {
+        if (! defined('WP_CONTENT_DIR')) {
             return '';
         }
 
         $projectRoot = str_replace('/wp-content', '', WP_CONTENT_DIR);
-        $parsedUrl   = wp_parse_url($url);
+        $parsedUrl = wp_parse_url($url);
 
         if (empty($parsedUrl['path'])) {
             return '';

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Settings;
 
@@ -56,19 +56,19 @@ class SettingsPageOptions
 
     public function isPortalSlugValid(): bool
     {
-        return !empty($this->getPortalURL()) && !empty($this->getPortalItemSlug());
+        return ! empty($this->getPortalURL()) && ! empty($this->getPortalItemSlug());
     }
 
     /**
      * @return bool
      */
-    public function useIdentifications(): ?bool
+    public function useIdentifications(): bool
     {
         return $this->settings['_owc_setting_identifications'] ?? false;
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function useGroupLayer(): bool
     {
@@ -78,7 +78,7 @@ class SettingsPageOptions
     /**
      * Use portal url in items endpoint.
      *
-     * @return boolean
+     * @return bool
      */
     public function usePortalURL(): bool
     {
@@ -88,7 +88,7 @@ class SettingsPageOptions
     /**
      * Use escape element value in items endpoint.
      *
-     * @return boolean
+     * @return bool
      */
     public function useEscapeElement(): bool
     {

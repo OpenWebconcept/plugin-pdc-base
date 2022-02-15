@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Adds connected/related fields to the output.
@@ -34,7 +34,7 @@ class ConnectedField extends CreatesFields
         $result = [];
 
         foreach ($connections as $connection) {
-            $type                      = $connection['from'] . '_to_' . $connection['to'];
+            $type = $connection['from'] . '_to_' . $connection['to'];
             $result[$connection['to']] = $this->getConnectedItems($post->ID, $type, $this->extraQueryArgs($type));
         }
 

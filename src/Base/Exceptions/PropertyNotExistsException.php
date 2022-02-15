@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Exception when property is not found on object.
  */

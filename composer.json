@@ -9,16 +9,24 @@
     }
   ],
   "type": "wordpress-plugin",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
   "require": {
-    "php": ">=7.0",
-    "johnbillion/extended-cpts": "^4.0"
+    "php": ">=7.2",
+    "johnbillion/extended-cpts": "^4.0",
+    "wpackagist-plugin/meta-box": "^5.0",
+    "wpackagist-plugin/posts-to-posts": "^1.0"
   },
   "require-dev": {
     "10up/wp_mock": "dev-master",
-    "friendsofphp/php-cs-fixer": "^2.0",
-    "mockery/mockery": "*",
-    "phpunit/phpunit": "~8.0",
-    "szepeviktor/phpstan-wordpress": "^0.7.0"
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "mockery/mockery": "^1.0",
+    "phpunit/phpunit": "~8.0 | ~9.0",
+    "szepeviktor/phpstan-wordpress": "^1.0"
   },
   "autoload": {
     "psr-4": {
@@ -32,11 +40,16 @@
   },
   "scripts": {
     "format": "./vendor/bin/php-cs-fixer fix",
-    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M",
+    "phpstan": "./vendor/bin/phpstan analyse",
     "test": [
       "@unit"
     ],
-    "unit": "clear && ./vendor/bin/phpunit --testdox --stderr --testsuite 'Unit Test Suite' --colors=always",
-    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --prepend tests/xdebug-filter.php --colors=always --coverage-html ./tests/coverage"
+    "unit": "clear && ./vendor/bin/phpunit --colors=always",
+    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit --stderr --colors=always"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
   }
 }

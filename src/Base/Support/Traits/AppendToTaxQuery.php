@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Trait which appends a conditional to a defined taxonomy query.
  */

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Foundation;
 
@@ -18,7 +18,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '3.4.4';
+    const VERSION = '3.5.0';
 
     /**
      * Path to the root of the plugin.
@@ -30,7 +30,7 @@ class Plugin
     /**
      * Instance of the configuration repository.
      *
-     * @var Config $config
+     * @var Config
      */
     public $config;
 
@@ -101,7 +101,7 @@ class Plugin
      */
     public function callServiceProviders(string $method, string $key = ''): void
     {
-        $offset   = $key ? "core.providers.{$key}" : 'core.providers';
+        $offset = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
 
         foreach ($services as $service) {
@@ -111,7 +111,7 @@ class Plugin
 
             $service = new $service($this);
 
-            if (!$service instanceof ServiceProvider) {
+            if (! $service instanceof ServiceProvider) {
                 throw new \Exception('Provider must be an instance of ServiceProvider.');
             }
 

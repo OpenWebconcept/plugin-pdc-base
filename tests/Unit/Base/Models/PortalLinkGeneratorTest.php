@@ -1,10 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Models;
 
-use OWC\PDC\Base\Models\Item;
 use Mockery as m;
-use OWC\PDC\Base\Models\PortalLinkGenerator;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class PortalLinkGeneratorTest extends TestCase
@@ -17,10 +15,10 @@ class PortalLinkGeneratorTest extends TestCase
             'return' => [
                 '_owc_setting_portal_url'                       => 'https://www.gouda.nl',
                 '_owc_setting_portal_pdc_item_slug'             => 'direct/regelen',
-                '_owc_setting_include_theme_in_portal_url'      => 1,
-                '_owc_setting_include_subtheme_in_portal_url'   => 1,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_include_theme_in_portal_url'      => true,
+                '_owc_setting_include_subtheme_in_portal_url'   => true,
+                '_owc_setting_pdc-group'                        => false,
+                '_owc_setting_identifications'                  => false
             ]
         ]);
 
@@ -28,10 +26,10 @@ class PortalLinkGeneratorTest extends TestCase
             'return' => [
                 '_owc_setting_portal_url'                       => 'https://www.gouda.nl',
                 '_owc_setting_portal_pdc_item_slug'             => 'direct/regelen',
-                '_owc_setting_include_theme_in_portal_url'      => 1,
-                '_owc_setting_include_subtheme_in_portal_url'   => 1,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_include_theme_in_portal_url'      => true,
+                '_owc_setting_include_subtheme_in_portal_url'   => true,
+                '_owc_setting_pdc-group'                        => false,
+                '_owc_setting_identifications'                  => false
             ]
         ]);
     }

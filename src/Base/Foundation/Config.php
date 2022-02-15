@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Config object to store, save and retrieve configurations.
  */
@@ -14,21 +14,21 @@ class Config
     /**
      * Directory where config files are located.
      *
-     * @var string $path
+     * @var string
      */
     protected $path;
 
     /**
      * Array with names of protected nodes in the config-items.
      *
-     * @var array $protectNodes
+     * @var array
      */
     protected $protectedNodes = [];
 
     /**
      * Array with all the config values.
      *
-     * @var array $items
+     * @var array
      */
     protected $items = [];
 
@@ -46,7 +46,7 @@ class Config
     public function __construct($path, array $items = [])
     {
         $this->items = $items;
-        $this->path  = $path;
+        $this->path = $path;
     }
 
     /**
@@ -173,12 +173,13 @@ class Config
             if ("dir" == $fileType) {
                 $this->scanDirectory($file);
             } else {
-                $name  = str_replace('.php', '', basename($file));
+                $name = str_replace('.php', '', basename($file));
                 $value = include $file;
 
                 // If its in the first directory just add the file.
                 if ($path == $this->path) {
                     $this->items[$name] = $value;
+
                     continue;
                 }
 
@@ -186,7 +187,7 @@ class Config
                 $path = str_replace($this->path.'/', '', $path);
 
                 // Build an array from the path.
-                $items        = [];
+                $items = [];
                 $items[$name] = $value;
                 foreach (array_reverse(explode('/', $path)) as $key) {
                     $items = [ $key => $items ];

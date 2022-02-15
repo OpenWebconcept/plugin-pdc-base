@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Models;
 
@@ -7,6 +7,8 @@ use OWC\PDC\Base\Settings\SettingsPageOptions;
 class PortalLinkGenerator
 {
     protected string $portalURL = '';
+
+    protected \OWC\PDC\Base\Models\Item $post;
 
     public function __construct(Item $post)
     {
@@ -50,53 +52,66 @@ class PortalLinkGenerator
 
     private function appendTheme(): self
     {
-        if (!$this->pdcSettings->themeInPortalURL()) {
+        if (! $this->pdcSettings->themeInPortalURL()) {
             return $this;
         }
 
         $theme = $this->post->getConnected('pdc-item_to_pdc-category');
 
-        if (!$theme instanceof \WP_Post) {
+        if (! $theme instanceof \WP_Post) {
             $this->updatePortalURL('thema');
+
             return $this;
         }
 
         $this->updatePortalURL($theme->post_name);
+
         return $this;
     }
 
     private function appendSubTheme(): self
     {
-        if (!$this->pdcSettings->subthemeInPortalURL()) {
+        if (! $this->pdcSettings->subthemeInPortalURL()) {
             return $this;
         }
 
         $subtheme = $this->post->getConnected('pdc-item_to_pdc-subcategory') ?? '';
 
-        if (!$subtheme instanceof \WP_Post) {
+        if (! $subtheme instanceof \WP_Post) {
             $this->updatePortalURL('subthema');
+
             return $this;
         }
 
         $this->updatePortalURL($subtheme->post_name);
+
         return $this;
     }
 
     private function appendPostSlug(): self
     {
-        if (!empty($this->post->getPostName())) {
+        if (! empty($this->post->getPostName())) {
             $this->updatePortalURL($this->post->getPostName());
+
             return $this;
         }
 
         // Drafts do not have a post_name so use the sanitized title instead.
-        $this->updatePortalURL(sanitize_title($this->post->getTitle(), 'untitled-draft'));
+        $this->updatePortalURL(\sanitize_title($this->post->getTitle(), 'untitled-draft'));
+
         return $this;
     }
 
     private function appendPostID(): self
     {
-        $this->updatePortalURL($this->post->getID());
+        $postID = (string) $this->post->getID();
+
+        if (!$postID) { // $postID is '0'.
+            $postID = ''; // empty value will not be appended to the URL.
+        }
+
+        $this->updatePortalURL($postID);
+
         return $this;
     }
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Models;
 
@@ -25,7 +25,7 @@ class Identification
     public function __construct(string $identifier, array $data)
     {
         $this->identifier = $identifier;
-        $this->data       = $data;
+        $this->data = $data;
     }
 
     public function isActive(): bool

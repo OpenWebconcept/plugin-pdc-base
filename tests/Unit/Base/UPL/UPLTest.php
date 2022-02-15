@@ -1,10 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\UPL;
 
-use Mockery as m;
 use OWC\PDC\Base\Support\Traits\RequestUPL;
-use OWC\PDC\Base\UPL\IncorrectItems;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class UPLTest extends TestCase

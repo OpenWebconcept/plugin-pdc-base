@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 $pdcSubcategoryModel = new \OWC\PDC\Base\PostType\PostTypes\PdcSubcategoryModel($this);
 

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Adds taxonomy to the output based on the taxonomies in the config.

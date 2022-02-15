@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Controller which handles the (requested) thema(s).
@@ -26,8 +26,8 @@ class ThemaController extends BaseController
     public function getThemas(WP_REST_Request $request)
     {
         $orderBy = $request->get_param('orderby') ?? 'title';
-        $order   = $request->get_param('order') ?? 'ASC';
-        $items   = (new Thema)
+        $order = $request->get_param('order') ?? 'ASC';
+        $items = (new Thema)
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
             ->query([
                 'order'   => $order,
@@ -35,7 +35,7 @@ class ThemaController extends BaseController
             ])
             ->hide(['items']);
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -56,7 +56,7 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->find($id);
 
-        if (!$thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);

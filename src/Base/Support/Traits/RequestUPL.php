@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Support\Traits;
 
@@ -17,7 +17,7 @@ trait RequestUPL
 
         $response = wp_remote_get((SettingsPageOptions::make())->getURLTermsUPL());
 
-        if (is_wp_error($response) || !is_array($response)) {
+        if (is_wp_error($response) || ! is_array($response)) {
             return [];
         }
 
@@ -32,7 +32,7 @@ trait RequestUPL
     {
         $decodedBody = json_decode($response['body'] ?? '', true);
 
-        if (!$decodedBody && json_last_error() !== JSON_ERROR_NONE) {
+        if (! $decodedBody && json_last_error() !== JSON_ERROR_NONE) {
             return [];
         }
 

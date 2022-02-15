@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\UPL;
 
@@ -23,7 +23,7 @@ class CorrectItems extends UPL
     protected function compareCorrectItem($item): bool
     {
         foreach ($this->uplOptions as $option) {
-            if ($item['uplName'] !== strtolower($option['UniformeProductnaam']['value']) || strtolower($item['uplUrl']) !== strtolower($option['URI']['value'])) {
+            if (strtolower($option['UniformeProductnaam']['value']) !== $item['uplName'] || strtolower($item['uplUrl']) !== strtolower($option['URI']['value'])) {
                 continue;
             }
 

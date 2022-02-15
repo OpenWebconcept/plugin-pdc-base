@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
@@ -13,7 +13,7 @@ class ItemControllerTest extends TestCase
 
     public function setUp(): void
     {
-        $plugin               = m::mock(Plugin::class);
+        $plugin = m::mock(Plugin::class);
         $this->itemController = new ItemController($plugin);
         \WP_Mock::setUp();
     }

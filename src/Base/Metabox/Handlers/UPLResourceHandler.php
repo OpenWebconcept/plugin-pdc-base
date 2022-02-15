@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Metabox\Handlers;
 
@@ -15,7 +15,7 @@ class UPLResourceHandler
      */
     public function handleUpdatedMeta(int $metaId, int $postID, string $metaKey, $metaValue): void
     {
-        if (!$this->objectIsPDC($postID)) {
+        if (! $this->objectIsPDC($postID)) {
             return;
         }
 
@@ -25,7 +25,7 @@ class UPLResourceHandler
             return;
         }
 
-        $options     = $this->getOptionsUPL();
+        $options = $this->getOptionsUPL();
         $resourceURL = $this->getResourceURL($options, $uplName);
 
         if (empty($resourceURL)) {
@@ -63,7 +63,7 @@ class UPLResourceHandler
     {
         $post = get_post($postID);
 
-        if ($post->post_type !== 'pdc-item') {
+        if ('pdc-item' !== $post->post_type) {
             return false;
         }
 

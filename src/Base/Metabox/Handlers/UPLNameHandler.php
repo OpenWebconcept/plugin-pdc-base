@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Metabox\Handlers;
 
@@ -23,7 +23,7 @@ class UPLNameHandler
 
         // Remove empty elements.
         $options = array_filter(array_unique($options), function ($item) {
-            return !empty($item);
+            return ! empty($item);
         });
 
         // Return prepared options.

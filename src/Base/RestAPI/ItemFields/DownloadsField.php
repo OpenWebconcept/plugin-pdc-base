@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Adds download fields to the output.
@@ -48,7 +48,7 @@ class DownloadsField extends CreatesFields
     private function getDownloads(WP_Post $post)
     {
         return array_filter(get_post_meta($post->ID, '_owc_pdc_downloads_group', true) ?: [], function ($download) {
-            return (!empty($download['pdc_downloads_url']) or !empty($download['pdc_downloads_shortcode'])) && (!empty($download['pdc_downloads_title']));
+            return (! empty($download['pdc_downloads_url']) or ! empty($download['pdc_downloads_shortcode'])) && (! empty($download['pdc_downloads_title']));
         });
     }
 }

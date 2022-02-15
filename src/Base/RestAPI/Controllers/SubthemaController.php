@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Controller which handles the (requested) subthema(s).
@@ -29,7 +29,7 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
             ->query(['orderby' => 'name', 'order' => 'ASC']);
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -50,7 +50,7 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->find($id);
 
-        if (!$thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Subthema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);

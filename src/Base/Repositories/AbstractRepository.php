@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * PDC item object with default quering and methods.
@@ -20,7 +20,7 @@ abstract class AbstractRepository
     /**
      * Posttype definition
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype;
 
@@ -257,7 +257,7 @@ abstract class AbstractRepository
             'date'        => $post->post_date,
             'slug'        => $post->post_name,
             'post_status' => $post->post_status,
-            'protected'   => !$this->isAllowed($post)
+            'protected'   => ! $this->isAllowed($post)
         ];
 
         $data = $this->assignFields($data, $post);
@@ -280,7 +280,7 @@ abstract class AbstractRepository
 
     private function isPasswordProtected(\WP_Post $post): bool
     {
-        return !empty($post->post_password);
+        return ! empty($post->post_password);
     }
 
     private function isPasswordValid(\WP_post $post): bool
@@ -292,6 +292,7 @@ abstract class AbstractRepository
      * Return only the preferred fields.
      *
      * @param array $data
+     *
      * @return array
      */
     protected function getPreferredFields($data)
@@ -302,6 +303,7 @@ abstract class AbstractRepository
         }
 
         $preferredFields = explode(',', $preferredFields);
+
         return array_filter($data, function ($key) use ($preferredFields) {
             return in_array($key, $preferredFields);
         }, ARRAY_FILTER_USE_KEY);

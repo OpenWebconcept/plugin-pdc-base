@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OWC\PDC\Base\Models;
 
@@ -16,7 +16,7 @@ class UPLResponseBody
 
     public function getStatus(): string
     {
-        return !empty($this->body['results']['bindings']) ? 'success' : 'error';
+        return ! empty($this->body['results']['bindings']) ? 'success' : 'error';
     }
 
     public function getData(): array

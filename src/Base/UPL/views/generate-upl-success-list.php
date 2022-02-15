@@ -1,6 +1,6 @@
 <div class="wrap">
     <h1>Items met correcte UPL-namen</h1>
-    <?php if (!empty($correctItems) && is_array($correctItems)) : ?>
+    <?php if (! empty($correctItems) && is_array($correctItems)) : ?>
         <table>
             <tr>
                 <th style="text-align:left">Item</th>

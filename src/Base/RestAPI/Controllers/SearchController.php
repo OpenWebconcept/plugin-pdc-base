@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -50,7 +50,7 @@ class SearchController extends ItemController
                 ]
             ]);
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -63,7 +63,7 @@ class SearchController extends ItemController
      */
     public function arguments()
     {
-        $args      = [];
+        $args = [];
         $args['s'] = [
             'description' => esc_html__('The search term.', 'pdc-base'),
             'required'    => true,

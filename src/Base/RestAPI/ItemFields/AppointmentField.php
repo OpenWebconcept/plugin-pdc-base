@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Adds download fields to the output.
  */

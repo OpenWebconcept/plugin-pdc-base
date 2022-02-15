@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Checks if dependencies are valid.
  */
@@ -48,9 +48,11 @@ class DependencyChecker
             switch ($dependency['type']) {
                 case 'class':
                     $this->checkClass($dependency);
+
                     break;
                 case 'plugin':
                     $this->checkPlugin($dependency);
+
                     break;
             }
         }
@@ -107,7 +109,7 @@ class DependencyChecker
      */
     private function checkClass(array $dependency)
     {
-        if (!class_exists($dependency['name'])) {
+        if (! class_exists($dependency['name'])) {
             $this->markFailed($dependency, __('Class does not exist', 'pdc-base'));
 
             return;
@@ -131,7 +133,7 @@ class DependencyChecker
 
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
-            if (!$this->checkVersion($dependency)) {
+            if (! $this->checkVersion($dependency)) {
                 $this->markFailed($dependency, __('Minimal version:', 'pdc-base') . ' <b>' . $dependency['version'] . '</b>');
             }
         }
