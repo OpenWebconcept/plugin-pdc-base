@@ -35,6 +35,11 @@ return [
             # Show post type in rest api
             'show_in_rest'  => true,
 
+            # Show  post type in Graphql
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'pdcItem',
+            'graphql_plural_name' => 'pdcItems',
+
             # Show all posts on the post type archive:
             'archive'       => [
                 'nopaging' => true,
@@ -119,6 +124,11 @@ return [
             # Show post type in rest api
             'show_in_rest'  => true,
 
+            # Show  post type in Graphql
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'pdcTheme',
+            'graphql_plural_name' => 'pdcThemes',
+
             # Show all posts on the post type archive:
             'archive'      => [
                 'nopaging' => true,
@@ -161,6 +171,11 @@ return [
 
             # Show post type in rest api
             'show_in_rest'  => true,
+
+            # Show  post type in Graphql
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'pdcSubtheme',
+            'graphql_plural_name' => 'pdcSubthemes',
 
             # Show all posts on the post type archive:
             'archive'      => [
@@ -206,6 +221,11 @@ return [
 
             # Show post type in rest api
             'show_in_rest'  => true,
+
+            # Show  post type in Graphql
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'pdcGroup',
+            'graphql_plural_name' => 'pdcGroups',
 
             # Show all posts on the post type archive:
             'archive'      => [

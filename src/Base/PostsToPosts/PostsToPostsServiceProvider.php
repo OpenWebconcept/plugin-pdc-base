@@ -134,6 +134,8 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
                 $connectionType = apply_filters("owc/pdc-base/before-register-p2p-connection/{$posttypesInfo[$connectionArgs['from']]['id']}/{$posttypesInfo[$connectionArgs['to']]['id']}", $connectionType);
 
+                $connectionType['id'] = str_replace('-', '', $connectionType['id']);
+
                 p2p_register_connection_type($connectionType);
             }
         }
