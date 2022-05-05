@@ -229,7 +229,24 @@ return [
             'general'     => [
                 'title'    => [
                     'name' => __('Icon', 'pdc-base'),
-                    'desc' => __('Use this option to add an icon to a theme.', 'pdc-base'),
+                    'desc' => __('Use this option to add an icon to this theme.', 'pdc-base'),
+                    'id'   => 'pdc_category_icon',
+                    'type' => 'text',
+                ],
+            ]
+        ]
+    ],
+    'pdc-subcategory' => [
+        'id'         => 'pdc_subcategory_metadata',
+        'title'      => __('Icon', 'pdc-base'),
+        'post_types' => ['pdc-subcategory'],
+        'context'    => 'side',
+        'priority'   => 'high',
+        'fields'     => [
+            'general'     => [
+                'title'    => [
+                    'name' => __('Icon', 'pdc-base'),
+                    'desc' => __('Use this option to add an icon to this subtheme.', 'pdc-base'),
                     'id'   => 'pdc_category_icon',
                     'type' => 'text',
                 ],

@@ -1,12 +1,18 @@
 # CHANGELOG
 
+## Version 3.4.5 (2022-05-06)
+
+### Feat
+
+-   Add icon field to subtheme.
+
 ## Version 3.4.4 (2022-02-04)
 
 ### Refactor
 
 -   Generating portal url.
 
-### Fix 
+### Fix
 
 -   Return value in filter 'post_type_link' registered in '\OWC\PDC\Base\Admin\AdminServiceProvider::class.
 

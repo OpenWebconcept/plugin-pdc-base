@@ -28,8 +28,8 @@ class UPLServiceProvider extends ServiceProvider
 
         add_submenu_page(
             'upl.php',
-            __('Correcte items', 'pdc-base'),
-            __('Correcte items', 'pdc-base'),
+            __('Correct items', 'pdc-base'),
+            __('Correct items', 'pdc-base'),
             'edit_posts',
             'upl-correcte-items',
             [$this, 'correctItemsPage']
@@ -37,8 +37,8 @@ class UPLServiceProvider extends ServiceProvider
 
         add_submenu_page(
             'upl.php',
-            __('Foutieve items', 'pdc-base'),
-            __('Foutieve items', 'pdc-base'),
+            __('Incorrect items', 'pdc-base'),
+            __('Incorrect items', 'pdc-base'),
             'edit_posts',
             'upl-foutieve-items',
             [$this, 'incorrectItemsPage']

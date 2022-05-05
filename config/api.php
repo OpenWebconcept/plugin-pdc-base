@@ -31,6 +31,7 @@ return [
         ],
         'subthema' => [
             'fields' => [
+                'icon'   => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
                 'items'  => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image'  => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
@@ -47,7 +48,7 @@ return [
         ],
         'thema' => [
             'fields' => [
-                'icon'      => OWC\PDC\Base\RestAPI\ThemaFields\IconField::class,
+                'icon'      => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
                 'items'     => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
