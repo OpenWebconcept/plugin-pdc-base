@@ -27,7 +27,12 @@ class PortalLinkGenerator
     {
         $this->createPortalSlug()->appendTheme()->appendSubTheme()->appendPostSlug()->appendPostID();
 
-        return $this->portalURL;
+        return apply_filters(
+            'owc/pdc-base/generate-full-portal-link',
+            $this->portalURL,
+            $this->post,
+            $this->pdcSettings
+        );
     }
 
     public function generateBasePortalLink(): string
