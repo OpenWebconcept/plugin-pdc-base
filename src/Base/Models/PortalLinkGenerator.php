@@ -39,7 +39,12 @@ class PortalLinkGenerator
     {
         $this->createPortalSlug()->appendTheme()->appendSubTheme();
 
-        return $this->portalURL;
+        return apply_filters(
+            'owc/pdc-base/generate-base-portal-link',
+            $this->portalURL,
+            $this->post,
+            $this->pdcSettings
+        );
     }
 
     private function createPortalSlug(): self
