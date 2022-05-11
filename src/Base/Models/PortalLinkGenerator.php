@@ -6,6 +6,8 @@ use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 class PortalLinkGenerator
 {
+    protected Item $post;
+    protected SettingsPageOptions $pdcSettings;
     protected string $portalURL = '';
 
     public function __construct(Item $post)
