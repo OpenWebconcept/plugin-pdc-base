@@ -22,16 +22,23 @@ return [
                     'type' => 'text'
                 ],
                 'pdc_theme_in_portal_url' => [
-                    'name' => __('PDC item theme in "View in portal" slug', 'pdc-base'),
+                    'name' => __('Theme in "View in portal" slug', 'pdc-base'),
                     'desc' => __('Include theme, of PDC item, in "View in portal" slug?', 'pdc-base'),
                     'id'   => 'setting_include_theme_in_portal_url',
                     'type' => 'checkbox',
                 ],
                 'pdc_subtheme_in_portal_url' => [
-                    'name' => __('PDC item subtheme in "View in portal" slug', 'pdc-base'),
+                    'name' => __('Subtheme in "View in portal" slug', 'pdc-base'),
                     'desc' => __('Include subtheme, of PDC item, in "View in portal" slug?', 'pdc-base'),
                     'id'   => 'setting_include_subtheme_in_portal_url',
                     'type' => 'checkbox',
+                ],
+                'pdc_id_in_portal_url' => [
+                    'name' => __('ID in "View in portal" slug', 'pdc-base'),
+                    'desc' => __('Include ID, of PDC item, in "View in portal" slug?', 'pdc-base'),
+                    'id'   => 'setting_include_id_in_portal_url',
+                    'type' => 'checkbox',
+                    'std' => 1,
                 ],
                 'pdc_use_group_cpt' => [
                     'name' => __('Use the group layer', 'pdc-base'),

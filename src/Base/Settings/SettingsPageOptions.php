@@ -6,10 +6,8 @@ class SettingsPageOptions
 {
     /**
      * Settings defined on settings page
-     *
-     * @var array
      */
-    private $settings;
+    private array $settings;
 
     public function __construct(array $settings)
     {
@@ -18,8 +16,6 @@ class SettingsPageOptions
 
     /**
      * Include theme in the URL to the portal website.
-     *
-     * @return bool
      */
     public function themeInPortalURL(): bool
     {
@@ -28,8 +24,6 @@ class SettingsPageOptions
 
     /**
      * Include subtheme in the URL to the portal website.
-     *
-     * @return bool
      */
     public function subthemeInPortalURL(): bool
     {
@@ -37,9 +31,15 @@ class SettingsPageOptions
     }
 
     /**
+     * Include ID in the URL to the portal website.
+     */
+    public function idInPortalURL(): bool
+    {
+        return $this->settings['_owc_setting_include_id_in_portal_url'] ?? true;
+    }
+
+    /**
      * URL to the portal website.
-     *
-     * @return string|null
      */
     public function getPortalURL(): ?string
     {
@@ -47,7 +47,7 @@ class SettingsPageOptions
     }
 
     /**
-     * @return string|null
+     * E.g. 'direct-regelen' or 'onderwerpen'.
      */
     public function getPortalItemSlug(): ?string
     {
@@ -59,17 +59,11 @@ class SettingsPageOptions
         return !empty($this->getPortalURL()) && !empty($this->getPortalItemSlug());
     }
 
-    /**
-     * @return bool
-     */
     public function useIdentifications(): ?bool
     {
         return $this->settings['_owc_setting_identifications'] ?? false;
     }
 
-    /**
-     * @return boolean
-     */
     public function useGroupLayer(): bool
     {
         return $this->settings['_owc_setting_pdc-group'] ?? false;
@@ -77,8 +71,6 @@ class SettingsPageOptions
 
     /**
      * Use portal url in items endpoint.
-     *
-     * @return boolean
      */
     public function usePortalURL(): bool
     {
@@ -87,8 +79,6 @@ class SettingsPageOptions
 
     /**
      * Use escape element value in items endpoint.
-     *
-     * @return boolean
      */
     public function useEscapeElement(): bool
     {
@@ -97,8 +87,6 @@ class SettingsPageOptions
 
     /**
      * URL used for retrieving UPL terms.
-     *
-     * @return string
      */
     public function getURLTermsUPL(): string
     {
@@ -112,6 +100,7 @@ class SettingsPageOptions
             '_owc_setting_portal_pdc_item_slug'             => '',
             '_owc_setting_include_theme_in_portal_url'      => 0,
             '_owc_setting_include_subtheme_in_portal_url'   => 0,
+            '_owc_setting_include_id_in_portal_url'         => 1,
             '_owc_setting_pdc-group'                        => 0,
             '_owc_setting_use_portal_url'                   => 0,
             '_owc_setting_identifications'                  => 0,

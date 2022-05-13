@@ -47,7 +47,7 @@ msgstr "Yard | Digital Agency"
 msgid "https://www.yard.nl/"
 msgstr "https://www.yard.nl/"
 
-#: config/escape_element_metabox.php:6 config/settings.php:55
+#: config/escape_element_metabox.php:6 config/settings.php:62
 msgid "Escape element"
 msgstr "Ontsnap element"
 
@@ -724,59 +724,66 @@ msgid "URL for PDC items in the portal, eg \"onderwerp\""
 msgstr "URL voor PDC items in het portaal, bv \"onderwerp\""
 
 #: config/settings.php:25
-msgid "PDC item theme in \"View in portal\" slug"
-msgstr "PDC item \"View in portal\" URL bevat thema"
+msgid "Theme in \"View in portal\" slug"
+msgstr "Thema in \"View in portal\" slug"
 
 #: config/settings.php:26
 msgid "Include theme, of PDC item, in \"View in portal\" slug?"
 msgstr "PDC item \"View in portal\" URL bevat thema?"
 
 #: config/settings.php:31
-msgid "PDC item subtheme in \"View in portal\" slug"
-msgstr "PDC item \"View in portal\" URL bevat subthema"
+msgid "Subtheme in \"View in portal\" slug"
+msgstr "Subthema in \"View in portal\" slug"
 
 #: config/settings.php:32
 msgid "Include subtheme, of PDC item, in \"View in portal\" slug?"
 msgstr "PDC item \"View in portal\" URL bevat subthema?"
 
 #: config/settings.php:37
+msgid "ID in \"View in portal\" slug"
+msgstr "ID in \"View in portal\" slug"
+
+#: config/settings.php:38
+msgid "Include ID, of PDC item, in \"View in portal\" slug?"
+msgstr "PDC item \"View in portal\" URL bevat ID?"
+
+#: config/settings.php:44
 msgid "Use the group layer"
 msgstr "Gebruik de groepen laag"
 
-#: config/settings.php:38
+#: config/settings.php:45
 msgid "Use the group layer as connection between a pdc-item and a pdc-group."
-msgstr ""
-"Gebruik de groepen laag als verbinding tussen een pdc-item en een pdc-groep."
+msgstr "Gebruik de groepen laag als verbinding tussen een pdc-item en een pdc-groep."
 
-#: config/settings.php:43
+#: config/settings.php:50
 msgid "Use identifications"
 msgstr "Gebruik identificaties"
 
-#: config/settings.php:44
+#: config/settings.php:51
 msgid "DigiD, eHerkenning and eIDAS."
 msgstr "DigiD, eHerkenning en eIDAS."
 
-#: config/settings.php:49
+#: config/settings.php:56
 msgid "Portal url"
 msgstr "Portaal url"
 
-#: config/settings.php:50
+#: config/settings.php:57
 msgid "Use portal url in api."
 msgstr "Gebruik portaal url in de api."
 
-#: config/settings.php:56
+#: config/settings.php:63
 msgid "Enable escape element."
 msgstr "Gebruik ontsnap element."
 
-#: config/settings.php:62
+#: config/settings.php:69
 msgid "The Uniform Product list of names (upl)"
 msgstr "De Uniforme Productnamenlijst (UPL)"
 
-#: config/settings.php:65
+#: config/settings.php:72
 msgid "URL"
 msgstr "URL"
 
-#: config/settings.php:66
+#: config/settings.php:73
 msgid "URL used for retrieving UPL terms."
 msgstr "URL om de UPL termen op te halen."
 

@@ -23,7 +23,11 @@ class AdminServiceProvider extends ServiceProvider
             return $link;
         }
 
-        return sprintf('%s%s/%s', Item::makeFrom($post)->getBasePortalURL(), ($leavename ? '%postname%' : $post->post_name), $post->ID);
+        if ($this->plugin->settings->idInPortalURL()) {
+            return sprintf('%s%s/%s', Item::makeFrom($post)->getBasePortalURL(), ($leavename ? '%postname%' : $post->post_name), $post->ID);
+        }
+
+        return sprintf('%s%s', Item::makeFrom($post)->getBasePortalURL(), ($leavename ? '%postname%' : $post->post_name));
     }
 
     /**
