@@ -32,7 +32,7 @@ class ItemsField extends ConnectedField
     {
         $query = [];
 
-        $query = array_merge_recursive($query, ItemController::excludeInactiveItems());
+        $query = array_merge_recursive($query, ItemController::metaQuery());
 
         if ($this->isPluginPDCInternalProductsActive()) {
             $query = array_merge_recursive($query, ItemController::excludeInternalItems());

@@ -1,20 +1,12 @@
 <?php
 
-/**
- * Provider which registers the connected/posts-to-posts items.
- */
-
 namespace OWC\PDC\Base\PostsToPosts;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
 
-/**
- * Provider which registers the connected/posts-to-posts items.
- */
 class PostsToPostsServiceProvider extends ServiceProvider
 {
-
     /**
      * Default connection arguments.
      *
@@ -30,10 +22,8 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     /**
      * Registers the posts-to-posts connection.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         if ($this->isPostRewriteRepublishCopy()) {
             return;
@@ -66,8 +56,6 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     /**
      * Extend the P2P connections config file when CPT pdc-groups is active
-     *
-     * @return void
      */
     public function extendPostsToPostsConnections(): void
     {
@@ -98,8 +86,6 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     /**
      * Register P2P connections
-     *
-     * @return void
      */
     public function registerPostsToPostsConnections(): void
     {
@@ -141,10 +127,6 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     /**
      * Method for changing default P2P behaviour. Override by adding additional filter with higher priority (=larger number).
-     *
-     * @param array $args
-     *
-     * @return array
      */
     public function filterP2PConnectableArgs(array $args): array
     {
@@ -157,24 +139,21 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     /**
      * Limit the PostToPost connections inside of the editor for specific posttypes
-     *
-     * @param string $hook
-     * @return void
      */
     public function limitPostsToPostsConnections(string $hook): void
     {
         global $post_type;
 
         if ('pdc-item' == $post_type && 'edit.php' != $hook) {
-            wp_enqueue_script('limit-item-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-item-connections.js', [], false, true);
+            wp_enqueue_script('limit-item-theme-connection', $this->plugin->getPluginUrl() . '/assets/js/limit-item-connections.js', [], false, true);
         }
 
         if ('pdc-subcategory' == $post_type && 'edit.php' != $hook) {
-            wp_enqueue_script('limit-subtheme-theme-connection', $this->plugin->getPluginUrl() . '/js/limit-subtheme-connections.js');
+            wp_enqueue_script('limit-subtheme-theme-connection', $this->plugin->getPluginUrl() . '/assets/js/limit-subtheme-connections.js');
         }
 
         if ('pdc-group' == $post_type && 'edit.php' != $hook) {
-            wp_enqueue_script('limit-group-subtheme-connection', $this->plugin->getPluginUrl() . '/js/limit-group-connections.js');
+            wp_enqueue_script('limit-group-subtheme-connection', $this->plugin->getPluginUrl() . '/assets/js/limit-group-connections.js');
         }
     }
 }

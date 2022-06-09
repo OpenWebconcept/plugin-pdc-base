@@ -46,9 +46,6 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_portal_url'] ?? null;
     }
 
-    /**
-     * E.g. 'direct-regelen' or 'onderwerpen'.
-     */
     public function getPortalItemSlug(): ?string
     {
         return $this->settings['_owc_setting_portal_pdc_item_slug'] ?? null;
@@ -93,6 +90,23 @@ class SettingsPageOptions
         return $this->settings['_owc_upl_terms_url'] ?? '';
     }
 
+    /**
+     * Use enrichment.
+     */
+    public function useEnrichment(): bool
+    {
+        return $this->settings['_owc_setting_use_enrichment'] ?? false;
+    }
+
+    /**
+     * URL used for retrieving enrichments from external api.
+     */
+    public function getEnrichmentURL(): string
+    {
+        return $this->settings['_owc_upl_enrichment_url'] ?? '';
+    }
+
+
     public static function make(): self
     {
         $defaultSettings = [
@@ -105,7 +119,9 @@ class SettingsPageOptions
             '_owc_setting_use_portal_url'                   => 0,
             '_owc_setting_identifications'                  => 0,
             '_owc_setting_use_escape_element'               => 0,
-            '_owc_upl_terms_url'                            => ''
+            '_owc_upl_terms_url'                            => '',
+            '_owc_setting_use_enrichment'                   => 0,
+            '_owc_upl_enrichment_url'                       => ''
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

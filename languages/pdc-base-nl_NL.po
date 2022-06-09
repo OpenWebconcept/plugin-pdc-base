@@ -47,7 +47,27 @@ msgstr "Yard | Digital Agency"
 msgid "https://www.yard.nl/"
 msgstr "https://www.yard.nl/"
 
-#: config/escape_element_metabox.php:6 config/settings.php:62
+#: config/enrichment_metabox.php:7
+msgid "Enrichment"
+msgstr "Verrijking"
+
+#: config/enrichment_metabox.php:18
+msgid "Add new enrichment"
+msgstr "Nieuwe verreiking"
+
+#: config/enrichment_metabox.php:27
+msgid "Specific Text"
+msgstr "Specifieke tekst"
+
+#: config/enrichment_metabox.php:33
+msgid "Specific text in feed"
+msgstr "Specifieke tekst in feed"
+
+#: config/enrichment_metabox.php:38
+msgid "Procedure description"
+msgstr "Procedure beschrijving"
+
+#: config/escape_element_metabox.php:6 config/settings.php:55
 msgid "Escape element"
 msgstr "Ontsnap element"
 
@@ -373,7 +393,7 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: config/metaboxes.php:205 config/metaboxes.php:208
+#: #: config/enrichment_metabox.php:21 config/metaboxes.php:205 config/metaboxes.php:208
 msgid "Language"
 msgstr "Taal"
 
@@ -387,17 +407,29 @@ msgstr ""
 
 #: config/metaboxes.php:212
 msgid "Dutch (default)"
-msgstr "Nederland (standaard)"
+msgstr "Nederlands (standaard)"
 
-#: config/metaboxes.php:214
+#: src/Base/PostType/AdminServiceProvider:20
+msgid "Recent enrichments"
+msgstr "Recente verrijkingen"
+
+#: src/Base/PostType/PostTypeServiceProvider:50
+msgid "All languages"
+msgstr "Alle talen"
+
+#: src/Base/PostType/PostTypeServiceProvider:52
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: src/Base/PostType/PostTypeServiceProvider:53
 msgid "English"
 msgstr "Engels"
 
-#: config/metaboxes.php:215
+#: config/metaboxes.php:215 src/Base/PostType/PostTypeServiceProvider:54
 msgid "German"
 msgstr "Duits"
 
-#: config/metaboxes.php:216
+#: config/metaboxes.php:216 src/Base/PostType/PostTypeServiceProvider:55
 msgid "Turkish"
 msgstr "Turks"
 
@@ -786,6 +818,22 @@ msgstr "URL"
 #: config/settings.php:73
 msgid "URL used for retrieving UPL terms."
 msgstr "URL om de UPL termen op te halen."
+
+#: config/settings.php:75
+msgid "Enrich (SDG)"
+msgstr "Verrijk (SDG)"
+
+#: config/settings.php:76
+msgid "Enrich PDC items."
+msgstr "Verrijk PDC items."
+
+#: config/settings.php:81
+msgid "Enrichment URL"
+msgstr "Verrijkings URL"
+
+#: config/settings.php:82
+msgid "URL used for retrieving enrichments for pdc-items, an external source will complement these items."
+msgstr "URL om de verrijkingen op te halen voor de pdc-items, een externe bron verrijkt deze items."
 
 #: config/settings_pages.php:8
 msgid "PDC settings"

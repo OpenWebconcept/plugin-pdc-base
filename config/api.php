@@ -29,6 +29,7 @@ return [
                 'escape_element'    => OWC\PDC\Base\RestAPI\ItemFields\EscapeElementField::class,
                 'seopress'          => OWC\PDC\Base\RestAPI\ItemFields\SeoPress::class,
                 'yoast'             => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class
+                'enrichment'        => OWC\PDC\Base\RestAPI\ItemFields\EnrichmentField::class,
             ],
         ],
         'subthema' => [

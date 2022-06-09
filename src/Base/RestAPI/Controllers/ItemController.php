@@ -31,7 +31,7 @@ class ItemController extends BaseController
         $items      = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
-            ->query(self::excludeInactiveItems());
+            ->query(self::metaQuery($parameters));
 
         if (false === $parameters['include-connected']) {
             $items->hide(['connected']);
@@ -68,6 +68,10 @@ class ItemController extends BaseController
         if (isset($parametersFromRequest['id'])) {
             $parameters['p'] = absint($parametersFromRequest['id']);
             unset($parametersFromRequest['slug']);
+        }
+
+        if (isset($parametersFromRequest['lang'])) {
+            $parameters['lang'] = esc_attr($parametersFromRequest['lang']);
         }
 
         return $parameters;
@@ -139,7 +143,7 @@ class ItemController extends BaseController
     {
         $item = (new Item)
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
-            ->query(self::excludeInactiveItems());
+            ->query(self::metaQuery());
 
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
         
@@ -164,17 +168,53 @@ class ItemController extends BaseController
         return $item;
     }
 
-    public static function excludeInactiveItems(): array
+    public static function metaQuery(array $parametersFromRequest = []): array
     {
-        return [
+        $query = [
             'meta_query' => [
                 [
                     'key'     => '_owc_pdc_active',
                     'value'   => '1',
                     'compare' => '=',
-                ],
+                ]
             ]
         ];
+
+        $lang = ! empty($parametersFromRequest['lang']) ? esc_attr($parametersFromRequest['lang']) : 'nl';
+        $query = self::metaLanguageQuery($lang, $query);
+
+        return $query;
+    }
+
+    protected static function metaLanguageQuery(string $lang, array $query): array
+    {
+        if($lang === 'nl') {
+            array_push($query['meta_query'], [
+                'relation' => 'OR',
+                [
+                    'key' => '_owc_pdc-item-language',
+                    'value' => 'nl',
+                    'compare' => '=',
+                ],
+                [
+                    'key' => '_owc_pdc-item-language',
+                    'value' => 'nl',
+                    'compare' => 'NOT EXISTS',
+                ]
+            ]);
+    
+            return $query;
+        }
+
+        array_push($query['meta_query'], [
+            [
+                'key' => '_owc_pdc-item-language',
+                'value' => $lang,
+                'compare' => '=',
+            ]
+        ]);
+
+        return $query;
     }
 
     public static function excludeInternalItems(): array

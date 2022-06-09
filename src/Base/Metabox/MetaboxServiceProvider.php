@@ -26,6 +26,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $configMetaboxes = $this->plugin->config->get('metaboxes');
         $configMetaboxes = $this->addOptionsUPL($configMetaboxes);
 
+        if ($this->plugin->settings->useEnrichment()) {
+            $configMetaboxes = $this->addEnrichmentMetaBoxes($configMetaboxes);
+        }
+
         if ($this->plugin->settings->useIdentifications()) {
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes'));
         }
@@ -51,5 +55,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $configMetaboxes['base']['fields']['government']['upl_name']['options'] = (new UPLNameHandler($this->getOptionsUPL()))->getOptions();
 
         return $configMetaboxes;
+    }
+
+    private function addEnrichmentMetaBoxes(array $configMetaboxes): array
+    {
+        return array_merge($configMetaboxes, $this->plugin->config->get('enrichment_metaboxes'));
     }
 }

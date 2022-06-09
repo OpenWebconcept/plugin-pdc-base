@@ -17,6 +17,7 @@ return [
         OWC\PDC\Base\Admin\AdminServiceProvider::class,
         OWC\PDC\Base\Varnish\VarnishServiceProvider::class,
         OWC\PDC\Base\UPL\UPLServiceProvider::class,
+        OWC\PDC\Base\UPL\Enrichment\EnrichmentServiceProvider::class,
 
         /** Providers specific to the admin */
         'admin' => []
