@@ -6,11 +6,11 @@
 
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
-use WP_Post;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
-use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use WP_Post;
 
 /**
  * Adds connected fields to item in API.
@@ -18,7 +18,7 @@ use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 class ItemsField extends ConnectedField
 {
     use CheckPluginActive;
-	use QueryHelpers;
+    use QueryHelpers;
 
     /**
      * Creates an array of connected posts.
@@ -40,13 +40,13 @@ class ItemsField extends ConnectedField
             $query = array_merge_recursive($query, $this->excludeInternalItemsQuery());
         }
 
-		if ($this->shouldFilterSource()) {
-			$query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
-		}
+        if ($this->shouldFilterSource()) {
+            $query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
+        }
 
         $query['connected_query'] = [
-			'post_status' => ['publish', 'draft'],
-		];
+            'post_status' => ['publish', 'draft'],
+        ];
 
         return $query;
     }

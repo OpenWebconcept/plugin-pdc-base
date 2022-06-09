@@ -6,11 +6,11 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Repositories\Item;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Repositories\Item;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -18,7 +18,7 @@ use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 class ItemController extends BaseController
 {
     use CheckPluginActive;
-	use QueryHelpers;
+    use QueryHelpers;
 
     /**
      * Get a list of all items.
@@ -31,9 +31,9 @@ class ItemController extends BaseController
             ->query($parameters)
             ->query($this->excludeInactiveItemsQuery());
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$items->filterSource($request->get_param('source'));
-		};
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $items->filterSource($request->get_param('source'));
+        };
 
         if (false === $parameters['include-connected']) {
             $items->hide(['connected']);
@@ -66,6 +66,10 @@ class ItemController extends BaseController
         if (isset($parametersFromRequest['id'])) {
             $parameters['p'] = absint($parametersFromRequest['id']);
             unset($parametersFromRequest['slug']);
+        }
+
+        if (isset($parametersFromRequest['lang'])) {
+            $parameters['lang'] = esc_attr($parametersFromRequest['lang']);
         }
 
         return $parameters;
@@ -143,9 +147,9 @@ class ItemController extends BaseController
             $item->setPassword($password);
         }
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$item->filterSource($request->get_param('source'));
-		};
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $item->filterSource($request->get_param('source'));
+        };
 
         $connectedField = $item->getGlobalField('connected');
         if ($request->get_param('connected_sort') && ! empty($connectedField)) {

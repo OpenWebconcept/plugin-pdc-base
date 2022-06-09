@@ -18,7 +18,7 @@ use WP_Post;
 class ConnectedField extends CreatesFields
 {
     use CheckPluginActive;
-	use QueryHelpers;
+    use QueryHelpers;
 
     /**
      * Sorting config for the connected fields
@@ -27,10 +27,10 @@ class ConnectedField extends CreatesFields
      */
     protected $sorting = [];
 
-	/**
-	 * Source for filtering the 'show_on' taxonomy
-	 */
-	protected int $source = 0;
+    /**
+     * Source for filtering the 'show_on' taxonomy
+     */
+    protected int $source = 0;
 
     /**
      * Creates an array of connected posts.
@@ -89,7 +89,7 @@ class ConnectedField extends CreatesFields
 
         if (! $connection) {
             return [
-				/* translators: %s is replaced with a connection type */
+                /* translators: %s is replaced with a connection type */
                 'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type),
             ];
         }
@@ -172,24 +172,24 @@ class ConnectedField extends CreatesFields
             }
         }
 
-		if ($this->shouldFilterSource()) {
-			$query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
-		}
+        if ($this->shouldFilterSource()) {
+            $query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
+        }
 
         $query['connected_query'] = ['post_status' => ['publish', 'draft']];
 
         return $query;
     }
 
-	public function setSource(int $source): self
-	{
-		$this->source = $source;
+    public function setSource(int $source): self
+    {
+        $this->source = $source;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	protected function shouldFilterSource(): bool
-	{
-		return 0 !== $this->source ;
-	}
+    protected function shouldFilterSource(): bool
+    {
+        return 0 !== $this->source ;
+    }
 }

@@ -25,6 +25,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $configMetaboxes = $this->plugin->config->get('metaboxes');
         $configMetaboxes = $this->addOptionsUPL($configMetaboxes);
 
+        if ($this->plugin->settings->useEnrichment()) {
+            $configMetaboxes = $this->addEnrichmentMetaBoxes($configMetaboxes);
+        }
+
         if ($this->plugin->settings->useIdentifications()) {
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes'));
         }
@@ -72,5 +76,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     protected function getShowOnMetabox(array $configMetaboxes): array
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
+    }
+
+    private function addEnrichmentMetaBoxes(array $configMetaboxes): array
+    {
+        return array_merge($configMetaboxes, $this->plugin->config->get('enrichment_metaboxes'));
     }
 }

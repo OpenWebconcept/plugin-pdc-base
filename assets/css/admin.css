@@ -1,0 +1,22 @@
+.dashboard_owc_latest_enrichments {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard_owc_latest_enrichments .overview {
+    flex: 2;
+}
+
+.dashboard_owc_latest_enrichments .overview > table {
+    width: 100%;
+}
+
+.dashboard_owc_latest_enrichments .overview > table > tbody > tr > td:first-child {
+    word-break: break-all;
+    padding-bottom: .2rem;
+}
+
+.dashboard_owc_latest_enrichments .explanation {
+    padding-left: .5rem;
+    flex: 1;
+}
