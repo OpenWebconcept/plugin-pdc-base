@@ -34,6 +34,26 @@ msgstr ""
 msgid "https://www.yard.nl/"
 msgstr ""
 
+#: config/enrichment_metabox.php:7
+msgid "Enrichment"
+msgstr ""
+
+#: config/enrichment_metabox.php:18
+msgid "Add new enrichment"
+msgstr ""
+
+#: config/enrichment_metabox.php:27
+msgid "Specific Text"
+msgstr ""
+
+#: config/enrichment_metabox.php:33
+msgid "Specific text in feed"
+msgstr ""
+
+#: config/enrichment_metabox.php:38
+msgid "Procedure description"
+msgstr ""
+
 #: config/escape_element_metabox.php:6
 #: config/settings.php:62
 msgid "Escape element"
@@ -350,6 +370,7 @@ msgstr ""
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
+#: config/enrichment_metabox.php:21
 #: config/metaboxes.php:205
 #: config/metaboxes.php:208
 msgid "Language"
@@ -363,15 +384,27 @@ msgstr ""
 msgid "Dutch (default)"
 msgstr ""
 
-#: config/metaboxes.php:214
+#: src/Base/PostType/AdminServiceProvider:20
+msgid "Recent enrichments"
+msgstr ""
+
+#: src/Base/PostType/PostTypeServiceProvider:50
+msgid "All languages"
+msgstr ""
+
+#: src/Base/PostType/PostTypeServiceProvider:52
+msgid "Dutch"
+msgstr ""
+
+#: config/metaboxes.php:214 src/Base/PostType/PostTypeServiceProvider:53
 msgid "English"
 msgstr ""
 
-#: config/metaboxes.php:215
+#: config/metaboxes.php:215 src/Base/PostType/PostTypeServiceProvider:54
 msgid "German"
 msgstr ""
 
-#: config/metaboxes.php:216
+#: config/metaboxes.php:216 src/Base/PostType/PostTypeServiceProvider:55
 msgid "Turkish"
 msgstr ""
 
@@ -786,6 +819,22 @@ msgstr ""
 
 #: config/settings.php:73
 msgid "URL used for retrieving UPL terms."
+msgstr ""
+
+#: config/settings.php:75
+msgid "Enrich (SDG)"
+msgstr ""
+
+#: config/settings.php:76
+msgid "Enrich PDC items."
+msgstr ""
+
+#: config/settings.php:81
+msgid "Enrichment URL"
+msgstr ""
+
+#: config/settings.php:82
+msgid "URL used for retrieving enrichments for pdc-items, an external source will complement these items."
 msgstr ""
 
 #: config/settings_pages.php:8

@@ -74,6 +74,22 @@ return [
                     'id'   => 'upl_terms_url',
                     'type' => 'text'
                 ],
+                'upl_enrichment_heading' => [
+                    'type' => 'heading',
+                    'name' => __('SDG', 'pdc-base'),
+                ],
+                'upl_use_enrichment' => [
+                    'name' => __('Enrich (SDG)', 'pdc-base'),
+                    'desc' => __('Enrich PDC items.', 'pdc-base'),
+                    'id'   => 'setting_use_enrichment',
+                    'type' => 'checkbox',
+                ],
+                'upl_enrichment_url'  => [
+                    'name' => __('Enrichment URL', 'pdc-base'),
+                    'desc' => __('URL used for retrieving enrichments for pdc-items, an external source will complement these items.', 'pdc-base'),
+                    'id'   => 'upl_enrichment_url',
+                    'type' => 'url'
+                ],
             ]
         ]
     ]

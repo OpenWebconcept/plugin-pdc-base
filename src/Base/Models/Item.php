@@ -271,6 +271,11 @@ class Item
         return PortalLinkGenerator::make($this)->generateFullPortalLink();
     }
 
+    public function getEditURL(): string
+    {
+        return get_edit_post_link($this->getID()) ?? '';
+    }
+
     public function getConnected($connection): ?\WP_Post
     {
         $connected = new \WP_Query([
