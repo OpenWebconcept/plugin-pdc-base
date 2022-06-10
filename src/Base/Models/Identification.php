@@ -30,26 +30,30 @@ class Identification
 
     public function isActive(): bool
     {
-        return $this->data[$this->identifier . 'active'] ?? false;
+        return $this->data[sprintf('%s_active', $this->identifier)] ?? false;
     }
 
     public function getButtonTitle(): string
     {
-        return esc_attr($this->data[$this->identifier . 'button_title']) ?? '';
+        $title = $this->data[sprintf('%s_button_title', $this->identifier)] ?? '';
+        return esc_attr($title);
     }
 
     public function getButtonURL(): string
     {
-        return esc_url($this->data[$this->identifier . 'button_url']) ?? '';
+        $url = $this->data[sprintf('%s_button_url', $this->identifier)] ?? '';
+        return esc_url($url);
     }
 
     public function getDescription(): string
     {
-        return apply_filters('the_content', $this->data[$this->identifier . 'descriptive_text']) ?? '';
+        $description = $this->data[sprintf('%s_descriptive_text', $this->identifier )] ?? '';
+        return apply_filters('the_content', $description);
     }
 
     public function getOrder(): int
     {
-        return absint(esc_attr($this->data[$this->identifier . 'order'])) ?? 100;
+        $order = $this->data[sprintf('%s_order', $this->identifier)] ?? 100;
+        return absint(esc_attr($order));
     }
 }

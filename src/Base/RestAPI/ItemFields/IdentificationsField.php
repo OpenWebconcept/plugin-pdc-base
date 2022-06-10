@@ -7,6 +7,7 @@
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
 use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\Models\Identification;
 use WP_Post;
 
 /**
@@ -28,30 +29,21 @@ class IdentificationsField extends CreatesFields
 
     /**
      * Create the identifications field for a given post.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
     public function create(WP_Post $post): array
     {
         $identifications = [];
 
-        $identifications['digid']       = $this->createField($post, '_owc_digid-group', 'digid_');
-        $identifications['eherkenning'] = $this->createField($post, '_owc_eherkenning-group', 'eherkenning_');
-        $identifications['eidas']       = $this->createField($post, '_owc_eidas-group', 'eidas_');
-        $identifications['general']     = $this->createField($post, '_owc_general_identification-group', 'general_identification_');
+        $identifications['digid'] = $this->createField($post, '_owc_digid-group', 'digid');
+        $identifications['eherkenning'] = $this->createField($post, '_owc_eherkenning-group', 'eherkenning');
+        $identifications['eidas'] = $this->createField($post, '_owc_eidas-group', 'eidas');
+        $identifications['general'] = $this->createField($post, '_owc_general_identification-group', 'general_identification');
 
         return $identifications;
     }
 
     /**
      * Create API field
-     *
-     * @param WP_Post $post
-     * @param string $groupIdentifier
-     * @param string $identifier
-     * @return array
      */
     private function createField(WP_Post $post, string $groupIdentifier, string $identifier): array
     {
@@ -66,10 +58,6 @@ class IdentificationsField extends CreatesFields
 
     /**
      * Create data for API field
-     *
-     * @param array $group
-     * @param string $identifier
-     * @return array
      */
     private function createData(array $group, string $identifier): array
     {
@@ -80,7 +68,7 @@ class IdentificationsField extends CreatesFields
                 continue;
             }
 
-            $identification = new \OWC\PDC\Base\Models\Identification($identifier, $groupItem);
+            $identification = new Identification($identifier, $groupItem);
 
             if ($identification->isActive()) {
                 $identifications[] = [

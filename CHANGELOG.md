@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.4.6 (2022-06-10)
+
+### Refactor
+
+-   Identifications model methods.
+
 ## Version 3.4.5 (2022-05-06)
 
 ### Feat
