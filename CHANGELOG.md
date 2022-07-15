@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.4.8 (2022-07-15)
+
+### Feat
+
+-   Require composer autoload.php when necessary.
+
 ## Version 3.4.7 (2022-06-10)
 
 ### Feat
