@@ -234,6 +234,13 @@ abstract class AbstractRepository
         return static::$globalFields;
     }
 
+    public function getGlobalField(string $key): ?array
+    {
+        $field = array_filter(static::$globalFields, fn($field) => $field['key'] === $key);
+
+        return empty($field) ? null : reset($field);
+    }
+
     /**
      * Transform a single WP_Post item.
      *

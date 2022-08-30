@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.4.9 (2022-07-29)
+
+### Feat
+
+-   Sort connected items on title in API.
+
 ## Version 3.4.8 (2022-07-15)
 
 ### Feat

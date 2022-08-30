@@ -152,6 +152,15 @@ class ItemController extends BaseController
             $item->setPassword($password);
         }
 
+        $connectedField = $item->getGlobalField('connected');
+        if ($request->get_param('connected_sort') && ! empty($connectedField)) {
+            $connectedField['creator']->setSorting(
+                $request->get_param('connected_sort'),
+                strtoupper($request->get_param('connected_sort_direction')) ?: 'ASC',
+                $request->get_param('connected_sort_type') ?: 'string'
+            );
+        }
+
         return $item;
     }
 

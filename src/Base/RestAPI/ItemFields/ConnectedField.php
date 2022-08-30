@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\CheckPluginActive;
-use WP_Post;
+use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 
 /**
  * Adds connected/related fields to the output.
@@ -17,6 +17,12 @@ use WP_Post;
 class ConnectedField extends CreatesFields
 {
     use CheckPluginActive;
+
+    /**
+     * Sorting config for the connected fields
+     * @var array
+     */
+    protected $sorting = [];
 
     /**
      * Creates an array of connected posts.
@@ -41,6 +47,26 @@ class ConnectedField extends CreatesFields
         return $result;
     }
 
+    public function sorting(): array
+    {
+        return $this->sorting;
+    }
+
+    public function hasSorting(): bool
+    {
+        return ! empty($this->sorting);
+    }
+
+    public function setSorting(
+        string $field,
+        string $direction = ConnectedFieldSorter::DIRECTION_ASC,
+        string $type = ConnectedFieldSorter::SORTING_TYPE_STRING
+    ): self {
+        $this->sorting = [$field, $direction, $type];
+
+        return $this;
+    }
+
     /**
      * Get connected items of a post, for a specific connection type.
      *
@@ -59,7 +85,7 @@ class ConnectedField extends CreatesFields
             ];
         }
 
-        return array_map(function (WP_Post $post) {
+        $items = array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,
                 'title'   => $post->post_title,
@@ -68,6 +94,22 @@ class ConnectedField extends CreatesFields
                 'date'    => $post->post_date,
             ];
         }, $connection->get_connected($postID, $extraQueryArgs)->posts);
+
+        if (! $this->hasSorting()) {
+            return $items;
+        }
+
+        [$field, $direction, $type] = $this->sorting();
+
+        try {
+            $sorter = new ConnectedFieldSorter($items, $direction);
+
+            return $sorter->setType($type)->sortByKey($field);
+        } catch (InvalidSortingArgumentError $e) {
+            return ['error' => $e->getMessage()];
+        } catch (\Throwable $e) {
+            return ['error' => __('Unable to apply connected sort', 'pdc-base')];
+        }
     }
 
     protected function extraQueryArgs(string $type): array
