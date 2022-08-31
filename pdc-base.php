@@ -4,7 +4,7 @@
  * Plugin Name:       Yard | PDC Base
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other PDC related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           3.4.9
+ * Version:           3.4.10
  * Author:            Yard | Digital Agency
  * Author URI:        https://www.yard.nl/
  * License:           GPL-3.0
@@ -19,7 +19,7 @@ use OWC\PDC\Base\Foundation\Plugin;
 /**
  * If this file is called directly, abort.
  */
-if (!defined('WPINC')) {
+if (! defined('WPINC')) {
     die;
 }
 
@@ -36,7 +36,7 @@ $autoloader = new Autoloader();
  */
 $composerAutoload = __DIR__ . '/vendor/autoload.php';
 
-if(file_exists($composerAutoload)){
+if (file_exists($composerAutoload)) {
     require_once $composerAutoload;
 }
 

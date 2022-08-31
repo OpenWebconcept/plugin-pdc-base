@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use WP_Post;
+use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\CheckPluginActive;
-use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use WP_Post;
 
 /**
  * Adds connected/related fields to the output.
@@ -20,6 +20,7 @@ class ConnectedField extends CreatesFields
 
     /**
      * Sorting config for the connected fields
+     *
      * @var array
      */
     protected $sorting = [];
@@ -40,7 +41,7 @@ class ConnectedField extends CreatesFields
         $result = [];
 
         foreach ($connections as $connection) {
-            $type                      = $connection['from'] . '_to_' . $connection['to'];
+            $type = $connection['from'] . '_to_' . $connection['to'];
             $result[$connection['to']] = $this->getConnectedItems($post->ID, $type, $this->extraQueryArgs($type));
         }
 
@@ -85,14 +86,20 @@ class ConnectedField extends CreatesFields
             ];
         }
 
-        $items = array_map(function (WP_Post $post) {
-            return [
+        $items = array_map(function (WP_Post $post) use ($type) {
+            $data = [
                 'id'      => $post->ID,
                 'title'   => $post->post_title,
                 'slug'    => $post->post_name,
                 'excerpt' => $post->post_excerpt,
                 'date'    => $post->post_date,
             ];
+
+            if ($type === 'pdc-item_to_pdc-item') {
+                $data = $this->complementConnectedItem($post, $data);
+            }
+
+            return $data;
         }, $connection->get_connected($postID, $extraQueryArgs)->posts);
 
         if (! $this->hasSorting()) {
@@ -110,6 +117,33 @@ class ConnectedField extends CreatesFields
         } catch (\Throwable $e) {
             return ['error' => __('Unable to apply connected sort', 'pdc-base')];
         }
+    }
+
+    /**
+     * Add connected category and subcategory to connected pdc-item.
+     */
+    protected function complementConnectedItem(\WP_Post $post, array $data): array
+    {
+        $pdcItemCategoryConnection = \p2p_type('pdc-item_to_pdc-category');
+        $pdcItemSubcategoryConnection = \p2p_type('pdc-item_to_pdc-subcategory');
+
+        if ($pdcItemCategoryConnection) {
+            $themes = array_map(function ($category) {
+                return $category->post_name ?? '';
+            }, $pdcItemCategoryConnection->get_connected($post->ID)->posts);
+
+            $data['themes'] = array_filter($themes);
+        }
+
+        if ($pdcItemSubcategoryConnection) {
+            $subthemes = array_map(function ($subcategory) {
+                return $subcategory->post_name ?? '';
+            }, $pdcItemSubcategoryConnection->get_connected($post->ID)->posts);
+
+            $data['subthemes'] = array_filter($subthemes);
+        }
+
+        return $data;
     }
 
     protected function extraQueryArgs(string $type): array

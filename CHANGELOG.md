@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.4.10 (2022-08-31)
+
+### Feat
+
+-   Add connected category and subcategory to connected pdc-item.
+
 ## Version 3.4.9 (2022-07-29)
 
 ### Feat
