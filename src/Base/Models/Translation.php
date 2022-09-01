@@ -23,6 +23,6 @@ class Translation
 
     public function getProcedureDescription(): string
     {
-        return $this->data['procedureBeschrijving'] ?? '';
+        return (new \Parsedown())->text($this->data['procedureBeschrijving']);
     }
 }

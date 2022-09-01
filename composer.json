@@ -15,6 +15,7 @@
   },
   "require-dev": {
     "10up/wp_mock": "dev-master",
+    "erusev/parsedown": "^1.7",
     "friendsofphp/php-cs-fixer": "^2.0",
     "mockery/mockery": "*",
     "phpunit/phpunit": "~8.0",
