@@ -272,7 +272,7 @@ abstract class AbstractRepository
         return $this->getPreferredFields($data);
     }
 
-    private function isAllowed(\WP_Post $post): bool
+    protected function isAllowed(\WP_Post $post): bool
     {
         if (! $this->isPasswordProtected($post)) {
             return true;
