@@ -38,20 +38,44 @@ msgstr ""
 msgid "Enrichment"
 msgstr ""
 
+#: config/enrichment_metabox.php:15
+msgid "Last modified"
+msgstr ""
+
 #: config/enrichment_metabox.php:18
-msgid "Add new enrichment"
+msgid "This field shows the latest version."
 msgstr ""
 
 #: config/enrichment_metabox.php:27
-msgid "Specific Text"
+msgid "Add new enrichment"
 msgstr ""
 
 #: config/enrichment_metabox.php:33
-msgid "Specific text in feed"
+msgid "The language of the loaded text is shown here."
 msgstr ""
 
-#: config/enrichment_metabox.php:38
+#: config/enrichment_metabox.php:37
+msgid "Mandatory text"
+msgstr ""
+
+#: config/enrichment_metabox.php:40
+msgid "This text needs to be placed in the content as an exact copy. Select the complete text, copy (CTRL+C) the text and paste (CTRL+V) the text in the content of the corresponding PDC item."
+msgstr ""
+
+#: config/enrichment_metabox.php:44
+msgid "Mandatory text to SDG"
+msgstr ""
+
+#: config/enrichment_metabox.php:47
+msgid "Activate this field if the mandatory text is not part of the content but needs to be send to the SDG API."
+msgstr ""
+
+#: config/enrichment_metabox.php:50
 msgid "Procedure description"
+msgstr ""
+
+#: config/enrichment_metabox.php:52
+msgid "This text can be modified and copied here. Be aware: After updating, this text will be reset!"
 msgstr ""
 
 #: config/escape_element_metabox.php:6
