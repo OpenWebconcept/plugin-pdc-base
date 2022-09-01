@@ -49,23 +49,48 @@ msgstr "https://www.yard.nl/"
 
 #: config/enrichment_metabox.php:7
 msgid "Enrichment"
-msgstr "Verrijking"
+msgstr "Single Digital Gateway - Contentverrijking"
+
+#: config/enrichment_metabox.php:15
+msgid "Last modified"
+msgstr "Laatst bijgewerkt"
 
 #: config/enrichment_metabox.php:18
+msgid "This field shows the latest version."
+msgstr "Dit veld toont de laatst bijgewerkte versie."
+
+#: config/enrichment_metabox.php:27
 msgid "Add new enrichment"
 msgstr "Nieuwe verreiking"
 
-#: config/enrichment_metabox.php:27
-msgid "Specific Text"
-msgstr "Specifieke tekst"
-
 #: config/enrichment_metabox.php:33
-msgid "Specific text in feed"
-msgstr "Specifieke tekst in feed"
+msgid "The language of the loaded text is shown here."
+msgstr "Hier staat de taal van de opgehaalde tekst."
 
-#: config/enrichment_metabox.php:38
+#: config/enrichment_metabox.php:37
+msgid "Mandatory text"
+msgstr "Verplichte tekst"
+
+#: config/enrichment_metabox.php:40
+msgid "This text needs to be placed in the content as an exact copy. Select the complete text, copy (CTRL+C) the text and paste (CTRL+V) the text in the content of the corresponding PDC item."
+msgstr "Deze tekst moet één op één in de content worden overgenomen. Selecteer de volledige tekst, kopieer (CTRL+C) de tekst en plak (CTRL+V) de tekst in de content van het PDC item."
+
+#: config/enrichment_metabox.php:44
+msgid "Mandatory text to SDG"
+msgstr "Verplichte tekst naar SDG"
+
+#: config/enrichment_metabox.php:47
+msgid "Activate this field if the mandatory text is not part of the content but needs to be send to the SDG API."
+msgstr "Activeer dit veld zodra je de verplichte tekst niet in de content hebt meegenomen, maar wel naar de SDG wilt versturen."
+
+#: config/enrichment_metabox.php:50
 msgid "Procedure description"
 msgstr "Procedure beschrijving"
+
+#: config/enrichment_metabox.php:52
+msgid "This text can be modified and copied here. Be aware: After updating, this text will be reset!"
+msgstr "Deze tekst kan hier worden aangepast en daarna in de content worden gekopieerd. Let op: Deze tekst wordt na het bijwerken weer gereset!"
+
 
 #: config/escape_element_metabox.php:6 config/settings.php:55
 msgid "Escape element"
