@@ -95,9 +95,11 @@ class EnrichmentProduct implements JsonSerializable
         return $this;
     }
 
-    public function getProductAanwezig(): bool
+    public function getProductAanwezig(): string
     {
-        return (bool) $this->getDataAttribute('productAanwezig', false);
+        $value =  $this->getDataAttribute('productAanwezig', false);
+
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
     }
 
     public function setProductAanwezig(bool $aanwezig): self

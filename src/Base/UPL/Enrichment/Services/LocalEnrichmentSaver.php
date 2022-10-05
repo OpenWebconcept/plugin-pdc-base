@@ -26,17 +26,39 @@ class LocalEnrichmentSaver
             return false;
         }
 
-        $this->saveMeta('_owc_enrichment-group', $this->getTranslationByLanguage());
-        $this->saveEnrichmentMeta('version', $this->product->getVersion());
-        $this->saveEnrichmentMeta('version_date', date('Y-m-d H:i:s'));
+        $this->saveEnrichmentLanguage();
+        $this->saveEnrichmentData();
 
+        return true;
+    }
+
+    protected function saveEnrichmentLanguage(): void
+    {
+        $this->saveMeta('_owc_enrichment-language', $this->getTranslationByLanguage());
+    }
+
+    protected function saveEnrichmentData(): void
+    {
         $this->saveEnrichmentMeta('url', $this->product->getUrl());
         $this->saveEnrichmentMeta('uuid', $this->product->getUuid());
 
         $this->saveEnrichmentMeta('label', $this->product->getLabel());
         $this->saveEnrichmentMeta('uri', $this->product->getURI());
 
-        return true;
+        $this->saveEnrichmentMeta('version', $this->product->getVersion());
+        $this->saveEnrichmentMeta('version_date', date('Y-m-d H:i:s'));
+
+        $pubDate = $this->product->getPublicatieDatum();
+        $this->saveEnrichmentMeta('publication_date', $pubDate ? $pubDate->format(DateTime::ATOM) : null);
+        $this->saveEnrichmentMeta('product_present', $this->product->getProductAanwezig());
+        $this->saveEnrichmentMeta('part_of', $this->product->getProductValtOnder());
+
+        $this->saveEnrichmentMeta('responsible_organization', $this->product->getVerantwoordelijkeOrganisatie());
+        $this->saveEnrichmentMeta('qualified_organization', $this->product->getBevoegdeOrganisate);
+
+        $this->saveEnrichmentMeta('catalogus', $this->product->getCatalogus());
+        $this->saveEnrichmentMeta('audience', $this->product->getLocaties());
+        $this->saveEnrichmentMeta('locations', $this->product->getDoelgroep());
     }
 
     protected function getTranslationByLanguage(): array
@@ -49,20 +71,10 @@ class LocalEnrichmentSaver
         });
 
         $mapped = array_map(function ($translation) {
-            $pubDate = $this->product->getPublicatieDatum();
-
             return [
                 'enrichment_language' => $translation->getLanguage(),
                 'enrichment_national_text' => $translation->getNationalText(),
-                'enrichment_sdg_example_text' => $translation->getExampleTextSDG(),
-                'enrichment_catalogus' => $this->product->getCatalogus(),
-                'enrichment_product_present' => $this->product->getProductAanwezig(),
-                'enrichment_audience' => $this->product->getDoelgroep(),
-                'enrichment_part_of' => $this->product->getProductValtOnder(),
-                'enrichment_responsible_organization' => $this->product->getVerantwoordelijkeOrganisatie(),
-                'enrichment_qualified_organization' => $this->product->getBevoegdeOrganisate,
-                'enrichment_locations' => $this->product->getLocaties(),
-                'enrichment_publication_date' => $pubDate ? $pubDate->format(DateTime::ATOM) : null,
+                'enrichment_sdg_example_text' => $translation->getExampleTextSDG()
             ];
         }, $filtered);
 
