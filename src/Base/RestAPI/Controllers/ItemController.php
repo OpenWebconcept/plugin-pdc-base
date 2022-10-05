@@ -139,6 +139,9 @@ class ItemController extends BaseController
         return $item;
     }
 
+    /**
+     * Used for retrieving a single item.
+     */
     public function buildQueryFromRequest(WP_REST_Request $request): Item
     {
         $item = (new Item)
@@ -180,8 +183,10 @@ class ItemController extends BaseController
             ]
         ];
 
-        $lang = ! empty($parametersFromRequest['lang']) ? esc_attr($parametersFromRequest['lang']) : 'nl';
-        $query = self::metaLanguageQuery($lang, $query);
+        if(! empty($parametersFromRequest)){
+            $lang = ! empty($parametersFromRequest['lang']) ? esc_attr($parametersFromRequest['lang']) : 'nl';
+            $query = self::metaLanguageQuery($lang, $query);
+        }
 
         return $query;
     }

@@ -16,13 +16,23 @@ class Translation
         return $this->data['taal'] ?? '';
     }
 
-    public function getSpecificText(): string
+    public function getNationalText(): string
     {
         return $this->data['specifiekeTekst'] ?? '';
     }
 
-    public function getProcedureDescription(): string
+    public function getExampleTextSDG(): string
     {
-        return (new \Parsedown())->text($this->data['procedureBeschrijving']);
+        $procedureDescription = $this->data['procedureBeschrijving'] ?? '';
+
+        if(empty($procedureDescription)){
+            return '';
+        }
+ 
+        if(! class_exists('Parsedown')){
+            return $procedureDescription;
+        }
+
+        return (new \Parsedown())->text($procedureDescription);
     }
 }

@@ -48,49 +48,56 @@ msgid "https://www.yard.nl/"
 msgstr "https://www.yard.nl/"
 
 #: config/enrichment_metabox.php:7
-msgid "Enrichment"
-msgstr "Single Digital Gateway - Contentverrijking"
+msgid "SDG content enrichment"
+msgstr "SDG contentverrijking"
 
-#: config/enrichment_metabox.php:15
+#: config/enrichment_metabox.php:19
 msgid "Last modified"
 msgstr "Laatst bijgewerkt"
 
-#: config/enrichment_metabox.php:18
-msgid "This field shows the latest version."
-msgstr "Dit veld toont de laatst bijgewerkte versie."
+#: config/enrichment_metabox.php:22
+msgid "This field shows the date of the current enrichment version."
+msgstr "Dit veld toont de datum van de huidige verrijkings versie."
 
-#: config/enrichment_metabox.php:27
-msgid "Add new enrichment"
-msgstr "Nieuwe verreiking"
-
-#: config/enrichment_metabox.php:33
-msgid "The language of the loaded text is shown here."
-msgstr "Hier staat de taal van de opgehaalde tekst."
-
-#: config/enrichment_metabox.php:37
-msgid "Mandatory text"
-msgstr "Verplichte tekst"
+#: config/enrichment_metabox.php:36
+msgid "The language of the enrichment."
+msgstr "De taal van de verrijking."
 
 #: config/enrichment_metabox.php:40
-msgid "This text needs to be placed in the content as an exact copy. Select the complete text, copy (CTRL+C) the text and paste (CTRL+V) the text in the content of the corresponding PDC item."
-msgstr "Deze tekst moet één op één in de content worden overgenomen. Selecteer de volledige tekst, kopieer (CTRL+C) de tekst en plak (CTRL+V) de tekst in de content van het PDC item."
+msgid "National text"
+msgstr "Landelijke tekst"
 
-#: config/enrichment_metabox.php:44
-msgid "Mandatory text to SDG"
-msgstr "Verplichte tekst naar SDG"
+#: config/enrichment_metabox.php:43
+msgid "The national text is displayed above the own SDG text on the national portals. This text is served for informational purposes only no further action required."
+msgstr "De landelijke tekst worden boven de eigenc SDG tekst weergegeven op de nationale portalen. De tekst dient als voorbeeld geen verdere acties vereist."
 
 #: config/enrichment_metabox.php:47
-msgid "Activate this field if the mandatory text is not part of the content but needs to be send to the SDG API."
-msgstr "Activeer dit veld zodra je de verplichte tekst niet in de content hebt meegenomen, maar wel naar de SDG wilt versturen."
+msgid "Example text VNG editorial"
+msgstr "Voorbeeld tekst VNG redactie"
 
-#: config/enrichment_metabox.php:50
-msgid "Procedure description"
-msgstr "Procedure beschrijving"
+#: config/enrichment_metabox.php:49
+msgid "Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox down below to add a custom SDG text."
+msgstr "Voorbeeld tekst van de VNG die voor de eigen SDG tekst wordt gebruikt. Deze tekst wordt regelmatig ge-update vanuit de VNG redactie. Vink de checkbox hier beneden voor het toevoegen van een eigen SDG tekst."
 
-#: config/enrichment_metabox.php:52
-msgid "This text can be modified and copied here. Be aware: After updating, this text will be reset!"
-msgstr "Deze tekst kan hier worden aangepast en daarna in de content worden gekopieerd. Let op: Deze tekst wordt na het bijwerken weer gereset!"
+#: config/enrichment_metabox.php:55
+msgid "Edits"
+msgstr "Bewerkingen"
 
+#: config/enrichment_metabox.php:58
+msgid "SDG input facility"
+msgstr "SDG invoer voorziening"
+
+#: config/enrichment_metabox.php:61
+msgid "Use custom SDG text on national portals."
+msgstr "Gebruik eigen SDG tekst op de landelijke portalen."
+
+#: config/enrichment_metabox.php:64
+msgid "Own SDG text"
+msgstr "Eigen SDG tekst"
+
+#: config/enrichment_metabox.php:66
+msgid "Custom SDG text for displaying on national portals."
+msgstr "SDG tekst op maat voor weergave op de landelijke portalen."
 
 #: config/escape_element_metabox.php:6 config/settings.php:55
 msgid "Escape element"
@@ -242,7 +249,7 @@ msgstr "Algemene identificatie begeleidende tekst"
 msgid "Data"
 msgstr "Gegevens"
 
-#: config/metaboxes.php:15
+#: config/metaboxes.php:15 config/enrichment_metabox.php:16
 msgid "General"
 msgstr "Algemeen"
 
@@ -418,7 +425,7 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: #: config/enrichment_metabox.php:21 config/metaboxes.php:205 config/metaboxes.php:208
+#: #: config/enrichment_metabox.php:33 config/metaboxes.php:205 config/metaboxes.php:208
 msgid "Language"
 msgstr "Taal"
 
