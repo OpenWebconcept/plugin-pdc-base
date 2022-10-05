@@ -2,6 +2,8 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Controllers;
 
+use OWC\PDC\Base\Models\EnrichmentProduct;
+
 class Request
 {
     protected string $url;
@@ -16,6 +18,11 @@ class Request
         $response = $this->request();
 
         return $this->validateResponse($response);
+    }
+
+    public function post(EnrichmentProduct $product)
+    {
+        // Here be magic
     }
 
     protected function request(): array
