@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\Models;
 
-class Translation 
+class Translation
 {
     protected array $data;
 
@@ -25,14 +25,19 @@ class Translation
     {
         $procedureDescription = $this->data['procedureBeschrijving'] ?? '';
 
-        if(empty($procedureDescription)){
+        if (empty($procedureDescription)) {
             return '';
         }
- 
-        if(! class_exists('Parsedown')){
+
+        if (! class_exists('Parsedown')) {
             return $procedureDescription;
         }
 
         return (new \Parsedown())->text($procedureDescription);
+    }
+
+    public function toArray(): array
+    {
+        return $this->data;
     }
 }
