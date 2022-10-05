@@ -2,7 +2,11 @@
 
 namespace OWC\PDC\Base\Models;
 
-class EnrichmentProduct 
+use DateTime;
+use JsonSerializable;
+use OWC\PDC\Base\UPL\Enrichment\Models\Doelgroep;
+
+class EnrichmentProduct implements JsonSerializable
 {
     protected array $data;
 
@@ -11,27 +15,133 @@ class EnrichmentProduct
         $this->data = $data;
     }
 
-    public function getLabel()
+    public function __get(string $name)
     {
-        return $this->data['upnLabel'] ?? '';
+        return $this->getDataAttribute($name, null);
     }
 
-    public function getURI()
+    public function __set(string $name, $value)
     {
-        return $this->data['upnUri'] ?? '';
+        return $this->setDataAttribute($name, $value);
     }
 
-    public function getVersion()
+    public function getDataAttribute(string $name, $default = null)
     {
-        return $this->data['versie'] ?? '';
+        return $this->data[$name] ?? $default;
+    }
+
+    public function setDataAttribute(string $name, $value): self
+    {
+        if (method_exists($this, 'set' . ucwords($name))) {
+            return $this->{'set' . $name}($value);
+        }
+
+        $this->data[$name] = $value;
+
+        return $this;
+    }
+
+    public function getUrl(): string
+    {
+        return (string) $this->getDataAttribute('url', '');
+    }
+
+    public function getUuid(): string
+    {
+        return (string) $this->getDataAttribute('uuid', '');
+    }
+
+    public function getLabel(): string
+    {
+        return (string) $this->getDataAttribute('upnLabel', '');
+    }
+
+    public function getURI(): string
+    {
+        return (string) $this->getDataAttribute('upnUri', '');
+    }
+
+    public function getVersion(): ?int
+    {
+        return $this->getDataAttribute('versie', 0);
+    }
+
+    public function getPublicatieDatum(): ?DateTime
+    {
+        try {
+            return DateTime::createFromFormat(
+                'Y-m-d',
+                $this->getDataAttribute('publicatieDatum')
+            );
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    public function getCatalogus(): string
+    {
+        return $this->getDataAttribute('catalogus', '');
+    }
+
+    public function getDoelgroep(): Doelgroep
+    {
+        return new Doelgroep($this->getDataAttribute('doelgroep', ''));
+    }
+
+    public function setDoelgroep(Doelgroep $doelgroep): self
+    {
+        $this->data['doelgroep'] = $doelgroep->get();
+
+        return $this;
+    }
+
+    public function getProductAanwezig(): bool
+    {
+        return (bool) $this->getDataAttribute('productAanwezig', false);
+    }
+
+    public function setProductAanwezig(bool $aanwezig): self
+    {
+        $this->data['productAanwezig'] = $aanwezig;
+
+        return $this;
+    }
+
+    public function getProductValtOnder(): array
+    {
+        // Maybe transform to complex data type
+        return $this->getDataAttribute('productValtOnder', []);
+    }
+
+    public function getVerantwoordelijkeOrganisatie(): array
+    {
+        // Maybe transform to complex data type
+        return $this->getDataAttribute('verantwoordelijkeOrganisatie', []);
+    }
+
+    public function getBevoegdeOrganisatie(): array
+    {
+        // Maybe transform to complex data type
+        return $this->getDataAttribute('bevoegdeOrganisatie', []);
+    }
+
+    public function getLocaties(): array
+    {
+        // Maybe transform to complex data type
+        return $this->getDataAttribute('locaties', []);
     }
 
     public function getTranslations(): array
     {
         $translations = $this->data['vertalingen'] ?? [];
 
-        return array_map(function($translation){
+        return array_map(function ($translation) {
             return new Translation($translation);
         }, $translations);
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->data;
     }
 }

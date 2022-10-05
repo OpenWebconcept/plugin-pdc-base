@@ -1,5 +1,6 @@
 <?php
 
+use OWC\PDC\Base\UPL\Enrichment\Models\Doelgroep;
 
 return [
     'enrichment' => [
@@ -21,7 +22,7 @@ return [
                     'type' => 'date',
                     'desc' => __('This field shows the date of the current enrichment version.', 'pdc-base'),
                     'readonly' => true,
-                ]
+                ],
             ],
             'enrichment-group' => [
                 'group' => [
@@ -65,6 +66,34 @@ return [
                             'id'   => 'enrichment_sdg_custom_text',
                             'desc' => __('Custom SDG text for displaying on national portals.', 'pdc-base'),
                             'type' => 'wysiwyg'
+                        ],
+
+                        [
+                            'name' => __('Audience', 'pdc-base'),
+                            'id'   => 'enrichment_audience',
+                            'desc' => __('', 'pdc-base'),
+                            'type' => 'select',
+                            'options'   => [
+                                Doelgroep::TYPE_CITIZEN => Doelgroep::LABEL_CITIZEN,
+                                Doelgroep::TYPE_COMPANY => Doelgroep::LABEL_COMPANY,
+                            ],
+                        ],
+
+                        [
+                            'name' => __('Product aanwezig', 'pdc-base'),
+                            'id'   => 'enrichment_product_present',
+                            'desc' => __('', 'pdc-base'),
+                            'type' => 'select',
+                            'options'   => [
+                                '1' => 'Product aanwezig/beschikbaar',
+                                '0' => 'Product niet beschikbaar'
+                            ],
+                        ],
+                        [
+                            'name' => __('Catalogus', 'pdc-base'),
+                            'id'   => 'enrichment_catalogus',
+                            'desc' => __('', 'pdc-base'),
+                            'type' => 'text',
                         ],
                     ]
                 ]
