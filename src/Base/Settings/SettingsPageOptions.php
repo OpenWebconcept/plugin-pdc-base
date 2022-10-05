@@ -106,22 +106,48 @@ class SettingsPageOptions
         return $this->settings['_owc_upl_enrichment_url'] ?? '';
     }
 
+    /**
+     * Push new versions to input facility when enabled.
+     */
+    public function enableInputFacility(): bool
+    {
+        return $this->settings['_owc_upl_enrichment_enable_input_facility'] ?? false;
+    }
+
+    /**
+     * Token is used for creating new versions of enrichments.
+     */
+    public function getInputFacilityApiToken(): string
+    {
+        return $this->settings['_owc_upl_enrichment_input_facility_api_token'] ?? '';
+    }
+
+    /**
+     * Token is used for creating new versions of enrichments.
+     */
+    public function getInputFacilityBaseApiURL(): string
+    {
+        return $this->settings['_owc_upl_enrichment_input_facility_base_api_url'] ?? '';
+    }
 
     public static function make(): self
     {
         $defaultSettings = [
-            '_owc_setting_portal_url'                       => '',
-            '_owc_setting_portal_pdc_item_slug'             => '',
-            '_owc_setting_include_theme_in_portal_url'      => 0,
-            '_owc_setting_include_subtheme_in_portal_url'   => 0,
-            '_owc_setting_include_id_in_portal_url'         => 1,
-            '_owc_setting_pdc-group'                        => 0,
-            '_owc_setting_use_portal_url'                   => 0,
-            '_owc_setting_identifications'                  => 0,
-            '_owc_setting_use_escape_element'               => 0,
-            '_owc_upl_terms_url'                            => '',
-            '_owc_setting_use_enrichment'                   => 0,
-            '_owc_upl_enrichment_url'                       => ''
+            '_owc_setting_portal_url'                         => '',
+            '_owc_setting_portal_pdc_item_slug'               => '',
+            '_owc_setting_include_theme_in_portal_url'        => 0,
+            '_owc_setting_include_subtheme_in_portal_url'     => 0,
+            '_owc_setting_include_id_in_portal_url'           => 1,
+            '_owc_setting_pdc-group'                          => 0,
+            '_owc_setting_use_portal_url'                     => 0,
+            '_owc_setting_identifications'                    => 0,
+            '_owc_setting_use_escape_element'                 => 0,
+            '_owc_upl_terms_url'                              => '',
+            '_owc_setting_use_enrichment'                     => 0,
+            '_owc_upl_enrichment_url'                         => '',
+            '_owc_upl_enrichment_enable_input_facility'       => 0,
+            '_owc_upl_enrichment_input_facility_api_token'    => '',
+            '_owc_upl_enrichment_input_facility_base_api_url' => ''
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

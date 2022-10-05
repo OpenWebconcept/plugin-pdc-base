@@ -90,7 +90,33 @@ return [
                     'id'   => 'upl_enrichment_url',
                     'type' => 'url'
                 ],
+                'upl_enrichment_input_facility_heading' => [
+                    'type' => 'heading',
+                    'name' => __('Input facility ', 'pdc-base'),
+                ],
+                'upl_enrichment_enable_input_facility'  => [
+                    'name' => __('Enable input facility', 'pdc-base'),
+                    'desc' => __('Use all the input facility related functionalities.', 'pdc-base'),
+                    'id'   => 'upl_enrichment_enable_input_facility',
+                    'type' => 'checkbox'
+                ],
+                'upl_enrichment_input_facility_api_token'  => [
+                    'name' => __('Input facility API token', 'pdc-base'),
+                    'desc' => __('Token is required for access to the input facility API.', 'pdc-base'),
+                    'id'   => 'upl_enrichment_input_facility_api_token',
+                    'type' => 'text'
+                ],
+                'upl_enrichment_input_facility_base_api_url'  => [
+                    'name' => __('Input facility base API URL', 'pdc-base'),
+                    'desc' => __('Base API URL ', 'pdc-base'),
+                    'id'   => 'upl_enrichment_input_facility_base_api_url',
+                    'type' => 'url'
+                ]
             ]
         ]
     ]
 ];
+
+// input_facility
+// 57r1dyi70paimv7dln8498a6tk99v71lp18iouv6
+// https://sdg-data.invoervoorziening.maykin.nl/sdg/api/v1/

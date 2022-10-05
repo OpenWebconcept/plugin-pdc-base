@@ -50,15 +50,59 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     /**
      * Add UPL options, from remote, to UPL metabox.
      */
-    private function addOptionsUPL(array $configMetaboxes): array
+    protected function addOptionsUPL(array $configMetaboxes): array
     {
         $configMetaboxes['base']['fields']['government']['upl_name']['options'] = (new UPLNameHandler($this->getOptionsUPL()))->getOptions();
 
         return $configMetaboxes;
     }
 
-    private function addEnrichmentMetaBoxes(array $configMetaboxes): array
+    protected function addEnrichmentMetaBoxes(array $configMetaboxes): array
     {
-        return array_merge($configMetaboxes, $this->plugin->config->get('enrichment_metaboxes'));
+        $enrichmentsMetaboxes = $this->plugin->config->get('enrichment_metaboxes');
+
+        if (! $this->plugin->settings->enableInputFacility()) {
+            $enrichmentsMetaboxes['enrichment']['fields'] = $this->removeInputFacilityMetaboxes($enrichmentsMetaboxes['enrichment']['fields']);
+        }
+
+        return array_merge($configMetaboxes, $enrichmentsMetaboxes);
+    }
+
+    private function removeInputFacilityMetaboxes(array $enrichmentsFields)
+    {
+        $enrichmentsFields['enrichment-data'] = $this->removeFromEnrichmentData($enrichmentsFields);
+        $enrichmentsFields['enrichment-language']['group']['fields']= $this->removeFromEnrichmentLanguage($enrichmentsFields);
+
+        return $enrichmentsFields;
+    }
+
+    private function removeFromEnrichmentData(array $enrichmentsFields): array
+    {
+        $metaboxesToRemove = [
+            'enrichment_send_data_to_sdg'
+        ];
+
+        return array_filter($enrichmentsFields['enrichment-data'], function ($metabox) use ($metaboxesToRemove) {
+            if (empty($metabox['id'])) {
+                return true;
+            }
+
+            return in_array($metabox['id'], $metaboxesToRemove) ? false : true;
+        });
+    }
+
+    private function removeFromEnrichmentLanguage(array $enrichmentsFields): array
+    {
+        $metaboxesToRemove = [
+            'enrichment_sdg_example_text_to_insert_api'
+        ];
+
+        return array_filter($enrichmentsFields['enrichment-language']['group']['fields'], function ($metabox) use ($metaboxesToRemove) {
+            if (empty($metabox['id'])) {
+                return true;
+            }
+
+            return in_array($metabox['id'], $metaboxesToRemove) ? false : true;
+        });
     }
 }

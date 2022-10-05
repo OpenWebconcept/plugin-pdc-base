@@ -7,10 +7,22 @@ use OWC\PDC\Base\Models\EnrichmentProduct;
 class Request
 {
     protected string $url;
+    protected array $args;
 
-    public function __construct(string $url)
+    public function __construct(string $url = '', array $args = [])
     {
         $this->url = $url;
+        $this->args = $args;
+    }
+
+    public function setURL(string $url): void
+    {
+        $this->url = $url;
+    }
+
+    public function setArgs(array $args): void
+    {
+        $this->args = $args;
     }
 
     public function get(): array
@@ -20,14 +32,16 @@ class Request
         return $this->validateResponse($response);
     }
 
-    public function post(EnrichmentProduct $product)
+    public function post(): array
     {
-        // Here be magic
+        $response = $this->request();
+
+        return $this->validateResponse($response);
     }
 
     protected function request(): array
     {
-        $response = \wp_remote_get($this->url);
+        $response = \wp_remote_request($this->url);
 
         if (\is_wp_error($response)) {
             throw new \Exception($response->get_error_message());
