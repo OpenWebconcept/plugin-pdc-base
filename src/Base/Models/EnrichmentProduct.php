@@ -66,14 +66,14 @@ class EnrichmentProduct implements JsonSerializable
         return $this->getDataAttribute('versie', 0);
     }
 
-    public function getPublicatieDatum(): ?DateTime
+    public function getPublicationDate(): ?DateTime
     {
         try {
             return DateTime::createFromFormat(
                 'Y-m-d',
                 $this->getDataAttribute('publicatieDatum')
             );
-        } catch (\Exception $e) {
+        } catch (\TypeError | \Exception $e) {
             return null;
         }
     }
@@ -83,51 +83,56 @@ class EnrichmentProduct implements JsonSerializable
         return $this->getDataAttribute('catalogus', '');
     }
 
-    public function getDoelgroep(): Doelgroep
+    public function getAudience(): string
     {
-        return new Doelgroep($this->getDataAttribute('doelgroep', ''));
+        // return new Doelgroep($this->getDataAttribute('doelgroep', ''));
+        return $this->getDataAttribute('doelgroep', '');
     }
 
-    public function setDoelgroep(Doelgroep $doelgroep): self
+    public function setAudience(Doelgroep $doelgroep): self
     {
         $this->data['doelgroep'] = $doelgroep->get();
 
         return $this;
     }
 
-    public function getProductAanwezig(): string
+    public function getProductPresent(): ?string
     {
-        $value =  $this->getDataAttribute('productAanwezig', false);
+        $value = $this->getDataAttribute('productAanwezig');
+
+        if (is_null($value)) {
+            return 'null';
+        }
 
         return filter_var($value, FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
     }
 
-    public function setProductAanwezig(bool $aanwezig): self
+    public function setProductPresent(bool $present): self
     {
-        $this->data['productAanwezig'] = $aanwezig;
+        $this->data['productAanwezig'] = $present;
 
         return $this;
     }
 
-    public function getProductValtOnder(): array
+    public function getProductBelongsTo(): ?array
     {
         // Maybe transform to complex data type
-        return $this->getDataAttribute('productValtOnder', []);
+        return $this->getDataAttribute('productValtOnder', null);
     }
 
-    public function getVerantwoordelijkeOrganisatie(): array
+    public function getResponsibleOrganization(): array
     {
         // Maybe transform to complex data type
         return $this->getDataAttribute('verantwoordelijkeOrganisatie', []);
     }
 
-    public function getBevoegdeOrganisatie(): array
+    public function getQualifiedOrganization(): array
     {
         // Maybe transform to complex data type
         return $this->getDataAttribute('bevoegdeOrganisatie', []);
     }
 
-    public function getLocaties(): array
+    public function getLocations(): array
     {
         // Maybe transform to complex data type
         return $this->getDataAttribute('locaties', []);
@@ -135,11 +140,16 @@ class EnrichmentProduct implements JsonSerializable
 
     public function getTranslations(): array
     {
-        $translations = $this->data['vertalingen'] ?? [];
+        $translations = $this->getDataAttribute('vertalingen', []);
 
         return array_map(function ($translation) {
             return new Translation($translation);
         }, $translations);
+    }
+
+    public function getAvailableLanguages(): array
+    {
+        return $this->getDataAttribute('beschikbareTalen', []);
     }
 
     public function jsonSerialize()

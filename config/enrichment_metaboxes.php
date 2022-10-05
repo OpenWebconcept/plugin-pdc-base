@@ -12,9 +12,15 @@ return [
         'autosave'   => true,
         'fields'     => [
             'enrichment-data' => [
-                'heading' => [
+                [
                     'type' => 'heading',
                     'name' => __('General', 'pdc-base'),
+                ],
+                [
+                    'name' => __('Send to SDG', 'pdc-base'),
+                    'id'   => 'enrichment_send_data_to_sdg',
+                    'type' => 'checkbox',
+                    'desc' => __('All data of this product will be send to the SDG when product is saved.', 'pdc-base')
                 ],
                 [
                     'name' => __('Last modified', 'pdc-base'),
@@ -39,14 +45,15 @@ return [
                     'desc' => __('', 'pdc-base'),
                     'type' => 'select',
                     'options'   => [
-                        '1' => 'Product aanwezig/beschikbaar',
-                        '0' => 'Product niet beschikbaar'
+                        '1' => 'Product aanwezig/beschikbaar', // Vertalen
+                        '0' => 'Product niet beschikbaar', // Vertalen
+                        'null' => 'Niet gespecificeerd' // Vertalen
                     ],
                 ]
             ],
             'enrichment-language' => [
                 'group' => [
-                    'id'         => 'enrichment-language',
+                    'id'         => 'enrichment_language',
                     'type'       => 'group',
                     'clone'      => false,
                     'fields'     => [
@@ -86,7 +93,55 @@ return [
                             'id'   => 'enrichment_sdg_custom_text',
                             'desc' => __('Custom SDG text for displaying on national portals.', 'pdc-base'),
                             'type' => 'wysiwyg'
-                        ]
+                        ],
+                        [
+                            'name' => __('Proof', 'pdc-base'),
+                            'id'   => 'enrichment_proof',
+                            'type' => 'text',
+                            'desc' => __('Proof to deliver.', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Requirements', 'pdc-base'),
+                            'id'   => 'enrichment_requirements',
+                            'type' => 'text',
+                            'desc' => __('Requirements to fulfil on.', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Object and appeal', 'pdc-base'),
+                            'id'   => 'enrichment_object_and_appeal',
+                            'type' => 'text',
+                            'desc' => __('How to object and appeal against.', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Payment methods', 'pdc-base'),
+                            'id'   => 'enrichment_payment_methods',
+                            'type' => 'text',
+                            'desc' => __('Is there an payment required?', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Deadline', 'pdc-base'),
+                            'id'   => 'enrichment_deadline',
+                            'type' => 'text',
+                            'desc' => __('When is the deadline?', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Action when to reaction', 'pdc-base'),
+                            'id'   => 'enrichment_action_when_no_reaction',
+                            'type' => 'text',
+                            'desc' => __('What to do when a reaction remains.', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Product present', 'pdc-base'),
+                            'id'   => 'enrichment_product_present_explanation',
+                            'type' => 'text',
+                            'desc' => __('Need to discuss the value of this desc.', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Product belongs to', 'pdc-base'),
+                            'id'   => 'enrichment_product_belongs_to_explanation',
+                            'type' => 'text',
+                            'desc' => __('Need to discuss the value of this desc.', 'pdc-base')
+                        ],
                     ]
                 ]
             ]

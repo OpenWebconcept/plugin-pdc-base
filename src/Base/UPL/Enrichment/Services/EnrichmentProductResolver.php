@@ -14,45 +14,110 @@ class EnrichmentProductResolver
     public function __construct(WP_Post $post)
     {
         $this->post = $post;
-        $this->enrichment = (array) $this->getMeta('_owc_enrichment');
     }
 
     public function resolve(): EnrichmentProduct
     {
         $data = [
-            'upnLabel' => $this->getMeta('_owc_enrichment_label'),
-            'upnUri' => $this->getMeta('_owc_enrichment_uri'),
+            'upnLabel' => $this->getEnrichmentMeta('label'),
+            'upnUri' => $this->getEnrichmentMeta('uri'),
+            'uuid' => $this->getEnrichmentMeta('uuid'),
             'publicatieDatum' => date('Y-m-d'),
-            'productAanwezig' => (bool) $this->getEnrichment('product_present', false),
-            'catalogus' => $this->getEnrichment('catalogus', ''),
-            'doelgroep' => $this->getEnrichment('audience', Doelgroep::TYPE_CITIZEN),
-            'productValtOnder' => [
-                'upnUri' => $this->getMeta('_owc_pdc_upl_resource', ''),
-            ],
-            'verantwoordelijkeOrganisatie'  => [
-                'owmsIdentifier' => 'http://standaarden.overheid.nl/owms/terms/Vereniging_van_Nederlandse_Gemeenten',
-            ],
-            'locatoes' => null,
-            'translations'  => $this->getTranslations(),
+            'productAanwezig' => $this->isProductPresent(),
+            'productValtOnder' => $this->getEnrichmentMeta('part_of'),
+            'verantwoordelijkeOrganisatie'  => $this->getEnrichmentMeta('qualified_organization'),
+            'bevoegdeOrganisatie' => $this->getEnrichmentMeta('responsible_organization', []),
+            'catalogus' => $this->getEnrichmentMeta('catalogus', ''), // Ongeldige hyperlink - Object bestaat niet.
+            'locaties' => $this->getEnrichmentMeta('locations', []),
+            'doelgroep' => $this->getEnrichmentMeta('audience', Doelgroep::TYPE_CITIZEN),
+            'vertalingen'  => $this->getTranslations(),
+            'beschikbareTalen' => $this->getEnrichmentMeta('available_languages', [])
         ];
 
         return new EnrichmentProduct($data);
     }
 
-    protected function getMeta(string $name)
+    public function getMeta(string $name)
     {
+        $name = '_owc_' . $name;
         return \get_post_meta($this->post->ID, $name, true);
     }
 
-    protected function getEnrichment(string $name, $default = null)
+    public function isProductPresent(): ?bool
     {
-        $name = 'enrichment_' . $name;
+        $result = $this->getEnrichmentMeta('product_present');
 
-        return $this->enrichment[$name] ?? $default;
+        if ($result === 'null') {
+            return null;
+        }
+
+        return filter_var($result, FILTER_VALIDATE_BOOLEAN) ? true : false;
     }
 
-    protected function getTranslations()
+    public function getEnrichmentMeta(string $name, $default = null)
     {
-        // magic be here
+        $name = '_owc_enrichment_' . $name;
+        $value = \get_post_meta($this->post->ID, $name, true);
+
+        return ! empty($value) ? $value : $default;
+    }
+
+    protected function getTranslations(): array
+    {
+        $translation  = $this->getEnrichmentMeta('language', []);
+        $otherTranslations = $this->getEnrichmentMeta('other_languages', []);
+
+        if (! is_array($otherTranslations)) {
+            $otherTranslations = [];
+        }
+
+        $combined = [];
+        $combined[] = $translation; // insert one dimensional array in to multi dimensional
+
+        foreach ($otherTranslations as $translation) {
+            $combined[] = $translation;
+        }
+
+        return $this->translationKeysToOriginal($combined);
+    }
+
+    protected function translationKeysToOriginal(array $translations): array
+    {
+        return array_map(function ($translation) {
+            return $this->mapTranslationKeysToOriginal($translation);
+        }, $translations);
+    }
+
+    protected function mapTranslationKeysToOriginal(array $translation): array
+    {
+        $mapping = [
+            'enrichment_language' => 'taal',
+            'enrichment_title' => 'titel',
+            //'enrichment_national_text' => 'nationale_tekst', // bestaat nog niet
+            'enrichment_sdg_example_text' => 'tekst',
+            'enrichment_links' => 'links',
+            'enrichment_procedure_desc' => 'procedureBeschrijving',
+            'enrichment_proof' => 'bewijs',
+            'enrichment_requirements' => 'vereisten',
+            'enrichment_object_and_appeal' => 'bezwaarEnBeroep',
+            'enrichment_payment_methods' => 'kostenEnBetaalmethoden',
+            'enrichment_deadline' => 'uitersteTermijn',
+            'enrichment_action_when_no_reaction' =>'wtdBijGeenReactie',
+            'enrichment_procedure_link' =>'procedureLink',
+            'enrichment_product_present_explanation' => 'productAanwezigToelichting',
+            'enrichment_product_belongs_to_explanation' => 'productValtOnderToelichting'
+        ];
+
+        $mapped = [];
+
+        foreach ($translation as $key => $part) {
+            if (empty($mapping[$key])) {
+                continue;
+            }
+
+            $mapped[$mapping[$key]] = $part;
+        }
+
+        return $mapped;
     }
 }

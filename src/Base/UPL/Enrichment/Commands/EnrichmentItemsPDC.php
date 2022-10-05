@@ -5,14 +5,27 @@ namespace OWC\PDC\Base\UPL\Enrichment\Commands;
 use WP_Post;
 use OWC\PDC\Base\Models\EnrichmentProduct;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
-use OWC\PDC\Base\UPL\Enrichment\Controllers\Request;
+use OWC\PDC\Base\UPL\Enrichment\Controllers\Request as RequestControlller;
 use OWC\PDC\Base\UPL\Enrichment\Services\LocalEnrichmentSaver;
 
 class EnrichmentItemsPDC
 {
+    protected RequestControlller $requestController;
+    protected SettingsPageOptions $settings;
+
+    public function __construct()
+    {
+        $this->requestController = new RequestControlller();
+        $this->settings = SettingsPageOptions::make();
+    }
+
     public function execute(): void
     {
-        $enrichmentProducts = $this->getEnrichmentProducts((SettingsPageOptions::make())->getEnrichmentURL());
+        try {
+            $enrichmentProducts = $this->getEnrichmentProducts($this->settings->getEnrichmentURL());
+        } catch(\Exception $e) {
+            \WP_CLI::error(sprintf('%s Stopping execution of this command.', $e->getMessage()));
+        }
 
         if (empty($enrichmentProducts['results'])) {
             \WP_CLI::error('No enrichment products found, stopping execution of this command.');
@@ -24,10 +37,17 @@ class EnrichmentItemsPDC
         }
     }
 
-    protected function getEnrichmentProducts(string $url): array
+    protected function getEnrichmentProducts(string $url = ''): array
     {
+        if (empty($url)) {
+            throw new \Exception('Unable to fetch enrichment products, $url parameter is empty!');
+        }
+
+        $this->requestController->setURL($url);
+        $this->requestController->setArgs(['method' => 'GET']);
+
         try {
-            $currentProducts = (new Request($url))->get();
+            $currentProducts = $this->requestController->get();
         } catch (\Exception $e) {
             \WP_CLI::warning($e->getMessage());
 
