@@ -135,6 +135,9 @@ class ItemController extends BaseController
         return $item;
     }
 
+    /**
+     * Used for retrieving a single item.
+     */
     public function buildQueryFromRequest(WP_REST_Request $request): Item
     {
         $item = (new Item())

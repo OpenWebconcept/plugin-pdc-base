@@ -5,20 +5,21 @@ namespace OWC\PDC\Base\UPL\Enrichment\Commands;
 use OWC\PDC\Base\Models\EnrichmentProduct;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
 use OWC\PDC\Base\UPL\Enrichment\Controllers\Request;
+use \WP_Post;
 
 class EnrichmentItemsPDC
 {
     public function execute(): void
     {
-        $products = $this->getEnrichmentProducts((SettingsPageOptions::make())->getEnrichmentURL());
+        $enrichmentProducts = $this->getEnrichmentProducts((SettingsPageOptions::make())->getEnrichmentURL());
 
-        if (empty($products['results'])) {
+        if (empty($enrichmentProducts['results'])) {
             \WP_CLI::error('No enrichment products found, stopping execution of this command.');
         }
 
-        foreach ($this->convertToModels($products['results']) as $product) {
+        foreach ($this->convertToModels($enrichmentProducts['results']) as $enrichmentProduct) {
             // Get posts by product and handle.
-            $this->handlePosts($this->getPosts($product->getLabel()), $product);
+            $this->addEnrichmentsToLocalProducts($this->getLocalProductsByUPL($enrichmentProduct->getLabel()), $enrichmentProduct);
         }
     }
 
@@ -62,30 +63,30 @@ class EnrichmentItemsPDC
         }, $products);
     }
 
-    protected function handlePosts(array $posts, $product)
+    protected function addEnrichmentsToLocalProducts(array $localProducts, EnrichmentProduct $enrichmentProduct)
     {
-        foreach ($posts as $post) {
-            $currentVersion = (int) \get_post_meta($post->ID, '_owc_enrichment_version', true);
-            $newVersion = (int) $product->getVersion();
+        foreach ($localProducts as $localProduct) {
+            $currentVersion = (int) \get_post_meta($localProduct->ID, '_owc_enrichment_version', true);
+            $newVersion = (int) $enrichmentProduct->getVersion();
 
             if ($newVersion <= $currentVersion) {
                 continue;
             }
 
-            $result = \update_post_meta($post->ID, '_owc_enrichment-group', $this->getTranslationByLanguage($post, $product->getTranslations()));
+            $result = \update_post_meta($localProduct->ID, '_owc_enrichment-group', $this->getTranslationByLanguage($localProduct, $enrichmentProduct->getTranslations()));
 
             if (! $result) {
                 continue;
             }
 
-            \update_post_meta($post->ID, '_owc_enrichment_version', $product->getVersion());
-            \update_post_meta($post->ID, '_owc_enrichment_version_date', date('Y-m-d H:i:s'));
+            \update_post_meta($localProduct->ID, '_owc_enrichment_version', $enrichmentProduct->getVersion());
+            \update_post_meta($localProduct->ID, '_owc_enrichment_version_date', date('Y-m-d H:i:s'));
         }
     }
 
-    protected function getTranslationByLanguage($post, $translations): array
+    protected function getTranslationByLanguage(WP_Post $localProduct, array $translations): array
     {
-        $language = \get_post_meta($post->ID, '_owc_pdc-item-language', true) ?: 'nl';
+        $language = \get_post_meta($localProduct->ID, '_owc_pdc-item-language', true) ?: 'nl';
 
         $filtered = array_filter($translations, function ($translation) use ($language) {
             return $translation->getLanguage() === $language;
@@ -94,15 +95,15 @@ class EnrichmentItemsPDC
         $mapped = array_map(function ($translation) {
             return [
                 'enrichment_language' => $translation->getLanguage(),
-                'enrichment_specific_text' => $translation->getSpecificText(),
-                'enrichment_procedure_description' => $translation->getProcedureDescription()
+                'enrichment_national_text' => $translation->getNationalText(),
+                'enrichment_sdg_example_text' => $translation->getExampleTextSDG()
             ];
         }, $filtered);
 
         return array_values($mapped)[0] ?? [];
     }
 
-    protected function getPosts($value): array
+    protected function getLocalProductsByUPL($value): array
     {
         $args = [
             'post_type' => 'pdc-item',

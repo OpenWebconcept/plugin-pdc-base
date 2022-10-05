@@ -38,50 +38,16 @@ class Item extends AbstractRepository
             'id'          => $post->ID,
             'title'       => $post->post_title,
             'slug'        => $post->post_name,
-            'content'     => $this->isAllowed($post) ? apply_filters('the_content', $this->stripSpecificBlock($post)) : "",
+            'content'     => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
             'excerpt'     => $this->isAllowed($post) ? $post->post_excerpt : "",
             'date'        => $post->post_date,
             'slug'        => $post->post_name,
             'post_status' => $post->post_status,
-            'protected'   => !$this->isAllowed($post)
+            'protected'   => ! $this->isAllowed($post)
         ];
 
         $data = $this->assignFields($data, $post);
 
         return $this->getPreferredFields($data);
-    }
-    
-    protected function stripSpecificBlock(WP_Post $post): string
-    {
-        $showSpecificInAPI = $this->showSpecificTextInApi($post);
-
-        if(! $showSpecificInAPI) {
-            return $post->post_content;
-        }
-
-        $pattern = '/(<!-- Test specific text -->)/';
-        return preg_replace_callback($pattern, function($matches){
-            return '';
-        }, $post->post_content);
-    }
-
-    protected function showSpecificTextInApi(WP_Post $post): bool
-    {
-        $group = $this->getEnrichmentGroup($post);
-
-        $show = $group['enrichment_specific_show_in_api'] ?? '';
-
-        return $show === '1' ? true : false;
-    }
-
-    protected function getEnrichmentGroup(WP_Post $post): array
-    {
-        $enrichmentGroup = get_post_meta($post->ID, '_owc_enrichment-group', true);
-        
-        if (empty($enrichmentGroup) || !is_array($enrichmentGroup)){
-            return [];
-        }
-
-        return $enrichmentGroup;
     }
 }

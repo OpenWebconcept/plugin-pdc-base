@@ -4,18 +4,22 @@
 return [
     'enrichment' => [
         'id'         => 'pdc_enrichment',
-        'title'      => __('Enrichment', 'pdc-base'),
+        'title'      => __('SDG content enrichment', 'pdc-base'),
         'post_types' => ['pdc-item'],
         'context'    => 'normal',
         'priority'   => 'high',
         'autosave'   => true,
         'fields'     => [
-            'enrichtment-data' => [
-                'data   ' => [
+            'enrichment-data' => [
+                'heading' => [
+                    'type' => 'heading',
+                    'name' => __('General', 'pdc-base'),
+                ],
+                [
                     'name' => __('Last modified', 'pdc-base'),
                     'id'   => 'enrichment_version_date',
                     'type' => 'date',
-                    'desc' => __('This field shows the latest version.', 'pdc-base'),
+                    'desc' => __('This field shows the date of the current enrichment version.', 'pdc-base'),
                     'readonly' => true,
                 ]
             ],
@@ -24,32 +28,42 @@ return [
                     'id'         => 'enrichment-group',
                     'type'       => 'group',
                     'clone'      => false,
-                    'add_button' => __('Add new enrichment', 'pdc-base'),
                     'fields'     => [
                         [
                             'name' => __('Language', 'pdc-base'),
                             'id'   => 'enrichment_language',
                             'type' => 'text',
-                            'desc' => __('The language of the loaded text is shown here.', 'pdc-base'),
+                            'desc' => __('The language of the enrichment.', 'pdc-base'),
                             'readonly' => true
                         ],
                         [
-                            'name' => __('Mandatory text', 'pdc-base'),
-                            'id'   => 'enrichment_specific_text',
+                            'name' => __('National text', 'pdc-base'),
+                            'id'   => 'enrichment_national_text',
                             'type' => 'textarea',
-                            'desc' => __('This text needs to be placed in the content as an exact copy. Select the complete text, copy (CTRL+C) the text and paste (CTRL+V) the text in the content of the corresponding PDC item.', 'pdc-base'),
+                            'desc' => __('The national text is displayed above the own SDG text on the national portals. This text is served for informational purposes only no further action required.', 'pdc-base'),
                             'readonly' => true
                         ],
                         [
-                            'name' => __('Mandatory text to SDG', 'pdc-base'),
-                            'id'   => 'enrichment_specific_show_in_api',
-                            'type' => 'checkbox',
-                            'desc' => __('Activate this field if the mandatory text is not part of the content but needs to be send to the SDG API.', 'pdc-base'),
+                            'name' => __('Example text VNG editorial', 'pdc-base'),
+                            'id'   => 'enrichment_sdg_example_text',
+                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox down below to add a custom SDG text.", 'pdc-base'),
+                            'type' => 'textarea',
+                            'readonly' => true
+                        ],
+                        'heading' => [
+                            'type' => 'heading',
+                            'name' => __('Edits', 'pdc-base')
                         ],
                         [
-                            'name' => __('Procedure description', 'pdc-base'),
-                            'id'   => 'enrichment_procedure_description',
-                            'desc' => __('This text can be modified and copied here. Be aware: After updating, this text will be reset!', 'pdc-base'),
+                            'name' => __('SDG input facility', 'pdc-base'),
+                            'id'   => 'enrichment_sdg_example_text_to_insert_api',
+                            'type' => 'checkbox',
+                            'desc' => __('Use custom SDG text on national portals.', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Own SDG text', 'pdc-base'),
+                            'id'   => 'enrichment_sdg_custom_text',
+                            'desc' => __('Custom SDG text for displaying on national portals.', 'pdc-base'),
                             'type' => 'wysiwyg'
                         ],
                     ]
