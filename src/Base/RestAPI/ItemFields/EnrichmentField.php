@@ -12,7 +12,7 @@ class EnrichmentField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        $enrichment = get_post_meta($post->ID, '_owc_enrichment-group', true);
+        $enrichment = get_post_meta($post->ID, '_owc_enrichment-language', true);
 
         if(! is_array($enrichment) || empty($enrichment)){
             return [];
