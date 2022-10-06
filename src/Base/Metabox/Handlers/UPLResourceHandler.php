@@ -15,7 +15,7 @@ class UPLResourceHandler
      */
     public function handleUpdatedMeta(int $metaId, int $postID, string $metaKey, $metaValue): void
     {
-        if (!$this->objectIsPDC($postID)) {
+        if (!$this->objectIsPDC($postID) || $metaKey !== '_owc_pdc_upl_naam') {
             return;
         }
 

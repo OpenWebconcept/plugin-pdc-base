@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.4.11 (2022-10-06)
+
+### Refactor
+
+-   Only update UPL resourceURL when uplName meta is updated.
+
 ## Version 3.4.10 (2022-08-31)
 
 ### Feat
