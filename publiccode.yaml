@@ -1,0 +1,21 @@
+name: "plugin-pdc-base"
+
+publiccodeYmlVersion: 1.0
+url: "https://github.com/OpenWebconcept/plugin-pdc-base"
+
+platforms:
+  - "web"
+
+categories:
+  - "application-development"
+
+softwareType: "softwareAddon"
+
+description:
+  localisedName: "OpenwebConcept OpenPDC"
+  shortDescription: "Dit is de pasis plugin die je nodig hebt om van een normale WP installatie een OpenPDC kan maken."
+  longDescription: "Dit is de pasis plugin die je nodig hebt om van een normale WP installatie een OpenPDC kan maken."
+
+nl:
+  commonground:
+    layerType: "service"
