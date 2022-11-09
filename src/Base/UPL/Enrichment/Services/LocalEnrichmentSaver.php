@@ -4,7 +4,7 @@ namespace OWC\PDC\Base\UPL\Enrichment\Services;
 
 use WP_Post;
 use DateTime;
-use OWC\PDC\Base\Models\EnrichmentProduct;
+use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 
 class LocalEnrichmentSaver
 {

@@ -74,11 +74,27 @@ return [
                         [
                             'name' => __('Example text VNG editorial', 'pdc-base'),
                             'id'   => 'enrichment_sdg_example_text',
-                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox down below to add a custom SDG text.", 'pdc-base'),
+                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below the header 'Edits' to add a custom SDG text.", 'pdc-base'),
                             'type' => 'textarea',
                             'readonly' => true
                         ],
-                        'heading' => [
+                        [
+                            'id'   => 'enrichment_links',
+                            'name' => __('Links', 'pdc-base'),
+                            'type' => 'key_value',
+                        ],
+                        [
+                            'id'   => 'enrichment_procedure_link',
+                            'name' => __('Procedure link', 'pdc-base'),
+                            'type' => 'key_value',
+                        ],
+                        [
+                            'name' => __('Procedure description', 'pdc-base'),
+                            'id'   => 'enrichment_procedure_desc',
+                            'type' => 'textarea',
+                            'readonly' => true
+                        ],
+                        [
                             'type' => 'heading',
                             'name' => __('Edits', 'pdc-base')
                         ],
@@ -93,6 +109,10 @@ return [
                             'id'   => 'enrichment_sdg_custom_text',
                             'desc' => __('Custom SDG text for displaying on national portals.', 'pdc-base'),
                             'type' => 'wysiwyg'
+                        ],
+                        [
+                            'type' => 'heading',
+                            'name' => __('SDG FAQ', 'pdc-base')
                         ],
                         [
                             'name' => __('Proof', 'pdc-base'),
@@ -129,6 +149,10 @@ return [
                             'id'   => 'enrichment_action_when_no_reaction',
                             'type' => 'text',
                             'desc' => __('What to do when a reaction remains.', 'pdc-base')
+                        ],
+                        [
+                            'type' => 'heading',
+                            'name' => __('Product additional information', 'pdc-base')
                         ],
                         [
                             'name' => __('Product present', 'pdc-base'),

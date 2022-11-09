@@ -3,8 +3,8 @@
 namespace OWC\PDC\Base\UPL\Enrichment\Services;
 
 use WP_Post;
-use OWC\PDC\Base\Models\EnrichmentProduct;
 use OWC\PDC\Base\UPL\Enrichment\Models\Doelgroep;
+use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 
 class EnrichmentProductResolver
 {
@@ -64,7 +64,14 @@ class EnrichmentProductResolver
 
     protected function getTranslations(): array
     {
-        $translation  = $this->getEnrichmentMeta('language', []);
+        $translation = $this->getEnrichmentMeta('language', []);
+        $translation = $this->convertLinks($translation);
+        $translation = $this->convertProcedureLink($translation);
+
+        if (true) { // check if pdc-faq plug-in is enabled.
+            $translation = $this->replaceSdgFaq($translation);
+        }
+
         $otherTranslations = $this->getEnrichmentMeta('other_languages', []);
 
         if (! is_array($otherTranslations)) {
@@ -79,6 +86,57 @@ class EnrichmentProductResolver
         }
 
         return $this->translationKeysToOriginal($combined);
+    }
+
+
+    /**
+     * Metabox key_value field type does not accept associative keys inside a multidimensional array.
+     * The multidimensional array is converted to an indexed one.
+     * Now convert back to the input facility required format.
+     */
+    protected function convertLinks(array $translation): array
+    {
+        $translation['enrichment_links'] = array_map(function ($link) {
+            return ['label' => $link[0], 'url' => $link[1]];
+        }, $translation['enrichment_links']);
+
+        return $translation;
+    }
+
+    /**
+     * Metabox key_value field type does not accept associative keys inside a multidimensional array.
+     * The multidimensional array is converted to an indexed one.
+     * Now convert back to the input facility required format.
+     */
+    protected function convertProcedureLink(array $translation): array
+    {
+        $translation['enrichment_procedure_link'] = array_map(function ($link) {
+            return ['label' => $link[0], 'url' => $link[1]];
+        }, $translation['enrichment_procedure_link']);
+
+        // Metabox is saving this as an multidimensional array, an one-dimensional array is required.
+        $translation['enrichment_procedure_link'] = $translation['enrichment_procedure_link'][0];
+
+        return $translation;
+    }
+
+    /**
+     * If the pdc-faq plugin is enabled it is possible to connect the pdc-faq questions with the SDG FAQ questions.
+     * The pdc-faq questions will be send to the SDG if a connection is there.
+     */
+    protected function replaceSdgFaq(array $translation): array
+    {
+        $FAQs = $this->getMeta('pdc_faq_group');
+
+        foreach ($FAQs as $FAQ) {
+            if (empty($FAQ['pdc_faq_connect_sdq_faq'])) {
+                continue;
+            }
+
+            $translation[$FAQ['pdc_faq_connect_sdq_faq']] = $FAQ['pdc_faq_answer'];
+        }
+
+        return $translation;
     }
 
     protected function translationKeysToOriginal(array $translations): array
@@ -110,12 +168,12 @@ class EnrichmentProductResolver
 
         $mapped = [];
 
-        foreach ($translation as $key => $part) {
-            if (empty($mapping[$key])) {
+        foreach ($mapping as $metaKey => $originalKey) {
+            if (empty($translation[$metaKey])) {
+                $mapped[$originalKey] = '';
                 continue;
             }
-
-            $mapped[$mapping[$key]] = $part;
+            $mapped[$originalKey] = $translation[$metaKey];
         }
 
         return $mapped;

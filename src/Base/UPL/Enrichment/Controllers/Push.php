@@ -2,7 +2,7 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Controllers;
 
-use OWC\PDC\Base\Models\EnrichmentProduct;
+use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
 use OWC\PDC\Base\UPL\Enrichment\Controllers\Request as RequestControlller;
 use OWC\PDC\Base\UPL\Enrichment\Services\EnrichmentProductResolver;

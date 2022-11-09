@@ -7,7 +7,7 @@ namespace OWC\PDC\Base\Models;
  */
 class Item
 {
-    const PREFIX = '_owc_';
+    public const PREFIX = '_owc_';
 
     /**
      * Type of model.
@@ -296,6 +296,6 @@ class Item
      */
     public function arrayUnique($array): array
     {
-        return is_array($array) ?  array_unique($array) : [];
+        return is_array($array) ? array_unique($array) : [];
     }
 }
