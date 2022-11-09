@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\PDC\Base\Models;
+namespace OWC\PDC\Base\UPL\Enrichment\Models;
 
 class Translation
 {
@@ -16,9 +16,21 @@ class Translation
         return $this->data['titel'] ?? '';
     }
 
+    /**
+     * Metabox key_value field type does not accept associative keys inside a multidimensional array.
+     * Convert to indexed.
+     */
     public function links(): array
     {
-        return $this->data['links'] ?? [];
+        $links = $this->data['links'] ?? [];
+
+        if (empty($links)) {
+            return [];
+        }
+
+        return array_map(function ($link) {
+            return [$link['label'], $link['url']];
+        }, $links);
     }
 
     public function language(): string
@@ -46,7 +58,15 @@ class Translation
     {
         $desc = $this->data['procedureBeschrijving'] ?? '';
 
-        return ! empty($desc) ? $desc : '';
+        if (empty($desc)) {
+            return '';
+        }
+
+        if (! class_exists('Parsedown')) {
+            return $desc;
+        }
+
+        return (new \Parsedown())->text($desc);
     }
 
     public function proof(): string
@@ -79,9 +99,19 @@ class Translation
         return (new \Parsedown())->text($value);
     }
 
-    public function deadline()
+    public function deadline(): string
     {
-        return $this->data['uitersteTermijn'] ?? '';
+        $deadline = $this->data['uitersteTermijn'] ?? '';
+
+        if (empty($deadline)) {
+            return '';
+        }
+
+        if (! class_exists('Parsedown')) {
+            return $deadline;
+        }
+
+        return (new \Parsedown())->text($deadline);
     }
 
     public function actionWhenNoReaction(): string
@@ -89,9 +119,18 @@ class Translation
         return $this->data['wtdBijGeenReactie'] ?? '';
     }
 
+    /**
+     * Metabox key_value field type does not accept associative keys inside a multidimensional array.
+     * Convert to indexed.
+     */
     public function procedureLink(): array
     {
-        return $this->data['procedureLink'] ?? [];
+        $link = $this->data['procedureLink'] ?? [];
+
+        return [
+            $link['label'],
+            $link['url']
+        ];
     }
 
     public function productPresentExplanation(): string

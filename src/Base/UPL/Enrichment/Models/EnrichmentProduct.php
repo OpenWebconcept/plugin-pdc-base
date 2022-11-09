@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\PDC\Base\Models;
+namespace OWC\PDC\Base\UPL\Enrichment\Models;
 
 use DateTime;
 use JsonSerializable;
