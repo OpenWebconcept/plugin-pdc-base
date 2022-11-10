@@ -11,7 +11,8 @@
   "type": "wordpress-plugin",
   "require": {
     "php": ">=7.0",
-    "johnbillion/extended-cpts": "^4.0"
+    "johnbillion/extended-cpts": "^4.0",
+    "league/html-to-markdown": "^5.1"
   },
   "require-dev": {
     "10up/wp_mock": "dev-master",
