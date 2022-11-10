@@ -2,12 +2,16 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Services;
 
-use WP_Post;
+use League\HTMLToMarkdown\HtmlConverter;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use OWC\PDC\Base\UPL\Enrichment\Models\Doelgroep;
 use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
+use WP_Post;
 
 class EnrichmentProductResolver
 {
+    use CheckPluginActive;
+
     protected WP_Post $post;
     protected array $enrichment;
 
@@ -18,6 +22,7 @@ class EnrichmentProductResolver
 
     public function resolve(): EnrichmentProduct
     {
+        // EnrichmentProduct in andere klasse en functies die ik moet omzetten daarmee overschrijven
         $data = [
             'upnLabel' => $this->getEnrichmentMeta('label'),
             'upnUri' => $this->getEnrichmentMeta('uri'),
@@ -68,7 +73,7 @@ class EnrichmentProductResolver
         $translation = $this->convertLinks($translation);
         $translation = $this->convertProcedureLink($translation);
 
-        if (true) { // check if pdc-faq plug-in is enabled.
+        if ($this->isPluginPDCFAQActive()) {
             $translation = $this->replaceSdgFaq($translation);
         }
 
@@ -79,13 +84,46 @@ class EnrichmentProductResolver
         }
 
         $combined = [];
-        $combined[] = $translation; // insert one dimensional array in to multi dimensional
+        $combined[] = $translation; // Insert one-dimensional array in to multidimensional.
 
         foreach ($otherTranslations as $translation) {
             $combined[] = $translation;
         }
 
-        return $this->translationKeysToOriginal($combined);
+        $withOriginalKeys = $this->translationKeysToOriginal($combined);
+
+        return $this->translationValuesToMarkdown($withOriginalKeys);
+    }
+
+    /**
+     * Retrieved from the SDG in Markdown and parsed to HTML for usage in Wordpress.
+     * Before pushing back to the SDG convert HTML back to Markdown.
+     */
+    protected function translationValuesToMarkdown(array $translations): array
+    {
+        $keysToConvert  = [
+            'tekst',
+            'procedureBeschrijving',
+            'bewijs',
+            'vereisten',
+            'bezwaarEnBeroep',
+            'kostenEnBetaalmethoden',
+            'uitersteTermijn',
+            'wtdBijGeenReactie',
+        ];
+
+        $converter = new HtmlConverter();
+
+        return array_map(function ($translation) use ($keysToConvert, $converter) {
+            foreach ($keysToConvert as $key) {
+                if (empty($translation[$key])) {
+                    continue;
+                }
+                $translation[$key] = $converter->convert($translation[$key]);
+            }
+
+            return $translation;
+        }, $translations);
     }
 
 
@@ -146,6 +184,10 @@ class EnrichmentProductResolver
         }, $translations);
     }
 
+    /**
+     * Translation array contains Wordpress meta keys.
+     * This needs to be converted to the SDG keys required.
+     */
     protected function mapTranslationKeysToOriginal(array $translation): array
     {
         $mapping = [
@@ -173,6 +215,7 @@ class EnrichmentProductResolver
                 $mapped[$originalKey] = '';
                 continue;
             }
+
             $mapped[$originalKey] = $translation[$metaKey];
         }
 

@@ -13,11 +13,16 @@ trait CheckPluginActive
             include_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
-        return is_plugin_active($file);
+        return \is_plugin_active($file);
     }
 
     public function isPluginPDCInternalProductsActive(): bool
     {
         return $this->isPluginActive('pdc-internal-products/pdc-internal-products.php');
+    }
+
+    public function isPluginPDCFAQActive(): bool
+    {
+        return $this->isPluginActive('pdc-faq/pdc-faq.php');
     }
 }
