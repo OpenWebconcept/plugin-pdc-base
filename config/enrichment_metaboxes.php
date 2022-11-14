@@ -20,7 +20,7 @@ return [
                     'name' => __('Send to SDG', 'pdc-base'),
                     'id'   => 'enrichment_send_data_to_sdg',
                     'type' => 'checkbox',
-                    'desc' => __('All data of this product will be send to the SDG when product is saved.', 'pdc-base')
+                    'desc' => __('All data of this product will be send to the SDG after saving this product.', 'pdc-base')
                 ],
                 [
                     'name' => __('Last modified', 'pdc-base'),
@@ -32,7 +32,6 @@ return [
                 [
                     'name' => __('Audience', 'pdc-base'),
                     'id'   => 'enrichment_audience',
-                    'desc' => __('', 'pdc-base'),
                     'type' => 'select',
                     'options'   => [
                         Doelgroep::TYPE_CITIZEN => Doelgroep::LABEL_CITIZEN,
@@ -40,14 +39,13 @@ return [
                     ],
                 ],
                 [
-                    'name' => __('Product aanwezig', 'pdc-base'),
+                    'name' => __('Product present', 'pdc-base'),
                     'id'   => 'enrichment_product_present',
-                    'desc' => __('', 'pdc-base'),
                     'type' => 'select',
                     'options'   => [
-                        '1' => 'Product aanwezig/beschikbaar', // Vertalen
-                        '0' => 'Product niet beschikbaar', // Vertalen
-                        'null' => 'Niet gespecificeerd' // Vertalen
+                        '1' => __('Product present/available', 'pdc-base'),
+                        '0' => __('Product unavailable', 'pdc-base'),
+                        'null' => __('Not specified', 'pdc-base')
                     ],
                 ]
             ],
@@ -87,6 +85,7 @@ return [
                             'id'   => 'enrichment_procedure_link',
                             'name' => __('Procedure link', 'pdc-base'),
                             'type' => 'key_value',
+                            'desc' => __('At the moment there is support for only one key-value field, other pairs added are not used.', 'pdc-base'),
                         ],
                         [
                             'name' => __('Procedure description', 'pdc-base'),
@@ -117,37 +116,37 @@ return [
                         [
                             'name' => __('Proof', 'pdc-base'),
                             'id'   => 'enrichment_proof',
-                            'type' => 'text',
+                            'type' => 'wysiwyg',
                             'desc' => __('Proof to deliver.', 'pdc-base')
                         ],
                         [
                             'name' => __('Requirements', 'pdc-base'),
                             'id'   => 'enrichment_requirements',
-                            'type' => 'text',
-                            'desc' => __('Requirements to fulfil on.', 'pdc-base')
+                            'type' => 'wysiwyg',
+                            'desc' => __('Requirements to fulfill on.', 'pdc-base')
                         ],
                         [
                             'name' => __('Object and appeal', 'pdc-base'),
                             'id'   => 'enrichment_object_and_appeal',
-                            'type' => 'text',
+                            'type' => 'wysiwyg',
                             'desc' => __('How to object and appeal against.', 'pdc-base')
                         ],
                         [
                             'name' => __('Payment methods', 'pdc-base'),
                             'id'   => 'enrichment_payment_methods',
-                            'type' => 'text',
+                            'type' => 'wysiwyg',
                             'desc' => __('Is there an payment required?', 'pdc-base')
                         ],
                         [
                             'name' => __('Deadline', 'pdc-base'),
                             'id'   => 'enrichment_deadline',
-                            'type' => 'text',
+                            'type' => 'wysiwyg',
                             'desc' => __('When is the deadline?', 'pdc-base')
                         ],
                         [
                             'name' => __('Action when to reaction', 'pdc-base'),
                             'id'   => 'enrichment_action_when_no_reaction',
-                            'type' => 'text',
+                            'type' => 'wysiwyg',
                             'desc' => __('What to do when a reaction remains.', 'pdc-base')
                         ],
                         [
@@ -158,13 +157,13 @@ return [
                             'name' => __('Product present', 'pdc-base'),
                             'id'   => 'enrichment_product_present_explanation',
                             'type' => 'text',
-                            'desc' => __('Need to discuss the value of this desc.', 'pdc-base')
+                            'desc' => __('Specify the status of this product. If this product is not present this field is required!', 'pdc-base')
                         ],
                         [
                             'name' => __('Product belongs to', 'pdc-base'),
                             'id'   => 'enrichment_product_belongs_to_explanation',
                             'type' => 'text',
-                            'desc' => __('Need to discuss the value of this desc.', 'pdc-base')
+                            'desc' => __('Specify the owner of this product.', 'pdc-base')
                         ],
                     ]
                 ]

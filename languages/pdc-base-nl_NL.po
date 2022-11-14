@@ -47,57 +47,158 @@ msgstr "Yard | Digital Agency"
 msgid "https://www.yard.nl/"
 msgstr "https://www.yard.nl/"
 
-#: config/enrichment_metabox.php:7
+#: config/enrichment_metaboxes.php:8
 msgid "SDG content enrichment"
 msgstr "SDG contentverrijking"
 
-#: config/enrichment_metabox.php:19
+#: config/enrichment_metaboxes.php:20
+msgid "Send to SDG"
+msgstr "Verstuur naar SDG"
+
+#: config/enrichment_metaboxes.php:23
+msgid "All data of this product will be send to the SDG after saving this product."
+msgstr "Alle data van dit product zal naar de SDG verstuurd worden na het opslaan van dit product."
+
+#: config/enrichment_metaboxes.php:26
 msgid "Last modified"
 msgstr "Laatst bijgewerkt"
 
-#: config/enrichment_metabox.php:22
+#: config/enrichment_metaboxes.php:29
 msgid "This field shows the date of the current enrichment version."
 msgstr "Dit veld toont de datum van de huidige verrijkings versie."
 
-#: config/enrichment_metabox.php:36
+#: config/enrichment_metaboxes.php:42
+#: config/enrichment_metaboxes.php:157
+msgid "Product present"
+msgstr "Product aanwezig"
+
+#: config/enrichment_metaboxes.php:46
+msgid "Product present/available"
+msgstr "Product aanwezig/beschikbaar"
+
+#: config/enrichment_metaboxes.php:47
+msgid "Product unavailable"
+msgstr "Product niet beschikbaar"
+
+#: config/enrichment_metaboxes.php:48
+msgid "Not specified"
+msgstr "Niet gespecificeerd"
+
+#: config/enrichment_metaboxes.php:62
 msgid "The language of the enrichment."
 msgstr "De taal van de verrijking."
 
-#: config/enrichment_metabox.php:40
+#: config/enrichment_metaboxes.php:66
 msgid "National text"
 msgstr "Landelijke tekst"
 
-#: config/enrichment_metabox.php:43
+#: config/enrichment_metaboxes.php:69
 msgid "The national text is displayed above the own SDG text on the national portals. This text is served for informational purposes only no further action required."
-msgstr "De landelijke tekst worden boven de eigenc SDG tekst weergegeven op de nationale portalen. De tekst dient als voorbeeld geen verdere acties vereist."
+msgstr "De landelijke tekst worden boven de eigenc SDG tekst weergegeven op de nationale portalen. De tekst dient als voorbeeld, geen verdere acties vereist."
 
-#: config/enrichment_metabox.php:47
+#: config/enrichment_metaboxes.php:73
 msgid "Example text VNG editorial"
 msgstr "Voorbeeld tekst VNG redactie"
 
-#: config/enrichment_metabox.php:49
-msgid "Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox down below to add a custom SDG text."
-msgstr "Voorbeeld tekst van de VNG die voor de eigen SDG tekst wordt gebruikt. Deze tekst wordt regelmatig ge-update vanuit de VNG redactie. Vink de checkbox hier beneden voor het toevoegen van een eigen SDG tekst."
+#: config/enrichment_metaboxes.php:75
+msgid "Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below the header 'Edits' to add a custom SDG text."
+msgstr "Voorbeeld tekst van de VNG die voor de eigen SDG tekst wordt gebruikt. Deze tekst wordt regelmatig ge-update vanuit de VNG redactie. Vink de checkbox onder de kop 'bewerkingen' voor het toevoegen van een eigen SDG tekst."
 
-#: config/enrichment_metabox.php:55
+#: config/enrichment_metaboxes.php:86
+msgid "Procedure link"
+msgstr "Bewerkingen"
+
+#: config/enrichment_metaboxes.php:88
+msgid "At the moment there is support for only one key-value field, other pairs added are not used."
+msgstr "Op dit moment is één sleutel-waarde veld toegestaan, andere paren worden niet gebruikt."
+
+#: config/enrichment_metaboxes.php:91
+msgid "Procedure description"
+msgstr "Procedure beschrijving"
+
+#: config/enrichment_metaboxes.php:98
 msgid "Edits"
 msgstr "Bewerkingen"
 
-#: config/enrichment_metabox.php:58
+#: config/enrichment_metaboxes.php:101
 msgid "SDG input facility"
 msgstr "SDG invoer voorziening"
 
-#: config/enrichment_metabox.php:61
+#: config/enrichment_metaboxes.php:104
 msgid "Use custom SDG text on national portals."
 msgstr "Gebruik eigen SDG tekst op de landelijke portalen."
 
-#: config/enrichment_metabox.php:64
+#: config/enrichment_metaboxes.php:107
 msgid "Own SDG text"
 msgstr "Eigen SDG tekst"
 
-#: config/enrichment_metabox.php:66
+#: config/enrichment_metaboxes.php:109
 msgid "Custom SDG text for displaying on national portals."
 msgstr "SDG tekst op maat voor weergave op de landelijke portalen."
+
+#: config/enrichment_metaboxes.php:117
+msgid "Proof"
+msgstr "Bewijs"
+
+#: config/enrichment_metaboxes.php:120
+msgid "Proof to deliver."
+msgstr "Aan te leveren bewijs."
+
+#: config/enrichment_metaboxes.php:123
+msgid "Requirements"
+msgstr "Vereisten"
+
+#: config/enrichment_metaboxes.php:126
+msgid "Requirements to fulfill on."
+msgstr "Vereisten om aan te voldoen."
+
+#: config/enrichment_metaboxes.php:129
+msgid "Object and appeal"
+msgstr "Bezwaar en in beroep"
+
+#: config/enrichment_metaboxes.php:132
+msgid "How to object and appeal against."
+msgstr "Hoe in bezwaar te gaan en om in beroep te gaan."
+
+#: config/enrichment_metaboxes.php:135
+msgid "Payment methods"
+msgstr "Betaalmethoden"
+
+#: config/enrichment_metaboxes.php:138
+msgid "Is there an payment required?"
+msgstr "Is er een betaling vereist?"
+
+#: config/enrichment_metaboxes.php:141
+msgid "Deadline"
+msgstr "Deadline"
+
+#: config/enrichment_metaboxes.php:144
+msgid "When is the deadline?"
+msgstr "Wanneer is de deadline?"
+
+#: config/enrichment_metaboxes.php:147
+msgid "Action when to reaction"
+msgstr "Actie bij geen reactie"
+
+#: config/enrichment_metaboxes.php:150
+msgid "What to do when a reaction remains."
+msgstr "Wat te doen als een reactie uitblijft."
+
+#: config/enrichment_metaboxes.php:154
+msgid "Product additional information"
+msgstr "Additionele product informatie"
+
+#: config/enrichment_metaboxes.php:160
+msgid "Specify the status of this product. This field is required when the product is not present!"
+msgstr "Specificeer de status van dit product. Dit veld is verplicht wanneer het product afwezig is!"
+
+#: config/enrichment_metaboxes.php:157
+msgid "Product belongs to"
+msgstr "Product valt onder"
+
+#: config/enrichment_metaboxes.php:157
+msgid "Specify the owner of this product."
+msgstr "Specificeer de eigenaar van dit product."
 
 #: config/escape_element_metabox.php:6 config/settings.php:55
 msgid "Escape element"
@@ -249,7 +350,7 @@ msgstr "Algemene identificatie begeleidende tekst"
 msgid "Data"
 msgstr "Gegevens"
 
-#: config/metaboxes.php:15 config/enrichment_metabox.php:16
+#: config/metaboxes.php:15 config/enrichment_metaboxes.php:16
 msgid "General"
 msgstr "Algemeen"
 
@@ -319,6 +420,7 @@ msgstr ""
 "in gebruik)"
 
 #: config/metaboxes.php:79
+#: config/enrichment_metaboxes.php:81
 msgid "Links"
 msgstr "Links"
 
@@ -425,7 +527,9 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: #: config/enrichment_metabox.php:33 config/metaboxes.php:205 config/metaboxes.php:208
+#: config/enrichment_metaboxes.php:59
+#: config/metaboxes.php:205 
+#: config/metaboxes.php:208
 msgid "Language"
 msgstr "Taal"
 
@@ -864,8 +968,16 @@ msgid "Enrichment URL"
 msgstr "Verrijkings URL"
 
 #: config/settings.php:82
-msgid "URL used for retrieving enrichments for pdc-items, an external source will complement these items."
-msgstr "URL om de verrijkingen op te halen voor de pdc-items, een externe bron verrijkt deze items."
+msgid "URL used for retrieving enrichments for pdc-items, this external source will complement your pdc-items."
+msgstr "URL om de verrijkingen op te halen voor de pdc-items, deze externe bron verrijkt uw pdc-items."
+
+#: config/settings.php:94
+msgid "Default enrichment URL"
+msgstr "Standaard verrijkings URL"
+
+#: config/settings.php:95
+msgid "URL used for retrieving default enrichments (VNG), will be used as an example."
+msgstr "URL om de standaard verrijkingen (VNG) op te halen voor de pdc-items, worden gebruikt als voorbeeld."
 
 #: config/settings_pages.php:8
 msgid "PDC settings"
@@ -886,8 +998,11 @@ msgctxt "PDC settings tab"
 msgid "General"
 msgstr "Algemeen"
 
-#: config/taxonomies.php:12 config/taxonomies.php:13 config/taxonomies.php:14
-#: config/taxonomies.php:32
+#: config/taxonomies.php:12 
+#: config/taxonomies.php:13 
+#: config/taxonomies.php:14
+#: config/taxonomies.php:32 
+#: config/enrichment_metaboxes.php:33
 msgid "Audience"
 msgstr "Doelgroep"
 
