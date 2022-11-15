@@ -107,7 +107,12 @@ return [
                             'name' => __('Own SDG text', 'pdc-base'),
                             'id'   => 'enrichment_sdg_custom_text',
                             'desc' => __('Custom SDG text for displaying on national portals.', 'pdc-base'),
-                            'type' => 'wysiwyg'
+                            'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                         ],
                         [
                             'type' => 'heading',
@@ -117,36 +122,66 @@ return [
                             'name' => __('Proof', 'pdc-base'),
                             'id'   => 'enrichment_proof',
                             'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                             'desc' => __('Proof to deliver.', 'pdc-base')
                         ],
                         [
                             'name' => __('Requirements', 'pdc-base'),
                             'id'   => 'enrichment_requirements',
                             'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                             'desc' => __('Requirements to fulfill on.', 'pdc-base')
                         ],
                         [
                             'name' => __('Object and appeal', 'pdc-base'),
                             'id'   => 'enrichment_object_and_appeal',
                             'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                             'desc' => __('How to object and appeal against.', 'pdc-base')
                         ],
                         [
                             'name' => __('Payment methods', 'pdc-base'),
                             'id'   => 'enrichment_payment_methods',
                             'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                             'desc' => __('Is there an payment required?', 'pdc-base')
                         ],
                         [
                             'name' => __('Deadline', 'pdc-base'),
                             'id'   => 'enrichment_deadline',
                             'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                             'desc' => __('When is the deadline?', 'pdc-base')
                         ],
                         [
                             'name' => __('Action when to reaction', 'pdc-base'),
                             'id'   => 'enrichment_action_when_no_reaction',
                             'type' => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                             'desc' => __('What to do when a reaction remains.', 'pdc-base')
                         ],
                         [

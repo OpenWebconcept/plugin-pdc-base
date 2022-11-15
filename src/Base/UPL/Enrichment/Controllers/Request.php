@@ -2,8 +2,6 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Controllers;
 
-use OWC\PDC\Base\Models\EnrichmentProduct;
-
 class Request
 {
     protected string $url;
