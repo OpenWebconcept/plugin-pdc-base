@@ -26,7 +26,7 @@ class Push
         // wp_ajax_send_link_to_editor();
         // return;
 
-        if (! $this->settings->enableInputFacility()) {
+        if (! $this->plugin->settings->useEnrichment() || ! $this->settings->enableInputFacility()) {
             return;
         }
 
@@ -45,9 +45,10 @@ class Push
 
     protected function shouldPush(WP_Post $post): bool
     {
-        $value = get_post_meta($post->ID, '_owc_enrichment_send_data_to_sdg', true);
+        $sendToSDG = get_post_meta($post->ID, '_owc_enrichment_send_data_to_sdg', true);
+        $isEnriched = get_post_meta($post->ID, '_owc_enrichment_version', true);
 
-        return $value === '1' ? true : false;
+        return $sendToSDG === '1' && ! empty($isEnriched) ? true : false;
     }
 
     protected function makeRequest(EnrichmentProduct $enrichedProduct): array
