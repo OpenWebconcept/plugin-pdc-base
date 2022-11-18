@@ -39,10 +39,10 @@ class EnrichmentServiceProvider extends ServiceProvider
     {
         // Resolved product
 
-        /*
-        $pushObject = new EnrichmentProductResolver(get_post(2819));
-        var_dump($pushObject->resolve()->jsonSerialize());
-        die; */
+        // $pushObject = new EnrichmentProductResolver(get_post(2819));
+        // var_dump($pushObject->resolve()->jsonSerialize());
+        // var_dump($pushObject->resolve()->jsonSerialize()['vertalingen'][0]);
+        // die;
 
 
         // Resolved product result of post request

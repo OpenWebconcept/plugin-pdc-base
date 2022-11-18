@@ -86,8 +86,14 @@ return [
                 ],
                 'upl_enrichment_url'  => [
                     'name' => __('Enrichment URL', 'pdc-base'),
-                    'desc' => __('URL used for retrieving enrichments for pdc-items, an external source will complement these items.', 'pdc-base'),
+                    'desc' => __('URL used for retrieving enrichments for pdc-items, this external source will complement your pdc-items.', 'pdc-base'),
                     'id'   => 'upl_enrichment_url',
+                    'type' => 'url'
+                ],
+                'upl_default_enrichment_url'  => [
+                    'name' => __('Default enrichment URL', 'pdc-base'),
+                    'desc' => __('URL used for retrieving default enrichments (VNG), will be used as an example.', 'pdc-base'),
+                    'id'   => 'upl_default_enrichment_url',
                     'type' => 'url'
                 ],
                 'upl_enrichment_input_facility_heading' => [

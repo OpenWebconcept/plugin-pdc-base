@@ -107,6 +107,14 @@ class SettingsPageOptions
     }
 
     /**
+     * URL used for retrieving default enrichments from external api.
+     */
+    public function getDefaultEnrichmentURL(): string
+    {
+        return $this->settings['_owc_upl_default_enrichment_url'] ?? '';
+    }
+
+    /**
      * Push new versions to input facility when enabled.
      */
     public function enableInputFacility(): bool
