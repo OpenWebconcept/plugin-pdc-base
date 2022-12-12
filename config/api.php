@@ -27,6 +27,8 @@ return [
                 'title_alternative' => OWC\PDC\Base\RestAPI\ItemFields\TitleAlternativeField::class,
                 'identifications'   => OWC\PDC\Base\RestAPI\ItemFields\IdentificationsField::class,
                 'escape_element'    => OWC\PDC\Base\RestAPI\ItemFields\EscapeElementField::class,
+                'seopress'          => OWC\PDC\Base\RestAPI\ItemFields\SeoPress::class,
+                'yoast'             => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class
             ],
         ],
         'subthema' => [
