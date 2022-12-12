@@ -14,7 +14,7 @@
     "johnbillion/extended-cpts": "^4.0"
   },
   "require-dev": {
-    "10up/wp_mock": "dev-master",
+    "10up/wp_mock": "~0.4",
     "friendsofphp/php-cs-fixer": "^2.0",
     "mockery/mockery": "*",
     "phpunit/phpunit": "~8.0",
