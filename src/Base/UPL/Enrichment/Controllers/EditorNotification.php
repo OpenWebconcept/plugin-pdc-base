@@ -22,20 +22,41 @@ class EditorNotification
     /**
      * Send error response to REST endpoint.
      */
-    public function getNotification(): ?\WP_REST_Response
+    public function getNotification(): \WP_REST_Response
     {
         if (empty($_GET['id'])) {
-            return null;
+            return new \WP_REST_Response(
+                [
+                    'code'    => 404,
+                    'message' => false
+                ]
+            );
         }
 
-        $id = \sanitize_text_field(
+        $postID = \sanitize_text_field(
             \wp_unslash($_GET['id'])
         );
 
-        $error = \get_post_meta($id, '_owc_pdc_sdg_push_notification', true);
+        $send = \get_post_meta($postID, '_owc_enrichment_send_data_to_sdg', true);
+
+        if ($send != '1') {
+            return new \WP_REST_Response(
+                [
+                    'code'    => 404,
+                    'message' => false
+                ]
+            );
+        }
+
+        $error = \get_post_meta($postID, '_owc_pdc_sdg_push_notification', true);
 
         if (! $error) {
-            return null;
+            return new \WP_REST_Response(
+                [
+                    'code'    => 404,
+                    'message' => false
+                ]
+            );
         }
 
         $data = json_decode($error);
@@ -67,9 +88,8 @@ class EditorNotification
 					checkNotificationAfterPublish();
 					checked = true;
 				}
-
 			}
-		} );
+		});
 
 		function checkNotificationAfterPublish(){
 			const postId = wp.data.select('core/editor').getCurrentPostId();
@@ -77,23 +97,25 @@ class EditorNotification
 				'/wp-json/owc/pdc/v1/sdg-notifications',
 				{ id: postId },
 			);
-			wp.apiFetch({
-				url,
-			}).then(
-				function(response){
-					if(response.message){
+            setTimeout(() => {
+                wp.apiFetch({
+                    url,
+                }).then(
+                    function(response){
+                        if(response.message){
 
-						wp.data.dispatch('core/notices').createNotice(
-							response.code,
-							response.message,
-							{
-								id: '_owc_pdc_sdg_push_notification',
-								isDismissible: true
-							}
-						);
-					}
-				}
-			);
+                            wp.data.dispatch('core/notices').createNotice(
+                                response.code,
+                                response.message,
+                                {
+                                    id: '_owc_pdc_sdg_push_notification',
+                                    isDismissible: true
+                                }
+                            );
+                        }
+                    }
+                );
+            }, 1000);
 		};
 	</script>
 	<?php
