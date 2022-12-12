@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 3.5.0 (2022-12-12)
+
+### Feat
+
+-   Include SEO meta fields, provided by multiple plugins, in API.
+
 ## Version 3.4.11 (2022-10-06)
 
 ### Refactor

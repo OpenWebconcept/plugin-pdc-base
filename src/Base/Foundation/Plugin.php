@@ -17,7 +17,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '3.4.11';
+    const VERSION = '3.5.0';
 
     /**
      * Path to the root of the plugin.
@@ -45,7 +45,7 @@ class Plugin
         $this->rootPath = $rootPath;
         \load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
-        $this->loader = new Loader;
+        $this->loader = new Loader();
 
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
