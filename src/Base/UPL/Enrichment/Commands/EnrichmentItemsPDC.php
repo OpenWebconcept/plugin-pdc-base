@@ -44,7 +44,7 @@ class EnrichmentItemsPDC
         }
 
         $this->requestController->setURL($url);
-        $this->requestController->setArgs(['method' => 'GET']);
+        $this->requestController->setArgs($this->getArgs());
 
         try {
             $currentProducts = $this->requestController->get();
@@ -67,6 +67,19 @@ class EnrichmentItemsPDC
         $nextProducts['results'] = $this->combinePaginated($currentProducts, $nextProducts);
 
         return $nextProducts;
+    }
+
+    protected function getArgs(): array
+    {
+        $args = [
+            'method' => 'GET'
+        ];
+
+        if (! empty($_ENV['SDG_API_TOKEN'])) { // Enrichment endpoint is temporary protected therefore API token is required.
+            $args['headers'] = ['Authorization' => sprintf('Bearer %s', $_ENV['SDG_API_TOKEN'])];
+        }
+
+        return $args;
     }
 
     protected function combinePaginated($currentProducts, $nextProducts): array

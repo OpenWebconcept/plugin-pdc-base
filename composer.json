@@ -12,10 +12,11 @@
   "require": {
     "php": ">=7.0",
     "johnbillion/extended-cpts": "^4.0",
-    "league/html-to-markdown": "^5.1"
+    "league/html-to-markdown": "^5.1",
+    "vlucas/phpdotenv": "^5.0"
   },
   "require-dev": {
-    "10up/wp_mock": "dev-master",
+    "10up/wp_mock": "*",
     "erusev/parsedown": "^1.7",
     "friendsofphp/php-cs-fixer": "^2.0",
     "mockery/mockery": "*",

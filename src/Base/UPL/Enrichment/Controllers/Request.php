@@ -39,7 +39,7 @@ class Request
 
     protected function request(): array
     {
-        $response = \wp_remote_request($this->url);
+        $response = \wp_remote_request($this->url, $this->args);
 
         if (\is_wp_error($response)) {
             throw new \Exception($response->get_error_message());

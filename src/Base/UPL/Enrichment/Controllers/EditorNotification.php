@@ -54,7 +54,7 @@ class EditorNotification
     public function checkNotifications()
     {
         ?>
-	<script type="text/javascript">
+	<script>
 
 		const { subscribe, select } = wp.data;
 		const { isSavingPost } = select( 'core/editor' );
