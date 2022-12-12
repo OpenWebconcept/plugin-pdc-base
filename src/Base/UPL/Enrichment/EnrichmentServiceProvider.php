@@ -5,6 +5,7 @@ namespace OWC\PDC\Base\UPL\Enrichment;
 use OWC\PDC\Base\Foundation\ServiceProvider;
 use OWC\PDC\Base\UPL\Enrichment\Commands\EnrichmentItemsPDC;
 use OWC\PDC\Base\UPL\Enrichment\Controllers\Push as PushController;
+use OWC\PDC\Base\UPL\Enrichment\Controllers\EditorNotification as NotificationController;
 use OWC\PDC\Base\UPL\Enrichment\Services\EnrichmentProductResolver;
 
 class EnrichmentServiceProvider extends ServiceProvider
@@ -25,6 +26,8 @@ class EnrichmentServiceProvider extends ServiceProvider
 
         if ($this->plugin->settings->enableInputFacility()) {
             $this->plugin->loader->addAction('wp_after_insert_post', new PushController(), 'handlePush', 10, 4);
+
+            $this->notificationHooks();
         }
 
         if (class_exists('\WP_CLI')) {
@@ -69,5 +72,13 @@ class EnrichmentServiceProvider extends ServiceProvider
     {
         wp_register_style('admin_css', $this->plugin->getPluginUrl() . '/assets/css/admin.css', [], false);
         wp_enqueue_style('admin_css');
+    }
+
+    protected function notificationHooks(): void
+    {
+        $notificationController = new NotificationController();
+        $this->plugin->loader->addAction('rest_api_init', $notificationController, 'notificationRoute', 10, 0);
+        $this->plugin->loader->addAction('admin_footer-post.php', $notificationController, 'checkNotifications', 10, 0);
+        $this->plugin->loader->addAction('admin_footer-post-new.php', $notificationController, 'checkNotifications', 10, 0);
     }
 }

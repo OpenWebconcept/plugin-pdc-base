@@ -136,7 +136,7 @@ class EnrichmentProductResolver
     {
         $translation['enrichment_links'] = array_map(function ($link) {
             return ['label' => $link[0], 'url' => $link[1]];
-        }, $translation['enrichment_links']);
+        }, $translation['enrichment_links'] ?? []);
 
         return $translation;
     }
@@ -150,10 +150,10 @@ class EnrichmentProductResolver
     {
         $translation['enrichment_procedure_link'] = array_map(function ($link) {
             return ['label' => $link[0], 'url' => $link[1]];
-        }, $translation['enrichment_procedure_link']);
+        }, $translation['enrichment_procedure_link'] ?? []);
 
         // Metabox is saving this as an multidimensional array, an one-dimensional array is required.
-        $translation['enrichment_procedure_link'] = $translation['enrichment_procedure_link'][0];
+        $translation['enrichment_procedure_link'] = $translation['enrichment_procedure_link'][0] ?? [];
 
         return $translation;
     }
