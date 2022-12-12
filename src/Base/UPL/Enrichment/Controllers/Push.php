@@ -25,6 +25,9 @@ class Push
             return;
         }
 
+        // First delete so the notification is not unnecessary thrown.
+        \delete_post_meta($postID, '_owc_pdc_sdg_push_notification');
+
         if ($post->post_type !== 'pdc-item' || ! $this->shouldPush($post)) {
             return;
         }
