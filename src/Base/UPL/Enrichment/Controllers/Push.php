@@ -21,12 +21,7 @@ class Push
 
     public function handlePush(int $postID, WP_Post $post, bool $update, $post_before)
     {
-        // $error = new \WP_Error(500, 'test', ['status' => 500]);
-        // wp_send_json_error($error, 500);
-        // wp_ajax_send_link_to_editor();
-        // return;
-
-        if (! $this->plugin->settings->useEnrichment() || ! $this->settings->enableInputFacility()) {
+        if (! $this->settings->useEnrichment() || ! $this->settings->enableInputFacility()) {
             return;
         }
 
@@ -39,8 +34,23 @@ class Push
         try {
             $result = $this->makeRequest($enrichedProduct);
         } catch(\Exception $e) {
-            // send error to pdc-item editor.
+            $response = [
+                'code' => 'error',
+                'message' => implode(' ', [
+                    __('Something went wrong with sending data to the SDG.', 'pdc-base'),
+                    sprintf('Error: %s', $e->getMessage())
+                ])
+            ];
         }
+
+        if (empty($response)) {
+            $response = [
+                'code' => 'success',
+                'message' => __('Sending data to the SDG succeeded!', 'pdc-base')
+            ];
+        }
+
+        \update_post_meta($postID, '_owc_pdc_sdg_push_notification', wp_json_encode($response));
     }
 
     protected function shouldPush(WP_Post $post): bool
