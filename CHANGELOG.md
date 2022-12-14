@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.6.0] (2022-12-19)
+
+### Feat
+
+-   Support php8 + update deps
+
 ## Version 3.5.0 (2022-12-12)
 
 ### Feat
