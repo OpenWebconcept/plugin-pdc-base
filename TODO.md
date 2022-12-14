@@ -1,6 +1,7 @@
 # To-do
 
-- Translations again but after all is finished. Also in pdc-faq plug-in.
+- Translations again but after all is finished. In pdc-faq plugin as well.
+- Improve markdown formatting (first good attempt made by Acato)
 - Dependency in pdc-faq should be matched with the version of pdc-base that includes SDG.
 - Add or edit current tests.
 - Support for the leges

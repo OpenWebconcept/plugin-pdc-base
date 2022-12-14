@@ -28,7 +28,7 @@ return [
                 'identifications'   => OWC\PDC\Base\RestAPI\ItemFields\IdentificationsField::class,
                 'escape_element'    => OWC\PDC\Base\RestAPI\ItemFields\EscapeElementField::class,
                 'seopress'          => OWC\PDC\Base\RestAPI\ItemFields\SeoPress::class,
-                'yoast'             => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class
+                'yoast'             => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
                 'enrichment'        => OWC\PDC\Base\RestAPI\ItemFields\EnrichmentField::class,
             ],
         ],
