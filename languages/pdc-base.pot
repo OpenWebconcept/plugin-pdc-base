@@ -1210,3 +1210,23 @@ msgstr ""
 #: src/Base/UPL/UPLServiceProvider.php:41
 msgid "Incorrect items"
 msgstr ""
+
+#: src/Base/RestAPI/Controllers/SdgController.php:166
+msgid "Get all items modified before a specific date."
+msgstr ""
+
+#: src/Base/RestAPI/Controllers/SdgController.php:172
+msgid "Get all items modified after a specific date."
+msgstr ""
+
+#: src/Base/RestAPI/Controllers/SdgController.php:178
+msgid "Get items for a specific language."
+msgstr ""
+
+#: src/Base/RestAPI/Controllers/SdgController.php:183
+msgid "Get item by UPL."
+msgstr ""
+
+#: src/Base/RestAPI/Controllers/SdgController.php:188
+msgid "Get items by audience."
+msgstr ""

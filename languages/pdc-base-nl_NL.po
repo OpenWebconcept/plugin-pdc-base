@@ -1179,6 +1179,26 @@ msgstr "Correcte items"
 msgid "Incorrect items"
 msgstr "Foutieve items"
 
+#: src/Base/RestAPI/Controllers/SdgController.php:166
+msgid "Get all items modified before a specific date."
+msgstr "Geef alle items terug, gewijzigd voor een specifieke datum."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:172
+msgid "Get all items modified after a specific date."
+msgstr "Geef alle items terug, gewijzigd na een specifieke datum."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:178
+msgid "Get items for a specific language."
+msgstr "Geef items terug in een specifieke taal."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:183
+msgid "Get item by UPL."
+msgstr "Geef item terug op basis van een UPL."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:188
+msgid "Get items by audience."
+msgstr "Geef items terug op basis van een doelgroep."
+
 #~ msgid "UPL resource"
 #~ msgstr "UPL resource"
 
