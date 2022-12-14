@@ -399,12 +399,8 @@ msgid "Appointment URL"
 msgstr "Afspraak URL"
 
 #: config/metaboxes.php:65
-msgid ""
-"Use this field to get a specific URL for the appointment button. URL "
-"including http(s)://"
-msgstr ""
-"Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet "
-"worden. URL inclusief http(s)://"
+msgid "Use this field to get a specific URL for the appointment button. URL including http(s)://"
+msgstr "Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet worden. URL inclusief http(s)://"
 
 #: config/metaboxes.php:70
 msgid "Appointment meta"
@@ -1131,6 +1127,26 @@ msgstr "Correcte items"
 #: src/Base/UPL/UPLServiceProvider.php:41
 msgid "Incorrect items"
 msgstr "Foutieve items"
+
+#: src/Base/RestAPI/Controllers/SdgController.php:166
+msgid "Get all items modified before a specific date."
+msgstr "Geef alle items terug, gewijzigd voor een specifieke datum."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:172
+msgid "Get all items modified after a specific date."
+msgstr "Geef alle items terug, gewijzigd na een specifieke datum."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:178
+msgid "Get items for a specific language."
+msgstr "Geef items terug in een specifieke taal."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:183
+msgid "Get item by UPL."
+msgstr "Geef item terug op basis van een UPL."
+
+#: src/Base/RestAPI/Controllers/SdgController.php:188
+msgid "Get items by audience."
+msgstr "Geef items terug op basis van een doelgroep."
 
 #~ msgid "UPL resource"
 #~ msgstr "UPL resource"

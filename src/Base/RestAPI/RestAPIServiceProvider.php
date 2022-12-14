@@ -62,6 +62,9 @@ class RestAPIServiceProvider extends ServiceProvider
      * Endpoint of searching.
      * @link https://url/wp-json/owc/pdc/v1/search
      *
+     * Endpoint of the SDG pull.
+     * @link https://url/wp-json/owc/pdc/v1/sdg
+     *
      * @return void
      */
     public function registerRoutes()
@@ -144,6 +147,14 @@ class RestAPIServiceProvider extends ServiceProvider
             'args'                => $searchController->arguments(),
             'permission_callback' => '__return_true',
         ]);
+
+		$sdgController = new Controllers\SdgController($this->plugin);
+		\register_rest_route($this->namespace, 'sdg', [
+			'methods'             => WP_REST_Server::READABLE,
+			'callback'            => [$sdgController, 'getItems'],
+			'args'                => $sdgController->arguments(),
+			'permission_callback' => '__return_true',
+		]);
     }
 
     /**
