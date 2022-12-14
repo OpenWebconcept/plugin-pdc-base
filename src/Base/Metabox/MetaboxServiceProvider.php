@@ -13,7 +13,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     /**
      * Register the hooks.
      */
-    public function register()
+    public function register(): void
     {
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
         $this->plugin->loader->addAction('updated_post_meta', new UPLResourceHandler(), 'handleUpdatedMetaClassicEditor', 10, 4);

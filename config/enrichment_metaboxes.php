@@ -88,12 +88,6 @@ return [
                             'desc' => __('At the moment there is support for only one key-value field, other pairs added are not used.', 'pdc-base'),
                         ],
                         [
-                            'name' => __('Procedure description', 'pdc-base'),
-                            'id'   => 'enrichment_procedure_desc',
-                            'type' => 'textarea',
-                            'readonly' => true
-                        ],
-                        [
                             'type' => 'heading',
                             'name' => __('Edits', 'pdc-base')
                         ],
@@ -115,13 +109,19 @@ return [
                             ],
                         ],
                         [
-                            'type' => 'heading',
-                            'name' => __('SDG FAQ', 'pdc-base')
+                            'name' => __('Procedure description', 'pdc-base'),
+                            'id'   => 'enrichment_procedure_desc',
+                            'type' => 'hidden',
+                            'options' => [
+                                'textarea_rows' => 4,
+                                'quicktags' => false,
+                                'teeny' => true
+                            ],
                         ],
                         [
                             'name' => __('Proof', 'pdc-base'),
                             'id'   => 'enrichment_proof',
-                            'type' => 'wysiwyg',
+                            'type' => 'hidden',
                             'options' => [
                                 'textarea_rows' => 4,
                                 'quicktags' => false,
@@ -132,7 +132,7 @@ return [
                         [
                             'name' => __('Requirements', 'pdc-base'),
                             'id'   => 'enrichment_requirements',
-                            'type' => 'wysiwyg',
+                            'type' => 'hidden',
                             'options' => [
                                 'textarea_rows' => 4,
                                 'quicktags' => false,
@@ -143,7 +143,7 @@ return [
                         [
                             'name' => __('Object and appeal', 'pdc-base'),
                             'id'   => 'enrichment_object_and_appeal',
-                            'type' => 'wysiwyg',
+                            'type' => 'hidden',
                             'options' => [
                                 'textarea_rows' => 4,
                                 'quicktags' => false,
@@ -154,7 +154,7 @@ return [
                         [
                             'name' => __('Payment methods', 'pdc-base'),
                             'id'   => 'enrichment_payment_methods',
-                            'type' => 'wysiwyg',
+                            'type' => 'hidden',
                             'options' => [
                                 'textarea_rows' => 4,
                                 'quicktags' => false,
@@ -165,7 +165,7 @@ return [
                         [
                             'name' => __('Deadline', 'pdc-base'),
                             'id'   => 'enrichment_deadline',
-                            'type' => 'wysiwyg',
+                            'type' => 'hidden',
                             'options' => [
                                 'textarea_rows' => 4,
                                 'quicktags' => false,
@@ -176,7 +176,7 @@ return [
                         [
                             'name' => __('Action when to reaction', 'pdc-base'),
                             'id'   => 'enrichment_action_when_no_reaction',
-                            'type' => 'wysiwyg',
+                            'type' => 'hidden',
                             'options' => [
                                 'textarea_rows' => 4,
                                 'quicktags' => false,

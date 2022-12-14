@@ -40,6 +40,8 @@ class LocalEnrichmentSaver
 
     protected function saveEnrichmentData(): void
     {
+        $this->saveDefaultsToFAQs();
+
         $this->saveEnrichmentMeta('url', $this->product->getUrl());
         $this->saveEnrichmentMeta('uuid', $this->product->getUuid());
 
@@ -62,6 +64,51 @@ class LocalEnrichmentSaver
         $this->saveEnrichmentMeta('locations', $this->product->getLocations());
 
         $this->saveEnrichmentMeta('available_languages', $this->product->getAvailableLanguages());
+    }
+
+    /**
+     * Add the default text from the SDG questions to PDC-FAQs
+     * Default texts are used for demostration purposes.
+     */
+    protected function saveDefaultsToFAQs(): void
+    {
+        $defaultFAQs = $this->faqDefaults();
+        $groupsFAQ = \get_post_meta($this->post->ID, '_owc_pdc_faq_group', true);
+
+        if (empty($groupsFAQ)) {
+            return;
+        }
+
+        $mapped = array_map(function ($group) use ($defaultFAQs) {
+            $group['pdc_faq_enrichment_procedure_desc_default'] = $defaultFAQs['enrichment_procedure_desc_default'] ?: __('No default available.', 'pdc-base');
+            $group['pdc_faq_enrichment_proof_default'] = $defaultFAQs['enrichment_proof_default'] ?: __('No default available.', 'pdc-base');
+            $group['pdc_faq_enrichment_requirements_default'] = $defaultFAQs['enrichment_requirements_default'] ?: __('No default available.', 'pdc-base');
+            $group['pdc_faq_enrichment_object_and_appeal_default'] = $defaultFAQs['enrichment_object_and_appeal_default'] ?: __('No default available.', 'pdc-base');
+            $group['pdc_faq_enrichment_payment_methods_default'] = $defaultFAQs['enrichment_payment_methods_default'] ?: __('No default available.', 'pdc-base');
+            $group['pdc_faq_enrichment_deadline_default'] = $defaultFAQs['enrichment_deadline_default'] ?: __('No default available.', 'pdc-base');
+            $group['pdc_faq_enrichment_action_when_no_reaction_default'] = $defaultFAQs['enrichment_action_when_no_reaction_default'] ?: __('No default available.', 'pdc-base');
+
+            return $group;
+        }, $groupsFAQ);
+        
+        \update_post_meta($this->post->ID, '_owc_pdc_faq_group', $mapped);
+    }
+
+    protected function faqDefaults(): array
+    {
+        $keys = [
+            'enrichment_procedure_desc_default',
+            'enrichment_proof_default',
+            'enrichment_requirements_default',
+            'enrichment_object_and_appeal_default',
+            'enrichment_payment_methods_default',
+            'enrichment_deadline_default',
+            'enrichment_action_when_no_reaction_default',
+        ];
+
+        return array_filter($this->getTranslationByLanguage(), function ($FAQ, $key) use ($keys) {
+            return in_array($key, $keys) ? true : false;
+        }, ARRAY_FILTER_USE_BOTH);
     }
 
     protected function getTranslationByLanguage(): array
@@ -100,12 +147,19 @@ class LocalEnrichmentSaver
                 'enrichment_sdg_example_text' => $translation->exampleTextSDG(),
                 'enrichment_links' => $translation->links(),
                 'enrichment_procedure_desc' => $translation->procedureDesc(),
+                'enrichment_procedure_desc_default' => $translation->procedureDesc(true),
                 'enrichment_proof' => $translation->proof(),
+                'enrichment_proof_default' => $translation->proof(true),
                 'enrichment_requirements' => $translation->requirements(),
+                'enrichment_requirements_default' => $translation->requirements(true),
                 'enrichment_object_and_appeal' => $translation->objectionAndAppeal(),
+                'enrichment_object_and_appeal_default' => $translation->objectionAndAppeal(true),
                 'enrichment_payment_methods' => $translation->costAndPaymentMethods(),
+                'enrichment_payment_methods_default' => $translation->costAndPaymentMethods(true),
                 'enrichment_deadline' => $translation->deadline(),
+                'enrichment_deadline_default' => $translation->deadline(true),
                 'enrichment_action_when_no_reaction' => $translation->actionWhenNoReaction(),
+                'enrichment_action_when_no_reaction_default' => $translation->actionWhenNoReaction(true),
                 'enrichment_procedure_link' => $translation->procedureLink(),
                 'enrichment_product_present_explanation' => $translation->productPresentExplanation(),
                 'enrichment_product_belongs_to_explanation' => $translation->productBelongsToExplanation()
