@@ -94,7 +94,7 @@ msgstr "Landelijke tekst"
 
 #: config/enrichment_metaboxes.php:69
 msgid "The national text is displayed above the own SDG text on the national portals. This text is served for informational purposes only no further action required."
-msgstr "De landelijke tekst worden boven de eigenc SDG tekst weergegeven op de nationale portalen. De tekst dient als voorbeeld, geen verdere acties vereist."
+msgstr "De landelijke tekst worden boven de eigen SDG tekst weergegeven op de nationale portalen. De tekst dient als voorbeeld, geen verdere acties vereist."
 
 #: config/enrichment_metaboxes.php:73
 msgid "Example text VNG editorial"
@@ -106,7 +106,7 @@ msgstr "Voorbeeld tekst van de VNG die voor de eigen SDG tekst wordt gebruikt. D
 
 #: config/enrichment_metaboxes.php:86
 msgid "Procedure link"
-msgstr "Bewerkingen"
+msgstr "Procedure link"
 
 #: config/enrichment_metaboxes.php:88
 msgid "At the moment there is support for only one key-value field, other pairs added are not used."

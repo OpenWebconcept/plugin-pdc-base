@@ -42,7 +42,7 @@ class EnrichmentServiceProvider extends ServiceProvider
     {
         // Resolved product
 
-        // $pushObject = new EnrichmentProductResolver(get_post(2819));
+        // $pushObject = new EnrichmentProductResolver(get_post(95));
         // var_dump($pushObject->resolve()->jsonSerialize());
         // var_dump($pushObject->resolve()->jsonSerialize()['vertalingen'][0]);
         // die;
@@ -78,7 +78,7 @@ class EnrichmentServiceProvider extends ServiceProvider
     {
         $notificationController = new NotificationController();
         $this->plugin->loader->addAction('rest_api_init', $notificationController, 'notificationRoute', 10, 0);
-        $this->plugin->loader->addAction('admin_footer-post.php', $notificationController, 'checkNotifications', 999, 0);
-        $this->plugin->loader->addAction('admin_footer-post-new.php', $notificationController, 'checkNotifications', 999, 0);
+        $this->plugin->loader->addAction('admin_footer-post.php', $notificationController, 'checkNotifications', 10, 0);
+        $this->plugin->loader->addAction('admin_footer-post-new.php', $notificationController, 'checkNotifications', 10, 0);
     }
 }

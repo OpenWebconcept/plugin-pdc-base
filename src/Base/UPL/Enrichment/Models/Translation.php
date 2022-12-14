@@ -54,9 +54,10 @@ class Translation
         return $this->data['verwijzingLinks'] ?? [];
     }
 
-    public function procedureDesc(): string
+    public function procedureDesc(bool $default = false): string
     {
-        $desc = $this->data['procedureBeschrijving'] ?? '';
+        $key = sprintf('procedureBeschrijving%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
 
         if (empty($desc)) {
             return '';
@@ -69,23 +70,35 @@ class Translation
         return (new \Parsedown())->text($desc);
     }
 
-    public function proof(): string
+    public function proof(bool $default = false): string
     {
+        $key = sprintf('bewijs%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
+
         return $this->data['bewijs'] ?? '';
     }
 
-    public function requirements(): string
+    public function requirements(bool $default = false): string
     {
+        $key = sprintf('vereisten%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
+
         return $this->data['vereisten'] ?? '';
     }
 
-    public function objectionAndAppeal(): string
+    public function objectionAndAppeal(bool $default = false): string
     {
+        $key = sprintf('bezwaarEnBeroep%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
+
         return $this->data['bezwaarEnBeroep'] ?? '';
     }
 
-    public function costAndPaymentMethods(): string
+    public function costAndPaymentMethods(bool $default = false): string
     {
+        $key = sprintf('kostenEnBetaalmethoden%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
+
         $value = $this->data['kostenEnBetaalmethoden'] ?? '';
 
         if (empty($value)) {
@@ -99,8 +112,11 @@ class Translation
         return (new \Parsedown())->text($value);
     }
 
-    public function deadline(): string
+    public function deadline(bool $default = false): string
     {
+        $key = sprintf('uitersteTermijn%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
+
         $deadline = $this->data['uitersteTermijn'] ?? '';
 
         if (empty($deadline)) {
@@ -114,8 +130,11 @@ class Translation
         return (new \Parsedown())->text($deadline);
     }
 
-    public function actionWhenNoReaction(): string
+    public function actionWhenNoReaction(bool $default = false): string
     {
+        $key = sprintf('wtdBijGeenReactie%s', $default ? '_default' : '');
+        $desc = $this->data[$key] ?? '';
+        
         return $this->data['wtdBijGeenReactie'] ?? '';
     }
 

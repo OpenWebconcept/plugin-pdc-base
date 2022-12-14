@@ -4,7 +4,6 @@
 - Dependency in pdc-faq should be matched with the version of pdc-base that includes SDG.
 - Add or edit current tests.
 - Support for the leges
-- Save standard texts besides the custom one per municipality
 - Before pushing to SDG combined languages should may be removed?
 
 URL's:

@@ -22,19 +22,57 @@ class EnrichmentItemsPDC
     public function execute(): void
     {
         try {
-            $enrichmentProducts = $this->getEnrichmentProducts($this->settings->getEnrichmentURL());
+            $products = $this->getEnrichmentProducts($this->settings->getEnrichmentURL());
+            $defaultProducts = $this->getEnrichmentProducts($this->settings->getDefaultEnrichmentURL());
         } catch(\Exception $e) {
             \WP_CLI::error(sprintf('%s Stopping execution of this command.', $e->getMessage()));
         }
 
-        if (empty($enrichmentProducts['results'])) {
-            \WP_CLI::error('No enrichment products found, stopping execution of this command.');
+        if (empty($products['results'])) {
+            \WP_CLI::error('No enrichment products found, stopping execution of this command.'); // Stops execution of command.
         }
 
-        foreach ($this->convertToModels($enrichmentProducts['results']) as $enrichmentProduct) {
+        if (empty($defaultProducts['results'])) {
+            \WP_CLI::warning('No default enrichment products found, stopping execution of this command.');
+        }
+
+        $combinedProducts = $this->combineProducts($products['results'], $defaultProducts['results'] ?? []);
+
+        foreach ($this->convertToModels($combinedProducts) as $enrichmentProduct) {
             // Get posts by product and handle.
             $this->addEnrichmentsToLocalProducts($this->getLocalProductsByUPL($enrichmentProduct->getLabel()), $enrichmentProduct);
         }
+    }
+
+    protected function combineProducts(array $products, array $defaultProducts)
+    {
+        $combined = [];
+
+        foreach ($products as $index => $product) {
+            $product['vertalingen'] = $this->combineTranslations($product['vertalingen'], $defaultProducts[$index]['vertalingen']);
+            $combined[] = $product;
+        }
+
+        return $combined;
+    }
+
+    protected function combineTranslations(array $productTranslations, array $defaultProductTranslations): array
+    {
+        $combined = [];
+
+        foreach ($productTranslations as $index => $productTranslation) {
+            $productTranslation['procedureBeschrijving_default'] = $defaultProductTranslations[$index]['procedureBeschrijving'] ?? '';
+            $productTranslation['bewijs_default'] = $defaultProductTranslations[$index]['bewijs'] ?? '';
+            $productTranslation['vereisten_default'] = $defaultProductTranslations[$index]['vereisten'] ?? '';
+            $productTranslation['bezwaarEnBeroep_default'] = $defaultProductTranslations[$index]['bezwaarEnBeroep'] ?? '';
+            $productTranslation['kostenEnBetaalmethoden_default'] = $defaultProductTranslations[$index]['kostenEnBetaalmethoden'] ?? '';
+            $productTranslation['uitersteTermijn_default'] = $defaultProductTranslations[$index]['uitersteTermijn'] ?? '';
+            $productTranslation['wtdBijGeenReactie_default'] = $defaultProductTranslations[$index]['wtdBijGeenReactie'] ?? '';
+
+            $combined[] = $productTranslation;
+        }
+
+        return $combined;
     }
 
     protected function getEnrichmentProducts(string $url = ''): array
