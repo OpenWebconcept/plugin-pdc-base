@@ -70,13 +70,6 @@ return [
                             'readonly' => true
                         ],
                         [
-                            'name' => __('Example text VNG editorial', 'pdc-base'),
-                            'id'   => 'enrichment_sdg_example_text',
-                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below the header 'Edits' to add a custom SDG text.", 'pdc-base'),
-                            'type' => 'textarea',
-                            'readonly' => true
-                        ],
-                        [
                             'id'   => 'enrichment_links',
                             'name' => __('Links', 'pdc-base'),
                             'type' => 'key_value',
@@ -90,6 +83,13 @@ return [
                         [
                             'type' => 'heading',
                             'name' => __('Edits', 'pdc-base')
+                        ],
+                        [
+                            'name' => __('Example SDG text VNG editorial', 'pdc-base'),
+                            'id'   => 'enrichment_sdg_example_text',
+                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below to add a custom SDG text.", 'pdc-base'),
+                            'type' => 'textarea',
+                            'readonly' => true
                         ],
                         [
                             'name' => __('SDG input facility', 'pdc-base'),
