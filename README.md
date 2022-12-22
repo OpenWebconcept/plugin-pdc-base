@@ -13,8 +13,19 @@ Plugin to add the OpenwebConcept OpenPDC to your project.
 ### How do I get set up?
 
 -   Unzip and/or move all files to the /wp-content/plugins/pdc-base directory
--   Log into WordPress admin and activate the ‘PDC Base’ plugin through the ‘Plugins’ menu
+-   Log into WordPress admin and activate the ‘PDC Base’ plugin through the ‘Plugins’ menu**
 -   Go to the 'PDC instellingen pagina' in the left-hand menu to enter some of the required settings
+
+### **Error(s)?
+Where the activate 'PDCBase' plugin causes the following error
+
+ ![activateplugin-error](./assets/images/pluginactivate-error.png)
+
+ just install the missing ones via:
+ - [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
+ - [Posts 2 Posts](https://wordpress.org/plugins/posts-to-posts/)
+
+ In addition, you still have to install the extra dependencies with Composer. Depending on your setup, you do this by opening your terminal, navigating to the OpenPDC plugin folder and running `composer install` there.
 
 #### Additional Settings
 
