@@ -25,7 +25,11 @@ Where the activate 'PDCBase' plugin causes the following error
  - [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
  - [Posts 2 Posts](https://wordpress.org/plugins/posts-to-posts/)
 
- In addition, you still have to install the extra dependencies with Composer. Depending on your setup, you do this by opening your terminal, navigating to the OpenPDC plugin folder and running `composer install` there.
+ In addition, you still have to install the extra dependencies with Composer. Depending on your setup, you do this by opening your terminal, navigating to the OpenPDC plugin folder and running `sudo -u www-data composer install` there.
+
+ Reactivating the plugin works fine now.
+
+ ![pluginactivated](./assets/images/pluginactivated.png)
 
 #### Additional Settings
 
