@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.6.1] (2022-12-23)
+
+### Feat
+
+-   Include scheduled posts in preview
+
 ## Version [3.6.0] (2022-12-19)
 
 ### Feat
