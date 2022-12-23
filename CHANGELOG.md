@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.6.2] (2022-12-23)
+
+### Feat
+
+-   Extra set up documentation in case plugins are missing
+
 ## Version [3.6.1] (2022-12-23)
 
 ### Feat
