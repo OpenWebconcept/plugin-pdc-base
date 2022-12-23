@@ -144,7 +144,7 @@ class ItemController extends BaseController
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
         
         if (true === $preview) {
-            $item->query(['post_status' => ['publish', 'draft']]);
+            $item->query(['post_status' => ['publish', 'draft', 'future']]);
         }
 
         $password = esc_attr($request->get_param('password'));
