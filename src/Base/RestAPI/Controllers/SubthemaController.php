@@ -25,9 +25,13 @@ class SubthemaController extends BaseController
      */
     public function getSubthemas(WP_REST_Request $request)
     {
-        $items = (new Subthema)
+        $items = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
-            ->query(['orderby' => 'name', 'order' => 'ASC']);
+            ->query([
+                'order'         => 'ASC',
+                'orderby'       => 'name',
+                'post_status'   => $this->getPostStatus($request)
+            ]);
 
         $data  = $items->all();
         $query = $items->getQuery();
@@ -46,8 +50,9 @@ class SubthemaController extends BaseController
     {
         $id = (int) $request->get_param('id');
 
-        $thema = (new Subthema)
+        $thema = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
+            ->query(['post_status' => $this->getPostStatus($request)])
             ->find($id);
 
         if (!$thema) {
@@ -70,8 +75,9 @@ class SubthemaController extends BaseController
     {
         $slug = $request->get_param('slug');
 
-        $subtheme = (new Subthema)
+        $subtheme = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
+            ->query(['post_status' => $this->getPostStatus($request)])
             ->findBySlug($slug);
 
 
@@ -84,5 +90,19 @@ class SubthemaController extends BaseController
         }
 
         return $subtheme;
+    }
+
+    /**
+     * Return the post status to query on.
+     *
+     * @param  WP_REST_Request $request
+     *
+     * @return array
+     */
+    protected function getPostStatus(WP_REST_Request $request): array
+    {
+        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
+
+        return $preview ? ['publish', 'draft', 'future'] : ['publish'];
     }
 }
