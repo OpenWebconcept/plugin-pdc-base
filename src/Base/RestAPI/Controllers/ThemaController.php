@@ -94,18 +94,4 @@ class ThemaController extends BaseController
 
         return $theme;
     }
-
-    /**
-     * Return the post status to query on.
-     *
-     * @param  WP_REST_Request $request
-     *
-     * @return array
-     */
-    protected function getPostStatus(WP_REST_Request $request): array
-    {
-        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
-
-        return $preview ? ['publish', 'draft', 'future'] : ['publish'];
-    }
 }

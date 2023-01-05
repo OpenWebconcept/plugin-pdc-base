@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controller which handels general quering, such as pagination.
  */
@@ -72,5 +73,19 @@ abstract class BaseController
             'posts_per_page' => $request->get_param('limit') ?: $limit,
             'paged'          => $request->get_param('page') ?: 0
         ];
+    }
+
+    /**
+     * Return the post status to query on.
+     *
+     * @param  WP_REST_Request $request
+     *
+     * @return array
+     */
+    protected function getPostStatus(WP_REST_Request $request): array
+    {
+        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
+
+        return $preview ? ['publish', 'draft', 'future'] : ['publish'];
     }
 }
