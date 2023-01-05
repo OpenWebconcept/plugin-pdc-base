@@ -27,11 +27,13 @@ class ThemaController extends BaseController
     {
         $orderBy = $request->get_param('orderby') ?? 'title';
         $order   = $request->get_param('order') ?? 'ASC';
-        $items   = (new Thema)
+
+        $items   = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
             ->query([
-                'order'   => $order,
-                'orderby' => $orderBy,
+                'order'         => $order,
+                'orderby'       => $orderBy,
+                'post_status'   => $this->getPostStatus($request)
             ])
             ->hide(['items']);
 
@@ -52,8 +54,9 @@ class ThemaController extends BaseController
     {
         $id = (int) $request->get_param('id');
 
-        $thema = (new Thema)
+        $thema = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
+            ->query(['post_status' => $this->getPostStatus($request)])
             ->find($id);
 
         if (!$thema) {
@@ -76,8 +79,9 @@ class ThemaController extends BaseController
     {
         $slug = $request->get_param('slug');
 
-        $theme = (new Thema)
+        $theme = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
+            ->query(['post_status' => $this->getPostStatus($request)])
             ->findBySlug($slug);
 
         if (! $theme) {
@@ -89,5 +93,19 @@ class ThemaController extends BaseController
         }
 
         return $theme;
+    }
+
+    /**
+     * Return the post status to query on.
+     *
+     * @param  WP_REST_Request $request
+     *
+     * @return array
+     */
+    protected function getPostStatus(WP_REST_Request $request): array
+    {
+        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
+
+        return $preview ? ['publish', 'draft', 'future'] : ['publish'];
     }
 }
