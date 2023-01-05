@@ -137,15 +137,10 @@ class ItemController extends BaseController
 
     public function buildQueryFromRequest(WP_REST_Request $request): Item
     {
-        $item = (new Item)
+        $item = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
+            ->query(['post_status' => $this->getPostStatus($request)])
             ->query(self::excludeInactiveItems());
-
-        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
-        
-        if (true === $preview) {
-            $item->query(['post_status' => ['publish', 'draft', 'future']]);
-        }
 
         $password = esc_attr($request->get_param('password'));
         if (!empty($password)) {
