@@ -35,7 +35,10 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function filterPreviewLink(string $link, \WP_Post $post): string
     {
-        if ($post->post_type !== 'pdc-item' || !$this->plugin->settings->isPortalSlugValid()) {
+        if (
+            ! in_array($post->post_type, ['pdc-item', 'pdc-category', 'pdc-subcategory']) ||
+            !$this->plugin->settings->isPortalSlugValid()
+        ) {
             return $link;
         }
 
