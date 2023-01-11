@@ -37,7 +37,7 @@ class AdminServiceProvider extends ServiceProvider
     {
         if (
             ! in_array($post->post_type, ['pdc-item', 'pdc-category', 'pdc-subcategory']) ||
-            !$this->plugin->settings->isPortalSlugValid()
+            ! $this->plugin->settings->isPortalSlugValid()
         ) {
             return $link;
         }

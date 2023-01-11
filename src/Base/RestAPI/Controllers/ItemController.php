@@ -20,12 +20,8 @@ class ItemController extends BaseController
 
     /**
      * Get a list of all items.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return array
      */
-    public function getItems(WP_REST_Request $request)
+    public function getItems(WP_REST_Request $request): array
     {
         $parameters = $this->convertParameters($request->get_params());
         $items      = (new Item())
@@ -45,10 +41,6 @@ class ItemController extends BaseController
 
     /**
      * Convert the parameters to the allowed ones.
-     *
-     * @param array $parametersFromRequest
-     *
-     * @return array
      */
     protected function convertParameters(array $parametersFromRequest): array
     {
@@ -75,8 +67,6 @@ class ItemController extends BaseController
 
     /**
      * Get an individual post item.
-     *
-     * @param WP_Rest_Request $request
      *
      * @return array|WP_Error
      */
@@ -105,8 +95,6 @@ class ItemController extends BaseController
 
     /**
      * Get an individual post item by slug.
-     *
-     * @param WP_Rest_Request $request
      *
      * @return array|WP_Error
      */

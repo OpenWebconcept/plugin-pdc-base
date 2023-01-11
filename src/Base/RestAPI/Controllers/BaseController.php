@@ -17,15 +17,11 @@ abstract class BaseController
 {
     /**
      * Instance of the plugin.
-     *
-     * @var Plugin
      */
-    protected $plugin;
+    protected Plugin $plugin;
 
     /**
      * Construction, with dependency injection of the BasePlugin.
-     *
-     * @param Plugin $plugin
      *
      * @return void
      */
@@ -36,11 +32,6 @@ abstract class BaseController
 
     /**
      * Merges a paginator, based on a WP_Query, inside a data arary.
-     *
-     * @param array    $data
-     * @param WP_Query $query
-     *
-     * @return array
      */
     protected function addPaginator(array $data, WP_Query $query): array
     {
@@ -61,13 +52,8 @@ abstract class BaseController
 
     /**
      * Get the paginator query params for a given query.
-     *
-     * @param WP_REST_Request $request
-     * @param int             $limit
-     *
-     * @return array
      */
-    protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10)
+    protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10): array
     {
         return [
             'posts_per_page' => $request->get_param('limit') ?: $limit,
@@ -77,10 +63,6 @@ abstract class BaseController
 
     /**
      * Return the post status to query on.
-     *
-     * @param  WP_REST_Request $request
-     *
-     * @return array
      */
     protected function getPostStatus(WP_REST_Request $request): array
     {

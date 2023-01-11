@@ -14,7 +14,6 @@ use WP_REST_Server;
  */
 class RestAPIServiceProvider extends ServiceProvider
 {
-
     /**
      * The endpoint of the base API.
      *

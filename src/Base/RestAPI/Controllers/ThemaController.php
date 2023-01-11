@@ -15,15 +15,10 @@ use WP_REST_Request;
  */
 class ThemaController extends BaseController
 {
-
     /**
      * Get a list of all themas.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return void
      */
-    public function getThemas(WP_REST_Request $request)
+    public function getThemas(WP_REST_Request $request): array
     {
         $orderBy = $request->get_param('orderby') ?? 'title';
         $order   = $request->get_param('order') ?? 'ASC';
@@ -45,8 +40,6 @@ class ThemaController extends BaseController
 
     /**
      * Get an individual thema.
-     *
-     * @param WP_REST_Request $request
      *
      * @return array|WP_Error
      */
@@ -70,8 +63,6 @@ class ThemaController extends BaseController
 
     /**
      * Get an individual theme by slug.
-     *
-     * @param WP_Rest_Request $request
      *
      * @return array|WP_Error
      */
