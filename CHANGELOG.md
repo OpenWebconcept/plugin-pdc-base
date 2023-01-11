@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.6.3] (2023-01-11)
+
+### Feat
+
+-   Allow querying draft and future (sub)themes
+
 ## Version [3.6.2] (2022-12-23)
 
 ### Feat
