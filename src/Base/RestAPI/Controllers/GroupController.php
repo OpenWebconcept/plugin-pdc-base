@@ -15,15 +15,10 @@ use WP_REST_Request;
  */
 class GroupController extends BaseController
 {
-
     /**
      * Get a list of all subthemas.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return void
      */
-    public function getGroups(WP_REST_Request $request)
+    public function getGroups(WP_REST_Request $request): array
     {
         $items = (new Group)
             ->query(apply_filters('owc/pdc/rest-api/group/query', $this->getPaginatorParams($request)))
@@ -37,8 +32,6 @@ class GroupController extends BaseController
 
     /**
      * Get an individual subthema.
-     *
-     * @param $request $request
      *
      * @return array|WP_Error
      */

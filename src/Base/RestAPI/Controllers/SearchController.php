@@ -16,12 +16,8 @@ class SearchController extends ItemController
 {
     /**
      * Get a list of all items.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return array
      */
-    public function search(WP_REST_Request $request)
+    public function search(WP_REST_Request $request): array
     {
         $items = (new Item())
             ->hide(['connected'])
@@ -58,10 +54,8 @@ class SearchController extends ItemController
 
     /**
      * Get an individual post item.
-     *
-     * @return array
      */
-    public function arguments()
+    public function arguments(): array
     {
         $args      = [];
         $args['s'] = [

@@ -15,15 +15,10 @@ use WP_REST_Request;
  */
 class SubthemaController extends BaseController
 {
-
     /**
      * Get a list of all subthemas.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return void
      */
-    public function getSubthemas(WP_REST_Request $request)
+    public function getSubthemas(WP_REST_Request $request): array
     {
         $items = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
@@ -41,8 +36,6 @@ class SubthemaController extends BaseController
 
     /**
      * Get an individual subthema.
-     *
-     * @param $request $request
      *
      * @return array|WP_Error
      */
@@ -66,8 +59,6 @@ class SubthemaController extends BaseController
 
     /**
      * Get an individual subtheme by slug.
-     *
-     * @param WP_Rest_Request $request
      *
      * @return array|WP_Error
      */
