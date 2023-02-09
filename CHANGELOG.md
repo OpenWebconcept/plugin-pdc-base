@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.6.4] (2023-02-09)
+
+### Fix
+
+-   Restore current blog when creation of featured image went wrong (network media library)
+
 ## Version [3.6.3] (2023-01-11)
 
 ### Feat

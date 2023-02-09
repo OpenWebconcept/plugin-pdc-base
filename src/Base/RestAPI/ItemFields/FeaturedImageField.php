@@ -34,7 +34,8 @@ class FeaturedImageField extends CreatesFields
 
         $attachment = get_post($attachmentID);
 
-        if (!$attachment instanceof \WP_Post) {
+        if (! $attachment instanceof \WP_Post) {
+            restore_current_blog(); // When a switch has occurred switch back.
             return [];
         }
 
