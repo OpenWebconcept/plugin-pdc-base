@@ -155,6 +155,14 @@ class RestAPIServiceProvider extends ServiceProvider
 			'args'                => $sdgController->arguments(),
 			'permission_callback' => '__return_true',
 		]);
+
+	    $sdgKissController = new Controllers\SdgKissController($this->plugin);
+	    \register_rest_route($this->namespace, 'sdg-kiss', [
+		    'methods'             => WP_REST_Server::READABLE,
+		    'callback'            => [$sdgKissController, 'getItems'],
+		    'args'                => $sdgKissController->arguments(),
+		    'permission_callback' => '__return_true',
+	    ]);
     }
 
     /**
