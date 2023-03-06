@@ -22,7 +22,6 @@ class EnrichmentProductResolver
 
     public function resolve(): EnrichmentProduct
     {
-        // EnrichmentProduct in andere klasse en functies die ik moet omzetten daarmee overschrijven
         $data = [
             'upnLabel' => $this->getEnrichmentMeta('label'),
             'upnUri' => $this->getEnrichmentMeta('uri'),
@@ -32,7 +31,7 @@ class EnrichmentProductResolver
             'productValtOnder' => $this->getEnrichmentMeta('part_of'),
             'verantwoordelijkeOrganisatie'  => $this->getEnrichmentMeta('qualified_organization'),
             'bevoegdeOrganisatie' => $this->getEnrichmentMeta('responsible_organization', []),
-            'catalogus' => $this->getEnrichmentMeta('catalogus', ''), // Ongeldige hyperlink - Object bestaat niet.
+            'catalogus' => $this->getEnrichmentMeta('catalogus', ''),
             'locaties' => $this->getEnrichmentMeta('locations', []),
             'doelgroep' => $this->getEnrichmentMeta('audience', Doelgroep::TYPE_CITIZEN),
             'vertalingen'  => $this->getTranslations(),
@@ -128,13 +127,13 @@ class EnrichmentProductResolver
     /**
      * Function to format text strings before converting to Markdown.
      */
-    protected function formatter( string $string ) : string
+    protected function formatter(string $string) : string
     {
         // Execute shortcodes, for example for the Leges.
-        $shortcodes = do_shortcode( $string );
+        $shortcodes = do_shortcode($string);
         // Replace linebreaks with <br/> tag before Markdown parsing.
         // Don't use nl2br() because it will leave a leading space.
-        $linebreaks = str_replace( PHP_EOL, '<br/>', $shortcodes );
+        $linebreaks = str_replace(PHP_EOL, '<br/>', $shortcodes);
         return $linebreaks;
     }
 
