@@ -2,34 +2,31 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Services;
 
-use League\HTMLToMarkdown\HtmlConverter;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use OWC\PDC\Base\UPL\Enrichment\Models\Doelgroep;
 use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 use WP_Post;
 
 class KissEnrichmentProductResolver extends EnrichmentProductResolver
 {
-	public function __construct(WP_Post $post)
+    public function __construct(WP_Post $post)
     {
-		parent::__construct( $post );
+        parent::__construct($post);
     }
 
     public function resolve(): EnrichmentProduct
     {
-        // EnrichmentProduct in andere klasse en functies die ik moet omzetten daarmee overschrijven
         $data = [
             'upnLabel' => $this->getEnrichmentMeta('label'),
             'upnUri' => $this->getEnrichmentMeta('uri'),
-	        'id' => $this->getEnrichmentMeta('uuid'),
+            'id' => $this->getEnrichmentMeta('uuid'),
             'uuid' => $this->getEnrichmentMeta('uuid'),
-	        'versie' => '1',
+            'versie' => '1',
             'publicatieDatum' => date('Y-m-d'),
             'productAanwezig' => $this->isProductPresent(),
             'productValtOnder' => $this->getEnrichmentMeta('part_of'),
             'verantwoordelijkeOrganisatie'  => $this->getEnrichmentMeta('qualified_organization'),
             'bevoegdeOrganisatie' => $this->getEnrichmentMeta('responsible_organization', []),
-            'catalogus' => $this->getEnrichmentMeta('catalogus', ''), // Ongeldige hyperlink - Object bestaat niet.
+            'catalogus' => $this->getEnrichmentMeta('catalogus', ''),
             'locaties' => $this->getEnrichmentMeta('locations', []),
             'doelgroep' => $this->getEnrichmentMeta('audience', Doelgroep::TYPE_CITIZEN),
             'vertalingen'  => $this->getTranslations(),

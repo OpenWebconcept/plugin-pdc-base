@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Controller which handles the (requested) pdc-item(s).
- */
-
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
 use OWC\PDC\Base\Repositories\Item;
@@ -11,19 +7,12 @@ use OWC\PDC\Base\UPL\Enrichment\Services\EnrichmentProductResolver;
 use WP_Query;
 use WP_REST_Request;
 
-/**
- * Controller which handles the (requested) pdc-item(s).
- */
 class SdgController extends BaseController
 {
     /**
      * Get a list of all items.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return array
      */
-    public function getItems(WP_REST_Request $request)
+    public function getItems(WP_REST_Request $request): array
     {
         $parameters = $request->get_params();
         $items      = (new Item())
@@ -45,13 +34,8 @@ class SdgController extends BaseController
 
     /**
      * Add pagination and counter to the response.
-     *
-     * @param WP_Query  $query
-     * @param array     $results
-     *
-     * @return array
      */
-    public function pagination($query, $results = []) : array
+    public function pagination(WP_Query $query, array $results = []) : array
     {
         $page = $query->get('paged');
         $page = 0 == $page ? 1 : $page;
