@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version [3.7.0] (2023-03-??)
+
+-   Updates can now be provided through the Admin interface
+
 ## Version [3.6.4] (2023-02-09)
 
 ### Fix

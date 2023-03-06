@@ -2,6 +2,8 @@
 
 namespace OWC\PDC\Base\Foundation;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 class Plugin
 {
     /**
@@ -17,7 +19,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '3.6.4';
+    const VERSION = '3.7.0';
 
     /**
      * Path to the root of the plugin.
@@ -68,6 +70,8 @@ class Plugin
             return false;
         }
 
+        $this->checkForUpdate();
+
         // Set up service providers
         $this->callServiceProviders('register');
 
@@ -83,6 +87,25 @@ class Plugin
         $this->loader->register();
 
         return true;
+    }
+
+    protected function checkForUpdate()
+    {
+        if (! class_exists(PucFactory::class)) {
+            return;
+        }
+
+        try {
+            $updater = PucFactory::buildUpdateChecker(
+                'https://github.com/OpenWebconcept/plugin-openpub-base/',
+                $this->rootPath . '/openpub-base.php',
+                'openpub-base'
+            );
+
+            $updater->getVcsApi()->enableReleaseAssets();
+        } catch (\Throwable $e) {
+            error_log($e->getMessage());
+        }
     }
 
     /**

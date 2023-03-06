@@ -98,3 +98,4 @@ vendor
 !/src/vendor
 
 tests/coverage
+releases
