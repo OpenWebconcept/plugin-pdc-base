@@ -34,7 +34,6 @@ return [
             'slug'     => 'pdc-doelgroep',
         ],
     ],
-
     'pdc-type'      => [
         'object_types' => ['pdc-item'],
         'args'         => [
@@ -47,7 +46,6 @@ return [
             'slug'     => 'pdc-type',
         ],
     ],
-
     'pdc-aspect'    => [
         'object_types' => ['pdc-item'],
         'args'         => [
@@ -84,5 +82,22 @@ return [
             'plural'   => __('Owners', 'pdc-base'),
             'slug'     => 'pdc-owner',
         ],
+    ],
+	'pdc-show-on' => [
+        'object_types' => ['pdc-item', 'pdc-category', 'pdc-subcategory'],
+        'args'         => [
+            'show_in_rest'      => false,
+            'show_admin_column' => true,
+            'capabilities'      => [
+                'manage_terms' => 'manage_categories',
+                'edit_terms'   => 'manage_categories',
+                'delete_terms' => 'manage_categories',
+                'assign_terms' => 'manage_categories'
+            ]
+        ],
+        'names'        => [
+            'singular' => __('Show on', 'pdc-base'),
+            'plural'   => __('Show on', 'pdc-base')
+        ]
     ],
 ];

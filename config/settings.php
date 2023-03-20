@@ -64,6 +64,12 @@ return [
                     'id'   => 'setting_use_escape_element',
                     'type' => 'checkbox',
                 ],
+				'pdc_enable_show_on' => [
+                    'name' => __('Show on', 'pdc-base'),
+                    'desc' => __('Used for configuring on which websites an OpenPDC item should be displayed on.', 'pdc-base'),
+                    'id'   => 'setting_pdc_enable_show_on',
+                    'type' => 'checkbox'
+                ],
                 'upl_heading' => [
                     'type' => 'heading',
                     'name' => __('The Uniform Product list of names (upl)', 'pdc-base'),

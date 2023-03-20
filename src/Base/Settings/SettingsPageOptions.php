@@ -85,6 +85,11 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_use_escape_element'] ?? false;
     }
 
+	public function useShowOn(): bool
+    {
+        return $this->settings['_owc_setting_pdc_enable_show_on'] ?? false;
+    }
+
     /**
      * URL used for retrieving UPL terms.
      */
@@ -105,6 +110,7 @@ class SettingsPageOptions
             '_owc_setting_use_portal_url'                   => 0,
             '_owc_setting_identifications'                  => 0,
             '_owc_setting_use_escape_element'               => 0,
+			'_owc_setting_pdc_enable_show_on'           	=> 0,
             '_owc_upl_terms_url'                            => ''
         ];
 

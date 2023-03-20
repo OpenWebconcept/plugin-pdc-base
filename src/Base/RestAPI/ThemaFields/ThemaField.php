@@ -23,6 +23,6 @@ class ThemaField extends ConnectedField
      */
     public function create(WP_Post $post): array
     {
-        return $this->getConnectedItems($post->ID, 'pdc-category_to_pdc-subcategory');
+        return $this->getConnectedItems($post->ID, 'pdc-category_to_pdc-subcategory', $this->extraQueryArgs('pdc-category_to_pdc-subcategory'));
     }
 }

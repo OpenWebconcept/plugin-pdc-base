@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
-use OWC\PDC\Base\RestAPI\Controllers\ItemController;
-use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use WP_Post;
+use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
+use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Adds connected fields to item in API.
@@ -38,7 +38,13 @@ class ItemsField extends ConnectedField
             $query = array_merge_recursive($query, ItemController::excludeInternalItems());
         }
 
-        $query['connected_query'] = ['post_status' => ['publish', 'draft']];
+		if ($this->shouldFilterSource()) {
+			$query = array_merge_recursive($query, ItemController::filterSource($this->source));
+		}
+
+        $query['connected_query'] = [
+			'post_status' => ['publish', 'draft'],
+		];
 
         return $query;
     }

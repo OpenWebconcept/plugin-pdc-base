@@ -29,6 +29,10 @@ class ItemController extends BaseController
             ->query($parameters)
             ->query(self::excludeInactiveItems());
 
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$items->filterSource($request->get_param('source'));
+		};
+
         if (false === $parameters['include-connected']) {
             $items->hide(['connected']);
         }
@@ -74,6 +78,11 @@ class ItemController extends BaseController
     {
         $id            = (int) $request->get_param('id');
         $item          = $this->buildQueryFromRequest($request);
+
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$item->filterSource($request->get_param('source'));
+		};
+
         $item          = $item->find($id);
 
         if (! $item) {
@@ -102,6 +111,11 @@ class ItemController extends BaseController
     {
         $slug = $request->get_param('slug');
         $item = $this->buildQueryFromRequest($request);
+
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$item->filterSource($request->get_param('source'));
+		};
+
         $item = $item->findBySlug($slug);
 
         if (! $item) {
@@ -164,17 +178,33 @@ class ItemController extends BaseController
     {
         return [
             'tax_query' => [
-                'relation' => 'OR',
+				[
+					'relation' => 'OR',
+					[
+						'taxonomy'     => 'pdc-type',
+						'field'        => 'slug',
+						'terms'        => 'external',
+					],
+					[
+						'taxonomy'        => 'pdc-type',
+						'field'           => 'id',
+						'operator'        => 'NOT EXISTS',
+					],
+				]
+            ]
+        ];
+    }
+
+    public static function filterSource(int $id): array
+    {
+        return [
+            'tax_query' => [
                 [
-                    'taxonomy'     => 'pdc-type',
-                    'field'        => 'slug',
-                    'terms'        => 'external',
-                ],
-                [
-                    'taxonomy'        => 'pdc-type',
-                    'field'           => 'id',
-                    'operator'        => 'NOT EXISTS',
-                ],
+                    'taxonomy' => 'pdc-show-on',
+                    'terms'    => sanitize_text_field($id),
+                    'field'    => 'slug',
+                    'operator' => 'IN'
+                ]
             ]
         ];
     }

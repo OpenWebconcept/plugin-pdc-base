@@ -25,6 +25,11 @@ class ConnectedField extends CreatesFields
      */
     protected $sorting = [];
 
+	/**
+	 * Source for filtering the 'show_on' taxonomy
+	 */
+	protected int $source = 0;
+
     /**
      * Creates an array of connected posts.
      *
@@ -164,8 +169,24 @@ class ConnectedField extends CreatesFields
             }
         }
 
+		if ($this->shouldFilterSource()) {
+			$query = array_merge_recursive($query, ItemController::filterSource($this->source));
+		}
+
         $query['connected_query'] = ['post_status' => ['publish', 'draft']];
 
         return $query;
     }
+
+	public function filterSource(int $source): self
+	{
+		$this->source = $source;
+
+		return $this;
+	}
+
+	protected function shouldFilterSource(): bool
+	{
+		return 0 !== $this->source ;
+	}
 }
