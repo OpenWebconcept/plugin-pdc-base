@@ -7,10 +7,11 @@
 namespace OWC\PDC\Base\Repositories;
 
 use Closure;
-use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 use WP_Query;
+use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\RestAPI\Controllers\ItemController;
+use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
 
 /**
  * PDC item object with default quering and methods.
@@ -58,6 +59,12 @@ abstract class AbstractRepository
      * @var string
      */
     protected $password = '';
+
+
+	/**
+	 * Source for filtering the 'show_on' taxonomy
+	 */
+	protected int $source = 0;
 
     /**
      * Additional fields that needs to be added to an item.
@@ -330,6 +337,12 @@ abstract class AbstractRepository
                 continue;
             }
 
+			if ($this->shouldFilterSource()) {
+				if (method_exists($field['creator'], 'filterSource')) {
+					$field['creator']->filterSource($this->source);
+				}
+			}
+
             if (is_null($field['conditional'])) {
                 // If the field has no conditional set we will add it
                 $data[$field['key']] = $field['creator']->create($post);
@@ -360,4 +373,18 @@ abstract class AbstractRepository
     {
         return $this->password;
     }
+
+	public function filterSource(int $source): self
+	{
+		$this->source = $source;
+
+		$this->query(ItemController::filterSource($source));
+
+		return $this;
+	}
+
+	public function shouldFilterSource(): bool
+	{
+		return 0 !== $this->source;
+	}
 }

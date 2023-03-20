@@ -32,6 +32,10 @@ class ThemaController extends BaseController
             ])
             ->hide(['items']);
 
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$items->filterSource($request->get_param('source'));
+		}
+
         $data  = $items->all();
         $query = $items->getQuery();
 
@@ -49,8 +53,13 @@ class ThemaController extends BaseController
 
         $thema = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
-            ->query(['post_status' => $this->getPostStatus($request)])
-            ->find($id);
+            ->query(['post_status' => $this->getPostStatus($request)]);
+
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$thema->filterSource($request->get_param('source'));
+		}
+
+		$thema = $thema->find($id);
 
         if (!$thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID [%d] not found', $id), [
@@ -72,8 +81,13 @@ class ThemaController extends BaseController
 
         $theme = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
-            ->query(['post_status' => $this->getPostStatus($request)])
-            ->findBySlug($slug);
+            ->query(['post_status' => $this->getPostStatus($request)]);
+
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$theme->filterSource($request->get_param('source'));
+		}
+
+        $theme = $theme->findBySlug($slug);
 
         if (! $theme) {
             return new WP_Error(

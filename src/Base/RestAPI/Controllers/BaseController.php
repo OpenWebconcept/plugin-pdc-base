@@ -70,4 +70,20 @@ abstract class BaseController
 
         return $preview ? ['publish', 'draft', 'future'] : ['publish'];
     }
+
+	/**
+	 * Check if the source parameter is valid.
+	 */
+	protected function showOnParamIsValid(\WP_REST_Request $request): bool
+    {
+        if (empty($request->get_param('source'))) {
+            return false;
+        }
+
+        if (!is_numeric($request->get_param('source'))) {
+            return false;
+        }
+
+        return true;
+    }
 }

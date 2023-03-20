@@ -34,6 +34,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
         }
 
+		if ($this->plugin->settings->useShowOn()) {
+			$configMetaboxes = $this->getShowOnMetabox($configMetaboxes);
+		}
+
         $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
@@ -51,5 +55,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $configMetaboxes['base']['fields']['government']['upl_name']['options'] = (new UPLNameHandler($this->getOptionsUPL()))->getOptions();
 
         return $configMetaboxes;
+    }
+
+	protected function getShowOnMetabox(array $configMetaboxes): array
+    {
+        return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
     }
 }
