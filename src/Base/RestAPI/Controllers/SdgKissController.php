@@ -34,13 +34,8 @@ class SdgKissController extends SdgController
 
     /**
      * Add pagination and counter to the response.
-     *
-     * @param WP_Query  $query
-     * @param array     $results
-     *
-     * @return array
      */
-    public function pagination($query, $results = []) : array
+    public function pagination(WP_Query $query, array $results = []) : array
     {
         $page = $query->get('paged');
         $page = 0 == $page ? 1 : $page;
