@@ -1,17 +1,17 @@
-# Copyright (C) 2022 Yard | Digital Agency
-# This file is distributed under the GPL-3.0.
+# Copyright (C) 2023 Yard | Digital Agency
+# This file is distributed under the same license as the Yard | PDC Base plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Yard | PDC Base 3.4.4\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdc-base\n"
+"Project-Id-Version: Yard | PDC Base 3.6.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plugin-pdc-base\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-05T13:15:04+00:00\n"
+"POT-Creation-Date: 2023-03-22T14:03:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: pdc-base\n"
 
 #. Plugin Name of the plugin
@@ -499,12 +499,12 @@ msgid "Author"
 msgstr ""
 
 #: config/posttypes.php:48
-#: config/taxonomies.php:58
+#: config/taxonomies.php:56
 msgid "Aspect"
 msgstr ""
 
 #: config/posttypes.php:63
-#: config/taxonomies.php:45
+#: config/taxonomies.php:44
 msgid "Type"
 msgstr ""
 
@@ -745,7 +745,7 @@ msgid "ID in \"View in portal\" slug"
 msgstr ""
 
 #: config/settings.php:38
-msgid "Include iD, of PDC item, in \"View in portal\" slug?"
+msgid "Include ID, of PDC item, in \"View in portal\" slug?"
 msgstr ""
 
 #: config/settings.php:44
@@ -776,15 +776,26 @@ msgstr ""
 msgid "Enable escape element."
 msgstr ""
 
+#: config/settings.php:68
+#: config/show_on_metabox.php:14
+#: config/taxonomies.php:99
+#: config/taxonomies.php:100
+msgid "Show on"
+msgstr ""
+
 #: config/settings.php:69
+msgid "Used for configuring on which websites an OpenPDC item should be displayed on."
+msgstr ""
+
+#: config/settings.php:75
 msgid "The Uniform Product list of names (upl)"
 msgstr ""
 
-#: config/settings.php:72
+#: config/settings.php:78
 msgid "URL"
 msgstr ""
 
-#: config/settings.php:73
+#: config/settings.php:79
 msgid "URL used for retrieving UPL terms."
 msgstr ""
 
@@ -805,6 +816,14 @@ msgstr ""
 #: config/settings_pages.php:15
 msgctxt "PDC settings tab"
 msgid "General"
+msgstr ""
+
+#: config/show_on_metabox.php:6
+msgid "External"
+msgstr ""
+
+#: config/show_on_metabox.php:15
+msgid "Select websites where this item should be displayed on."
 msgstr ""
 
 #: config/taxonomies.php:12
@@ -870,27 +889,27 @@ msgstr ""
 msgid "Audiences"
 msgstr ""
 
-#: config/taxonomies.php:46
+#: config/taxonomies.php:45
 msgid "Types"
 msgstr ""
 
-#: config/taxonomies.php:59
+#: config/taxonomies.php:57
 msgid "Aspects"
 msgstr ""
 
-#: config/taxonomies.php:70
+#: config/taxonomies.php:68
 msgid "Usage"
 msgstr ""
 
-#: config/taxonomies.php:71
+#: config/taxonomies.php:69
 msgid "Usages"
 msgstr ""
 
-#: config/taxonomies.php:83
+#: config/taxonomies.php:81
 msgid "Owner"
 msgstr ""
 
-#: config/taxonomies.php:84
+#: config/taxonomies.php:82
 msgid "Owners"
 msgstr ""
 
@@ -910,20 +929,43 @@ msgstr ""
 msgid "Minimal version:"
 msgstr ""
 
-#: src/Base/RestAPI/Controllers/SearchController.php:68
+#: src/Base/RestAPI/Controllers/SearchController.php:62
 msgid "The search term."
 msgstr ""
 
-#: src/Base/RestAPI/Controllers/SearchController.php:73
+#: src/Base/RestAPI/Controllers/SearchController.php:67
 msgid "The limit."
 msgstr ""
 
-#: src/Base/RestAPI/Controllers/SearchController.php:79
+#: src/Base/RestAPI/Controllers/SearchController.php:73
 msgid "Pagination"
 msgstr ""
 
-#: src/Base/RestAPI/ItemFields/ConnectedField.php:58
+#. translators: %s is replaced with a connection type
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:91
 msgid "Connection type \"%s\" does not exist"
+msgstr ""
+
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:124
+msgid "Unable to apply connected sort"
+msgstr ""
+
+#. translators: %s is replaced with a sorting direction
+#: src/Base/RestAPI/ItemFields/InvalidSortingArgumentError.php:13
+msgid "Invalid sorting direction '%s'"
+msgstr ""
+
+#. translators: %s is replaced with a sorting type
+#: src/Base/RestAPI/ItemFields/InvalidSortingArgumentError.php:22
+msgid "Invalid sorting type '%s'"
+msgstr ""
+
+#: src/Base/Taxonomy/TaxonomyController.php:21
+msgid "Additional explanation"
+msgstr ""
+
+#: src/Base/Taxonomy/TaxonomyController.php:22
+msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct OpenPDC Items on every blog."
 msgstr ""
 
 #: src/Base/UPL/UPLServiceProvider.php:20
