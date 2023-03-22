@@ -87,6 +87,7 @@ class ConnectedField extends CreatesFields
 
         if (! $connection) {
             return [
+				/* translators: %s is replaced with a connection type */
                 'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type),
             ];
         }
