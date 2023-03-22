@@ -6,10 +6,11 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Repositories\Item;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use WP_Error;
 use WP_REST_Request;
+use OWC\PDC\Base\Repositories\Item;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -17,6 +18,7 @@ use WP_REST_Request;
 class ItemController extends BaseController
 {
     use CheckPluginActive;
+	use QueryHelpers;
 
     /**
      * Get a list of all items.
@@ -27,7 +29,7 @@ class ItemController extends BaseController
         $items      = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
-            ->query(self::excludeInactiveItems());
+            ->query($this->excludeInactiveItemsQuery());
 
 		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
 			$items->filterSource($request->get_param('source'));
@@ -142,7 +144,7 @@ class ItemController extends BaseController
         $item = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)])
-            ->query(self::excludeInactiveItems());
+            ->query($this->excludeInactiveItemsQuery());
 
         $password = esc_attr($request->get_param('password'));
         if (!empty($password)) {
@@ -159,54 +161,6 @@ class ItemController extends BaseController
         }
 
         return $item;
-    }
-
-    public static function excludeInactiveItems(): array
-    {
-        return [
-            'meta_query' => [
-                [
-                    'key'     => '_owc_pdc_active',
-                    'value'   => '1',
-                    'compare' => '=',
-                ],
-            ]
-        ];
-    }
-
-    public static function excludeInternalItems(): array
-    {
-        return [
-            'tax_query' => [
-				[
-					'relation' => 'OR',
-					[
-						'taxonomy'     => 'pdc-type',
-						'field'        => 'slug',
-						'terms'        => 'external',
-					],
-					[
-						'taxonomy'        => 'pdc-type',
-						'field'           => 'id',
-						'operator'        => 'NOT EXISTS',
-					],
-				]
-            ]
-        ];
-    }
-
-    public static function filterSource(int $id): array
-    {
-        return [
-            'tax_query' => [
-                [
-                    'taxonomy' => 'pdc-show-on',
-                    'terms'    => sanitize_text_field($id),
-                    'field'    => 'slug',
-                    'operator' => 'IN'
-                ]
-            ]
-        ];
     }
 
     private function needsAuthorization(array $item): bool

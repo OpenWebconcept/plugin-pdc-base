@@ -9,6 +9,7 @@ namespace OWC\PDC\Base\RestAPI\ItemFields;
 use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Post;
 
 /**
@@ -17,6 +18,7 @@ use WP_Post;
 class ConnectedField extends CreatesFields
 {
     use CheckPluginActive;
+	use QueryHelpers;
 
     /**
      * Sorting config for the connected fields
@@ -159,19 +161,19 @@ class ConnectedField extends CreatesFields
         $connectionsExcludeInActive = $this->plugin->config->get('p2p_connections.connections_exclude_inactive');
 
         if (in_array($type, $connectionsExcludeInActive)) {
-            $query = array_merge_recursive($query, ItemController::excludeInactiveItems());
+            $query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
         }
 
         if ($this->isPluginPDCInternalProductsActive()) {
             $connectionsExcludeInternal = $this->plugin->config->get('p2p_connections.connections_exclude_internal');
 
             if (in_array($type, $connectionsExcludeInternal)) {
-                $query = array_merge_recursive($query, ItemController::excludeInternalItems());
+                $query = array_merge_recursive($query, $this->excludeInternalItemsQuery());
             }
         }
 
 		if ($this->shouldFilterSource()) {
-			$query = array_merge_recursive($query, ItemController::filterSource($this->source));
+			$query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
 		}
 
         $query['connected_query'] = ['post_status' => ['publish', 'draft']];
@@ -179,7 +181,7 @@ class ConnectedField extends CreatesFields
         return $query;
     }
 
-	public function filterSource(int $source): self
+	public function setSource(int $source): self
 	{
 		$this->source = $source;
 
