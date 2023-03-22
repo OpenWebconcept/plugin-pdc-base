@@ -81,10 +81,6 @@ class ItemController extends BaseController
         $id            = (int) $request->get_param('id');
         $item          = $this->buildQueryFromRequest($request);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$item->filterSource($request->get_param('source'));
-		};
-
         $item          = $item->find($id);
 
         if (! $item) {
@@ -113,10 +109,6 @@ class ItemController extends BaseController
     {
         $slug = $request->get_param('slug');
         $item = $this->buildQueryFromRequest($request);
-
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$item->filterSource($request->get_param('source'));
-		};
 
         $item = $item->findBySlug($slug);
 
@@ -150,6 +142,10 @@ class ItemController extends BaseController
         if (!empty($password)) {
             $item->setPassword($password);
         }
+
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$item->filterSource($request->get_param('source'));
+		};
 
         $connectedField = $item->getGlobalField('connected');
         if ($request->get_param('connected_sort') && ! empty($connectedField)) {
