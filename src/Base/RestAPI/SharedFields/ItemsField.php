@@ -7,9 +7,10 @@
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
 use WP_Post;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 use OWC\PDC\Base\RestAPI\Controllers\ItemController;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Adds connected fields to item in API.
@@ -17,6 +18,7 @@ use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 class ItemsField extends ConnectedField
 {
     use CheckPluginActive;
+	use QueryHelpers;
 
     /**
      * Creates an array of connected posts.
@@ -32,14 +34,14 @@ class ItemsField extends ConnectedField
     {
         $query = [];
 
-        $query = array_merge_recursive($query, ItemController::excludeInactiveItems());
+        $query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
 
         if ($this->isPluginPDCInternalProductsActive()) {
-            $query = array_merge_recursive($query, ItemController::excludeInternalItems());
+            $query = array_merge_recursive($query, $this->excludeInternalItemsQuery());
         }
 
 		if ($this->shouldFilterSource()) {
-			$query = array_merge_recursive($query, ItemController::filterSource($this->source));
+			$query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
 		}
 
         $query['connected_query'] = [

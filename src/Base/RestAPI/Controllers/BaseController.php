@@ -64,7 +64,7 @@ abstract class BaseController
     /**
      * Return the post status to query on.
      */
-    protected function getPostStatus(WP_REST_Request $request): array
+    protected function getPostStatus(\WP_REST_Request $request): array
     {
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 

@@ -10,14 +10,16 @@ use Closure;
 use WP_Post;
 use WP_Query;
 use OWC\PDC\Base\Support\CreatesFields;
-use OWC\PDC\Base\RestAPI\Controllers\ItemController;
 use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
 
 /**
  * PDC item object with default quering and methods.
  */
 abstract class AbstractRepository
 {
+	use QueryHelpers;
+
     /**
      * Posttype definition
      *
@@ -338,8 +340,8 @@ abstract class AbstractRepository
             }
 
 			if ($this->shouldFilterSource()) {
-				if (method_exists($field['creator'], 'filterSource')) {
-					$field['creator']->filterSource($this->source);
+				if (method_exists($field['creator'], 'setSource')) {
+					$field['creator']->setSource($this->source);
 				}
 			}
 
@@ -378,7 +380,7 @@ abstract class AbstractRepository
 	{
 		$this->source = $source;
 
-		$this->query(ItemController::filterSource($source));
+		$this->query($this->filterShowOnTaxonomyQuery($source));
 
 		return $this;
 	}
