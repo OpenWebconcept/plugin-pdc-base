@@ -97,9 +97,9 @@ class Plugin
 
         try {
             $updater = PucFactory::buildUpdateChecker(
-                'https://github.com/OpenWebconcept/plugin-openpub-base/',
-                $this->rootPath . '/openpub-base.php',
-                'openpub-base'
+                'https://github.com/OpenWebconcept/plugin-pdc-base/',
+                $this->rootPath . '/pdc-base.php',
+                'pdc-base'
             );
 
             $updater->getVcsApi()->enableReleaseAssets();
