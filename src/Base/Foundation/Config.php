@@ -66,7 +66,7 @@ class Config
      *
      * @return array|mixed
      */
-    public function get($setting)
+    public function get($setting, $default = null)
     {
         if (! $setting) {
             return $this->all();
@@ -77,7 +77,7 @@ class Config
         $current = $this->items;
 
         foreach ($parts as $part) {
-            $current = $current[$part];
+            $current = $current[$part] ?? $default;
         }
 
         return $current;

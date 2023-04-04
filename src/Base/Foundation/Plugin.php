@@ -95,9 +95,9 @@ class Plugin
             return;
         }
 
-        $repoUrl = @$this->config->get('core.updater.url');
-        $file = @$this->config->get('core.updater.file');
-        $slug = @$this->config->get('core.updater.url');
+        $repoUrl = $this->config->get('core.updater.url');
+        $file = $this->config->get('core.updater.file');
+        $slug = $this->config->get('core.updater.url');
 
         if (! $repoUrl || ! $slug) {
             return;
