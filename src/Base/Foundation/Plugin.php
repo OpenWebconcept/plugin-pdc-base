@@ -95,11 +95,19 @@ class Plugin
             return;
         }
 
+        $repoUrl = @$this->config->get('core.updater.url');
+        $file = @$this->config->get('core.updater.file');
+        $slug = @$this->config->get('core.updater.url');
+
+        if (! $repoUrl || ! $slug) {
+            return;
+        }
+
         try {
             $updater = PucFactory::buildUpdateChecker(
-                'https://github.com/OpenWebconcept/plugin-pdc-base/',
-                $this->rootPath . '/pdc-base.php',
-                'pdc-base'
+                $repoUrl,
+                $this->rootPath . '/' . $file,
+                $slug
             );
 
             $updater->getVcsApi()->enableReleaseAssets();

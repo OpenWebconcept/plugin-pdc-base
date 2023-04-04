@@ -53,6 +53,11 @@ return [
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
             'name'  => 'Extended_CPT'
         ],
-    ]
+    ],
 
+    'updater'   => [
+        'url'       => 'https://github.com/OpenWebconcept/plugin-pdc-base/',
+        'file'      => 'pdc-base.php',
+        'slug'      => 'pdc-base'
+    ],
 ];
