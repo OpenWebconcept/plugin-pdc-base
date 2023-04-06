@@ -19,7 +19,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '3.7.0';
+    const VERSION = '3.7.1';
 
     /**
      * Path to the root of the plugin.
@@ -91,7 +91,7 @@ class Plugin
 
     protected function checkForUpdate()
     {
-        if (! class_exists(PucFactory::class)) {
+        if (! class_exists(PucFactory::class) || $this->isExtendedClass()) {
             return;
         }
 
@@ -99,13 +99,25 @@ class Plugin
             $updater = PucFactory::buildUpdateChecker(
                 'https://github.com/OpenWebconcept/plugin-pdc-base/',
                 $this->rootPath . '/pdc-base.php',
-                'pdc-base'
+                self::NAME
             );
 
             $updater->getVcsApi()->enableReleaseAssets();
         } catch (\Throwable $e) {
             error_log($e->getMessage());
         }
+    }
+
+    /**
+     * Check if current class extends parent class.
+     * Extended classes must have their own checkForUpdate method.
+     *
+     * self::const always refers to the parent class.
+     * static::const refers to the child class.
+     */
+    protected function isExtendedClass(): bool
+    {
+        return self::NAME !== static::NAME;
     }
 
     /**

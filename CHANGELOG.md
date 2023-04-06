@@ -1,8 +1,16 @@
 # CHANGELOG
 
-## Version [3.7.0] (2023-03-??)
+## Version [3.7.1] (2023-04-06)
 
--   Updates can now be provided through the Admin interface
+### Refactor
+
+-   checkForUpdate must only be executed when current class is not a child.
+
+## Version [3.7.0] (2023-03-06)
+
+### Feat
+
+-   Updates can now be provided through the Admin interface.
 
 ## Version [3.6.4] (2023-02-09)
 
@@ -75,7 +83,6 @@
 ### Refactor
 
 -   Identifications model methods.
-
 
 ## Version 3.4.5 (2022-05-06)
 
