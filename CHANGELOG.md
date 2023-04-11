@@ -1,5 +1,12 @@
 # CHANGELOG
 
+
+## Version [3.7.2] (2023-04-11)
+
+### Feat
+
+-   Filtering sources allows "Show On" feature
+
 ## Version [3.7.1] (2023-04-06)
 
 ### Refactor
