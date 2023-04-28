@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version [3.7.3] (2023-04-28)
+
+### Feat
+
+-   Use 'rest_after_insert_pdc-item' filter in addition to existing 'updated_post_meta' filter.
 
 ## Version [3.7.2] (2023-04-11)
 

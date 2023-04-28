@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Metabox;
 
-use OWC\PDC\Base\Support\Traits\RequestUPL;
 use OWC\PDC\Base\Metabox\Handlers\UPLNameHandler;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Support\Traits\RequestUPL;
 
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
@@ -12,13 +12,13 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 
     /**
      * Register the hooks.
-     *
-     * @return void
      */
     public function register()
     {
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
-        $this->plugin->loader->addAction('updated_post_meta', new UPLResourceHandler(), 'handleUpdatedMeta', 10, 4);
+        $this->plugin->loader->addAction('updated_post_meta', new UPLResourceHandler(), 'handleUpdatedMetaClassicEditor', 10, 4);
+        $this->plugin->loader->addAction('rest_after_insert_pdc-item', new UPLResourceHandler(), 'handleUpdatedMetaGutenbergEditor', 10, 3);
+
     }
 
     public function registerMetaboxes(array $rwmbMetaboxes): array
@@ -34,9 +34,9 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
         }
 
-		if ($this->plugin->settings->useShowOn()) {
-			$configMetaboxes = $this->getShowOnMetabox($configMetaboxes);
-		}
+        if ($this->plugin->settings->useShowOn()) {
+            $configMetaboxes = $this->getShowOnMetabox($configMetaboxes);
+        }
 
         $metaboxes = [];
 
@@ -57,7 +57,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         return $configMetaboxes;
     }
 
-	protected function getShowOnMetabox(array $configMetaboxes): array
+    protected function getShowOnMetabox(array $configMetaboxes): array
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
     }
