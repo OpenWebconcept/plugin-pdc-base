@@ -19,7 +19,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '3.7.3';
+    const VERSION = '3.7.4';
 
     /**
      * Path to the root of the plugin.

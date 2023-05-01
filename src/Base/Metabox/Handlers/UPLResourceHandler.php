@@ -11,7 +11,9 @@ class UPLResourceHandler
     use RequestUPL;
 
     /**
-     * Update resourceURL meta based on uplName meta.
+     * Handle updating the resourceURL meta based on uplName meta.
+     *
+     * @see https://developer.wordpress.org/reference/hooks/updated_meta_type_meta/ updated_post_meta
      */
     public function handleUpdatedMetaClassicEditor(int $metaId, int $postID, string $metaKey, $metaValue): void
     {
@@ -19,6 +21,29 @@ class UPLResourceHandler
             return;
         }
 
+        $this->handleUPL($postID);
+    }
+
+    /**
+     * Handle updating the resourceURL meta based on uplName meta.
+     *
+     * @see https://developer.wordpress.org/reference/hooks/rest_after_insert_this-post_type/ rest_after_insert_pdc-item
+     */
+    public function handleUpdatedMetaGutenbergEditor(WP_Post $post, WP_REST_Request $request, bool $creating): void
+    {
+        if (! $this->objectIsPDC($post->ID)) {
+            return;
+        }
+
+        $this->handleUPL($post->ID);
+    }
+
+    /**
+     * Update the resourceURL meta based on uplName meta.
+     * Only update the resourceURL when it differs from the current value.
+     */
+    protected function handleUPL(int $postID): void
+    {
         $uplName = \get_post_meta($postID, '_owc_pdc_upl_naam', true);
 
         if (empty($uplName)) {
@@ -39,34 +64,6 @@ class UPLResourceHandler
         }
 
         \update_post_meta($postID, '_owc_pdc_upl_resource', $resourceURL);
-    }
-
-    public function handleUpdatedMetaGutenbergEditor(WP_Post $post, WP_REST_Request $request, bool $creating): void
-    {
-        if (! $this->objectIsPDC($post->ID)) {
-            return;
-        }
-
-        $uplName = \get_post_meta($post->ID, '_owc_pdc_upl_naam', true);
-
-        if (empty($uplName)) {
-            return;
-        }
-
-        $options = $this->getOptionsUPL();
-        $resourceURL = $this->getResourceURL($options, $uplName);
-
-        if (empty($resourceURL)) {
-            return;
-        }
-
-        $oldResourceURL = \get_post_meta($post->ID, '_owc_pdc_upl_resource', true);
-
-        if ($oldResourceURL === $resourceURL) {
-            return;
-        }
-        
-        \update_post_meta($post->ID, '_owc_pdc_upl_resource', $resourceURL);
     }
 
     /**

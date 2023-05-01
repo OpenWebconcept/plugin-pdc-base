@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.4] (2023-05-01)
+
+### Refactor
+
+-   Remove duplicated code inside UPLResourceHandler.
+
 ## Version [3.7.3] (2023-04-28)
 
 ### Feat
