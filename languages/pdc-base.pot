@@ -52,6 +52,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:81
 #: config/identifications_metaboxes.php:133
 #: config/identifications_metaboxes.php:185
+#: config/identifications_metaboxes.php:237
 msgid "Yes"
 msgstr ""
 
@@ -60,6 +61,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:82
 #: config/identifications_metaboxes.php:134
 #: config/identifications_metaboxes.php:186
+#: config/identifications_metaboxes.php:238
 msgid "No"
 msgstr ""
 
@@ -71,6 +73,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:69
 #: config/identifications_metaboxes.php:121
 #: config/identifications_metaboxes.php:173
+#: config/identifications_metaboxes.php:225
 msgid "Add new group"
 msgstr ""
 
@@ -82,6 +85,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:76
 #: config/identifications_metaboxes.php:128
 #: config/identifications_metaboxes.php:180
+#: config/identifications_metaboxes.php:232
 #: config/metaboxes.php:30
 #: config/metaboxes.php:47
 msgid "Active"
@@ -99,6 +103,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:90
 #: config/identifications_metaboxes.php:142
 #: config/identifications_metaboxes.php:194
+#: config/identifications_metaboxes.php:246
 msgid "Request"
 msgstr ""
 
@@ -121,6 +126,7 @@ msgstr ""
 #: config/identifications_metaboxes.php:111
 #: config/identifications_metaboxes.php:163
 #: config/identifications_metaboxes.php:215
+#: config/identifications_metaboxes.php:267
 msgid "Order in which the identification buttons will be displayed in."
 msgstr ""
 
@@ -182,6 +188,30 @@ msgstr ""
 
 #: config/identifications_metaboxes.php:202
 msgid "General_identification descriptive text"
+msgstr ""
+
+#: config/identifications_metaboxes.php:229
+msgid "DigiD & eHerkenning"
+msgstr ""
+
+#: config/identifications_metaboxes.php:233
+msgid "Use DigiD and eHerkenning for identification."
+msgstr ""
+
+#: config/identifications_metaboxes.php:243
+msgid "DigiD and eHerkenning button title"
+msgstr ""
+
+#: config/identifications_metaboxes.php:249
+msgid "DigiD and eHerkenning button URL"
+msgstr ""
+
+#: config/identifications_metaboxes.php:254
+msgid "DigiD and eHerkenning descriptive text"
+msgstr ""
+
+#: config/identifications_metaboxes.php:260
+msgid "Log in with DigiD or eHerkenning"
 msgstr ""
 
 #: config/metaboxes.php:6
@@ -765,14 +795,22 @@ msgid "DigiD, eHerkenning and eIDAS."
 msgstr ""
 
 #: config/settings.php:56
-msgid "Portal url"
+msgid "Use combined identification"
 msgstr ""
 
 #: config/settings.php:57
-msgid "Use portal url in api."
+msgid "DigiD and eHerkenning combined."
+msgstr ""
+
+#: config/settings.php:62
+msgid "Portal url"
 msgstr ""
 
 #: config/settings.php:63
+msgid "Use portal url in api."
+msgstr ""
+
+#: config/settings.php:68
 msgid "Enable escape element."
 msgstr ""
 
@@ -783,19 +821,19 @@ msgstr ""
 msgid "Show on"
 msgstr ""
 
-#: config/settings.php:69
+#: config/settings.php:75
 msgid "Used for configuring on which websites an OpenPDC item should be displayed on."
 msgstr ""
 
-#: config/settings.php:75
+#: config/settings.php:81
 msgid "The Uniform Product list of names (upl)"
 msgstr ""
 
-#: config/settings.php:78
+#: config/settings.php:84
 msgid "URL"
 msgstr ""
 
-#: config/settings.php:79
+#: config/settings.php:85
 msgid "URL used for retrieving UPL terms."
 msgstr ""
 

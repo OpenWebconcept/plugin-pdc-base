@@ -52,6 +52,12 @@ return [
                     'id'   => 'setting_identifications',
                     'type' => 'checkbox',
                 ],
+                'pdc_use_combined_identification' => [
+                    'name' => __('Use combined identification', 'pdc-base'),
+                    'desc' => __('DigiD and eHerkenning combined.', 'pdc-base'),
+                    'id'   => 'setting_combined_identification',
+                    'type' => 'checkbox',
+                ],
                 'pdc_use_portal_url' => [
                     'name' => __('Portal url', 'pdc-base'),
                     'desc' => __('Use portal url in api.', 'pdc-base'),
@@ -64,7 +70,7 @@ return [
                     'id'   => 'setting_use_escape_element',
                     'type' => 'checkbox',
                 ],
-				'pdc_enable_show_on' => [
+                'pdc_enable_show_on' => [
                     'name' => __('Show on', 'pdc-base'),
                     'desc' => __('Used for configuring on which websites an OpenPDC item should be displayed on.', 'pdc-base'),
                     'id'   => 'setting_pdc_enable_show_on',

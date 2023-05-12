@@ -19,7 +19,9 @@ class SettingsPageOptions
      */
     public function themeInPortalURL(): bool
     {
-        return $this->settings['_owc_setting_include_theme_in_portal_url'] ?? false;
+        $setting = $this->settings['_owc_setting_include_theme_in_portal_url'] ?? false;
+
+        return boolval($setting);
     }
 
     /**
@@ -27,7 +29,9 @@ class SettingsPageOptions
      */
     public function subthemeInPortalURL(): bool
     {
-        return $this->settings['_owc_setting_include_subtheme_in_portal_url'] ?? false;
+        $setting = $this->settings['_owc_setting_include_subtheme_in_portal_url'] ?? false;
+
+        return boolval($setting);
     }
 
     /**
@@ -35,7 +39,9 @@ class SettingsPageOptions
      */
     public function idInPortalURL(): bool
     {
-        return $this->settings['_owc_setting_include_id_in_portal_url'] ?? true;
+        $setting = $this->settings['_owc_setting_include_id_in_portal_url'] ?? true;
+
+        return boolval($setting);
     }
 
     /**
@@ -56,17 +62,28 @@ class SettingsPageOptions
 
     public function isPortalSlugValid(): bool
     {
-        return !empty($this->getPortalURL()) && !empty($this->getPortalItemSlug());
+        return ! empty($this->getPortalURL()) && ! empty($this->getPortalItemSlug());
     }
 
-    public function useIdentifications(): ?bool
+    public function useIdentifications(): bool
     {
-        return $this->settings['_owc_setting_identifications'] ?? false;
+        $setting = $this->settings['_owc_setting_identifications'] ?? false;
+
+        return boolval($setting);
+    }
+
+    public function useCombinedIdentification(): bool
+    {
+        $setting = $this->settings['_owc_setting_combined_identification'] ?? false;
+
+        return boolval($setting);
     }
 
     public function useGroupLayer(): bool
     {
-        return $this->settings['_owc_setting_pdc-group'] ?? false;
+        $setting = $this->settings['_owc_setting_pdc-group'] ?? false;
+
+        return boolval($setting);
     }
 
     /**
@@ -74,7 +91,9 @@ class SettingsPageOptions
      */
     public function usePortalURL(): bool
     {
-        return $this->settings['_owc_setting_use_portal_url'] ?? false;
+        $setting = $this->settings['_owc_setting_use_portal_url'] ?? false;
+
+        return boolval($setting);
     }
 
     /**
@@ -82,12 +101,16 @@ class SettingsPageOptions
      */
     public function useEscapeElement(): bool
     {
-        return $this->settings['_owc_setting_use_escape_element'] ?? false;
+        $setting = $this->settings['_owc_setting_use_escape_element'] ?? false;
+        
+        return boolval($setting);
     }
 
-	public function useShowOn(): bool
+    public function useShowOn(): bool
     {
-        return $this->settings['_owc_setting_pdc_enable_show_on'] ?? false;
+        $setting = $this->settings['_owc_setting_pdc_enable_show_on'] ?? false;
+
+        return boolval($setting);
     }
 
     /**
@@ -110,7 +133,7 @@ class SettingsPageOptions
             '_owc_setting_use_portal_url'                   => 0,
             '_owc_setting_identifications'                  => 0,
             '_owc_setting_use_escape_element'               => 0,
-			'_owc_setting_pdc_enable_show_on'           	=> 0,
+            '_owc_setting_pdc_enable_show_on'           	=> 0,
             '_owc_upl_terms_url'                            => ''
         ];
 

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.5] (2023-05-12)
+
+### Feat
+
+-   Add combined identification field (DigiD and eHerkenning).
+
 ## Version [3.7.4] (2023-05-01)
 
 ### Refactor

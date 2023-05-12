@@ -30,6 +30,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes'));
         }
 
+        if (! $this->plugin->settings->useCombinedIdentification()) {
+            $configMetaboxes = $this->removeCombinedIdentification($configMetaboxes);
+        }
+
         if ($this->plugin->settings->useEscapeElement()) {
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
         }
@@ -53,6 +57,15 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     private function addOptionsUPL(array $configMetaboxes): array
     {
         $configMetaboxes['base']['fields']['government']['upl_name']['options'] = (new UPLNameHandler($this->getOptionsUPL()))->getOptions();
+
+        return $configMetaboxes;
+    }
+
+    private function removeCombinedIdentification(array $configMetaboxes): array
+    {
+        $configMetaboxes['identifications']['fields'] = array_filter($configMetaboxes['identifications']['fields'], function ($field) {
+            return $field !== 'digid_eherkenning-group';
+        }, ARRAY_FILTER_USE_KEY);
 
         return $configMetaboxes;
     }

@@ -63,6 +63,7 @@ msgstr "Ontsnap element weergeven op portaal pagina."
 #: config/identifications_metaboxes.php:81
 #: config/identifications_metaboxes.php:133
 #: config/identifications_metaboxes.php:185
+#: config/identifications_metaboxes.php:237
 msgid "Yes"
 msgstr "Ja"
 
@@ -70,6 +71,7 @@ msgstr "Ja"
 #: config/identifications_metaboxes.php:82
 #: config/identifications_metaboxes.php:134
 #: config/identifications_metaboxes.php:186
+#: config/identifications_metaboxes.php:238
 msgid "No"
 msgstr "Nee"
 
@@ -81,6 +83,7 @@ msgstr "Identificaties"
 #: config/identifications_metaboxes.php:69
 #: config/identifications_metaboxes.php:121
 #: config/identifications_metaboxes.php:173
+#: config/identifications_metaboxes.php:225
 msgid "Add new group"
 msgstr "Voeg nieuwe groep toe"
 
@@ -91,7 +94,9 @@ msgstr "DigiD"
 #: config/identifications_metaboxes.php:24
 #: config/identifications_metaboxes.php:76
 #: config/identifications_metaboxes.php:128
-#: config/identifications_metaboxes.php:180 config/metaboxes.php:30
+#: config/identifications_metaboxes.php:180 
+#: config/identifications_metaboxes.php:232
+#: config/metaboxes.php:30
 #: config/metaboxes.php:47
 msgid "Active"
 msgstr "Actief"
@@ -108,6 +113,7 @@ msgstr "DigiD knop titel"
 #: config/identifications_metaboxes.php:90
 #: config/identifications_metaboxes.php:142
 #: config/identifications_metaboxes.php:194
+#: config/identifications_metaboxes.php:246
 msgid "Request"
 msgstr "Aanvragen"
 
@@ -130,6 +136,7 @@ msgstr "Volgorde"
 #: config/identifications_metaboxes.php:111
 #: config/identifications_metaboxes.php:163
 #: config/identifications_metaboxes.php:215
+#: config/identifications_metaboxes.php:267
 msgid "Order in which the identification buttons will be displayed in."
 msgstr "Volgorde waarin de identificatie knoppen weergegeven zullen worden."
 
@@ -192,6 +199,30 @@ msgstr "Algemene identificatie knop URL"
 #: config/identifications_metaboxes.php:202
 msgid "General_identification descriptive text"
 msgstr "Algemene identificatie begeleidende tekst"
+
+#: config/identifications_metaboxes.php:229
+msgid "DigiD & eHerkenning"
+msgstr "DigiD & eHerkenning"
+
+#: config/identifications_metaboxes.php:233
+msgid "Use DigiD and eHerkenning for identification."
+msgstr "Gebruik DigiD en eHerkenning voor identificatie."
+
+#: config/identifications_metaboxes.php:243
+msgid "DigiD and eHerkenning button title"
+msgstr "DigiD en eHerkenning knop titel"
+
+#: config/identifications_metaboxes.php:249
+msgid "DigiD and eHerkenning button URL"
+msgstr "DigiD en eHerkenning knop URL"
+
+#: config/identifications_metaboxes.php:254
+msgid "DigiD and eHerkenning descriptive text"
+msgstr "DigiD en eHerkenning begeleidende tekst."
+
+#: config/identifications_metaboxes.php:260
+msgid "Log in with DigiD or eHerkenning"
+msgstr "Log in met DigiD of eHerkenning."
 
 #: config/metaboxes.php:6
 msgid "Data"
@@ -765,14 +796,22 @@ msgid "DigiD, eHerkenning and eIDAS."
 msgstr "DigiD, eHerkenning en eIDAS."
 
 #: config/settings.php:56
+msgid "Use combined identification"
+msgstr "Gebruike een gecombineerde identificatie"
+
+#: config/settings.php:57
+msgid "DigiD and eHerkenning combined."
+msgstr "DigiD en eHerkenning gecombineerd."
+
+#: config/settings.php:62
 msgid "Portal url"
 msgstr "Portaal url"
 
-#: config/settings.php:57
+#: config/settings.php:63
 msgid "Use portal url in api."
 msgstr "Gebruik portaal url in de api."
 
-#: config/settings.php:63
+#: config/settings.php:68
 msgid "Enable escape element."
 msgstr "Gebruik ontsnap element."
 
@@ -781,23 +820,19 @@ msgstr "Gebruik ontsnap element."
 msgid "Show on"
 msgstr "Tonen op"
 
-#: config/settings.php:69
-msgid ""
-"Used for configuring on which websites an OpenPDC item should be displayed "
-"on."
-msgstr ""
-"Wordt gebruikt voor het instellen van de websites waarop een OpenPub item "
-"weergegeven moet worden."
-
 #: config/settings.php:75
+msgid "Used for configuring on which websites an OpenPDC item should be displayed on."
+msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPub item weergegeven moet worden."
+
+#: config/settings.php:81
 msgid "The Uniform Product list of names (upl)"
 msgstr "De Uniforme Productnamenlijst (UPL)"
 
-#: config/settings.php:78
+#: config/settings.php:84
 msgid "URL"
 msgstr "URL"
 
-#: config/settings.php:79
+#: config/settings.php:85
 msgid "URL used for retrieving UPL terms."
 msgstr "URL om de UPL termen op te halen."
 

@@ -40,7 +40,7 @@ return [
                         [
                             'name' => __('DigiD button URL', 'pdc-base'),
                             'id'   => 'digid_button_url',
-                            'type' => 'text',
+                            'type' => 'url',
                         ],
                         [
                             'name'    => __('DigiD descriptive text', 'pdc-base'),
@@ -92,7 +92,7 @@ return [
                         [
                             'name' => __('eHerkenning button URL', 'pdc-base'),
                             'id'   => 'eherkenning_button_url',
-                            'type' => 'text',
+                            'type' => 'url',
                         ],
                         [
                             'name'    => __('eHerkenning descriptive text', 'pdc-base'),
@@ -144,7 +144,7 @@ return [
                         [
                             'name' => __('eIDAS button URL', 'pdc-base'),
                             'id'   => 'eidas_button_url',
-                            'type' => 'text',
+                            'type' => 'url',
                         ],
                         [
                             'name'    => __('eIDAS descriptive text', 'pdc-base'),
@@ -196,7 +196,7 @@ return [
                         [
                             'name' => __('General identification button URL', 'pdc-base'),
                             'id'   => 'general_identification_button_url',
-                            'type' => 'text',
+                            'type' => 'url',
                         ],
                         [
                             'name'    => __('General_identification descriptive text', 'pdc-base'),
@@ -214,6 +214,58 @@ return [
                             'min'  => 0,
                             'desc' => __('Order in which the identification buttons will be displayed in.', 'pdc-base')
                         ]
+                    ]
+                ]
+            ],
+            'digid_eherkenning-group' => [
+                'group' => [
+                    'id'         => 'digid_eherkenning-group',
+                    'type'       => 'group',
+                    'clone'      => true,
+                    'add_button' => __('Add new group', 'pdc-base'),
+                    'fields'     => [
+                        [
+                            'type' => 'heading',
+                            'name' => __('DigiD & eHerkenning', 'pdc-base'),
+                        ],
+                        [
+                            'name'    => __('Active', 'pdc-base'),
+                            'desc'    => __('Use DigiD and eHerkenning for identification.', 'pdc-base'),
+                            'id'      => 'digid_eherkenning_active',
+                            'type'    => 'radio',
+                            'options' => [
+                                '1' => __('Yes', 'pdc-base'),
+                                '0' => __('No', 'pdc-base'),
+                            ],
+                            'std'     => '0',
+                        ],
+                        [
+                            'name' => __('DigiD and eHerkenning button title', 'pdc-base'),
+                            'id'   => 'digid_eherkenning_button_title',
+                            'type' => 'text',
+                            'std'  => __('Request', 'pdc-base'),
+                        ],
+                        [
+                            'name' => __('DigiD and eHerkenning button URL', 'pdc-base'),
+                            'id'   => 'digid_eherkenning_button_url',
+                            'type' => 'url',
+                        ],
+                        [
+                            'name'    => __('DigiD and eHerkenning descriptive text', 'pdc-base'),
+                            'id'      => 'digid_eherkenning_descriptive_text',
+                            'type'    => 'wysiwyg',
+                            'options' => [
+                                'textarea_rows' => 4,
+                            ],
+                            'std' => __('Log in with DigiD or eHerkenning', 'pdc-base'),
+                        ],
+                        [
+                            'name' => __('Order', 'pdc-base'),
+                            'id'   => 'digid_eherkenning_order',
+                            'type' => 'number',
+                            'min'  => 0,
+                            'desc' => __('Order in which the identification buttons will be displayed in.', 'pdc-base')
+                        ],
                     ]
                 ]
             ],

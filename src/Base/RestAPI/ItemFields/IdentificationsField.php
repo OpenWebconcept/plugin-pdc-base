@@ -6,8 +6,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Models\Identification;
+use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
 
 /**
@@ -38,6 +38,10 @@ class IdentificationsField extends CreatesFields
         $identifications['eherkenning'] = $this->createField($post, '_owc_eherkenning-group', 'eherkenning');
         $identifications['eidas'] = $this->createField($post, '_owc_eidas-group', 'eidas');
         $identifications['general'] = $this->createField($post, '_owc_general_identification-group', 'general_identification');
+        
+        if ($this->plugin->settings->useCombinedIdentification()) {
+            $identifications['digideHerkenning'] = $this->createField($post, '_owc_digid_eherkenning-group', 'digid_eherkenning');
+        }
 
         return $identifications;
     }
