@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.7] (2023-05-15)
+
+### Fix
+
+-   Only remove combined identifications when regular identifications are activated.
+
 ## Version [3.7.6] (2023-05-15)
 
 ### Fix

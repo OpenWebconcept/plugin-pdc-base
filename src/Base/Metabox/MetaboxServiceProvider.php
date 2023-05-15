@@ -30,7 +30,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes'));
         }
 
-        if (! $this->plugin->settings->useCombinedIdentification()) {
+        if ($this->plugin->settings->useIdentifications() && ! $this->plugin->settings->useCombinedIdentification()) {
             $configMetaboxes = $this->removeCombinedIdentification($configMetaboxes);
         }
 
