@@ -30,14 +30,8 @@ msgid "https://www.openwebconcept.nl/"
 msgstr "https://www.openwebconcept.nl/"
 
 #. Description of the plugin
-msgid ""
-"Acts as foundation for other PDC related content plugins. This plugin "
-"implements actions to allow for other plugins to add and/or change Custom "
-"Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
-msgstr ""
-"Vormt de basis voor andere PDC gerelateerde plugins. Deze plugin "
-"implementeert actions waarmee andere plugins Custom Posttypes, Metaboxes, "
-"Taxonomieën en Posts 2 Posts relaties kunnen aanpassen."
+msgid "Acts as foundation for other PDC related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
+msgstr "Vormt de basis voor andere PDC gerelateerde plugins. Deze plugin implementeert actions waarmee andere plugins Custom Posttypes, Metaboxes, Taxonomieën en Posts 2 Posts relaties kunnen aanpassen."
 
 #. Author of the plugin
 msgid "Yard | Digital Agency"
@@ -238,19 +232,15 @@ msgstr "Alternatieve titel"
 
 #: config/metaboxes.php:19
 msgid "Use this option if you want to use an alternative title"
-msgstr ""
-"Gebruik deze mogelijkheid als de website een alternatieve titel gebruikt"
+msgstr "Gebruik deze mogelijkheid als de website een alternatieve titel gebruikt"
 
 #: config/metaboxes.php:24
 msgid "Synonyms"
 msgstr "Synoniemen"
 
 #: config/metaboxes.php:25
-msgid ""
-"Use this option to add an comma separated list of synonyms or related terms"
-msgstr ""
-"Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
-"gerelateerde termen mee te geven"
+msgid "Use this option to add an comma separated list of synonyms or related terms"
+msgstr "Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of gerelateerde termen mee te geven"
 
 #: config/metaboxes.php:31
 msgid "Is this product active yes/no"
@@ -277,25 +267,16 @@ msgid "Appointment URL"
 msgstr "Afspraak URL"
 
 #: config/metaboxes.php:65
-msgid ""
-"Use this field to get a specific URL for the appointment button. URL "
-"including http(s)://"
-msgstr ""
-"Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet "
-"worden. URL inclusief http(s)://"
+msgid "Use this field to get a specific URL for the appointment button. URL including http(s)://"
+msgstr "Gebruik dit veld als de afspraak knop met een specifieke URL ingericht moet worden. URL inclusief http(s)://"
 
 #: config/metaboxes.php:70
 msgid "Appointment meta"
 msgstr "Afspraak meta"
 
 #: config/metaboxes.php:71
-msgid ""
-"Use this field if the appointment method leverages an special data attribute "
-"like eg. GravityForms-id (currently not in use)"
-msgstr ""
-"Gebruik dit veld als de afspraak knop via een hier ingevoerde gegeven werkt "
-"(bv GravityForms id, of andere vorm van koppelings data, momenteel nog niet "
-"in gebruik)"
+msgid "Use this field if the appointment method leverages an special data attribute like eg. GravityForms-id (currently not in use)"
+msgstr "Gebruik dit veld als de afspraak knop via een hier ingevoerde gegeven werkt (bv GravityForms id, of andere vorm van koppelings data, momenteel nog niet in gebruik)"
 
 #: config/metaboxes.php:79
 msgid "Links"
@@ -383,14 +364,8 @@ msgid "UPL name"
 msgstr "UPL naam"
 
 #: config/metaboxes.php:182
-msgid ""
-"Available terms can be found at: 'https://standaarden.overheid.nl/owms/"
-"oquery/UPL-actueel.plain'. For more information please visit 'https://"
-"standaarden.overheid.nl/upl'."
-msgstr ""
-"Alle beschikbare waarden kunnen gevonden worden op: 'https://standaarden."
-"overheid.nl/owms/oquery/UPL-actueel.plain'. Voor meer informatie kunt u "
-"terecht op 'https://standaarden.overheid.nl/upl'."
+msgid "Available terms can be found at: 'https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain'. For more information please visit 'https://standaarden.overheid.nl/upl'."
+msgstr "Alle beschikbare waarden kunnen gevonden worden op: 'https://standaarden.overheid.nl/owms/oquery/UPL-actueel.plain'. Voor meer informatie kunt u terecht op 'https://standaarden.overheid.nl/upl'."
 
 #: config/metaboxes.php:191
 msgid "Other"
@@ -409,12 +384,8 @@ msgid "Language"
 msgstr "Taal"
 
 #: config/metaboxes.php:209
-msgid ""
-"Select a language that is not Dutch. This is necessary for the web "
-"accessibility."
-msgstr ""
-"Selecteer een taal als de pagina niet Nederlands is. Dit is noodzakelijk "
-"voor webtoegankelijkheid."
+msgid "Select a language that is not Dutch. This is necessary for the web accessibility."
+msgstr "Selecteer een taal als de pagina niet Nederlands is. Dit is noodzakelijk voor webtoegankelijkheid."
 
 #: config/metaboxes.php:212
 msgid "Dutch (default)"
@@ -784,8 +755,7 @@ msgstr "Gebruik de groepen laag"
 
 #: config/settings.php:45
 msgid "Use the group layer as connection between a pdc-item and a pdc-group."
-msgstr ""
-"Gebruik de groepen laag als verbinding tussen een pdc-item en een pdc-groep."
+msgstr "Gebruik de groepen laag als verbinding tussen een pdc-item en een pdc-groep."
 
 #: config/settings.php:50
 msgid "Use identifications"
@@ -797,7 +767,7 @@ msgstr "DigiD, eHerkenning en eIDAS."
 
 #: config/settings.php:56
 msgid "Use combined identification"
-msgstr "Gebruike een gecombineerde identificatie"
+msgstr "Gebruik een gecombineerde identificatie"
 
 #: config/settings.php:57
 msgid "DigiD and eHerkenning combined."
@@ -1000,13 +970,8 @@ msgid "Additional explanation"
 msgstr "Aanvullende uitleg"
 
 #: src/Base/Taxonomy/TaxonomyController.php:22
-msgid ""
-"The slug value must be the ID of the blog you want to add as term. The ID is "
-"used for displaying the correct OpenPDC Items on every blog."
-msgstr ""
-"De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen als "
-"term. Het ID wordt gebruikt om de juiste OpenPDC Items weer te geven op alle "
-"blogs."
+msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct OpenPDC Items on every blog."
+msgstr "De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen als term. Het ID wordt gebruikt om de juiste OpenPDC Items weer te geven op alle blogs."
 
 #: src/Base/UPL/UPLServiceProvider.php:20
 msgid "UPL"
