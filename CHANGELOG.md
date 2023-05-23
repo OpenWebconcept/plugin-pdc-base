@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.8] (2023-05-15)
+
+### Feat
+
+-   Only authenticated users should be able to view 'draft' and 'future' pdc-items.
+
 ## Version [3.7.7] (2023-05-15)
 
 ### Fix

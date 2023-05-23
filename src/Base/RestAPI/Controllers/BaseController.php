@@ -42,10 +42,10 @@ abstract class BaseController
             'data' => $data
         ], [
             'pagination' => [
-                'total_count'  => (int) $query->found_posts,
-                'total_pages'  => $query->max_num_pages,
+                'total_count' => (int) $query->found_posts,
+                'total_pages' => $query->max_num_pages,
                 'current_page' => $page,
-                'limit'        => $query->get('posts_per_page')
+                'limit' => $query->get('posts_per_page')
             ]
         ]);
     }
@@ -57,7 +57,7 @@ abstract class BaseController
     {
         return [
             'posts_per_page' => $request->get_param('limit') ?: $limit,
-            'paged'          => $request->get_param('page') ?: 0
+            'paged' => $request->get_param('page') ?: 0
         ];
     }
 
@@ -68,13 +68,17 @@ abstract class BaseController
     {
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
+        if (! \is_user_logged_in()) {
+            $preview = false;
+        }
+
         return $preview ? ['publish', 'draft', 'future'] : ['publish'];
     }
 
-	/**
-	 * Check if the source parameter is valid.
-	 */
-	protected function showOnParamIsValid(\WP_REST_Request $request): bool
+    /**
+     * Check if the source parameter is valid.
+     */
+    protected function showOnParamIsValid(\WP_REST_Request $request): bool
     {
         if (empty($request->get_param('source'))) {
             return false;
