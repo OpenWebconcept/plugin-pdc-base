@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.9] (2023-05-26)
+
+### Refactor
+
+-   Always return date_modified in api.
+
 ## Version [3.7.8] (2023-05-15)
 
 ### Feat
