@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.10] (2023-06-16)
+
+### Fix
+
+-   DownloadsField RestAPI filesize of external file.
+
 ## Version [3.7.9] (2023-05-26)
 
 ### Refactor
