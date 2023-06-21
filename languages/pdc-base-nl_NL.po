@@ -792,7 +792,7 @@ msgstr "Tonen op"
 
 #: config/settings.php:75
 msgid "Used for configuring on which websites an OpenPDC item should be displayed on."
-msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPub item weergegeven moet worden."
+msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPDC item weergegeven moet worden."
 
 #: config/settings.php:81
 msgid "The Uniform Product list of names (upl)"
