@@ -94,13 +94,13 @@ abstract class CreatesFields
         $headers = $this->getHeaders($url);
         $contentLength = '';
         
-        foreach($headers as $key => $header) {
+        foreach ($headers as $key => $header) {
             // Sometimes both parts of the key starts with capitals e.g. 'Content-Length'.
             if (strtolower($key) !== 'content-length') {
                 continue;
             }
 
-            $contentLength = $header;
+            $contentLength = is_array($header) ? end($header) : $header;
             
             break;
         }
