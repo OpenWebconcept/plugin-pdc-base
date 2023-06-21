@@ -18,7 +18,6 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
         $this->plugin->loader->addAction('updated_post_meta', new UPLResourceHandler(), 'handleUpdatedMetaClassicEditor', 10, 4);
         $this->plugin->loader->addAction('rest_after_insert_pdc-item', new UPLResourceHandler(), 'handleUpdatedMetaGutenbergEditor', 10, 3);
-
     }
 
     public function registerMetaboxes(array $rwmbMetaboxes): array
