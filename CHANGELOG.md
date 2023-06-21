@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Version [3.7.11] (2023-06-21)
+
+### Refactor
+
+-   Clean-up code.
+-   Handle content-length header when is array.
+
+### Fix
+
+-   Typo in translations.
+
 ## Version [3.7.10] (2023-06-16)
 
 ### Fix
