@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Controllers;
 
-use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
 use OWC\PDC\Base\UPL\Enrichment\Controllers\Request as RequestControlller;
+use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 use OWC\PDC\Base\UPL\Enrichment\Services\EnrichmentProductResolver;
 use WP_Post;
 
@@ -53,13 +53,13 @@ class Push
             ];
         }
 
-        \update_post_meta($postID, '_owc_pdc_sdg_push_notification', wp_json_encode($response));
+        \update_post_meta($postID, '_owc_pdc_sdg_push_notification', \wp_json_encode($response));
     }
 
     protected function shouldPush(WP_Post $post): bool
     {
-        $sendToSDG = get_post_meta($post->ID, '_owc_enrichment_send_data_to_sdg', true);
-        $isEnriched = get_post_meta($post->ID, '_owc_enrichment_version', true);
+        $sendToSDG = \get_post_meta($post->ID, '_owc_enrichment_send_data_to_sdg', true);
+        $isEnriched = \get_post_meta($post->ID, '_owc_enrichment_version', true);
 
         return $sendToSDG === '1' && ! empty($isEnriched) ? true : false;
     }

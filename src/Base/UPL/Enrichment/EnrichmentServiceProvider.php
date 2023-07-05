@@ -4,15 +4,15 @@ namespace OWC\PDC\Base\UPL\Enrichment;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
 use OWC\PDC\Base\UPL\Enrichment\Commands\EnrichmentItemsPDC;
-use OWC\PDC\Base\UPL\Enrichment\Controllers\Push as PushController;
 use OWC\PDC\Base\UPL\Enrichment\Controllers\EditorNotification as NotificationController;
+use OWC\PDC\Base\UPL\Enrichment\Controllers\Push as PushController;
 use OWC\PDC\Base\UPL\Enrichment\Services\EnrichmentProductResolver;
 
 class EnrichmentServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        if (!$this->plugin->settings->useEnrichment()) {
+        if (! $this->plugin->settings->useEnrichment()) {
             return;
         }
 
@@ -42,7 +42,7 @@ class EnrichmentServiceProvider extends ServiceProvider
     {
         // Resolved product
 
-        // $pushObject = new EnrichmentProductResolver(get_post(95));
+        // $pushObject = new EnrichmentProductResolver(get_post(39475));
         // var_dump($pushObject->resolve()->jsonSerialize());
         // var_dump($pushObject->resolve()->jsonSerialize()['vertalingen'][0]);
         // die;

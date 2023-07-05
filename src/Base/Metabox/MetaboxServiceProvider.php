@@ -115,7 +115,8 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     private function removeFromEnrichmentLanguage(array $enrichmentsFields): array
     {
         $metaboxesToRemove = [
-            'enrichment_sdg_example_text_to_insert_api'
+            'enrichment_sdg_example_text_to_insert_api',
+            'enrichment_sdg_custom_text'
         ];
 
         return array_filter($enrichmentsFields['enrichment-language']['group']['fields'], function ($metabox) use ($metaboxesToRemove) {

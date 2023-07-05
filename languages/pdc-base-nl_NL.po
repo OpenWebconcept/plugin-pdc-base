@@ -107,8 +107,8 @@ msgid "Example SDG text VNG editorial"
 msgstr "Voorbeeld SDG tekst VNG redactie"
 
 #: config/enrichment_metaboxes.php:90
-msgid "Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below to add a custom SDG text."
-msgstr "Voorbeeld tekst van de VNG die voor de eigen SDG tekst wordt gebruikt. Deze tekst wordt regelmatig ge-update vanuit de VNG redactie. Vink de checkbox hier onder voor het toevoegen van een eigen SDG tekst."
+msgid "Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox, if present below, to add a custom SDG text."
+msgstr "Voorbeeld tekst van de VNG die voor de eigen SDG tekst wordt gebruikt. Deze tekst wordt regelmatig ge-update vanuit de VNG redactie. Vink de checkbox, als deze hieronder aanwezig is, voor het toevoegen van een eigen SDG tekst."
 
 #: config/enrichment_metaboxes.php:95
 msgid "SDG input facility"
@@ -997,6 +997,34 @@ msgstr "Standaard verrijkings URL"
 #: config/settings.php:95
 msgid "URL used for retrieving default enrichments (VNG), will be used as an example."
 msgstr "URL om de standaard verrijkingen (VNG) op te halen voor de pdc-items, worden gebruikt als voorbeeld."
+
+#: config/settings.php:101
+msgid "Input facility"
+msgstr "Invoervoorziening"
+
+#: config/settings.php:104
+msgid "Enable input facility"
+msgstr "Invoervoorziening inschakelen"
+
+#: config/settings.php:105
+msgid "Use all the input facility related functionalities."
+msgstr "Gebruik alle gerelateerde invoervoorziening functionaliteiten."
+
+#: config/settings.php:110
+msgid "Input facility API token"
+msgstr "Invoervoorziening API token"
+
+#: config/settings.php:111
+msgid "Token is required for access to the input facility API."
+msgstr "Een token is vereist voor toegang tot de invoervoorziening API."
+
+#: config/settings.php:116
+msgid "Input facility base API URL"
+msgstr "Invoervoorziening basis API URL"
+
+#: config/settings.php:117
+msgid "Base API URL"
+msgstr "Basis API URL"
 
 #: config/settings_pages.php:8
 msgid "PDC settings"

@@ -87,7 +87,7 @@ return [
                         [
                             'name' => __('Example SDG text VNG editorial', 'pdc-base'),
                             'id'   => 'enrichment_sdg_example_text',
-                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below to add a custom SDG text.", 'pdc-base'),
+                            'desc' => __("Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox, if present below, to add a custom SDG text.", 'pdc-base'),
                             'type' => 'textarea',
                             'readonly' => true
                         ],
@@ -192,7 +192,7 @@ return [
                             'name' => __('Product present', 'pdc-base'),
                             'id'   => 'enrichment_product_present_explanation',
                             'type' => 'text',
-                            'desc' => __('Specify the status of this product. If this product is not present this field is required!', 'pdc-base')
+                            'desc' => __('Specify the status of this product. This field is required when the product is not present!', 'pdc-base')
                         ],
                         [
                             'name' => __('Product belongs to', 'pdc-base'),

@@ -176,6 +176,10 @@ class EnrichmentProductResolver
     {
         $FAQs = $this->getMeta('pdc_faq_group');
 
+        if (empty($FAQs) || ! is_array($FAQs)) {
+            return $translation;
+        }
+
         foreach ($FAQs as $FAQ) {
             if (empty($FAQ['pdc_faq_connect_sdq_faq']) || ! in_array('sdg', $FAQ['pdc_faq_usage'] ?? [])) {
                 continue;

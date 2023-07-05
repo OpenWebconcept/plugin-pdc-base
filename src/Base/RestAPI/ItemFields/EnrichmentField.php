@@ -8,13 +8,25 @@ use WP_Post;
 class EnrichmentField extends CreatesFields
 {
     /**
+     * The condition for the creator.
+     *
+     * @return callable
+     */
+    protected function condition(): callable
+    {
+        return function () {
+            return $this->plugin->settings->useEnrichment();
+        };
+    }
+
+    /**
      * Create the enrichment field for a given post.
      */
     public function create(WP_Post $post): array
     {
-        $enrichment = get_post_meta($post->ID, '_owc_enrichment-language', true);
+        $enrichment = get_post_meta($post->ID, '_owc_enrichment_language', true);
 
-        if(! is_array($enrichment) || empty($enrichment)){
+        if (! is_array($enrichment) || empty($enrichment)) {
             return [];
         }
 

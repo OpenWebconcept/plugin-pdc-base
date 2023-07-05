@@ -123,7 +123,9 @@ class SettingsPageOptions
      */
     public function useEnrichment(): bool
     {
-        return $this->settings['_owc_setting_use_enrichment'] ?? false;
+        $setting = $this->settings['_owc_setting_use_enrichment'] ?? false;
+
+        return boolval($setting);
     }
 
     /**
@@ -147,7 +149,9 @@ class SettingsPageOptions
      */
     public function enableInputFacility(): bool
     {
-        return $this->settings['_owc_upl_enrichment_enable_input_facility'] ?? false;
+        $setting = $this->settings['_owc_upl_enrichment_enable_input_facility'] ?? false;
+
+        return boolval($setting);
     }
 
     /**

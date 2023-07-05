@@ -100,7 +100,7 @@ msgid "Example SDG text VNG editorial"
 msgstr ""
 
 #: config/enrichment_metaboxes.php:90
-msgid Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox below to add a custom SDG text."
+msgid Example text by the VNG which is used for one's own SDG text. Will be updated regularly by the VNG editorial. Check the checkbox, if present below, to add a custom SDG text."
 msgstr ""
 
 #: config/enrichment_metaboxes.php:95
@@ -1026,6 +1026,34 @@ msgstr ""
 
 #: config/settings.php:95
 msgid "URL used for retrieving default enrichments (VNG), will be used as an example."
+msgstr ""
+
+#: config/settings.php:101
+msgid "Input facility"
+msgstr ""
+
+#: config/settings.php:104
+msgid "Enable input facility'"
+msgstr ""
+
+#: config/settings.php:105
+msgid "Use all the input facility related functionalities."
+msgstr ""
+
+#: config/settings.php:110
+msgid "Input facility API token"
+msgstr ""
+
+#: config/settings.php:111
+msgid "Token is required for access to the input facility API."
+msgstr ""
+
+#: config/settings.php:116
+msgid "Input facility base API URL"
+msgstr ""
+
+#: config/settings.php:117
+msgid "Base API URL"
 msgstr ""
 
 #: config/settings_pages.php:8

@@ -2,11 +2,11 @@
 
 namespace OWC\PDC\Base\UPL\Enrichment\Commands;
 
-use WP_Post;
-use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
 use OWC\PDC\Base\UPL\Enrichment\Controllers\Request as RequestControlller;
+use OWC\PDC\Base\UPL\Enrichment\Models\EnrichmentProduct;
 use OWC\PDC\Base\UPL\Enrichment\Services\LocalEnrichmentSaver;
+use WP_CLI;
 
 class EnrichmentItemsPDC
 {
@@ -22,18 +22,18 @@ class EnrichmentItemsPDC
     public function execute(): void
     {
         try {
-            $products = $this->getEnrichmentProducts($this->settings->getEnrichmentURL());
-            $defaultProducts = $this->getEnrichmentProducts($this->settings->getDefaultEnrichmentURL());
+            $products = $this->getEnrichmentProducts($this->settings->getEnrichmentURL()); // Fetch products of municipality.
+            $defaultProducts = $this->getEnrichmentProducts($this->settings->getDefaultEnrichmentURL()); // Fetch products provided by the VNG.
         } catch(\Exception $e) {
-            \WP_CLI::error(sprintf('%s Stopping execution of this command.', $e->getMessage()));
+            WP_CLI::error(sprintf('%s Stopping execution of this command.', $e->getMessage()));
         }
 
         if (empty($products['results'])) {
-            \WP_CLI::error('No enrichment products found, stopping execution of this command.'); // Stops execution of command.
+            WP_CLI::error('No enrichment products found, stopping execution of this command.'); // Stops execution of command.
         }
 
         if (empty($defaultProducts['results'])) {
-            \WP_CLI::warning('No default enrichment products found, stopping execution of this command.');
+            WP_CLI::warning('No default enrichment products found, stopping execution of this command.');
         }
 
         $combinedProducts = $this->combineProducts($products['results'], $defaultProducts['results'] ?? []);
@@ -87,7 +87,7 @@ class EnrichmentItemsPDC
         try {
             $currentProducts = $this->requestController->get();
         } catch (\Exception $e) {
-            \WP_CLI::warning($e->getMessage());
+            WP_CLI::warning($e->getMessage());
 
             return [];
         }
