@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.7.12] (2023-08-18)
+
+### Feat
+
+-   Use transients in getHeaders() method inside CreatesFields class.
+
 ## Version [3.7.11] (2023-06-21)
 
 ### Refactor

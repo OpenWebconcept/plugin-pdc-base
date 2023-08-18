@@ -11,7 +11,7 @@ class Plugin
      *
      * @var string
      */
-    const NAME = 'pdc-base';
+    public const NAME = 'pdc-base';
 
     /**
      * Version of the plugin.
@@ -19,7 +19,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '3.7.11';
+    public const VERSION = '3.7.12';
 
     /**
      * Path to the root of the plugin.
