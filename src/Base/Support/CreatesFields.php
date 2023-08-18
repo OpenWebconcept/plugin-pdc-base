@@ -69,7 +69,7 @@ abstract class CreatesFields
         if (empty($parsedUrl['path'])) {
             return '';
         }
-        
+
         $file = $projectRoot . $parsedUrl['path'];
 
         return file_exists($file) ? filesize($file) : '';
@@ -85,7 +85,7 @@ abstract class CreatesFields
 
         $metaParsedURLHost = $metaParsedURL['host'] ?? '';
         $siteParsedURLHost = $siteParsedURL['host'] ?? '';
-        
+
         return $metaParsedURLHost !== $siteParsedURLHost;
     }
 
@@ -93,7 +93,7 @@ abstract class CreatesFields
     {
         $headers = $this->getHeaders($url);
         $contentLength = '';
-        
+
         foreach ($headers as $key => $header) {
             // Sometimes both parts of the key starts with capitals e.g. 'Content-Length'.
             if (strtolower($key) !== 'content-length') {
@@ -101,10 +101,10 @@ abstract class CreatesFields
             }
 
             $contentLength = is_array($header) ? end($header) : $header;
-            
+
             break;
         }
-        
+
         return $contentLength;
     }
 
@@ -113,10 +113,22 @@ abstract class CreatesFields
         if (empty($url)) {
             return [];
         }
-        
+
+        $cachedHeaders = \get_transient($url);
+
+        if (! empty($cachedHeaders) && is_array($cachedHeaders)) {
+            return $cachedHeaders;
+        }
+
         $response = get_headers($url, 1, $this->streamContext());
-    
-        return $response ?: [];
+
+        if (empty($response) || ! is_array($response)) {
+            return [];
+        }
+
+        \set_transient($url, $response, 86400);
+
+        return $response;
     }
 
     /**
@@ -128,7 +140,7 @@ abstract class CreatesFields
         if (($_ENV['APP_ENV'] ?? '') !== 'development') {
             return null;
         }
-        
+
         return stream_context_create([
             'ssl' => [
                 'verify_peer' => false,
