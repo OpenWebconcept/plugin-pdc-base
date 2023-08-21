@@ -54,6 +54,8 @@ return [
                 'items'     => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'yoast'         => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
+                'date_modified' => OWC\PDC\Base\RestAPI\ItemFields\DateModified::class,
             ],
         ],
     ],
