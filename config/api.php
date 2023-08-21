@@ -31,29 +31,29 @@ return [
                 'yoast'             => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class
             ],
         ],
-        'subthema' => [
-            'fields' => [
-                'icon'   => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
-                'items'  => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
-                'image'  => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
-                'groups' => OWC\PDC\Base\RestAPI\SubThemaFields\GroupField::class,
+        'subthema'  => [
+            'fields'    => [
+                'icon'          => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
+                'items'         => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
+                'image'         => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'themes'        => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+                'groups'        => OWC\PDC\Base\RestAPI\SubThemaFields\GroupField::class,
             ],
         ],
-        'group' => [
-            'fields' => [
-                'items'     => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
-                'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'themes'    => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
-                'subthemes' => OWC\PDC\Base\RestAPI\GroupFields\SubThemaField::class,
+        'group'     => [
+            'fields'    => [
+                'items'         => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
+                'image'         => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'themes'        => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,
+                'subthemes'     => OWC\PDC\Base\RestAPI\GroupFields\SubThemaField::class,
             ],
         ],
-        'thema' => [
-            'fields' => [
-                'icon'      => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
-                'items'     => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
-                'image'     => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
+        'thema'     => [
+            'fields'    => [
+                'icon'          => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
+                'items'         => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
+                'image'         => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'subthemes'     => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
                 'yoast'         => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
                 'date_modified' => OWC\PDC\Base\RestAPI\ItemFields\DateModified::class,
             ],
