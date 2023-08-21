@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version [3.8.0] (2023-08-21)
+
+### Feat
+
+-   Add 'date_modified' to theme endpoints
+-   Add 'yoast' to theme endpoints
+
 ## Version [3.7.12] (2023-08-18)
 
 ### Feat
