@@ -124,17 +124,17 @@ class SettingsPageOptions
     public static function make(): self
     {
         $defaultSettings = [
-            '_owc_setting_portal_url'                       => '',
-            '_owc_setting_portal_pdc_item_slug'             => '',
-            '_owc_setting_include_theme_in_portal_url'      => 0,
-            '_owc_setting_include_subtheme_in_portal_url'   => 0,
-            '_owc_setting_include_id_in_portal_url'         => 1,
-            '_owc_setting_pdc-group'                        => 0,
-            '_owc_setting_use_portal_url'                   => 0,
-            '_owc_setting_identifications'                  => 0,
-            '_owc_setting_use_escape_element'               => 0,
-            '_owc_setting_pdc_enable_show_on'           	=> 0,
-            '_owc_upl_terms_url'                            => ''
+            '_owc_setting_portal_url' => '',
+            '_owc_setting_portal_pdc_item_slug' => '',
+            '_owc_setting_include_theme_in_portal_url' => 0,
+            '_owc_setting_include_subtheme_in_portal_url' => 0,
+            '_owc_setting_include_id_in_portal_url' => 1,
+            '_owc_setting_pdc-group' => 0,
+            '_owc_setting_use_portal_url' => 0,
+            '_owc_setting_identifications' => 0,
+            '_owc_setting_use_escape_element' => 0,
+            '_owc_setting_pdc_enable_show_on' => 0,
+            '_owc_upl_terms_url' => ''
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

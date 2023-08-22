@@ -4,17 +4,17 @@ $pdcSubcategoryModel = new \OWC\PDC\Base\PostType\PostTypes\PdcSubcategoryModel(
 
 return [
     'pdc-subcategory' => [
-        'has_report'      =>
+        'has_report' =>
             [
-                'get_callback'    => [ $pdcSubcategoryModel, 'hasReport' ],
+                'get_callback' => [ $pdcSubcategoryModel, 'hasReport' ],
                 'update_callback' => null,
-                'schema'          => null,
+                'schema' => null,
             ],
         'has_appointment' =>
             [
-                'get_callback'    => [ $pdcSubcategoryModel, 'hasAppointment' ],
+                'get_callback' => [ $pdcSubcategoryModel, 'hasAppointment' ],
                 'update_callback' => null,
-                'schema'          => null,
+                'schema' => null,
             ]
     ]
 ];

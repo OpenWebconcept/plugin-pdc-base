@@ -10,7 +10,7 @@ class Identification
     public function __construct(string $identifier, array $data)
     {
         $this->identifier = $identifier;
-        $this->data       = $data;
+        $this->data = $data;
     }
 
     public function isActive(): bool

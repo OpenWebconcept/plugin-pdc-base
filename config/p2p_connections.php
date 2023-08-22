@@ -2,51 +2,51 @@
 
 return [
     'posttypes_info' => [
-        'pdc-item'        =>
+        'pdc-item' =>
         [
-            'id'    => 'pdc-item',
+            'id' => 'pdc-item',
             'title' => _x('PDC item', 'P2P titel', 'pdc-base'),
         ],
-        'pdc-category'    =>
+        'pdc-category' =>
         [
-            'id'    => 'pdc-category',
+            'id' => 'pdc-category',
             'title' => _x('PDC theme', 'P2P titel', 'pdc-base'),
         ],
         'pdc-subcategory' =>
         [
-            'id'    => 'pdc-subcategory',
+            'id' => 'pdc-subcategory',
             'title' => _x('PDC subtheme', 'P2P titel', 'pdc-base'),
         ],
-        'pdc-owner'       =>
+        'pdc-owner' =>
         [
-            'id'    => 'pdc-owner',
+            'id' => 'pdc-owner',
             'title' => _x('PDC owner', 'P2P titel', 'pdc-base'),
         ],
-        'pdc-group'    =>
+        'pdc-group' =>
         [
-            'id'    => 'pdc-group',
+            'id' => 'pdc-group',
             'title' => _x('PDC group', 'P2P titel', 'pdc-base'),
         ],
     ],
-    'connections'    => [
+    'connections' => [
         [
-            'from'       => 'pdc-item',
-            'to'         => 'pdc-category',
+            'from' => 'pdc-item',
+            'to' => 'pdc-category',
             'reciprocal' => true,
         ],
         [
-            'from'       => 'pdc-item',
-            'to'         => 'pdc-subcategory',
+            'from' => 'pdc-item',
+            'to' => 'pdc-subcategory',
             'reciprocal' => true,
         ],
         [
-            'from'       => 'pdc-category',
-            'to'         => 'pdc-subcategory',
+            'from' => 'pdc-category',
+            'to' => 'pdc-subcategory',
             'reciprocal' => true,
         ],
         [
-            'from'       => 'pdc-item',
-            'to'         => 'pdc-item',
+            'from' => 'pdc-item',
+            'to' => 'pdc-item',
             'reciprocal' => false,
         ],
     ],

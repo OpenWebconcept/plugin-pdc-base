@@ -21,22 +21,22 @@ class ThemaController extends BaseController
     public function getThemas(WP_REST_Request $request): array
     {
         $orderBy = $request->get_param('orderby') ?? 'title';
-        $order   = $request->get_param('order') ?? 'ASC';
+        $order = $request->get_param('order') ?? 'ASC';
 
-        $items   = (new Thema())
+        $items = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
             ->query([
-                'order'         => $order,
-                'orderby'       => $orderBy,
-                'post_status'   => $this->getPostStatus($request)
+                'order' => $order,
+                'orderby' => $orderBy,
+                'post_status' => $this->getPostStatus($request)
             ])
             ->hide(['items']);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$items->filterSource($request->get_param('source'));
-		}
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $items->filterSource($request->get_param('source'));
+        }
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -55,13 +55,13 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$thema->filterSource($request->get_param('source'));
-		}
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $thema->filterSource($request->get_param('source'));
+        }
 
-		$thema = $thema->find($id);
+        $thema = $thema->find($id);
 
-        if (!$thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
@@ -83,9 +83,9 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$theme->filterSource($request->get_param('source'));
-		}
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $theme->filterSource($request->get_param('source'));
+        }
 
         $theme = $theme->findBySlug($slug);
 

@@ -85,13 +85,13 @@ class ConnectedFieldSorter
     {
         switch ($this->type) {
             case static::SORTING_TYPE_STRING:
-                return fn($valueA, $valueB) => strcmp($valueA, $valueB);
+                return fn ($valueA, $valueB) => strcmp($valueA, $valueB);
             case static::SORTING_TYPE_INT:
-                return fn($valueA, $valueB) => $valueA < $valueB;
+                return fn ($valueA, $valueB) => $valueA < $valueB;
             case static::SORTING_TYPE_DATE:
-                return fn($valueA, $valueB) => new DateTime($valueA) < new DateTime($valueB);
+                return fn ($valueA, $valueB) => new DateTime($valueA) < new DateTime($valueB);
             default:
-                return fn($valueA, $valueB) => strcmp($valueA, $valueB);
+                return fn ($valueA, $valueB) => strcmp($valueA, $valueB);
         }
     }
 }

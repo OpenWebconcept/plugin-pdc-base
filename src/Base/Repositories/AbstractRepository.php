@@ -7,23 +7,23 @@
 namespace OWC\PDC\Base\Repositories;
 
 use Closure;
+use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Post;
 use WP_Query;
-use OWC\PDC\Base\Support\CreatesFields;
-use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
 
 /**
  * PDC item object with default quering and methods.
  */
 abstract class AbstractRepository
 {
-	use QueryHelpers;
+    use QueryHelpers;
 
     /**
      * Posttype definition
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype;
 
@@ -63,10 +63,10 @@ abstract class AbstractRepository
     protected $password = '';
 
 
-	/**
-	 * Source for filtering the 'show_on' taxonomy
-	 */
-	protected int $source = 0;
+    /**
+     * Source for filtering the 'show_on' taxonomy
+     */
+    protected int $source = 0;
 
     /**
      * Additional fields that needs to be added to an item.
@@ -122,7 +122,7 @@ abstract class AbstractRepository
     public function find(int $id)
     {
         $args = array_merge($this->queryArgs, [
-            'p'         => $id,
+            'p' => $id,
             'post_type' => [$this->posttype],
         ]);
 
@@ -145,8 +145,8 @@ abstract class AbstractRepository
     public function findBySlug(string $slug)
     {
         $args = array_merge($this->queryArgs, [
-            'name'        => $slug,
-            'post_type'   => [$this->posttype],
+            'name' => $slug,
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
@@ -223,8 +223,8 @@ abstract class AbstractRepository
     public static function addGlobalField(string $key, CreatesFields $creator, Closure $conditional = null)
     {
         static::$globalFields[] = [
-            'key'         => $key,
-            'creator'     => $creator,
+            'key' => $key,
+            'creator' => $creator,
             'conditional' => $conditional,
         ];
     }
@@ -245,7 +245,7 @@ abstract class AbstractRepository
 
     public function getGlobalField(string $key): ?array
     {
-        $field = array_filter(static::$globalFields, fn($field) => $field['key'] === $key);
+        $field = array_filter(static::$globalFields, fn ($field) => $field['key'] === $key);
 
         return empty($field) ? null : reset($field);
     }
@@ -265,15 +265,15 @@ abstract class AbstractRepository
         }
 
         $data = [
-            'id'          => $post->ID,
-            'title'       => $post->post_title,
-            'slug'        => $post->post_name,
-            'content'     => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
-            'excerpt'     => $this->isAllowed($post) ? $post->post_excerpt : "",
-            'date'        => $post->post_date,
-            'slug'        => $post->post_name,
+            'id' => $post->ID,
+            'title' => $post->post_title,
+            'slug' => $post->post_name,
+            'content' => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
+            'excerpt' => $this->isAllowed($post) ? $post->post_excerpt : "",
+            'date' => $post->post_date,
+            'slug' => $post->post_name,
             'post_status' => $post->post_status,
-            'protected'   => !$this->isAllowed($post)
+            'protected' => ! $this->isAllowed($post)
         ];
 
         $data = $this->assignFields($data, $post);
@@ -296,7 +296,7 @@ abstract class AbstractRepository
 
     private function isPasswordProtected(\WP_Post $post): bool
     {
-        return !empty($post->post_password);
+        return ! empty($post->post_password);
     }
 
     private function isPasswordValid(\WP_post $post): bool
@@ -308,6 +308,7 @@ abstract class AbstractRepository
      * Return only the preferred fields.
      *
      * @param array $data
+     *
      * @return array
      */
     protected function getPreferredFields($data)
@@ -318,6 +319,7 @@ abstract class AbstractRepository
         }
 
         $preferredFields = explode(',', $preferredFields);
+
         return array_filter($data, function ($key) use ($preferredFields) {
             return in_array($key, $preferredFields);
         }, ARRAY_FILTER_USE_KEY);
@@ -339,11 +341,11 @@ abstract class AbstractRepository
                 continue;
             }
 
-			if ($this->shouldFilterSource()) {
-				if (method_exists($field['creator'], 'setSource')) {
-					$field['creator']->setSource($this->source);
-				}
-			}
+            if ($this->shouldFilterSource()) {
+                if (method_exists($field['creator'], 'setSource')) {
+                    $field['creator']->setSource($this->source);
+                }
+            }
 
             if (is_null($field['conditional'])) {
                 // If the field has no conditional set we will add it
@@ -376,17 +378,17 @@ abstract class AbstractRepository
         return $this->password;
     }
 
-	public function filterSource(int $source): self
-	{
-		$this->source = $source;
+    public function filterSource(int $source): self
+    {
+        $this->source = $source;
 
-		$this->query($this->filterShowOnTaxonomyQuery($source));
+        $this->query($this->filterShowOnTaxonomyQuery($source));
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function shouldFilterSource(): bool
-	{
-		return 0 !== $this->source;
-	}
+    public function shouldFilterSource(): bool
+    {
+        return 0 !== $this->source;
+    }
 }

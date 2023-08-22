@@ -76,10 +76,10 @@ class IdentificationsField extends CreatesFields
 
             if ($identification->isActive()) {
                 $identifications[] = [
-                    'title'       => $identification->getButtonTitle(),
-                    'url'         => $identification->getButtonURL(),
+                    'title' => $identification->getButtonTitle(),
+                    'url' => $identification->getButtonURL(),
                     'description' => $identification->getDescription(),
-                    'order'       => $identification->getOrder(),
+                    'order' => $identification->getOrder(),
                 ];
             }
         }

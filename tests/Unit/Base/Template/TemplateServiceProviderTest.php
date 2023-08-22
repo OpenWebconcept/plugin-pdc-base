@@ -16,21 +16,21 @@ class TemplateServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0
             ]
         ]);
     }
@@ -77,8 +77,8 @@ class TemplateServiceProviderTest extends TestCase
         \WP_Mock::userFunction(
             'is_admin',
             [
-                'args'   => null,
-                'times'  => '1',
+                'args' => null,
+                'times' => '1',
                 'return' => false
             ]
         );
@@ -86,8 +86,8 @@ class TemplateServiceProviderTest extends TestCase
         \WP_Mock::userFunction(
             'wp_doing_ajax',
             [
-                'args'   => null,
-                'times'  => '1',
+                'args' => null,
+                'times' => '1',
                 'return' => false
             ]
         );
@@ -95,8 +95,8 @@ class TemplateServiceProviderTest extends TestCase
         \WP_Mock::userFunction(
             'is_feed',
             [
-                'args'   => null,
-                'times'  => '1',
+                'args' => null,
+                'times' => '1',
                 'return' => false
             ]
         );
@@ -104,8 +104,8 @@ class TemplateServiceProviderTest extends TestCase
         \WP_Mock::userFunction(
             'wp_redirect',
             [
-                'args'   => 'https://www.openwebconcept.nl/',
-                'times'  => '1',
+                'args' => 'https://www.openwebconcept.nl/',
+                'times' => '1',
                 'return' => false
             ]
         );

@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\Metabox\Handler;
 
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use OWC\PDC\Base\Metabox\Handlers\UPLNameHandler;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class UPLNameHandlerTest extends TestCase
 {

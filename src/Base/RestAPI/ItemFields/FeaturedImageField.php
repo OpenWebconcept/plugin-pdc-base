@@ -23,7 +23,7 @@ class FeaturedImageField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        if (!has_post_thumbnail($post->ID)) {
+        if (! has_post_thumbnail($post->ID)) {
             return [];
         }
 
@@ -36,23 +36,24 @@ class FeaturedImageField extends CreatesFields
 
         if (! $attachment instanceof \WP_Post) {
             restore_current_blog(); // When a switch has occurred switch back.
+
             return [];
         }
 
         $imageSize = 'large';
-        $result    = [];
+        $result = [];
 
-        $result['title']       = $attachment->post_title;
+        $result['title'] = $attachment->post_title;
         $result['description'] = $attachment->post_content;
-        $result['caption']     = $attachment->post_excerpt;
-        $result['alt']         = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
+        $result['caption'] = $attachment->post_excerpt;
+        $result['alt'] = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
 
         $meta = $this->getAttachmentMeta($attachmentID);
 
         $result['rendered'] = wp_get_attachment_image($attachmentID, $imageSize);
-        $result['sizes']    = wp_get_attachment_image_sizes($attachmentID, $imageSize, $meta);
-        $result['srcset']   = wp_get_attachment_image_srcset($attachmentID, $imageSize, $meta);
-        $result['meta']     = $meta;
+        $result['sizes'] = wp_get_attachment_image_sizes($attachmentID, $imageSize, $meta);
+        $result['srcset'] = wp_get_attachment_image_srcset($attachmentID, $imageSize, $meta);
+        $result['meta'] = $meta;
 
         // Allow additional actions after creation of featured image.
         do_action('owc/pdc-base/rest-api/shared-items/field/after-creation-featured-image', $post);
@@ -76,7 +77,7 @@ class FeaturedImageField extends CreatesFields
         }
 
         foreach (array_keys($meta['sizes']) as $size) {
-            $src                         = wp_get_attachment_image_src($id, $size);
+            $src = wp_get_attachment_image_src($id, $size);
             $meta['sizes'][$size]['url'] = $src[0];
         }
 

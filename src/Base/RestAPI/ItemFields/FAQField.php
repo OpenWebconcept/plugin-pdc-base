@@ -30,7 +30,7 @@ class FAQField extends CreatesFields
         return array_map(function ($faq) {
             return [
                 'question' => esc_attr($faq['pdc_faq_question']),
-                'answer'   => apply_filters('the_content', $faq['pdc_faq_answer'])
+                'answer' => apply_filters('the_content', $faq['pdc_faq_answer'])
             ];
         }, $this->getFAQ($post));
     }

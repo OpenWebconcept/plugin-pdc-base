@@ -18,7 +18,7 @@ class LanguageField extends CreatesFields
     {
         $language = get_post_meta($post->ID, '_owc_pdc-item-language', true);
 
-        if (!$language) {
+        if (! $language) {
             return 'nl';
         }
 

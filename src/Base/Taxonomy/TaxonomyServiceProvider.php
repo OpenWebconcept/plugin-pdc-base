@@ -2,10 +2,10 @@
 /**
  * Provider which handles the registration of the taxonomies.
  */
+
 namespace OWC\PDC\Base\Taxonomy;
 
 use OWC\PDC\Base\Foundation\ServiceProvider;
-use OWC\PDC\Base\Taxonomy\TaxonomyController;
 
 /**
  * Provider which handles the registration of the taxonomies.
@@ -16,7 +16,7 @@ class TaxonomyServiceProvider extends ServiceProvider
     /**
      * The array of taxonomies definitions from the config
      *
-     * @var array $configTaxonomies
+     * @var array
      */
     protected $configTaxonomies = [];
 
@@ -29,12 +29,12 @@ class TaxonomyServiceProvider extends ServiceProvider
     {
         $this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
 
-		if ($this->plugin->settings->useShowOn()) {
+        if ($this->plugin->settings->useShowOn()) {
             $this->showOnFormFields();
         }
     }
 
-	/**
+    /**
      * Add elements to the taxonomy form.
      *
      * @return void
@@ -50,9 +50,8 @@ class TaxonomyServiceProvider extends ServiceProvider
      * @return void
      */
     public function registerTaxonomies()
-	{
-
-		if (!function_exists('register_extended_taxonomy')) {
+    {
+        if (! function_exists('register_extended_taxonomy')) {
             return;
         }
 
@@ -64,7 +63,7 @@ class TaxonomyServiceProvider extends ServiceProvider
         }
     }
 
-	/**
+    /**
      * Filter taxonomies based on plugin settings.
      *
      * @return array

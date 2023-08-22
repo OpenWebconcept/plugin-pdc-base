@@ -31,7 +31,7 @@ class UPL
     {
         $result = update_post_meta($item->ID, '_owc_pdc_upl_naam', strtolower($uplName));
 
-        if (!$result) {
+        if (! $result) {
             return $uplName;
         }
 
@@ -42,14 +42,14 @@ class UPL
     {
         $this->items = array_map(function ($item) {
             $uplName = get_post_meta($item->ID, '_owc_pdc_upl_naam', true);
-            $uplUrl  = get_post_meta($item->ID, '_owc_pdc_upl_resource', true);
+            $uplUrl = get_post_meta($item->ID, '_owc_pdc_upl_resource', true);
             $doelgroepen = get_the_terms($item->ID, 'pdc-doelgroep');
 
-            if (!is_array($doelgroepen)) {
+            if (! is_array($doelgroepen)) {
                 $doelgroepen = [];
             }
 
-            return ['id' => $item->ID, 'title' => $item->post_title, 'uplName' => !empty($uplName) ? $uplName : 'Geen waarde', 'uplUrl' => !empty($uplUrl) ? $uplUrl : '', 'editLink' => get_edit_post_link($item->ID), 'doelgroepen' => $this->prepareTerms($doelgroepen)];
+            return ['id' => $item->ID, 'title' => $item->post_title, 'uplName' => ! empty($uplName) ? $uplName : 'Geen waarde', 'uplUrl' => ! empty($uplUrl) ? $uplUrl : '', 'editLink' => get_edit_post_link($item->ID), 'doelgroepen' => $this->prepareTerms($doelgroepen)];
         }, $this->items);
     }
 

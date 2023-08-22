@@ -24,18 +24,18 @@ class PdcSubcategoryModel
         $hasReport = false;
 
         $queryArgs = [
-            'post_type'        => 'pdc-item',
-            'connected_type'   => 'pdc-item_to_pdc-subcategory',
-            'posts_per_page'   => - 1,
-            'post_status'      => 'publish',
+            'post_type' => 'pdc-item',
+            'connected_type' => 'pdc-item_to_pdc-subcategory',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
             'suppress_filters' => false,
-            'nopaging'         => true,
-            'connected_items'  => $object['id'],
-            'tax_query'        => [
+            'nopaging' => true,
+            'connected_items' => $object['id'],
+            'tax_query' => [
                 [
                     'taxonomy' => 'pdc-type',
-                    'field'    => 'slug',
-                    'terms'    => 'melding',
+                    'field' => 'slug',
+                    'terms' => 'melding',
                 ],
             ],
         ];
@@ -63,16 +63,16 @@ class PdcSubcategoryModel
         $hasAppointment = false;
 
         $queryArgs = [
-            'post_type'        => 'pdc-item',
-            'connected_type'   => 'pdc-item_to_pdc-subcategory',
-            'posts_per_page'   => - 1,
-            'post_status'      => 'publish',
+            'post_type' => 'pdc-item',
+            'connected_type' => 'pdc-item_to_pdc-subcategory',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
             'suppress_filters' => false,
-            'nopaging'         => true,
-            'connected_items'  => $object['id'],
-            'meta_query'       => [
+            'nopaging' => true,
+            'connected_items' => $object['id'],
+            'meta_query' => [
                 [
-                    'key'   => '_owc_pdc_afspraak_active',
+                    'key' => '_owc_pdc_afspraak_active',
                     'value' => 1,
                 ],
             ]

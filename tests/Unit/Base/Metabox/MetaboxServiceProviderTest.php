@@ -6,8 +6,8 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class MetaboxServiceProviderTest extends TestCase
 {
@@ -17,27 +17,27 @@ class MetaboxServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1,
-                '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 1,
+                '_owc_setting_use_escape_element' => 1,
+                '_owc_upl_terms_url' => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1,
-                '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 1,
+                '_owc_setting_use_escape_element' => 1,
+                '_owc_upl_terms_url' => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
     }
@@ -56,7 +56,7 @@ class MetaboxServiceProviderTest extends TestCase
         $plugin->config = $config;
         $plugin->loader = m::mock(Loader::class);
 
-        $service         = new MetaboxServiceProvider($plugin);
+        $service = new MetaboxServiceProvider($plugin);
         $resourceHandler = UPLResourceHandler::class;
 
         $plugin->loader->shouldReceive('addFilter')->withArgs([
@@ -166,48 +166,48 @@ class MetaboxServiceProviderTest extends TestCase
 
         $configMetaboxes = [
             'base' => [
-                'id'     => 'metadata',
+                'id' => 'metadata',
                 'fields' => [
                     'general' => [
                         'testfield_noid' => [
                             'type' => 'heading'
                         ],
-                        'testfield1'     => [
+                        'testfield1' => [
                             'id' => 'metabox_id1'
                         ],
-                        'testfield2'     => [
+                        'testfield2' => [
                             'id' => 'metabox_id2'
                         ]
                     ]
                 ]
             ],
             'identifications' => [
-                'id'     => 'identifications',
+                'id' => 'identifications',
                 'fields' => [
                     'general' => [
                         'testfield_noid' => [
                             'type' => 'heading'
                         ],
-                        'testfield1'     => [
+                        'testfield1' => [
                             'id' => 'metabox_id1'
                         ],
-                        'testfield2'     => [
+                        'testfield2' => [
                             'id' => 'metabox_id2'
                         ]
                     ]
                 ]
             ],
             'escape_element' => [
-                'id'     => 'escape_element',
+                'id' => 'escape_element',
                 'fields' => [
                     'general' => [
                         'testfield_noid' => [
                             'type' => 'heading'
                         ],
-                        'testfield1'     => [
+                        'testfield1' => [
                             'id' => 'metabox_id1'
                         ],
-                        'testfield2'     => [
+                        'testfield2' => [
                             'id' => 'metabox_id2'
                         ]
                     ]
@@ -219,7 +219,7 @@ class MetaboxServiceProviderTest extends TestCase
 
         $expectedMetaboxes = [
             0 => [
-                'id'     => 'metadata',
+                'id' => 'metadata',
                 'fields' => [
                     [
                         'type' => 'heading'
@@ -233,7 +233,7 @@ class MetaboxServiceProviderTest extends TestCase
                 ]
             ],
             1 => [
-                'id'     => 'identifications',
+                'id' => 'identifications',
                 'fields' => [
                     [
                         'type' => 'heading'
@@ -247,7 +247,7 @@ class MetaboxServiceProviderTest extends TestCase
                 ]
             ],
             2 => [
-                'id'     => 'escape_element',
+                'id' => 'escape_element',
                 'fields' => [
                     [
                         'type' => 'heading'
@@ -273,7 +273,7 @@ class MetaboxServiceProviderTest extends TestCase
 
         $existingMetaboxes = [
             0 => [
-                'id'     => 'existing_metadata',
+                'id' => 'existing_metadata',
                 'fields' => [
                     [
                         'type' => 'existing_heading'
@@ -290,7 +290,7 @@ class MetaboxServiceProviderTest extends TestCase
 
         $expectedMetaboxesAfterMerge = [
             0 => [
-                'id'     => 'existing_metadata',
+                'id' => 'existing_metadata',
                 'fields' => [
                     [
                         'type' => 'existing_heading'
@@ -304,7 +304,7 @@ class MetaboxServiceProviderTest extends TestCase
                 ]
             ],
             1 => [
-                'id'     => 'metadata',
+                'id' => 'metadata',
                 'fields' => [
                     [
                         'type' => 'heading'
@@ -318,7 +318,7 @@ class MetaboxServiceProviderTest extends TestCase
                 ]
             ],
             2 => [
-                'id'     => 'identifications',
+                'id' => 'identifications',
                 'fields' => [
                     [
                         'type' => 'heading'
@@ -332,7 +332,7 @@ class MetaboxServiceProviderTest extends TestCase
                 ]
             ],
             3 => [
-                'id'     => 'escape_element',
+                'id' => 'escape_element',
                 'fields' => [
                     [
                         'type' => 'heading'

@@ -17,7 +17,7 @@ class RestAPIServiceProvider extends ServiceProvider
     /**
      * The endpoint of the base API.
      *
-     * @var string $namespace
+     * @var string
      */
     private $namespace = 'owc/pdc/v1';
 
@@ -38,6 +38,7 @@ class RestAPIServiceProvider extends ServiceProvider
      * Register routes on the rest API.
      *
      * Main endpoint.
+     *
      * @link https://url/wp-json/owc/pdc/v1
      *
      * Endpoint of the pdc-items.
@@ -66,81 +67,81 @@ class RestAPIServiceProvider extends ServiceProvider
     public function registerRoutes()
     {
         \register_rest_route($this->namespace, 'items', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ItemController($this->plugin), 'getItems'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ItemController($this->plugin), 'getItems'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ItemController($this->plugin), 'getItem'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ItemController($this->plugin), 'getItem'],
             'permission_callback' => '__return_true',
         ]);
 
         /** {slug}/internal should be ignored */
         \register_rest_route($this->namespace, 'items/(?P<slug>(?!.*internal)[\w-]+)', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'them(a|e)s', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ThemaController($this->plugin), 'getThemas'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ThemaController($this->plugin), 'getThemas'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'them(a|e)s/(?P<id>\d+)', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ThemaController($this->plugin), 'getThema'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ThemaController($this->plugin), 'getThema'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'them(a|e)s/(?P<slug>[\w-]+)', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ThemaController($this->plugin), 'getThemeBySlug'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\ThemaController($this->plugin), 'getThemeBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'subthem(a|e)s', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemas'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<id>\d+)', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthema'],
             'permission_callback' => '__return_true',
         ]);
 
         \register_rest_route($this->namespace, 'subthem(a|e)s/(?P<slug>[\w-]+)', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\SubthemaController($this->plugin), 'getSubthemeBySlug'],
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [new Controllers\SubthemaController($this->plugin), 'getSubthemeBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
         if ($this->plugin->settings->useGroupLayer()) {
             \register_rest_route($this->namespace, 'groups', [
-                'methods'             => WP_REST_Server::READABLE,
-                'callback'            => [new Controllers\GroupController($this->plugin), 'getGroups'],
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => [new Controllers\GroupController($this->plugin), 'getGroups'],
                 'permission_callback' => '__return_true',
             ]);
         }
 
         if ($this->plugin->settings->useGroupLayer()) {
             \register_rest_route($this->namespace, 'groups/(?P<id>\d+)', [
-                'methods'             => WP_REST_Server::READABLE,
-                'callback'            => [new Controllers\GroupController($this->plugin), 'getGroup'],
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => [new Controllers\GroupController($this->plugin), 'getGroup'],
                 'permission_callback' => '__return_true',
             ]);
         }
 
         $searchController = new Controllers\SearchController($this->plugin);
         \register_rest_route($this->namespace, 'search', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [$searchController, 'search'],
-            'args'                => $searchController->arguments(),
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [$searchController, 'search'],
+            'args' => $searchController->arguments(),
             'permission_callback' => '__return_true',
         ]);
     }
@@ -149,6 +150,7 @@ class RestAPIServiceProvider extends ServiceProvider
      * Whitelist endpoints within Config Expander.
      *
      * @package OWC\ConfigExpander\DisableRestAPI\DisableRestAPI
+     *
      * @param array $whitelist
      *
      * @return array
@@ -160,7 +162,7 @@ class RestAPIServiceProvider extends ServiceProvider
 
         $whitelist[$this->namespace] = [
             'endpoint_stub' => '/' . $this->namespace,
-            'methods'       => ['GET'],
+            'methods' => ['GET'],
         ];
 
         return $whitelist;

@@ -24,14 +24,14 @@ class RepositoryTest extends TestCase
         $repository->boot();
 
         $config = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory',
                 ],
-                'multi'    => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
@@ -65,14 +65,14 @@ class RepositoryTest extends TestCase
         $repository->boot();
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'test'
             ],
             'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory'
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
@@ -87,7 +87,7 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => 'test'
@@ -100,7 +100,7 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
@@ -111,7 +111,7 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
@@ -124,12 +124,12 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
-                'testfile'  => 'test',
-                'multi'     => [
+                'testfile' => 'test',
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
@@ -144,14 +144,14 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
                 'testfile' => [
                     'test' => 'node'
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
@@ -162,7 +162,7 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
@@ -171,7 +171,7 @@ class RepositoryTest extends TestCase
                         'node' => 'nog deeper'
                     ]
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
@@ -182,14 +182,14 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory',
                 ],
-                'multi'     => 'test'
+                'multi' => 'test'
             ]
         ];
 
@@ -200,14 +200,14 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory',
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => 'test'
                 ]
             ]
@@ -220,14 +220,14 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory',
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works_also_via_set'
                     ]
@@ -238,14 +238,14 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'         => [
+            'test' => [
                 'single_file' => true
             ],
-            'directory'    => [
+            'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory',
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
@@ -267,20 +267,20 @@ class RepositoryTest extends TestCase
         $this->assertEquals($expectedConfig, $repository->all());
 
         $expectedConfig = [
-            'test'      => [
+            'test' => [
                 'single_file' => true
             ],
             'directory' => [
                 'testfile' => [
                     'in_directory' => 'directory',
                 ],
-                'multi'     => [
+                'multi' => [
                     'deep' => [
                         'multi_level' => 'works'
                     ]
                 ]
             ],
-            ''          => null
+            '' => null
         ];
 
         $repository = new Config(__DIR__ . '/config');

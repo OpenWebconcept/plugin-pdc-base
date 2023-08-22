@@ -11,14 +11,14 @@ class Subthema extends AbstractRepository
     /**
      * Type of repository.
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype = 'pdc-subcategory';
 
     /**
      * Container with fields, associated with this repository.
      *
-     * @var array $globalFields
+     * @var array
      */
     protected static $globalFields = [];
 }

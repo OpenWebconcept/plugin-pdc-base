@@ -16,23 +16,23 @@ class PostTypeServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 0
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 0
             ]
         ]);
     }
@@ -63,8 +63,8 @@ class PostTypeServiceProviderTest extends TestCase
          * Examples of registering post types: http://johnbillion.com/extended-cpts/
          */
         $configPostTypes = [
-            'posttype'        => [
-                'args'  => [],
+            'posttype' => [
+                'args' => [],
                 'names' => []
             ]
         ];

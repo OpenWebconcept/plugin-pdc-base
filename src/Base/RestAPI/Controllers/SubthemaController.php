@@ -23,16 +23,16 @@ class SubthemaController extends BaseController
         $items = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
             ->query([
-                'order'         => 'ASC',
-                'orderby'       => 'name',
-                'post_status'   => $this->getPostStatus($request)
+                'order' => 'ASC',
+                'orderby' => 'name',
+                'post_status' => $this->getPostStatus($request)
             ]);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$items->filterSource($request->get_param('source'));
-		}
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $items->filterSource($request->get_param('source'));
+        }
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -51,13 +51,13 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$thema->filterSource($request->get_param('source'));
-		}
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $thema->filterSource($request->get_param('source'));
+        }
 
-		$thema = $thema->find($id);
+        $thema = $thema->find($id);
 
-        if (!$thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Subthema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
@@ -79,9 +79,9 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$subtheme->filterSource($request->get_param('source'));
-		}
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $subtheme->filterSource($request->get_param('source'));
+        }
 
         $subtheme = $subtheme->findBySlug($slug);
 

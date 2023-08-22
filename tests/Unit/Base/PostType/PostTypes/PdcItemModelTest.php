@@ -22,7 +22,7 @@ class PdcItemModelTest extends TestCase
     /** @test */
     public function check_model_construct()
     {
-        $config   = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $pdc_item = m::mock(PdcItemModel::class);
 
         $model = new PdcItemModel($config);
@@ -33,35 +33,35 @@ class PdcItemModelTest extends TestCase
     // /** @test */
     public function check_get_terms_as_array_methods()
     {
-        $config   = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $pdc_item = m::mock(PdcItemModel::class);
 
         $model = new PdcItemModel($config);
 
-        $term1          = new \stdClass();
+        $term1 = new \stdClass();
         $term1->term_id = 1;
-        $term1->name    = 'term_name1';
-        $term1->slug    = 'term_slug1';
+        $term1->name = 'term_name1';
+        $term1->slug = 'term_slug1';
 
-        $term2          = new \stdClass();
+        $term2 = new \stdClass();
         $term2->term_id = 2;
-        $term2->name    = 'term_name2';
-        $term2->slug    = 'term_slug2';
+        $term2->name = 'term_name2';
+        $term2->slug = 'term_slug2';
 
         $terms[] = $term1;
         $terms[] = $term2;
 
-        $object     = [ 'id' => 1 ];
+        $object = [ 'id' => 1 ];
         $taxonomyId = 1;
 
         $output = [
             [
-                'ID'   => 1,
+                'ID' => 1,
                 'name' => 'term_name1',
                 'slug' => 'term_slug1'
             ],
             [
-                'ID'   => 2,
+                'ID' => 2,
                 'name' => 'term_name2',
                 'slug' => 'term_slug2'
             ]

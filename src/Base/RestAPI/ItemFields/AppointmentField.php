@@ -33,9 +33,9 @@ class AppointmentField extends CreatesFields
 
         return [
             'active' => true,
-            'title'  => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_pdc_afspraak_title', true) ?: '')),
-            'url'    => esc_url(get_post_meta($post->ID, '_owc_pdc_afspraak_url', true) ?: ''),
-            'meta'   => esc_attr(get_post_meta($post->ID, '_owc_pdc_afspraak_meta', true) ?: ''),
+            'title' => esc_attr(strip_tags(get_post_meta($post->ID, '_owc_pdc_afspraak_title', true) ?: '')),
+            'url' => esc_url(get_post_meta($post->ID, '_owc_pdc_afspraak_url', true) ?: ''),
+            'meta' => esc_attr(get_post_meta($post->ID, '_owc_pdc_afspraak_meta', true) ?: ''),
         ];
     }
 }
