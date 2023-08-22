@@ -10,7 +10,7 @@ return [
         'autosave' => true,
         'fields' => [
             'general' => [
-                'heading'  => [
+                'heading' => [
                     'type' => 'heading',
                     'name' => __('General', 'pdc-base'),
                 ],
@@ -26,7 +26,7 @@ return [
                     'id' => 'pdc_tags',
                     'type' => 'textarea',
                 ],
-                'active'   => [
+                'active' => [
                     'name' => __('Active', 'pdc-base'),
                     'desc' => __('Is this product active yes/no', 'pdc-base'),
                     'id' => 'pdc_active',
@@ -43,7 +43,7 @@ return [
                     'type' => 'heading',
                     'name' => __('Make an appointment', 'pdc-base'),
                 ],
-                'active'  => [
+                'active' => [
                     'name' => __('Active', 'pdc-base'),
                     'desc' => __('Is an appointment obligatory for this product yes/no?', 'pdc-base'),
                     'id' => 'pdc_afspraak_active',
@@ -52,24 +52,24 @@ return [
                         '1' => 'Ja',
                         '0' => 'Nee',
                     ],
-                    'std'  => '0',
+                    'std' => '0',
                 ],
-                'title'   => [
+                'title' => [
                     'name' => __('Appointment button title', 'pdc-base'),
                     'desc' => __('Leave empty for default value usage.', 'pdc-base'),
-                    'id'   => 'pdc_afspraak_title',
+                    'id' => 'pdc_afspraak_title',
                     'type' => 'text',
                 ],
                 'url' => [
                     'name' => __('Appointment URL', 'pdc-base'),
                     'desc' => __('Use this field to get a specific URL for the appointment button. URL including http(s)://', 'pdc-base'),
-                    'id'   => 'pdc_afspraak_url',
+                    'id' => 'pdc_afspraak_url',
                     'type' => 'text',
                 ],
                 'meta' => [
                     'name' => __('Appointment meta', 'pdc-base'),
                     'desc' => __('Use this field if the appointment method leverages an special data attribute like eg. GravityForms-id (currently not in use)', 'pdc-base'),
-                    'id'   => 'pdc_afspraak_meta',
+                    'id' => 'pdc_afspraak_meta',
                     'type' => 'text',
                 ],
             ],
@@ -78,7 +78,7 @@ return [
                     'type' => 'heading',
                     'name' => __('Links', 'pdc-base'),
                 ],
-                'links'   => [
+                'links' => [
                     'id' => 'pdc_links_group',
                     'type' => 'group',
                     'clone' => true,
@@ -211,43 +211,43 @@ return [
                     'type' => 'select',
                     'placeholder' => __('Dutch (default)', 'pdc-base'),
                     'options' => [
-                        'en'    => __('English', 'pdc-base'),
-                        'de'    => __('German', 'pdc-base'),
-                        'tr'    => __('Turkish', 'pdc-base'),
+                        'en' => __('English', 'pdc-base'),
+                        'de' => __('German', 'pdc-base'),
+                        'tr' => __('Turkish', 'pdc-base'),
                     ],
                 ]
             ],
         ],
     ],
     'pdc-category' => [
-        'id'         => 'pdc_category_metadata',
-        'title'      => __('Icon', 'pdc-base'),
+        'id' => 'pdc_category_metadata',
+        'title' => __('Icon', 'pdc-base'),
         'post_types' => ['pdc-category'],
-        'context'    => 'side',
-        'priority'   => 'high',
-        'fields'     => [
-            'general'     => [
-                'title'    => [
+        'context' => 'side',
+        'priority' => 'high',
+        'fields' => [
+            'general' => [
+                'title' => [
                     'name' => __('Icon', 'pdc-base'),
                     'desc' => __('Use this option to add an icon to this theme.', 'pdc-base'),
-                    'id'   => 'pdc_category_icon',
+                    'id' => 'pdc_category_icon',
                     'type' => 'text',
                 ],
             ]
         ]
     ],
     'pdc-subcategory' => [
-        'id'         => 'pdc_subcategory_metadata',
-        'title'      => __('Icon', 'pdc-base'),
+        'id' => 'pdc_subcategory_metadata',
+        'title' => __('Icon', 'pdc-base'),
         'post_types' => ['pdc-subcategory'],
-        'context'    => 'side',
-        'priority'   => 'high',
-        'fields'     => [
-            'general'     => [
-                'title'    => [
+        'context' => 'side',
+        'priority' => 'high',
+        'fields' => [
+            'general' => [
+                'title' => [
                     'name' => __('Icon', 'pdc-base'),
                     'desc' => __('Use this option to add an icon to this subtheme.', 'pdc-base'),
-                    'id'   => 'pdc_category_icon',
+                    'id' => 'pdc_category_icon',
                     'type' => 'text',
                 ],
             ]

@@ -16,23 +16,23 @@ class AdminServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 0
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 0
             ]
         ]);
     }
@@ -46,8 +46,8 @@ class AdminServiceProviderTest extends TestCase
     /** @test */
     public function check_registration_of_interface_methods(): void
     {
-        $config  = m::mock(Config::class);
-        $plugin  = m::mock(Plugin::class);
+        $config = m::mock(Config::class);
+        $plugin = m::mock(Plugin::class);
         $service = m::mock(AdminServiceProvider::class);
 
         $plugin->config = $config;

@@ -12,14 +12,14 @@ class Item extends AbstractRepository
     /**
      * Type of repository.
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype = 'pdc-item';
 
     /**
      * Container with fields, associated with this repository.
      *
-     * @var array $globalFields
+     * @var array
      */
     protected static $globalFields = [];
 }

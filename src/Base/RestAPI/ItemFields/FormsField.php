@@ -31,8 +31,8 @@ class FormsField extends CreatesFields
             }
 
             return [
-                'title'    => esc_attr(strip_tags($form['pdc_forms_title'])),
-                'url'      => esc_url($url),
+                'title' => esc_attr(strip_tags($form['pdc_forms_title'])),
+                'url' => esc_url($url),
                 'filesize' => $this->getFileSize($url)
             ];
         }, $this->getForms($post));
@@ -48,7 +48,7 @@ class FormsField extends CreatesFields
     private function getForms(WP_Post $post)
     {
         return array_filter(get_post_meta($post->ID, '_owc_pdc_forms_group', true) ?: [], function ($form) {
-            return (!empty($form['pdc_forms_url']) or !empty($form['pdc_forms_shortcode'])) && (!empty($form['pdc_forms_title']));
+            return (! empty($form['pdc_forms_url']) or ! empty($form['pdc_forms_shortcode'])) && (! empty($form['pdc_forms_title']));
         });
     }
 }

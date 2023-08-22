@@ -15,7 +15,8 @@ class Loader
      * The array of actions registered with WordPress.
      *
      * @since    2.0.0
-     * @var      array $actions The actions registered with WordPress to fire when the plugin loads.
+     *
+     * @var      array The actions registered with WordPress to fire when the plugin loads.
      */
     protected $actions = [];
 
@@ -23,7 +24,8 @@ class Loader
      * The array of filters registered with WordPress.
      *
      * @since    2.0.0
-     * @var      array $filters The filters registered with WordPress to fire when the plugin loads.
+     *
+     * @var      array The filters registered with WordPress to fire when the plugin loads.
      */
     protected $filters = [];
 
@@ -83,10 +85,10 @@ class Loader
     protected function add($hooks, $hook, $component, $callback, $priority, $acceptedArgs)
     {
         $hooks[] = [
-            'hook'          => $hook,
-            'component'     => $component,
-            'callback'      => $callback,
-            'priority'      => $priority,
+            'hook' => $hook,
+            'component' => $component,
+            'callback' => $callback,
+            'priority' => $priority,
             'accepted_args' => $acceptedArgs
         ];
 

@@ -2,9 +2,7 @@
 
 namespace OWC\PDC\Base\UPL;
 
-use Mockery as m;
 use OWC\PDC\Base\Support\Traits\RequestUPL;
-use OWC\PDC\Base\UPL\IncorrectItems;
 use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class UPLTest extends TestCase
@@ -17,27 +15,27 @@ class UPLTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1,
-                '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 1,
+                '_owc_setting_use_escape_element' => 1,
+                '_owc_upl_terms_url' => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 1,
-                '_owc_setting_use_escape_element'               => 1,
-                '_owc_upl_terms_url'                            => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 1,
+                '_owc_setting_use_escape_element' => 1,
+                '_owc_upl_terms_url' => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
     }

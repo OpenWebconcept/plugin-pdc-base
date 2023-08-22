@@ -18,13 +18,13 @@ class PostsToPostsServiceProvider extends ServiceProvider
     /**
      * Default connection arguments.
      *
-     * @var array $connectionDefaults
+     * @var array
      */
     private $connectionDefaults = [
-        'can_create_post'       => false,
-        'reciprocal'            => true,
-        'sortable'              => 'any',
-        'cardinality'           => 'many-to-many',
+        'can_create_post' => false,
+        'reciprocal' => true,
+        'sortable' => 'any',
+        'cardinality' => 'many-to-many',
         'duplicate_connections' => false,
     ];
 
@@ -47,7 +47,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     private function isPostRewriteRepublishCopy(): bool
     {
-        if (!is_admin()) {
+        if (! is_admin()) {
             return false;
         }
 
@@ -58,7 +58,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
             return false;
         }
 
-        $rewriteRepublish         = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
+        $rewriteRepublish = get_post_meta($postID, '_dp_is_rewrite_republish_copy', true);
         $postIsRewritePublishCopy = filter_var($rewriteRepublish, FILTER_VALIDATE_BOOLEAN);
 
         return $postIsRewritePublishCopy;
@@ -71,24 +71,24 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function extendPostsToPostsConnections(): void
     {
-        if (!SettingsPageOptions::make()->useGroupLayer()) {
+        if (! SettingsPageOptions::make()->useGroupLayer()) {
             return;
         }
 
         $groupConnections = [
             [
-                'from'       => 'pdc-item',
-                'to'         => 'pdc-group',
+                'from' => 'pdc-item',
+                'to' => 'pdc-group',
                 'reciprocal' => true,
             ],
             [
-                'from'       => 'pdc-subcategory',
-                'to'         => 'pdc-group',
+                'from' => 'pdc-subcategory',
+                'to' => 'pdc-group',
                 'reciprocal' => true,
             ],
             [
-                'from'       => 'pdc-category',
-                'to'         => 'pdc-group',
+                'from' => 'pdc-category',
+                'to' => 'pdc-group',
                 'reciprocal' => true,
             ],
         ];
@@ -104,32 +104,32 @@ class PostsToPostsServiceProvider extends ServiceProvider
     public function registerPostsToPostsConnections(): void
     {
         if (function_exists('p2p_register_connection_type')) {
-            $posttypesInfo         = $this->plugin->config->get('p2p_connections.posttypes_info');
+            $posttypesInfo = $this->plugin->config->get('p2p_connections.posttypes_info');
             $defaultConnectionArgs = apply_filters('owc/pdc-base/p2p-connection-defaults', $this->connectionDefaults);
-            $connections           = $this->plugin->config->get('p2p_connections.connections');
+            $connections = $this->plugin->config->get('p2p_connections.connections');
 
             foreach ($connections as $connectionArgs) {
                 $args = array_merge($defaultConnectionArgs, $connectionArgs);
 
                 $connectionType = [
-                    'id'              => $posttypesInfo[$connectionArgs['from']]['id'] . '_to_' . $posttypesInfo[$connectionArgs['to']]['id'],
-                    'from'            => $connectionArgs['from'],
-                    'to'              => $connectionArgs['to'],
-                    'sortable'        => $args['sortable'],
-                    'from_labels'     => [
+                    'id' => $posttypesInfo[$connectionArgs['from']]['id'] . '_to_' . $posttypesInfo[$connectionArgs['to']]['id'],
+                    'from' => $connectionArgs['from'],
+                    'to' => $connectionArgs['to'],
+                    'sortable' => $args['sortable'],
+                    'from_labels' => [
                         'column_title' => $posttypesInfo[$connectionArgs['to']]['title'],
                     ],
-                    'title'           => [
+                    'title' => [
                         'from' => 'Koppel met een ' . $posttypesInfo[$connectionArgs['to']]['title'],
-                        'to'   => 'Koppel met een ' . $posttypesInfo[$connectionArgs['from']]['title'],
+                        'to' => 'Koppel met een ' . $posttypesInfo[$connectionArgs['from']]['title'],
                     ],
                     'can_create_post' => $args['can_create_post'],
-                    'reciprocal'      => $args['reciprocal'],
+                    'reciprocal' => $args['reciprocal'],
                 ];
 
                 if ($connectionArgs['from'] == $connectionArgs['to']) {
                     $connectionType['title']['to'] = '';
-                    $connectionType['admin_box']   = 'from';
+                    $connectionType['admin_box'] = 'from';
                 }
 
                 $connectionType = apply_filters("owc/pdc-base/before-register-p2p-connection/{$posttypesInfo[$connectionArgs['from']]['id']}/{$posttypesInfo[$connectionArgs['to']]['id']}", $connectionType);
@@ -148,8 +148,8 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function filterP2PConnectableArgs(array $args): array
     {
-        $args['orderby']      = 'title';
-        $args['order']        = 'asc';
+        $args['orderby'] = 'title';
+        $args['order'] = 'asc';
         $args['p2p:per_page'] = 25;
 
         return $args;
@@ -159,6 +159,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
      * Limit the PostToPost connections inside of the editor for specific posttypes
      *
      * @param string $hook
+     *
      * @return void
      */
     public function limitPostsToPostsConnections(string $hook): void

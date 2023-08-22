@@ -25,13 +25,13 @@ class LinksField extends CreatesFields
         return array_map(function ($link) {
             $shortcode = isset($link['pdc_links_shortcode']) ? do_shortcode($link['pdc_links_shortcode']) : '';
             $url = isset($link['pdc_links_url']) ? esc_url($link['pdc_links_url']) : '';
-            if (!empty($shortcode)) {
+            if (! empty($shortcode)) {
                 $url = $shortcode;
             }
 
             return [
                 'title' => esc_attr(strip_tags($link['pdc_links_title'])),
-                'url'   => $url,
+                'url' => $url,
             ];
         }, $this->getLinks($post));
     }
@@ -46,7 +46,7 @@ class LinksField extends CreatesFields
     private function getLinks(WP_Post $post)
     {
         return array_filter(get_post_meta($post->ID, '_owc_pdc_links_group', true) ?: [], function ($link) {
-            return (!empty($link['pdc_links_url']) or !empty($link['pdc_links_shortcode'])) && (!empty($link['pdc_links_title']));
+            return (! empty($link['pdc_links_url']) or ! empty($link['pdc_links_shortcode'])) && (! empty($link['pdc_links_title']));
         });
     }
 }

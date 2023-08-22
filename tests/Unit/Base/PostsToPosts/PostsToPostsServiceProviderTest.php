@@ -16,23 +16,23 @@ class PostsToPostsServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 0
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0,
-                '_owc_setting_identifications'                  => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0,
+                '_owc_setting_identifications' => 0
             ]
         ]);
 
@@ -102,14 +102,14 @@ class PostsToPostsServiceProviderTest extends TestCase
 
         $service = new PostsToPostsServiceProvider($plugin);
 
-        $inputArgs                 = [];
-        $inputArgs['orderby']      = 'date';
-        $inputArgs['order']        = 'desc';
+        $inputArgs = [];
+        $inputArgs['orderby'] = 'date';
+        $inputArgs['order'] = 'desc';
         $inputArgs['p2p:per_page'] = 10;
 
-        $outputArgs                 = [];
-        $outputArgs['orderby']      = 'title';
-        $outputArgs['order']        = 'asc';
+        $outputArgs = [];
+        $outputArgs['orderby'] = 'title';
+        $outputArgs['order'] = 'asc';
         $outputArgs['p2p:per_page'] = 25;
 
         $this->assertEquals($outputArgs, $service->filterP2PConnectableArgs($inputArgs));
@@ -129,8 +129,8 @@ class PostsToPostsServiceProviderTest extends TestCase
         \WP_Mock::userFunction(
             'p2p_register_connection_type',
             [
-                'args'   => null,
-                'times'  => '2',
+                'args' => null,
+                'times' => '2',
                 'return' => true,
             ]
         );
@@ -138,12 +138,12 @@ class PostsToPostsServiceProviderTest extends TestCase
         $configPostTypesInfo = [
             'posttype1' =>
             [
-                'id'    => 'posttype1',
+                'id' => 'posttype1',
                 'title' => 'post1',
             ],
             'posttype2' =>
             [
-                'id'    => 'posttype2',
+                'id' => 'posttype2',
                 'title' => 'post2',
             ],
         ];
@@ -152,13 +152,13 @@ class PostsToPostsServiceProviderTest extends TestCase
 
         $configConnections = [
             [
-                'from'       => 'posttype1',
-                'to'         => 'posttype2',
+                'from' => 'posttype1',
+                'to' => 'posttype2',
                 'reciprocal' => true,
             ],
             [
-                'from'       => 'posttype1',
-                'to'         => 'posttype1',
+                'from' => 'posttype1',
+                'to' => 'posttype1',
                 'reciprocal' => false,
             ],
         ];
@@ -166,10 +166,10 @@ class PostsToPostsServiceProviderTest extends TestCase
         $config->shouldReceive('get')->with('p2p_connections.connections')->once()->andReturn($configConnections);
 
         $connectionDefaults = [
-            'can_create_post'       => false,
-            'reciprocal'            => true,
-            'sortable'              => 'any',
-            'cardinality'           => 'many-to-many',
+            'can_create_post' => false,
+            'reciprocal' => true,
+            'sortable' => 'any',
+            'cardinality' => 'many-to-many',
             'duplicate_connections' => false,
         ];
 
@@ -177,36 +177,36 @@ class PostsToPostsServiceProviderTest extends TestCase
         \WP_Mock::expectFilter('owc/pdc-base/p2p-connection-defaults', $connectionDefaults);
 
         $connectionType1 = [
-            'id'              => 'posttype1_to_posttype2',
-            'from'            => 'posttype1',
-            'to'              => 'posttype2',
-            'sortable'        => 'any',
-            'from_labels'     => [
+            'id' => 'posttype1_to_posttype2',
+            'from' => 'posttype1',
+            'to' => 'posttype2',
+            'sortable' => 'any',
+            'from_labels' => [
                 'column_title' => 'post2',
             ],
-            'title'           => [
+            'title' => [
                 'from' => 'Koppel met een post2',
-                'to'   => 'Koppel met een post1',
+                'to' => 'Koppel met een post1',
             ],
             'can_create_post' => false,
-            'reciprocal'      => true,
+            'reciprocal' => true,
         ];
 
         $connectionType2 = [
-            'id'              => 'posttype1_to_posttype1',
-            'from'            => 'posttype1',
-            'to'              => 'posttype1',
-            'sortable'        => 'any',
-            'from_labels'     => [
+            'id' => 'posttype1_to_posttype1',
+            'from' => 'posttype1',
+            'to' => 'posttype1',
+            'sortable' => 'any',
+            'from_labels' => [
                 'column_title' => 'post1',
             ],
-            'title'           => [
+            'title' => [
                 'from' => 'Koppel met een post1',
-                'to'   => '',
+                'to' => '',
             ],
             'can_create_post' => false,
-            'reciprocal'      => false,
-            'admin_box'       => 'from',
+            'reciprocal' => false,
+            'admin_box' => 'from',
         ];
 
         \WP_Mock::expectFilter('owc/pdc-base/before-register-p2p-connection/posttype1/posttype2', $connectionType1);

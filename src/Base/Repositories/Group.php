@@ -15,14 +15,14 @@ class Group extends AbstractRepository
     /**
      * Type of model.
      *
-     * @var string $posttype
+     * @var string
      */
     protected $posttype = 'pdc-group';
 
     /**
      * Container with fields, associated with this model.
      *
-     * @var array $globalFields
+     * @var array
      */
     protected static $globalFields = [];
 }

@@ -19,7 +19,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function filterPostLink(string $link, \WP_Post $post, bool $leavename, $sample): string
     {
-        if ($post->post_type !== 'pdc-item' || !$this->plugin->settings->isPortalSlugValid()) {
+        if ($post->post_type !== 'pdc-item' || ! $this->plugin->settings->isPortalSlugValid()) {
             return $link;
         }
 
@@ -50,7 +50,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function filterPreviewInNewTabLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
     {
-        if ($post->post_status === 'publish' || !$this->plugin->settings->isPortalSlugValid()) {
+        if ($post->post_status === 'publish' || ! $this->plugin->settings->isPortalSlugValid()) {
             return $response;
         }
 

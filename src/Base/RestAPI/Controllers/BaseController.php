@@ -84,7 +84,7 @@ abstract class BaseController
             return false;
         }
 
-        if (!is_numeric($request->get_param('source'))) {
+        if (! is_numeric($request->get_param('source'))) {
             return false;
         }
 

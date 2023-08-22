@@ -16,21 +16,21 @@ class SettingsServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'                       => '',
-                '_owc_setting_portal_pdc_item_slug'             => '',
-                '_owc_setting_include_theme_in_portal_url'      => 0,
-                '_owc_setting_include_subtheme_in_portal_url'   => 0,
-                '_owc_setting_pdc-group'                        => 0
+                '_owc_setting_portal_url' => '',
+                '_owc_setting_portal_pdc_item_slug' => '',
+                '_owc_setting_include_theme_in_portal_url' => 0,
+                '_owc_setting_include_subtheme_in_portal_url' => 0,
+                '_owc_setting_pdc-group' => 0
             ]
         ]);
     }
@@ -71,7 +71,7 @@ class SettingsServiceProviderTest extends TestCase
 
         $configSettingsPage = [
             'base' => [
-                'id'          => 'base_settings_page',
+                'id' => 'base_settings_page',
                 'option_name' => 'base_settings_page'
             ]
         ];
@@ -82,19 +82,19 @@ class SettingsServiceProviderTest extends TestCase
 
         $existingSettingsPage = [
             0 => [
-                'id'          => 'existing_settings_page',
+                'id' => 'existing_settings_page',
                 'option_name' => 'existing_settings_page'
             ]
         ];
 
         $existingSettingsPageAfterMerge = [
 
-            0      => [
-                'id'          => 'existing_settings_page',
+            0 => [
+                'id' => 'existing_settings_page',
                 'option_name' => 'existing_settings_page'
             ],
             'base' => [
-                'id'          => 'base_settings_page',
+                'id' => 'base_settings_page',
                 'option_name' => 'base_settings_page'
             ]
         ];
@@ -105,17 +105,17 @@ class SettingsServiceProviderTest extends TestCase
 
         $configMetaboxes = [
             'base' => [
-                'id'             => 'metadata',
+                'id' => 'metadata',
                 'settings_pages' => 'base_settings_page',
-                'fields'         => [
+                'fields' => [
                     'general' => [
                         'testfield_noid' => [
                             'type' => 'heading'
                         ],
-                        'testfield1'     => [
+                        'testfield1' => [
                             'id' => 'metabox_id1'
                         ],
-                        'testfield2'     => [
+                        'testfield2' => [
                             'id' => 'metabox_id2'
                         ]
                     ]
@@ -127,9 +127,9 @@ class SettingsServiceProviderTest extends TestCase
 
         $expectedMetaboxes = [
             0 => [
-                'id'             => 'metadata',
+                'id' => 'metadata',
                 'settings_pages' => 'base_settings_page',
-                'fields'         => [
+                'fields' => [
                     [
                         'type' => 'heading'
                     ],
@@ -152,7 +152,7 @@ class SettingsServiceProviderTest extends TestCase
 
         $existingMetaboxes = [
             0 => [
-                'id'     => 'existing_metadata',
+                'id' => 'existing_metadata',
                 'fields' => [
                     [
                         'type' => 'existing_heading'
@@ -170,7 +170,7 @@ class SettingsServiceProviderTest extends TestCase
         $expectedMetaboxesAfterMerge = [
 
             0 => [
-                'id'     => 'existing_metadata',
+                'id' => 'existing_metadata',
                 'fields' => [
                     [
                         'type' => 'existing_heading'
@@ -184,9 +184,9 @@ class SettingsServiceProviderTest extends TestCase
                 ]
             ],
             1 => [
-                'id'             => 'metadata',
+                'id' => 'metadata',
                 'settings_pages' => 'base_settings_page',
-                'fields'         => [
+                'fields' => [
                     [
                         'type' => 'heading'
                     ],

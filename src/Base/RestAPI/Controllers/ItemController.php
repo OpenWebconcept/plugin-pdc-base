@@ -6,11 +6,11 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Repositories\Item;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Repositories\Item;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -18,7 +18,7 @@ use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 class ItemController extends BaseController
 {
     use CheckPluginActive;
-	use QueryHelpers;
+    use QueryHelpers;
 
     /**
      * Get a list of all items.
@@ -26,20 +26,20 @@ class ItemController extends BaseController
     public function getItems(WP_REST_Request $request): array
     {
         $parameters = $this->convertParameters($request->get_params());
-        $items      = (new Item())
+        $items = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
             ->query($this->excludeInactiveItemsQuery());
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$items->filterSource($request->get_param('source'));
-		};
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $items->filterSource($request->get_param('source'));
+        };
 
         if (false === $parameters['include-connected']) {
             $items->hide(['connected']);
         }
 
-        $data  = $items->all();
+        $data = $items->all();
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
@@ -78,15 +78,15 @@ class ItemController extends BaseController
      */
     public function getItem(WP_REST_Request $request)
     {
-        $id            = (int) $request->get_param('id');
-        $item          = $this->buildQueryFromRequest($request);
+        $id = (int) $request->get_param('id');
+        $item = $this->buildQueryFromRequest($request);
 
-        $item          = $item->find($id);
+        $item = $item->find($id);
 
         if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
-                    'status' => 404,
-                    ]);
+                'status' => 404,
+            ]);
         }
 
         if ($this->needsAuthorization($item)) {
@@ -139,13 +139,13 @@ class ItemController extends BaseController
             ->query($this->excludeInactiveItemsQuery());
 
         $password = esc_attr($request->get_param('password'));
-        if (!empty($password)) {
+        if (! empty($password)) {
             $item->setPassword($password);
         }
 
-		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-			$item->filterSource($request->get_param('source'));
-		};
+        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+            $item->filterSource($request->get_param('source'));
+        };
 
         $connectedField = $item->getGlobalField('connected');
         if ($request->get_param('connected_sort') && ! empty($connectedField)) {
