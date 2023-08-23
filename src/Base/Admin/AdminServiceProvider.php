@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\Admin;
 
-use OWC\PDC\Base\Foundation\ServiceProvider;
 use OWC\PDC\Base\Models\Item;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
 {

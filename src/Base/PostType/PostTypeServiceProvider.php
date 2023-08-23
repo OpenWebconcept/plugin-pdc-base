@@ -13,7 +13,6 @@ use OWC\PDC\Base\Foundation\ServiceProvider;
  */
 class PostTypeServiceProvider extends ServiceProvider
 {
-
     /**
      * Array of posttype definitions from the config.
      *

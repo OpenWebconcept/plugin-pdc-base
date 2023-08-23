@@ -14,7 +14,7 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    const PREFIX = '_owc_';
+    public const PREFIX = '_owc_';
 
     /**
      * Process the metabox array for compatible output.

@@ -6,15 +6,14 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * Adds taxonomy to the output based on the taxonomies in the config.
  */
 class TaxonomyField extends CreatesFields
 {
-
     /**
      * Create an additional field on an array.
      *

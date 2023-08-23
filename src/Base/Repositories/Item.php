@@ -7,7 +7,7 @@ namespace OWC\PDC\Base\Repositories;
  */
 class Item extends AbstractRepository
 {
-    const PREFIX = '_owc_';
+    public const PREFIX = '_owc_';
 
     /**
      * Type of repository.

@@ -7,7 +7,6 @@ namespace OWC\PDC\Base\Repositories;
  */
 class Thema extends AbstractRepository
 {
-
     /**
      * Type of repository.
      *

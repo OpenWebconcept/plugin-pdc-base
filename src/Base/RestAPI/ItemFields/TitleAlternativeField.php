@@ -5,15 +5,14 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * Adds alternative title field to the output.
  */
 class TitleAlternativeField extends CreatesFields
 {
-
     /**
      * Get an alternative title of the post.
      *

@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Adds connected/related fields to the output.

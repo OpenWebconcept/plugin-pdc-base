@@ -5,15 +5,14 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * Adds download fields to the output.
  */
 class AppointmentField extends CreatesFields
 {
-
     /**
      * Create the appointment field for a given post.
      *

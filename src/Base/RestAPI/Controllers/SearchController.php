@@ -6,8 +6,8 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Repositories\Item;
 use WP_REST_Request;
+use OWC\PDC\Base\Repositories\Item;
 
 /**
  * Controller which handles the searching of pdc-item(s).

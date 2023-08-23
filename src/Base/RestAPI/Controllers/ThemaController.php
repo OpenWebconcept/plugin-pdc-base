@@ -6,9 +6,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Repositories\Thema;
 use WP_Error;
 use WP_REST_Request;
+use OWC\PDC\Base\Repositories\Thema;
 
 /**
  * Controller which handles the (requested) thema(s).

@@ -10,7 +10,6 @@ namespace OWC\PDC\Base\Foundation;
  */
 class Loader
 {
-
     /**
      * The array of actions registered with WordPress.
      *

@@ -4,8 +4,8 @@ namespace OWC\PDC\Base\PostType;
 
 use Mockery as m;
 use OWC\PDC\Base\Foundation\Config;
-use OWC\PDC\Base\PostType\PostTypes\PdcItemModel;
 use OWC\PDC\Base\Tests\Unit\TestCase;
+use OWC\PDC\Base\PostType\PostTypes\PdcItemModel;
 
 class PdcItemModelTest extends TestCase
 {

@@ -10,7 +10,6 @@ namespace OWC\PDC\Base\Foundation;
  */
 class Config
 {
-
     /**
      * Directory where config files are located.
      *

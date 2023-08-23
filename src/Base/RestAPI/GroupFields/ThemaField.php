@@ -6,15 +6,14 @@
 
 namespace OWC\PDC\Base\RestAPI\GroupFields;
 
-use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 use WP_Post;
+use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 
 /**
  * Class for handling the thema fields.
  */
 class ThemaField extends ConnectedField
 {
-
     /**
      * Creates an array of connected posts.
      *
