@@ -7,18 +7,18 @@ use DateTime;
 
 class ConnectedFieldSorter
 {
-    const DIRECTION_ASC = 'ASC';
-    const DIRECTION_DESC = 'DESC';
+    public const DIRECTION_ASC = 'ASC';
+    public const DIRECTION_DESC = 'DESC';
 
-    const SORTING_TYPE_INT = 'int';
-    const SORTING_TYPE_DATE = 'date';
-    const SORTING_TYPE_STRING = 'string';
+    public const SORTING_TYPE_INT = 'int';
+    public const SORTING_TYPE_DATE = 'date';
+    public const SORTING_TYPE_STRING = 'string';
 
-    const SORTING_FIELD_TYPE_ID = 'id';
-    const SORTING_FIELD_TYPE_TITLE = 'title';
-    const SORTING_FIELD_TYPE_SLUG = 'slug';
-    const SORTING_FIELD_TYPE_EXCERPT = 'excerpt';
-    const SORTING_FIELD_TYPE_DATE = 'date';
+    public const SORTING_FIELD_TYPE_ID = 'id';
+    public const SORTING_FIELD_TYPE_TITLE = 'title';
+    public const SORTING_FIELD_TYPE_SLUG = 'slug';
+    public const SORTING_FIELD_TYPE_EXCERPT = 'excerpt';
+    public const SORTING_FIELD_TYPE_DATE = 'date';
 
     protected array $items;
     protected string $type = self::SORTING_TYPE_STRING;

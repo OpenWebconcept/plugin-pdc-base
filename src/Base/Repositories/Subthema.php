@@ -7,7 +7,6 @@ namespace OWC\PDC\Base\Repositories;
  */
 class Subthema extends AbstractRepository
 {
-
     /**
      * Type of repository.
      *

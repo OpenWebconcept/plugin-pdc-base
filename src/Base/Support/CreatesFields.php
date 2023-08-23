@@ -3,8 +3,8 @@
 namespace OWC\PDC\Base\Support;
 
 use Closure;
-use OWC\PDC\Base\Foundation\Plugin;
 use WP_Post;
+use OWC\PDC\Base\Foundation\Plugin;
 
 abstract class CreatesFields
 {

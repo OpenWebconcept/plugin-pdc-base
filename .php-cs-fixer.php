@@ -10,10 +10,11 @@ $finder = PhpCsFixer\Finder::create()
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PSR2' => true,
+        '@PSR12' => true,
         'array_syntax' => ['syntax' => 'short'],
         'ordered_imports' => [
-            'sort_algorithm' => 'alpha',
+            'sort_algorithm' => 'length',
+            'imports_order' => ['const', 'class', 'function']
         ],
         'no_unused_imports' => true,
         'not_operator_with_successor_space' => true,

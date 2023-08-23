@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
+use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\CheckPluginActive;
-use WP_Post;
 
 abstract class AbstractSEO extends CreatesFields
 {

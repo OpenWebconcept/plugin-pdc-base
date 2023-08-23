@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version [3.8.1] (2023-08-24)
+
+### Refactor
+
+-   PHP CS Fixer + run formatting
+-   Use PSR12 and order imports by length
+
 ## Version [3.8.0] (2023-08-21)
 
 ### Feat

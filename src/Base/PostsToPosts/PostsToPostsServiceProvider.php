@@ -14,7 +14,6 @@ use OWC\PDC\Base\Settings\SettingsPageOptions;
  */
 class PostsToPostsServiceProvider extends ServiceProvider
 {
-
     /**
      * Default connection arguments.
      *

@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\UPL;
 
-use OWC\PDC\Base\Foundation\ServiceProvider;
 use OWC\PDC\Base\Support\Traits\RequestUPL;
+use OWC\PDC\Base\Foundation\ServiceProvider;
 
 class UPLServiceProvider extends ServiceProvider
 {

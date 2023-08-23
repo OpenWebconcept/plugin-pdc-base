@@ -12,7 +12,6 @@ use OWC\PDC\Base\Foundation\ServiceProvider;
  */
 class TemplateServiceProvider extends ServiceProvider
 {
-
     /**
      * Register hooks
      *

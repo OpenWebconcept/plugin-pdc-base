@@ -7,11 +7,11 @@
 namespace OWC\PDC\Base\Repositories;
 
 use Closure;
-use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
-use OWC\PDC\Base\Support\CreatesFields;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Post;
 use WP_Query;
+use OWC\PDC\Base\Support\CreatesFields;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
 
 /**
  * PDC item object with default quering and methods.

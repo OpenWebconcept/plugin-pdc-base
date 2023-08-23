@@ -5,8 +5,8 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * Adds link fields to the output.

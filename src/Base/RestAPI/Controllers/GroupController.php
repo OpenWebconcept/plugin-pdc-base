@@ -6,9 +6,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Repositories\Group;
 use WP_Error;
 use WP_REST_Request;
+use OWC\PDC\Base\Repositories\Group;
 
 /**
  * Controller which handles the (requested) subthema(s).
@@ -20,7 +20,7 @@ class GroupController extends BaseController
      */
     public function getGroups(WP_REST_Request $request): array
     {
-        $items = (new Group)
+        $items = (new Group())
             ->query(apply_filters('owc/pdc/rest-api/group/query', $this->getPaginatorParams($request)))
             ->query(['orderby' => 'name', 'order' => 'ASC']);
 
@@ -39,7 +39,7 @@ class GroupController extends BaseController
     {
         $id = (int) $request->get_param('id');
 
-        $group = (new Group)
+        $group = (new Group())
             ->query(apply_filters('owc/pdc/rest-api/group/query/single', []))
             ->find($id);
 

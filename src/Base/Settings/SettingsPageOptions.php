@@ -102,7 +102,7 @@ class SettingsPageOptions
     public function useEscapeElement(): bool
     {
         $setting = $this->settings['_owc_setting_use_escape_element'] ?? false;
-        
+
         return boolval($setting);
     }
 

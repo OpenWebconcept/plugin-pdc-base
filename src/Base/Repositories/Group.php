@@ -11,7 +11,6 @@ namespace OWC\PDC\Base\Repositories;
  */
 class Group extends AbstractRepository
 {
-
     /**
      * Type of model.
      *

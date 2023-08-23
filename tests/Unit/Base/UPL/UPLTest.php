@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\UPL;
 
-use OWC\PDC\Base\Support\Traits\RequestUPL;
 use OWC\PDC\Base\Tests\Unit\TestCase;
+use OWC\PDC\Base\Support\Traits\RequestUPL;
 
 class UPLTest extends TestCase
 {

@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Metabox\Handler;
 
-use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use stdClass;
+use OWC\PDC\Base\Tests\Unit\TestCase;
+use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
 
 class UPLResourceHandlerTest extends TestCase
 {

@@ -12,7 +12,6 @@ use OWC\PDC\Base\Foundation\ServiceProvider;
  */
 class TaxonomyServiceProvider extends ServiceProvider
 {
-
     /**
      * The array of taxonomies definitions from the config
      *

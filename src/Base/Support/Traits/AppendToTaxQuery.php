@@ -10,7 +10,6 @@ namespace OWC\PDC\Base\Support\Traits;
  */
 trait AppendToTaxQuery
 {
-
     /**
      * Appends a conditional to a taxonomy query.
      *

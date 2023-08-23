@@ -6,15 +6,14 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
 
 /**
  * Adds form fields to the output.
  */
 class FormsField extends CreatesFields
 {
-
     /**
      * Generate the forms field.
      *
