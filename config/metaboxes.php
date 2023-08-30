@@ -64,7 +64,7 @@ return [
                     'name' => __('Appointment URL', 'pdc-base'),
                     'desc' => __('Use this field to get a specific URL for the appointment button. URL including http(s)://', 'pdc-base'),
                     'id' => 'pdc_afspraak_url',
-                    'type' => 'text',
+                    'type' => 'url',
                 ],
                 'meta' => [
                     'name' => __('Appointment meta', 'pdc-base'),
@@ -95,7 +95,7 @@ return [
                             'id' => 'pdc_links_url',
                             'name' => __('Link URL', 'pdc-base'),
                             'desc' => __('URL including http(s)://', 'pdc-base'),
-                            'type' => 'text',
+                            'type' => 'url',
                         ],
                         [
                             'id' => 'pdc_links_shortcode',
@@ -128,7 +128,7 @@ return [
                             'id' => 'pdc_downloads_url',
                             'name' => __('Download URL', 'pdc-base'),
                             'desc' => __('URL including http(s)://', 'pdc-base'),
-                            'type' => 'text',
+                            'type' => 'url',
                         ],
                         [
                             'id' => 'pdc_downloads_shortcode',

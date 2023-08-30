@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.8.2] (2023-08-30)
+
+### Refactor
+
+-	Metaboxes from type text to url, when applicable.
+
 ## Version [3.8.1] (2023-08-24)
 
 ### Refactor
