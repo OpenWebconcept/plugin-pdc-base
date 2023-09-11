@@ -221,7 +221,7 @@ return [
     ],
     'pdc-category' => [
         'id' => 'pdc_category_metadata',
-        'title' => __('Icon', 'pdc-base'),
+        'title' => __('Settings', 'pdc-base'),
         'post_types' => ['pdc-category'],
         'context' => 'side',
         'priority' => 'high',
@@ -238,7 +238,7 @@ return [
     ],
     'pdc-subcategory' => [
         'id' => 'pdc_subcategory_metadata',
-        'title' => __('Icon', 'pdc-base'),
+        'title' => __('Settings', 'pdc-base'),
         'post_types' => ['pdc-subcategory'],
         'context' => 'side',
         'priority' => 'high',

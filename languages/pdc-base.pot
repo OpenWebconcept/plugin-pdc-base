@@ -413,15 +413,18 @@ msgstr ""
 msgid "Turkish"
 msgstr ""
 
-#: config/metaboxes.php:224
 #: config/metaboxes.php:231
-#: config/metaboxes.php:241
 #: config/metaboxes.php:248
 msgid "Icon"
 msgstr ""
 
 #: config/metaboxes.php:232
 msgid "Use this option to add an icon to this theme."
+msgstr ""
+
+#: config/metaboxes.php:224
+#: config/metaboxes.php:241
+msgid "Settings"
 msgstr ""
 
 #: config/metaboxes.php:249

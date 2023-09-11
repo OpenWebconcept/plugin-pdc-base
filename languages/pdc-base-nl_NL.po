@@ -420,6 +420,11 @@ msgstr "Icoon"
 msgid "Use this option to add an icon to this theme."
 msgstr "Gebruik dit veld om een icoon toe te voegen aan het thema."
 
+#: config/metaboxes.php:224
+#: config/metaboxes.php:241
+msgid "Settings"
+msgstr "Instellingen"
+
 #: config/metaboxes.php:249
 msgid "Use this option to add an icon to this subtheme."
 msgstr "Gebruik dit veld om een icoon toe te voegen aan het subthema."

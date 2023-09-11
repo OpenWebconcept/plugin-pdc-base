@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.8.4] (2023-09-11)
+
+### Refactor
+
+-	Metabox title of pdc-category and sub-category.
+
 ## Version [3.8.3] (2023-09-11)
 
 ### Feat
