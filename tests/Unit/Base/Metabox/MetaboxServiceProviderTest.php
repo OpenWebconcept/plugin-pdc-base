@@ -6,8 +6,8 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class MetaboxServiceProviderTest extends TestCase
 {
@@ -24,6 +24,8 @@ class MetaboxServiceProviderTest extends TestCase
                 '_owc_setting_pdc-group' => 0,
                 '_owc_setting_identifications' => 1,
                 '_owc_setting_use_escape_element' => 1,
+                '_owc_setting_pdc_enable_show_on' => 0,
+                '_owc_setting_pdc_use_feedback_form' => 0,
                 '_owc_upl_terms_url' => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
@@ -37,6 +39,8 @@ class MetaboxServiceProviderTest extends TestCase
                 '_owc_setting_pdc-group' => 0,
                 '_owc_setting_identifications' => 1,
                 '_owc_setting_use_escape_element' => 1,
+                '_owc_setting_pdc_enable_show_on' => 0,
+                '_owc_setting_pdc_use_feedback_form' => 0,
                 '_owc_upl_terms_url' => 'https://standaarden.overheid.nl/owms/oquery/UPL-gemeente.json'
             ]
         ]);
@@ -57,7 +61,6 @@ class MetaboxServiceProviderTest extends TestCase
         $plugin->loader = m::mock(Loader::class);
 
         $service = new MetaboxServiceProvider($plugin);
-        $resourceHandler = UPLResourceHandler::class;
 
         $plugin->loader->shouldReceive('addFilter')->withArgs([
             'rwmb_meta_boxes',
@@ -69,10 +72,18 @@ class MetaboxServiceProviderTest extends TestCase
 
         $plugin->loader->shouldReceive('addAction')->withArgs([
             'updated_post_meta',
-            $resourceHandler,
-            'handleUpdatedMeta',
+            UPLResourceHandler::class,
+            'handleUpdatedMetaClassicEditor',
             10,
             4
+        ])->once()->andReturn();
+
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'rest_after_insert_pdc-item',
+            UPLResourceHandler::class,
+            'handleUpdatedMetaGutenbergEditor',
+            10,
+            3
         ])->once();
 
         \WP_Mock::userFunction('get_transient')

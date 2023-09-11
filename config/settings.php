@@ -76,6 +76,12 @@ return [
                     'id' => 'setting_pdc_enable_show_on',
                     'type' => 'checkbox'
                 ],
+                'pdc_use_feedback_form' => [
+                    'name' => __('Use feedback form', 'pdc-base'),
+                    'desc' => __('Used for displaying a feedback form, applies to themes, subthemes and pdc-items.', 'pdc-base'),
+                    'id' => 'setting_pdc_use_feedback_form',
+                    'type' => 'checkbox',
+                ],
                 'upl_heading' => [
                     'type' => 'heading',
                     'name' => __('The Uniform Product list of names (upl)', 'pdc-base'),

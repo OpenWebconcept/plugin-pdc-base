@@ -113,6 +113,13 @@ class SettingsPageOptions
         return boolval($setting);
     }
 
+    public function useFeedbackForm(): bool
+    {
+        $setting = $this->settings['_owc_setting_pdc_use_feedback_form'] ?? false;
+
+        return boolval($setting);
+    }
+
     /**
      * URL used for retrieving UPL terms.
      */
@@ -134,6 +141,7 @@ class SettingsPageOptions
             '_owc_setting_identifications' => 0,
             '_owc_setting_use_escape_element' => 0,
             '_owc_setting_pdc_enable_show_on' => 0,
+            '_owc_setting_pdc_use_feedback_form' => 0,
             '_owc_upl_terms_url' => ''
         ];
 

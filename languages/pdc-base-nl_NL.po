@@ -69,6 +69,14 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
+#: config/hide_feedback_form_metabox.php:5
+msgid "Hide feeback form"
+msgstr "Verberg feedback formulier"
+
+#: config/hide_feedback_form_metabox.php:6
+msgid "Use this option to hide the feedback form."
+msgstr "Gebruik deze optie om het feedback formulier niet te tonen."
+
 #: config/identifications_metaboxes.php:6
 msgid "Identifications"
 msgstr "Identificaties"
@@ -88,7 +96,7 @@ msgstr "DigiD"
 #: config/identifications_metaboxes.php:24
 #: config/identifications_metaboxes.php:76
 #: config/identifications_metaboxes.php:128
-#: config/identifications_metaboxes.php:180 
+#: config/identifications_metaboxes.php:180
 #: config/identifications_metaboxes.php:232
 #: config/metaboxes.php:30
 #: config/metaboxes.php:47
@@ -794,15 +802,23 @@ msgstr "Tonen op"
 msgid "Used for configuring on which websites an OpenPDC item should be displayed on."
 msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPDC item weergegeven moet worden."
 
+#: config/settings.php:80
+msgid "Use feedback form"
+msgstr "Gebruik feedback formulier"
+
 #: config/settings.php:81
+msgid "Used for displaying a feedback form, applies to themes, subthemes and pdc-items."
+msgstr "Wordt gebruikt voor het weergeven van een feedback formulier, is van toepassing op thema's, subthema's en pdc-items."
+
+#: config/settings.php:87
 msgid "The Uniform Product list of names (upl)"
 msgstr "De Uniforme Productnamenlijst (UPL)"
 
-#: config/settings.php:84
+#: config/settings.php:90
 msgid "URL"
 msgstr "URL"
 
-#: config/settings.php:85
+#: config/settings.php:91
 msgid "URL used for retrieving UPL terms."
 msgstr "URL om de UPL termen op te halen."
 

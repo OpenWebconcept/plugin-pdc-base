@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Metabox\Handlers;
 
+use OWC\PDC\Base\Support\Traits\RequestUPL;
 use WP_Post;
 use WP_REST_Request;
-use OWC\PDC\Base\Support\Traits\RequestUPL;
 
 class UPLResourceHandler
 {
@@ -19,6 +19,7 @@ class UPLResourceHandler
     {
         if (! $this->objectIsPDC($postID) || $metaKey !== '_owc_pdc_upl_naam') {
             return;
+
         }
 
         $this->handleUPL($postID);

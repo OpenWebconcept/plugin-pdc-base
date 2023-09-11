@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Metabox;
 
-use OWC\PDC\Base\Support\Traits\RequestUPL;
 use OWC\PDC\Base\Metabox\Handlers\UPLNameHandler;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Support\Traits\RequestUPL;
 
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
@@ -41,13 +41,17 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = $this->getShowOnMetabox($configMetaboxes);
         }
 
+        if ($this->plugin->settings->useFeedbackForm()) {
+            $configMetaboxes = $this->getFeedbackFormMetabox($configMetaboxes);
+        }
+
         $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
             $metaboxes[] = $this->processMetabox($metabox);
         }
 
-        return array_merge($rwmbMetaboxes, apply_filters("owc/pdc-base/before-register-metaboxes", $metaboxes));
+        return array_merge($rwmbMetaboxes, apply_filters('owc/pdc-base/before-register-metaboxes', $metaboxes));
     }
 
     /**
@@ -72,5 +76,21 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     protected function getShowOnMetabox(array $configMetaboxes): array
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
+    }
+
+    protected function getFeedbackFormMetabox(array $configMetaboxes): array
+    {
+        $feedbackFormMetabox = $this->plugin->config->get('hide_feedback_form_metabox');
+        $metaboxKeys = ['base', 'pdc-category', 'pdc-subcategory'];
+
+        return array_map(function ($key, $metabox) use ($metaboxKeys, $feedbackFormMetabox) {
+            if (! in_array($key, $metaboxKeys)) {
+                return $metabox;
+            }
+
+            $metabox['fields']['general'] = array_merge($metabox['fields']['general'], $feedbackFormMetabox);
+
+            return $metabox;
+        }, array_keys($configMetaboxes), $configMetaboxes);
     }
 }

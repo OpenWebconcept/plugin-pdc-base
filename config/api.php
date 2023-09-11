@@ -28,7 +28,8 @@ return [
                 'identifications' => OWC\PDC\Base\RestAPI\ItemFields\IdentificationsField::class,
                 'escape_element' => OWC\PDC\Base\RestAPI\ItemFields\EscapeElementField::class,
                 'seopress' => OWC\PDC\Base\RestAPI\ItemFields\SeoPress::class,
-                'yoast' => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class
+                'yoast' => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
+                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class
             ],
         ],
         'subthema' => [
@@ -38,6 +39,7 @@ return [
                 'image' => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'themes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
                 'groups' => OWC\PDC\Base\RestAPI\SubThemaFields\GroupField::class,
+                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class
             ],
         ],
         'group' => [
@@ -56,6 +58,7 @@ return [
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
                 'yoast' => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
                 'date_modified' => OWC\PDC\Base\RestAPI\ItemFields\DateModified::class,
+                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class
             ],
         ],
     ],

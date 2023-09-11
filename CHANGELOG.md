@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.8.3] (2023-09-11)
+
+### Feat
+
+-	Use feedback form setting.
+
 ## Version [3.8.2] (2023-08-30)
 
 ### Refactor
