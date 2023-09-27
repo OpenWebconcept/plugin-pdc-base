@@ -411,21 +411,28 @@ msgstr "Duits"
 msgid "Turkish"
 msgstr "Turks"
 
-#: config/metaboxes.php:224 config/metaboxes.php:231 config/metaboxes.php:241
-#: config/metaboxes.php:248
+#: config/metaboxes.php:217
+msgid "Polish"
+msgstr "Pools"
+
+#: config/metaboxes.php:218
+msgid "Romanian"
+msgstr "Roemeens"
+
+#: config/metaboxes.php:233 config/metaboxes.php:250
 msgid "Icon"
 msgstr "Icoon"
 
-#: config/metaboxes.php:232
+#: config/metaboxes.php:234
 msgid "Use this option to add an icon to this theme."
 msgstr "Gebruik dit veld om een icoon toe te voegen aan het thema."
 
-#: config/metaboxes.php:224
+#: config/metaboxes.php:226
 #: config/metaboxes.php:241
 msgid "Settings"
 msgstr "Instellingen"
 
-#: config/metaboxes.php:249
+#: config/metaboxes.php:251
 msgid "Use this option to add an icon to this subtheme."
 msgstr "Gebruik dit veld om een icoon toe te voegen aan het subthema."
 

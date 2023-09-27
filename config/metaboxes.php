@@ -214,6 +214,8 @@ return [
                         'en' => __('English', 'pdc-base'),
                         'de' => __('German', 'pdc-base'),
                         'tr' => __('Turkish', 'pdc-base'),
+                        'pl' => __('Polish', 'pdc-base'),
+                        'ro' => __('Romanian', 'pdc-base'),
                     ],
                 ]
             ],

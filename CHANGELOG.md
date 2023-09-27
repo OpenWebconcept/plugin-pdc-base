@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.8.6] (2023-09-27)
+
+### Feat
+
+-   Add 'Polish' and 'Romanian' as selectable languages.
+
 ## Version [3.8.5] (2023-09-27)
 
 ### Feat
