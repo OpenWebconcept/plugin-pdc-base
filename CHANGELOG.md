@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.8.5] (2023-09-27)
+
+### Feat
+
+-   Validate URL used in getHeaders() method, inside CreatesFields class, with wp_http_validate_url().
+
 ## Version [3.8.4] (2023-09-11)
 
 ### Refactor

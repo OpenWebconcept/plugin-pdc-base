@@ -3,8 +3,8 @@
 namespace OWC\PDC\Base\Support;
 
 use Closure;
-use WP_Post;
 use OWC\PDC\Base\Foundation\Plugin;
+use WP_Post;
 
 abstract class CreatesFields
 {
@@ -110,7 +110,7 @@ abstract class CreatesFields
 
     protected function getHeaders(string $url): array
     {
-        if (empty($url)) {
+        if (empty($url) || ! \wp_http_validate_url($url)) {
             return [];
         }
 
