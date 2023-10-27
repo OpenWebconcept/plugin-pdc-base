@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.9] (2023-10-27)
+
+### Feat
+
+-   When the portal URL setting does not contains a valid URL, use URL from connected term of taxonomy 'pdc-show-on'.
+
 ## Version [3.8.6] (2023-09-27)
 
 ### Feat
