@@ -3,6 +3,7 @@
 namespace OWC\PDC\Base\Models;
 
 use OWC\PDC\Base\Settings\SettingsPageOptions;
+use WP_Term;
 
 class PortalLinkGenerator
 {
@@ -42,12 +43,34 @@ class PortalLinkGenerator
     private function createPortalSlug(): self
     {
         $portalURL = $this->pdcSettings->getPortalURL();
+
+        if ($this->pdcSettings->useShowOn()) {
+            $portalURL = $this->getShowOnPortalURL();
+        }
+
         $portalSlug = $this->pdcSettings->getPortalItemSlug();
 
         $this->updatePortalURL($portalURL);
         $this->updatePortalURL($portalSlug);
 
         return $this;
+    }
+
+    /**
+     * When the portal URL from the settings is not valid use the taxonomy 'pdc-show-on' as fallback.
+     */
+    private function getShowOnPortalURL(): string
+    {
+        $terms = wp_get_object_terms($this->post->getID(), 'pdc-show-on');
+
+        if (! is_array($terms) || empty($terms)) {
+            return '';
+        }
+
+        $portalURL = reset($terms);
+        $portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
+
+        return wp_http_validate_url($portalURL) ? $portalURL : '/';
     }
 
     private function appendTheme(): self

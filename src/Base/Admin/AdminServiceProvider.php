@@ -2,8 +2,10 @@
 
 namespace OWC\PDC\Base\Admin;
 
-use OWC\PDC\Base\Models\Item;
 use OWC\PDC\Base\Foundation\ServiceProvider;
+use OWC\PDC\Base\Models\Item;
+use WP_Post;
+use WP_REST_Response;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -17,7 +19,7 @@ class AdminServiceProvider extends ServiceProvider
     /**
      * Change the url for preview of published posts in the portal.
      */
-    public function filterPostLink(string $link, \WP_Post $post, bool $leavename, $sample): string
+    public function filterPostLink(string $link, WP_Post $post, bool $leavename, $sample): string
     {
         if ($post->post_type !== 'pdc-item' || ! $this->plugin->settings->isPortalSlugValid()) {
             return $link;
@@ -33,7 +35,7 @@ class AdminServiceProvider extends ServiceProvider
     /**
      * Change the url for preview of draft posts in the portal.
      */
-    public function filterPreviewLink(string $link, \WP_Post $post): string
+    public function filterPreviewLink(string $link, WP_Post $post): string
     {
         if (
             ! in_array($post->post_type, ['pdc-item', 'pdc-category', 'pdc-subcategory']) ||
@@ -48,7 +50,7 @@ class AdminServiceProvider extends ServiceProvider
     /**
      * Change the url of "preview in new tab" button for preview in the portal.
      */
-    public function filterPreviewInNewTabLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
+    public function filterPreviewInNewTabLink(WP_REST_Response $response, WP_Post $post): WP_REST_Response
     {
         if ($post->post_status === 'publish' || ! $this->plugin->settings->isPortalSlugValid()) {
             return $response;

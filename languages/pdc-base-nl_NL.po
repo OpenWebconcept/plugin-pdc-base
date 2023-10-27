@@ -811,8 +811,8 @@ msgid "Show on"
 msgstr "Tonen op"
 
 #: config/settings.php:75
-msgid "Used for configuring on which websites an OpenPDC item should be displayed on."
-msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPDC item weergegeven moet worden."
+msgid "Used for configuring on which websites an OpenPDC item should be displayed on. When this setting is on the value of the portal url will be overwritten by the values of this taxonomy."
+msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPDC item weergegeven moet worden. Als deze instelling aan staat wordt de waarde van de portal url overschreven door de waarden van deze taxonomy."
 
 #: config/settings.php:80
 msgid "Use feedback form"

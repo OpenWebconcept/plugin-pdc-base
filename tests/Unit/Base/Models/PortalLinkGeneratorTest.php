@@ -32,6 +32,10 @@ class PortalLinkGeneratorTest extends TestCase
                 '_owc_setting_identifications' => 0
             ]
         ]);
+
+        \WP_Mock::userFunction('wp_http_validate_url', [
+            'return' => 'https://www.gouda.nl'
+        ]);
     }
 
     public function tearDown(): void
