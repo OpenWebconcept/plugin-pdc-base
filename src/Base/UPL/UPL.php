@@ -4,38 +4,13 @@ namespace OWC\PDC\Base\UPL;
 
 class UPL
 {
+    protected array $items;
+    protected array $uplOptions;
+
     public function __construct(array $items, array $options)
     {
         $this->items = $items;
         $this->uplOptions = $options;
-    }
-
-    protected function validateUPLNames(): void
-    {
-        foreach ($this->items as $item) {
-            $uplName = get_post_meta($item->ID, '_owc_pdc_upl_naam', true);
-
-            if (empty($uplName) || ctype_lower($uplName)) {
-                continue;
-            }
-
-            $this->UPLNameToLowerCase($item, $uplName);
-        }
-    }
-
-    /**
-     * Update post meta when value is not in lowercase.
-     * Post meta should be in lowercase so let's fix this in advance.
-     */
-    protected function UPLNameToLowerCase(\WP_Post $item, string $uplName): string
-    {
-        $result = update_post_meta($item->ID, '_owc_pdc_upl_naam', strtolower($uplName));
-
-        if (! $result) {
-            return $uplName;
-        }
-
-        return strtolower($uplName);
     }
 
     protected function prepareItems(): void

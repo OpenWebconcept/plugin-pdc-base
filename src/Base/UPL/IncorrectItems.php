@@ -6,7 +6,6 @@ class IncorrectItems extends UPL
 {
     public function handle()
     {
-        $this->validateUPLNames();
         $this->prepareItems();
         $incorrectItems = $this->compareIncorrectItems();
 
@@ -23,7 +22,7 @@ class IncorrectItems extends UPL
     protected function compareIncorrectItem($item): bool
     {
         foreach ($this->uplOptions as $option) {
-            if ($item['uplName'] === strtolower($option['UniformeProductnaam']['value']) && strtolower($item['uplUrl']) === strtolower($option['URI']['value'])) {
+            if ($option['UniformeProductnaam']['value'] === $item['uplName'] && strtolower($item['uplUrl']) === strtolower($option['URI']['value'])) {
                 return false;
             }
         }

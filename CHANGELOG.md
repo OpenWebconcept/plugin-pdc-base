@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version [3.9.1] (2024-01-02)
+
+### Refactor
+
+-   Remove strtolower check when validating value of UniformeProductnaam.
+-   Remove conversion to lowercase of meta '_owc_pdc_upl_naam' when validating the values.
+
 ## Version [3.9] (2023-10-27)
 
 ### Feat
