@@ -6,9 +6,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Foundation\Plugin;
 use WP_Query;
 use WP_REST_Request;
-use OWC\PDC\Base\Foundation\Plugin;
 
 /**
  * Controller which handels general quering, such as pagination.
@@ -39,14 +39,14 @@ abstract class BaseController
         $page = 0 == $page ? 1 : $page;
 
         return array_merge([
-            'data' => $data
+            'data' => $data,
         ], [
             'pagination' => [
-                'total_count' => (int) $query->found_posts,
-                'total_pages' => $query->max_num_pages,
+                'total_count'  => (int) $query->found_posts,
+                'total_pages'  => $query->max_num_pages,
                 'current_page' => $page,
-                'limit' => $query->get('posts_per_page')
-            ]
+                'limit'        => $query->get('posts_per_page'),
+            ],
         ]);
     }
 
@@ -55,10 +55,29 @@ abstract class BaseController
      */
     protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10): array
     {
-        return [
+        $params = array_merge($request->get_params(), [
             'posts_per_page' => $request->get_param('limit') ?: $limit,
-            'paged' => $request->get_param('page') ?: 0
+            'paged'          => $request->get_param('page') ?: 0,
+        ]);
+
+        return $this->validateQueryParams($params);
+    }
+
+    protected function validateQueryParams(array $params): array
+    {
+        $allowedQueryParams = [
+            'include-connected',
+            'tax_query',
+            'meta_query',
+            'posts_per_page',
+            'paged',
+            'post_type',
+            'post_status',
         ];
+
+        return array_filter($params, function ($param) use ($allowedQueryParams) {
+            return in_array($param, $allowedQueryParams);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     /**

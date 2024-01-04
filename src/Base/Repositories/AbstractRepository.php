@@ -7,11 +7,11 @@
 namespace OWC\PDC\Base\Repositories;
 
 use Closure;
-use WP_Post;
-use WP_Query;
+use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use WP_Post;
+use WP_Query;
 
 /**
  * PDC item object with default quering and methods.
@@ -98,8 +98,6 @@ abstract class AbstractRepository
 
     /**
      * Get all the items from the database.
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -107,26 +105,22 @@ abstract class AbstractRepository
             'post_type' => [$this->posttype],
         ]);
 
-        $this->query = new WP_Query($args);
+        $this->query = new WP_Query($this->cleanParams($args));
 
         return array_map([$this, 'transform'], $this->getQuery()->posts);
     }
 
     /**
      * Find a particular pdc item by ID.
-     *
-     * @param int $id
-     *
-     * @return array
      */
-    public function find(int $id)
+    public function find(int $id): ?array
     {
         $args = array_merge($this->queryArgs, [
             'p' => $id,
             'post_type' => [$this->posttype],
         ]);
 
-        $this->query = new WP_Query($args);
+        $this->query = new WP_Query($this->cleanParams($args));
 
         if (empty($this->getQuery()->posts)) {
             return null;
@@ -137,25 +131,68 @@ abstract class AbstractRepository
 
     /**
      * Find a particular pdc item by slug.
-     *
-     * @param string $slug
-     *
-     * @return array|null
      */
-    public function findBySlug(string $slug)
+    public function findBySlug(string $slug): ?array
     {
         $args = array_merge($this->queryArgs, [
             'name' => $slug,
             'post_type' => [$this->posttype],
         ]);
 
-        $this->query = new WP_Query($args);
+        $this->query = new WP_Query($this->cleanParams($args));
 
         if (empty($this->getQuery()->posts)) {
             return null;
         }
 
         return $this->transform(reset($this->getQuery()->posts));
+    }
+
+    protected function cleanParams(array $args): array
+    {
+        $args = $this->validatePostStatusParam($args);
+        $args = $this->cleanWronglyNestedQueryParams($args, 'tax_query');
+        $args = $this->cleanWronglyNestedQueryParams($args, 'meta_query');
+
+        return $args;
+    }
+
+    protected function validatePostStatusParam(array $args): array
+    {
+        if (empty($args['post_status'])) {
+            return $args;
+        }
+
+        if (! is_string($args['post_status']) && ! is_array($args['post_status'])) {
+            unset($args['post_status']);
+
+            return $args;
+        }
+
+        if (is_string($args['post_status'])) {
+            $args['post_status'] = [$args['post_status']];
+        }
+
+        if (! \is_user_logged_in()) {
+            $args['post_status'] = ['publish'];
+        }
+
+        return $args;
+    }
+
+    protected function cleanWronglyNestedQueryParams(array $args, string $key): array
+    {
+        if (empty($args[$key]) || ! is_array($args[$key])) {
+            return $args;
+        }
+
+        foreach ($args[$key] as &$query) {
+            if (is_array($query) && ! empty($query[0])) {
+                $query = call_user_func_array('array_merge', $query);
+            }
+        }
+
+        return $args;
     }
 
     /**
@@ -273,7 +310,7 @@ abstract class AbstractRepository
             'date' => $post->post_date,
             'slug' => $post->post_name,
             'post_status' => $post->post_status,
-            'protected' => ! $this->isAllowed($post)
+            'protected' => ! $this->isAllowed($post),
         ];
 
         $data = $this->assignFields($data, $post);
