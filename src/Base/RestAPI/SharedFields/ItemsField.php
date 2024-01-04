@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
-use WP_Post;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use WP_Post;
 
 /**
  * Adds connected fields to item in API.
@@ -44,7 +44,7 @@ class ItemsField extends ConnectedField
         }
 
         $query['connected_query'] = [
-            'post_status' => ['publish', 'draft'],
+            'post_status' => ['publish', 'draft'], // Draft only for logged in users?
         ];
 
         return $query;
