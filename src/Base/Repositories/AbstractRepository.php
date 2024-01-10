@@ -350,6 +350,12 @@ abstract class AbstractRepository
                 }
             }
 
+            if ($this->shouldFilterLanguage()) {
+                if (method_exists($field['creator'], 'setLanguage')) {
+                    $field['creator']->setLanguage($this->language);
+                }
+            }
+
             if (is_null($field['conditional'])) {
                 // If the field has no conditional set we will add it
                 $data[$field['key']] = $field['creator']->create($post);

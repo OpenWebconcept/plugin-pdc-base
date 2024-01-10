@@ -48,6 +48,10 @@ class ItemsField extends ConnectedField
             $query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
         }
 
+        if ($this->shouldFilterLanguage()) {
+            $query = array_merge_recursive($query, $this->filterLanguageQuery($this->language));
+        }
+
 		$query['connected_query'] = [
             'post_status' => ['publish', 'draft'],
         ];
