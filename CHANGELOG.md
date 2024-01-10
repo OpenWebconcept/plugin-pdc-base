@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## Version [3.10] (2024-01-10)
+
+### Feat
+
+-   Enable filtering the items of categories and sub-categories by language.
+-   Add the language of connected PDC items in the API response data.
+
+
 ## Version [3.9.1] (2024-01-02)
 
 ### Refactor
