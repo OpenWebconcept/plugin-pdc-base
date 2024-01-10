@@ -62,11 +62,15 @@ abstract class AbstractRepository
      */
     protected $password = '';
 
-
     /**
      * Source for filtering the 'show_on' taxonomy
      */
     protected int $source = 0;
+
+    /**
+     * Language for filtering
+     */
+    protected ?string $language = null;
 
     /**
      * Additional fields that needs to be added to an item.
@@ -389,5 +393,17 @@ abstract class AbstractRepository
     public function shouldFilterSource(): bool
     {
         return 0 !== $this->source;
+    }
+
+    public function filterLanguage(string $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    public function shouldFilterLanguage(): bool
+    {
+        return !empty($this->language);
     }
 }
