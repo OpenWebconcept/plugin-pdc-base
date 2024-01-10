@@ -51,4 +51,41 @@ trait QueryHelpers
             ]
         ];
     }
+
+	public function filterLanguageQuery(string $language): array
+	{
+		if ($language === 'nl') {
+			return [
+				'meta_query' => [
+					[
+						'relation' => 'OR',
+						[
+							'key' => '_owc_pdc-item-language',
+							'value' => $language,
+							'compare' => '=',
+						],
+						[
+							'key' => '_owc_pdc-item-language',
+							'value' => '',
+							'compare' => '=',
+						],
+						[
+							'key' => '_owc_pdc-item-language',
+							'compare' => 'NOT EXISTS',
+						],
+					]
+				]
+			];
+		}
+
+		return [
+			'meta_query' => [
+				[
+					'key' => '_owc_pdc-item-language',
+					'value' => $language,
+					'compare' => '=',
+				],
+			]
+		];
+	}
 }
