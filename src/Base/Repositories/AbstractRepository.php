@@ -271,7 +271,6 @@ abstract class AbstractRepository
             'content' => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
             'excerpt' => $this->isAllowed($post) ? $post->post_excerpt : "",
             'date' => $post->post_date,
-            'slug' => $post->post_name,
             'post_status' => $post->post_status,
             'protected' => ! $this->isAllowed($post)
         ];
