@@ -19,6 +19,11 @@ class ItemsField extends ConnectedField
     use CheckPluginActive;
     use QueryHelpers;
 
+	/**
+	 * Language for filtering
+	 */
+	protected ?string $language = null;
+
     /**
      * Creates an array of connected posts.
      */
@@ -33,9 +38,9 @@ class ItemsField extends ConnectedField
     {
         $query = [];
 
-        $query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
+		$query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
 
-        if ($this->isPluginPDCInternalProductsActive()) {
+		if ($this->isPluginPDCInternalProductsActive()) {
             $query = array_merge_recursive($query, $this->excludeInternalItemsQuery());
         }
 
@@ -43,10 +48,26 @@ class ItemsField extends ConnectedField
             $query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
         }
 
-        $query['connected_query'] = [
+        if ($this->shouldFilterLanguage()) {
+            $query = array_merge_recursive($query, $this->filterLanguageQuery($this->language));
+        }
+
+		$query['connected_query'] = [
             'post_status' => ['publish', 'draft'],
         ];
 
         return $query;
     }
+
+	public function setLanguage(string $language): self
+	{
+		$this->language = $language;
+
+		return $this;
+	}
+
+	protected function shouldFilterLanguage(): bool
+	{
+		return !empty($this->language);
+	}
 }

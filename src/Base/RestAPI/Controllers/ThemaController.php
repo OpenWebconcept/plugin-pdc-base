@@ -36,6 +36,10 @@ class ThemaController extends BaseController
             $items->filterSource($request->get_param('source'));
         }
 
+		if ($language = $request->get_param('language')) {
+			$items->filterLanguage((string) $language);
+		}
+
         $data = $items->all();
         $query = $items->getQuery();
 
@@ -59,7 +63,11 @@ class ThemaController extends BaseController
             $thema->filterSource($request->get_param('source'));
         }
 
-        $thema = $thema->find($id);
+		if ($language = $request->get_param('language')) {
+			$thema->filterLanguage((string) $language);
+		}
+
+		$thema = $thema->find($id);
 
         if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID [%d] not found', $id), [
@@ -86,6 +94,10 @@ class ThemaController extends BaseController
         if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
             $theme->filterSource($request->get_param('source'));
         }
+
+		if ($language = $request->get_param('language')) {
+			$theme->filterLanguage((string) $language);
+		}
 
         $theme = $theme->findBySlug($slug);
 

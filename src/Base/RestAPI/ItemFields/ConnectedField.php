@@ -100,6 +100,7 @@ class ConnectedField extends CreatesFields
                 'slug' => $post->post_name,
                 'excerpt' => $post->post_excerpt,
                 'date' => $post->post_date,
+                'language' => get_post_meta($post->ID, '_owc_pdc-item-language', true) ?: 'nl',
             ];
 
             if ($type === 'pdc-item_to_pdc-item') {

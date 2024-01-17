@@ -62,11 +62,15 @@ abstract class AbstractRepository
      */
     protected $password = '';
 
-
     /**
      * Source for filtering the 'show_on' taxonomy
      */
     protected int $source = 0;
+
+    /**
+     * Language for filtering
+     */
+    protected ?string $language = null;
 
     /**
      * Additional fields that needs to be added to an item.
@@ -271,7 +275,6 @@ abstract class AbstractRepository
             'content' => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
             'excerpt' => $this->isAllowed($post) ? $post->post_excerpt : "",
             'date' => $post->post_date,
-            'slug' => $post->post_name,
             'post_status' => $post->post_status,
             'protected' => ! $this->isAllowed($post)
         ];
@@ -347,6 +350,12 @@ abstract class AbstractRepository
                 }
             }
 
+            if ($this->shouldFilterLanguage()) {
+                if (method_exists($field['creator'], 'setLanguage')) {
+                    $field['creator']->setLanguage($this->language);
+                }
+            }
+
             if (is_null($field['conditional'])) {
                 // If the field has no conditional set we will add it
                 $data[$field['key']] = $field['creator']->create($post);
@@ -390,5 +399,17 @@ abstract class AbstractRepository
     public function shouldFilterSource(): bool
     {
         return 0 !== $this->source;
+    }
+
+    public function filterLanguage(string $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    public function shouldFilterLanguage(): bool
+    {
+        return !empty($this->language);
     }
 }
