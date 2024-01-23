@@ -3,6 +3,7 @@
 namespace OWC\PDC\Base\Support;
 
 use Closure;
+use Exception;
 use OWC\PDC\Base\Foundation\Plugin;
 use WP_Post;
 
@@ -120,7 +121,11 @@ abstract class CreatesFields
             return $cachedHeaders;
         }
 
-        $response = get_headers($url, 1, $this->streamContext());
+        try {
+            $response = get_headers($url, 1, $this->streamContext());
+        } catch(Exception $e) {
+            $response = false;
+        }
 
         if (empty($response) || ! is_array($response)) {
             return [];
@@ -137,7 +142,7 @@ abstract class CreatesFields
      */
     protected function streamContext()
     {
-        if (($_ENV['APP_ENV'] ?? '') !== 'development') {
+        if ('development' !== ($_ENV['APP_ENV'] ?? '')) {
             return null;
         }
 
