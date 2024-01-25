@@ -50,22 +50,40 @@ class ItemController extends BaseController
      */
     protected function convertParameters(array $parametersFromRequest): array
     {
-        $parameters = [];
+        $allowedQueryParams = [
+            'name',
+            'include-connected',
+            'slug',
+            'id',
+            'p',
+            'tax_query',
+            'meta_query',
+            'post_type',
+            'post_status',
+        ];
 
-        if (isset($parametersFromRequest['name'])) {
-            $parameters['name'] = esc_attr($parametersFromRequest['name']);
+        $parameters = array_filter(
+            $parametersFromRequest,
+            static function ($param) use ($allowedQueryParams) {
+                return in_array($param, $allowedQueryParams, true);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        if (isset($parameters['name'])) {
+            $parameters['name'] = esc_attr($parameters['name']);
         }
 
-        $parameters['include-connected'] = (isset($parametersFromRequest['include-connected'])) ? true : false;
+        $parameters['include-connected'] = (isset($parameters['include-connected'])) ? true : false;
 
-        if (isset($parametersFromRequest['slug'])) {
-            $parameters['name'] = esc_attr($parametersFromRequest['slug']);
-            unset($parametersFromRequest['slug']);
+        if (isset($parameters['slug'])) {
+            $parameters['name'] = esc_attr($parameters['slug']);
+            unset($parameters['slug']);
         }
 
-        if (isset($parametersFromRequest['id'])) {
-            $parameters['p'] = absint($parametersFromRequest['id']);
-            unset($parametersFromRequest['slug']);
+        if (isset($parameters['id'])) {
+            $parameters['p'] = absint($parameters['id']);
+            unset($parameters['id']);
         }
 
         return $parameters;
