@@ -105,7 +105,7 @@ abstract class AbstractRepository
             'post_type' => [$this->posttype],
         ]);
 
-        $this->query = new WP_Query($args);
+        $this->query = new WP_Query($this->validatePostStatusParam($args));
 
         return array_map([$this, 'transform'], $this->getQuery()->posts);
     }
@@ -120,7 +120,7 @@ abstract class AbstractRepository
             'post_type' => [$this->posttype],
         ]);
 
-        $this->query = new WP_Query($args);
+        $this->query = new WP_Query($this->validatePostStatusParam($args));
 
         if (empty($this->getQuery()->posts)) {
             return null;
@@ -139,13 +139,36 @@ abstract class AbstractRepository
             'post_type' => [$this->posttype],
         ]);
 
-        $this->query = new WP_Query($args);
+        $this->query = new WP_Query($this->validatePostStatusParam($args));
 
         if (empty($this->getQuery()->posts)) {
             return null;
         }
 
         return $this->transform(reset($this->getQuery()->posts));
+    }
+
+    protected function validatePostStatusParam(array $args): array
+    {
+        if (empty($args['post_status'])) {
+            return $args;
+        }
+
+        if (! is_string($args['post_status']) && ! is_array($args['post_status'])) {
+            unset($args['post_status']);
+
+            return $args;
+        }
+
+        if (is_string($args['post_status'])) {
+            $args['post_status'] = [$args['post_status']];
+        }
+
+        if (! \is_user_logged_in()) {
+            $args['post_status'] = ['publish'];
+        }
+
+        return $args;
     }
 
     /**

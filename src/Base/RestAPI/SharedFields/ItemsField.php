@@ -43,8 +43,12 @@ class ItemsField extends ConnectedField
             $query = array_merge_recursive($query, $this->filterShowOnTaxonomyQuery($this->source));
         }
 
+        $postStatus = \is_user_logged_in()
+            ? ['publish', 'draft']
+            : ['publish'];
+
         $query['connected_query'] = [
-            'post_status' => ['publish', 'draft'],
+            'post_status' => $postStatus,
         ];
 
         return $query;
