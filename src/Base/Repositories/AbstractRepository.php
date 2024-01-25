@@ -7,11 +7,11 @@
 namespace OWC\PDC\Base\Repositories;
 
 use Closure;
-use WP_Post;
-use WP_Query;
+use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use WP_Post;
+use WP_Query;
 
 /**
  * PDC item object with default quering and methods.
@@ -98,8 +98,6 @@ abstract class AbstractRepository
 
     /**
      * Get all the items from the database.
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -114,12 +112,8 @@ abstract class AbstractRepository
 
     /**
      * Find a particular pdc item by ID.
-     *
-     * @param int $id
-     *
-     * @return array
      */
-    public function find(int $id)
+    public function find(int $id): ?array
     {
         $args = array_merge($this->queryArgs, [
             'p' => $id,
@@ -137,12 +131,8 @@ abstract class AbstractRepository
 
     /**
      * Find a particular pdc item by slug.
-     *
-     * @param string $slug
-     *
-     * @return array|null
      */
-    public function findBySlug(string $slug)
+    public function findBySlug(string $slug): ?array
     {
         $args = array_merge($this->queryArgs, [
             'name' => $slug,
@@ -273,7 +263,7 @@ abstract class AbstractRepository
             'date' => $post->post_date,
             'slug' => $post->post_name,
             'post_status' => $post->post_status,
-            'protected' => ! $this->isAllowed($post)
+            'protected' => ! $this->isAllowed($post),
         ];
 
         $data = $this->assignFields($data, $post);
