@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.11.1] (2024-02-19)
+
+### Feat
+
+- Add show_in_rest arg to all taxonomies.
+
 ## Version [3.11] (2024-01-23)
 
 ### Fix

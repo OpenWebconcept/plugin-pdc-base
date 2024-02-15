@@ -27,6 +27,7 @@ return [
                 'back_to_items' => __('← Back to tags', 'pdc-base'),
             ],
             'meta_box' => 'simple',
+			'show_in_rest' => true,
         ],
         'names' => [
             'singular' => __('Audience', 'pdc-base'),
@@ -38,7 +39,7 @@ return [
         'object_types' => ['pdc-item'],
         'args' => [
             'meta_box' => 'simple',
-            'show_in_rest' => false,
+            'show_in_rest' => true,
         ],
         'names' => [
             'singular' => __('Type', 'pdc-base'),
@@ -50,7 +51,7 @@ return [
         'object_types' => ['pdc-item'],
         'args' => [
             'meta_box' => 'simple',
-            'show_in_rest' => false,
+            'show_in_rest' => true,
         ],
         'names' => [
             'singular' => __('Aspect', 'pdc-base'),
@@ -62,7 +63,7 @@ return [
         'object_types' => ['pdc-item'],
         'args' => [
             'meta_box' => 'simple',
-            'show_in_rest' => false,
+            'show_in_rest' => true,
         ],
         'names' => [
             'singular' => __('Usage', 'pdc-base'),
@@ -74,7 +75,7 @@ return [
         'object_types' => ['pdc-item'],
         'args' => [
             'meta_box' => 'simple',
-            'show_in_rest' => false,
+            'show_in_rest' => true,
             'show_admin_column' => true,
         ],
         'names' => [
@@ -86,7 +87,7 @@ return [
     'pdc-show-on' => [
         'object_types' => ['pdc-item', 'pdc-category', 'pdc-subcategory'],
         'args' => [
-            'show_in_rest' => false,
+            'show_in_rest' => true,
             'show_admin_column' => true,
             'capabilities' => [
                 'manage_terms' => 'manage_categories',
