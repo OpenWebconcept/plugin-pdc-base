@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.12] (2024-03-14)
+
+### Feat
+
+- Support extra default taxonomy filter options in items endpoint.
+
 ## Version [3.11.1] (2024-02-19)
 
 ### Feat

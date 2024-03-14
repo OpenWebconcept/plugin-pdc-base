@@ -7,11 +7,11 @@
 namespace OWC\PDC\Base\Repositories;
 
 use Closure;
-use WP_Post;
-use WP_Query;
+use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Exceptions\PropertyNotExistsException;
+use WP_Post;
+use WP_Query;
 
 /**
  * PDC item object with default quering and methods.
@@ -276,7 +276,7 @@ abstract class AbstractRepository
             'excerpt' => $this->isAllowed($post) ? $post->post_excerpt : "",
             'date' => $post->post_date,
             'post_status' => $post->post_status,
-            'protected' => ! $this->isAllowed($post)
+            'protected' => ! $this->isAllowed($post),
         ];
 
         $data = $this->assignFields($data, $post);
@@ -396,6 +396,39 @@ abstract class AbstractRepository
         return $this;
     }
 
+    public function filterTargetAudience($audiences): self
+    {
+        if (is_string($audiences)) {
+            $audiences = [$audiences];
+        }
+
+        $this->query($this->filterTargetAudienceQuery($audiences));
+
+        return $this;
+    }
+
+    public function filterAspect($aspects): self
+    {
+        if (is_string($aspects)) {
+            $aspects = [$aspects];
+        }
+
+        $this->query($this->filterAspectQuery($aspects));
+
+        return $this;
+    }
+
+    public function filterUsage($audiences): self
+    {
+        if (is_string($audiences)) {
+            $audiences = [$audiences];
+        }
+
+        $this->query($this->filterUsageQuery($audiences));
+
+        return $this;
+    }
+
     public function shouldFilterSource(): bool
     {
         return 0 !== $this->source;
@@ -410,6 +443,6 @@ abstract class AbstractRepository
 
     public function shouldFilterLanguage(): bool
     {
-        return !empty($this->language);
+        return ! empty($this->language);
     }
 }
