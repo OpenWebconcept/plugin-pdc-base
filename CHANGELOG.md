@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.12.1] (2024-06-20)
+
+### Feat
+
+- Get all connected items in API response instead of the default 10.
+
 ## Version [3.12] (2024-03-14)
 
 ### Feat

@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
-use WP_Post;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use WP_Post;
 
 /**
  * Adds connected fields to item in API.
@@ -36,7 +36,9 @@ class ItemsField extends ConnectedField
 
     protected function extraQueryArgs(string $type): array
     {
-        $query = [];
+		$query = [
+			'p2p:per_page' => -1
+		];
 
 		$query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
 
