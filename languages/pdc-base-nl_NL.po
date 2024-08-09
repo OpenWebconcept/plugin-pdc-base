@@ -419,7 +419,9 @@ msgstr "Pools"
 msgid "Romanian"
 msgstr "Roemeens"
 
-#: config/metaboxes.php:233 config/metaboxes.php:250
+#: config/metaboxes.php:233
+#: config/metaboxes.php:250
+#: config/theme_tiles_metabox.php:32
 msgid "Icon"
 msgstr "Icoon"
 
@@ -822,15 +824,24 @@ msgstr "Gebruik feedback formulier"
 msgid "Used for displaying a feedback form, applies to themes, subthemes and pdc-items."
 msgstr "Wordt gebruikt voor het weergeven van een feedback formulier, is van toepassing op thema's, subthema's en pdc-items."
 
+#: config/settings.php:86
+msgid "Theme tiles"
+msgstr "Thema tegels"
+
 #: config/settings.php:87
+msgid "Enable theme tiles."
+msgstr "Gebruik thema tegels"
+
+#: config/settings.php:93
 msgid "The Uniform Product list of names (upl)"
 msgstr "De Uniforme Productnamenlijst (UPL)"
 
-#: config/settings.php:90
+#: config/settings.php:96
+#: config/theme_tiles_metabox.php:27
 msgid "URL"
 msgstr "URL"
 
-#: config/settings.php:91
+#: config/settings.php:97
 msgid "URL used for retrieving UPL terms."
 msgstr "URL om de UPL termen op te halen."
 
@@ -945,6 +956,18 @@ msgstr "Eigenaar"
 #: config/taxonomies.php:82
 msgid "Owners"
 msgstr "Eigenaren"
+
+#: config/theme_tiles_metabox.php:6
+msgid "Tiles"
+msgstr "Tegels"
+
+#: config/theme_tiles_metabox.php:18
+msgid "Add new tile"
+msgstr "Voeg nieuwe tegel toe"
+
+#: config/theme_tiles_metabox.php:
+msgid "Title"
+msgstr "Titel"
 
 #: src/Base/Foundation/DependencyChecker.php:70
 msgid "The following plugins are required to use the PDC:"
