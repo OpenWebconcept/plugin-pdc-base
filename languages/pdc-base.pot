@@ -423,6 +423,7 @@ msgstr ""
 
 #: config/metaboxes.php:233
 #: config/metaboxes.php:250
+#: config/theme_tiles_metabox.php:32
 msgid "Icon"
 msgstr ""
 
@@ -852,15 +853,24 @@ msgstr ""
 msgid "Used for displaying a feedback form, applies to themes, subthemes and pdc-items."
 msgstr ""
 
+#: config/settings.php:86
+msgid "Theme tiles"
+msgstr ""
+
 #: config/settings.php:87
+msgid "Enable theme tiles."
+msgstr ""
+
+#: config/settings.php:93
 msgid "The Uniform Product list of names (upl)"
 msgstr ""
 
-#: config/settings.php:90
+#: config/settings.php:96
+#: config/theme_tiles_metabox.php:27
 msgid "URL"
 msgstr ""
 
-#: config/settings.php:91
+#: config/settings.php:97
 msgid "URL used for retrieving UPL terms."
 msgstr ""
 
@@ -976,6 +986,18 @@ msgstr ""
 
 #: config/taxonomies.php:82
 msgid "Owners"
+msgstr ""
+
+#: config/theme_tiles_metabox.php:6
+msgid "Tiles"
+msgstr ""
+
+#: config/theme_tiles_metabox.php:18
+msgid "Add new tile"
+msgstr ""
+
+#: config/theme_tiles_metabox.php:
+msgid "Title"
 msgstr ""
 
 #: src/Base/Foundation/DependencyChecker.php:70

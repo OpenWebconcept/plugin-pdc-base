@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.13.0] (2024-08-09)
+
+### Feat
+
+- Theme tiles, enabled by setting.
+
 ## Version [3.12.2] (2024-08-19)
 
 ### Feat

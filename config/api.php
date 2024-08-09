@@ -58,7 +58,8 @@ return [
                 'subthemes' => OWC\PDC\Base\RestAPI\ThemaFields\ThemaField::class,
                 'yoast' => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
                 'date_modified' => OWC\PDC\Base\RestAPI\ItemFields\DateModified::class,
-                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class
+                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class,
+				'tiles' => OWC\PDC\Base\RestAPI\ThemaFields\TilesField::class
             ],
         ],
     ],
