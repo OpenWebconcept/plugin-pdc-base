@@ -3,12 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
         itemCategoryMetaboxWrapper: '#p2p-from-pdc-item_to_pdc-category',
         itemSubcategoryMetaboxWrapper: '#p2p-from-pdc-item_to_pdc-subcategory',
         itemGroupMetaboxWrapper: '#p2p-from-pdc-item_to_pdc-group',
+
         itemCategoryMetabox: 'div[data-p2p_type="pdc-item_to_pdc-category"]',
         itemSubcategoryMetabox: 'div[data-p2p_type="pdc-item_to_pdc-subcategory"]',
         itemGroupMetabox: 'div[data-p2p_type="pdc-item_to_pdc-group"]',
+
         itemCategoryConnectionTableRow: 'div[data-p2p_type="pdc-item_to_pdc-category"] > table.p2p-connections > tbody > tr',
         itemSubcategoryConnectionTableRow: 'div[data-p2p_type="pdc-item_to_pdc-subcategory"] > table.p2p-connections > tbody > tr',
         itemGroupConnectionTableRow: 'div[data-p2p_type="pdc-item_to_pdc-group"] > table.p2p-connections > tbody > tr',
+
         postPublishButton: 'div.edit-post-header__settings > button.editor-post-publish-button__button',
     };
 

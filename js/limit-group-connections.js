@@ -1,85 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
     const selectors = {
-        groupSubcategoryMetaboxWrapper: '#p2p-to-pdc-subcategory_to_pdc-group',
-        groupSubcategoryMetabox: 'div[data-p2p_type="pdc-subcategory_to_pdc-group"]',
-        groupSubCategoryConnectionTableRow: 'div[data-p2p_type="pdc-subcategory_to_pdc-group"] > table.p2p-connections > tbody > tr',
-        groupItemMetaboxWrapper: '#p2p-to-pdc-item_to_pdc-group',
-        groupItemMetabox: 'div[data-p2p_type="pdc-item_to_pdc-group"]',
-        groupItemConnectionTableRow: 'div[data-p2p_type="pdc-item_to_pdc-group"] > table.p2p-connections > tbody > tr',
         groupCategoryMetaboxWrapper: '#p2p-to-pdc-category_to_pdc-group',
+        groupSubcategoryMetaboxWrapper: '#p2p-to-pdc-subcategory_to_pdc-group',
+
         groupCategoryMetabox: 'div[data-p2p_type="pdc-category_to_pdc-group"]',
+		groupSubcategoryMetabox: 'div[data-p2p_type="pdc-subcategory_to_pdc-group"]',
+
         groupCategoryConnectionTableRow: 'div[data-p2p_type="pdc-category_to_pdc-group"] > table.p2p-connections > tbody > tr',
+        groupSubcategoryConnectionTableRow: 'div[data-p2p_type="pdc-subcategory_to_pdc-group"] > table.p2p-connections > tbody > tr',
+
         postPublishButton: 'div.edit-post-header__settings > button.editor-post-publish-button__button',
     };
 
-    const {
-        groupSubcategoryMetabox,
-        groupSubcategoryMetaboxWrapper,
-        groupSubCategoryConnectionTableRow,
-        groupItemMetabox,
-        groupItemMetaboxWrapper,
-        groupItemConnectionTableRow,
-        groupCategoryMetabox,
+	const {
         groupCategoryMetaboxWrapper,
+        groupSubcategoryMetaboxWrapper,
+        groupCategoryMetabox,
+        groupSubcategoryMetabox,
         groupCategoryConnectionTableRow,
+        groupSubcategoryConnectionTableRow,
         postPublishButton,
     } = selectors;
 
-    const metaboxes = [
-        { metabox: groupSubcategoryMetabox, metaboxWrapper: groupSubcategoryMetaboxWrapper, connectionRow: groupSubCategoryConnectionTableRow },
-        { metabox: groupItemMetabox, metaboxWrapper: groupItemMetaboxWrapper, connectionRow: groupItemConnectionTableRow },
-        { metabox: groupCategoryMetabox, metaboxWrapper: groupCategoryMetaboxWrapper, connectionRow: groupCategoryConnectionTableRow }
-    ];
+    // Monitor changes to metaboxes
+    observeMetaboxChanges(groupCategoryMetabox, groupCategoryMetaboxWrapper, groupCategoryConnectionTableRow, groupSubcategoryConnectionTableRow, postPublishButton);
+    observeMetaboxChanges(groupSubcategoryMetabox, groupSubcategoryMetaboxWrapper, groupSubcategoryConnectionTableRow, groupCategoryConnectionTableRow, postPublishButton);
 
-    metaboxes.forEach(({ metabox, metaboxWrapper, connectionRow }) => {
-        observeMetaboxChanges(metabox, metaboxWrapper, connectionRow, postPublishButton);
+    // Validate connections on page load
+    validateConnectionsOnLoad({
+		groupCategoryMetaboxWrapper,
+        groupSubcategoryMetaboxWrapper,
+        groupCategoryConnectionTableRow,
+        groupSubcategoryConnectionTableRow,
+        postPublishButton,
     });
-
-    validateConnectionsOnLoad(metaboxes, postPublishButton);
 });
 
-function observeMetaboxChanges(metabox, metaboxWrapper, connectionRow, postPublishButton) {
+function observeMetaboxChanges(metabox, metaboxWrapper, mainConnectionTableRow, subConnectionTableRow, postPublishButton) {
     const observer = new MutationObserver(() => {
-        validateConnections({ metabox, metaboxWrapper, connectionRow, postPublishButton });
+        validateConnectionState({ metaboxWrapper, mainConnectionTableRow, subConnectionTableRow, postPublishButton });
     });
 
-    const config = { childList: true, subtree: true };
     const targetNode = document.querySelector(metabox);
     if (targetNode) {
-        observer.observe(targetNode, config);
+        observer.observe(targetNode, { childList: true, subtree: true });
     }
 }
 
-function validateConnections({ metabox, metaboxWrapper, connectionRow, postPublishButton }) {
-    const connectionExists = document.querySelectorAll(connectionRow).length > 0;
-    toggleMetaboxState(metaboxWrapper, connectionExists);
-    togglePublishButton(postPublishButton);
+function validateConnectionsOnLoad({ groupCategoryMetaboxWrapper, groupSubcategoryMetaboxWrapper, groupCategoryConnectionTableRow, groupSubcategoryConnectionTableRow,  postPublishButton }) {
+    setTimeout(() => {
+        validateConnectionState({ metaboxWrapper: groupCategoryMetaboxWrapper, mainConnectionTableRow: groupCategoryConnectionTableRow });
+        validateConnectionState({ metaboxWrapper: groupSubcategoryMetaboxWrapper, mainConnectionTableRow: groupSubcategoryConnectionTableRow });
+        validatePublishButtonState({ groupCategoryConnectionTableRow, groupSubcategoryConnectionTableRow, postPublishButton });
+    }, 1000);
 }
 
-function toggleMetaboxState(metaboxWrapper, connectionExists) {
+function validateConnectionState({ metaboxWrapper, mainConnectionTableRow, subConnectionTableRow, postPublishButton }) {
+    const mainConnectionExists = document.querySelectorAll(mainConnectionTableRow).length >= 1;
+    const subConnectionExists = subConnectionTableRow ? document.querySelectorAll(subConnectionTableRow).length >= 1 : true;
+
+    toggleMetaboxBorder(metaboxWrapper, mainConnectionExists);
+    validatePublishButtonState({ groupCategoryConnectionTableRow: mainConnectionTableRow, groupSubcategoryConnectionTableRow: subConnectionTableRow, postPublishButton });
+}
+
+function toggleMetaboxBorder(metaboxWrapper, connectionExists) {
     const wrapper = document.querySelector(metaboxWrapper);
     if (!wrapper) return;
 
-    if (connectionExists) {
-        wrapper.style.border = '';
-        wrapper.querySelector('.p2p-create-connections')?.classList.add('hidden');
-    } else {
-        wrapper.style.border = '1px solid red';
-        wrapper.querySelector('.p2p-create-connections')?.classList.remove('hidden');
-    }
+    wrapper.style.border = connectionExists ? '' : '1px solid red';
 }
 
-function togglePublishButton(postPublishButton) {
-    const disable = [...document.querySelectorAll('[data-p2p_type] > table.p2p-connections > tbody > tr')]
-        .every(tr => tr.length === 0);
+function validatePublishButtonState({ groupCategoryConnectionTableRow, groupSubcategoryConnectionTableRow, postPublishButton }) {
+    const categoryConnectionExists = document.querySelectorAll(groupCategoryConnectionTableRow).length >= 1;
+    const subcategoryConnectionExists = groupSubcategoryConnectionTableRow ? document.querySelectorAll(groupSubcategoryConnectionTableRow).length >= 1 : true;
 
-    document.querySelector(postPublishButton).disabled = disable;
-}
+    const button = document.querySelector(postPublishButton);
+    if (!button) return;
 
-function validateConnectionsOnLoad(metaboxes, postPublishButton) {
-    setTimeout(() => {
-        metaboxes.forEach(({ metabox, metaboxWrapper, connectionRow }) => {
-            validateConnections({ metabox, metaboxWrapper, connectionRow, postPublishButton });
-        });
-    }, 1000);
+    button.disabled = !(categoryConnectionExists && subcategoryConnectionExists);
 }
