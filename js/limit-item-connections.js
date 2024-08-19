@@ -92,6 +92,7 @@ function toggleMetaboxBorder(metaboxWrapper, connectionExists) {
     wrapper.style.border = connectionExists ? '' : '1px solid red';
 }
 
+// Enforces that only one group connection can be made. Not sure why this is necessary, but it was in the original code.
 function toggleGroupConnectionVisibility(metabox, mainConnectionTableRow) {
     const createConnectionsElement = document.querySelector(`${metabox} > div.p2p-create-connections`);
     const connectionExists = document.querySelectorAll(mainConnectionTableRow).length === 1;
