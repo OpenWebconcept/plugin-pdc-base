@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.12.2] (2024-08-19)
+
+### Feat
+
+- Refractor the validation JavaScript of the post 2 post connections.
+
 ## Version [3.12.1] (2024-06-20)
 
 ### Feat
