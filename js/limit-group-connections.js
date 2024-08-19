@@ -1,214 +1,85 @@
-/**
- * Validate the PostsToPosts connections for pdc-items.
- */
-jQuery(document).ready(function ($) {
-    let groupSubcategoryMetaboxWrapper      = '#p2p-to-pdc-subcategory_to_pdc-group';
-    let groupSubcategoryMetabox             = 'div[data-p2p_type="pdc-subcategory_to_pdc-group"]';
-    let groupSubCategoryConnectionTableRow  = 'div[data-p2p_type="pdc-subcategory_to_pdc-group"] > table.p2p-connections > tbody > tr';
-    let groupItemMetaboxWrapper             = '#p2p-to-pdc-item_to_pdc-group';
-    let groupItemMetabox                    = 'div[data-p2p_type="pdc-item_to_pdc-group"]';
-    let groupItemConnectionTableRow         = 'div[data-p2p_type="pdc-item_to_pdc-group"] > table.p2p-connections > tbody > tr';
-    let groupCategoryMetaboxWrapper         = '#p2p-to-pdc-category_to_pdc-group';
-    let groupCategoryMetabox                = 'div[data-p2p_type="pdc-category_to_pdc-group"]';
-    let groupCategoryConnectionTableRow     = 'div[data-p2p_type="pdc-category_to_pdc-group"] > table.p2p-connections > tbody > tr';
-    let postPublishButton                   = 'div.edit-post-header__settings > button.editor-post-publish-button__button';
-    
-    // create a binding for when the metabox changes
-    watchSubcategoryMetaboxOnChange(groupSubcategoryMetabox, groupSubcategoryMetaboxWrapper, groupSubCategoryConnectionTableRow, groupItemConnectionTableRow, groupCategoryConnectionTableRow, postPublishButton, $);
-    watchGroupMetaboxOnChange(groupItemMetabox, groupItemMetaboxWrapper, groupItemConnectionTableRow, groupSubCategoryConnectionTableRow, groupCategoryConnectionTableRow, postPublishButton, $);
-    watchCategoryMetaboxOnChange(groupCategoryMetabox, groupCategoryMetaboxWrapper, groupCategoryConnectionTableRow, groupSubCategoryConnectionTableRow, groupItemConnectionTableRow, postPublishButton, $);
+document.addEventListener('DOMContentLoaded', () => {
+    const selectors = {
+        groupSubcategoryMetaboxWrapper: '#p2p-to-pdc-subcategory_to_pdc-group',
+        groupSubcategoryMetabox: 'div[data-p2p_type="pdc-subcategory_to_pdc-group"]',
+        groupSubCategoryConnectionTableRow: 'div[data-p2p_type="pdc-subcategory_to_pdc-group"] > table.p2p-connections > tbody > tr',
+        groupItemMetaboxWrapper: '#p2p-to-pdc-item_to_pdc-group',
+        groupItemMetabox: 'div[data-p2p_type="pdc-item_to_pdc-group"]',
+        groupItemConnectionTableRow: 'div[data-p2p_type="pdc-item_to_pdc-group"] > table.p2p-connections > tbody > tr',
+        groupCategoryMetaboxWrapper: '#p2p-to-pdc-category_to_pdc-group',
+        groupCategoryMetabox: 'div[data-p2p_type="pdc-category_to_pdc-group"]',
+        groupCategoryConnectionTableRow: 'div[data-p2p_type="pdc-category_to_pdc-group"] > table.p2p-connections > tbody > tr',
+        postPublishButton: 'div.edit-post-header__settings > button.editor-post-publish-button__button',
+    };
 
-    // wait before the dom is loaded
-    metaboxValidationAfterPageLoad(
-        groupSubcategoryMetabox, 
-        groupItemMetabox, 
-        groupItemMetaboxWrapper, 
-        groupSubcategoryMetaboxWrapper, 
+    const {
+        groupSubcategoryMetabox,
+        groupSubcategoryMetaboxWrapper,
+        groupSubCategoryConnectionTableRow,
+        groupItemMetabox,
+        groupItemMetaboxWrapper,
         groupItemConnectionTableRow,
-        groupSubCategoryConnectionTableRow, 
         groupCategoryMetabox,
         groupCategoryMetaboxWrapper,
         groupCategoryConnectionTableRow,
-        postPublishButton, 
-        $
-    );
+        postPublishButton,
+    } = selectors;
+
+    const metaboxes = [
+        { metabox: groupSubcategoryMetabox, metaboxWrapper: groupSubcategoryMetaboxWrapper, connectionRow: groupSubCategoryConnectionTableRow },
+        { metabox: groupItemMetabox, metaboxWrapper: groupItemMetaboxWrapper, connectionRow: groupItemConnectionTableRow },
+        { metabox: groupCategoryMetabox, metaboxWrapper: groupCategoryMetaboxWrapper, connectionRow: groupCategoryConnectionTableRow }
+    ];
+
+    metaboxes.forEach(({ metabox, metaboxWrapper, connectionRow }) => {
+        observeMetaboxChanges(metabox, metaboxWrapper, connectionRow, postPublishButton);
+    });
+
+    validateConnectionsOnLoad(metaboxes, postPublishButton);
 });
 
-/**
- * Validate the PostsToPosts connections metaboxes after pageload.
- * 
- * @param {string} groupSubcategoryMetabox 
- * @param {string} groupSubcategoryMetaboxWrapper 
- * @param {string} groupSubCategoryConnectionTableRow 
- * @param {string} postPublishButton 
- * @param {Object} $ 
- */
-function metaboxValidationAfterPageLoad(
-    groupSubcategoryMetabox, 
-    groupItemMetabox, 
-    groupItemMetaboxWrapper, 
-    groupSubcategoryMetaboxWrapper, 
-    groupItemConnectionTableRow,
-    groupSubCategoryConnectionTableRow, 
-    groupCategoryMetabox,
-    groupCategoryMetaboxWrapper,
-    groupCategoryConnectionTableRow,
-    postPublishButton, 
-    $
-)
-{
-    setTimeout(function(){ 
-        if($(groupItemConnectionTableRow).length >= 1)
-        {
-            $(groupItemMetaboxWrapper).css("border", "");
-        }
+function observeMetaboxChanges(metabox, metaboxWrapper, connectionRow, postPublishButton) {
+    const observer = new MutationObserver(() => {
+        validateConnections({ metabox, metaboxWrapper, connectionRow, postPublishButton });
+    });
 
-        if($(groupSubCategoryConnectionTableRow).length >= 1)
-        {
-            $(groupSubcategoryMetaboxWrapper).css("border", "");
-        }
+    const config = { childList: true, subtree: true };
+    const targetNode = document.querySelector(metabox);
+    if (targetNode) {
+        observer.observe(targetNode, config);
+    }
+}
 
-        if($(groupCategoryConnectionTableRow).length == 1)
-        {
-            $(groupCategoryMetabox + '> div.p2p-create-connections').hide();
-            $(groupCategoryMetaboxWrapper).css("border", "");
-        }
+function validateConnections({ metabox, metaboxWrapper, connectionRow, postPublishButton }) {
+    const connectionExists = document.querySelectorAll(connectionRow).length > 0;
+    toggleMetaboxState(metaboxWrapper, connectionExists);
+    togglePublishButton(postPublishButton);
+}
 
-        if($(groupItemConnectionTableRow).length == 0)
-        {
-            $(groupItemMetabox + '> div.p2p-create-connections').show();
-            $(groupItemMetaboxWrapper).css("border", "1px solid red");
-        }
+function toggleMetaboxState(metaboxWrapper, connectionExists) {
+    const wrapper = document.querySelector(metaboxWrapper);
+    if (!wrapper) return;
 
-        if($(groupSubCategoryConnectionTableRow).length == 0)
-        {
-            $(groupSubcategoryMetabox + '> div.p2p-create-connections').show();
-            $(groupSubcategoryMetaboxWrapper).css("border", "1px solid red");
-        }
+    if (connectionExists) {
+        wrapper.style.border = '';
+        wrapper.querySelector('.p2p-create-connections')?.classList.add('hidden');
+    } else {
+        wrapper.style.border = '1px solid red';
+        wrapper.querySelector('.p2p-create-connections')?.classList.remove('hidden');
+    }
+}
 
-        if($(groupCategoryConnectionTableRow).length == 0)
-        {
-            $(groupCategoryMetabox + '> div.p2p-create-connections').show();
-            $(groupCategoryMetaboxWrapper).css("border", "1px solid red");
-        }
+function togglePublishButton(postPublishButton) {
+    const disable = [...document.querySelectorAll('[data-p2p_type] > table.p2p-connections > tbody > tr')]
+        .every(tr => tr.length === 0);
 
-        if($(groupSubCategoryConnectionTableRow).length == 0 || $(groupItemConnectionTableRow).length == 0 || $(groupCategoryConnectionTableRow).length == 0)
-        {
-            $(postPublishButton).prop("disabled",true);
-        }
+    document.querySelector(postPublishButton).disabled = disable;
+}
 
-        if($(groupSubCategoryConnectionTableRow).length >= 1 && $(groupItemConnectionTableRow).length >= 1 && $(groupCategoryConnectionTableRow).length == 1)
-        {
-            $(postPublishButton).prop("disabled",false);
-        }
+function validateConnectionsOnLoad(metaboxes, postPublishButton) {
+    setTimeout(() => {
+        metaboxes.forEach(({ metabox, metaboxWrapper, connectionRow }) => {
+            validateConnections({ metabox, metaboxWrapper, connectionRow, postPublishButton });
+        });
     }, 1000);
-}
-
-/**
- * Validate the PostsToPosts connections on modification.
- * 
- * @param {string} metabox 
- * @param {string} metaboxWrapper 
- * @param {string} primaryConnectionTableRow 
- * @param {string} secondaryConnectionTableRow 
- * @param {string} postPublishButton 
- * @param {Object} $ 
- */
-function watchSubcategoryMetaboxOnChange(metabox, metaboxWrapper, primaryConnectionTableRow, secondaryConnectionTableRow, tertiaryConnectionTableRow, postPublishButton, $)
-{
-    $(metabox).bind("DOMSubtreeModified", function() {	
-        if($(primaryConnectionTableRow).length >= 1)
-		{
-            $(metaboxWrapper).css("border", "");
-        }
-        
-        if($(primaryConnectionTableRow).length == 0)
-		{
-            $(metabox  + '> div.p2p-create-connections').show();
-            $(metaboxWrapper).css("border", "1px solid red");
-        }
-        
-        if($(primaryConnectionTableRow).length == 0 || $(secondaryConnectionTableRow).length == 0 || $(tertiaryConnectionTableRow).length == 0)
-        {
-            $(postPublishButton).prop("disabled",true);
-        }
-
-        if($(primaryConnectionTableRow).length >= 1 && $(secondaryConnectionTableRow).length >= 1 && $(tertiaryConnectionTableRow).length == 1)
-        {
-            $(postPublishButton).prop("disabled",false);
-        }
-    });
-}
-
-/**
- * Validate the PostsToPosts connections on modification.
- * 
- * @param {string} metabox 
- * @param {string} metaboxWrapper 
- * @param {string} primaryConnectionTableRow 
- * @param {string} secondaryConnectionTableRow 
- * @param {string} postPublishButton 
- * @param {Object} $ 
- */
-function watchGroupMetaboxOnChange(metabox, metaboxWrapper, primaryConnectionTableRow, secondaryConnectionTableRow, tertiaryConnectionTableRow, postPublishButton, $)
-{
-    $(metabox).bind("DOMSubtreeModified", function() {	
-        if($(primaryConnectionTableRow).length >= 1)
-		{
-            $(metaboxWrapper).css("border", "");
-        }
-        
-        if($(primaryConnectionTableRow).length == 0)
-		{
-            $(metabox  + '> div.p2p-create-connections').show();
-            $(metaboxWrapper).css("border", "1px solid red");
-        }
-        
-        if($(primaryConnectionTableRow).length == 0 || $(secondaryConnectionTableRow).length == 0 || $(tertiaryConnectionTableRow).length == 0)
-        {
-            $(postPublishButton).prop("disabled",true);
-        }
-
-        if($(primaryConnectionTableRow).length >= 1 && $(secondaryConnectionTableRow).length >= 1 && $(tertiaryConnectionTableRow).length == 1)
-        {
-            $(postPublishButton).prop("disabled",false);
-        }
-    });
-}
-
-/**
- * Validate the PostsToPosts connections on modification.
- * 
- * @param {string} metabox 
- * @param {string} metaboxWrapper 
- * @param {string} primaryConnectionTableRow 
- * @param {string} secondaryConnectionTableRow 
- * @param {string} postPublishButton 
- * @param {Object} $ 
- */
-function watchCategoryMetaboxOnChange(metabox, metaboxWrapper, primaryConnectionTableRow, secondaryConnectionTableRow, tertiaryConnectionTableRow, postPublishButton, $)
-{
-    $(metabox).bind("DOMSubtreeModified", function() {	
-        if($(primaryConnectionTableRow).length == 1)
-		{
-            $(metabox  + '> div.p2p-create-connections').hide();
-            $(metaboxWrapper).css("border", "");
-        }
-        
-        if($(primaryConnectionTableRow).length == 0)
-		{
-            $(metabox  + '> div.p2p-create-connections').show();
-            $(metaboxWrapper).css("border", "1px solid red");
-        }
-        
-        if($(primaryConnectionTableRow).length == 0 || $(secondaryConnectionTableRow).length == 0 || $(tertiaryConnectionTableRow).length == 0)
-        {
-            $(postPublishButton).prop("disabled",true);
-        }
-
-        if($(primaryConnectionTableRow).length == 1 && $(secondaryConnectionTableRow).length >= 1 && $(tertiaryConnectionTableRow).length >= 1)
-        {
-            $(postPublishButton).prop("disabled",false);
-        }
-    });
 }
