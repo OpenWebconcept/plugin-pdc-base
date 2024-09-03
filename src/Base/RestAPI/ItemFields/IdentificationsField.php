@@ -6,9 +6,9 @@
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
-use WP_Post;
 use OWC\PDC\Base\Models\Identification;
 use OWC\PDC\Base\Support\CreatesFields;
+use WP_Post;
 
 /**
  * Adds download fields to the output.
@@ -72,6 +72,10 @@ class IdentificationsField extends CreatesFields
                 continue;
             }
 
+			if (! is_array($groupItem) && $this->isJson($groupItem)) {
+				$groupItem = json_decode($groupItem, true);
+			}
+
             $identification = new Identification($identifier, $groupItem);
 
             if ($identification->isActive()) {
@@ -86,4 +90,11 @@ class IdentificationsField extends CreatesFields
 
         return $identifications;
     }
+
+	private function isJson($string): bool
+	{
+		json_decode($string);
+
+    	return (json_last_error() == JSON_ERROR_NONE);
+	}
 }
