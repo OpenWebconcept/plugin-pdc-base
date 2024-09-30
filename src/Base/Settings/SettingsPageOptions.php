@@ -127,6 +127,13 @@ class SettingsPageOptions
 		return boolval($setting);
 	}
 
+	public function useTableOfContents(): bool
+	{
+		$setting = $this->settings['_owc_setting_pdc_use_table_of_contents'] ?? false;
+
+		return boolval($setting);
+	}
+
     /**
      * URL used for retrieving UPL terms.
      */
@@ -150,7 +157,8 @@ class SettingsPageOptions
             '_owc_setting_pdc_enable_show_on' => 0,
             '_owc_setting_pdc_use_feedback_form' => 0,
             '_owc_upl_terms_url' => '',
-			'_owc_setting_pdc_use_theme_tiles' => 0
+			'_owc_setting_pdc_use_theme_tiles' => 0,
+			'_owc_setting_pdc_use_table_of_contents' => 0,
         ];
 
         return new static(wp_parse_args(get_option('_owc_pdc_base_settings'), $defaultSettings));

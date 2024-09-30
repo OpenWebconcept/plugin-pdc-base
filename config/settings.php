@@ -88,6 +88,12 @@ return [
                     'id' => 'setting_pdc_use_theme_tiles',
                     'type' => 'checkbox',
                 ],
+				'pdc_use_table_of_contents' => [
+                    'name' => __('Table of contents', 'pdc-base'),
+                    'desc' => __('Enable use of table of contents.', 'pdc-base'),
+                    'id' => 'setting_pdc_use_table_of_contents',
+                    'type' => 'checkbox',
+                ],
                 'upl_heading' => [
                     'type' => 'heading',
                     'name' => __('The Uniform Product list of names (upl)', 'pdc-base'),

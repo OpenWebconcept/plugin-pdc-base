@@ -862,15 +862,19 @@ msgid "Enable theme tiles."
 msgstr ""
 
 #: config/settings.php:93
+msgid "Enable use of table of contents."
+msgstr ""
+
+#: config/settings.php:99
 msgid "The Uniform Product list of names (upl)"
 msgstr ""
 
-#: config/settings.php:96
+#: config/settings.php:102
 #: config/theme_tiles_metabox.php:27
 msgid "URL"
 msgstr ""
 
-#: config/settings.php:97
+#: config/settings.php:103
 msgid "URL used for retrieving UPL terms."
 msgstr ""
 
@@ -996,8 +1000,18 @@ msgstr ""
 msgid "Add new tile"
 msgstr ""
 
-#: config/theme_tiles_metabox.php:
+#: config/theme_tiles_metabox.php:22
 msgid "Title"
+msgstr ""
+
+#: config/settings.php:92
+#: config/table_of_contents_metabox.php:6
+#: config/table_of_contents_metabox.php:14
+msgid "Table of contents"
+msgstr ""
+
+#: config/table_of_contents_metabox.php:15
+msgid "Use this option if you want to use a table of contents"
 msgstr ""
 
 #: src/Base/Foundation/DependencyChecker.php:70

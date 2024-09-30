@@ -45,6 +45,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 			$configMetaboxes = $this->getTilesMetabox($configMetaboxes);
 		}
 
+		if ($this->plugin->settings->useTableOfContents()) {
+			$configMetaboxes = $this->getTableOfContentsMetabox($configMetaboxes);
+		}
+
         if ($this->plugin->settings->useFeedbackForm()) {
             $configMetaboxes = $this->getFeedbackFormMetabox($configMetaboxes);
         }
@@ -85,6 +89,11 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 	protected function getTilesMetabox(array $configMetaboxes): array
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('theme_tiles_metabox'));
+    }
+
+	protected function getTableOfContentsMetabox(array $configMetaboxes): array
+    {
+        return array_merge($configMetaboxes, $this->plugin->config->get('table_of_contents_metabox'));
     }
 
     protected function getFeedbackFormMetabox(array $configMetaboxes): array
