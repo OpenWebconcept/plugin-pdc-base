@@ -29,7 +29,8 @@ return [
                 'escape_element' => OWC\PDC\Base\RestAPI\ItemFields\EscapeElementField::class,
                 'seopress' => OWC\PDC\Base\RestAPI\ItemFields\SeoPress::class,
                 'yoast' => OWC\PDC\Base\RestAPI\ItemFields\Yoast::class,
-                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class
+                'hide_feedback_form' => OWC\PDC\Base\RestAPI\SharedFields\HideFeedbackForm::class,
+				'table_of_contents_is_active' => OWC\PDC\Base\RestAPI\ItemFields\TableOfContentsField::class
             ],
         ],
         'subthema' => [

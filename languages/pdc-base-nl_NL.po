@@ -240,7 +240,7 @@ msgstr "Alternatieve titel"
 
 #: config/metaboxes.php:19
 msgid "Use this option if you want to use an alternative title"
-msgstr "Gebruik deze mogelijkheid als de website een alternatieve titel gebruikt"
+msgstr "Gebruik deze optie als de website een alternatieve titel gebruikt"
 
 #: config/metaboxes.php:24
 msgid "Synonyms"
@@ -248,7 +248,7 @@ msgstr "Synoniemen"
 
 #: config/metaboxes.php:25
 msgid "Use this option to add an comma separated list of synonyms or related terms"
-msgstr "Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of gerelateerde termen mee te geven"
+msgstr "Gebruik deze optie om een komma gescheiden lijst van synoniemen of gerelateerde termen mee te geven"
 
 #: config/metaboxes.php:31
 msgid "Is this product active yes/no"
@@ -830,18 +830,22 @@ msgstr "Thema tegels"
 
 #: config/settings.php:87
 msgid "Enable theme tiles."
-msgstr "Gebruik thema tegels"
+msgstr "Gebruik thema tegels."
 
 #: config/settings.php:93
+msgid "Enable use of table of contents."
+msgstr "Gebruik inhoudsopgaven."
+
+#: config/settings.php:99
 msgid "The Uniform Product list of names (upl)"
 msgstr "De Uniforme Productnamenlijst (UPL)"
 
-#: config/settings.php:96
+#: config/settings.php:102
 #: config/theme_tiles_metabox.php:27
 msgid "URL"
 msgstr "URL"
 
-#: config/settings.php:97
+#: config/settings.php:103
 msgid "URL used for retrieving UPL terms."
 msgstr "URL om de UPL termen op te halen."
 
@@ -965,9 +969,18 @@ msgstr "Tegels"
 msgid "Add new tile"
 msgstr "Voeg nieuwe tegel toe"
 
-#: config/theme_tiles_metabox.php:
+#: config/theme_tiles_metabox.php:22
 msgid "Title"
 msgstr "Titel"
+
+#: config/table_of_contents_metabox.php:6
+#: config/table_of_contents_metabox.php:14
+msgid "Table of contents"
+msgstr "Inhoudsopgave"
+
+#: config/table_of_contents_metabox.php:15
+msgid "Use this option if you want to use a table of contents"
+msgstr "Gebruik deze optie als er een inhoudsopgave getoond moet worden op de website"
 
 #: src/Base/Foundation/DependencyChecker.php:70
 msgid "The following plugins are required to use the PDC:"

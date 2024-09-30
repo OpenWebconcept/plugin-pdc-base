@@ -5,6 +5,7 @@
 ### Feat
 
 - Theme tiles, enabled by setting.
+- PDC item table of contents, enabled by setting.
 
 ## Version [3.12.2] (2024-08-19)
 
