@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Version [3.13.0] (2024-08-09)
+## Version [3.13.0] (2024-09-30)
 
 ### Feat
 
@@ -8,9 +8,9 @@
 
 ## Version [3.12.2] (2024-08-19)
 
-### Feat
+### Refactor
 
-- Refractor the validation JavaScript of the post 2 post connections.
+- Validation JavaScript of the post 2 post connections.
 
 ## Version [3.12.1] (2024-06-20)
 
