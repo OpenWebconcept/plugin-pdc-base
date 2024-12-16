@@ -11,12 +11,12 @@
   "type": "wordpress-plugin",
   "require": {
     "php": "^7.4|^8.0",
-    "johnbillion/extended-cpts": "^4.0",
+    "johnbillion/extended-cpts": "^5.0",
     "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
     "10up/wp_mock": "~0.5",
-    "friendsofphp/php-cs-fixer": "^2.0",
+    "friendsofphp/php-cs-fixer": "^3.0",
     "mockery/mockery": "^1.5",
     "phpunit/phpunit": "~9.0",
     "szepeviktor/phpstan-wordpress": "^1.1"
