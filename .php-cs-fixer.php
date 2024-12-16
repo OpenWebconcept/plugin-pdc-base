@@ -48,5 +48,5 @@ return (new PhpCsFixer\Config())
             'keep_multiple_spaces_after_comma' => true,
         ]
     ])
-    ->setRiskyAllowed(false)
+    ->setRiskyAllowed(true)
     ->setFinder($finder);
