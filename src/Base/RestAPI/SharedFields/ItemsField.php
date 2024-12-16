@@ -6,10 +6,10 @@
 
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
-use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Post;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 
 /**
  * Adds connected fields to item in API.
@@ -19,10 +19,10 @@ class ItemsField extends ConnectedField
     use CheckPluginActive;
     use QueryHelpers;
 
-	/**
-	 * Language for filtering
-	 */
-	protected ?string $language = null;
+    /**
+     * Language for filtering
+     */
+    protected ?string $language = null;
 
     /**
      * Creates an array of connected posts.
@@ -36,13 +36,13 @@ class ItemsField extends ConnectedField
 
     protected function extraQueryArgs(string $type): array
     {
-		$query = [
-			'p2p:per_page' => -1
-		];
+        $query = [
+            'p2p:per_page' => -1
+        ];
 
-		$query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
+        $query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
 
-		if ($this->isPluginPDCInternalProductsActive()) {
+        if ($this->isPluginPDCInternalProductsActive()) {
             $query = array_merge_recursive($query, $this->excludeInternalItemsQuery());
         }
 
@@ -54,22 +54,22 @@ class ItemsField extends ConnectedField
             $query = array_merge_recursive($query, $this->filterLanguageQuery($this->language));
         }
 
-		$query['connected_query'] = [
+        $query['connected_query'] = [
             'post_status' => ['publish', 'draft'],
         ];
 
         return $query;
     }
 
-	public function setLanguage(string $language): self
-	{
-		$this->language = $language;
+    public function setLanguage(string $language): self
+    {
+        $this->language = $language;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	protected function shouldFilterLanguage(): bool
-	{
-		return !empty($this->language);
-	}
+    protected function shouldFilterLanguage(): bool
+    {
+        return ! empty($this->language);
+    }
 }

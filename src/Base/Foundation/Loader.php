@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which handles the hooks in the WordPress ecosystem.
  */

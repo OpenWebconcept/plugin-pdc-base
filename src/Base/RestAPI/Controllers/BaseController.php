@@ -6,9 +6,9 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
-use OWC\PDC\Base\Foundation\Plugin;
 use WP_Query;
 use WP_REST_Request;
+use OWC\PDC\Base\Foundation\Plugin;
 
 /**
  * Controller which handels general quering, such as pagination.
