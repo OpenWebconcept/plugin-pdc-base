@@ -41,6 +41,11 @@ return [
             'label' => 'RWMB Metabox',
             'version' => '4.14.0',
             'file' => 'meta-box/meta-box.php'
+        ],        [
+            'type' => 'plugin',
+            'label' => 'RWMB Metabox',
+            'version' => '1.4.2',
+            'file' => 'meta-box-group/meta-box-group.php'
         ],
         [
             'type' => 'plugin',
