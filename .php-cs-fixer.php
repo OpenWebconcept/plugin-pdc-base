@@ -27,7 +27,6 @@ return (new PhpCsFixer\Config())
         'align_multiline_comment' => true,
         'array_indentation' => true,
         'no_superfluous_elseif' => true,
-        'single_blank_line_before_namespace' => true,
         'blank_line_after_opening_tag' => true,
         'no_blank_lines_after_phpdoc' => true,
         'phpdoc_separation' => true,
@@ -49,5 +48,5 @@ return (new PhpCsFixer\Config())
             'keep_multiple_spaces_after_comma' => true,
         ]
     ])
-    ->setRiskyAllowed(true)
+    ->setRiskyAllowed(false)
     ->setFinder($finder);
