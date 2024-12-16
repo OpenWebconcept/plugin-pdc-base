@@ -33,7 +33,7 @@
   },
   "scripts": {
     "format": "./vendor/bin/php-cs-fixer fix",
-    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M",
+    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 1G",
     "test": [
       "@unit"
     ],
