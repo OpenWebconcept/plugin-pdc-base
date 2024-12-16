@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which handles the redirection of the homepage.
  */

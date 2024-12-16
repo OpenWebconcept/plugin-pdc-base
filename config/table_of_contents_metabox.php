@@ -10,12 +10,12 @@ return [
         'autosave' => true,
         'fields' => [
             'table_of_contents' => [
-				[
-					'name' => __('Table of contents', 'pdc-base'),
-					'desc' => __('Use this option if you want to use a table of contents', 'pdc-base'),
-					'id' => 'pdc_use_table_of_contents',
-					'type' => 'checkbox',
-				]
+                [
+                    'name' => __('Table of contents', 'pdc-base'),
+                    'desc' => __('Use this option if you want to use a table of contents', 'pdc-base'),
+                    'id' => 'pdc_use_table_of_contents',
+                    'type' => 'checkbox',
+                ]
             ],
         ]
     ]

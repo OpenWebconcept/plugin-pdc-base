@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Config object to store, save and retrieve configurations.
  */

@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Adds boolean field to the output which indicates if the item uses table of contents.
  */
 
 namespace OWC\PDC\Base\RestAPI\ItemFields;
 
+use WP_Post;
 use OWC\PDC\Base\Models\Item;
 use OWC\PDC\Base\Support\CreatesFields;
-use WP_Post;
 
 class TableOfContentsField extends CreatesFields
 {

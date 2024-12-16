@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds FAQ fields to the output.
  */

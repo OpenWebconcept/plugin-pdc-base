@@ -6,8 +6,8 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
-use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
 use OWC\PDC\Base\Tests\Unit\TestCase;
+use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
 
 class MetaboxServiceProviderTest extends TestCase
 {

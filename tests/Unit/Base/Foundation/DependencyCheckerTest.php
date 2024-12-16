@@ -50,6 +50,7 @@ class DependencyCheckerTest extends TestCase
 
     /**
      * @dataProvider wrongVersions
+     *
      * @test
      */
     public function it_fails_when_plugin_is_active_but_versions_mismatch($version)
@@ -75,6 +76,7 @@ class DependencyCheckerTest extends TestCase
 
     /**
      * @dataProvider correctVersions
+     *
      * @test
      */
     public function it_succeeds_when_plugin_is_active_and_versions_match($version)

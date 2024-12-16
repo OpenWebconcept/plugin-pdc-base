@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       Plugin Stub
  * Plugin URI:        https://www.openwebconcept.nl/
