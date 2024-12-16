@@ -48,11 +48,11 @@ return [
             'version' => '1.6.6',
             'file' => 'posts-to-posts/posts-to-posts.php',
         ],
-        [
-            'type' => 'class',
-            'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
-            'name' => 'Extended_CPT'
-        ],
+		[
+			'type' => 'function',
+			'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
+			'name' => 'register_extended_post_type'
+		],
     ]
 
 ];
