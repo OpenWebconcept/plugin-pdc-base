@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds download fields to the output.
  */

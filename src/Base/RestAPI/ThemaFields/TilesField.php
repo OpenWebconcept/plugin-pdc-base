@@ -2,15 +2,15 @@
 
 namespace OWC\PDC\Base\RestAPI\ThemaFields;
 
-use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 use WP_Post;
+use OWC\PDC\Base\RestAPI\ItemFields\ConnectedField;
 
 /**
  * Class for handling the thema fields.
  */
 class TilesField extends ConnectedField
 {
-	/**
+    /**
      * The condition for the creator.
      */
     protected function condition(): callable

@@ -82,13 +82,13 @@ return [
                     'id' => 'setting_pdc_use_feedback_form',
                     'type' => 'checkbox',
                 ],
-				'pdc_use_theme_tiles' => [
+                'pdc_use_theme_tiles' => [
                     'name' => __('Theme tiles', 'pdc-base'),
                     'desc' => __('Enable theme tiles.', 'pdc-base'),
                     'id' => 'setting_pdc_use_theme_tiles',
                     'type' => 'checkbox',
                 ],
-				'pdc_use_table_of_contents' => [
+                'pdc_use_table_of_contents' => [
                     'name' => __('Table of contents', 'pdc-base'),
                     'desc' => __('Enable use of table of contents.', 'pdc-base'),
                     'id' => 'setting_pdc_use_table_of_contents',

@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Metabox;
 
+use OWC\PDC\Base\Support\Traits\RequestUPL;
 use OWC\PDC\Base\Metabox\Handlers\UPLNameHandler;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
-use OWC\PDC\Base\Support\Traits\RequestUPL;
 
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
@@ -41,13 +41,13 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = $this->getShowOnMetabox($configMetaboxes);
         }
 
-		if ($this->plugin->settings->useThemeTiles()) {
-			$configMetaboxes = $this->getTilesMetabox($configMetaboxes);
-		}
+        if ($this->plugin->settings->useThemeTiles()) {
+            $configMetaboxes = $this->getTilesMetabox($configMetaboxes);
+        }
 
-		if ($this->plugin->settings->useTableOfContents()) {
-			$configMetaboxes = $this->getTableOfContentsMetabox($configMetaboxes);
-		}
+        if ($this->plugin->settings->useTableOfContents()) {
+            $configMetaboxes = $this->getTableOfContentsMetabox($configMetaboxes);
+        }
 
         if ($this->plugin->settings->useFeedbackForm()) {
             $configMetaboxes = $this->getFeedbackFormMetabox($configMetaboxes);
@@ -86,12 +86,12 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
     }
 
-	protected function getTilesMetabox(array $configMetaboxes): array
+    protected function getTilesMetabox(array $configMetaboxes): array
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('theme_tiles_metabox'));
     }
 
-	protected function getTableOfContentsMetabox(array $configMetaboxes): array
+    protected function getTableOfContentsMetabox(array $configMetaboxes): array
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('table_of_contents_metabox'));
     }

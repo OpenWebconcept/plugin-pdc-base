@@ -254,14 +254,14 @@ class Item
     {
         $value = $this->getMeta('escape_element_active', '0', true, '_owc_');
 
-		return boolval($value);
+        return boolval($value);
     }
 
-	public function useTableOfContents(): bool
+    public function useTableOfContents(): bool
     {
         $value = $this->getMeta('pdc_use_table_of_contents', '0', true, '_owc_');
 
-		return boolval($value);
+        return boolval($value);
     }
 
     /**

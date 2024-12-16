@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds synonyms field to the output.
  */

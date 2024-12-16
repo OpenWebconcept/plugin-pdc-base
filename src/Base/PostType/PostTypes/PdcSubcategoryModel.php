@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Model for the sub-category
  */

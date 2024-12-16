@@ -27,7 +27,7 @@ return [
                 'back_to_items' => __('← Back to tags', 'pdc-base'),
             ],
             'meta_box' => 'simple',
-			'show_in_rest' => true,
+            'show_in_rest' => true,
         ],
         'names' => [
             'singular' => __('Audience', 'pdc-base'),

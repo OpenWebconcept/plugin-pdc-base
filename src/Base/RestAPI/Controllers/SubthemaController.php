@@ -32,9 +32,9 @@ class SubthemaController extends BaseController
             $items->filterSource($request->get_param('source'));
         }
 
-		if ($language = $request->get_param('language')) {
-			$items->filterLanguage((string) $language);
-		}
+        if ($language = $request->get_param('language')) {
+            $items->filterLanguage((string) $language);
+        }
 
         $data = $items->all();
         $query = $items->getQuery();
@@ -59,9 +59,9 @@ class SubthemaController extends BaseController
             $thema->filterSource($request->get_param('source'));
         }
 
-		if ($language = $request->get_param('language')) {
-			$thema->filterLanguage((string) $language);
-		}
+        if ($language = $request->get_param('language')) {
+            $thema->filterLanguage((string) $language);
+        }
 
         $thema = $thema->find($id);
 
@@ -91,9 +91,9 @@ class SubthemaController extends BaseController
             $subtheme->filterSource($request->get_param('source'));
         }
 
-		if ($language = $request->get_param('language')) {
-			$subtheme->filterLanguage((string) $language);
-		}
+        if ($language = $request->get_param('language')) {
+            $subtheme->filterLanguage((string) $language);
+        }
 
         $subtheme = $subtheme->findBySlug($slug);
 
