@@ -48,12 +48,6 @@ return [
             'file' => 'meta-box-group/meta-box-group.php'
         ],
         [
-            'type' => 'plugin',
-            'label' => 'Posts 2 Posts',
-            'version' => '1.6.6',
-            'file' => 'posts-to-posts/posts-to-posts.php',
-        ],
-        [
             'type' => 'function',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
             'name' => 'register_extended_post_type'
