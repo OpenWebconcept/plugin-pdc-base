@@ -43,6 +43,8 @@ class PostTypeServiceProvider extends ServiceProvider
                     continue;
                 }
 
+				$postType = apply_filters('owc/pdc-base/before-register-extended-post-type', $postType, $postTypeName);
+
                 register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
             }
         }
