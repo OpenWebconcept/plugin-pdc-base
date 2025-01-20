@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.13.1] (2025-01-20)
+
+### Fix
+
+- Correctly extract URLs from shortcodes in 'links' field of pdc-item for REST API.
+
 ## Version [3.13.0] (2024-09-30)
 
 ### Feat
