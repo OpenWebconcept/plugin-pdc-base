@@ -34,7 +34,7 @@
   "scripts": {
     "format": "./vendor/bin/php-cs-fixer fix",
     "i18n-update": "wp i18n make-pot . ./languages/pdc-base.pot --include=\"theme.json,patterns,src,resources,config\" && wp i18n update-po ./languages/pdc-base.pot && wp i18n make-mo ./languages ./languages",
-    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 500M",
+    "phpstan": "./vendor/bin/phpstan analyse --no-progress  --memory-limit 1G",
     "test": [
       "@unit"
     ],
