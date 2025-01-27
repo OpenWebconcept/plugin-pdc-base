@@ -52,6 +52,8 @@ class UPLServiceProvider extends ServiceProvider
             'post_status' => ['publish', 'draft']
         ];
 
+        $args = apply_filters('owc/pdc-base/upl/wp-query-args', $args);
+
         $query = new \WP_Query($args);
 
         if (empty($query->posts)) {
