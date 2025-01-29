@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.13.2] (2025-01-29)
+
+### Fix
+
+- Fatal error "non-static method OWC\PDC\Base\Taxonomy\TaxonomyController::addShowOnExplanation() cannot be called statically. @richardkorthuis (#36)
+
 ## Version [3.13.1] (2025-01-20)
 
 ### Fix
