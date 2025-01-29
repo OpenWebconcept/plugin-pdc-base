@@ -11,7 +11,7 @@ class TaxonomyController
      *
      * @return void
      */
-    public function addShowOnExplanation(string $taxonomy): void
+    public static function addShowOnExplanation(string $taxonomy): void
     {
         if ('pdc-show-on' !== $taxonomy) {
             return;
