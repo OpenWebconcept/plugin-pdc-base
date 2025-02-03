@@ -108,7 +108,6 @@ abstract class CreatesFields
 
         return $contentLength;
     }
-
     protected function getHeaders(string $url): array
     {
         if (empty($url) || ! \wp_http_validate_url($url)) {
@@ -122,7 +121,7 @@ abstract class CreatesFields
         }
 
         try {
-            $response = get_headers($url, 1, $this->streamContext());
+            $response = $this->get_headers_curl($url);
         } catch(Exception $e) {
             $response = false;
         }
@@ -136,21 +135,51 @@ abstract class CreatesFields
         return $response;
     }
 
-    /**
-     * SSL is usually not valid in local environments.
-     * Disable verifications.
-     */
-    protected function streamContext()
-    {
-        if ('development' !== ($_ENV['APP_ENV'] ?? '')) {
-            return null;
-        }
+		protected function get_headers_curl(string $url): array
+		{
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+				curl_setopt($ch, CURLOPT_HEADER, true);
+				$response = curl_exec($ch);
 
-        return stream_context_create([
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-            ],
-        ]);
-    }
+				if (curl_errno($ch)) {
+					return false;
+				}
+
+				$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+				$headers = substr($response, 0, $header_size);
+				curl_close($ch);
+
+				return $this->parse_headers($headers);
+		}
+
+		protected function parse_headers(string $headers): array
+		{
+				$result = [];
+				$lines = explode("\r\n", $headers);
+
+				foreach ($lines as $line) {
+						if (empty($line)) {
+							continue;
+						}
+
+						$parts = explode(":", $line, 2);
+						if (count($parts) == 2) {
+								$key = strtolower(trim($parts[0]));
+								$value = trim($parts[1]);
+
+								if (isset($result[$key])) {
+										$result[$key] = (array) $result[$key];
+										$result[$key][] = $value;
+								} else {
+										$result[$key] = $value;
+								}
+						}
+				}
+
+				return $result;
+		}
+
 }
