@@ -135,51 +135,50 @@ abstract class CreatesFields
         return $response;
     }
 
-		protected function get_headers_curl(string $url): array
-		{
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-				curl_setopt($ch, CURLOPT_HEADER, true);
-				$response = curl_exec($ch);
+	protected function get_headers_curl(string $url): array
+	{
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		$response = curl_exec($ch);
 
-				if (curl_errno($ch)) {
-					return false;
-				}
-
-				$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-				$headers = substr($response, 0, $header_size);
-				curl_close($ch);
-
-				return $this->parse_headers($headers);
+		if (curl_errno($ch)) {
+			return false;
 		}
 
-		protected function parse_headers(string $headers): array
-		{
-				$result = [];
-				$lines = explode("\r\n", $headers);
+		$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+		$headers = substr($response, 0, $header_size);
+		curl_close($ch);
 
-				foreach ($lines as $line) {
-						if (empty($line)) {
-							continue;
-						}
+		return $this->parse_headers($headers);
+	}
 
-						$parts = explode(":", $line, 2);
-						if (count($parts) == 2) {
-								$key = strtolower(trim($parts[0]));
-								$value = trim($parts[1]);
+	protected function parse_headers(string $headers): array
+	{
+		$result = [];
+		$lines = explode("\r\n", $headers);
 
-								if (isset($result[$key])) {
-										$result[$key] = (array) $result[$key];
-										$result[$key][] = $value;
-								} else {
-										$result[$key] = $value;
-								}
-						}
+		foreach ($lines as $line) {
+			if (empty($line)) {
+				continue;
+			}
+
+			$parts = explode(":", $line, 2);
+			if (count($parts) == 2) {
+				$key = strtolower(trim($parts[0]));
+				$value = trim($parts[1]);
+
+				if (isset($result[$key])) {
+					$result[$key] = (array) $result[$key];
+					$result[$key][] = $value;
+				} else {
+					$result[$key] = $value;
 				}
-
-				return $result;
+			}
 		}
 
+		return $result;
+	}
 }
