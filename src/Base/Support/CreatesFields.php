@@ -121,7 +121,7 @@ abstract class CreatesFields
         }
 
         try {
-            $response = $this->get_headers_curl($url);
+            $response = $this->getHeaderCurl($url);
         } catch(Exception $e) {
             $response = false;
         }
@@ -135,7 +135,7 @@ abstract class CreatesFields
         return $response;
     }
 
-	protected function get_headers_curl(string $url): array
+	protected function getHeaderCurl(string $url): array
 	{
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -145,7 +145,7 @@ abstract class CreatesFields
 		$response = curl_exec($ch);
 
 		if (curl_errno($ch)) {
-			return false;
+			return [];
 		}
 
 		$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
