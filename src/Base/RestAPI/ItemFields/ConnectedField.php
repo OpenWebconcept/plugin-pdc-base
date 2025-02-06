@@ -84,6 +84,12 @@ class ConnectedField extends CreatesFields
      */
     protected function getConnectedItems(int $postID, string $type, array $extraQueryArgs = []): array
     {
+        if (! function_exists('p2p_type')) {
+            return [
+                'error' => __('Posts 2 Posts plugin is not active', 'pdc-base'),
+            ];
+        }
+
         $connection = \p2p_type($type);
 
         if (! $connection) {
