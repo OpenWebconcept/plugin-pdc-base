@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.13.3] (2025-02-07)
+
+### Feat
+
+- Replace get_headers with CURL. @Robbert-Imhof (#37)
+
 ## Version [3.13.2] (2025-01-29)
 
 ### Fix
