@@ -97,7 +97,7 @@ abstract class CreatesFields
 
         foreach ($headers as $key => $header) {
             // Sometimes both parts of the key starts with capitals e.g. 'Content-Length'.
-            if (strtolower($key) !== 'content-length') {
+            if ('content-length' !== $key) {
                 continue;
             }
 
@@ -122,8 +122,8 @@ abstract class CreatesFields
         }
 
         try {
-            $response = get_headers($url, 1, $this->streamContext());
-        } catch(Exception $e) {
+            $response = $this->getHeadersCurl($url);
+        } catch (Exception $e) {
             $response = false;
         }
 
@@ -136,21 +136,62 @@ abstract class CreatesFields
         return $response;
     }
 
-    /**
-     * SSL is usually not valid in local environments.
-     * Disable verifications.
-     */
-    protected function streamContext()
+    protected function getHeadersCurl(string $url): array
     {
-        if ('development' !== ($_ENV['APP_ENV'] ?? '')) {
-            return null;
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+
+        $response = curl_exec($ch);
+
+        if (false === $response || curl_errno($ch)) {
+            return [];
         }
 
-        return stream_context_create([
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-            ],
-        ]);
+        curl_close($ch);
+
+        return $this->parseHeaders($response);
+    }
+
+    /**
+     * Parses a raw HTTP headers string and converts it into an associative array.
+     * Handles headers with multiple values by storing them as arrays.
+     */
+    protected function parseHeaders(string $headers): array
+    {
+        $result = [];
+        $lines = explode("\r\n", $headers);
+
+        foreach ($lines as $line) {
+            if (empty($line)) {
+                continue;
+            }
+
+            $parts = explode(":", $line, 2);
+
+            // If the line doesn't contain exactly two parts, it's not a valid header.
+            if (2 !== count($parts)) {
+                continue;
+            }
+
+            // Normalize the header key to lowercase and trim any extra whitespace.
+            $key = strtolower(trim($parts[0]));
+            $value = trim($parts[1]);
+
+            if (isset($result[$key])) {
+                // If the key already exists, store the value as an array and append the new value.
+                $result[$key] = (array) $result[$key];
+                $result[$key][] = $value;
+            } else {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
     }
 }
