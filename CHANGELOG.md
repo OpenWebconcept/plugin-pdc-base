@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.13.4] (2025-02-08)
+
+### Feat
+
+- Add settings API endpoint. @richardkorthuis (#38)
+
 ## Version [3.13.3] (2025-02-07)
 
 ### Feat
