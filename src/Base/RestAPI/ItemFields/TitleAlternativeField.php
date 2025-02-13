@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Adds alternative title field to the output.
  */

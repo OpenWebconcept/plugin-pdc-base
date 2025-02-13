@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provider which handles the registration of the taxonomies.
  */
@@ -57,6 +58,8 @@ class TaxonomyServiceProvider extends ServiceProvider
         $this->configTaxonomies = $this->filterConfigTaxonomies();
 
         foreach ($this->configTaxonomies as $taxonomyName => $taxonomy) {
+			$taxonomy = apply_filters('owc/pdc-base/before-register-extended-taxonomy', $taxonomy, $taxonomyName);
+
             // Examples of registering taxonomies: https://github.com/johnbillion/extended-cpts/wiki
             \register_extended_taxonomy($taxonomyName, $taxonomy['object_types'], $taxonomy['args'], $taxonomy['names']);
         }

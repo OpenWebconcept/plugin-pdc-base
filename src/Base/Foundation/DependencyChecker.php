@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checks if dependencies are valid.
  */
@@ -52,6 +53,10 @@ class DependencyChecker
                     break;
                 case 'plugin':
                     $this->checkPlugin($dependency);
+
+                    break;
+                case 'function':
+                    $this->checkFunction($dependency);
 
                     break;
             }
@@ -136,6 +141,16 @@ class DependencyChecker
             if (! $this->checkVersion($dependency)) {
                 $this->markFailed($dependency, __('Minimal version:', 'pdc-base') . ' <b>' . $dependency['version'] . '</b>');
             }
+        }
+    }
+
+    /**
+     * Checks if required function exists.
+     */
+    private function checkFunction(array $dependency): void
+    {
+        if (! function_exists($dependency['name'])) {
+            $this->markFailed($dependency, __('Function does not exist:', 'pdc-base') . ' <b>' . $dependency['name'] . '</b>');
         }
     }
 

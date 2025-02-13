@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Trait which appends a conditional to a defined taxonomy query.
  */

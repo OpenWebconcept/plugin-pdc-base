@@ -11,7 +11,7 @@
             foreach ($correctItems as $item) {
                 echo '<tr><td>' . $item['title'] . '</td><td>' . $item['uplName'] . '</td><td><a href="' . $item['editLink'] . '" class="button-primary">Bekijken</a></td></tr>';
             }
-            ?>
+        ?>
         </table>
     <?php else : ?>
         <p>

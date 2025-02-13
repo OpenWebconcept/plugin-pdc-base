@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Exception when property is not found on object.
  */

@@ -41,17 +41,16 @@ return [
             'label' => 'RWMB Metabox',
             'version' => '4.14.0',
             'file' => 'meta-box/meta-box.php'
-        ],
-        [
+        ],        [
             'type' => 'plugin',
-            'label' => 'Posts 2 Posts',
-            'version' => '1.6.6',
-            'file' => 'posts-to-posts/posts-to-posts.php',
+            'label' => 'RWMB Metabox',
+            'version' => '1.4.2',
+            'file' => 'meta-box-group/meta-box-group.php'
         ],
         [
-            'type' => 'class',
+            'type' => 'function',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
-            'name' => 'Extended_CPT'
+            'name' => 'register_extended_post_type'
         ],
     ]
 

@@ -17,7 +17,7 @@
             foreach ($incorrectItems as $item) {
                 echo '<tr><td>' . $item['title'] . '</td><td>' . $item['uplName'] . '</td><td>' . $item['doelgroepen'] . '</td><td><a href="' . $item['editLink'] . '" class="button-primary">Wijzigen</a></td></tr>';
             }
-            ?>
+        ?>
         </table>
     <?php else : ?>
         <p>
