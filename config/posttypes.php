@@ -69,6 +69,11 @@ return [
                     'post_field' => 'post_date',
                     'date_format' => get_option('date_format') . ', ' . get_option('time_format'),
                 ],
+                'last_edited' => [
+                    'title' => __('Last edited', 'pdc-base'),
+					'post_field' => 'post_modified',
+                     'date_format' => get_option('date_format') . ', ' . get_option('time_format'),
+                ],
             ],
 
             # Add a dropdown filter to the admin screen:
