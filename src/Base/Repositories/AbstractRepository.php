@@ -251,7 +251,7 @@ abstract class AbstractRepository
     {
         $field = array_filter(static::$globalFields, fn ($field) => $field['key'] === $key);
 
-        return empty($field) ? null : reset($field);
+        return empty($field) ? null : (array) reset($field);
     }
 
     /**
