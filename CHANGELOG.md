@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.14.0] (2025-03-11)
+
+### Feat
+
+- Add postdata to transform function and add portal_url to SettingsController
+
 ## Version [3.13.6] (2025-03-11)
 
 ### Chore
