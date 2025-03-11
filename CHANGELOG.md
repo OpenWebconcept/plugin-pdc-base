@@ -1,10 +1,21 @@
 # CHANGELOG
 
+## Version [3.13.6] (2025-03-11)
+
+### Chore
+
+- Add publiccode.yaml
+
+### Fix
+
+- Return type did not match with output
+- Translations just in time error
+
 ## Version [3.13.5] (2025-02-17)
 
 ### Chore
 
-- Ipdate language files
+- Update language files
 
 ### Feat
 
