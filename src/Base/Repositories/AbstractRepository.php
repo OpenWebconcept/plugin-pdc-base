@@ -263,7 +263,8 @@ abstract class AbstractRepository
      */
     public function transform(WP_Post $post)
     {
-        $post = apply_filters('owc/pdc-base/repositories/before-transform', $post);
+        $GLOBALS['post'] = $post;
+        setup_postdata($post);
 
         $reflectionClass = new \ReflectionClass(get_called_class());
         if ($reflectionClass->getMethod('transform')->class == get_called_class()) {
