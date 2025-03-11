@@ -263,6 +263,9 @@ abstract class AbstractRepository
      */
     public function transform(WP_Post $post)
     {
+        $GLOBALS['post'] = $post;
+        setup_postdata($post);
+
         $reflectionClass = new \ReflectionClass(get_called_class());
         if ($reflectionClass->getMethod('transform')->class == get_called_class()) {
             return call_user_func_array([get_called_class(), "transform"], [$post]);
@@ -280,6 +283,8 @@ abstract class AbstractRepository
         ];
 
         $data = $this->assignFields($data, $post);
+
+		wp_reset_postdata();
 
         return $this->getPreferredFields($data);
     }
