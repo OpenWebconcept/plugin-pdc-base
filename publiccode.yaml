@@ -1,0 +1,54 @@
+publiccodeYmlVersion: '0.2'
+
+name: "plugin-pdc-base"
+applicationSuite: 'OpenWebconcept'
+url: 'https://github.com/OpenWebconcept/plugin-pdc-base'
+releaseDate: '2018-03-13'
+
+platforms:
+    - 'web'
+
+categories:
+    - 'application-development'
+
+developmentStatus: 'Production'
+
+softwareType: 'softwareAddon'
+
+description:
+    en:
+        genericName: 'Yard | PDC'
+        shortDescription: 'Adds PDC implementation'
+        longDescription: 'Acts as foundation for other PDC related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.'
+    nl:
+        genericName: 'Yard | PDC'
+        shortDescription: 'Voegt de PDC functionaliteit toe aan de website.'
+        longDescription: 'Vormt de basis voor andere PDC gerelateerde plugins. Deze plugin implementeert actions waarmee andere plugins Custom Posttypes, Metaboxes, Taxonomieën en Posts 2 Posts relaties kunnen aanpassen.'
+
+legal:
+    license: 'EUPL-1.2'
+    repoOwner: 'Yard | Digital Agency'
+
+dependsOn:
+    open:
+		- name: 'extended-cpts'
+		- versionMin: 4.5.2
+		- name: 'metabox'
+		- versionMin: 4.14.0
+		- name: 'posts-to-posts'
+		- versionMin: 1.6.6
+        - name: 'WordPress'
+        - versionMin: 6.0.0
+
+intendedAudience:
+    countries:
+        - nl
+    scope:
+        - government
+
+maintenance:
+    contractors:
+        - name: 'Yard | Digital Agency'
+          website: 'https://www.yard.nl'
+          email: 'owc@yard.nl'
+    type: 'contract'
