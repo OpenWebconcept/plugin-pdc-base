@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Version [3.13.5] (2025-02-17)
+
+### Chore
+
+- Ipdate language files
+
+### Feat
+
+- Add last modified sortable column
+- Add translations workflow to plugin-pdc-base
+
 ## Version [3.13.4] (2025-02-08)
 
 ### Feat

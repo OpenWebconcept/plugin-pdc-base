@@ -45,22 +45,21 @@ class Plugin
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-        \load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
-
         $this->loader = new Loader();
-
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
-        $this->config->boot();
     }
 
     /**
      * Boot the plugin.
      *
-     * @hook plugins_loaded
+     * @hook after_setup_theme
      */
     public function boot(): bool
     {
+		$this->loadTextDomain();
+		$this->config->boot();
+
         $dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
 
         if ($dependencyChecker->failed()) {
@@ -71,16 +70,7 @@ class Plugin
         }
 
         $this->checkForUpdate();
-
-        // Set up service providers
-        $this->callServiceProviders('register');
-
-        if (\is_admin()) {
-            $this->callServiceProviders('register', 'admin');
-            $this->callServiceProviders('boot', 'admin');
-        }
-
-        $this->callServiceProviders('boot');
+        $this->registerProviders();
 
         // Register the Hook loader.
         $this->loader->addAction('init', $this, 'filterPlugin', 4);
@@ -88,6 +78,28 @@ class Plugin
 
         return true;
     }
+
+	public function loadTextDomain(): void
+	{
+		load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
+	}
+
+	protected function registerProviders(): void
+	{
+		$this->callServiceProviders('register');
+
+		if (\is_admin()) {
+			$this->callServiceProviders('register', 'admin');
+			$this->callServiceProviders('boot', 'admin');
+		}
+
+		if ('cli' === php_sapi_name()) {
+			$this->callServiceProviders('register', 'cli');
+			$this->callServiceProviders('boot', 'cli');
+		}
+
+		$this->callServiceProviders('boot');
+	}
 
     protected function checkForUpdate()
     {
