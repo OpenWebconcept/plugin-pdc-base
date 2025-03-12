@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.14.1] (2025-03-12)
+
+### Fix
+
+- Cast services var to an array when it is not
+
 ## Version [3.14.0] (2025-03-11)
 
 ### Feat
