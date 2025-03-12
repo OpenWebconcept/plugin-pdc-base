@@ -93,13 +93,8 @@ class Plugin
 			$this->callServiceProviders('boot', 'admin');
 		}
 
-		if ('cli' === php_sapi_name()) {
-			$this->callServiceProviders('register', 'cli');
-			$this->callServiceProviders('boot', 'cli');
-		}
-
-		$this->callServiceProviders('boot');
-	}
+        $this->callServiceProviders('boot');
+    }
 
     protected function checkForUpdate()
     {
