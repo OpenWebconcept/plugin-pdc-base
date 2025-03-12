@@ -6,78 +6,78 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 class Plugin
 {
-    /**
-     * Name of the plugin.
-     *
-     * @var string
-     */
-    public const NAME = 'pdc-base';
+	/**
+	 * Name of the plugin.
+	 *
+	 * @var string
+	 */
+	public const NAME = 'pdc-base';
 
-    /**
-     * Version of the plugin.
-     * Used for setting versions of enqueue scripts and styles.
-     *
-     * @var string
-     */
-    public const VERSION = '3.14.0';
+	/**
+	 * Version of the plugin.
+	 * Used for setting versions of enqueue scripts and styles.
+	 *
+	 * @var string
+	 */
+	public const VERSION = '3.14.0';
 
-    /**
-     * Path to the root of the plugin.
-     *
-     * @var string
-     */
-    protected $rootPath;
+	/**
+	 * Path to the root of the plugin.
+	 *
+	 * @var string
+	 */
+	protected $rootPath;
 
-    /**
-     * Instance of the configuration repository.
-     *
-     * @var Config
-     */
-    public $config;
+	/**
+	 * Instance of the configuration repository.
+	 *
+	 * @var Config
+	 */
+	public $config;
 
-    /**
-     * Instance of the Hook loader.
-     *
-     * @var Loader
-     */
-    public $loader;
+	/**
+	 * Instance of the Hook loader.
+	 *
+	 * @var Loader
+	 */
+	public $loader;
 
-    public function __construct(string $rootPath)
-    {
-        $this->rootPath = $rootPath;
-        $this->loader = new Loader();
-        $this->config = new Config($this->rootPath . '/config');
-        $this->config->setProtectedNodes(['core']);
-    }
+	public function __construct(string $rootPath)
+	{
+		$this->rootPath = $rootPath;
+		$this->loader = new Loader();
+		$this->config = new Config($this->rootPath . '/config');
+		$this->config->setProtectedNodes(['core']);
+	}
 
-    /**
-     * Boot the plugin.
-     *
-     * @hook after_setup_theme
-     */
-    public function boot(): bool
-    {
+	/**
+	 * Boot the plugin.
+	 *
+	 * @hook after_setup_theme
+	 */
+	public function boot(): bool
+	{
 		$this->loadTextDomain();
 		$this->config->boot();
 
-        $dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
+		$dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
 
-        if ($dependencyChecker->failed()) {
-            $dependencyChecker->notify();
-            \deactivate_plugins(\plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
+		if ($dependencyChecker->failed()) {
+			$dependencyChecker->notify();
+			\deactivate_plugins(\plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
 
-            return false;
-        }
+			return false;
+		}
 
-        $this->checkForUpdate();
-        $this->registerProviders();
+		$this->checkForUpdate();
+		$this->registerProviders();
 
-        // Register the Hook loader.
-        $this->loader->addAction('init', $this, 'filterPlugin', 4);
-        $this->loader->register();
+		// Register the Hook loader.
+		$this->loader->addAction('init', $this, 'filterPlugin', 4);
+		$this->loader->register();
 
-        return true;
-    }
+		return true;
+	}
 
 	public function loadTextDomain(): void
 	{
@@ -101,101 +101,101 @@ class Plugin
 		$this->callServiceProviders('boot');
 	}
 
-    protected function checkForUpdate()
-    {
-        if (! class_exists(PucFactory::class) || $this->isExtendedClass()) {
-            return;
-        }
+	protected function checkForUpdate()
+	{
+		if (! class_exists(PucFactory::class) || $this->isExtendedClass()) {
+			return;
+		}
 
-        try {
-            $updater = PucFactory::buildUpdateChecker(
-                'https://github.com/OpenWebconcept/plugin-pdc-base/',
-                $this->rootPath . '/pdc-base.php',
-                self::NAME
-            );
+		try {
+			$updater = PucFactory::buildUpdateChecker(
+				'https://github.com/OpenWebconcept/plugin-pdc-base/',
+				$this->rootPath . '/pdc-base.php',
+				self::NAME
+			);
 
-            $updater->getVcsApi()->enableReleaseAssets();
-        } catch (\Throwable $e) {
-            error_log($e->getMessage());
-        }
-    }
+			$updater->getVcsApi()->enableReleaseAssets();
+		} catch (\Throwable $e) {
+			error_log($e->getMessage());
+		}
+	}
 
-    /**
-     * Check if current class extends parent class.
-     * Extended classes must have their own checkForUpdate method.
-     *
-     * self::const always refers to the parent class.
-     * static::const refers to the child class.
-     */
-    protected function isExtendedClass(): bool
-    {
-        return self::NAME !== static::NAME;
-    }
+	/**
+	 * Check if current class extends parent class.
+	 * Extended classes must have their own checkForUpdate method.
+	 *
+	 * self::const always refers to the parent class.
+	 * static::const refers to the child class.
+	 */
+	protected function isExtendedClass(): bool
+	{
+		return self::NAME !== static::NAME;
+	}
 
-    /**
-     * Allows for hooking into the plugin name.
-     */
-    public function filterPlugin(): void
-    {
-        \do_action('owc/' . self::NAME . '/plugin', $this);
-    }
+	/**
+	 * Allows for hooking into the plugin name.
+	 */
+	public function filterPlugin(): void
+	{
+		\do_action('owc/' . self::NAME . '/plugin', $this);
+	}
 
-    /**
-     * Call method on service providers.
-     *
-     * @throws \Exception
-     */
-    public function callServiceProviders(string $method, string $key = ''): void
-    {
-        $offset = $key ? "core.providers.{$key}" : 'core.providers';
-        $services = $this->config->get($offset);
+	/**
+	 * Call method on service providers.
+	 *
+	 * @throws \Exception
+	 */
+	public function callServiceProviders(string $method, string $key = ''): void
+	{
+		$offset = $key ? "core.providers.{$key}" : 'core.providers';
+		$services = (array) $this->config->get($offset);
 
-        foreach ($services as $service) {
-            if (is_array($service)) {
-                continue;
-            }
+		foreach ($services as $service) {
+			if (is_array($service)) {
+				continue;
+			}
 
-            $service = new $service($this);
+			$service = new $service($this);
 
-            if (! $service instanceof ServiceProvider) {
-                throw new \Exception('Provider must be an instance of ServiceProvider.');
-            }
+			if (! $service instanceof ServiceProvider) {
+				throw new \Exception('Provider must be an instance of ServiceProvider.');
+			}
 
-            if (method_exists($service, $method)) {
-                $service->$method();
-            }
-        }
-    }
+			if (method_exists($service, $method)) {
+				$service->$method();
+			}
+		}
+	}
 
-    /**
-     * Get the name of the plugin.
-     */
-    public function getName(): string
-    {
-        return static::NAME;
-    }
+	/**
+	 * Get the name of the plugin.
+	 */
+	public function getName(): string
+	{
+		return static::NAME;
+	}
 
-    /**
-     * Get the version of the plugin.
-     */
-    public function getVersion(): string
-    {
-        return static::VERSION;
-    }
+	/**
+	 * Get the version of the plugin.
+	 */
+	public function getVersion(): string
+	{
+		return static::VERSION;
+	}
 
-    /**
-     * Return root path of plugin.
-     */
-    public function getRootPath(): string
-    {
-        return $this->rootPath;
-    }
+	/**
+	 * Return root path of plugin.
+	 */
+	public function getRootPath(): string
+	{
+		return $this->rootPath;
+	}
 
-    /**
-     * Return root url of plugin.
-     */
-    public function getPluginUrl(): string
-    {
-        return \plugins_url($this->getName());
-    }
+	/**
+	 * Return root url of plugin.
+	 */
+	public function getPluginUrl(): string
+	{
+		return \plugins_url($this->getName());
+	}
 }
