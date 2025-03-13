@@ -18,7 +18,7 @@ class SeoPress extends AbstractSEO
      */
     public function create(WP_Post $post): array
     {
-        $seoMetaFields = $this->plugin->config->get('seopress_api.meta');
+        $seoMetaFields = $this->plugin->config->get('seopress_api.meta', []);
 
         if (! is_array($seoMetaFields) || empty($seoMetaFields)) {
             return [];

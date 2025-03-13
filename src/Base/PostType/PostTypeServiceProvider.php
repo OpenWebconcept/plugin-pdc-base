@@ -36,7 +36,7 @@ class PostTypeServiceProvider extends ServiceProvider
     public function registerPostTypes()
     {
         if (function_exists('register_extended_post_type')) {
-            $this->configPostTypes = $this->plugin->config->get('posttypes');
+            $this->configPostTypes = $this->plugin->config->get('posttypes', []);
 
             foreach ($this->configPostTypes as $postTypeName => $postType) {
                 if ('pdc-group' === $postTypeName && ! $this->plugin->settings->useGroupLayer()) {

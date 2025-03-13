@@ -70,10 +70,10 @@ class TaxonomyServiceProvider extends ServiceProvider
     protected function filterConfigTaxonomies(): array
     {
         if ($this->plugin->settings->useShowOn()) {
-            return $this->plugin->config->get('taxonomies');
+            return $this->plugin->config->get('taxonomies', []);
         }
 
-        return array_filter($this->plugin->config->get('taxonomies'), function ($taxonomyKey) {
+        return array_filter($this->plugin->config->get('taxonomies', []), function ($taxonomyKey) {
             return ('pdc-show-on' !== $taxonomyKey);
         }, ARRAY_FILTER_USE_KEY);
     }

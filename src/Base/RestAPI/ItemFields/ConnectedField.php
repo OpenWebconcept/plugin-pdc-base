@@ -40,7 +40,7 @@ class ConnectedField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
+        $connections = array_filter($this->plugin->config->get('p2p_connections.connections', []), function ($connection) {
             return in_array('pdc-item', $connection, true);
         });
 
@@ -158,14 +158,14 @@ class ConnectedField extends CreatesFields
     {
         $query = [];
 
-        $connectionsExcludeInActive = $this->plugin->config->get('p2p_connections.connections_exclude_inactive');
+        $connectionsExcludeInActive = $this->plugin->config->get('p2p_connections.connections_exclude_inactive', []);
 
         if (in_array($type, $connectionsExcludeInActive)) {
             $query = array_merge_recursive($query, $this->excludeInactiveItemsQuery());
         }
 
         if ($this->isPluginPDCInternalProductsActive()) {
-            $connectionsExcludeInternal = $this->plugin->config->get('p2p_connections.connections_exclude_internal');
+            $connectionsExcludeInternal = $this->plugin->config->get('p2p_connections.connections_exclude_internal', []);
 
             if (in_array($type, $connectionsExcludeInternal)) {
                 $query = array_merge_recursive($query, $this->excludeInternalItemsQuery());

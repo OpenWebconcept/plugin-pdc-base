@@ -92,7 +92,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
             ],
         ];
 
-        $this->plugin->config->set(['p2p_connections.connections' => array_merge($this->plugin->config->get('p2p_connections.connections'), $groupConnections)]);
+        $this->plugin->config->set(['p2p_connections.connections' => array_merge($this->plugin->config->get('p2p_connections.connections', []), $groupConnections)]);
     }
 
     /**
@@ -103,9 +103,9 @@ class PostsToPostsServiceProvider extends ServiceProvider
     public function registerPostsToPostsConnections(): void
     {
         if (function_exists('p2p_register_connection_type')) {
-            $posttypesInfo = $this->plugin->config->get('p2p_connections.posttypes_info');
+            $posttypesInfo = $this->plugin->config->get('p2p_connections.posttypes_info', []);
             $defaultConnectionArgs = apply_filters('owc/pdc-base/p2p-connection-defaults', $this->connectionDefaults);
-            $connections = $this->plugin->config->get('p2p_connections.connections');
+            $connections = $this->plugin->config->get('p2p_connections.connections', []);
 
             foreach ($connections as $connectionArgs) {
                 $args = array_merge($defaultConnectionArgs, $connectionArgs);

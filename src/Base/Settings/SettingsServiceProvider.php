@@ -33,7 +33,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerSettingsPage($rwmbSettingsPages)
     {
-        $settingsPages = $this->plugin->config->get('settings_pages');
+        $settingsPages = $this->plugin->config->get('settings_pages', []);
 
         return array_merge($rwmbSettingsPages, $settingsPages);
     }
@@ -47,7 +47,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerSettings($rwmbMetaboxes)
     {
-        $configMetaboxes = $this->plugin->config->get('settings');
+        $configMetaboxes = $this->plugin->config->get('settings', []);
         $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
