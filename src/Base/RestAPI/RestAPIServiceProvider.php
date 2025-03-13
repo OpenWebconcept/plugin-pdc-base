@@ -183,7 +183,7 @@ class RestAPIServiceProvider extends ServiceProvider
     private function registerModelFields()
     {
         // Add global fields for all Models.
-        foreach ($this->plugin->config->get('api.models') as $posttype => $data) {
+        foreach ($this->plugin->config->get('api.models', []) as $posttype => $data) {
             foreach ($data['fields'] as $key => $creator) {
                 $class = '\OWC\PDC\Base\Repositories\\' . ucfirst($posttype);
                 if (class_exists($class)) {

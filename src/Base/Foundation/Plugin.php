@@ -60,7 +60,7 @@ class Plugin
 		$this->loadTextDomain();
 		$this->config->boot();
 
-		$dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
+		$dependencyChecker = new DependencyChecker($this->config->get('core.dependencies', []));
 
 		if ($dependencyChecker->failed()) {
 			$dependencyChecker->notify();
@@ -148,7 +148,7 @@ class Plugin
 	public function callServiceProviders(string $method, string $key = ''): void
 	{
 		$offset = $key ? "core.providers.{$key}" : 'core.providers';
-		$services = (array) $this->config->get($offset);
+		$services = (array) $this->config->get($offset, []);
 
 		foreach ($services as $service) {
 			if (is_array($service)) {

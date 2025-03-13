@@ -22,11 +22,11 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 
     public function registerMetaboxes(array $rwmbMetaboxes): array
     {
-        $configMetaboxes = $this->plugin->config->get('metaboxes');
+        $configMetaboxes = $this->plugin->config->get('metaboxes', []);
         $configMetaboxes = $this->addOptionsUPL($configMetaboxes);
 
         if ($this->plugin->settings->useIdentifications()) {
-            $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes'));
+            $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('identifications_metaboxes', []));
         }
 
         if ($this->plugin->settings->useIdentifications() && ! $this->plugin->settings->useCombinedIdentification()) {
@@ -34,7 +34,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         }
 
         if ($this->plugin->settings->useEscapeElement()) {
-            $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
+            $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox', []));
         }
 
         if ($this->plugin->settings->useShowOn()) {
@@ -83,22 +83,22 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 
     protected function getShowOnMetabox(array $configMetaboxes): array
     {
-        return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
+        return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox', []));
     }
 
     protected function getTilesMetabox(array $configMetaboxes): array
     {
-        return array_merge($configMetaboxes, $this->plugin->config->get('theme_tiles_metabox'));
+        return array_merge($configMetaboxes, $this->plugin->config->get('theme_tiles_metabox', []));
     }
 
     protected function getTableOfContentsMetabox(array $configMetaboxes): array
     {
-        return array_merge($configMetaboxes, $this->plugin->config->get('table_of_contents_metabox'));
+        return array_merge($configMetaboxes, $this->plugin->config->get('table_of_contents_metabox', []));
     }
 
     protected function getFeedbackFormMetabox(array $configMetaboxes): array
     {
-        $feedbackFormMetabox = $this->plugin->config->get('hide_feedback_form_metabox');
+        $feedbackFormMetabox = $this->plugin->config->get('hide_feedback_form_metabox', []);
         $metaboxKeys = ['base', 'pdc-category', 'pdc-subcategory'];
 
         return array_map(function ($key, $metabox) use ($metaboxKeys, $feedbackFormMetabox) {
