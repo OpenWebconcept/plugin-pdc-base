@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## Version [3.15.1] (2025-03-14)
+
+### Fix
+
+- Ensure config defaults to empty array when null @rmpel (#44)
+
+## Version [3.15.0] (2025-03-13)
+
+### Feat
+
+- Update extended-cpts and php-cs-fixer
+- Apply posttype and taxonomy argument filters
+- Apply upl wp_query args
+- Show error when p2p_type function does not exist
+
+### Fix
+
+- Extended cpt depency check
+- Add meta-box-group as dependency
+- UPL admin url
+
 ## Version [3.14.1] (2025-03-12)
 
 ### Fix
