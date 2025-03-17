@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\Models;
 
-use WP_Term;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
+use WP_Term;
 
 class PortalLinkGenerator
 {
@@ -68,6 +68,16 @@ class PortalLinkGenerator
         }
 
         $portalURL = reset($terms);
+
+        if (isset($_GET['source'])) {
+            foreach ($terms as $term) {
+                if ($term->slug === $_GET['source']) {
+                    $portalURL = $term;
+
+                    break;
+                }
+            }
+        }
         $portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
 
         return wp_http_validate_url($portalURL) ? $portalURL : '/';
