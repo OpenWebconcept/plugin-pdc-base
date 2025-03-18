@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.15.2] (2025-03-18)
+
+### Feat
+
+- Make sure the correct portal url is used when filtering on source (i.e. through the REST API) @richardkorthuis (#45)
+
 ## Version [3.15.1] (2025-03-14)
 
 ### Fix
