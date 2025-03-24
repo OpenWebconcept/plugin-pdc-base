@@ -59,7 +59,7 @@ class PortalLinkGenerator
     /**
      * When the portal URL from the settings is not valid use the taxonomy 'pdc-show-on' as fallback.
      */
-    private function getShowOnPortalURL(): string
+    public function getShowOnPortalURL(): string
     {
         $terms = wp_get_object_terms($this->post->getID(), 'pdc-show-on');
 
