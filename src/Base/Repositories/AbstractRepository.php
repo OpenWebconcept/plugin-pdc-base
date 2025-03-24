@@ -284,7 +284,7 @@ abstract class AbstractRepository
 
         $data = $this->assignFields($data, $post);
 
-		wp_reset_postdata();
+        wp_reset_postdata();
 
         return $this->getPreferredFields($data);
     }

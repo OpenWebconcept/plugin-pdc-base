@@ -145,12 +145,12 @@ class RestAPIServiceProvider extends ServiceProvider
             'permission_callback' => '__return_true',
         ]);
 
-		$settingsController = new Controllers\SettingsController($this->plugin);
-		\register_rest_route($this->namespace, 'settings', [
-			'methods' => WP_REST_Server::READABLE,
-			'callback' => [$settingsController, 'getSettings'],
-			'permission_callback' => '__return_true',
-		]);
+        $settingsController = new Controllers\SettingsController($this->plugin);
+        \register_rest_route($this->namespace, 'settings', [
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => [$settingsController, 'getSettings'],
+            'permission_callback' => '__return_true',
+        ]);
     }
 
     /**

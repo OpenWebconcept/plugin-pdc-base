@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\Models;
 
-use OWC\PDC\Base\Settings\SettingsPageOptions;
 use WP_Term;
+use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 class PortalLinkGenerator
 {

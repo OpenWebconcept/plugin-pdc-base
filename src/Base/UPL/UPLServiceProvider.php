@@ -16,23 +16,23 @@ class UPLServiceProvider extends ServiceProvider
 
     public function addMenuItemUPL(): void
     {
-		add_management_page(
-			__('UPL Reparatie', 'pdc-base'),
-			__('UPL Reparatie', 'pdc-base'),
-			'edit_posts',
-			'upl-correcte-items',
-			[$this, 'correctItemsPage'],
-			6
-		);
+        add_management_page(
+            __('UPL Reparatie', 'pdc-base'),
+            __('UPL Reparatie', 'pdc-base'),
+            'edit_posts',
+            'upl-correcte-items',
+            [$this, 'correctItemsPage'],
+            6
+        );
 
-		add_submenu_page(
-			'',
-			__('Incorrect items', 'pdc-base'),
-			__('Incorrect items', 'pdc-base'),
-			'edit_posts',
-			'upl-foutieve-items',
-			[$this, 'incorrectItemsPage']
-		);
+        add_submenu_page(
+            '',
+            __('Incorrect items', 'pdc-base'),
+            __('Incorrect items', 'pdc-base'),
+            'edit_posts',
+            'upl-foutieve-items',
+            [$this, 'incorrectItemsPage']
+        );
     }
 
     public function incorrectItemsPage()

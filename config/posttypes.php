@@ -71,8 +71,8 @@ return [
                 ],
                 'last_edited' => [
                     'title' => __('Last edited', 'pdc-base'),
-					'post_field' => 'post_modified',
-                     'date_format' => get_option('date_format') . ', ' . get_option('time_format'),
+                    'post_field' => 'post_modified',
+                    'date_format' => get_option('date_format') . ', ' . get_option('time_format'),
                 ],
             ],
 
