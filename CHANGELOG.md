@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.15.3] (2025-03-26)
+
+### Fix
+
+- Autoloader
+
 ## Version [3.15.2] (2025-03-18)
 
 ### Feat
