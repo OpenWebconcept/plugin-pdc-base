@@ -271,11 +271,21 @@ abstract class AbstractRepository
             return call_user_func_array([get_called_class(), "transform"], [$post]);
         }
 
+		/**
+		 * Filter the post content before applying the_content filter.
+		 *
+		 * @param string $post_content
+		 * @param WP_Post $post
+		 *
+		 * @return string
+		 */
+		$postContent = apply_filters('owc/pdc-base/rest-api/post-content/before-apply-the-content', $post->post_content, $post);
+
         $data = [
             'id' => $post->ID,
             'title' => $post->post_title,
             'slug' => $post->post_name,
-            'content' => $this->isAllowed($post) ? apply_filters('the_content', $post->post_content) : "",
+            'content' => $this->isAllowed($post) ? apply_filters('the_content', $postContent) : "",
             'excerpt' => $this->isAllowed($post) ? $post->post_excerpt : "",
             'date' => $post->post_date,
             'post_status' => $post->post_status,
