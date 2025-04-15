@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.15.4] (2025-04-15)
+
+### Feat
+
+-  In rest api add filter before applying the_content
+
 ## Version [3.15.3] (2025-03-26)
 
 ### Fix
