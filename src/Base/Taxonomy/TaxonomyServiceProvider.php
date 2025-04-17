@@ -55,7 +55,7 @@ class TaxonomyServiceProvider extends ServiceProvider
             return;
         }
 
-        $this->configTaxonomies = $this->filterConfigTaxonomies();
+		$this->configTaxonomies = apply_filters('owc/pdc-base/before-register-extended-taxonomies', $this->filterConfigTaxonomies());
 
         foreach ($this->configTaxonomies as $taxonomyName => $taxonomy) {
             $taxonomy = apply_filters('owc/pdc-base/before-register-extended-taxonomy', $taxonomy, $taxonomyName);
