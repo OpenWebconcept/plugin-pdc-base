@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## Version [3.15.5] (2025-04-23)
+
+### Feat
+
+- Add filter before registering extended taxonomies
+- Add filter before registering extended posttypes
+
 ## Version [3.15.4] (2025-04-15)
 
 ### Feat
