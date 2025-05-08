@@ -39,6 +39,7 @@ return [
             'archive' => [
                 'nopaging' => true,
             ],
+			'capability_type' => 'pdc-item',
             'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'author', 'custom-fields'],
             'admin_cols' => [
                 'author' => [
