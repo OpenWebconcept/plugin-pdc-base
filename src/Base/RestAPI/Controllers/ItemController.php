@@ -6,11 +6,11 @@
 
 namespace OWC\PDC\Base\RestAPI\Controllers;
 
+use OWC\PDC\Base\Repositories\Item;
+use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use WP_Error;
 use WP_REST_Request;
-use OWC\PDC\Base\Repositories\Item;
-use OWC\PDC\Base\Support\Traits\QueryHelpers;
-use OWC\PDC\Base\Support\Traits\CheckPluginActive;
 
 /**
  * Controller which handles the (requested) pdc-item(s).
@@ -29,7 +29,11 @@ class ItemController extends BaseController
         $items = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
-            ->query($this->excludeInactiveItemsQuery());
+            ->query($this->excludeInactiveItemsQuery())
+            ->query(['orderby' => [
+                'post_date' => 'DESC',
+                'ID' => 'DESC',
+            ]]);
 
         if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
             $items->filterSource($request->get_param('source'));
