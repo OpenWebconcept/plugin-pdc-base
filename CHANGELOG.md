@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.15.6] (2025-05-22)
+
+### Refactor
+
+- Add order_by and order query args to getItems query in ItemController
+
 ## Version [3.15.5] (2025-04-23)
 
 ### Feat
@@ -11,7 +17,7 @@
 
 ### Feat
 
--  In rest api add filter before applying the_content
+- In rest api add filter before applying the_content
 
 ## Version [3.15.3] (2025-03-26)
 
