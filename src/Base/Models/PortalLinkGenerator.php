@@ -2,8 +2,9 @@
 
 namespace OWC\PDC\Base\Models;
 
-use WP_Term;
 use OWC\PDC\Base\Settings\SettingsPageOptions;
+use WP_Post;
+use WP_Term;
 
 class PortalLinkGenerator
 {
@@ -78,6 +79,7 @@ class PortalLinkGenerator
                 }
             }
         }
+
         $portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
 
         return wp_http_validate_url($portalURL) ? $portalURL : '/';
@@ -91,7 +93,7 @@ class PortalLinkGenerator
 
         $theme = $this->post->getConnected('pdc-item_to_pdc-category');
 
-        if (! $theme instanceof \WP_Post) {
+        if (! $theme instanceof WP_Post) {
             $this->updatePortalURL('thema');
 
             return $this;
@@ -108,9 +110,15 @@ class PortalLinkGenerator
             return $this;
         }
 
-        $subtheme = $this->post->getConnected('pdc-item_to_pdc-subcategory') ?? '';
+        $theme = $this->post->getConnected('pdc-item_to_pdc-category');
+        if (! $theme instanceof WP_Post) {
+            $this->updatePortalURL('subthema');
 
-        if (! $subtheme instanceof \WP_Post) {
+            return $this;
+        }
+
+        $subtheme = $this->getCommonConnectedSubtheme($theme);
+        if (! $subtheme instanceof WP_Post) {
             $this->updatePortalURL('subthema');
 
             return $this;
@@ -119,6 +127,31 @@ class PortalLinkGenerator
         $this->updatePortalURL($subtheme->post_name);
 
         return $this;
+    }
+
+    /**
+     * Get the first common connected subtheme between the pdc-item and the theme.
+     */
+    private function getCommonConnectedSubtheme(WP_Post $theme): ?WP_Post
+    {
+        $connectedArgs = ['fields' => 'ids'];
+
+        $themeConnectedSubthemes = Item::makeFrom($theme)
+                                    ->getConnectedAll('pdc-category_to_pdc-subcategory', $connectedArgs);
+
+        $postConnectedSubthemes = $this->post
+                                    ->getConnectedAll('pdc-item_to_pdc-subcategory', $connectedArgs);
+
+        if (1 > count($themeConnectedSubthemes) || 1 > count($postConnectedSubthemes)) {
+            return null;
+        }
+
+        $commonSubthemeIds = array_intersect($postConnectedSubthemes, $themeConnectedSubthemes);
+
+        $firstSubthemeId = reset($commonSubthemeIds);
+        $connectedSubtheme = $firstSubthemeId ? get_post($firstSubthemeId) : null;
+
+        return $connectedSubtheme instanceof WP_Post ? $connectedSubtheme : null;
     }
 
     private function appendPostSlug(): self
