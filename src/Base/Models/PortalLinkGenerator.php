@@ -12,6 +12,9 @@ class PortalLinkGenerator
     protected SettingsPageOptions $pdcSettings;
     protected string $portalURL = '';
 
+	protected ?WP_Post $theme = null;
+	protected ?WP_Post $subtheme = null;
+
     public function __construct(Item $post)
     {
         $this->post = $post;
@@ -91,15 +94,8 @@ class PortalLinkGenerator
             return $this;
         }
 
-        $theme = $this->post->getConnected('pdc-item_to_pdc-category');
-
-        if (! $theme instanceof WP_Post) {
-            $this->updatePortalURL('thema');
-
-            return $this;
-        }
-
-        $this->updatePortalURL($theme->post_name);
+        $this->theme = $this->post->getConnected('pdc-item_to_pdc-category');
+		$this->updatePortalURL($this->theme instanceof WP_Post ? $this->theme->post_name : 'thema');
 
         return $this;
     }
@@ -110,21 +106,14 @@ class PortalLinkGenerator
             return $this;
         }
 
-        $theme = $this->post->getConnected('pdc-item_to_pdc-category');
-        if (! $theme instanceof WP_Post) {
+        if (! $this->theme instanceof WP_Post) {
             $this->updatePortalURL('subthema');
 
             return $this;
         }
 
-        $subtheme = $this->getCommonConnectedSubtheme($theme);
-        if (! $subtheme instanceof WP_Post) {
-            $this->updatePortalURL('subthema');
-
-            return $this;
-        }
-
-        $this->updatePortalURL($subtheme->post_name);
+        $this->subtheme = $this->getCommonConnectedSubtheme($this->theme);
+		$this->updatePortalURL($this->subtheme instanceof WP_Post ? $this->subtheme->post_name : 'subthema');
 
         return $this;
     }
@@ -142,7 +131,7 @@ class PortalLinkGenerator
         $postConnectedSubthemes = $this->post
                                     ->getConnectedAll('pdc-item_to_pdc-subcategory', $connectedArgs);
 
-        if (1 > count($themeConnectedSubthemes) || 1 > count($postConnectedSubthemes)) {
+        if (count($themeConnectedSubthemes) < 1 || count($postConnectedSubthemes) < 1) {
             return null;
         }
 
