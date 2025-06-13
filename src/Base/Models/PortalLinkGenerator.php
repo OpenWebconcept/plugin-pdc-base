@@ -7,147 +7,174 @@ use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 class PortalLinkGenerator
 {
-    protected Item $post;
-    protected SettingsPageOptions $pdcSettings;
-    protected string $portalURL = '';
+	protected Item $post;
+	protected SettingsPageOptions $pdcSettings;
+	protected string $portalURL = '';
 
-    public function __construct(Item $post)
-    {
-        $this->post = $post;
-        $this->pdcSettings = SettingsPageOptions::make();
-    }
+	public function __construct(Item $post)
+	{
+		$this->post = $post;
+		$this->pdcSettings = SettingsPageOptions::make();
+	}
 
-    private function updatePortalURL(string $value = ''): void
-    {
-        if (empty($value)) {
-            return;
-        }
+	private function updatePortalURL(string $value = ''): void
+	{
+		if (empty($value)) {
+			return;
+		}
 
-        $this->portalURL = sprintf('%s%s', $this->portalURL, trailingslashit($value));
-    }
+		$this->portalURL = sprintf('%s%s', $this->portalURL, trailingslashit($value));
+	}
 
-    public function generateFullPortalLink(): string
-    {
-        $this->createPortalSlug()->appendTheme()->appendSubTheme()->appendPostSlug()->appendPostID();
+	public function generateFullPortalLink(): string
+	{
+		$this->createPortalSlug()->appendTheme()->appendSubTheme()->appendPostSlug()->appendPostID();
 
-        return $this->portalURL;
-    }
+		return $this->portalURL;
+	}
 
-    public function generateBasePortalLink(): string
-    {
-        $this->createPortalSlug()->appendTheme()->appendSubTheme();
+	public function generateBasePortalLink(): string
+	{
+		$this->createPortalSlug()->appendTheme()->appendSubTheme();
 
-        return $this->portalURL;
-    }
+		return $this->portalURL;
+	}
 
-    private function createPortalSlug(): self
-    {
-        $portalURL = $this->pdcSettings->getPortalURL();
+	private function createPortalSlug(): self
+	{
+		$portalURL = $this->pdcSettings->getPortalURL();
 
-        if ($this->pdcSettings->useShowOn()) {
-            $portalURL = $this->getShowOnPortalURL();
-        }
+		if ($this->pdcSettings->useShowOn()) {
+			$portalURL = $this->getShowOnPortalURL();
+		}
 
-        $portalSlug = $this->pdcSettings->getPortalItemSlug();
+		$portalSlug = $this->pdcSettings->getPortalItemSlug();
 
-        $this->updatePortalURL($portalURL);
-        $this->updatePortalURL($portalSlug);
+		$this->updatePortalURL($portalURL);
+		$this->updatePortalURL($portalSlug);
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * When the portal URL from the settings is not valid use the taxonomy 'pdc-show-on' as fallback.
-     */
-    private function getShowOnPortalURL(): string
-    {
-        $terms = wp_get_object_terms($this->post->getID(), 'pdc-show-on');
+	/**
+	 * When the portal URL from the settings is not valid use the taxonomy 'pdc-show-on' as fallback.
+	 */
+	private function getShowOnPortalURL(): string
+	{
+		$terms = wp_get_object_terms($this->post->getID(), 'pdc-show-on');
 
-        if (! is_array($terms) || empty($terms)) {
-            return '';
-        }
+		if (! is_array($terms) || empty($terms)) {
+			return '';
+		}
 
-        $portalURL = reset($terms);
+		$portalURL = reset($terms);
 
-        if (isset($_GET['source'])) {
-            foreach ($terms as $term) {
-                if ($term->slug === $_GET['source']) {
-                    $portalURL = $term;
+		if (isset($_GET['source'])) {
+			foreach ($terms as $term) {
+				if ($term->slug === $_GET['source']) {
+					$portalURL = $term;
 
-                    break;
-                }
-            }
-        }
-        $portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
+					break;
+				}
+			}
+		}
+		$portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
 
-        return wp_http_validate_url($portalURL) ? $portalURL : '/';
-    }
+		return wp_http_validate_url($portalURL) ? $portalURL : '/';
+	}
 
-    private function appendTheme(): self
-    {
-        if (! $this->pdcSettings->themeInPortalURL()) {
-            return $this;
-        }
+	private function appendTheme(): self
+	{
+		if (! $this->pdcSettings->themeInPortalURL()) {
+			return $this;
+		}
 
-        $theme = $this->post->getConnected('pdc-item_to_pdc-category');
+		$theme = $this->post->getConnected('pdc-item_to_pdc-category');
 
-        if (! $theme instanceof \WP_Post) {
-            $this->updatePortalURL('thema');
+		if (! $theme instanceof \WP_Post) {
+			$this->updatePortalURL('thema');
 
-            return $this;
-        }
+			return $this;
+		}
 
-        $this->updatePortalURL($theme->post_name);
+		$this->updatePortalURL($theme->post_name);
 
-        return $this;
-    }
+		return $this;
+	}
 
-    private function appendSubTheme(): self
-    {
-        if (! $this->pdcSettings->subthemeInPortalURL()) {
-            return $this;
-        }
+	private function appendSubTheme(): self
+	{
+		if (! $this->pdcSettings->subthemeInPortalURL()) {
+			return $this;
+		}
 
-        $subtheme = $this->post->getConnected('pdc-item_to_pdc-subcategory') ?? '';
+		$theme = $this->post->getConnected('pdc-item_to_pdc-category');
+		if (! $theme instanceof \WP_Post) {
+			$this->updatePortalURL('subthema');
+			return $this;
+		}
 
-        if (! $subtheme instanceof \WP_Post) {
-            $this->updatePortalURL('subthema');
+		// Get subthemes connected to the theme.
+		$customTheme = Item::makeFrom($theme);
+		$themeSubthemes = $customTheme->getConnectedAll('pdc-category_to_pdc-subcategory');
+		$themeSubthemeIDs = [];
+		if (is_array($themeSubthemes)) {
+			foreach ($themeSubthemes as $themeSubtheme) {
+				$themeSubthemeIDs[] = $themeSubtheme->ID;
+			}
+		}
 
-            return $this;
-        }
+		// Get subthemes connected to the post.
+		$postSubthemes = $this->post->getConnectedAll('pdc-item_to_pdc-subcategory');
+		$subtheme = null;
 
-        $this->updatePortalURL($subtheme->post_name);
+		if (is_array($postSubthemes)) {
+			foreach ($postSubthemes as $postSubtheme) {
+				if (in_array($postSubtheme->ID, $themeSubthemeIDs, true)) {
+					$subtheme = $postSubtheme;
+					break;
+				}
+			}
+		}
 
-        return $this;
-    }
+		if (! $subtheme instanceof \WP_Post) {
+			$this->updatePortalURL('subthema');
 
-    private function appendPostSlug(): self
-    {
-        if (! empty($this->post->getPostName())) {
-            $this->updatePortalURL($this->post->getPostName());
+			return $this;
+		}
 
-            return $this;
-        }
+		$this->updatePortalURL($subtheme->post_name);
 
-        // Drafts do not have a post_name so use the sanitized title instead.
-        $this->updatePortalURL(sanitize_title($this->post->getTitle(), 'untitled-draft'));
+		return $this;
+	}
 
-        return $this;
-    }
+	private function appendPostSlug(): self
+	{
+		if (! empty($this->post->getPostName())) {
+			$this->updatePortalURL($this->post->getPostName());
 
-    private function appendPostID(): self
-    {
-        if (! $this->pdcSettings->idInPortalURL()) {
-            return $this;
-        }
+			return $this;
+		}
 
-        $this->updatePortalURL($this->post->getID());
+		// Drafts do not have a post_name so use the sanitized title instead.
+		$this->updatePortalURL(sanitize_title($this->post->getTitle(), 'untitled-draft'));
 
-        return $this;
-    }
+		return $this;
+	}
 
-    public static function make(Item $post): self
-    {
-        return new static($post);
-    }
+	private function appendPostID(): self
+	{
+		if (! $this->pdcSettings->idInPortalURL()) {
+			return $this;
+		}
+
+		$this->updatePortalURL($this->post->getID());
+
+		return $this;
+	}
+
+	public static function make(Item $post): self
+	{
+		return new static($post);
+	}
 }
