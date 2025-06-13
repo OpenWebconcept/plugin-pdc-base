@@ -2,159 +2,76 @@
 
 namespace OWC\PDC\Base\Models;
 
-/**
- * Model for the item
- */
+use DateTime;
+use WP_Post;
+use WP_Query;
+
 class Item
 {
     public const PREFIX = '_owc_';
 
-    /**
-     * Type of model.
-     *
-     * @var string
-     */
-    protected $posttype = 'pdc-item';
+    protected string $posttype = 'pdc-item';
+    protected array $data;
+    protected array $meta;
 
-    /**
-     * Data of the Post.
-     *
-     * @var array
-     */
-    protected $data;
-
-    /**
-     * Metadata of the post.
-     *
-     * @var array
-     */
-    protected $meta;
-
-    /**
-     * Post constructor.
-     *
-     * @param array      $data
-     * @param array|null $meta
-     */
     public function __construct(array $data, array $meta = null)
     {
         $this->data = $data;
         $this->meta = is_null($meta) ? get_post_meta($data['ID']) : $meta;
     }
 
-    /**
-     * Make Post model from WP_Post object
-     *
-     * @param \WP_Post $post
-     *
-     * @return Post
-     */
-    public static function makeFrom(\WP_Post $post)
+    public static function makeFrom(WP_Post $post): self
     {
         return new static($post->to_array());
     }
 
-    /**
-     * Get the ID of the post.
-     *
-     * @return int
-     */
     public function getID(): int
     {
         return $this->data['ID'] ?? 0;
     }
 
-    /**
-     * Get the title of the post.
-     *
-     * @return string
-     */
     public function getTitle(): string
     {
-        return $this->data['post_title'];
+        return $this->data['post_title'] ?? '';
     }
 
-    /**
-     * Get the title of the post.
-     *
-     * @return string
-     */
     public function getPostName(): string
     {
-        return $this->data['post_name'];
+        return $this->data['post_name'] ?? '';
     }
 
-    /**
-     * Get the date of the post as a DateTime object.
-     *
-     * @return \DateTime
-     */
-    public function getDate(): \DateTime
+    public function getDate(): DateTime
     {
-        return \DateTime::createFromFormat('Y-m-d g:i:s', get_the_date('Y-m-d g:i:s', $this->getID()));
+        return DateTime::createFromFormat('Y-m-d g:i:s', get_the_date('Y-m-d g:i:s', $this->getID()));
     }
 
-    /**
-     * Get the modified date of the post as a DateTime object.
-     *
-     * @return \DateTime
-     */
-    public function getPostModified($gmt = false): \DateTime
+    public function getPostModified($gmt = false): DateTime
     {
         $timezone = $gmt ? 'post_modified_gmt' : 'post_modified';
 
-        return (false !== \DateTime::createFromFormat('Y-m-d G:i:s', $this->data[$timezone])) ? \DateTime::createFromFormat('Y-m-d G:i:s', $this->data[$timezone]) : new \DateTime();
+        return (false !== DateTime::createFromFormat('Y-m-d G:i:s', $this->data[$timezone])) ? DateTime::createFromFormat('Y-m-d G:i:s', $this->data[$timezone]) : new DateTime();
     }
 
-    /**
-     * Retrieve the date in localized format.
-     *
-     * @param string $format
-     *
-     * @return string
-     */
     public function getDateI18n(string $format): string
     {
         return date_i18n($format, $this->getDate()->getTimestamp());
     }
 
-    /**
-     * Returns the type of the post.
-     *
-     * @return string|false
-     */
     public function getPostType(): string
     {
-        return get_post_type($this->getID());
+        return get_post_type($this->getID()) ?: '';
     }
 
-    /**
-     * Get the permalink to the post.
-     *
-     * @return string
-     */
     public function getLink(): string
     {
-        return get_permalink($this->getID()) ?? '';
+        return get_permalink($this->getID()) ?: '';
     }
 
-    /**
-     * Get the thumbnail URL of the author.
-     *
-     * @param string $size
-     *
-     * @return string
-     */
-    public function getThumbnail($size = 'post-thumbnail'): string
+    public function getThumbnail(string $size = 'post-thumbnail'): string
     {
-        return get_the_post_thumbnail_url($this->getID(), $size) ?? '';
+        return get_the_post_thumbnail_url($this->getID(), $size) ?: '';
     }
 
-    /**
-     * Determines if the post has a thumbnail
-     *
-     * @return bool
-     */
     public function hasThumbnail(): bool
     {
         return has_post_thumbnail($this->getID());
@@ -162,10 +79,8 @@ class Item
 
     /**
      * Get the excerpt of the post, else fallback to the post content.
-     *
-     * @return string
      */
-    public function getExcerpt($length = 20): string
+    public function getExcerpt(int $length = 20): string
     {
         if (empty($this->getKey('post_excerpt'))) {
             return wp_trim_words(strip_shortcodes($this->getKey('post_content')), $length);
@@ -174,21 +89,11 @@ class Item
         return $this->getKey('post_excerpt');
     }
 
-    /**
-     * Get the content of the post.
-     *
-     * @return string
-     */
     public function getContent(): string
     {
         return apply_filters('the_content', $this->getKey('post_content'));
     }
 
-    /**
-     * Determines if the post has content.
-     *
-     * @return bool
-     */
     public function hasContent(): bool
     {
         return ! empty($this->getKey('post_content'));
@@ -196,8 +101,6 @@ class Item
 
     /**
      * Get the taxonomies of a post.
-     *
-     * @return array
      */
     public function getTaxonomies(): array
     {
@@ -206,21 +109,16 @@ class Item
 
     /**
      * Get the terms of a particular taxonomy.
-     *
-     * @param string $taxonomy
-     *
-     * @return \WP_Term[]
      */
     public function getTerms(string $taxonomy)
     {
-        return get_the_terms($this->getID(), $taxonomy);
+        $terms = get_the_terms($this->getID(), $taxonomy);
+
+        return is_array($terms) ? $terms : [];
     }
 
     /**
      * Get a particular key from the data.
-     *
-     * @param string $value
-     * @param string $default
      *
      * @return mixed
      */
@@ -281,24 +179,31 @@ class Item
         return PortalLinkGenerator::make($this)->generateFullPortalLink();
     }
 
-    public function getConnected($connection): ?\WP_Post
+    public function getConnected($connection, $args = []): ?WP_Post
     {
-        $connected = new \WP_Query([
+        $connected = new WP_Query($this->connectedQueryArgs($connection, $args));
+
+        return $connected->post instanceof WP_Post ? $connected->post : null;
+    }
+
+    public function getConnectedAll($connection, $args = []): array
+    {
+        $connected = new WP_Query($this->connectedQueryArgs($connection, $args));
+
+        return $connected->posts;
+    }
+
+    protected function connectedQueryArgs(string $connection, array $args = []): array
+    {
+        return array_merge([
             'connected_type' => $connection,
             'connected_items' => $this->getID(),
             'nopaging' => true,
             'post_status' => 'publish',
             'connected_query' => ['post_status' => ['publish', 'draft']]
-        ]);
-
-        return ! empty($connected->post) ? $connected->post : null;
+        ], $args);
     }
 
-    /**
-     * @param array $array
-     *
-     * @return array
-     */
     public function arrayUnique($array): array
     {
         return is_array($array) ? array_unique($array) : [];
