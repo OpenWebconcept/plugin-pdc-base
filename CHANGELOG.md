@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.15.7] (2025-06-19)
+
+### Fix
+
+- Formatting portal url based on partial or broken connections
+
 ## Version [3.15.6] (2025-05-22)
 
 ### Refactor
