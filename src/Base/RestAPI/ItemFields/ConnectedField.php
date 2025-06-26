@@ -10,6 +10,8 @@ use WP_Post;
 use OWC\PDC\Base\Support\CreatesFields;
 use OWC\PDC\Base\Support\Traits\QueryHelpers;
 use OWC\PDC\Base\Support\Traits\CheckPluginActive;
+use OWC\PDC\Base\Models\Item;
+use OWC\PDC\Base\Models\PortalLinkGenerator;
 
 /**
  * Adds connected/related fields to the output.
@@ -100,16 +102,17 @@ class ConnectedField extends CreatesFields
         }
 
         $items = array_map(function (WP_Post $post) use ($type) {
-            $data = [
-                'id' => $post->ID,
-                'title' => $post->post_title,
-                'slug' => $post->post_name,
-                'excerpt' => $post->post_excerpt,
-                'date' => $post->post_date,
-                'language' => get_post_meta($post->ID, '_owc_pdc-item-language', true) ?: 'nl',
-            ];
+			$data = [
+				'id'          => $post->ID,
+				'title'       => $post->post_title,
+				'slug'        => $post->post_name,
+				'excerpt'     => $post->post_excerpt,
+				'date'        => $post->post_date,
+				'language'    => get_post_meta($post->ID, '_owc_pdc-item-language', true) ?: 'nl',
+			];
 
             if ($type === 'pdc-item_to_pdc-item') {
+				$data['portal_url'] = PortalLinkGenerator::make(Item::makeFrom($post))->generateFullPortalLink();
                 $data = $this->complementConnectedItem($post, $data);
             }
 
