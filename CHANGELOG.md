@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.15.8] (2025-07-16)
+
+### Feat
+
+- add author id in API response of items/subthemes/themes endpoints
+
 ## Version [3.15.7] (2025-06-19)
 
 ### Fix
