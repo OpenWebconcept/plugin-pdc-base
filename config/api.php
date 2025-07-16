@@ -12,6 +12,7 @@ return [
              * ]
              */
             'fields' => [
+                'author_id' => OWC\PDC\Base\RestAPI\SharedFields\AuthorField::class,
                 'language' => OWC\PDC\Base\RestAPI\ItemFields\LanguageField::class,
                 'appointment' => OWC\PDC\Base\RestAPI\ItemFields\AppointmentField::class,
                 'portal_url' => OWC\PDC\Base\RestAPI\ItemFields\PortalURL::class,
@@ -35,6 +36,7 @@ return [
         ],
         'subthema' => [
             'fields' => [
+                'author_id' => OWC\PDC\Base\RestAPI\SharedFields\AuthorField::class,
                 'icon' => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
                 'items' => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image' => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
@@ -53,6 +55,7 @@ return [
         ],
         'thema' => [
             'fields' => [
+                'author_id' => OWC\PDC\Base\RestAPI\SharedFields\AuthorField::class,
                 'icon' => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
                 'items' => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image' => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
