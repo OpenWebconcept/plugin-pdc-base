@@ -130,15 +130,34 @@ class DependencyChecker
      */
     private function checkPlugin(array $dependency)
     {
-        if (! $this->isPluginActive($dependency['file'])) {
-            $this->markFailed($dependency, __('Inactive', 'pdc-base'));
+        $pluginActive = false;
+        $activePluginFile = null;
 
+        // Check if alternatives are defined (for plugins like Meta Box AIO)
+        if (is_array($dependency['alternatives'] ?? false) && 0 < count($dependency['alternatives'])) {
+            foreach ($dependency['alternatives'] as $pluginFile) {
+                if ($this->isPluginActive($pluginFile)) {
+                    $pluginActive = true;
+                    $activePluginFile = $pluginFile;
+                    break;
+                }
+            }
+        } else {
+            // Fallback to original single file check
+            if ($this->isPluginActive($dependency['file'])) {
+                $pluginActive = true;
+                $activePluginFile = $dependency['file'];
+            }
+        }
+
+        if (!$pluginActive) {
+            $this->markFailed($dependency, __('Inactive', 'pdc-base'));
             return;
         }
 
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
-            if (! $this->checkVersion($dependency)) {
+            if (! $this->checkVersion($dependency, $activePluginFile)) {
                 $this->markFailed($dependency, __('Minimal version:', 'pdc-base') . ' <b>' . $dependency['version'] . '</b>');
             }
         }
@@ -157,11 +176,26 @@ class DependencyChecker
     /**
      * Checks the installed version of the plugin.
      */
-    private function checkVersion(array $dependency): bool
+    private function checkVersion(array $dependency, ?string $activePluginFile = null): bool
     {
-        $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
+        // Use the active plugin file if provided, otherwise fall back to the original file
+        $pluginFile = (string) ($activePluginFile ?? ($dependency['file'] ?? ''));
 
-        preg_match('/^(?:(?: ?\* ?)?Version: ?)(.*)$$/m', $file, $matches);
+        $filePath = WP_PLUGIN_DIR . '/' . $pluginFile;
+
+        // Check if file exists before trying to read it
+        if (! is_readable($filePath)) {
+            error_log('File not found at: ' . $filePath);
+            return false;
+        }
+
+        $file = file_get_contents($filePath);
+
+        if ($file === false) {
+            return false;
+        }
+
+        preg_match('/^(?:(?: ?\* ?)?Version: ?)(.*)$/m', $file, $matches);
         $version = isset($matches[1]) ? str_replace(' ', '', $matches[1]) : '0.0.0';
 
         return version_compare($version, $dependency['version'], '>=');

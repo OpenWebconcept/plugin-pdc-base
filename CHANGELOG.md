@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## ## Version [x.y.z] (X)
+
+### Feat
+
+#### Meta Box AIO Support
+- **Added**: Support for Meta Box AIO (premium version) alongside the free Meta Box plugin
+- **Enhanced**: Dependency checking now recognizes multiple plugin alternatives for better compatibility  
+- **Improved**: Admin notices now reflect both free and premium Meta Box options
+- **Technical**: Extended `DependencyChecker` class to support `alternatives` array in dependency definitions
+- **Backward Compatible**: Existing installations continue to work without changes
+
+
 ## Version [3.15.8] (2025-07-16)
 
 ### Feat

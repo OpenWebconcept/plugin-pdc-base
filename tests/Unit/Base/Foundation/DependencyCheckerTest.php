@@ -100,6 +100,142 @@ class DependencyCheckerTest extends TestCase
         $this->assertFalse($checker->failed());
     }
 
+    /** @test */
+    public function it_succeeds_when_first_alternative_plugin_is_active()
+    {
+        $dependencies = [
+            [
+                'type' => 'plugin',
+                'label' => 'Meta Box',
+                'file' => 'meta-box/meta-box.php',
+                'alternatives' => [
+                    'meta-box/meta-box.php',
+                    'meta-box-aio/meta-box-aio.php'
+                ]
+            ]
+        ];
+
+        $checker = new DependencyChecker($dependencies);
+
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box/meta-box.php'])
+            ->once()
+            ->andReturn(true);
+
+        $this->assertFalse($checker->failed());
+    }
+
+    /** @test */
+    public function it_succeeds_when_second_alternative_plugin_is_active()
+    {
+        $dependencies = [
+            [
+                'type' => 'plugin',
+                'label' => 'Meta Box',
+                'file' => 'meta-box/meta-box.php',
+                'alternatives' => [
+                    'meta-box/meta-box.php',
+                    'meta-box-aio/meta-box-aio.php'
+                ]
+            ]
+        ];
+
+        $checker = new DependencyChecker($dependencies);
+
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box/meta-box.php'])
+            ->once()
+            ->andReturn(false);
+            
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box-aio/meta-box-aio.php'])
+            ->once()
+            ->andReturn(true);
+
+        $this->assertFalse($checker->failed());
+    }
+
+    /** @test */
+    public function it_fails_when_no_alternative_plugins_are_active()
+    {
+        $dependencies = [
+            [
+                'type' => 'plugin',
+                'label' => 'Meta Box',
+                'file' => 'meta-box/meta-box.php',
+                'alternatives' => [
+                    'meta-box/meta-box.php',
+                    'meta-box-aio/meta-box-aio.php'
+                ]
+            ]
+        ];
+
+        $checker = new DependencyChecker($dependencies);
+
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box/meta-box.php'])
+            ->once()
+            ->andReturn(false);
+            
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box-aio/meta-box-aio.php'])
+            ->once()
+            ->andReturn(false);
+
+        $this->assertTrue($checker->failed());
+    }
+
+    /** @test */
+    public function it_succeeds_when_both_alternative_plugins_are_active()
+    {
+        $dependencies = [
+            [
+                'type' => 'plugin',
+                'label' => 'Meta Box',
+                'file' => 'meta-box/meta-box.php',
+                'alternatives' => [
+                    'meta-box/meta-box.php',
+                    'meta-box-aio/meta-box-aio.php'
+                ]
+            ]
+        ];
+
+        $checker = new DependencyChecker($dependencies);
+
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box/meta-box.php'])
+            ->once()
+            ->andReturn(true);
+
+        // Should not check the second alternative since first one is active
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['meta-box-aio/meta-box-aio.php'])
+            ->never();
+
+        $this->assertFalse($checker->failed());
+    }
+
+    /** @test */
+    public function it_falls_back_to_original_behavior_when_no_alternatives_defined()
+    {
+        $dependencies = [
+            [
+                'type' => 'plugin',
+                'label' => 'Regular Plugin',
+                'file' => 'regular-plugin/regular-plugin.php'
+            ]
+        ];
+
+        $checker = new DependencyChecker($dependencies);
+
+        \WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['regular-plugin/regular-plugin.php'])
+            ->once()
+            ->andReturn(true);
+
+        $this->assertFalse($checker->failed());
+    }
+
     /**
      * Provides old version numbers.
      * Version in pluginstub.php is 1.1.5

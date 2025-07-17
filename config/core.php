@@ -30,22 +30,31 @@ return [
      *
      * Type: plugin
      * - Required: file
-     * - Optional: version
+     * - Optional: version, alternatives
      *
      * Type: class
+     * - Required: name
+     * 
+     * Type: function
      * - Required: name
      */
     'dependencies' => [
         [
             'type' => 'plugin',
             'label' => 'RWMB Metabox',
-            'version' => '4.14.0',
-            'file' => 'meta-box/meta-box.php'
+            'file' => 'meta-box/meta-box.php',
+            'alternatives' => [
+                'meta-box/meta-box.php',           // Free Meta Box
+                'meta-box-aio/meta-box-aio.php'   // Meta Box AIO
+            ],
         ],        [
             'type' => 'plugin',
-            'label' => 'RWMB Metabox',
-            'version' => '1.4.2',
-            'file' => 'meta-box-group/meta-box-group.php'
+            'label' => 'RWMB Metabox Group',
+            'file' => 'meta-box-group/meta-box-group.php',
+            'alternatives' => [
+                'meta-box-group/meta-box-group.php', // Free Meta Box Group extension
+                'meta-box-aio/meta-box-aio.php'      // Meta Box AIO (includes Group functionality)
+            ]
         ],
         [
             'type' => 'function',
@@ -53,5 +62,4 @@ return [
             'name' => 'register_extended_post_type'
         ],
     ]
-
 ];

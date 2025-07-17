@@ -5,7 +5,9 @@ This repository contains the the OpenwebConcept OpenPDC plugin.
 ## Installation
 
 Before installation, make sure you install following required plugins:
- - [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
+ - **Meta Box plugin** - Either:
+   - [RWMB Metabox (free version)](https://wordpress.org/plugins/meta-box/) plus [Meta Box Group extension](https://wordpress.org/plugins/meta-box-group/), OR
+   - [Meta Box AIO (premium version)](https://metabox.io/pricing/) - The all-in-one premium package that includes all Meta Box extensions
  - [Posts 2 Posts](https://wordpress.org/plugins/posts-to-posts/)
 
 ### For users
@@ -22,13 +24,33 @@ To contribute to this project, no dependencies are required. However, you will n
 
 To create an optimized and zipped build, run the `composer run package` command. This requires `Composer`, `rsync` and `zip` to run.
 
+### Meta Box Requirements
+
+This plugin supports both the free and premium versions of Meta Box:
+
+**Option 1: Free Meta Box plugins**
+- Install [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
+- Install [Meta Box Group](https://wordpress.org/plugins/meta-box-group/) extension
+
+**Option 2: Meta Box AIO (Premium)**
+- Install [Meta Box AIO](https://metabox.io/pricing/) - includes all Meta Box functionality in one package
+- No additional extensions needed
+
 ### Activation error(s)?
 When activating the 'PDCBase' plugin is causing the following error:
 
  ![activateplugin-error](./assets/images/pluginactivate-error.png)
 
-Install the following required plugins:
+Install one of the following Meta Box options:
+
+**Free option:**
  - [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
+ - [Meta Box Group](https://wordpress.org/plugins/meta-box-group/)
+
+**Premium option:**
+ - [Meta Box AIO](https://metabox.io/pricing/) (includes all extensions)
+
+Also install:
  - [Posts 2 Posts](https://wordpress.org/plugins/posts-to-posts/)
 
 Activating the plugin after installation should fix the issue:
