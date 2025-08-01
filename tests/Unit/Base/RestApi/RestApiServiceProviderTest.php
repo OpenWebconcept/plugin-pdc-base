@@ -83,7 +83,7 @@ class RestAPIServiceProviderTest extends TestCase
             ]
         ];
 
-        $this->config->shouldReceive('get')->with('api.models')->once()->andReturn($fields);
+        $this->config->shouldReceive('get')->with('api.models', [])->once()->andReturn($fields);
         $this->service->register();
 
         $this->assertTrue(true);

@@ -148,7 +148,7 @@ class PostsToPostsServiceProviderTest extends TestCase
             ],
         ];
 
-        $config->shouldReceive('get')->with('p2p_connections.posttypes_info')->once()->andReturn($configPostTypesInfo);
+        $config->shouldReceive('get')->with('p2p_connections.posttypes_info', [])->once()->andReturn($configPostTypesInfo);
 
         $configConnections = [
             [
@@ -163,7 +163,7 @@ class PostsToPostsServiceProviderTest extends TestCase
             ],
         ];
 
-        $config->shouldReceive('get')->with('p2p_connections.connections')->once()->andReturn($configConnections);
+        $config->shouldReceive('get')->with('p2p_connections.connections', [])->once()->andReturn($configConnections);
 
         $connectionDefaults = [
             'can_create_post' => false,
