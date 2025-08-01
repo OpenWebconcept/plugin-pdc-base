@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\RestAPI\SharedFields;
 
-use OWC\PDC\Base\Support\CreatesFields;
 use WP_Post;
+use OWC\PDC\Base\Support\CreatesFields;
 
 class AuthorField extends CreatesFields
 {

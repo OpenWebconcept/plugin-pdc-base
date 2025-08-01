@@ -34,7 +34,7 @@ return [
      *
      * Type: class
      * - Required: name
-     * 
+     *
      * Type: function
      * - Required: name
      */

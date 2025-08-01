@@ -2,8 +2,8 @@
 
 namespace OWC\PDC\Base\Models;
 
-use DateTime;
 use WP_Post;
+use DateTime;
 use WP_Query;
 
 class Item
@@ -20,10 +20,11 @@ class Item
         $this->meta = is_null($meta) ? get_post_meta($data['ID']) : $meta;
     }
 
-	/**
-	 * @param WP_Post $post
-	 * @return static
-	 */
+    /**
+     * @param WP_Post $post
+     *
+     * @return static
+     */
     public static function makeFrom(WP_Post $post)
     {
         return new static($post->to_array());

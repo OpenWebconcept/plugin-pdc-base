@@ -2,9 +2,9 @@
 
 namespace OWC\PDC\Base\Models;
 
-use OWC\PDC\Base\Settings\SettingsPageOptions;
 use WP_Post;
 use WP_Term;
+use OWC\PDC\Base\Settings\SettingsPageOptions;
 
 class PortalLinkGenerator
 {
@@ -12,8 +12,8 @@ class PortalLinkGenerator
     protected SettingsPageOptions $pdcSettings;
     protected string $portalURL = '';
 
-	protected ?WP_Post $theme = null;
-	protected ?WP_Post $subtheme = null;
+    protected ?WP_Post $theme = null;
+    protected ?WP_Post $subtheme = null;
 
     public function __construct(Item $post)
     {
@@ -95,7 +95,7 @@ class PortalLinkGenerator
         }
 
         $this->theme = $this->post->getConnected('pdc-item_to_pdc-category');
-		$this->updatePortalURL($this->theme instanceof WP_Post ? $this->theme->post_name : 'thema');
+        $this->updatePortalURL($this->theme instanceof WP_Post ? $this->theme->post_name : 'thema');
 
         return $this;
     }
@@ -113,7 +113,7 @@ class PortalLinkGenerator
         }
 
         $this->subtheme = $this->getCommonConnectedSubtheme($this->theme);
-		$this->updatePortalURL($this->subtheme instanceof WP_Post ? $this->subtheme->post_name : 'subthema');
+        $this->updatePortalURL($this->subtheme instanceof WP_Post ? $this->subtheme->post_name : 'subthema');
 
         return $this;
     }
