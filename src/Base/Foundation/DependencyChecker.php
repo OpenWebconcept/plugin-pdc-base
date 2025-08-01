@@ -139,6 +139,7 @@ class DependencyChecker
                 if ($this->isPluginActive($pluginFile)) {
                     $pluginActive = true;
                     $activePluginFile = $pluginFile;
+
                     break;
                 }
             }
@@ -150,8 +151,9 @@ class DependencyChecker
             }
         }
 
-        if (!$pluginActive) {
+        if (! $pluginActive) {
             $this->markFailed($dependency, __('Inactive', 'pdc-base'));
+
             return;
         }
 
@@ -186,6 +188,7 @@ class DependencyChecker
         // Check if file exists before trying to read it
         if (! is_readable($filePath)) {
             error_log('File not found at: ' . $filePath);
+
             return false;
         }
 

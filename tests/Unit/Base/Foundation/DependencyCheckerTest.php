@@ -146,7 +146,7 @@ class DependencyCheckerTest extends TestCase
             ->withArgs(['meta-box/meta-box.php'])
             ->once()
             ->andReturn(false);
-            
+
         \WP_Mock::userFunction('is_plugin_active')
             ->withArgs(['meta-box-aio/meta-box-aio.php'])
             ->once()
@@ -176,7 +176,7 @@ class DependencyCheckerTest extends TestCase
             ->withArgs(['meta-box/meta-box.php'])
             ->once()
             ->andReturn(false);
-            
+
         \WP_Mock::userFunction('is_plugin_active')
             ->withArgs(['meta-box-aio/meta-box-aio.php'])
             ->once()
