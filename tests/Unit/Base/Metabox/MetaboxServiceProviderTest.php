@@ -6,8 +6,8 @@ use Mockery as m;
 use OWC\PDC\Base\Config;
 use OWC\PDC\Base\Foundation\Loader;
 use OWC\PDC\Base\Foundation\Plugin;
-use OWC\PDC\Base\Tests\Unit\TestCase;
 use OWC\PDC\Base\Metabox\Handlers\UPLResourceHandler;
+use OWC\PDC\Base\Tests\Unit\TestCase;
 
 class MetaboxServiceProviderTest extends TestCase
 {
@@ -273,9 +273,9 @@ class MetaboxServiceProviderTest extends TestCase
             ]
         ];
 
-        $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
-        $config->shouldReceive('get')->with('identifications_metaboxes')->once()->andReturn($configMetaboxes);
-        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('metaboxes', [])->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('identifications_metaboxes', [])->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('escape_element_metabox', [])->once()->andReturn($configMetaboxes);
 
         //test for filter being called
         \WP_Mock::expectFilter('owc/pdc-base/before-register-metaboxes', $expectedMetaboxes);
@@ -358,9 +358,9 @@ class MetaboxServiceProviderTest extends TestCase
             ]
         ];
 
-        $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
-        $config->shouldReceive('get')->with('identifications_metaboxes')->once()->andReturn($configMetaboxes);
-        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('metaboxes', [])->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('identifications_metaboxes', [])->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('escape_element_metabox', [])->once()->andReturn($configMetaboxes);
 
         $this->assertEquals($expectedMetaboxesAfterMerge, $service->registerMetaboxes($existingMetaboxes));
     }

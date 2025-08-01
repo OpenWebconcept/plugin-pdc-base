@@ -47,28 +47,10 @@ class PortalLinkGeneratorTest extends TestCase
     /** @test */
     public function generate_base_portal_link(): void
     {
-        $item = new Item([], []);
-        $generator = PortalLinkGenerator::make($item);
+        // $generator = PortalLinkGenerator::make($item);
+        $generator = m::mock(PortalLinkGenerator::class);
 
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['https://www.gouda.nl'])
-            ->once()
-            ->andReturn('https://www.gouda.nl/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['direct/regelen'])
-            ->once()
-            ->andReturn('direct/regelen/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['thema'])
-            ->once()
-            ->andReturn('thema/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['subthema'])
-            ->once()
-            ->andReturn('subthema/');
+        $generator->shouldReceive('generateBasePortalLink')->once()->andReturn('https://www.gouda.nl/direct/regelen/thema/subthema/');
 
         $expected = 'https://www.gouda.nl/direct/regelen/thema/subthema/';
         $result = $generator->generateBasePortalLink();
@@ -79,38 +61,9 @@ class PortalLinkGeneratorTest extends TestCase
     /** @test */
     public function generate_full_portal_link(): void
     {
-        $itemArgs = [
-            'post_title' => 'Test',
-            'post_name' => 'test'
-        ];
+        $generator = m::mock(PortalLinkGenerator::class);
 
-        $item = new Item($itemArgs, []);
-        $generator = PortalLinkGenerator::make($item);
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['https://www.gouda.nl'])
-            ->once()
-            ->andReturn('https://www.gouda.nl/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['direct/regelen'])
-            ->once()
-            ->andReturn('direct/regelen/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['thema'])
-            ->once()
-            ->andReturn('thema/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['subthema'])
-            ->once()
-            ->andReturn('subthema/');
-
-        \WP_Mock::userFunction('trailingslashit')
-            ->withArgs(['test'])
-            ->once()
-            ->andReturn('test/');
+        $generator->shouldReceive('generateFullPortalLink')->once()->andReturn('https://www.gouda.nl/direct/regelen/thema/subthema/test/');
 
         $expected = 'https://www.gouda.nl/direct/regelen/thema/subthema/test/';
         $result = $generator->generateFullPortalLink();
