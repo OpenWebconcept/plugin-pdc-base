@@ -2,6 +2,7 @@
 
 namespace OWC\PDC\Base\Foundation;
 
+use OWC\PDC\Base\Settings\SettingsPageOptions;
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 class Plugin
@@ -41,6 +42,11 @@ class Plugin
      * @var Loader
      */
     public $loader;
+
+    /**
+     * @var SettingsPageOptions
+     */
+    public $settings;
 
     public function __construct(string $rootPath)
     {
