@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.17.0] (2025-08-25)
+
+### Fix
+
+- Creation of dynamic property
+
 ## Version [3.16.0] (2025-08-01)
 
 ### Feat
