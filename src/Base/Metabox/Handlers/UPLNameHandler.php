@@ -4,6 +4,8 @@ namespace OWC\PDC\Base\Metabox\Handlers;
 
 class UPLNameHandler
 {
+	protected array $options = [];
+
     public function __construct(array $options)
     {
         $this->options = $options;
