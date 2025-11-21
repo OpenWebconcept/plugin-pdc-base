@@ -19,7 +19,9 @@ return [
         OWC\PDC\Base\UPL\UPLServiceProvider::class,
 
         /** Providers specific to the admin */
-        'admin' => []
+        'admin' => [
+			OWC\PDC\Base\TinyMce\TinyMceServiceProvider::class
+		]
     ],
 
     /**
