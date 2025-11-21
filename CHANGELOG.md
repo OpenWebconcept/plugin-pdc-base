@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Version [3.17.2] (2025-11-21)
+
+### Fix
+
+- YouTube embeds created in TinyMCE editor
+
+## Version [3.17.1] (2025-09-08)
+
+### Fix
+
+- Creation of dynamic property
+
 ## Version [3.17.0] (2025-08-25)
 
 ### Fix
