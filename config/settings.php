@@ -72,7 +72,7 @@ return [
                 ],
                 'pdc_enable_show_on' => [
                     'name' => __('Show on', 'pdc-base'),
-                    'desc' => __('Used for configuring on which websites an OpenPDC item should be displayed on. When this setting is on the value of the portal url will be overwritten by the values of this taxonomy.', 'pdc-base'),
+                    'desc' => __('Configure on which websites an OpenPDC item should be displayed. When enabled, the portal URL in the API output will be replaced by the full URL from the "show-on" taxonomy (where the taxonomy name is the full URL and the slug is the blog ID of the allowed site).', 'pdc-base'),
                     'id' => 'setting_pdc_enable_show_on',
                     'type' => 'checkbox'
                 ],

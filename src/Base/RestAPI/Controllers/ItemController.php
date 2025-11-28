@@ -96,13 +96,14 @@ class ItemController extends BaseController
     {
         $id = (int) $request->get_param('id');
         $item = $this->buildQueryFromRequest($request);
-
         $item = $item->find($id);
 
         if (! $item) {
-            return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
-                'status' => 404,
-            ]);
+            return new WP_Error(
+                'no_item_found',
+                sprintf('Item with ID [%d] not found', $id),
+                ['status' => 404]
+            );
         }
 
         if ($this->needsAuthorization($item)) {
@@ -113,7 +114,7 @@ class ItemController extends BaseController
             );
         }
 
-        return $item;
+        return $this->validateShowOnAvailability($item, $request, $id);
     }
 
     /**
@@ -125,7 +126,6 @@ class ItemController extends BaseController
     {
         $slug = $request->get_param('slug');
         $item = $this->buildQueryFromRequest($request);
-
         $item = $item->findBySlug($slug);
 
         if (! $item) {
@@ -136,11 +136,48 @@ class ItemController extends BaseController
             );
         }
 
+        $id = (int) ($item['id'] ?? 0);
+
         if ($this->needsAuthorization($item)) {
             return new WP_Error(
                 'unauthorized_request',
                 sprintf('Unauthorized request for item with slug [%s]', $slug),
                 ['status' => 401]
+            );
+        }
+
+        return $this->validateShowOnAvailability($item, $request, $id, $slug);
+    }
+
+    /**
+     * Validate if the item is available for the provided source, when applicable.
+     *
+     * @return array|WP_Error
+     */
+    protected function validateShowOnAvailability(array $item, WP_REST_Request $request, int $id, string $slug = '')
+    {
+        if (! $this->plugin->settings->useShowOn()) {
+            return $item;
+        }
+
+        // If the item has no 'pdc-show-on' terms, it is available for all sources.
+        if (! $this->postHasTermsConnected($id, 'pdc-show-on')) {
+            return $item;
+        }
+
+        if (! $this->showOnParamIsValid($request)) {
+            return new WP_Error(
+                'invalid_source_param',
+                'Invalid or missing source parameter',
+                ['status' => 400]
+            );
+        }
+
+        if (! $this->postHasTermField($request->get_param('source'), $id, 'pdc-show-on')) {
+            return new WP_Error(
+                'item_not_available_for_source',
+                1 > strlen($slug) ? sprintf('Item with ID [%d] is not available for the provided source', $id) : sprintf('Item with slug [%s] is not available for the provided source', $slug),
+                ['status' => 403]
             );
         }
 

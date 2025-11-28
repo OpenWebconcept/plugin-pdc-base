@@ -118,4 +118,29 @@ abstract class BaseController
 
         return true;
     }
+
+    protected function postHasTermField(string $param, int $postId, string $taxonomy, string $field = 'slug'): bool
+    {
+        $terms = get_the_terms($postId, $taxonomy);
+
+        if (! is_array($terms) || [] === $terms) {
+            return false;
+        }
+
+        $sanitizedParam = sanitize_text_field($param);
+        $pluckedValues = wp_list_pluck($terms, $field);
+
+        return in_array($sanitizedParam, $pluckedValues, true);
+    }
+
+    protected function postHasTermsConnected(int $postId, string $taxonomy): bool
+    {
+        $terms = get_the_terms($postId, $taxonomy);
+
+        if (! is_array($terms) || [] === $terms) {
+            return false;
+        }
+
+        return true;
+    }
 }
