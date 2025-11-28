@@ -854,8 +854,8 @@ msgid "Show on"
 msgstr "Tonen op"
 
 #: config/settings.php:75
-msgid "Used for configuring on which websites an OpenPDC item should be displayed on. When this setting is on the value of the portal url will be overwritten by the values of this taxonomy."
-msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPDC item weergegeven moet worden. Als deze instelling aan staat wordt de waarde van de portal url overschreven door de waarden van deze taxonomy."
+msgid "Configure on which websites an OpenPDC item should be displayed. When enabled, the portal URL in the API output will be replaced by the full URL from the "show-on" taxonomy (where the taxonomy name is the full URL and the slug is the blog ID of the allowed site)."
+msgstr "Configureer op welke websites een OpenPDC item getoond moet worden. Indien ingeschakeld, wordt de portaal URL in de API-output vervangen door de volledige URL uit de \"show-on\" taxonomie (waarbij de taxonomie naam de volledige URL is en de slug het blog ID van de toegestane site)."
 
 #: config/settings.php:80
 msgid "Use feedback form"
