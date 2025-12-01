@@ -42,7 +42,7 @@ abstract class BaseController
             'data' => $data,
         ], [
             'pagination' => [
-                'total_count' => (int)$query->found_posts,
+                'total_count' => (int) $query->found_posts,
                 'total_pages' => $query->max_num_pages,
                 'current_page' => $page,
                 'limit' => $query->get('posts_per_page'),
@@ -68,7 +68,7 @@ abstract class BaseController
     {
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
-        if (!\is_user_logged_in()) {
+        if (! \is_user_logged_in()) {
             $preview = false;
         }
 
@@ -84,7 +84,7 @@ abstract class BaseController
             return false;
         }
 
-        if (!is_numeric($request->get_param('source'))) {
+        if (! is_numeric($request->get_param('source'))) {
             return false;
         }
 
@@ -112,7 +112,7 @@ abstract class BaseController
             return false;
         }
 
-        if (!is_array($request->get_param($param)) && !is_string($request->get_param($param))) {
+        if (! is_array($request->get_param($param)) && ! is_string($request->get_param($param))) {
             return false;
         }
 
