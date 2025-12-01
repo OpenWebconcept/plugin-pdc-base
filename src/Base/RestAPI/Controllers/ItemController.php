@@ -17,7 +17,7 @@ use OWC\PDC\Base\Support\Traits\CheckPluginActive;
  */
 class ItemController extends BaseController
 {
-	use CheckPluginActive;
+    use CheckPluginActive;
 	use QueryHelpers;
 
 	/**

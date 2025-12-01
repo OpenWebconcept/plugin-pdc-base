@@ -25,8 +25,8 @@ class ThemaController extends BaseController
 
         $items = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
-			->query($this->getOrderClause($orderBy, $order))
-			->query([
+            ->query($this->getOrderClause($orderBy, $order))
+            ->query([
                 'post_status' => $this->getPostStatus($request)
             ])
             ->hide(['items']);
@@ -36,7 +36,7 @@ class ThemaController extends BaseController
         }
 
         if ($language = $request->get_param('language')) {
-            $items->filterLanguage((string) $language);
+            $items->filterLanguage((string)$language);
         }
 
         $data = $items->all();
@@ -52,7 +52,7 @@ class ThemaController extends BaseController
      */
     public function getThema(WP_REST_Request $request)
     {
-        $id = (int) $request->get_param('id');
+        $id = (int)$request->get_param('id');
 
         $thema = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
@@ -63,12 +63,12 @@ class ThemaController extends BaseController
         }
 
         if ($language = $request->get_param('language')) {
-            $thema->filterLanguage((string) $language);
+            $thema->filterLanguage((string)$language);
         }
 
         $thema = $thema->find($id);
 
-        if (! $thema) {
+        if (!$thema) {
             return new WP_Error('no_item_found', sprintf('Thema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
@@ -95,12 +95,12 @@ class ThemaController extends BaseController
         }
 
         if ($language = $request->get_param('language')) {
-            $theme->filterLanguage((string) $language);
+            $theme->filterLanguage((string)$language);
         }
 
         $theme = $theme->findBySlug($slug);
 
-        if (! $theme) {
+        if (!$theme) {
             return new WP_Error(
                 'no_theme_found',
                 sprintf('Theme with slug [%s] not found', $slug),
