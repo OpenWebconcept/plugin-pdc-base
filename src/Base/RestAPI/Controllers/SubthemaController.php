@@ -15,96 +15,98 @@ use OWC\PDC\Base\Repositories\Subthema;
  */
 class SubthemaController extends BaseController
 {
-    /**
-     * Get a list of all subthemas.
-     */
-    public function getSubthemas(WP_REST_Request $request): array
-    {
-        $items = (new Subthema())
-            ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
-            ->query([
-                'order' => 'ASC',
-                'orderby' => 'name',
-                'post_status' => $this->getPostStatus($request)
-            ]);
+	/**
+	 * Get a list of all subthemas.
+	 */
+	public function getSubthemas(WP_REST_Request $request): array
+	{
+		$orderBy = $request->get_param('orderby') ?? 'name';
+		$order = $request->get_param('order') ?? 'ASC';
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-            $items->filterSource($request->get_param('source'));
-        }
+		$items = (new Subthema())
+			->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
+			->query($this->getOrderClause($orderBy, $order))
+			->query([
+				'post_status' => $this->getPostStatus($request)
+			]);
 
-        if ($language = $request->get_param('language')) {
-            $items->filterLanguage((string) $language);
-        }
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$items->filterSource($request->get_param('source'));
+		}
 
-        $data = $items->all();
-        $query = $items->getQuery();
+		if ($language = $request->get_param('language')) {
+			$items->filterLanguage((string)$language);
+		}
 
-        return $this->addPaginator($data, $query);
-    }
+		$data = $items->all();
+		$query = $items->getQuery();
 
-    /**
-     * Get an individual subthema.
-     *
-     * @return array|WP_Error
-     */
-    public function getSubthema(WP_REST_Request $request)
-    {
-        $id = (int) $request->get_param('id');
+		return $this->addPaginator($data, $query);
+	}
 
-        $thema = (new Subthema())
-            ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
-            ->query(['post_status' => $this->getPostStatus($request)]);
+	/**
+	 * Get an individual subthema.
+	 *
+	 * @return array|WP_Error
+	 */
+	public function getSubthema(WP_REST_Request $request)
+	{
+		$id = (int)$request->get_param('id');
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-            $thema->filterSource($request->get_param('source'));
-        }
+		$thema = (new Subthema())
+			->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
+			->query(['post_status' => $this->getPostStatus($request)]);
 
-        if ($language = $request->get_param('language')) {
-            $thema->filterLanguage((string) $language);
-        }
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$thema->filterSource($request->get_param('source'));
+		}
 
-        $thema = $thema->find($id);
+		if ($language = $request->get_param('language')) {
+			$thema->filterLanguage((string)$language);
+		}
 
-        if (! $thema) {
-            return new WP_Error('no_item_found', sprintf('Subthema with ID [%d] not found', $id), [
-                'status' => 404,
-            ]);
-        }
+		$thema = $thema->find($id);
 
-        return $thema;
-    }
+		if (!$thema) {
+			return new WP_Error('no_item_found', sprintf('Subthema with ID [%d] not found', $id), [
+				'status' => 404,
+			]);
+		}
 
-    /**
-     * Get an individual subtheme by slug.
-     *
-     * @return array|WP_Error
-     */
-    public function getSubthemeBySlug(WP_REST_Request $request)
-    {
-        $slug = $request->get_param('slug');
+		return $thema;
+	}
 
-        $subtheme = (new Subthema())
-            ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
-            ->query(['post_status' => $this->getPostStatus($request)]);
+	/**
+	 * Get an individual subtheme by slug.
+	 *
+	 * @return array|WP_Error
+	 */
+	public function getSubthemeBySlug(WP_REST_Request $request)
+	{
+		$slug = $request->get_param('slug');
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
-            $subtheme->filterSource($request->get_param('source'));
-        }
+		$subtheme = (new Subthema())
+			->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
+			->query(['post_status' => $this->getPostStatus($request)]);
 
-        if ($language = $request->get_param('language')) {
-            $subtheme->filterLanguage((string) $language);
-        }
+		if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+			$subtheme->filterSource($request->get_param('source'));
+		}
 
-        $subtheme = $subtheme->findBySlug($slug);
+		if ($language = $request->get_param('language')) {
+			$subtheme->filterLanguage((string)$language);
+		}
 
-        if (! $subtheme) {
-            return new WP_Error(
-                'no_subtheme_found',
-                sprintf('Subheme with slug [%s] not found', $slug),
-                ['status' => 404]
-            );
-        }
+		$subtheme = $subtheme->findBySlug($slug);
 
-        return $subtheme;
-    }
+		if (!$subtheme) {
+			return new WP_Error(
+				'no_subtheme_found',
+				sprintf('Subheme with slug [%s] not found', $slug),
+				['status' => 404]
+			);
+		}
+
+		return $subtheme;
+	}
 }

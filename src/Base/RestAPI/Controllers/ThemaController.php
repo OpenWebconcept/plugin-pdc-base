@@ -25,9 +25,8 @@ class ThemaController extends BaseController
 
         $items = (new Thema())
             ->query(apply_filters('owc/pdc/rest-api/themas/query', $this->getPaginatorParams($request)))
-            ->query([
-                'order' => $order,
-                'orderby' => $orderBy,
+			->query($this->getOrderClause($orderBy, $order))
+			->query([
                 'post_status' => $this->getPostStatus($request)
             ])
             ->hide(['items']);
