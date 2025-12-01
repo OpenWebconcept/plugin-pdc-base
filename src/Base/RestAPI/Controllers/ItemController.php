@@ -94,12 +94,12 @@ class ItemController extends BaseController
      */
     public function getItem(WP_REST_Request $request)
     {
-        $id = (int)$request->get_param('id');
+        $id = (int) $request->get_param('id');
         $item = $this->buildQueryFromRequest($request);
 
         $item = $item->find($id);
 
-        if (!$item) {
+        if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
@@ -128,7 +128,7 @@ class ItemController extends BaseController
 
         $item = $item->findBySlug($slug);
 
-        if (!$item) {
+        if (! $item) {
             return new WP_Error(
                 'no_item_found',
                 sprintf('Item with slug [%s] not found', $slug),
@@ -155,7 +155,7 @@ class ItemController extends BaseController
             ->query($this->excludeInactiveItemsQuery());
 
         $password = esc_attr($request->get_param('password'));
-        if (!empty($password)) {
+        if (! empty($password)) {
             $item->setPassword($password);
         }
 
@@ -164,7 +164,7 @@ class ItemController extends BaseController
         };
 
         $connectedField = $item->getGlobalField('connected');
-        if ($request->get_param('connected_sort') && !empty($connectedField)) {
+        if ($request->get_param('connected_sort') && ! empty($connectedField)) {
             $connectedField['creator']->setSorting(
                 $request->get_param('connected_sort'),
                 strtoupper($request->get_param('connected_sort_direction')) ?: 'ASC',
@@ -177,7 +177,7 @@ class ItemController extends BaseController
 
     private function needsAuthorization(array $item): bool
     {
-        if (!$this->isPluginPDCInternalProductsActive()) {
+        if (! $this->isPluginPDCInternalProductsActive()) {
             return false;
         }
 

@@ -35,7 +35,7 @@ class SubthemaController extends BaseController
         }
 
         if ($language = $request->get_param('language')) {
-            $items->filterLanguage((string)$language);
+            $items->filterLanguage((string) $language);
         }
 
         $data = $items->all();
@@ -51,7 +51,7 @@ class SubthemaController extends BaseController
      */
     public function getSubthema(WP_REST_Request $request)
     {
-        $id = (int)$request->get_param('id');
+        $id = (int) $request->get_param('id');
 
         $thema = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
@@ -62,12 +62,12 @@ class SubthemaController extends BaseController
         }
 
         if ($language = $request->get_param('language')) {
-            $thema->filterLanguage((string)$language);
+            $thema->filterLanguage((string) $language);
         }
 
         $thema = $thema->find($id);
 
-        if (!$thema) {
+        if (! $thema) {
             return new WP_Error('no_item_found', sprintf('Subthema with ID [%d] not found', $id), [
                 'status' => 404,
             ]);
@@ -94,12 +94,12 @@ class SubthemaController extends BaseController
         }
 
         if ($language = $request->get_param('language')) {
-            $subtheme->filterLanguage((string)$language);
+            $subtheme->filterLanguage((string) $language);
         }
 
         $subtheme = $subtheme->findBySlug($slug);
 
-        if (!$subtheme) {
+        if (! $subtheme) {
             return new WP_Error(
                 'no_subtheme_found',
                 sprintf('Subheme with slug [%s] not found', $slug),
