@@ -119,7 +119,7 @@ abstract class BaseController
         return true;
     }
 
-    protected function getOrderClause(mixed $orderBy, mixed $order)
+    protected function getOrderClause(string $orderBy, string $order): array
     {
         $orderArray = [];
         $orderByParts = explode(',', $orderBy);
