@@ -118,4 +118,32 @@ abstract class BaseController
 
         return true;
     }
+
+    protected function getOrderClause(string $orderBy, string $order): array
+    {
+        $orderArray = [];
+        $orderByParts = explode(',', $orderBy);
+        $orderParts = explode(',', $order);
+
+        // Empty string results in array with one empty value, we ignore that.
+        if (!array_filter($orderByParts)) {
+            return [];
+        }
+
+        // Single orderby value, return simple array.
+        if (count($orderByParts) === 1) {
+            return [
+                'orderby' => trim($orderByParts[0]),
+                'order' => strtoupper(trim($orderParts[0] ?? 'ASC')),
+            ];
+        }
+
+        // Multiple orderby values, return associative array.
+        foreach ($orderByParts as $index => $orderByPart) {
+            $orderValue = $orderParts[$index] ?? $orderParts[0] ?? 'ASC';
+            $orderArray[trim($orderByPart)] = strtoupper(trim($orderValue));
+        }
+
+        return ['orderby' => $orderArray];
+    }
 }

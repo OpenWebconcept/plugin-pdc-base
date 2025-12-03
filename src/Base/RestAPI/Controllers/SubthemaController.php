@@ -20,11 +20,13 @@ class SubthemaController extends BaseController
      */
     public function getSubthemas(WP_REST_Request $request): array
     {
+        $orderBy = $request->get_param('orderby') ?? 'name';
+        $order = $request->get_param('order') ?? 'ASC';
+
         $items = (new Subthema())
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query', $this->getPaginatorParams($request)))
+            ->query($this->getOrderClause($orderBy, $order))
             ->query([
-                'order' => 'ASC',
-                'orderby' => 'name',
                 'post_status' => $this->getPostStatus($request)
             ]);
 

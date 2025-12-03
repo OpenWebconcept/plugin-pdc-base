@@ -25,15 +25,15 @@ class ItemController extends BaseController
      */
     public function getItems(WP_REST_Request $request): array
     {
+        $orderBy = $request->get_param('orderby') ?? 'post_date,ID';
+        $order = $request->get_param('order') ?? 'DESC,DESC';
+
         $parameters = $this->convertParameters($request->get_params());
         $items = (new Item())
             ->query(apply_filters('owc/pdc/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query($parameters)
             ->query($this->excludeInactiveItemsQuery())
-            ->query(['orderby' => [
-                'post_date' => 'DESC',
-                'ID' => 'DESC',
-            ]]);
+            ->query($this->getOrderClause($orderBy, $order));
 
         if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
             $items->filterSource($request->get_param('source'));
