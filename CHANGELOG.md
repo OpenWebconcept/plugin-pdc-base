@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.18.0] (2025-12-03)
+
+### Feat
+
+- Add source-based availability validation to ItemController
+
 ## Version [3.17.2] (2025-11-21)
 
 ### Fix
