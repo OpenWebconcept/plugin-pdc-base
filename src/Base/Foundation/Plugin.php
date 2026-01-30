@@ -54,6 +54,7 @@ class Plugin
         $this->loader = new Loader();
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
+        $this->settings = SettingsPageOptions::make();
     }
 
     /**
