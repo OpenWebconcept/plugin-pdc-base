@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.18.1] (2026-02-05)
+
+### Feat
+
+- Instantiate SettingsPageOptions in the plugin constructor
+
 ## Version [3.18.0] (2025-12-03)
 
 ### Feat
