@@ -30,7 +30,7 @@ This plugin supports both the free and premium versions of Meta Box:
 
 **Option 1: Free Meta Box plugins**
 - Install [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
-- Install [Meta Box Group](https://wordpress.org/plugins/meta-box-group/) extension
+- Install [Meta Box Group](https://metabox.io/plugins/meta-box-group/) (Paid extension)
 
 **Option 2: Meta Box AIO (Premium)**
 - Install [Meta Box AIO](https://metabox.io/pricing/) - includes all Meta Box functionality in one package
@@ -45,7 +45,7 @@ Install one of the following Meta Box options:
 
 **Free option:**
  - [RWMB Metabox](https://wordpress.org/plugins/meta-box/)
- - [Meta Box Group](https://wordpress.org/plugins/meta-box-group/)
+ - [Meta Box Group](https://metabox.io/plugins/meta-box-group/) (Paid extension)
 
 **Premium option:**
  - [Meta Box AIO](https://metabox.io/pricing/) (includes all extensions)
