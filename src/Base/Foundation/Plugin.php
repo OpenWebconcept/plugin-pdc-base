@@ -15,12 +15,11 @@ class Plugin
     public const NAME = 'pdc-base';
 
     /**
-     * Version of the plugin.
-     * Used for setting versions of enqueue scripts and styles.
+     * Version from the plugin header, read on first use.
      *
-     * @var string
+     * @var string|null
      */
-    public const VERSION = '3.18.1';
+    protected $version;
 
     /**
      * Path to the root of the plugin.
@@ -187,7 +186,11 @@ class Plugin
      */
     public function getVersion(): string
     {
-        return static::VERSION;
+        if (null === $this->version) {
+            $this->version = (string) \get_file_data($this->rootPath . '/' . $this->getName() . '.php', ['Version' => 'Version'])['Version'];
+        }
+
+        return $this->version;
     }
 
     /**

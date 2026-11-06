@@ -9,6 +9,15 @@ class TinyMceServiceProvider extends ServiceProvider
     public function register(): void
     {
 		$this->plugin->loader->addFilter('tiny_mce_before_init', $this, 'filterIframeAttribs', 10, 2);
+        $this->plugin->loader->addFilter('mce_external_plugins', $this, 'addSelectionGuard');
+    }
+
+    public function addSelectionGuard(array $plugins): array
+    {
+        // A TinyMCE plugin rides along in tinyMCEPreInit.mceInit, so Meta Box clones get it too. See the script.
+        $plugins['owcselectionguard'] = $this->plugin->getPluginUrl() . '/js/editor-selection-guard.js?ver=' . $this->plugin->getVersion();
+
+        return $plugins;
     }
 
 	public function filterIframeAttribs(array $options): array
