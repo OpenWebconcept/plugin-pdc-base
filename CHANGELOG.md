@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Version [3.18.2] (2026-11-09)
+
+### Fix
+
+- Rebuild TinyMCE editors whose iframe reloads when the block editor moves the meta boxes (blank editors in Firefox)
+- Skip the TinyMCE caret restore when the editor has no selection
+
+### Refactor
+
+- Read the plugin version from the plugin header; the `Plugin::VERSION` constant is removed
+
 ## Version [3.18.1] (2026-02-05)
 
 ### Feat
