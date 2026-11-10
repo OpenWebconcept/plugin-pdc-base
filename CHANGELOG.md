@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version [3.18.3] (2026-11-10)
+
+### Fix
+
+- Keep the block editor's default styles for classic themes with editor styles (WP 7.0)
+
 ## Version [3.18.2] (2026-11-09)
 
 ### Fix
