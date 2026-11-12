@@ -16,6 +16,34 @@ use OWC\PDC\Base\Repositories\Subthema;
 class SubthemaController extends BaseController
 {
     /**
+     * Route arguments for the subthemas collection.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function collectionArguments(): array
+    {
+        return array_merge($this->paginatorArguments(), [
+            'draft-preview' => $this->draftPreviewArgument(),
+            'source' => $this->sourceArgument(),
+            'language' => $this->languageArgument(),
+        ]);
+    }
+
+    /**
+     * Route arguments for a single subthema.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function singleArguments(): array
+    {
+        return [
+            'draft-preview' => $this->draftPreviewArgument(),
+            'source' => $this->sourceArgument(),
+            'language' => $this->languageArgument(),
+        ];
+    }
+
+    /**
      * Get a list of all subthemas.
      */
     public function getSubthemas(WP_REST_Request $request): array
@@ -28,7 +56,7 @@ class SubthemaController extends BaseController
                 'post_status' => $this->getPostStatus($request)
             ]);
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+        if ($this->plugin->settings->useShowOn() && $request->get_param('source')) {
             $items->filterSource($request->get_param('source'));
         }
 
@@ -55,7 +83,7 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+        if ($this->plugin->settings->useShowOn() && $request->get_param('source')) {
             $thema->filterSource($request->get_param('source'));
         }
 
@@ -87,7 +115,7 @@ class SubthemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/subthemas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+        if ($this->plugin->settings->useShowOn() && $request->get_param('source')) {
             $subtheme->filterSource($request->get_param('source'));
         }
 
