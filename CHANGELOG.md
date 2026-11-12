@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## Version [3.19.0] (2026-11-12)
+
+### Feat
+
+- Declare the query parameters of all REST routes as route args, so WordPress documents and validates them
+- Malformed parameters now return a `400 rest_invalid_param` error
+
+### Fix
+
+- Search route args: `limit` instead of the unused `per-page`, and a valid `integer` type
+
 ## Version [3.18.3] (2026-11-10)
 
 ### Fix
