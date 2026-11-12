@@ -53,29 +53,18 @@ class SearchController extends ItemController
     }
 
     /**
-     * Get an individual post item.
+     * Route arguments for searching.
+     *
+     * @return array<string, array<string, mixed>>
      */
     public function arguments(): array
     {
-        $args = [];
-        $args['s'] = [
-            'description' => esc_html__('The search term.', 'pdc-base'),
-            'required' => true,
-            'type' => 'string',
-        ];
-        $args['per-page'] = [
-            'description' => esc_html__('The limit.', 'pdc-base'),
-            'required' => false,
-            'default' => 10,
-            'type' => 'int',
-        ];
-        $args['page'] = [
-            'description' => esc_html__('Pagination', 'pdc-base'),
-            'required' => false,
-            'default' => 1,
-            'type' => 'int',
-        ];
-
-        return $args;
+        return array_merge([
+            's' => [
+                'description' => esc_html__('The search term.', 'pdc-base'),
+                'required' => true,
+                'type' => 'string',
+            ],
+        ], $this->paginatorArguments());
     }
 }
