@@ -16,6 +16,44 @@ use OWC\PDC\Base\Repositories\Thema;
 class ThemaController extends BaseController
 {
     /**
+     * Route arguments for the themas collection.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function collectionArguments(): array
+    {
+        return array_merge($this->paginatorArguments(), [
+            'orderby' => [
+                'description' => esc_html__('Field to order the themas by.', 'pdc-base'),
+                'type' => 'string',
+                'default' => 'title',
+            ],
+            'order' => [
+                'description' => esc_html__('Order direction, ASC or DESC.', 'pdc-base'),
+                'type' => 'string',
+                'default' => 'ASC',
+            ],
+            'draft-preview' => $this->draftPreviewArgument(),
+            'source' => $this->sourceArgument(),
+            'language' => $this->languageArgument(),
+        ]);
+    }
+
+    /**
+     * Route arguments for a single thema.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function singleArguments(): array
+    {
+        return [
+            'draft-preview' => $this->draftPreviewArgument(),
+            'source' => $this->sourceArgument(),
+            'language' => $this->languageArgument(),
+        ];
+    }
+
+    /**
      * Get a list of all themas.
      */
     public function getThemas(WP_REST_Request $request): array
@@ -32,7 +70,7 @@ class ThemaController extends BaseController
             ])
             ->hide(['items']);
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+        if ($this->plugin->settings->useShowOn() && $request->get_param('source')) {
             $items->filterSource($request->get_param('source'));
         }
 
@@ -59,7 +97,7 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+        if ($this->plugin->settings->useShowOn() && $request->get_param('source')) {
             $thema->filterSource($request->get_param('source'));
         }
 
@@ -91,7 +129,7 @@ class ThemaController extends BaseController
             ->query(apply_filters('owc/pdc/rest-api/themas/query/single', []))
             ->query(['post_status' => $this->getPostStatus($request)]);
 
-        if ($this->plugin->settings->useShowOn() && $this->showOnParamIsValid($request)) {
+        if ($this->plugin->settings->useShowOn() && $request->get_param('source')) {
             $theme->filterSource($request->get_param('source'));
         }
 

@@ -51,6 +51,56 @@ abstract class BaseController
     }
 
     /**
+     * Route arguments for paginated collections.
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    public function paginatorArguments(): array
+    {
+        return [
+            'limit' => [
+                'description' => esc_html__('Maximum number of items per page, -1 for all.', 'pdc-base'),
+                'type' => 'integer',
+                'minimum' => -1,
+                'default' => 10,
+            ],
+            'page' => [
+                'description' => esc_html__('Page of the collection.', 'pdc-base'),
+                'type' => 'integer',
+                'minimum' => 1,
+                'default' => 1,
+            ],
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    protected function sourceArgument(): array
+    {
+        return [
+            'description' => esc_html__('Blog ID of the site the content is shown on.', 'pdc-base'),
+            'type' => 'integer',
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    protected function draftPreviewArgument(): array
+    {
+        return [
+            'description' => esc_html__('Include drafts and scheduled posts for logged-in users.', 'pdc-base'),
+            'type' => 'boolean',
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    protected function languageArgument(): array
+    {
+        return [
+            'description' => esc_html__('Language code to filter on.', 'pdc-base'),
+            'type' => 'string',
+        ];
+    }
+
+    /**
      * Get the paginator query params for a given query.
      */
     protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10): array
@@ -73,50 +123,6 @@ abstract class BaseController
         }
 
         return $preview ? ['publish', 'draft', 'future'] : ['publish'];
-    }
-
-    /**
-     * Check if the source parameter is valid.
-     */
-    protected function showOnParamIsValid(WP_REST_Request $request): bool
-    {
-        if (empty($request->get_param('source'))) {
-            return false;
-        }
-
-        if (! is_numeric($request->get_param('source'))) {
-            return false;
-        }
-
-        return true;
-    }
-
-    protected function targetAudienceParamIsValid(WP_REST_Request $request): bool
-    {
-        return $this->defaultTaxonomyParamIsValid($request, 'pdc-doelgroep');
-    }
-
-    protected function aspectParamIsValid(WP_REST_Request $request): bool
-    {
-        return $this->defaultTaxonomyParamIsValid($request, 'pdc-aspect');
-    }
-
-    protected function usageParamIsValid(WP_REST_Request $request): bool
-    {
-        return $this->defaultTaxonomyParamIsValid($request, 'pdc-usage');
-    }
-
-    protected function defaultTaxonomyParamIsValid(WP_REST_Request $request, string $param): bool
-    {
-        if (empty($request->get_param($param))) {
-            return false;
-        }
-
-        if (! is_array($request->get_param($param)) && ! is_string($request->get_param($param))) {
-            return false;
-        }
-
-        return true;
     }
 
     protected function postHasTermField(string $param, int $postId, string $taxonomy, string $field = 'slug'): bool
