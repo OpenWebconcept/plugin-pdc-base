@@ -1,0 +1,77 @@
+publiccodeYmlVersion: "0.8.0"
+
+name: "plugin-pdc-base"
+applicationSuite: "OpenWebconcept"
+url: "https://github.com/OpenWebconcept/plugin-pdc-base"
+softwareVersion: "3.19.0"
+releaseDate: "2026-11-12"
+
+platforms:
+  - "web"
+
+categories:
+  - "application-development"
+
+developmentStatus: "stable"
+
+softwareType: "addon"
+
+description:
+  en:
+    genericName: "Yard | PDC"
+    shortDescription: "Adds PDC implementation"
+    longDescription: "Acts as foundation for other PDC related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
+    documentation: "https://github.com/OpenWebconcept/plugin-pdc-base#readme"
+    features:
+      - "PDC items, themes, subthemes and groups as custom post types"
+      - "Relations between items, themes, subthemes and groups"
+      - "REST API for items, themes, subthemes and groups"
+      - "Extension points for other PDC plugins"
+      - "Dutch and English translations"
+  nl:
+    genericName: "Yard | PDC"
+    shortDescription: "Voegt de PDC functionaliteit toe aan de website."
+    longDescription: "Vormt de basis voor andere PDC gerelateerde plugins. Deze plugin implementeert actions waarmee andere plugins Custom Posttypes, Metaboxes, Taxonomieën en Posts 2 Posts relaties kunnen aanpassen."
+    documentation: "https://github.com/OpenWebconcept/plugin-pdc-base#readme"
+    features:
+      - "PDC-items, thema's, subthema's en groepen als custom post types"
+      - "Relaties tussen items, thema's, subthema's en groepen"
+      - "REST API voor items, thema's, subthema's en groepen"
+      - "Uitbreidingspunten voor andere PDC-plugins"
+      - "Nederlandse en Engelse vertalingen"
+
+legal:
+  license: "EUPL-1.2"
+  mainCopyrightOwner: "Yard | Digital Agency"
+  repoOwner: "Yard | Digital Agency"
+
+dependsOn:
+  open:
+    - name: "extended-cpts"
+      versionMin: "4.5.2"
+    - name: "metabox"
+      versionMin: "4.14.0"
+    - name: "posts-to-posts"
+      versionMin: "1.6.6"
+    - name: "WordPress"
+      versionMin: "6.0.0"
+
+intendedAudience:
+  countries:
+    - "NL"
+  scope:
+    - "government"
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - "nl"
+    - "en"
+
+maintenance:
+  type: "contract"
+  contractors:
+    - name: "Yard | Digital Agency"
+      website: "https://www.yard.nl"
+      email: "owc@yard.nl"
+      until: "2029-12-31"
