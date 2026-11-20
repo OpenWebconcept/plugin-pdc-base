@@ -1,6 +1,7 @@
 {
   "name": "plugin/pdc-base",
   "description": "PDC Base plugin",
+  "license": "EUPL-1.2",
   "authors": [
     {
       "name": "Yard | Digital Agency",

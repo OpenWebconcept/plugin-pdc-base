@@ -234,3 +234,7 @@ Create a Pull request to the OWC repository.
 ### Who do I talk to?
 
 If you have questions about or suggestions for this plugin, please contact <a href="mailto:hpeters@buren.nl">Holger Peters</a> from Gemeente Buren.
+
+## License
+
+Licensed under the [EUPL-1.2](LICENSE). Third-party dependencies bundled in the release keep their own licences.
