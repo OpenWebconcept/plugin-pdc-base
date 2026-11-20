@@ -7,6 +7,7 @@
 - License changed from GPL-3.0 to EUPL-1.2
 - Add a valid publiccode.yml, contributing guide, code of conduct and security policy
 - Attach a CycloneDX SBOM to each release
+- Fix outdated AdminServiceProviderTest.php
 
 ## Version [3.19.0] (2026-11-12)
 

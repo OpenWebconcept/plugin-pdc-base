@@ -81,6 +81,13 @@ class AdminServiceProviderTest extends TestCase
             2
         ])->once();
 
+        $plugin->loader->shouldReceive('addFilter')->withArgs([
+            'block_editor_settings_all',
+            $service,
+            'filterEditorStyles',
+            20
+        ])->once();
+
         $service->register();
 
         $this->assertTrue(true);
