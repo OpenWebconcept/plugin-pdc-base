@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Version [3.19.1] (2026-11-20)
+## Version [NEXT] (2026-11-23)
 
 ### Chore
 
