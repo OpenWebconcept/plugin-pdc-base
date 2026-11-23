@@ -1,0 +1,52 @@
+name: Compliance
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  publiccode:
+    name: publiccode.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: italia/publiccode-parser-action@v1
+        with:
+          publiccode: "publiccode.yml"
+      - name: Check softwareVersion matches the plugin version
+        run: |
+          plugin=$(sed -n 's/^ \* Version: *\([^ ]*\).*$/\1/p' pdc-base.php)
+          publiccode=$(sed -n 's/^softwareVersion: *"\{0,1\}\([^"]*\)"\{0,1\}$/\1/p' publiccode.yml)
+          if [ "$plugin" != "$publiccode" ]; then
+            echo "::error file=publiccode.yml::softwareVersion ($publiccode) does not match the plugin version ($plugin)"
+            exit 1
+          fi
+
+  reuse:
+    name: REUSE licensing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: fsfe/reuse-action@v5
+
+  tests:
+    name: Unit tests with coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          # Lowest supported PHP version
+          php-version: "7.4"
+          coverage: xdebug
+      - run: composer install --no-interaction --no-progress
+      - run: ./vendor/bin/phpunit --testsuite 'Unit Test Suite' --coverage-clover coverage.xml --coverage-text
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage.xml
