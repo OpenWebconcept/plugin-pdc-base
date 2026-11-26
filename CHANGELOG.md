@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Unreleased
+## Version [3.20.0] (2026-11-26)
 
 ### Feat
 
