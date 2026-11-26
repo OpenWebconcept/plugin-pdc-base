@@ -47,6 +47,7 @@ return [
         ],
         'group' => [
             'fields' => [
+                'icon' => OWC\PDC\Base\RestAPI\SharedFields\IconField::class,
                 'items' => OWC\PDC\Base\RestAPI\SharedFields\ItemsField::class,
                 'image' => OWC\PDC\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'themes' => OWC\PDC\Base\RestAPI\GroupFields\ThemaField::class,

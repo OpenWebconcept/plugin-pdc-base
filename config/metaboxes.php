@@ -254,5 +254,22 @@ return [
                 ],
             ]
         ]
+    ],
+    'pdc-group' => [
+        'id' => 'pdc_group_metadata',
+        'title' => __('Settings', 'pdc-base'),
+        'post_types' => ['pdc-group'],
+        'context' => 'side',
+        'priority' => 'high',
+        'fields' => [
+            'general' => [
+                'title' => [
+                    'name' => __('Icon', 'pdc-base'),
+                    'desc' => __('Use this option to add an icon to this group.', 'pdc-base'),
+                    'id' => 'pdc_category_icon',
+                    'type' => 'text',
+                ],
+            ]
+        ]
     ]
 ];
