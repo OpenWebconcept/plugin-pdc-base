@@ -446,6 +446,10 @@ msgstr ""
 msgid "Use this option to add an icon to this subtheme."
 msgstr ""
 
+#: config/metaboxes.php:268
+msgid "Use this option to add an icon to this group."
+msgstr ""
+
 #: config/p2p_connections.php:8
 msgctxt "P2P titel"
 msgid "PDC item"

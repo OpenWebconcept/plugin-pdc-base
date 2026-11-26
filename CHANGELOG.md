@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## Unreleased
+
+### Feat
+
+- Add an icon field to PDC groups, exposed as `icon` in the groups REST API
+
+### Fix
+
+- Escape quotes in the nl_NL `.po` so the `.mo` builds again
+
 ## Version [3.19.0] (2026-11-12)
 
 ### Feat
